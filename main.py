@@ -1280,7 +1280,7 @@ always present.
 <!-- markdownlint-disable MD033 -->
 <details><summary>Example of <code>myanimelist/1</code></summary><pre>"""
 
-with open('myanimelist/1.json') as f:
+with open('myanimelist/1') as f:
     js = j.load(f)
     md += j.dumps(js, indent=4)
 
@@ -1392,6 +1392,17 @@ For example, to get the ID of `Mairimashita Iruma-kun` Season 3, you can use:
 ```http
 GET https://aniapi.nattadasu.my.id/trakt/shows/152334/seasons/3
 ```
+
+The response will be:
+
+```json
+"""
+
+with open('trakt/shows/152334/seasons/3') as f:
+    js = j.load(f)
+    md += j.dumps(js, indent=4)
+
+md += """```
 
 ## Repository Files
 
