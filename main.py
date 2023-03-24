@@ -1297,7 +1297,7 @@ always present.
 To use this API, you can access the following endpoints:
 
 ```http
-GET https://aniapi.nattadasu.com/
+GET https://aniapi.nattadasu.my.id/
 ```
 
 All requests must be `GET`, and response always will be in JSON format.
@@ -1386,7 +1386,7 @@ where `<SEASON>` is the season number of the title in the provider.
 For example, to get the ID of `Mairimashita Iruma-kun` Season 3, you can use:
 
 ```http
-GET https://aniapi.nattadasu.com/trakt/shows/152334/seasons/3
+GET https://aniapi.nattadasu.my.id/trakt/shows/152334/seasons/3
 ```
 
 ## Acknowledgements
