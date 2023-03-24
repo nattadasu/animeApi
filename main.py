@@ -1085,10 +1085,10 @@ else:
     os.system("cp myanimelist\\(\\).json shikimori\\(\\).json")
 
 # Duplicate MyAnimeList folders as Shikimori
-if os.name == "nt":
-    os.system("xcopy /E /I /Y /Q myanimelist shikimori")
-else:
-    os.system("cp -r myanimelist shikimori")
+# if os.name == "nt":
+#     os.system("xcopy /E /I /Y /Q myanimelist shikimori")
+# else:
+#     os.system("cp -r myanimelist shikimori")
 
 print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting Shoboi Calendar...')
 with open("shoboi().json", "w", encoding='utf-8') as f:
@@ -1280,7 +1280,9 @@ always present.
 <!-- markdownlint-disable MD033 -->
 <details><summary>Example of <code>myanimelist/1</code></summary><pre>"""
 
-md += j.dumps(malDict['1'], indent=4)
+with open('myanimelist/1.json') as f:
+    js = j.load(f)
+    md += j.dumps(js, indent=4)
 
 md += """</pre></details>
 <!-- markdownlint-enable MD033 -->

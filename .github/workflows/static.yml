@@ -4,7 +4,7 @@ name: Deploy static content to Pages v2
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: ["main", "v2"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
