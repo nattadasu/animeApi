@@ -478,7 +478,7 @@ for i in ooRaw:
     ooI += 1
 
 if len(ooUnknown) > 0:
-    with open('oo.unknown.json', 'w', encoding='utf-8') as f:
+    with open('oo.unknown.raw.json', 'w', encoding='utf-8') as f:
         f.write(j.dumps(ooUnknown, indent=4))
 
 print("\033[2K\r\033[32m[BUILD]\033[0m \033[90m[@kawaiioverflow/arm]\033[0m Converting array to object...")
@@ -1389,6 +1389,27 @@ For example, to get the ID of `Mairimashita Iruma-kun` Season 3, you can use:
 GET https://aniapi.nattadasu.my.id/trakt/shows/152334/seasons/3
 ```
 
+## Repository Files
+
+This repository contains multiple cache files, alongside main files, which are:
+
+- `.editorconfig`: EditorConfig file.
+- `.gitattributes`: Git attributes file.
+- `.gitignore`: Git ignore file.
+- `animeApi.json`: All data in Array format.
+- `aod.raw.json`: [Anime Offline Database][aod] raw data.
+- `arm.raw.json`: [Anime Relations Mapping][koarm] raw data.
+- `ati.raw.json`: [AniTrakt Index Parser][atip] raw data.
+- `kz.mapped.raw.json`: [Kaize][kz] raw data, mapped to MyAnimeList ID.
+- `kz.unknown.raw.json`: [Kaize][kz] raw data, with unknown MyAnimeList ID.
+- `kz.unmapped.raw.json`: [Kaize][kz] (true) raw data.
+- `oo.raw.json`: [Otak Otaku][oo] raw data.
+- `oo.unknown.raw.json`: [Otak Otaku][oo] raw data, with unknown MyAnimeList ID.
+- `README.md`: This file.
+- `requirements.txt`: Python requirements file.
+- `robots.txt`: Robots.txt file.
+- `sy.raw.json`: [Silver-Yasha][sy] raw data.
+
 ## Acknowledgements
 
 This project uses multiple sources to compile the data, including:
@@ -1409,6 +1430,9 @@ This project uses multiple sources to compile the data, including:
 [oo]: https://otakotaku.com/
 [sy]: https://db.silveryasha.web.id/
 """
+
+with open('README.md', 'w') as f:
+    f.write(md)
 
 end = time.time()
 print(f'\033[34m[INFO]\033[0m \033[90m[Benchmark]\033[0m Total time: {end - start} seconds')
