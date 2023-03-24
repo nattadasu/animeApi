@@ -3,6 +3,12 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "0 5 * * *"
+  push:
+    branches:
+      - v2
+    paths:
+      - "main.py"
+      - "requirements.txt"
 jobs:
   RunScript:
     name: Start Process
