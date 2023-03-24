@@ -926,7 +926,7 @@ print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting AniDB...')
 with open("anidb().json", "w", encoding='utf-8') as f:
     f.write(j.dumps(adbArr, ensure_ascii=False))
 for i in adbArr:
-    adbDict[i["aniDb"]] = i
+    adbDict[i["anidb"]] = i
 with open("anidb.json", "w", encoding='utf-8') as f:
     f.write(j.dumps(adbDict, ensure_ascii=False))
 adbDict = {}
@@ -935,7 +935,7 @@ print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting AniList...')
 with open("anilist().json", "w", encoding='utf-8') as f:
     f.write(j.dumps(alArr, ensure_ascii=False))
 for i in alArr:
-    alDict[i["aniList"]] = i
+    alDict[i["anilist"]] = i
 with open("anilist.json", "w", encoding='utf-8') as f:
     f.write(j.dumps(alDict, ensure_ascii=False))
 alDict = {}
@@ -953,7 +953,7 @@ print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting Anime-Planet...'
 with open("animeplanet().json", "w", encoding='utf-8') as f:
     f.write(j.dumps(apArr, ensure_ascii=False))
 for i in apArr:
-    apDict[i["animePlanet"]] = i
+    apDict[i["animeplanet"]] = i
 with open("animeplanet.json", "w", encoding='utf-8') as f:
     f.write(j.dumps(apDict, ensure_ascii=False))
 apDict = {}
@@ -962,7 +962,7 @@ print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting aniSearch...')
 with open("anisearch().json", "w", encoding='utf-8') as f:
     f.write(j.dumps(asArr, ensure_ascii=False))
 for i in asArr:
-    asDict[i["aniSearch"]] = i
+    asDict[i["anisearch"]] = i
 with open("anisearch.json", "w", encoding='utf-8') as f:
     f.write(j.dumps(asDict, ensure_ascii=False))
 asDict = {}
@@ -1025,7 +1025,7 @@ print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting LiveChart...')
 with open("livechart().json", "w", encoding='utf-8') as f:
     f.write(j.dumps(lcArr, ensure_ascii=False))
 for i in lcArr:
-    lcDict[i["liveChart"]] = i
+    lcDict[i["livechart"]] = i
 with open("livechart.json", "w", encoding='utf-8') as f:
     f.write(j.dumps(lcDict, ensure_ascii=False))
 lcDict = {}
@@ -1034,7 +1034,7 @@ print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting MyAnimeList...')
 with open("myanimelist().json", "w", encoding='utf-8') as f:
     f.write(j.dumps(malArr, ensure_ascii=False))
 for i in malArr:
-    malDict[i["myAnimeList"]] = i
+    malDict[i["myanimelist"]] = i
 with open("myanimelist.json", "w", encoding='utf-8') as f:
     f.write(j.dumps(malDict, ensure_ascii=False))
 malDict = {}
@@ -1052,7 +1052,7 @@ print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting Notify.moe...')
 with open("notify().json", "w", encoding='utf-8') as f:
     f.write(j.dumps(nmArr, ensure_ascii=False))
 for i in nmArr:
-    nmDict[i["notifyMoe"]] = i
+    nmDict[i["notify"]] = i
 with open("notify.json", "w", encoding='utf-8') as f:
     f.write(j.dumps(nmDict, ensure_ascii=False))
 # if os.name == "nt":
@@ -1069,7 +1069,7 @@ print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting Otak Otaku...')
 with open("otakotaku().json", "w", encoding='utf-8') as f:
     f.write(j.dumps(ooArr, ensure_ascii=False))
 for i in ooArr:
-    ooDict[i["otakOtaku"]] = i
+    ooDict[i["otakotaku"]] = i
 with open("otakotaku.json", "w", encoding='utf-8') as f:
     f.write(j.dumps(ooDict, ensure_ascii=False))
 ooDict = {}
@@ -1102,7 +1102,7 @@ print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting Silveryasha...')
 with open("silveryasha().json", "w", encoding='utf-8') as f:
     f.write(j.dumps(syArr, ensure_ascii=False))
 for i in syArr:
-    syDict[i["silverYasha"]] = i
+    syDict[i["silveryasha"]] = i
 with open("silveryasha.json", "w", encoding='utf-8') as f:
     f.write(j.dumps(syDict, ensure_ascii=False))
 syDict = {}
