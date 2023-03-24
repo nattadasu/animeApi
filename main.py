@@ -1310,7 +1310,7 @@ All requests must be `GET`, and response always will be in JSON format.
 ### Get all items in Array
 
 ```http
-/animeApi.json
+GET /animeApi.json
 ```
 
 ### Get All ID in Object/Dictionary format of each provider
@@ -1322,7 +1322,7 @@ All requests must be `GET`, and response always will be in JSON format.
 > offline indexer that already have the ID from supported providers.
 
 ```http
-/<PROVIDER>.json
+GET /<PROVIDER>.json
 ```
 
 `<PROVIDER>` can be one of the following:
@@ -1334,7 +1334,7 @@ All requests must be `GET`, and response always will be in JSON format.
 ### Get All ID in Array/List format of each provider
 
 ```http
-/<PROVIDER>().json
+GET /<PROVIDER>().json
 ```
 
 `<PROVIDER>` can be one of the following:
@@ -1348,7 +1348,7 @@ If your application unable to reach the endpoint, replace `()` to `%28%29`.
 ### Get a relation of ID to title
 
 ```http
-/<PROVIDER>/<ID>
+GET /<PROVIDER>/<ID>
 ```
 
 `<PROVIDER>` can be one of the following:
@@ -1376,7 +1376,7 @@ is either `movies` or `shows` and `<ID>` is the ID of the title in the provider.
 An ID on Trakt must in numerical value. If your application obtained slug as ID
 instead, you can resolve/convert it to ID using following Trakt API endpoint:
 
-```https
+```http
 GET https://api.trakt.tv/search/trakt/<ID>?type=<movie|show>
 ```
 
