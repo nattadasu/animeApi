@@ -24,7 +24,7 @@ automate, and Python for backend.
 - [x] [Trakt](https://trakt.tv/)
 ## Statistics
 
-This API has been updated on 03/24/2023 05:57:34 UTC, with a total of 30769 titles indexed.
+This API has been updated on 03/24/2023 11:30:58 UTC, with a total of 30769 titles indexed.
 
 |              Provider |     Code      | Count  |
 | --------------------: | :-----------: | :----- |
@@ -58,7 +58,7 @@ interface Anime = {
     anisearch:    NumberNull;
     annict:       NumberNull;
     kaize:        StringNull;
-    kitsu:        NumberNull;
+    kitsu:        NumberNull; // Kitsu ID, slug is not supported
     livechart:    NumberNull;
     myanimelist:  NumberNull;
     notify:       StringNull;
@@ -119,17 +119,24 @@ always present.
 
 <!-- markdownlint-disable MD033 -->
 <details><summary>Example of <code>myanimelist/1</code></summary><pre>{
-  "title": "Cowboy Bebop",
-  "anidb": 23,
-  "anilist": 1,
-  "animeplanet": "cowboy-bebop",
-  "anisearch": 1572,
-  "kaize": "cowboy-bebop",
-  "kitsu": 1,
-  "livechart": 3418,
-  "myanimelist": 1,
-  "notify": "Tk3ccKimg",
-  "silveryasha": 2652
+    "title": "Cowboy Bebop",
+    "anidb": 23,
+    "anilist": 1,
+    "animeplanet": "cowboy-bebop",
+    "anisearch": 1572,
+    "annict": 360,
+    "kaize": "cowboy-bebop",
+    "kitsu": 1,
+    "livechart": 3418,
+    "myanimelist": 1,
+    "notify": "Tk3ccKimg",
+    "otakotaku": 1149,
+    "shikimori": 1,
+    "shoboi": 538,
+    "silveryasha": 2652,
+    "trakt": 30857,
+    "trakt_type": "shows",
+    "trakt_season": 1
 }</pre></details>
 <!-- markdownlint-enable MD033 -->
 
@@ -202,6 +209,15 @@ GET /<PROVIDER>/<ID>
 
 #### Provider exclusive rules
 
+##### Kitsu
+
+`kitsu` ID must in numerical value. If your application obtained slug as ID
+instead, you can resolve/convert it to ID using following Kitsu API endpoint:
+
+```http
+GET https://kitsu.io/api/edge/anime?filter[slug]=<ID>
+```
+
 ##### Shikimori
 
 `shikimori` IDs are basically the same as `myanimelist` IDs. If you get a
@@ -229,6 +245,30 @@ For example, to get the ID of `Mairimashita Iruma-kun` Season 3, you can use:
 ```http
 GET https://aniapi.nattadasu.my.id/trakt/shows/152334/seasons/3
 ```
+
+The response will be:
+
+```json
+{
+    "title": "Mairimashita! Iruma-kun 3rd Season",
+    "anidb": 16627,
+    "anilist": 139092,
+    "animeplanet": "welcome-to-demon-school-iruma-kun-3",
+    "anisearch": 16582,
+    "annict": 8883,
+    "kaize": "mairimashita-iruma-kun-3rd-season",
+    "kitsu": 45154,
+    "livechart": 10780,
+    "myanimelist": 49784,
+    "notify": "Okl9YtInR",
+    "otakotaku": 2305,
+    "shikimori": 49784,
+    "shoboi": 6489,
+    "silveryasha": 3702,
+    "trakt": 152334,
+    "trakt_type": "shows",
+    "trakt_season": 3
+}```
 
 ## Repository Files
 
