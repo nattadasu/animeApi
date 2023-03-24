@@ -1280,7 +1280,7 @@ always present.
 <!-- markdownlint-disable MD033 -->
 <details><summary>Example of <code>myanimelist/1</code></summary><pre>"""
 
-md += json.dumps(malDict['1'], indent=4)
+md += j.dumps(malDict['1'], indent=4)
 
 md += """</pre></details>
 <!-- markdownlint-enable MD033 -->
