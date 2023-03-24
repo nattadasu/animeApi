@@ -354,11 +354,11 @@ try:
         return kzDat
 
     kzUnmapped = kaize()
-    with open('kz.raw.json', 'w') as f:
+    with open('kz.unmapped.raw.json', 'w') as f:
         j.dump(kzUnmapped, f, ensure_ascii=False)
 except Exception as e:
     print('\033[31m[ERROR]\033[0m \033[90m[Kaize]\033[0m Failed to fetch information, using old database')
-    with open('kz.raw.json', 'r') as f:
+    with open('kz.unmapped.raw.json', 'r') as f:
         kzUnmapped = j.load(f)
 
 def mapKaize(kz: list):
