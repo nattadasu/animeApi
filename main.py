@@ -236,9 +236,11 @@ except Exception as e:
 
 # Start building for Kaize
 try:
+    if os.getenv("GITHUB_ACTIONS") == 'true':
+        raise Exception('GitHub actions, skipping')
     if USE_CACHE is True:
         raise Exception('Cache usage activated')
-    if  (os.getenv("KAIZE_XSRF_TOKEN") is None) and (os.getenv("KAIZE_SESSION") is None) and (os.getenv("KAIZE_EMAIL") is None) and (os.getenv("KAIZE_PASSWORD") is None):
+    if (os.getenv("KAIZE_XSRF_TOKEN") is None) and (os.getenv("KAIZE_SESSION") is None) and (os.getenv("KAIZE_EMAIL") is None) and (os.getenv("KAIZE_PASSWORD") is None):
         raise Exception('Kaize login info does not available in .env file')
     print("\033[35m[FETCH]\033[0m \033[90m[Kaize]\033[0m Checking latest anime...")
 
@@ -1037,7 +1039,6 @@ for i in malArr:
     malDict[i["myanimelist"]] = i
 with open("myanimelist.json", "w", encoding='utf-8') as f:
     f.write(j.dumps(malDict, ensure_ascii=False))
-malDict = {}
 
 # print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting Nautiljon...')
 # with open("nautiljon().json", "w", encoding='utf-8') as f:
@@ -1217,7 +1218,7 @@ interface Anime = {
     anisearch:    NumberNull;
     annict:       NumberNull;
     kaize:        StringNull;
-    kitsu:        NumberNull;
+    kitsu:        NumberNull; // Kitsu ID, slug is not supported
     livechart:    NumberNull;
     myanimelist:  NumberNull;
     notify:       StringNull;
@@ -1277,19 +1278,11 @@ does not have the ID of the title, except for `title` key value, which will be
 always present.
 
 <!-- markdownlint-disable MD033 -->
-<details><summary>Example of <code>myanimelist/1</code></summary><pre>{
-  "title": "Cowboy Bebop",
-  "anidb": 23,
-  "anilist": 1,
-  "animeplanet": "cowboy-bebop",
-  "anisearch": 1572,
-  "kaize": "cowboy-bebop",
-  "kitsu": 1,
-  "livechart": 3418,
-  "myanimelist": 1,
-  "notify": "Tk3ccKimg",
-  "silveryasha": 2652
-}</pre></details>
+<details><summary>Example of <code>myanimelist/1</code></summary><pre>"""
+
+md += json.dumps(malDict['1'], indent=4)
+
+md += """</pre></details>
 <!-- markdownlint-enable MD033 -->
 
 ## Usage
@@ -1360,6 +1353,15 @@ GET /<PROVIDER>/<ID>
 `<ID>` is the ID of the title in the provider.
 
 #### Provider exclusive rules
+
+##### Kitsu
+
+`kitsu` ID must in numerical value. If your application obtained slug as ID
+instead, you can resolve/convert it to ID using following Kitsu API endpoint:
+
+```http
+GET https://kitsu.io/api/edge/anime?filter[slug]=<ID>
+```
 
 ##### Shikimori
 
