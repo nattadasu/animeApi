@@ -786,7 +786,7 @@ try:
             "livechart": int(lcId) if lcId is not None else None,
             "myanimelist": int(malId) if malId is not None else None,
             # "nautiljon": str(njId) if njId is not None else None,
-            "notifymoe": str(nmId) if nmId is not None else None,
+            "notify": str(nmId) if nmId is not None else None,
             "otakotaku": ooId,
             "shikimori": int(malId) if malId is not None else None,
             "shoboi": int(sbId) if sbId is not None else None,
