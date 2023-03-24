@@ -1,0 +1,27 @@
+name: Parse Files v2
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 5 * * *"
+jobs:
+  RunScript:
+    name: Start Process
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11' 
+          cache: 'pip'
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+      - name: Update JSON File with main.py
+        run: python3 main.py
+      - name: Commit Changes
+        run: |
+          git config --local user.email "nattadasu@nattadasu.my.id"
+          git config --local user.name "Natsu Tadama"
+          git add .
+          git commit -m "Update JSON"
+          git push
