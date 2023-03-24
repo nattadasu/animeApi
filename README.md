@@ -22,7 +22,27 @@ automate, and Python for backend.
 - [x] [Shoboi Calendar](https://cal.syoboi.jp/)
 - [x] [Silver-Yasha DB Tontonan Indonesia][sy]
 - [x] [Trakt](https://trakt.tv/)
+## Statistics
 
+This API has been updated on 03/24/2023 05:57:34 UTC, with a total of 30769 titles indexed.
+
+|              Provider |     Code      | Count  |
+| --------------------: | :-----------: | :----- |
+|                 aniDb |    `anidb`    | 12740 |
+|               AniList |   `anilist`   | 17045 |
+|          Anime-Planet | `animeplanet` | 22432 |
+|             aniSearch |  `anisearch`  | 17628 |
+|                Annict |   `annict`    | 8469 |
+|                 Kaize |    `kaize`    | 24154 |
+|                 Kitsu |    `kitsu`    | 18742 |
+|             LiveChart |  `livechart`  | 10483 |
+|           MyAnimeList | `myanimelist` | 24301 |
+|                Notify |    `notify`   | 15658 |
+|            Otak Otaku |  `otakotaku`  | 2488 |
+|             Shikimori |  `shikimori`  | 24301 |
+|       Shoboi Calendar |    `shoboi`   | 4599 |
+| DB Tontonan Indonesia | `silveryasha` | 3827 |
+|                 Trakt |    `trakt`    | 4261 |"
 ## Returned Value
 
 ```ts
@@ -118,7 +138,7 @@ always present.
 To use this API, you can access the following endpoints:
 
 ```http
-GET https://aniapi.nattadasu.com/
+GET https://aniapi.nattadasu.my.id/
 ```
 
 All requests must be `GET`, and response always will be in JSON format.
@@ -131,7 +151,7 @@ All requests must be `GET`, and response always will be in JSON format.
 ### Get all items in Array
 
 ```http
-/animeApi.json
+GET /animeApi.json
 ```
 
 ### Get All ID in Object/Dictionary format of each provider
@@ -143,7 +163,7 @@ All requests must be `GET`, and response always will be in JSON format.
 > offline indexer that already have the ID from supported providers.
 
 ```http
-/<PROVIDER>.json
+GET /<PROVIDER>.json
 ```
 
 `<PROVIDER>` can be one of the following:
@@ -155,7 +175,7 @@ All requests must be `GET`, and response always will be in JSON format.
 ### Get All ID in Array/List format of each provider
 
 ```http
-/<PROVIDER>().json
+GET /<PROVIDER>().json
 ```
 
 `<PROVIDER>` can be one of the following:
@@ -169,7 +189,7 @@ If your application unable to reach the endpoint, replace `()` to `%28%29`.
 ### Get a relation of ID to title
 
 ```http
-/<PROVIDER>/<ID>
+GET /<PROVIDER>/<ID>
 ```
 
 `<PROVIDER>` can be one of the following:
@@ -197,7 +217,7 @@ is either `movies` or `shows` and `<ID>` is the ID of the title in the provider.
 An ID on Trakt must in numerical value. If your application obtained slug as ID
 instead, you can resolve/convert it to ID using following Trakt API endpoint:
 
-```https
+```http
 GET https://api.trakt.tv/search/trakt/<ID>?type=<movie|show>
 ```
 
@@ -207,8 +227,29 @@ where `<SEASON>` is the season number of the title in the provider.
 For example, to get the ID of `Mairimashita Iruma-kun` Season 3, you can use:
 
 ```http
-GET https://aniapi.nattadasu.com/trakt/shows/152334/seasons/3
+GET https://aniapi.nattadasu.my.id/trakt/shows/152334/seasons/3
 ```
+
+## Repository Files
+
+This repository contains multiple cache files, alongside main files, which are:
+
+- `.editorconfig`: EditorConfig file.
+- `.gitattributes`: Git attributes file.
+- `.gitignore`: Git ignore file.
+- `animeApi.json`: All data in Array format.
+- `aod.raw.json`: [Anime Offline Database][aod] raw data.
+- `arm.raw.json`: [Anime Relations Mapping][koarm] raw data.
+- `ati.raw.json`: [AniTrakt Index Parser][atip] raw data.
+- `kz.mapped.raw.json`: [Kaize][kz] raw data, mapped to MyAnimeList ID.
+- `kz.unknown.raw.json`: [Kaize][kz] raw data, with unknown MyAnimeList ID.
+- `kz.unmapped.raw.json`: [Kaize][kz] (true) raw data.
+- `oo.raw.json`: [Otak Otaku][oo] raw data.
+- `oo.unknown.raw.json`: [Otak Otaku][oo] raw data, with unknown MyAnimeList ID.
+- `README.md`: This file.
+- `requirements.txt`: Python requirements file.
+- `robots.txt`: Robots.txt file.
+- `sy.raw.json`: [Silver-Yasha][sy] raw data.
 
 ## Acknowledgements
 
