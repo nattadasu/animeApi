@@ -26,12 +26,17 @@ jobs:
           cache: 'pip'
       - name: Install Dependencies
         run: pip install -r requirements.txt
-      - name: Update JSON File with main.py
-        run: python3 main.py
-      - name: Commit Changes
+      - name: Update JSON File with main.py and then commit
+        shell: pwsh
         run: |
-          git config --local user.email "nattadasu@nattadasu.my.id"
-          git config --local user.name "Natsu Tadama"
-          git add .
-          git commit -m "Update JSON"
-          git push
+          try {
+            python3 main.py
+            git config --local user.email "nattadasu@nattadasu.my.id"
+            git config --local user.name "Natsu Tadama"
+            git add .
+            git commit -m "Update JSON"
+            git push
+          }
+          catch {
+            write-host "No changes made"
+          }
