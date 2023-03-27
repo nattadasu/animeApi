@@ -1006,12 +1006,12 @@ acDict = {}
 # imDict = {}
 
 print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting Kaize...')
-with open("kaize.json", "w", encoding='utf-8') as f:
-    f.write(j.dumps(kzDict, ensure_ascii=False))
-for i in kzArr:
-    kzDict[i["kaize"]] = i
 with open("kaize().json", "w", encoding='utf-8') as f:
     f.write(j.dumps(kzArr, ensure_ascii=False))
+for i in kzArr:
+    kzDict[i["kaize"]] = i
+with open("kaize.json", "w", encoding='utf-8') as f:
+    f.write(j.dumps(kzDict, ensure_ascii=False))
 kzDict = {}
 
 print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting Kitsu...')
