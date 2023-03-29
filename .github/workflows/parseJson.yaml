@@ -10,7 +10,7 @@ on:
       - "main.py"
       - "requirements.txt"
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 concurrency:
@@ -18,7 +18,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   ParseJson:
-    name: Start Process
+    name: Parsing JSON
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -50,6 +50,7 @@ jobs:
 
   DeployPages:
     needs: 'ParseJson'
+    name: Deploy to GitHub Pages
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
