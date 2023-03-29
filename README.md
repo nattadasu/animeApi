@@ -46,25 +46,25 @@ automate, and Python for backend.
 
 ## Statistics
 
-This API has been updated on 03/29/2023 01:21:31 UTC, with a total of **30769** titles indexed.
+This API has been updated on 03/29/2023 05:35:47 UTC, with a total of **30899** titles indexed.
 
 |              Provider |     Code      | Count  |
 | --------------------: | :-----------: | :----- |
-|                 aniDb |    `anidb`    | 12740 |
-|               AniList |   `anilist`   | 17045 |
-|          Anime-Planet | `animeplanet` | 22432 |
-|             aniSearch |  `anisearch`  | 17628 |
-|                Annict |   `annict`    | 8469 |
-|                 Kaize |    `kaize`    | 24154 |
-|                 Kitsu |    `kitsu`    | 18742 |
-|             LiveChart |  `livechart`  | 10483 |
-|           MyAnimeList | `myanimelist` | 24301 |
-|                Notify |    `notify`   | 15658 |
-|            Otak Otaku |  `otakotaku`  | 2491 |
-|             Shikimori |  `shikimori`  | 24301 |
-|       Shoboi Calendar |    `shoboi`   | 4599 |
-| DB Tontonan Indonesia | `silveryasha` | 3827 |
-|                 Trakt |    `trakt`    | 4261 |
+|                 aniDb |    `anidb`    | 12774 |
+|               AniList |   `anilist`   | 17071 |
+|          Anime-Planet | `animeplanet` | 22508 |
+|             aniSearch |  `anisearch`  | 17662 |
+|                Annict |   `annict`    | 8470 |
+|                 Kaize |    `kaize`    | 24147 |
+|                 Kitsu |    `kitsu`    | 18788 |
+|             LiveChart |  `livechart`  | 10520 |
+|           MyAnimeList | `myanimelist` | 24360 |
+|                Notify |    `notify`   | 15692 |
+|            Otak Otaku |  `otakotaku`  | 2492 |
+|             Shikimori |  `shikimori`  | 24360 |
+|       Shoboi Calendar |    `shoboi`   | 4600 |
+| DB Tontonan Indonesia | `silveryasha` | 3828 |
+|                 Trakt |    `trakt`    | 4262 |
 
 ## Returned Value
 
