@@ -46,7 +46,7 @@ automate, and Python for backend.
 
 ## Statistics
 
-This API has been updated on 04/07/2023 05:27:07 UTC, with a total of **30887** titles indexed.
+This API has been updated on 04/09/2023 05:27:34 UTC, with a total of **30887** titles indexed.
 
 |              Provider |     Code      | Count  |
 | --------------------: | :-----------: | :----- |
@@ -60,7 +60,7 @@ This API has been updated on 04/07/2023 05:27:07 UTC, with a total of **30887** 
 |             LiveChart |  `livechart`  | 10547 |
 |           MyAnimeList | `myanimelist` | 24370 |
 |                Notify |    `notify`   | 15697 |
-|            Otak Otaku |  `otakotaku`  | 2497 |
+|            Otak Otaku |  `otakotaku`  | 2498 |
 |             Shikimori |  `shikimori`  | 24370 |
 |       Shoboi Calendar |    `shoboi`   | 4643 |
 | DB Tontonan Indonesia | `silveryasha` | 3828 |
