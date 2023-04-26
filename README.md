@@ -46,7 +46,7 @@ automate, and Python for backend.
 
 ## Statistics
 
-This API has been updated on 04/22/2023 05:33:34 UTC, with a total of **31008** titles indexed.
+This API has been updated on 04/26/2023 11:43:50 UTC, with a total of **31008** titles indexed.
 
 |              Provider |     Code      | Count  |
 | --------------------: | :-----------: | :----- |
@@ -60,7 +60,7 @@ This API has been updated on 04/22/2023 05:33:34 UTC, with a total of **31008** 
 |             LiveChart |  `livechart`  | 10572 |
 |           MyAnimeList | `myanimelist` | 24431 |
 |                Notify |    `notify`   | 15718 |
-|            Otak Otaku |  `otakotaku`  | 2504 |
+|            Otak Otaku |  `otakotaku`  | 2503 |
 |             Shikimori |  `shikimori`  | 24431 |
 |       Shoboi Calendar |    `shoboi`   | 4645 |
 | DB Tontonan Indonesia | `silveryasha` | 3828 |
@@ -188,7 +188,7 @@ GET /animeApi.json
 
 ### Get All ID in Object/Dictionary format of each provider
 
-> **Notes**
+> **Note**
 >
 > Use this endpoint as "cache"-like for your application, so you don't have to
 > query the API for every title you want to get the ID, which is useful for
