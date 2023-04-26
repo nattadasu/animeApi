@@ -1335,7 +1335,7 @@ GET /animeApi.json
 
 ### Get All ID in Object/Dictionary format of each provider
 
-> **Notes**
+> **Note**
 >
 > Use this endpoint as "cache"-like for your application, so you don't have to
 > query the API for every title you want to get the ID, which is useful for
