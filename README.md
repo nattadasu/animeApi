@@ -46,7 +46,7 @@ automate, and Python for backend.
 
 ## Statistics
 
-This API has been updated on 05/02/2023 05:34:04 UTC, with a total of **31128** titles indexed.
+This API has been updated on 05/04/2023 05:32:12 UTC, with a total of **31120** titles indexed.
 
 |              Provider |     Code      | Count  |
 | --------------------: | :-----------: | :----- |
