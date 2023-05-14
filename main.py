@@ -1231,7 +1231,7 @@ md += """
 ```ts
 type StringNull = string | null;
 type NumberNull = number | null;
-type TraktType = "movies" | "shows";
+type TraktType = "movies" | "shows" | null;
 
 interface Anime = {
     title:            string;
@@ -1261,6 +1261,45 @@ type AnimeList = Anime[];
 type AnimeObject = {
     [key: string]: Anime;
 }
+```
+
+Or, in Python >= 3.10:
+
+```py
+from dataclasses import dataclass
+from enum import Enum
+from typing import List, Dict
+
+class TraktType(Enum):
+    SHOWS = "shows"
+    MOVIES = "movies"
+
+@dataclass
+class Anime:
+    title:                     str
+    anidb:              int | None
+    anilist:            int | None
+    animeplanet:        str | None  # Slug based
+    anisearch:          int | None
+    annict:             int | None
+    kaize:              str | None  # Slug based
+    kitsu:              int | None  # Kitsu ID, slug is not supported
+    livechart:          int | None
+    myanimelist:        int | None
+    notify:             str | None  # Base64 based
+    otakotaku:          int | None
+    shikimori:          int | None
+    shoboi:             int | None
+    silveryasha:        int | None
+    trakt:              int | None  # Trakt ID, slug is currently not supported
+    trakt_type:   TraktType | None
+    trakt_season:       int | None
+
+# Array/List format
+anime_list = List[Anime]
+
+# Object/Dictionary format
+anime_object = Dict[str, Anime]
 ```
 
 Or, in old-plain JSON:
