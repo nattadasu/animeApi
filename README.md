@@ -46,23 +46,23 @@ automate, and Python for backend.
 
 ## Statistics
 
-This API has been updated on 05/14/2023 05:29:24 UTC, with a total of **31116** titles indexed.
+This API has been updated on 05/20/2023 05:33:06 UTC, with a total of **31179** titles indexed.
 
 |              Provider |     Code      | Count  |
 | --------------------: | :-----------: | :----- |
-|                 aniDb |    `anidb`    | 12818 |
-|               AniList |   `anilist`   | 17147 |
-|          Anime-Planet | `animeplanet` | 22719 |
-|             aniSearch |  `anisearch`  | 17732 |
-|                Annict |   `annict`    | 8661 |
-|                 Kaize |    `kaize`    | 24128 |
-|                 Kitsu |    `kitsu`    | 18963 |
-|             LiveChart |  `livechart`  | 10616 |
-|           MyAnimeList | `myanimelist` | 24530 |
-|                Notify |    `notify`   | 15723 |
+|                 aniDb |    `anidb`    | 12822 |
+|               AniList |   `anilist`   | 17153 |
+|          Anime-Planet | `animeplanet` | 22732 |
+|             aniSearch |  `anisearch`  | 17757 |
+|                Annict |   `annict`    | 8670 |
+|                 Kaize |    `kaize`    | 24125 |
+|                 Kitsu |    `kitsu`    | 18985 |
+|             LiveChart |  `livechart`  | 10655 |
+|           MyAnimeList | `myanimelist` | 24572 |
+|                Notify |    `notify`   | 15722 |
 |            Otak Otaku |  `otakotaku`  | 2507 |
-|             Shikimori |  `shikimori`  | 24530 |
-|       Shoboi Calendar |    `shoboi`   | 4648 |
+|             Shikimori |  `shikimori`  | 24572 |
+|       Shoboi Calendar |    `shoboi`   | 4649 |
 | DB Tontonan Indonesia | `silveryasha` | 3827 |
 |                 Trakt |    `trakt`    | 4412 |
 
@@ -71,7 +71,7 @@ This API has been updated on 05/14/2023 05:29:24 UTC, with a total of **31116** 
 ```ts
 type StringNull = string | null;
 type NumberNull = number | null;
-type TraktType = "movies" | "shows";
+type TraktType = "movies" | "shows" | null;
 
 interface Anime = {
     title:            string;
@@ -101,6 +101,45 @@ type AnimeList = Anime[];
 type AnimeObject = {
     [key: string]: Anime;
 }
+```
+
+Or, in Python >= 3.10:
+
+```py
+from dataclasses import dataclass
+from enum import Enum
+from typing import List, Dict
+
+class TraktType(Enum):
+    SHOWS = "shows"
+    MOVIES = "movies"
+
+@dataclass
+class Anime:
+    title:                     str
+    anidb:              int | None
+    anilist:            int | None
+    animeplanet:        str | None  # Slug based
+    anisearch:          int | None
+    annict:             int | None
+    kaize:              str | None  # Slug based
+    kitsu:              int | None  # Kitsu ID, slug is not supported
+    livechart:          int | None
+    myanimelist:        int | None
+    notify:             str | None  # Base64 based
+    otakotaku:          int | None
+    shikimori:          int | None
+    shoboi:             int | None
+    silveryasha:        int | None
+    trakt:              int | None  # Trakt ID, slug is currently not supported
+    trakt_type:   TraktType | None
+    trakt_season:       int | None
+
+# Array/List format
+anime_list = List[Anime]
+
+# Object/Dictionary format
+anime_object = Dict[str, Anime]
 ```
 
 Or, in old-plain JSON:
