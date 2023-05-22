@@ -46,7 +46,7 @@ automate, and Python for backend.
 
 ## Statistics
 
-This API has been updated on 05/20/2023 05:33:06 UTC, with a total of **31179** titles indexed.
+This API has been updated on 05/22/2023 05:30:57 UTC, with a total of **31150** titles indexed.
 
 |              Provider |     Code      | Count  |
 | --------------------: | :-----------: | :----- |
@@ -55,13 +55,13 @@ This API has been updated on 05/20/2023 05:33:06 UTC, with a total of **31179** 
 |          Anime-Planet | `animeplanet` | 22732 |
 |             aniSearch |  `anisearch`  | 17757 |
 |                Annict |   `annict`    | 8670 |
-|                 Kaize |    `kaize`    | 24125 |
+|                 Kaize |    `kaize`    | 24123 |
 |                 Kitsu |    `kitsu`    | 18985 |
-|             LiveChart |  `livechart`  | 10655 |
-|           MyAnimeList | `myanimelist` | 24572 |
+|             LiveChart |  `livechart`  | 10656 |
+|           MyAnimeList | `myanimelist` | 24573 |
 |                Notify |    `notify`   | 15722 |
 |            Otak Otaku |  `otakotaku`  | 2507 |
-|             Shikimori |  `shikimori`  | 24572 |
+|             Shikimori |  `shikimori`  | 24573 |
 |       Shoboi Calendar |    `shoboi`   | 4649 |
 | DB Tontonan Indonesia | `silveryasha` | 3827 |
 |                 Trakt |    `trakt`    | 4412 |
