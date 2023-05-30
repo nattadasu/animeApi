@@ -46,7 +46,7 @@ automate, and Python for backend.
 
 ## Statistics
 
-This API has been updated on 05/27/2023 05:28:48 UTC, with a total of **31186** titles indexed.
+This API has been updated on 05/30/2023 22:17:49 UTC, with a total of **31186** titles indexed.
 
 |              Provider |     Code      | Count  |
 | --------------------: | :-----------: | :----- |
@@ -54,7 +54,7 @@ This API has been updated on 05/27/2023 05:28:48 UTC, with a total of **31186** 
 |               AniList |   `anilist`   | 17157 |
 |          Anime-Planet | `animeplanet` | 22742 |
 |             aniSearch |  `anisearch`  | 17766 |
-|                Annict |   `annict`    | 8670 |
+|                Annict |   `annict`    | 8698 |
 |                 Kaize |    `kaize`    | 24123 |
 |                 Kitsu |    `kitsu`    | 19011 |
 |             LiveChart |  `livechart`  | 10664 |
@@ -106,34 +106,34 @@ type AnimeObject = {
 Or, in Python >= 3.10:
 
 ```py
-from dataclasses import dataclass
 from enum import Enum
-from typing import List, Dict
+from typing import List, Dict, Literal
 
-class TraktType(Enum):
-    SHOWS = "shows"
-    MOVIES = "movies"
+StringNull = str | None
+NumberNull = int | None
+
+TraktType = Literal["shows", "movies"] | None
 
 @dataclass
 class Anime:
-    title:                     str
-    anidb:              int | None
-    anilist:            int | None
-    animeplanet:        str | None  # Slug based
-    anisearch:          int | None
-    annict:             int | None
-    kaize:              str | None  # Slug based
-    kitsu:              int | None  # Kitsu ID, slug is not supported
-    livechart:          int | None
-    myanimelist:        int | None
-    notify:             str | None  # Base64 based
-    otakotaku:          int | None
-    shikimori:          int | None
-    shoboi:             int | None
-    silveryasha:        int | None
-    trakt:              int | None  # Trakt ID, slug is currently not supported
-    trakt_type:   TraktType | None
-    trakt_season:       int | None
+    title:               str
+    anidb:        NumberNull
+    anilist:      NumberNull
+    animeplanet:  StringNull  # Slug based
+    anisearch:    NumberNull
+    annict:       NumberNull
+    kaize:        StringNull  # Slug based
+    kitsu:        NumberNull  # Kitsu ID, slug is not supported
+    livechart:    NumberNull
+    myanimelist:  NumberNull
+    notify:       StringNull  # Base64 based
+    otakotaku:    NumberNull
+    shikimori:    NumberNull
+    shoboi:       NumberNull
+    silveryasha:  NumberNull
+    trakt:        NumberNull  # Trakt ID, slug is currently not supported
+    trakt_type:    TraktType
+    trakt_season: NumberNull
 
 # Array/List format
 anime_list = List[Anime]
