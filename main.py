@@ -620,20 +620,15 @@ if (DO_NOT_PURGE is False) or (DO_NOT_PURGE is None):
 else:
     print("\033[2K\r\033[34m[INFO]\033[0m \033[90m[System]\033[0m Skipping database cleanup...")
 
-# imArr = []
 acArr = []
 adbArr = []
 alArr = []
-# annArr = []
 apArr = []
 asArr = []
-# bgmArr = []
-# dbArr = []
 kiArr = []
 kzArr = []
 lcArr = []
 malArr = []
-# njArr = []
 nmArr = []
 ooArr = []
 sbArr = []
@@ -649,20 +644,15 @@ total = len(aod['data'])
 i = 1
 try:
     for data in aod['data']:
-        # imId = None
         acId = None
         adbId = None
         alId = None
-        # annId = None
         apId = None
         asId = None
-        # bgmId = None
-        # dbId = None
         kiId = None
         kzId = None
         lcId = None
         malId = None
-        # njId = None
         nmId = None
         ooId = None
         sbId = None
@@ -707,30 +697,6 @@ try:
             kzId = None
 
         if malId is not None:
-            # malPg = r.get(f'https://myanimelist.net/anime/{malId}')
-            # malPg = bs(malPg.text, 'html.parser')
-            # try:
-            #     annId = malPg.find('a', {'data-ga-click-type': "external-links-anime-pc-ann"})['href']
-            #     annId = re.sub(annUri, '', annId)
-            # except TypeError:
-            #     annId = None
-
-            # try:
-            #     dbId = malPg.find('a', {'data-ga-click-type': "external-links-anime-pc-douban"})['href']
-            #     dbId = re.sub(dbUri, '', dbId)
-            #     dbId = dbId.split('/')[0]
-            # except TypeError:
-            #     dbId = None
-
-            # try:
-            #     bgm = malPg.find('a', {'data-ga-click-type': "external-links-anime-pc-bangumi"})['href']
-            #     if re.match(bgmUri, bgm):
-            #         bgmId = re.sub(bgmUri, '', bgm)
-            #     else:
-            #         bgmId = bgm.replace('https://bgm.tv/subject/', '')
-            # except TypeError:
-            #     bgmId = None
-
             syMalId = str(malId)
             ooMalId = str(malId)
             if syFinal.get(syMalId):
@@ -763,31 +729,17 @@ try:
                 acId = armFinal[f"al/{alId}"].get("annict_id", None)
                 sbId = armFinal[f"al/{alId}"].get("syobocal_tid", None)
 
-        # if nmId is not None:
-        #     nmPg = r.get(f'https://notify.moe/api/anime/{nmId}')
-        #     nmDat = nmPg.json()
-        #     for maps in nmDat['mappings']:
-        #         if maps['service'] == 'imdb/anime':
-        #             imId = maps['serviceId']
-        #     else:
-        #         imId = None
-
         finalData = {
             "title": title,
             "anidb": int(adbId) if adbId is not None else None,
             "anilist": int(alId) if alId is not None else None,
-            # "animeNewsNetwork": int(annId) if annId is not None else None,
             "animeplanet": str(apId) if apId is not None else None,
             "anisearch": int(asId) if asId is not None else None,
             "annict": int(acId) if acId is not None else None,
-            # "bangumi": int(bgmId) if bgmId is not None else None,
-            # "douban": int(dbId) if dbId is not None else None,
-            # "imdb": str(imId) if imId is not None else None,
             "kaize": str(kzId) if kzId is not None else None,
             "kitsu": int(kiId) if kiId is not None else None,
             "livechart": int(lcId) if lcId is not None else None,
             "myanimelist": int(malId) if malId is not None else None,
-            # "nautiljon": str(njId) if njId is not None else None,
             "notify": str(nmId) if nmId is not None else None,
             "otakotaku": ooId,
             "shikimori": int(malId) if malId is not None else None,
@@ -803,10 +755,6 @@ try:
             adbArr += [finalData]
             with open(f"anidb/{adbId}", "w", encoding='utf-8') as f:
                 f.write(j.dumps(finalData, ensure_ascii=False))
-        # if annId is not None:
-        #     annArr += [finalData]
-        #     with open(f"animenewsnetwork/{annId}", "w", encoding='utf-8') as f:
-        #         f.write(j.dumps(finalData, ensure_ascii=False))
         if alId is not None:
             alArr += [finalData]
             with open(f"anilist/{alId}", "w", encoding='utf-8') as f:
@@ -823,18 +771,6 @@ try:
             acArr += [finalData]
             with open(f"annict/{acId}", "w", encoding='utf-8') as f:
                 f.write(j.dumps(finalData, ensure_ascii=False))
-        # if bgmId is not None:
-        #     bgmArr += [finalData]
-        #     with open(f"bangumi/{bgmId}", "w", encoding='utf-8') as f:
-        #         f.write(j.dumps(finalData, ensure_ascii=False))
-        # if dbId is not None:
-        #     dbArr += [finalData]
-        #     with open(f"douban/{dbId}", "w", encoding='utf-8') as f:
-        #         f.write(j.dumps(finalData, ensure_ascii=False))
-        # if imId is not None:
-        #     imArr += [finalData]
-        #     with open(f"imdb/{imId}", "w", encoding='utf-8') as f:
-        #         f.write(j.dumps(finalData, ensure_ascii=False))
         if kzId is not None:
             kzArr += [finalData]
             with open(f"kaize/{kzId}", "w", encoding='utf-8') as f:
@@ -853,10 +789,6 @@ try:
                 f.write(j.dumps(finalData, ensure_ascii=False))
             with open(f"shikimori/{malId}", "w", encoding='utf-8') as f:
                 f.write(j.dumps(finalData, ensure_ascii=False))
-        # if njId is not None:
-        #     njId += [finalData]
-        #     with open(f"nautiljon/{njId}", "w", encoding='utf-8') as f:
-        #         f.write(j.dumps(finalData, ensure_ascii=False))
         if nmId is not None:
             nmArr += [finalData]
             with open(f"notify/{nmId}", "w", encoding='utf-8') as f:
@@ -906,17 +838,12 @@ with open("animeApi.json", "w", encoding='utf-8') as f:
 acDict = {}
 adbDict = {}
 alDict = {}
-# annDict = {}
 apDict = {}
 asDict = {}
-# bgmDict = {}
-# dbDict = {}
-# imDict = {}
 kiDict = {}
 kzDict = {}
 lcDict = {}
 malDict = {}
-# njDict = {}
 nmDict = {}
 ooDict = {}
 sbDict = {}
@@ -941,15 +868,6 @@ for i in alArr:
 with open("anilist.json", "w", encoding='utf-8') as f:
     f.write(j.dumps(alDict, ensure_ascii=False))
 alDict = {}
-
-# print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting Anime News Network...')
-# with open("animenewsnetwork().json", "w", encoding='utf-8') as f:
-#     f.write(j.dumps(annArr, ensure_ascii=False))
-# for i in annArr:
-#     annDict[i["animeNewsNetwork"]] = i
-# with open("animenewsnetwork.json", "w", encoding='utf-8') as f:
-#     f.write(j.dumps(annDict, ensure_ascii=False))
-# annDict = {}
 
 print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting Anime-Planet...')
 with open("animeplanet().json", "w", encoding='utf-8') as f:
@@ -977,33 +895,6 @@ for i in acArr:
 with open("annict.json", "w", encoding='utf-8') as f:
     f.write(j.dumps(acDict, ensure_ascii=False))
 acDict = {}
-
-# print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting Bangumi...')
-# with open("bangumi().json", "w", encoding='utf-8') as f:
-#     f.write(j.dumps(bgmArr, ensure_ascii=False))
-# for i in bgmArr:
-#     bgmDict[i["bangumi"]] = i
-# with open("bangumi.json", "w", encoding='utf-8') as f:
-#     f.write(j.dumps(bgmDict, ensure_ascii=False))
-# bgmDict = {}
-
-# print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting Douban...')
-# with open("douban().json", "w", encoding='utf-8') as f:
-#     f.write(j.dumps(dbArr, ensure_ascii=False))
-# for i in dbArr:
-#     dbDict[i["douban"]] = i
-# with open("douban.json", "w", encoding='utf-8') as f:
-#     f.write(j.dumps(dbDict, ensure_ascii=False))
-# dbDict = {}
-
-# print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting IMDb...')
-# with open("imdb().json", "w", encoding='utf-8') as f:
-#     f.write(j.dumps(imArr, ensure_ascii=False))
-# for i in imArr:
-#     imDict[i["imDb"]] = i
-# with open("imdb.json", "w", encoding='utf-8') as f:
-#     f.write(j.dumps(imDict, ensure_ascii=False))
-# imDict = {}
 
 print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting Kaize...')
 with open("kaize().json", "w", encoding='utf-8') as f:
@@ -1040,15 +931,6 @@ for i in malArr:
 with open("myanimelist.json", "w", encoding='utf-8') as f:
     f.write(j.dumps(malDict, ensure_ascii=False))
 
-# print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting Nautiljon...')
-# with open("nautiljon().json", "w", encoding='utf-8') as f:
-#     f.write(j.dumps(njArr, ensure_ascii=False))
-# for i in njArr:
-#     njDict[i["nautiljon"]] = i
-# with open("nautiljon.json", "w", encoding='utf-8') as f:
-#     f.write(j.dumps(imDict, ensure_ascii=False))
-# njDict = {}
-
 print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting Notify.moe...')
 with open("notify().json", "w", encoding='utf-8') as f:
     f.write(j.dumps(nmArr, ensure_ascii=False))
@@ -1056,14 +938,6 @@ for i in nmArr:
     nmDict[i["notify"]] = i
 with open("notify.json", "w", encoding='utf-8') as f:
     f.write(j.dumps(nmDict, ensure_ascii=False))
-# if os.name == "nt":
-#     os.system("copy notifymoe.json notify.json")
-#     os.system("copy notifymoe().json notify().json")
-#     os.system("xcopy /E /I /Y /Q notifymoe notify")
-# else:
-#     os.system("cp notifymoe.json notify.json")
-#     os.system("cp notifymoe\\(\\).json notify\\(\\).json")
-#     os.system("cp -r notifymoe notify")
 nmDict = {}
 
 print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting Otak Otaku...')
@@ -1083,12 +957,6 @@ if os.name == "nt":
 else:
     os.system("cp myanimelist.json shikimori.json")
     os.system("cp myanimelist\\(\\).json shikimori\\(\\).json")
-
-# Duplicate MyAnimeList folders as Shikimori
-# if os.name == "nt":
-#     os.system("xcopy /E /I /Y /Q myanimelist shikimori")
-# else:
-#     os.system("cp -r myanimelist shikimori")
 
 print(f'\033[34m[INFO]\033[0m \033[90m[System]\033[0m Exporting Shoboi Calendar...')
 with open("shoboi().json", "w", encoding='utf-8') as f:
@@ -1266,34 +1134,34 @@ type AnimeObject = {
 Or, in Python >= 3.10:
 
 ```py
-from dataclasses import dataclass
 from enum import Enum
-from typing import List, Dict
+from typing import List, Dict, Literal
 
-class TraktType(Enum):
-    SHOWS = "shows"
-    MOVIES = "movies"
+StringNull = str | None
+NumberNull = int | None
+
+TraktType = Literal["shows", "movies"] | None
 
 @dataclass
 class Anime:
-    title:                     str
-    anidb:              int | None
-    anilist:            int | None
-    animeplanet:        str | None  # Slug based
-    anisearch:          int | None
-    annict:             int | None
-    kaize:              str | None  # Slug based
-    kitsu:              int | None  # Kitsu ID, slug is not supported
-    livechart:          int | None
-    myanimelist:        int | None
-    notify:             str | None  # Base64 based
-    otakotaku:          int | None
-    shikimori:          int | None
-    shoboi:             int | None
-    silveryasha:        int | None
-    trakt:              int | None  # Trakt ID, slug is currently not supported
-    trakt_type:   TraktType | None
-    trakt_season:       int | None
+    title:               str
+    anidb:        NumberNull
+    anilist:      NumberNull
+    animeplanet:  StringNull  # Slug based
+    anisearch:    NumberNull
+    annict:       NumberNull
+    kaize:        StringNull  # Slug based
+    kitsu:        NumberNull  # Kitsu ID, slug is not supported
+    livechart:    NumberNull
+    myanimelist:  NumberNull
+    notify:       StringNull  # Base64 based
+    otakotaku:    NumberNull
+    shikimori:    NumberNull
+    shoboi:       NumberNull
+    silveryasha:  NumberNull
+    trakt:        NumberNull  # Trakt ID, slug is currently not supported
+    trakt_type:    TraktType
+    trakt_season: NumberNull
 
 # Array/List format
 anime_list = List[Anime]
