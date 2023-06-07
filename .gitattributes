@@ -1,10 +1,17 @@
-anidb/*			linguist-language=json	linguist-detectable
-anilist/*		linguist-language=json	linguist-detectable
-animeplanet/*	linguist-language=json	linguist-detectable
-anisearch/*		linguist-language=json	linguist-detectable
-kaize/*			linguist-language=json	linguist-detectable
-kitsu/*			linguist-language=json	linguist-detectable
-livechart/*		linguist-language=json	linguist-detectable
-myanimelist/*	linguist-language=json	linguist-detectable
-notifymoe/*		linguist-language=json	linguist-detectable
-silveryasha/*		linguist-language=json	linguist-detectable 
+anidb/*				linguist-language=json	linguist-generated
+anilist/*			linguist-language=json	linguist-generated
+animeplanet/*	linguist-language=json	linguist-generated
+anisearch/*		linguist-language=json	linguist-generated
+annict/*			linguist-language=json	linguist-generated
+kaize/*				linguist-language=json	linguist-generated
+kitsu/*				linguist-language=json	linguist-generated
+livechart/*		linguist-language=json	linguist-generated
+myanimelist/*	linguist-language=json	linguist-generated
+notify/*			linguist-language=json	linguist-generated
+otakotaku/*		linguist-language=json	linguist-generated
+shikimori/*		linguist-language=json	linguist-generated
+shoboi/*			linguist-language=json	linguist-generated
+silveryasha/*	linguist-language=json	linguist-generated
+trakt/**			linguist-language=json	linguist-generated
+*.json				linguist-generated
+updated				linguist-generated
