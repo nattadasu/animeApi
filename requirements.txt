@@ -1,0 +1,7 @@
+alive-progress
+beautifulsoup4
+fake-useragent
+Flask
+python-dotenv
+python-slugify
+requests
