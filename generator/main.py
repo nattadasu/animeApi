@@ -4,12 +4,50 @@ import traceback
 from time import time
 from typing import Any
 
+import requests as req
 from alive_progress import alive_bar  # type: ignore
 
 from datadump import DataDump
 from prettyprint import Platform, PrettyPrint, Status
 
 pprint = PrettyPrint()
+
+attribution = {
+    "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
+    "updated": {
+        "timestamp": 0,
+        "iso": ""
+    },
+    "contributors": [
+        ""
+    ],
+    "sources": [
+        "manami-project/anime-offline-database",
+        "kawaiioverflow/arm",
+        "ryuuganime/aniTrakt-IndexParser",
+        "https://db.silveryasha.web.id",
+        "https://kaize.io",
+        "https://otakotaku.com",
+    ],
+    "license": "AGPL-3.0",
+    "website": "https://animeapi.my.id",
+    "counts": {
+        "anidb": 0,
+        "anilist": 0,
+        "animeplanet": 0,
+        "anisearch": 0,
+        "annict": 0,
+        "kitsu": 0,
+        "livechart": 0,
+        "myanimelist": 0,
+        "notify": 0,
+        "shikimori": 0,
+        "silveryasha": 0,
+        "syoboi": 0,
+        "trakt": 0,
+        "total": 0,
+    }
+}
 
 
 def get_anime_offline_database() -> list[dict[str, Any]]:
@@ -121,6 +159,24 @@ def get_silveryasha() -> list[dict[str, Any]]:
         "Silveryasha data retrieved successfully",
     )
     return data
+
+
+def populate_contributors() -> None:
+    """Read total contributors from GitHub API"""
+    response = req.get(
+        "https://api.github.com/repos/nattadasu/animeApi/contributors?per_page=100",
+        headers={
+            "Accept": "application/vnd.github.v3+json",
+            "User-Agent": "nattadasu/animeApi",
+        },
+    )
+    if response.status_code == 200:
+        # clear the list first
+        attribution["contributors"] = []
+        attribution["contributors"] = [
+            contributor["login"] for contributor in response.json()
+        ]
+    return None
 
 
 def main() -> None:
