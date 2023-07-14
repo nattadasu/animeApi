@@ -27,7 +27,7 @@ class DataDump:
             "User-Agent": rand_fua,
         }
         try:
-            response = req.get(self.url, headers=headers, timeout=15)
+            response = req.get(self.url, headers=headers, timeout=None)
             if response.status_code == 200:
                 return response
             return None
