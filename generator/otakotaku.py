@@ -5,6 +5,7 @@ from typing import Union, Any
 from fake_useragent import FakeUserAgent  # type: ignore
 from bs4 import BeautifulSoup, Tag
 import requests as req
+from alive_progress import alive_bar  # type: ignore
 
 from prettyprint import PrettyPrint, Platform, Status
 
@@ -78,13 +79,6 @@ class OtakOtaku:
         return int(anime_id)
 
     def _get_data_index(self, anime_id: int) -> Union[dict[str, Any], None]:
-        pprint.print(
-            Platform.OTAKOTAKU,
-            Status.INFO,
-            f"Getting data index for anime id: {anime_id}",
-            clean_line=True,
-            end=""
-        )
         response = self._get(f"https://otakotaku.com/api/anime/view/{anime_id}")
         if not response:
             pprint.print(Platform.OTAKOTAKU, Status.ERR, "Failed to get data index")
@@ -121,12 +115,20 @@ class OtakOtaku:
         if not latest_id:
             return []
         anime_list: list[dict[str, Any]] = []
-        for anime_id in range(1, latest_id + 1):
-            time.sleep(math.ceil(1))
-            data_index = self._get_data_index(anime_id)
-            if not data_index:
-                continue
-            anime_list.append(data_index)
+        with alive_bar(latest_id, title="Getting data", spinner=None) as bar:  # type: ignore
+            for anime_id in range(1, latest_id + 1):
+                data_index = self._get_data_index(anime_id)
+                if not data_index:
+                    pprint.print(
+                        Platform.OTAKOTAKU,
+                        Status.ERR,
+                        f"Failed to get data index for anime id: {anime_id},"
+                        " data may be empty or invalid",
+                    )
+                    continue
+                anime_list.append(data_index)
+                bar()
+                time.sleep(math.ceil(1))
         pprint.print(
             Platform.OTAKOTAKU,
             Status.PASS,

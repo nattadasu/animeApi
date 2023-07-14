@@ -2,7 +2,7 @@ import math
 import time
 from typing import Union, Optional, Any, Literal
 
-from alive_progress import alive_bar
+from alive_progress import alive_bar  # type: ignore
 from fake_useragent import FakeUserAgent  # type: ignore
 from bs4 import BeautifulSoup, Tag
 import requests as req
@@ -228,7 +228,7 @@ class Kaize:
         """Get complete anime data"""
         pages = self.pages()
         anime_data: list[dict[str, Any]] = []
-        with alive_bar(pages, title="Getting data") as bar:
+        with alive_bar(pages, title="Getting data", spinner=None) as bar:  # type: ignore
             for page in range(1, pages + 1):
                 anime_data.extend(self._get_data_index(page))
                 bar()
