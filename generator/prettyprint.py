@@ -24,7 +24,6 @@ class Platform(Enum):
     SIMKL = 0x0B0F10
     SYOBOI = 0xE3F0FD
     TMDB = 0x09B4E2
-    TRAKT = 0xED1C24
     TVDB = 0x6CD491
     TVTIME = 0xFBD737
     SYSTEM = 0x000000
