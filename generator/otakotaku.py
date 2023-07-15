@@ -124,6 +124,7 @@ class OtakOtaku:
                             f"Failed to get data index for anime id: {anime_id},"
                             " data may be empty or invalid",
                         )
+                        bar()
                         continue
                     anime_list.append(data_index)
                     bar()
