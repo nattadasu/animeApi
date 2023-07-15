@@ -584,6 +584,61 @@ def link_silveryasha_to_mal(
     return aod_list
 
 
+def combine_arm(
+    arm: list[dict[str, Any]],
+    aod: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
+    """Combine ARM data with AOD data"""
+    linked = 0
+    with alive_bar(len(aod),
+                   title="Combining ARM data with AOD data",
+                   spinner=None) as bar:  # type: ignore
+        for item in aod:
+            myanimelist = item['myanimelist']
+            anilist = item['anilist']
+            # Skip if both myanimelist and anilist are null
+            if myanimelist is None and anilist is None:
+                item.update({
+                    'shoboi': None,
+                    'annict': None,
+                })
+                bar()
+                continue
+
+            # Check if mal_id and anilist_id exist in arm_data
+            for arm_item in arm:
+                mal_id = arm_item.get('mal_id', None)
+                anilist_id = arm_item.get('anilist_id', None)
+                syoboi = arm_item.get('syobocal_tid', None)
+                annict = arm_item.get('annict_id', None)
+                if myanimelist is not None and mal_id == myanimelist:
+                    # Combine the data from arm_item with the item in aod_data
+                    item.update({
+                        'shoboi': syoboi,
+                        'annict': annict,
+                    })
+                    linked += 1
+                    break
+                elif anilist is not None and anilist_id == anilist:
+                    # Combine the data from arm_item with the item in aod_data
+                    item.update({
+                        'shoboi': syoboi,
+                        'annict': annict,
+                    })
+                    linked += 1
+                    break
+            bar()
+    pprint.print(
+        Platform.ARM,
+        Status.PASS,
+        "ARM data combined with AOD data, unlinked data will be saved to arm_unlinked.json.",
+        "Total linked data:",
+        f"{linked},",
+        "AOD data:",
+        f"{len(aod)}",
+    )
+    return aod
+
 def main() -> None:
     """Main function"""
     try:
@@ -599,6 +654,8 @@ def main() -> None:
         aod_arr = link_otakotaku_to_mal(ota, aod_arr)
         sy_ = simplify_silveryasha_data()
         aod_arr = link_silveryasha_to_mal(sy_, aod_arr)
+        arm = get_arm()
+        aod_arr = combine_arm(arm, aod_arr)
         with open("database/aod.json", "w", encoding="utf-8") as file:
             json.dump(aod_arr, file)
         end_time = time()
