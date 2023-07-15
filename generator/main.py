@@ -1,4 +1,5 @@
 import json
+import os
 import re
 import sys
 import traceback
@@ -14,6 +15,14 @@ from kaize import Kaize
 from otakotaku import OtakOtaku
 from prettyprint import Platform, PrettyPrint, Status
 from slugify import slugify
+
+KAIZE_XSRF_TOKEN = os.getenv("KAIZE_XSRF_TOKEN")
+KAIZE_SESSION = os.getenv("KAIZE_SESSION")
+KAIZE_EMAIL = os.getenv("KAIZE_EMAIL")
+KAIZE_PASSWORD = os.getenv("KAIZE_PASSWORD")
+
+if (KAIZE_XSRF_TOKEN is None) and (KAIZE_SESSION is None) and (KAIZE_EMAIL is None) and (KAIZE_PASSWORD is None):
+    raise Exception('Kaize login info does not available in environment variables')
 
 pprint = PrettyPrint()
 
@@ -948,7 +957,11 @@ def main() -> None:
         pprint.print(Platform.SYSTEM, Status.READY, "Generator ready to use")
         aod = get_anime_offline_database()
         aod_arr = simplify_aod_data(aod)
-        kz_ = Kaize()
+        kz_ = Kaize(
+            session=KAIZE_SESSION,
+            email=KAIZE_EMAIL,
+            password=KAIZE_PASSWORD,
+            xsrf_token=KAIZE_XSRF_TOKEN)
         kza = kz_.get_anime()
         aod_arr = link_kaize_to_mal(kza, aod_arr)
         ot_ = OtakOtaku()

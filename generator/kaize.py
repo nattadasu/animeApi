@@ -20,6 +20,7 @@ class Kaize:
 
     def __init__(
         self,
+        session: Optional[str] = None,
         xsrf_token: Optional[str] = None,
         user_agent: Optional[str] = None,
         email: Optional[str] = None,
@@ -27,10 +28,12 @@ class Kaize:
     ) -> None:
         """Initialize the Kaize class"""
         self.base_url = "https://kaize.io"
+        self.session = session
         self.xsrf_token = xsrf_token
         self.user_agent = user_agent or rand_fua
         self.email = email
         self.password = password
+        self.cookies = ""
         pprint.print(
             Platform.KAIZE,
             Status.READY,
@@ -44,6 +47,11 @@ class Kaize:
         }
         if self.xsrf_token:
             headers["X-XSRF-TOKEN"] = self.xsrf_token
+            self.cookies = "XSRF-TOKEN=" + self.xsrf_token
+        if self.session and self.xsrf_token and self.cookies == "":
+            # set cookie
+            self.cookies = f"kaize_session={self.session}; XSRF-TOKEN={self.xsrf_token}"
+        headers["Cookie"] = self.cookies
         try:
             response = req.get(url, headers=headers, timeout=15)
             if response.status_code == 200:
@@ -94,7 +102,9 @@ class Kaize:
         # post login
         header_login = {
             "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-            "Cookie": response.headers["Set-Cookie"].split(",")[0].split(";")[0]
+            "Cookie": (response.headers["Set-Cookie"].split(",")[0].split(";")[0] +
+                       "; " +
+                       response.headers["Set-Cookie"].split(",")[2].split(";")[0])
         }
         data_raw: list[str] = [
             f"_token={token}",
@@ -115,8 +125,8 @@ class Kaize:
 
     def pages(self, media: Literal['anime', 'manga'] = 'anime') -> int:
         """Get the total pages"""
-        if not self.xsrf_token:
-            self.xsrf_token = self._get_xsrf_token()
+        if self.session == "" or self.xsrf_token == "":
+            self.session = self._get_xsrf_token()
         kzp = 0
         pgHundreds = True
         pgTens = True
