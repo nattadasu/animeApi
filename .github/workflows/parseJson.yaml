@@ -1,0 +1,131 @@
+name: Parse files and deploy change
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 5 * * *"
+  push:
+    branches:
+      - v2
+      - v3
+    paths:
+      - "main.py"
+      - "requirements.txt"
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+jobs:
+  ParseV2:
+    name: Parsing JSON for v2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+            ref: v2
+      - name: Load secrets to environment variables
+        uses: oNaiPs/secrets-to-env-action@v1
+        with:
+          secrets: ${{ toJSON(secrets) }}
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11' 
+          cache: 'pip'
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+      - name: Update JSON File with main.py and then commit
+        shell: pwsh
+        run: |
+          try {
+            python3 main.py
+            git config --local user.email "nattadasu@nattadasu.my.id"
+            git config --local user.name "Natsu Tadama"
+            git add .
+            git commit -m "Update JSON"
+            git push
+          }
+          catch {
+            write-host "No changes made"
+          }
+
+  ParseV3:
+    name: Parsing JSON for v3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+            ref: v3
+      - name: Load secrets to environment variables
+        uses: oNaiPs/secrets-to-env-action@v1
+        with:
+          secrets: ${{ toJSON(secrets) }}
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11' 
+          cache: 'pip'
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+      - name: Update JSON File with main.py and then commit
+        shell: pwsh
+        run: |
+          try {
+            python3 generator
+            git config --local user.email "nattadasu@nattadasu.my.id"
+            git config --local user.name "Natsu Tadama"
+            git add .
+            git commit -m "Update JSON"
+            git push
+          }
+          catch {
+            write-host "No changes made"
+          }
+
+  DeployPages:
+    needs: 'ParseV2'
+    name: Deploy to GitHub Pages
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/v2'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+      - name: Remove unwanted files
+        shell: pwsh
+        run: |
+          Remove-Item ./.github -Recurse -Force
+          Remove-Item ./.vscode -Recurse -Force
+          $paths = @(
+            "./.editorconfig",
+            "./.gitattributes",
+            "./.gitignore",
+            "./aod.raw.json",
+            "./arm.raw.json",
+            "./ati.raw.json",
+            "./kz.mapped.raw.json",
+            "./kz.unknown.raw.json",
+            "./kz.unmapped.raw.json",
+            "./main.py",
+            "./oo.raw.json",
+            "./oo.unknown.raw.json",
+            "./requirements.txt",
+            "./sy.raw.json"
+          )
+          ForEach ($n in $paths) {
+            Remove-Item $n -Force
+          }
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Upload entire repository
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
