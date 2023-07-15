@@ -924,9 +924,9 @@ def update_markdown() -> None:
     tram = ""
     for key, value in attribution["counts"].items():  # type: ignore
         if key == "total":
-            tram = f"| `{key}` | {value} |\n"
+            tram = f"| **Total** | {value} |\n"
         else:
-            table += f"| **Total** | **{value}** |\n"
+            table += f"| `{key}` | **{value}** |\n"
     table += tram
     readme = re.sub(
         r"<!-- counters -->(.|\n)*<!-- \/counters -->",
