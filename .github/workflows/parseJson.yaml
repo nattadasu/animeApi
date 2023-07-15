@@ -9,6 +9,7 @@ on:
       - v3
     paths:
       - "main.py"
+      - "generator/*"
       - "requirements.txt"
 permissions:
   contents: write
@@ -44,7 +45,7 @@ jobs:
             git config --local user.email "nattadasu@nattadasu.my.id"
             git config --local user.name "Natsu Tadama"
             git add .
-            git commit -m "Update JSON"
+            git commit -m "Update JSON for v2"
             git push
           }
           catch {
@@ -77,7 +78,7 @@ jobs:
             git config --local user.email "nattadasu@nattadasu.my.id"
             git config --local user.name "Natsu Tadama"
             git add .
-            git commit -m "Update JSON"
+            git commit -m "Update JSON for v3"
             git push
           }
           catch {
@@ -95,6 +96,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          ref: v2
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Remove unwanted files

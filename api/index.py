@@ -48,9 +48,20 @@ def robots():
 def trakt_exclusive_route(media_type: str, media_id: int, season_id: Union[int, None] = None):
     with open(f"database/trakt_object.json", "r") as f:
         data = json.loads(f.read())
-    if season_id is None:
-        return flask.jsonify(data[f"{media_type}/{media_id}"])
-    return flask.jsonify(data[f"{media_type}/{media_id}/seasons/{season_id}"])
+    try:
+        if not media_type.endswith("s"):
+            media_type_ = media_type + "s"
+        else:
+            media_type_ = media_type
+        if season_id is None:
+            return flask.jsonify(data[f"{media_type_}/{media_id}"])
+        return flask.jsonify(data[f"{media_type_}/{media_id}/seasons/{season_id}"])
+    except KeyError:
+        return flask.jsonify({
+            "error": "Not found",
+            "code": 404,
+            "message": f"Media type {media_type} with ID {media_id} {'and season ID ' + str(season_id) + ' ' if season_id is not None else ''}not found"
+        }), 404
 
 
 @app.route("/<platform>.json", methods=["GET"])

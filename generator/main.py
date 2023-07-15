@@ -707,6 +707,7 @@ def combine_arm(
                         'shoboi': syoboi,
                         'annict': annict,
                         'myanimelist': myanimelist if myanimelist is not None else mal_id,
+                        'shikimori': myanimelist if myanimelist is not None else mal_id,
                     })
                     linked += 1
                     break
@@ -804,7 +805,7 @@ def save_to_file(data: list[dict[str, Any]], platform: str) -> None:
             if platform != "trakt":
                 obj_data[item[f"{platform}"]] = item
             else:
-                if item["trakt_type"] == "movie":
+                if item["trakt_type"] in ["movie", "movies"]:
                     obj_data[f"{item['trakt_type']}/{item['trakt']}"] = item
                 else:
                     if item["trakt_season"] == 1:
