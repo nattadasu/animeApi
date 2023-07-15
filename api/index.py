@@ -1,6 +1,5 @@
 import json
 from datetime import datetime
-from os.path import getsize
 from typing import Any, Union
 
 import flask
@@ -15,8 +14,14 @@ def platform_id_content(platform: str, platform_id: int) -> dict[str, Any]:
 
 
 @app.route("/", methods=["GET"])
-@app.route("/status", methods=["GET"])
 def index():
+    # redirect user to GitHub repo
+    return flask.redirect("https://github.com/nattadasu/animeApi")
+
+
+@app.route("/status", methods=["GET"])
+@app.route("/heartbeat", methods=["GET"])
+def status():
     with open("api/status.json", "r") as f:
         return flask.jsonify(json.loads(f.read()))
 
@@ -36,33 +41,6 @@ def robots():
         return flask.Response(f.read(), mimetype="text/plain", status=200)
 
 
-@app.route("/animeApi.json", methods=["GET"])
-@app.route("/animeApi", methods=["GET"])
-@app.route("/animeapi.json", methods=["GET"])
-@app.route("/animeapi", methods=["GET"])
-def anime_api():
-    return flask.jsonify({
-        "error": "File too large",
-        "code": 413,
-        "message": f"To bypass this, prefer to download from GitHub raw directly. Your path is: https://raw.githubusercontent.com/nattadasu/animeApi/v3/database/animeapi.json"
-    }), 413
-
-
-@app.route("/<platform>().json", methods=["GET"])
-@app.route("/<platform>()", methods=["GET"])
-def platform(platform: str):
-    with open(f"database/{platform}_object.json", "r") as f:
-        file_size = getsize(f"database/{platform}_object.json")
-        # if above 5MB, throw error
-        if file_size > 5000000:
-            return flask.jsonify({
-                "error": "File too large",
-                "code": 413,
-                "message": f"To bypass this, prefer to download from GitHub raw directly. Your path is: https://raw.githubusercontent.com/nattadasu/animeApi/v3/database/{platform}_object.json"
-            }), 413
-        return flask.jsonify(json.loads(f.read()))
-
-
 @app.route("/trakt/<media_type>/<media_id>.json", methods=["GET"])
 @app.route("/trakt/<media_type>/<media_id>", methods=["GET"])
 @app.route("/trakt/<media_type>/<media_id>/seasons/<season_id>.json", methods=["GET"])
@@ -77,18 +55,22 @@ def trakt_exclusive_route(media_type: str, media_id: int, season_id: Union[int, 
 
 @app.route("/<platform>.json", methods=["GET"])
 @app.route("/<platform>", methods=["GET"])
-def platform_array(platform: str):
-    with open(f"database/{platform}.json", "r") as f:
-        file_size = getsize(f"database/{platform}.json")
-        # if above 5MB, throw error
-        if file_size > 5000000:
-            return flask.jsonify({
-                "error": "File too large",
-                "code": 413,
-                "message": f"To bypass this, prefer to download from GitHub raw directly. Your path is: https://raw.githubusercontent.com/nattadasu/animeApi/v3/database/{platform}.json"
-            }), 413
-        return flask.jsonify(json.loads(f.read()))
-
+@app.route("/<platform>().json", methods=["GET"])
+@app.route("/<platform>()", methods=["GET"])
+@app.route("/animeApi.json", methods=["GET"])
+@app.route("/animeApi", methods=["GET"])
+@app.route("/animeapi.json", methods=["GET"])
+@app.route("/animeapi", methods=["GET"])
+def platform_array(platform: str = "animeapi"):
+    # get current route
+    route = flask.request.path
+    if not route.endswith("()"):
+        platform = platform + "_object"
+    return flask.jsonify({
+        "error": "File too large",
+        "code": 413,
+        "message": f"To bypass this, prefer to download from GitHub raw directly. Your path is: https://raw.githubusercontent.com/nattadasu/animeApi/v3/database/{platform}.json"
+    }), 413
 
 @app.route("/<platform>/<platform_id>.json", methods=["GET"])
 @app.route("/<platform>/<platform_id>", methods=["GET"])
