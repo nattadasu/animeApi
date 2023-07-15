@@ -923,7 +923,7 @@ def update_markdown() -> None:
     table = "| Platform | Count |\n| --- | --- |\n"
     tram = ""
     for key, value in attribution["counts"].items():  # type: ignore
-        if key != "total":
+        if key == "total":
             tram = f"| `{key}` | {value} |\n"
         else:
             table += f"| **Total** | **{value}** |\n"
