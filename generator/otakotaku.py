@@ -1,5 +1,4 @@
-import math
-import time
+import json
 from typing import Union, Any
 
 from fake_useragent import FakeUserAgent  # type: ignore
@@ -57,8 +56,7 @@ class OtakOtaku:
         url = "https://otakotaku.com/anime/feed"
         response = self._get(url)
         if not response:
-            pprint.print(Platform.OTAKOTAKU, Status.ERR, "Failed to get latest anime")
-            return 0
+            raise ConnectionError("Failed to connect to otakotaku.com")
         soup = BeautifulSoup(response.text, "html.parser")
         link = soup.find("div", class_='anime-img')
         if not isinstance(link, Tag):
@@ -81,8 +79,7 @@ class OtakOtaku:
     def _get_data_index(self, anime_id: int) -> Union[dict[str, Any], None]:
         response = self._get(f"https://otakotaku.com/api/anime/view/{anime_id}")
         if not response:
-            pprint.print(Platform.OTAKOTAKU, Status.ERR, "Failed to get data index")
-            return None
+            raise ConnectionError("Failed to connect to otakotaku.com")
         json: dict[str, Any] = response.json()
         if not json:
             return None
@@ -111,29 +108,40 @@ class OtakOtaku:
 
     def get_anime(self) -> list[dict[str, Any]]:
         """Get complete anime data"""
-        latest_id = self.get_latest_anime()
-        if not latest_id:
-            return []
+        file_path = "database/raw/otakotaku.json"
         anime_list: list[dict[str, Any]] = []
-        with alive_bar(latest_id, title="Getting data", spinner=None) as bar:  # type: ignore
-            for anime_id in range(1, latest_id + 1):
-                data_index = self._get_data_index(anime_id)
-                if not data_index:
-                    pprint.print(
-                        Platform.OTAKOTAKU,
-                        Status.ERR,
-                        f"Failed to get data index for anime id: {anime_id},"
-                        " data may be empty or invalid",
-                    )
-                    continue
-                anime_list.append(data_index)
-                bar()
-                time.sleep(math.ceil(1))
-        pprint.print(
-            Platform.OTAKOTAKU,
-            Status.PASS,
-            f"Total anime data: {len(anime_list)}"
-        )
+        try:
+            latest_id = self.get_latest_anime()
+            if not latest_id:
+                raise ConnectionError("Failed to connect to otakotaku.com")
+            with alive_bar(latest_id, title="Getting data", spinner=None) as bar:  # type: ignore
+                for anime_id in range(1, latest_id + 1):
+                    data_index = self._get_data_index(anime_id)
+                    if not data_index:
+                        pprint.print(
+                            Platform.OTAKOTAKU,
+                            Status.ERR,
+                            f"Failed to get data index for anime id: {anime_id},"
+                            " data may be empty or invalid",
+                        )
+                        continue
+                    anime_list.append(data_index)
+                    bar()
+            with open(file_path, "w", encoding="utf-8") as file:
+                json.dump(anime_list, file)
+            pprint.print(
+                Platform.OTAKOTAKU,
+                Status.PASS,
+                f"Total anime data: {len(anime_list)}"
+            )
+        except ConnectionError:
+            pprint.print(
+                Platform.OTAKOTAKU,
+                Status.WARN,
+                "Failed to get data, loading from local file",
+            )
+            with open(file_path, "r", encoding="utf-8") as file:
+                anime_list = json.load(file)
         return anime_list
 
     @staticmethod

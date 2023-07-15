@@ -2,6 +2,8 @@ alive-progress
 beautifulsoup4
 fake-useragent
 Flask
+fuzzywuzzy
 python-dotenv
+python-Levenshtein
 python-slugify
 requests

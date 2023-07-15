@@ -1,4 +1,6 @@
+import json
 import math
+import re
 import time
 from typing import Union, Optional, Any, Literal
 
@@ -202,9 +204,7 @@ class Kaize:
         """Get the data from the index"""
         response = self._get(f"{self.base_url}/{media}/top?page={page}")
         if not response:
-            pprint.print(
-                Platform.KAIZE, Status.ERR, "Unable to connect to kaize.io")
-            return []
+            raise ConnectionError("Unable to connect to kaize.io")
         soup = BeautifulSoup(response.text, "html.parser")
         kz_dat = soup.find_all("div", {"class": "anime-list-element"})
         result: list[dict[str, Any]] = []
@@ -216,30 +216,48 @@ class Kaize:
             title: str = kz.find("a", {"class": "name"}).text
             link = kz.find("a", {"class": "name"}).get("href")
             slug: str = link.split("/")[-1]
+            # background-image: url(https://kaize.io/images/animes_images/2022/anime_image_6289_14_22_44.jpg)
+            media_id = kz.find("div", {"class": "cover"}).get("style")
+            media_id = re.search(r"/anime_image_(\d+)", media_id)
+            if media_id:
+                media_id = media_id.group(1)
+            else:
+                media_id = 0
             result.append({
-                "rank": rank,
+                "rank": int(rank),
                 "title": title,
                 "slug": slug,
-                "link": link
+                "kaize": int(media_id),
             })
         return result
 
     def get_anime(self) -> list[dict[str, Any]]:
         """Get complete anime data"""
-        pages = self.pages()
         anime_data: list[dict[str, Any]] = []
-        with alive_bar(pages, title="Getting data", spinner=None) as bar:  # type: ignore
-            for page in range(1, pages + 1):
-                anime_data.extend(self._get_data_index(page))
-                bar()
-                time.sleep(1.2)
-        pprint.print(
-            Platform.KAIZE,
-            Status.PASS,
-            f"Done getting data, total data: {len(anime_data)},",
-            f"or around {str(math.ceil(len(anime_data) / 50))} pages,",
-            "expected pages:", str(pages)
-        )
+        file_path = "database/raw/kaize.json"
+        try:
+            pages = self.pages()
+            with alive_bar(pages, title="Getting data", spinner=None) as bar:  # type: ignore
+                for page in range(1, pages + 1):
+                    anime_data.extend(self._get_data_index(page))
+                    bar()
+            with open(file_path, "w", encoding="utf-8") as file:
+                json.dump(anime_data, file)
+            pprint.print(
+                Platform.KAIZE,
+                Status.PASS,
+                f"Done getting data, total data: {len(anime_data)},",
+                f"or around {str(math.ceil(len(anime_data) / 50))} pages,",
+                "expected pages:", str(pages)
+            )
+        except ConnectionError:
+            pprint.print(
+                Platform.KAIZE,
+                Status.WARN,
+                "Unable to connect to kaize.io, loading from local file",
+            )
+            with open(file_path, "r", encoding="utf-8") as file:
+                anime_data = json.load(file)
         return anime_data
 
     @staticmethod
