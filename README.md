@@ -3,7 +3,7 @@
 ## Details
 
 <!-- updated -->
-Last updated: 15 July 2023 22:09:18 UTC
+Last updated: 16 July 2023 05:48:43 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -14,7 +14,7 @@ Last updated: 15 July 2023 22:09:18 UTC
 | `animeplanet` | **22940** |
 | `anisearch` | **17879** |
 | `annict` | **8850** |
-| `kaize` | **22980** |
+| `kaize` | **22978** |
 | `kitsu` | **19223** |
 | `livechart` | **10838** |
 | `myanimelist` | **25115** |
