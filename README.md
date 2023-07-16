@@ -3,7 +3,7 @@
 ## Details
 
 <!-- updated -->
-Last updated: 16 July 2023 05:48:43 UTC
+Last updated: 16 July 2023 10:59:04 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -19,7 +19,7 @@ Last updated: 16 July 2023 05:48:43 UTC
 | `livechart` | **10838** |
 | `myanimelist` | **25115** |
 | `notify` | **15820** |
-| `otakotaku` | **2535** |
+| `otakotaku` | **2536** |
 | `shikimori` | **25115** |
 | `shoboi` | **4707** |
 | `silveryasha` | **3982** |
