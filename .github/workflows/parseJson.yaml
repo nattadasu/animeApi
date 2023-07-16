@@ -22,6 +22,9 @@ jobs:
   ParseV2:
     name: Parsing JSON for v2
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
@@ -51,53 +54,6 @@ jobs:
           catch {
             write-host "No changes made"
           }
-
-  ParseV3:
-    name: Parsing JSON for v3
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v3
-        with:
-            ref: v3
-      - name: Load secrets to environment variables
-        uses: oNaiPs/secrets-to-env-action@v1
-        with:
-          secrets: ${{ toJSON(secrets) }}
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.11' 
-          cache: 'pip'
-      - name: Install Dependencies
-        run: pip install -r requirements.txt
-      - name: Update JSON File with main.py and then commit
-        shell: pwsh
-        run: |
-          try {
-            python3 generator
-            git config --local user.email "nattadasu@nattadasu.my.id"
-            git config --local user.name "Natsu Tadama"
-            git add .
-            git commit -m "Update JSON for v3"
-            git push
-          }
-          catch {
-            write-host "No changes made"
-          }
-
-  DeployPages:
-    needs: 'ParseV2'
-    name: Deploy to GitHub Pages
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/v2'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          ref: v2
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Remove unwanted files
@@ -132,3 +88,37 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+    
+
+  ParseV3:
+    name: Parsing JSON for v3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+            ref: v3
+      - name: Load secrets to environment variables
+        uses: oNaiPs/secrets-to-env-action@v1
+        with:
+          secrets: ${{ toJSON(secrets) }}
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11' 
+          cache: 'pip'
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+      - name: Update JSON File with main.py and then commit
+        shell: pwsh
+        run: |
+          try {
+            python3 generator
+            git config --local user.email "nattadasu@nattadasu.my.id"
+            git config --local user.name "Natsu Tadama"
+            git add .
+            git commit -m "Update JSON for v3"
+            git push
+          }
+          catch {
+            write-host "No changes made"
+          }

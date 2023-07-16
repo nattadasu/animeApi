@@ -62,6 +62,28 @@ attribution = {
         "silveryasha": 0,
         "trakt": 0,
         "total": 0,
+    },
+    "endpoints": {
+        "$comment": "The endpoints are stated in Python regex format",
+        "anidb": r"/anidb/(?P<media_id>\d+)",
+        "anilist": r"/anilist/(?P<media_id>\d+)",
+        "animeplanet": r"/animeplanet/(?P<media_id>[\w\-]+)",
+        "anisearch": r"/anisearch/(?P<media_id>\d+)",
+        "annict": r"/annict/(?P<media_id>\d+)",
+        "kaize": r"/kaize/(?P<media_id>[\w\-]+)",
+        "kitsu": r"/kitsu/(?P<media_id>\d+)",
+        "livechart": r"/livechart/(?P<media_id>\d+)",
+        "myanimelist": r"/myanimelist/(?P<media_id>\d+)",
+        "notify": r"/notify/(?P<media_id>[\w\-_]+)",
+        "otakotaku": r"/otakotaku/(?P<media_id>\d+)",
+        "repo": r"/",
+        "shikimori": r"/shikimori/(?P<media_id>\d+)",
+        "shoboi": r"/shoboi/(?P<media_id>\d+)",
+        "silveryasha": r"/silveryasha/(?P<media_id>\d+)",
+        "status": r"/status",
+        "syobocal": r"/syobocal/(?P<media_id>\d+)",
+        "trakt": r"/trakt/(?P<media_type>show|movie)(s)?/(?P<media_id>\d+)(?:/season(s)?/(?P<season_id>\d+))?",
+        "updated": r"/updated",
     }
 }
 

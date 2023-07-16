@@ -41,10 +41,9 @@ def robots():
         return flask.Response(f.read(), mimetype="text/plain", status=200)
 
 
-@app.route("/trakt/<media_type>/<media_id>.json", methods=["GET"])
 @app.route("/trakt/<media_type>/<media_id>", methods=["GET"])
-@app.route("/trakt/<media_type>/<media_id>/seasons/<season_id>.json", methods=["GET"])
 @app.route("/trakt/<media_type>/<media_id>/seasons/<season_id>", methods=["GET"])
+@app.route("/trakt/<media_type>/<media_id>/season/<season_id>", methods=["GET"])
 def trakt_exclusive_route(media_type: str, media_id: int, season_id: Union[int, None] = None):
     with open(f"database/trakt_object.json", "r") as f:
         data = json.loads(f.read())
@@ -64,19 +63,16 @@ def trakt_exclusive_route(media_type: str, media_id: int, season_id: Union[int, 
         }), 404
 
 
-@app.route("/<platform>.json", methods=["GET"])
 @app.route("/<platform>", methods=["GET"])
-@app.route("/<platform>().json", methods=["GET"])
 @app.route("/<platform>()", methods=["GET"])
-@app.route("/animeApi.json", methods=["GET"])
-@app.route("/animeApi", methods=["GET"])
-@app.route("/animeapi.json", methods=["GET"])
-@app.route("/animeapi", methods=["GET"])
 def platform_array(platform: str = "animeapi"):
     # get current route
     route = flask.request.path
-    if not route.endswith("()"):
+    platform = platform.lower()
+    if not route.endswith("()") and platform != "animeapi":
         platform = platform + "_object"
+    if platform == "syobocal":
+        platform = "shoboi"
     return flask.jsonify({
         "error": "File too large",
         "code": 413,
@@ -86,6 +82,9 @@ def platform_array(platform: str = "animeapi"):
 @app.route("/<platform>/<platform_id>.json", methods=["GET"])
 @app.route("/<platform>/<platform_id>", methods=["GET"])
 def platform_id(platform: str, platform_id: int):
+    platform = platform.lower()
+    if platform == "syobocal":
+        platform = "shoboi"
     data = platform_id_content(platform, platform_id)
     return flask.jsonify(data)
 
