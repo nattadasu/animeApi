@@ -1,0 +1,54 @@
+name: Parse files and deploy change
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 5 * * *"
+  push:
+    branches:
+      - v3
+    paths:
+      - "generator/*"
+      - "requirements.txt"
+      - "api/index.py"
+      - "api/robots.txt"
+      - "api/favicon.ico"
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+jobs:
+  Build:
+    name: Build Database
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+            ref: v3
+      - name: Load secrets to environment variables
+        uses: oNaiPs/secrets-to-env-action@v1
+        with:
+          secrets: ${{ toJSON(secrets) }}
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11' 
+          cache: 'pip'
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+      - name: Update JSON File with main.py and then commit
+        shell: pwsh
+        run: |
+          try {
+            python3 generator
+            git config --local user.email "nattadasu@nattadasu.my.id"
+            git config --local user.name "Natsu Tadama"
+            git add .
+            git commit -m "Update JSON for v3"
+            git push
+          }
+          catch {
+            write-host "No changes made"
+          }
