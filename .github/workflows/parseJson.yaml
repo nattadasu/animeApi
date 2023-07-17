@@ -1,0 +1,22 @@
+name: Parse automatically aod
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 5 * * *"
+jobs:
+  RunScript:
+    name: Start Process
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Update JSON
+        shell: pwsh
+        run: ./script.ps1
+      - name: Commit Changes
+        run: |
+          git config --local user.email "nattadasu@nattadasu.my.id"
+          git config --local user.name "Natsu Tadama"
+          git add .
+          git commit -m "Update JSON"
+          git push
