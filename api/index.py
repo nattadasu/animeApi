@@ -26,6 +26,11 @@ def status():
         return flask.jsonify(json.loads(f.read()))
 
 
+@app.route("/favicon.ico", methods=["GET"])
+def favicon():
+    return flask.send_from_directory("api", "favicon.ico")  # type: ignore
+
+
 @app.route("/updated", methods=["GET"])
 def updated():
     with open("api/status.json", "r") as f:
