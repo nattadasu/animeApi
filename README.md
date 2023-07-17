@@ -111,13 +111,13 @@ To use this API, you can access the following base URLs:
 * Latest/v3:
   
   ```http
-  https://animeapi.my.id
+  GET https://animeapi.my.id
   ```
 
 * v2:
   
   ```http
-  https://aniapi.nattadasu.my.id
+  GET https://aniapi.nattadasu.my.id
   ```
 
 All requests must be `GET`, and response always will be in JSON format.
