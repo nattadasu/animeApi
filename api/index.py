@@ -31,6 +31,13 @@ def favicon():
     return flask.send_from_directory("api", "favicon.ico")  # type: ignore
 
 
+@app.route("/schema.json", methods=["GET"])
+@app.route("/schema", methods=["GET"])
+def schema_json():
+    with open("api/schema.json", "r") as f:
+        return flask.jsonify(json.loads(f.read()))
+
+
 @app.route("/updated", methods=["GET"])
 def updated():
     with open("api/status.json", "r") as f:
@@ -54,7 +61,7 @@ def trakt_exclusive_route(media_type: str, media_id: int, season_id: Union[int, 
         data = json.loads(f.read())
     try:
         if not media_type.endswith("s"):
-            media_type_ = media_type + "s"
+            media_type_ = f"{media_type}s"
         else:
             media_type_ = media_type
         if season_id is None:
