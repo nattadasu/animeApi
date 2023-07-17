@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import subprocess
 import sys
 import traceback
 from datetime import datetime, timezone
@@ -973,6 +974,25 @@ def update_markdown() -> None:
     return None
 
 
+def check_git_any_changes() -> bool:
+    """Check if there's any changes in git"""
+    try:
+        subprocess.check_output(["git", "diff", "--quiet"])
+        pprint.print(
+            Platform.SYSTEM,
+            Status.INFO,
+            "Git has no changes, skipping data update",
+        )
+        return False
+    except subprocess.CalledProcessError:
+        pprint.print(
+            Platform.SYSTEM,
+            Status.INFO,
+            "Git has changes, updating data",
+        )
+        return True
+
+
 def main() -> None:
     """Main function"""
     try:
@@ -980,53 +1000,57 @@ def main() -> None:
         pprint.print(Platform.SYSTEM, Status.READY, "Generator ready to use")
         aod = get_anime_offline_database()
         aod_arr = simplify_aod_data(aod)
-        kz_ = Kaize(
+        kza = Kaize(
             session=KAIZE_SESSION,
             email=KAIZE_EMAIL,
             password=KAIZE_PASSWORD,
-            xsrf_token=KAIZE_XSRF_TOKEN)
-        kza = kz_.get_anime()
-        aod_arr = link_kaize_to_mal(kza, aod_arr)
-        ot_ = OtakOtaku()
-        ota = ot_.get_anime()
-        aod_arr = link_otakotaku_to_mal(ota, aod_arr)
+            xsrf_token=KAIZE_XSRF_TOKEN).get_anime()
+        ota = OtakOtaku().get_anime()
         sy_ = simplify_silveryasha_data()
-        aod_arr = link_silveryasha_to_mal(sy_, aod_arr)
         arm = get_arm()
-        aod_arr = combine_arm(arm, aod_arr)
-        anitrakt = get_anitrakt()
-        aod_arr = combine_anitrakt(anitrakt, aod_arr)
-        final_arr: list[dict[str, Any]] = []
-        with alive_bar(len(aod_arr),
-                       title="Fixing missing keys",
-                       spinner=None) as bar:  # type: ignore
-            for item in aod_arr:
-                data = {
-                    "title": item.get("title", None),
-                    "anidb": item.get("anidb", None),
-                    "anilist": item.get("anilist", None),
-                    "animeplanet": item.get("animeplanet", None),
-                    "anisearch": item.get("anisearch", None),
-                    "annict": item.get("annict", None),
-                    "kaize": item.get("kaize", None),
-                    "kaize_id": item.get("kaize_id", None),
-                    "kitsu": item.get("kitsu", None),
-                    "livechart": item.get("livechart", None),
-                    "myanimelist": item.get("myanimelist", None),
-                    "notify": item.get("notify", None),
-                    "otakotaku": item.get("otakotaku", None),
-                    "shikimori": item.get("shikimori", None),
-                    "shoboi": item.get("shoboi", None),
-                    "silveryasha": item.get("silveryasha", None),
-                    "trakt": item.get("trakt", None),
-                    "trakt_type": item.get("trakt_type", None),
-                    "trakt_season": item.get("trakt_season", None),
-                }
-                final_arr.append(data)
-                bar()
+        git_changes = check_git_any_changes()
+        if git_changes is True:
+            anitrakt = get_anitrakt()
+            aod_arr = link_kaize_to_mal(kza, aod_arr)
+            aod_arr = link_otakotaku_to_mal(ota, aod_arr)
+            aod_arr = link_silveryasha_to_mal(sy_, aod_arr)
+            aod_arr = combine_arm(arm, aod_arr)
+            aod_arr = combine_anitrakt(anitrakt, aod_arr)
+            final_arr: list[dict[str, Any]] = []
+            with alive_bar(len(aod_arr),
+                           title="Fixing missing keys",
+                           spinner=None) as bar:  # type: ignore
+                for item in aod_arr:
+                    data = {
+                        "title": item.get("title", None),
+                        "anidb": item.get("anidb", None),
+                        "anilist": item.get("anilist", None),
+                        "animeplanet": item.get("animeplanet", None),
+                        "anisearch": item.get("anisearch", None),
+                        "annict": item.get("annict", None),
+                        "kaize": item.get("kaize", None),
+                        "kaize_id": item.get("kaize_id", None),
+                        "kitsu": item.get("kitsu", None),
+                        "livechart": item.get("livechart", None),
+                        "myanimelist": item.get("myanimelist", None),
+                        "notify": item.get("notify", None),
+                        "otakotaku": item.get("otakotaku", None),
+                        "shikimori": item.get("shikimori", None),
+                        "shoboi": item.get("shoboi", None),
+                        "silveryasha": item.get("silveryasha", None),
+                        "trakt": item.get("trakt", None),
+                        "trakt_type": item.get("trakt_type", None),
+                        "trakt_season": item.get("trakt_season", None),
+                    }
+                    final_arr.append(data)
+                    bar()
+            with open("database/animeapi.json", "w", encoding="utf-8") as file:
+                json.dump(final_arr, file)
+        else:
+            # get data from animeapi.json
+            with open("database/animeapi.json", "r", encoding="utf-8") as file:
+                final_arr = json.load(file)
         update_attribution(final_arr)
-        with open("database/animeapi.json", "w", encoding="utf-8") as file:
-            json.dump(final_arr, file)
         end_time = time()
         pprint.print(
             Platform.SYSTEM,
