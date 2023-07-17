@@ -1,4 +1,4 @@
-name: Parse files and deploy change
+name: "[v3] Generate Database"
 on:
   workflow_dispatch:
   schedule:
