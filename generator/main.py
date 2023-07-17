@@ -22,8 +22,8 @@ KAIZE_SESSION = os.getenv("KAIZE_SESSION")
 KAIZE_EMAIL = os.getenv("KAIZE_EMAIL")
 KAIZE_PASSWORD = os.getenv("KAIZE_PASSWORD")
 
-if (KAIZE_XSRF_TOKEN is None) and (KAIZE_SESSION is None) and (KAIZE_EMAIL is None) and (KAIZE_PASSWORD is None):
-    raise Exception('Kaize login info does not available in environment variables')
+# if (KAIZE_XSRF_TOKEN is None) and (KAIZE_SESSION is None) and (KAIZE_EMAIL is None) and (KAIZE_PASSWORD is None):
+#     raise Exception('Kaize login info does not available in environment variables')
 
 pprint = PrettyPrint()
 
@@ -948,14 +948,20 @@ def update_markdown() -> None:
     tram = ""
     for key, value in attribution["counts"].items():  # type: ignore
         if key == "total":
-            tram = f"| **Total** | {value} |\n"
+            tram = f"| **Total** | **{value}** |\n"
         else:
-            table += f"| `{key}` | **{value}** |\n"
+            table += f"| `{key}` | {value} |\n"
     table += tram
     readme = re.sub(
         r"<!-- counters -->(.|\n)*<!-- \/counters -->",
         f"<!-- counters -->\n{table}<!-- /counters -->",
         readme,
+    )
+
+    pprint.print(
+        Platform.SYSTEM,
+        Status.INFO,
+        "Updating updated timestamp in README.md",
     )
     # update updated timestamp
     now: int = attribution["updated"]["timestamp"]  # type: ignore
@@ -964,6 +970,50 @@ def update_markdown() -> None:
         f"<!-- updated -->\nLast updated: {datetime.fromtimestamp(now).strftime('%d %B %Y %H:%M:%S UTC')}\n<!-- /updated -->",
         readme,
     )
+
+    pprint.print(
+        Platform.SYSTEM,
+        Status.INFO,
+        "Updating JSON Schema in README.md",
+    )
+    with open("api/schema.json", "r", encoding="utf-8") as file:
+        jschema = json.dumps(
+            json.load(file),
+            indent=2,
+            ensure_ascii=False)
+        jschema = jschema.replace("\\", "\\\\")
+    readme = re.sub(
+        r"<!-- jsonschema -->(.|\n)*<!-- \/jsonschema -->",
+        f"<!-- jsonschema -->\n```json\n{jschema}\n```\n<!-- /jsonschema -->",
+        readme
+    )
+
+    pprint.print(
+        Platform.SYSTEM,
+        Status.INFO,
+        "Updating sample data in README.md, using MyAnimeList ID 1",
+    )
+    with open("database/myanimelist_object.json", "r", encoding="utf-8") as file:
+        sample = json.load(file)
+        sample = sample["1"]
+        readme = re.sub(
+            r"<!-- sample -->(.|\n)*<!-- \/sample -->",
+            f"<!-- sample -->\n```json\n{json.dumps(sample, indent=2)}\n```\n<!-- /sample -->",
+            readme,
+        )
+
+    pprint.print(
+        Platform.SYSTEM,
+        Status.INFO,
+        "Updating sample data in README.md, using Trakt ID 152334, season 3",
+    )
+    with open("database/trakt_object.json", "r", encoding="utf-8") as file:
+        sampler = json.load(file)
+        readme = re.sub(
+            r"<!-- trakt152334 -->(.|\n)*<!-- \/trakt152334 -->",
+            f"<!-- trakt152334 -->\n```json\n{json.dumps(sampler['shows/152334/seasons/3'], indent=2)}\n```\n<!-- /trakt152334 -->",
+            readme,
+        )
     with open("README.md", "w", encoding="utf-8") as file:
         file.write(readme)
     pprint.print(
