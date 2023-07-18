@@ -1,5 +1,7 @@
 import json
+import os
 from typing import Union, Any
+from datetime import datetime
 
 from fake_useragent import FakeUserAgent  # type: ignore
 from bs4 import BeautifulSoup, Tag
@@ -110,12 +112,27 @@ class OtakOtaku:
         """Get complete anime data"""
         file_path = "database/raw/otakotaku.json"
         anime_list: list[dict[str, Any]] = []
+        latest_file_path = "database/raw/_latest_otakotaku.txt"
         try:
             latest_id = self.get_latest_anime()
             if not latest_id:
                 raise ConnectionError("Failed to connect to otakotaku.com")
+            if os.path.exists(latest_file_path) and not datetime.now().day in [1, 15]:
+                with open(latest_file_path, "r", encoding="utf-8") as file:
+                    latest = int(file.read().strip())
+                if latest == latest_id:
+                    pprint.print(
+                        Platform.OTAKOTAKU,
+                        Status.PASS,
+                        "Data is up to date, loading from local file",
+                    )
+                    with open(file_path, "r", encoding="utf-8") as file:
+                        anime_list = json.load(file)
+                    return anime_list
+            else:
+                latest = 1
             with alive_bar(latest_id, title="Getting data", spinner=None) as bar:  # type: ignore
-                for anime_id in range(1, latest_id + 1):
+                for anime_id in range(latest, latest_id + 1):
                     data_index = self._get_data_index(anime_id)
                     if not data_index:
                         pprint.print(
@@ -128,6 +145,8 @@ class OtakOtaku:
                         continue
                     anime_list.append(data_index)
                     bar()
+            with open(latest_file_path, "w", encoding="utf-8") as file:
+                file.write(str(latest_id))
             with open(file_path, "w", encoding="utf-8") as file:
                 json.dump(anime_list, file)
             pprint.print(

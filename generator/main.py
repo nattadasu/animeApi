@@ -22,8 +22,8 @@ KAIZE_SESSION = os.getenv("KAIZE_SESSION")
 KAIZE_EMAIL = os.getenv("KAIZE_EMAIL")
 KAIZE_PASSWORD = os.getenv("KAIZE_PASSWORD")
 
-# if (KAIZE_XSRF_TOKEN is None) and (KAIZE_SESSION is None) and (KAIZE_EMAIL is None) and (KAIZE_PASSWORD is None):
-#     raise Exception('Kaize login info does not available in environment variables')
+if (KAIZE_XSRF_TOKEN is None) and (KAIZE_SESSION is None) and (KAIZE_EMAIL is None) and (KAIZE_PASSWORD is None):
+    raise Exception('Kaize login info does not available in environment variables')
 
 pprint = PrettyPrint()
 
