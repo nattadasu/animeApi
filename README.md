@@ -18,6 +18,7 @@ and [arm] by [kawaiioverflow][ko], while adding support for more databases.
 * [Why use AnimeAPI?](#why-use-animeapi)
 * [Statistic](#statistic)
 * [Usage](#usage)
+  * [Differences between v1, v2, and v3](#differences-between-v1-v2-and-v3)
   * [Get status and statistics](#get-status-and-statistics)
   * [Get updated date and time](#get-updated-date-and-time)
   * [Get all items in Array](#get-all-items-in-array)
@@ -128,6 +129,24 @@ All requests must be `GET`, and response always will be in JSON format.
 > and GitHub Pages' default 404 page. This is because `v2` and earlier versions
 > are hosted on GitHub Pages and API was a mock RESTful response.
 
+### Differences between v1, v2, and v3
+
+AnimeAPI has 3 versions, which are `v1`, `v2`, and `v3`. The differences between
+each version are as follows:
+
+|                    | v1                         | v2                               | v3                                       |
+| ------------------ | -------------------------- | -------------------------------- | ---------------------------------------- |
+| Base URL           | *inactive*                 | `https://aniapi.nattadasu.my.id` | `https://animeapi.my.id`                 |
+| Deprecated?        | ✔                          | Maintenance                      | ❌                                        |
+| Host               | -                          | GitHub Pages                     | Vercel                                   |
+| Language           | PowerShell                 | Python                           | Python                                   |
+| Framework          | -                          | GitHub Pages                     | Flask                                    |
+| Database           | JSON                       | JSON                             | JSON                                     |
+| Expected MIME Type | `application/octet-stream` | `application/octet-stream`       | `application/json`                       |
+| Status Codes       | `200`, `404`               | `200`, `404`                     | `200`, `302`, `304`, `400`, `404`, `500` |
+| Response Schema    | -                          | -                                | [JSON Schema](#json-schema)              |
+| Documented         | ❌                          | ✔                                | ✔                                        |
+
 ### Get status and statistics
 
 > **Note**: This endpoint is only available on v3
@@ -150,15 +169,15 @@ Updated on MM/DD/YYYY hh:mm:ss UTC
 
 ### Get all items in Array
 
-> **Note**: This endpoint is only available on v2 and earlier
-
 ```http
 GET /animeApi.json
 ```
 
-### Get All ID in Object/Dictionary format of each provider
+On `v3`, you will automatically redirected to GitHub raw file URL of the
+provider's JSON file. Make sure to allow `302` and `304` status code on your
+application if you want to use this endpoint.
 
-> **Note**: This endpoint is only available on v2 and earlier
+### Get All ID in Object/Dictionary format of each provider
 
 ```http
 GET /:platform.json
@@ -170,9 +189,11 @@ GET /:platform.json
 `livechart`, `myanimelist`, `notify`, `otakotaku`, `shikimori`, `shoboi`,
 `silveryasha`, `trakt`
 
-### Get All ID in Array/List format of each provider
+On `v3`, you will automatically redirected to GitHub raw file URL of the
+provider's JSON file. Make sure to allow `302` and `304` status code on your
+application if you want to use this endpoint.
 
-> **Note**: This endpoint is only available on v2 and earlier
+### Get All ID in Array/List format of each provider
 
 ```http
 GET /:platform().json
@@ -186,6 +207,10 @@ GET /:platform().json
 
 > **Note**: The `()` in the endpoint is not a typo, it's part of the endpoint.
 > If you can't access the endpoint, try to encode the `()` to `%28%29`.
+
+On `v3`, you will automatically redirected to GitHub raw file URL of the
+provider's JSON file. Make sure to allow `302` and `304` status code on your
+application if you want to use this endpoint.
 
 ### Get anime relation mapping data
 
@@ -275,6 +300,10 @@ GET https://api.trakt.tv/search/trakt/<ID>?type=<movie|show>
 
 To get exact season mapping, append `/seasons/:season_inc` to the end of the ID,
 where `:season_inc` is the season number of the title in the provider.
+
+> **Warning**
+>
+> `/seasons/0` is invalid, and will return `400` status code.
 
 For example, to get the ID of Mairimashita Iruma-kun Season 3, you can use:
 

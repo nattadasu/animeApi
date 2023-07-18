@@ -56,9 +56,15 @@ def robots():
 @app.route("/trakt/<media_type>/<media_id>", methods=["GET"])
 @app.route("/trakt/<media_type>/<media_id>/seasons/<season_id>", methods=["GET"])
 @app.route("/trakt/<media_type>/<media_id>/season/<season_id>", methods=["GET"])
-def trakt_exclusive_route(media_type: str, media_id: int, season_id: Union[int, None] = None):
+def trakt_exclusive_route(media_type: str, media_id: int, season_id: Union[str, None] = None):
     with open(f"database/trakt_object.json", "r") as f:
         data = json.loads(f.read())
+    if season_id == "0" and media_type in ["shows", "show"]:
+        return flask.jsonify({
+            "error": "Invalid season ID",
+            "code": 400,
+            "message": "Season ID cannot be 0"
+        }), 400
     try:
         if not media_type.endswith("s"):
             media_type_ = f"{media_type}s"
@@ -76,29 +82,42 @@ def trakt_exclusive_route(media_type: str, media_id: int, season_id: Union[int, 
 
 
 @app.route("/<platform>", methods=["GET"])
+@app.route("/<platform>.json", methods=["GET"])
 @app.route("/<platform>()", methods=["GET"])
+@app.route("/<platform>().json", methods=["GET"])
 def platform_array(platform: str = "animeapi"):
     # get current route
     route = flask.request.path
     platform = platform.lower()
+    # remove .json if present
+    if route.endswith(".json"):
+        route = route.replace(".json", "")
     if not route.endswith("()") and platform != "animeapi":
         platform = platform + "_object"
     if platform == "syobocal":
         platform = "shoboi"
-    return flask.jsonify({
-        "error": "File too large",
-        "code": 413,
-        "message": f"To bypass this, prefer to download from GitHub raw directly. Your path is: https://raw.githubusercontent.com/nattadasu/animeApi/v3/database/{platform}.json"
-    }), 413
+    return flask.redirect(f"https://raw.githubusercontent.com/nattadasu/animeApi/v3/database/{platform}.json")
 
-@app.route("/<platform>/<platform_id>.json", methods=["GET"])
 @app.route("/<platform>/<platform_id>", methods=["GET"])
 def platform_id(platform: str, platform_id: int):
     platform = platform.lower()
     if platform == "syobocal":
         platform = "shoboi"
-    data = platform_id_content(platform, platform_id)
-    return flask.jsonify(data)
+    try:
+        data = platform_id_content(platform, platform_id)
+        return flask.jsonify(data)
+    except FileNotFoundError:
+        return flask.jsonify({
+            "error": "Not found",
+            "code": 404,
+            "message": f"Platform {platform} not found"
+        }), 404
+    except KeyError:
+        return flask.jsonify({
+            "error": "Not found",
+            "code": 404,
+            "message": f"Platform {platform} with ID {platform_id} not found"
+        }), 404
 
 
 # general error handler
