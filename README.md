@@ -81,7 +81,7 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 So far, AnimeAPI has indexed data from 15 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 18 July 2023 10:34:29 UTC
+Last updated: 18 July 2023 13:59:13 UTC
 <!-- /updated -->
 
 <!-- counters -->
