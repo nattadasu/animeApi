@@ -81,6 +81,30 @@ def trakt_exclusive_route(media_type: str, media_id: int, season_id: Union[str, 
         }), 404
 
 
+@app.route("/themoviedb/<media_type>/<media_id>", methods=["GET"])
+@app.route("/themoviedb/<media_type>/<media_id>/season/<season_id>", methods=["GET"])
+def tmdb_exclusive_route(media_type: str, media_id: int, season_id: Union[str, None] = None):
+    with open(f"database/themoviedb_object.json", "r") as f:
+        data = json.loads(f.read())
+    media_type_ = media_type
+    if media_type == "tv" or season_id is not None:
+        return flask.jsonify({
+            "error": "Invalid request",
+            "code": 400,
+            "message": "Currently, only `movie` are supported"
+        }), 400
+    try:
+        if media_type.endswith("s"):
+            media_type_ = media_type[:-1]
+        return flask.jsonify(data[f"{media_type_}/{media_id}"])
+    except KeyError:
+        return flask.jsonify({
+            "error": "Not found",
+            "code": 404,
+            "message": f"Media type {media_type} with ID {media_id} not found"
+        }), 404
+
+
 @app.route("/<platform>", methods=["GET"])
 @app.route("/<platform>.json", methods=["GET"])
 @app.route("/<platform>()", methods=["GET"])

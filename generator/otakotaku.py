@@ -114,6 +114,7 @@ class OtakOtaku:
         anime_list: list[dict[str, Any]] = []
         latest_file_path = "database/raw/_latest_otakotaku.txt"
         try:
+            # raise ConnectionError("Failed to connect to otakotaku.com")
             latest_id = self.get_latest_anime()
             if not latest_id:
                 raise ConnectionError("Failed to connect to otakotaku.com")

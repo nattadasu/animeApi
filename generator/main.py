@@ -52,6 +52,7 @@ attribution = {
         "animeplanet": 0,
         "anisearch": 0,
         "annict": 0,
+        "imdb": 0,
         "kaize": 0,
         "kitsu": 0,
         "livechart": 0,
@@ -61,6 +62,7 @@ attribution = {
         "shikimori": 0,
         "shoboi": 0,
         "silveryasha": 0,
+        "themoviedb": 0,
         "trakt": 0,
         "total": 0,
     },
@@ -199,6 +201,26 @@ def get_silveryasha() -> list[dict[str, Any]]:
     return data
 
 
+def get_fribb_animelists() -> list[dict[str, Any]]:
+    pprint.print(
+        Platform.FRIBB,
+        Status.READY,
+        "Fribb Animelists ready to use",
+    )
+    ddump = DataDump(
+        url="https://raw.githubusercontent.com/Fribb/anime-lists/master/anime-lists-reduced.json",
+        file_name="fribb_animelists",
+        file_type="json",
+    )
+    data: list[dict[str, Any]] = ddump.dumper()
+    pprint.print(
+        Platform.FRIBB,
+        Status.PASS,
+        "Fribb's Animelists data retrieved successfully",
+    )
+    return data
+
+
 def populate_contributors() -> None:
     """Read total contributors from GitHub API"""
     response = req.get(
@@ -295,11 +317,6 @@ def link_kaize_to_mal(
     aod: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
     """Link Kaize slug to MyAnimeList ID based similarity in title name over 85% in fuzzy search"""
-    pprint.print(
-        Platform.KAIZE,
-        Status.READY,
-        "Linking Kaize slug to MyAnimeList ID",
-    )
     # add dummy data to aod
     for item in aod:
         item.update({
@@ -394,11 +411,6 @@ def link_kaize_to_mal(
                 value["kaize_id"] = None
             aod_list.append(value)
             bar()
-    pprint.print(
-        Platform.ANIMEOFFLINEDATABASE,
-        Status.DEBUG,
-        "Fixing missing items in processed AOD data to old AOD data",
-    )
     merged: list[dict[str, Any]] = []
     merged.extend(aod)
 
@@ -434,11 +446,6 @@ def link_otakotaku_to_mal(
     aod: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
     """Link Otakotaku slug to MyAnimeList ID based similarity in title name over 85% in fuzzy search"""
-    pprint.print(
-        Platform.OTAKOTAKU,
-        Status.READY,
-        "Linking Otakotaku slug to MyAnimeList ID",
-    )
     unlinked: list[dict[str, Any]] = []
     ot_fixed: list[dict[str, Any]] = []
     ot_dict: dict[str, Any] = {}
@@ -527,11 +534,6 @@ def link_otakotaku_to_mal(
                 value["otakotaku"] = None
             aod_list.append(value)
             bar()
-    pprint.print(
-        Platform.ANIMEOFFLINEDATABASE,
-        Status.DEBUG,
-        "Fixing missing items in processed AOD data to old AOD data",
-    )
     merged: list[dict[str, Any]] = []
     merged.extend(aod)
 
@@ -566,11 +568,6 @@ def link_silveryasha_to_mal(
     aod: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
     """Link Silveryasha slug to MyAnimeList ID based similarity in title name over 85% in fuzzy search"""
-    pprint.print(
-        Platform.SILVERYASHA,
-        Status.READY,
-        "Linking Silveryasha slug to MyAnimeList ID",
-    )
     unlinked: list[dict[str, Any]] = []
     sy_fixed: list[dict[str, Any]] = []
     sy_dict: dict[str, Any] = {}
@@ -653,11 +650,6 @@ def link_silveryasha_to_mal(
                 value["silveryasha"] = None
             aod_list.append(value)
             bar()
-    pprint.print(
-        Platform.ANIMEOFFLINEDATABASE,
-        Status.DEBUG,
-        "Fixing missing items in processed AOD data to old AOD data",
-    )
     merged: list[dict[str, Any]] = []
     merged.extend(aod)
 
@@ -805,6 +797,71 @@ def combine_anitrakt(
     return aod
 
 
+def combine_fribb(
+    fribb: list[dict[str, Any]],
+    aod: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
+    """Combine Fribb's Animelists data with AOD data to obtain IMDb and TMDB IDs via AniDB"""
+    linked = 0
+    with alive_bar(len(aod),
+                   title="Combining Fribb's Animelists data with AOD data",
+                   spinner=None) as bar:  # type: ignore
+        for item in aod:
+            matched = False
+            anidb = item['anidb']
+            # Skip if anidb is null
+            if anidb is None:
+                item.update({
+                    'imdb': None,
+                    'themoviedb': None,
+                    # 'themoviedb_type': None,
+                    # 'themoviedb_season': None,
+                })
+                bar()
+                continue
+
+            # Check if anidb_id exist in fribb_data
+            for fbi in fribb:
+                anidb_id = fbi.get('anidb_id', None)
+                imdb = fbi.get('imdb_id', None)
+                tmdb = fbi.get('themoviedb_id', None)
+                if anidb is not None and anidb_id == anidb:
+                    # Combine the data from fribb_item with the item in aod_data
+                    data_fbi = {}
+                    data_fbi['imdb'] = imdb
+                    data_fbi['themoviedb'] = tmdb
+                    # if item["trakt_type"] and tmdb:
+                    #     data_fbi['themoviedb'] = tmdb
+                    #     data_fbi["themoviedb_type"] = "movie" if item["trakt_type"] in ["movies", "movie"] else "tv"
+                    #     data_fbi["themoviedb_season"] = item["trakt_season"]
+                    # else:
+                    #     data_fbi['themoviedb'] = None
+                    #     data_fbi["themoviedb_type"] = None
+                    #     data_fbi["themoviedb_season"] = None
+                    item.update(data_fbi)
+                    linked += 1
+                    matched = True
+                    break
+
+            if not matched:
+                item.update({
+                    'imdb': None,
+                    'themoviedb': None,
+                    # 'themoviedb_type': None,
+                    # 'themoviedb_season': None,
+                })
+            bar()
+    pprint.print(
+        Platform.FRIBB,
+        Status.PASS,
+        "Fribb's Animelists data combined with AOD data, unlinked data will be saved to fribb_unlinked.json.",
+        "Total linked data:",
+        f"{linked},",
+        "AOD data:",
+        f"{len(aod)}",
+    )
+    return aod
+
 def save_to_file(data: list[dict[str, Any]], platform: str) -> None:
     """Save data to file"""
     items: list[dict[str, Any]] = []
@@ -825,15 +882,24 @@ def save_to_file(data: list[dict[str, Any]], platform: str) -> None:
                    title="Converting data to object format",
                    spinner=None) as bar:  # type: ignore
         for item in items:
-            if platform != "trakt":
+            if platform not in ["trakt", "themoviedb"]:
                 obj_data[item[f"{platform}"]] = item
-            else:
+            elif platform == "trakt":
                 if item["trakt_type"] in ["movie", "movies"]:
                     obj_data[f"{item['trakt_type']}/{item['trakt']}"] = item
                 else:
                     if item["trakt_season"] == 1:
                         obj_data[f"{item['trakt_type']}/{item['trakt']}"] = item
                     obj_data[f"{item['trakt_type']}/{item['trakt']}/seasons/{item['trakt_season']}"] = item
+            # elif platform == "themoviedb":
+            #     if item["themoviedb_type"] == "movie":
+            #         obj_data[f"{item['themoviedb_type']}/{item['themoviedb']}"] = item
+            #     else:
+            #         if item["themoviedb_season"] == 1:
+            #             obj_data[f"{item['themoviedb_type']}/{item['themoviedb']}"] = item
+            #         obj_data[f"{item['themoviedb_type']}/{item['themoviedb']}/season/{item['themoviedb_season']}"] = item
+            elif platform == "themoviedb":
+                obj_data[f"movie/{item['themoviedb']}"] = item
             bar()
     with open(f"database/{platform}_object.json", "w", encoding="utf-8") as file:
         json.dump(obj_data, file)
@@ -850,6 +916,7 @@ def save_platform_loop(data: list[dict[str, Any]]) -> None:
         "animeplanet",
         "anisearch",
         "annict",
+        "imdb",
         "kaize",
         "kitsu",
         "livechart",
@@ -860,6 +927,7 @@ def save_platform_loop(data: list[dict[str, Any]]) -> None:
         "shoboi",
         "silveryasha",
         "trakt",
+        "themoviedb",
     ]
     # sort key in data
     pprint.print(
@@ -880,6 +948,8 @@ def save_platform_loop(data: list[dict[str, Any]]) -> None:
                 name = Platform.ANISEARCH
             case "annict":
                 name = Platform.ANNICT
+            case "imdb":
+                name = Platform.IMDB
             case "kaize":
                 name = Platform.KAIZE
             case "kitsu":
@@ -900,6 +970,8 @@ def save_platform_loop(data: list[dict[str, Any]]) -> None:
                 name = Platform.SILVERYASHA
             case "trakt":
                 name = Platform.ANITRAKT
+            case "themoviedb":
+                name = Platform.TMDB
             case _:
                 name = Platform.SYSTEM
         pprint.print(
@@ -1058,14 +1130,23 @@ def main() -> None:
         ota = OtakOtaku().get_anime()
         sy_ = simplify_silveryasha_data()
         arm = get_arm()
+        anitrakt = get_anitrakt()
+        fribb = get_fribb_animelists()
         git_changes = check_git_any_changes()
         if git_changes is True:
-            anitrakt = get_anitrakt()
+            pprint.print(Platform.SYSTEM, Status.INFO, "Generating data")
+            pprint.print(Platform.KAIZE, Status.BUILD, "Linking Kaize slug to MyAnimeList ID")
             aod_arr = link_kaize_to_mal(kza, aod_arr)
+            pprint.print(Platform.OTAKOTAKU, Status.BUILD, "Linking Otak Otaku ID to MyAnimeList ID")
             aod_arr = link_otakotaku_to_mal(ota, aod_arr)
+            pprint.print(Platform.SILVERYASHA, Status.BUILD, "Linking Silveryasha ID to MyAnimeList ID")
             aod_arr = link_silveryasha_to_mal(sy_, aod_arr)
+            pprint.print(Platform.ARM, Status.BUILD, "Combining ARM data with AOD data")
             aod_arr = combine_arm(arm, aod_arr)
+            pprint.print(Platform.ANITRAKT, Status.BUILD, "Combining AniTrakt data with AOD data")
             aod_arr = combine_anitrakt(anitrakt, aod_arr)
+            pprint.print(Platform.FRIBB, Status.BUILD, "Combining Fribb's Animelists data with AOD data")
+            aod_arr = combine_fribb(fribb, aod_arr)
             final_arr: list[dict[str, Any]] = []
             with alive_bar(len(aod_arr),
                            title="Fixing missing keys",
@@ -1078,6 +1159,7 @@ def main() -> None:
                         "animeplanet": item.get("animeplanet", None),
                         "anisearch": item.get("anisearch", None),
                         "annict": item.get("annict", None),
+                        "imdb": item.get("imdb", None),
                         "kaize": item.get("kaize", None),
                         "kaize_id": item.get("kaize_id", None),
                         "kitsu": item.get("kitsu", None),
@@ -1088,6 +1170,9 @@ def main() -> None:
                         "shikimori": item.get("shikimori", None),
                         "shoboi": item.get("shoboi", None),
                         "silveryasha": item.get("silveryasha", None),
+                        "themoviedb": item.get("themoviedb", None),
+                        # "themoviedb_type": item.get("themoviedb_type", None),
+                        # "themoviedb_season": item.get("themoviedb_season", None),
                         "trakt": item.get("trakt", None),
                         "trakt_type": item.get("trakt_type", None),
                         "trakt_season": item.get("trakt_season", None),
@@ -1101,12 +1186,6 @@ def main() -> None:
             with open("database/animeapi.json", "r", encoding="utf-8") as file:
                 final_arr = json.load(file)
         update_attribution(final_arr)
-        end_time = time()
-        pprint.print(
-            Platform.SYSTEM,
-            Status.INFO,
-            f"Generator finished in {end_time - start_time:.2f} seconds",
-        )
         update_markdown()
         counts: dict[str, int] = attribution["counts"]  # type: ignore
         print(f"""Data parsed:
@@ -1115,6 +1194,7 @@ def main() -> None:
 * Anime-Planet: {counts["animeplanet"]}
 * aniSearch: {counts["anisearch"]}
 * Annict: {counts["annict"]}
+* IMDb: {counts["imdb"]}
 * Kaize: {counts["kaize"]}
 * Kitsu: {counts["kitsu"]}
 * LiveChart.me: {counts["livechart"]}
@@ -1124,8 +1204,15 @@ def main() -> None:
 * Shikimori: {counts["shikimori"]}
 * Shoboi: {counts["shoboi"]}
 * Silveryasha: {counts["silveryasha"]}
+* The Movie DB: {counts["themoviedb"]}
 * Trakt: {counts["trakt"]}
 """)
+        end_time = time()
+        pprint.print(
+            Platform.SYSTEM,
+            Status.INFO,
+            f"Generator finished in {end_time - start_time:.2f} seconds",
+        )
     except KeyboardInterrupt:
         print()
         pprint.print(Platform.SYSTEM, Status.ERR, "Stopped by user")
