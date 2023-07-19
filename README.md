@@ -94,7 +94,7 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 18 July 2023 13:59:13 UTC
+Last updated: 19 July 2023 05:16:06 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -105,6 +105,7 @@ Last updated: 18 July 2023 13:59:13 UTC
 | `animeplanet` | 22940 |
 | `anisearch` | 17879 |
 | `annict` | 8850 |
+| `imdb` | 2256 |
 | `kaize` | 22982 |
 | `kitsu` | 19223 |
 | `livechart` | 10838 |
@@ -114,6 +115,7 @@ Last updated: 18 July 2023 13:59:13 UTC
 | `shikimori` | 25115 |
 | `shoboi` | 4707 |
 | `silveryasha` | 3982 |
+| `themoviedb` | 280 |
 | `trakt` | 4448 |
 | **Total** | **31560** |
 <!-- /counters -->
