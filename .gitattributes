@@ -1,2 +1,3 @@
 database/raw/**.json            linguist-vendored
 database/*.json                 linguist-generated
+database/*.tsv                  linguist-generated

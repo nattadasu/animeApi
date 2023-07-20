@@ -1,3 +1,4 @@
+import csv
 import json
 import os
 import re
@@ -70,9 +71,12 @@ attribution = {
         "$comment": "The endpoints are stated in Python regex format",
         "anidb": r"/anidb/(?P<media_id>\d+)",
         "anilist": r"/anilist/(?P<media_id>\d+)",
+        "animeapi_tsv": r"/anime(a|A)pi.tsv",
         "animeplanet": r"/animeplanet/(?P<media_id>[\w\-]+)",
         "anisearch": r"/anisearch/(?P<media_id>\d+)",
         "annict": r"/annict/(?P<media_id>\d+)",
+        "heartbeat": r"/(heartbeat|ping)",
+        "imdb": r"/imdb/(?P<media_id>tt[\d]+)",
         "kaize": r"/kaize/(?P<media_id>[\w\-]+)",
         "kitsu": r"/kitsu/(?P<media_id>\d+)",
         "livechart": r"/livechart/(?P<media_id>\d+)",
@@ -80,11 +84,13 @@ attribution = {
         "notify": r"/notify/(?P<media_id>[\w\-_]+)",
         "otakotaku": r"/otakotaku/(?P<media_id>\d+)",
         "repo": r"/",
+        "schema": r"/schema(?:.json)?",
         "shikimori": r"/shikimori/(?P<media_id>\d+)",
         "shoboi": r"/shoboi/(?P<media_id>\d+)",
         "silveryasha": r"/silveryasha/(?P<media_id>\d+)",
         "status": r"/status",
         "syobocal": r"/syobocal/(?P<media_id>\d+)",
+        "themoviedb": r"/themoviedb/movie/(?P<media_id>\d+)",
         "trakt": r"/trakt/(?P<media_type>show|movie)(s)?/(?P<media_id>\d+)(?:/season(s)?/(?P<season_id>\d+))?",
         "updated": r"/updated",
     }
@@ -983,8 +989,36 @@ def save_platform_loop(data: list[dict[str, Any]]) -> None:
     return None
 
 
+def save_list_to_tsv(data: list[dict[str, Any]], file_path: str) -> None:
+    """Save list to TSV"""
+    with open(f"{file_path}.tsv", "w", encoding="utf-8", newline="") as file_:
+        writer = csv.writer(file_, delimiter="\t", lineterminator="\n")
+        writer.writerow(data[0].keys())
+        with alive_bar(len(data),
+                       title="Saving data to TSV",
+                       spinner=None) as bar:  # type: ignore
+            for item in data:
+                writer.writerow(item.values())
+                bar()
+    return None
+
+
 def update_attribution(data: list[dict[str, Any]]) -> None:
     """Update attribution"""
+    pprint.print(
+        Platform.SYSTEM,
+        Status.INFO,
+        "Save data to JSON",
+    )
+    with open("database/animeapi.json", "w", encoding="utf-8") as file_:
+        json.dump(data, file_)
+    pprint.print(
+        Platform.SYSTEM,
+        Status.INFO,
+        "Save data to TSV",
+    )
+    save_list_to_tsv(data, "database/animeapi")
+
     pprint.print(
         Platform.SYSTEM,
         Status.INFO,
@@ -994,8 +1028,10 @@ def update_attribution(data: list[dict[str, Any]]) -> None:
     attribution["updated"]["iso"] = now.isoformat()  # type: ignore
     attribution["updated"]["timestamp"] = int(now.timestamp())  # type: ignore
     populate_contributors()
+
     total_data = len(data)
     save_platform_loop(data)
+
     attribution["counts"]["total"] = total_data  # type: ignore
     with open("api/status.json", "w", encoding="utf-8") as file:
         json.dump(attribution, file)
@@ -1006,6 +1042,10 @@ def update_attribution(data: list[dict[str, Any]]) -> None:
     )
     return None
 
+def add_spaces(data: int, spaces_max: int = 9) -> str:
+    """Add spaces to data"""
+    spaces = spaces_max - len(f"{data}")
+    return f"{' ' * spaces}{data}"
 
 def update_markdown() -> None:
     """Update counters in README.md by looking <!-- counters --><!-- /counters -->"""
@@ -1016,17 +1056,62 @@ def update_markdown() -> None:
     )
     with open("README.md", "r", encoding="utf-8") as file:
         readme = file.read()
-    table = "| Platform | Count |\n| --- | --- |\n"
-    tram = ""
-    for key, value in attribution["counts"].items():  # type: ignore
-        if key == "total":
-            tram = f"| **Total** | **{value}** |\n"
-        else:
-            table += f"| `{key}` | {value} |\n"
-    table += tram
+    counts: dict[str, int] = attribution["counts"]  # type: ignore
+    adb = add_spaces(counts["anidb"])
+    anl = add_spaces(counts["anilist"])
+    apl = add_spaces(counts["animeplanet"])
+    ase = add_spaces(counts["anisearch"])
+    anc = add_spaces(counts["annict"])
+    idb = add_spaces(counts["imdb"])
+    kze = add_spaces(counts["kaize"])
+    kts = add_spaces(counts["kitsu"])
+    lvc = add_spaces(counts["livechart"])
+    mal = add_spaces(counts["myanimelist"])
+    ntf = add_spaces(counts["notify"])
+    ook = add_spaces(counts["otakotaku"])
+    shk = add_spaces(counts["shikimori"])
+    shb = add_spaces(counts["shoboi"])
+    sys = add_spaces(counts["silveryasha"])
+    tmd = add_spaces(counts["themoviedb"])
+    trk = add_spaces(counts["trakt"])
+    ttl = counts["total"]
+    table = f"""| Platform           |            ID |     Count |
+| :----------------- | ------------: | --------: |
+| aniDB              |       `anidb` | {adb} |
+| AniList            |     `anilist` | {anl} |
+| Anime-Planet       | `animeplanet` | {apl} |
+| aniSearch          |   `anisearch` | {ase} |
+| Annict             |      `annict` | {anc} |
+| IMDb               |        `imdb` | {idb} |
+| Kaize              |       `kaize` | {kze} |
+| Kitsu              |       `kitsu` | {kts} |
+| LiveChart          |   `livechart` | {lvc} |
+| MyAnimeList        | `myanimelist` | {mal} |
+| Notify.moe         |      `notify` | {ntf} |
+| Otak Otaku         |   `otakotaku` | {ook} |
+| Shikimori          |   `shikimori` | {shk} |
+| Shoboi/Syobocal    |      `shoboi` | {shb} |
+| Silver Yasha       | `silveryasha` | {sys} |
+| The Movie Database |  `themoviedb` | {tmd} |
+| Trakt              |       `trakt` | {trk} |
+|                    |               |           |
+|                    |     **Total** | **{ttl}** |
+"""
     readme = re.sub(
         r"<!-- counters -->(.|\n)*<!-- \/counters -->",
         f"<!-- counters -->\n{table}<!-- /counters -->",
+        readme,
+    )
+
+    pprint.print(
+        Platform.SYSTEM,
+        Status.INFO,
+        "Updating status example in README.md",
+    )
+    status = json.dumps(attribution, indent=2, ensure_ascii=False).replace('\\', '\\\\')
+    readme = re.sub(
+        r"<!-- status -->(.|\n)*<!-- \/status -->",
+        f"<!-- status -->\n```json\n{status}\n```\n<!-- /status -->",
         readme,
     )
 
@@ -1040,6 +1125,12 @@ def update_markdown() -> None:
     readme = re.sub(
         r"<!-- updated -->(.|\n)*<!-- \/updated -->",
         f"<!-- updated -->\nLast updated: {datetime.fromtimestamp(now).strftime('%d %B %Y %H:%M:%S UTC')}\n<!-- /updated -->",
+        readme,
+    )
+    formatted_time = datetime.utcfromtimestamp(now).strftime("%m/%d/%Y %H:%M:%S UTC")
+    readme = re.sub(
+        r"<!-- updated-txt -->(.|\n)*<!-- \/updated-txt -->",
+        f"<!-- updated-txt -->\n```json\nUpdated on {formatted_time}\n```\n<!-- /updated-txt -->",
         readme,
     )
 

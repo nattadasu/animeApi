@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD028 MD033 -->
 <!-- omit in toc -->
 # nattadasu's AnimeAPI RESTful API
 
@@ -20,8 +20,10 @@ and [arm] by [kawaiioverflow][ko], while adding support for more databases.
 * [Usage](#usage)
   * [Differences between v1, v2, and v3](#differences-between-v1-v2-and-v3)
   * [Get status and statistics](#get-status-and-statistics)
+  * [Get latency report](#get-latency-report)
   * [Get updated date and time](#get-updated-date-and-time)
   * [Get all items in Array](#get-all-items-in-array)
+  * [Fetch all item as TSV (Tab Separated Values) file](#fetch-all-item-as-tsv-tab-separated-values-file)
   * [Get All ID in Object/Dictionary format of each provider](#get-all-id-in-objectdictionary-format-of-each-provider)
   * [Get All ID in Array/List format of each provider](#get-all-id-in-arraylist-format-of-each-provider)
   * [Get anime relation mapping data](#get-anime-relation-mapping-data)
@@ -44,40 +46,47 @@ Compared to other relation mapping API, AnimeAPI provides more databases yet
 it's still easy to use. It also provides more data than other relation mapping
 API, such as the anime title itself.
 
+Also, AnimeAPI uses object/dictionary format instead of array/list for each
+provider when you want to [get individual relation mapping data](#get-anime-relation-mapping-data).
+This makes it easier and faster to get the data you want since the machine
+doesn't need to iterate through the array/list to get the data you want,
+although with the cost of larger repository size.
+
 Below is the comparison between AnimeAPI and other relation mapping API.
 
-| Highlights                      | AnimeAPI                               | [ARM][arm]                  | [BQA][bq]     | [Hato][hato]              | [SIMKL][smk]            | [Trakt][trk] | [AOD][aod]                                                          | [FAL][fal]   | [ALAL][alal]                           | [ATIP][atip]     |
-| ------------------------------- | -------------------------------------- | --------------------------- | ------------- | ------------------------- | ----------------------- | ------------ | ------------------------------------------------------------------- | ------------ | -------------------------------------- | ---------------- |
-| License                         | AGPL-3.0                               | MIT                         | AGPL-3.0      | Apache-2.0                | Proprietary             | Proprietary  | AGPL-3.0                                                            | Unknown      | Unknown                                | Unknown          |
-| Access                          | Public                                 | Public                      | Public        | Paid, API Key             | API Key                 | API Key      | Public                                                              | Public       | Public                                 | Public           |
-| Format                          | REST                                   | Node.js Package, REST, JSON | REST          | REST                      | REST                    | REST         | JSON                                                                | JSON         | XML                                    | JSON             |
-| Base Data                       | AOD, ARM, ATIP, FAL<br>![f:kz] ![f:oo] | ![f:ntf]                    | FAL           | ![f:al] ![f:kts] ![f:ntf] | ![f:tvdb] ![f:adb]      | ![f:tmdb]    | ![f:mal] ![f:al] ![f:adb] ![f:kts] ![f:lc] ![f:as] ![f:ap] ![f:ntf] | AOD, ALAL    | ![f:adb] ![f:tvdb] ![f:tmdb] ![f:imdb] | [aniTrakt][atrk] |
-| Rate Limit                      | -                                      | -                           | -             | -                         | 1000/day for unverified | 1000/5 mins  | Unapplicable                                                        | Unapplicable | Unapplicable                           | Unapplicable     |
-| Is Building Process Public?     | Yes                                    | No                          | No            | No                        | -                       | -            | No                                                                  | Yes          | No                                     | Yes              |
-|                                 |                                        |                             |               |                           |                         |              |                                                                     |              |                                        |                  |
-| Anime Title                     | ✔                                      | ❌                           | ❌             | ❌                         | ✔                       | ✔            | ✔                                                                   | ❌            | ✔                                      | ✔                |
-| [![f:adb] aniDB][adb]           | ✔                                      | ❌                           | ✔             | ✔                         | ✔                       | ❌            | ✔                                                                   | ✔            | ❌                                      | ❌                |
-| [![f:al] AniList][al]           | ✔                                      | ✔                           | ✔             | ✔                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔            | ❌                                      | ❌                |
-| [![f:ap] Anime-Planet][ap]      | ✔                                      | ❌                           | ✔             | ❌                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔            | ❌                                      | ❌                |
-| [![f:as] AniSearch][as]         | ✔                                      | ❌                           | ✔             | ❌                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔            | ❌                                      | ❌                |
-| [![f:an] Annict][an]            | ✔                                      | ✔                           | ❌             | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌            | ❌                                      | ❌                |
-| [![f:bgm] Bangumi][bgm]         | ❌                                      | ❌                           | ❌             | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌            | ❌                                      | ❌                |
-| [![f:imdb] IMDB][imdb]          | ✔                                      | ❌                           | ✔             | ❌                         | ✔                       | ✔            | ❌                                                                   | ✔            | ✔                                      | ❌                |
-| [![f:kz] Kaize][kz]             | ✔                                      | ❌                           | ❌             | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌            | ❌                                      | ❌                |
-| [![f:kts] Kitsu][kts]           | ✔                                      | ❌                           | ✔             | ✔                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔            | ❌                                      | ❌                |
-| [![f:lc] LiveChart][lc]         | ✔                                      | ❌                           | ✔             | ❌                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔            | ❌                                      | ❌                |
-| [![f:mal] MyAnimeList][mal]     | ✔                                      | ✔                           | ✔             | ✔                         | ✔                       | ❌            | ✔                                                                   | ✔            | ❌                                      | ✔                |
-| [![f:ntj] Nautiljon][ntj]       | ❌                                      | ❌                           | ❌             | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌            | ❌                                      | ❌                |
-| [![f:ntf] Notify][ntf]          | ✔                                      | ❌                           | ✔             | ✔                         | ❌                       | ❌            | ✔                                                                   | ✔            | ❌                                      | ❌                |
-| [![f:oo] Otak Otaku][oo]        | ✔                                      | ❌                           | ❌             | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌            | ❌                                      | ❌                |
-| [![f:shk] Shikimori][shk]       | ✔                                      | ✔ via MAL                   | ✔ via MAL     | ✔ via MAL                 | ✔ via MAL               | ❌            | ✔ via MAL                                                           | ✔ via MAL    | ❌                                      | ✔ via MAL        |
-| [![f:shb] Shoboi Calendar][shb] | ✔                                      | ✔                           | ❌             | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌            | ❌                                      | ❌                |
-| [![f:sy] SilverYasha DBTI][sy]  | ✔                                      | ❌                           | ❌             | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌            | ❌                                      | ❌                |
-| [![f:smk] SIMKL][smk]           | ✔ via IMDb                             | ❌                           | ❌             | ❌                         | ✔                       | ❌            | ❌                                                                   | ❌            | ❌                                      | ❌                |
-| [![f:tmdb] TMDB][tmdb]          | ✔, only movie                          | ❌                           | ✔, only movie | ❌                         | ✔                       | ✔            | ❌                                                                   | ✔, only movie            | ✔                                      | ❌                |
-| [![f:trk] Trakt][trk]           | ✔                                      | ❌                           | ❌             | ❌                         | ❌                       | ✔            | ❌                                                                   | ❌            | ❌                                      | ✔                |
-| [![f:tvdb] TVDB][tvdb]          | ❌                                      | ❌                           | ❌             | ❌                         | ✔                       | ✔            | ❌                                                                   | ✔            | ✔                                      | ❌                |
-| [![f:tvtm] TVTime][tvtm]          | ❌                                      | ❌                           | ❌             | ❌                         | ✔ via TVDB                       | ✔ via TVDB            | ❌                                                                   | ✔ via TVDB            | ✔ via TVDB                                     | ❌                |
+| Highlights                      | AnimeAPI                               | [ARM][arm]                  | [BQA][bq]          | [Hato][hato]              | [SIMKL][smk]            | [Trakt][trk] | [AOD][aod]                                                          | [FAL][fal]    | [ALAL][alal]                           | [ATIP][atip]     |
+| ------------------------------- | -------------------------------------- | --------------------------- | ------------------ | ------------------------- | ----------------------- | ------------ | ------------------------------------------------------------------- | ------------- | -------------------------------------- | ---------------- |
+| License                         | AGPL-3.0                               | MIT                         | AGPL-3.0           | Apache-2.0                | Proprietary             | Proprietary  | AGPL-3.0                                                            | Unknown       | Unknown                                | Unknown          |
+| Access                          | Public                                 | Public                      | Public             | Paid, API Key             | API Key                 | API Key      | Public                                                              | Public        | Public                                 | Public           |
+| Format                          | REST                                   | Node.js Package, REST, JSON | REST               | REST                      | REST                    | REST         | JSON                                                                | JSON          | XML                                    | JSON             |
+| Main Languages                  | Python, JSON, TSV                      | JavaScript, JSON            | TypeScript, SQLite | C#, MySQL, PostgreSQL     | -                       | -            | JSON                                                                | JSON          | XLSL, XML                              | PowerShell, JSON |
+| Base Data                       | AOD, ARM, ATIP, FAL<br>![f:kz] ![f:oo] | ![f:ntf]                    | FAL                | ![f:al] ![f:kts] ![f:ntf] | ![f:tvdb] ![f:adb]      | ![f:tmdb]    | ![f:mal] ![f:al] ![f:adb] ![f:kts] ![f:lc] ![f:as] ![f:ap] ![f:ntf] | AOD, ALAL     | ![f:adb] ![f:tvdb] ![f:tmdb] ![f:imdb] | [aniTrakt][atrk] |
+| Rate Limit                      | -                                      | -                           | -                  | -                         | 1000/day for unverified | 1000/5 mins  | Unapplicable                                                        | Unapplicable  | Unapplicable                           | Unapplicable     |
+| Is Building Process Public?     | Yes                                    | No                          | No                 | No                        | -                       | -            | No                                                                  | Yes           | No                                     | Yes              |
+|                                 |                                        |                             |                    |                           |                         |              |                                                                     |               |                                        |                  |
+| Anime Title                     | ✔                                      | ❌                           | ❌                  | ❌                         | ✔                       | ✔            | ✔                                                                   | ❌             | ✔                                      | ✔                |
+| [![f:adb] aniDB][adb]           | ✔                                      | ❌                           | ✔                  | ✔                         | ✔                       | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
+| [![f:al] AniList][al]           | ✔                                      | ✔                           | ✔                  | ✔                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
+| [![f:ap] Anime-Planet][ap]      | ✔                                      | ❌                           | ✔                  | ❌                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
+| [![f:as] AniSearch][as]         | ✔                                      | ❌                           | ✔                  | ❌                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
+| [![f:an] Annict][an]            | ✔                                      | ✔                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:bgm] Bangumi][bgm]         | ❌                                      | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:imdb] IMDB][imdb]          | ✔                                      | ❌                           | ✔                  | ❌                         | ✔                       | ✔            | ❌                                                                   | ✔             | ✔                                      | ❌                |
+| [![f:kz] Kaize][kz]             | ✔                                      | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:kts] Kitsu][kts]           | ✔                                      | ❌                           | ✔                  | ✔                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
+| [![f:lc] LiveChart][lc]         | ✔                                      | ❌                           | ✔                  | ❌                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
+| [![f:mal] MyAnimeList][mal]     | ✔                                      | ✔                           | ✔                  | ✔                         | ✔                       | ❌            | ✔                                                                   | ✔             | ❌                                      | ✔                |
+| [![f:ntj] Nautiljon][ntj]       | ❌                                      | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:ntf] Notify][ntf]          | ✔                                      | ❌                           | ✔                  | ✔                         | ❌                       | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
+| [![f:oo] Otak Otaku][oo]        | ✔                                      | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:shk] Shikimori][shk]       | ✔                                      | ✔ via MAL                   | ✔ via MAL          | ✔ via MAL                 | ✔ via MAL               | ❌            | ✔ via MAL                                                           | ✔ via MAL     | ❌                                      | ✔ via MAL        |
+| [![f:shb] Shoboi Calendar][shb] | ✔                                      | ✔                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:sy] SilverYasha DBTI][sy]  | ✔                                      | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:smk] SIMKL][smk]           | ✔ via IMDb                             | ❌                           | ❌                  | ❌                         | ✔                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:tmdb] TMDB][tmdb]          | ✔, only movie                          | ❌                           | ✔, only movie      | ❌                         | ✔                       | ✔            | ❌                                                                   | ✔, only movie | ✔                                      | ❌                |
+| [![f:trk] Trakt][trk]           | ✔                                      | ❌                           | ❌                  | ❌                         | ❌                       | ✔            | ❌                                                                   | ❌             | ❌                                      | ✔                |
+| [![f:tvdb] TVDB][tvdb]          | ❌                                      | ❌                           | ❌                  | ❌                         | ✔                       | ✔            | ❌                                                                   | ✔             | ✔                                      | ❌                |
+| [![f:tvtm] TVTime][tvtm]        | ❌                                      | ❌                           | ❌                  | ❌                         | ✔ via TVDB              | ✔ via TVDB   | ❌                                                                   | ✔ via TVDB    | ✔ via TVDB                             | ❌                |
 
 <!-- omit in toc -->
 ### Legends
@@ -166,23 +175,64 @@ each version are as follows:
 
 > **Note**: This endpoint is only available on v3
 
+MIME Type: `application/json`
+
 ```http
 GET /status
 ```
 
+<details>
+<summary>Response example</summary>
+
+<!-- status -->
+<!-- /status -->
+
+</details>
+
+### Get latency report
+
+> **Note**: This endpoint is only available on v3
+
+MIME Type: `application/json`
+
+```http
+GET /heartbeat
+```
+
+<details>
+<summary>Response example</summary>
+
+```json
+{
+  "status": "OK",
+  "code": 200,
+  "response_time": "0.000s",
+  "request_time": "0.000s",
+  "request_epoch": 1626682566.0,
+}
+```
+
+</details>
+
 ### Get updated date and time
+
+MIME Type: `text/plain`
 
 ```http
 GET /updated
 ```
 
-Response example:
+<details>
+<summary>Response example</summary>
 
-```txt
-Updated on MM/DD/YYYY hh:mm:ss UTC
-```
+<!-- updated-txt -->
+<!-- /updated-txt -->
+
+</details>
 
 ### Get all items in Array
+
+MIME Type: `application/json`
 
 ```http
 GET /animeApi.json
@@ -192,7 +242,21 @@ On `v3`, you will automatically redirected to GitHub raw file URL of the
 provider's JSON file. Make sure to allow `302` and `304` status code on your
 application if you want to use this endpoint.
 
+### Fetch all item as TSV (Tab Separated Values) file
+
+> **Note**: This endpoint is only available on v3
+
+> **Note**: Use this endpoint if you want to import the data to spreadsheet.
+
+MIME Type: `text/tab-separated-values`
+
+```http
+GET /animeApi.tsv
+```
+
 ### Get All ID in Object/Dictionary format of each provider
+
+MIME Type: `application/json`
 
 ```http
 GET /:platform.json
@@ -212,6 +276,8 @@ provider's JSON file. Make sure to allow `302` and `304` status code on your
 application if you want to use this endpoint.
 
 ### Get All ID in Array/List format of each provider
+
+MIME Type: `application/json`
 
 ```http
 GET /:platform().json
@@ -235,6 +301,8 @@ application if you want to use this endpoint.
 
 ### Get anime relation mapping data
 
+MIME Type: `application/json` on `v3`, `application/octet-stream` on `v2`
+
 ```http
 GET /:platform/:mediaid
 ```
@@ -250,10 +318,11 @@ GET /:platform/:mediaid
 
 * `:mediaid` is the ID of the anime in the platform.
 
-Response example:
+<details>
+<summary>Response example</summary>
 
 ```http
-GET /myanimelist/1
+GET https://animeapi.my.id/myanimelist/1
 ```
 
 <!-- sample -->
@@ -283,6 +352,8 @@ GET /myanimelist/1
 }
 ```
 <!-- /sample -->
+
+</details>
 
 #### Provider exclusive rules
 
@@ -346,7 +417,8 @@ For example, to get the ID of Mairimashita Iruma-kun Season 3, you can use:
 GET https://animeapi.my.id/trakt/shows/152334/seasons/3
 ```
 
-The response will be:
+<details>
+<summary>Response example from Trakt</summary>
 
 <!-- trakt152334 -->
 ```json
@@ -375,6 +447,8 @@ The response will be:
 }
 ```
 <!-- /trakt152334 -->
+
+</details>
 
 ## Schema
 
