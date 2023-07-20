@@ -113,12 +113,15 @@ class OtakOtaku:
         file_path = "database/raw/otakotaku.json"
         anime_list: list[dict[str, Any]] = []
         latest_file_path = "database/raw/_latest_otakotaku.txt"
+        if os.path.exists(file_path):
+            with open(file_path, "r", encoding="utf-8") as file:
+                anime_list = json.load(file)
         try:
             # raise ConnectionError("Failed to connect to otakotaku.com")
             latest_id = self.get_latest_anime()
             if not latest_id:
                 raise ConnectionError("Failed to connect to otakotaku.com")
-            if os.path.exists(latest_file_path) and not datetime.now().day in [1, 15]:
+            if not datetime.now().day in [1, 15] and len(anime_list) > 0:
                 with open(latest_file_path, "r", encoding="utf-8") as file:
                     latest = int(file.read().strip())
                 if latest == latest_id:
@@ -127,9 +130,8 @@ class OtakOtaku:
                         Status.PASS,
                         "Data is up to date, loading from local file",
                     )
-                    with open(file_path, "r", encoding="utf-8") as file:
-                        anime_list = json.load(file)
                     return anime_list
+                latest = latest + 1
             else:
                 latest = 1
             with alive_bar(latest_id, title="Getting data", spinner=None) as bar:  # type: ignore
