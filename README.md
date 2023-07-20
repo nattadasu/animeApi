@@ -103,30 +103,31 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 19 July 2023 05:16:06 UTC
+Last updated: 20 July 2023 04:59:05 UTC
 <!-- /updated -->
 
 <!-- counters -->
-| Platform | Count |
-| --- | --- |
-| `anidb` | 12879 |
-| `anilist` | 18944 |
-| `animeplanet` | 22940 |
-| `anisearch` | 17879 |
-| `annict` | 8850 |
-| `imdb` | 2256 |
-| `kaize` | 22982 |
-| `kitsu` | 19223 |
-| `livechart` | 10838 |
-| `myanimelist` | 25115 |
-| `notify` | 15820 |
-| `otakotaku` | 2537 |
-| `shikimori` | 25115 |
-| `shoboi` | 4707 |
-| `silveryasha` | 3982 |
-| `themoviedb` | 280 |
-| `trakt` | 4448 |
-| **Total** | **31560** |
+| Platform           |            ID |     Count |
+| :----------------- | ------------: | --------: |
+| aniDB              |       `anidb` |     12879 |
+| AniList            |     `anilist` |     18944 |
+| Anime-Planet       | `animeplanet` |     22940 |
+| aniSearch          |   `anisearch` |     17879 |
+| Annict             |      `annict` |      8850 |
+| IMDb               |        `imdb` |      2256 |
+| Kaize              |       `kaize` |     22982 |
+| Kitsu              |       `kitsu` |     19223 |
+| LiveChart          |   `livechart` |     10838 |
+| MyAnimeList        | `myanimelist` |     25115 |
+| Notify.moe         |      `notify` |     15820 |
+| Otak Otaku         |   `otakotaku` |         2 |
+| Shikimori          |   `shikimori` |     25115 |
+| Shoboi/Syobocal    |      `shoboi` |      4707 |
+| Silver Yasha       | `silveryasha` |      3982 |
+| The Movie Database |  `themoviedb` |       280 |
+| Trakt              |       `trakt` |      4448 |
+|                    |               |           |
+|                    |     **Total** | **31560** |
 <!-- /counters -->
 
 ## Usage
@@ -185,6 +186,75 @@ GET /status
 <summary>Response example</summary>
 
 <!-- status -->
+```json
+{
+  "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
+  "updated": {
+    "timestamp": 1689829145,
+    "iso": "2023-07-20T04:59:05.185569+00:00"
+  },
+  "contributors": [
+    "nattadasu"
+  ],
+  "sources": [
+    "manami-project/anime-offline-database",
+    "kawaiioverflow/arm",
+    "ryuuganime/aniTrakt-IndexParser",
+    "https://db.silveryasha.web.id",
+    "https://kaize.io",
+    "https://otakotaku.com"
+  ],
+  "license": "AGPL-3.0",
+  "website": "https://animeapi.my.id",
+  "counts": {
+    "anidb": 12879,
+    "anilist": 18944,
+    "animeplanet": 22940,
+    "anisearch": 17879,
+    "annict": 8850,
+    "imdb": 2256,
+    "kaize": 22982,
+    "kitsu": 19223,
+    "livechart": 10838,
+    "myanimelist": 25115,
+    "notify": 15820,
+    "otakotaku": 2,
+    "shikimori": 25115,
+    "shoboi": 4707,
+    "silveryasha": 3982,
+    "themoviedb": 280,
+    "trakt": 4448,
+    "total": 31560
+  },
+  "endpoints": {
+    "$comment": "The endpoints are stated in Python regex format",
+    "anidb": "/anidb/(?P<media_id>\\d+)",
+    "anilist": "/anilist/(?P<media_id>\\d+)",
+    "animeapi_tsv": "/anime(a|A)pi.tsv",
+    "animeplanet": "/animeplanet/(?P<media_id>[\\w\\-]+)",
+    "anisearch": "/anisearch/(?P<media_id>\\d+)",
+    "annict": "/annict/(?P<media_id>\\d+)",
+    "heartbeat": "/(heartbeat|ping)",
+    "imdb": "/imdb/(?P<media_id>tt[\\d]+)",
+    "kaize": "/kaize/(?P<media_id>[\\w\\-]+)",
+    "kitsu": "/kitsu/(?P<media_id>\\d+)",
+    "livechart": "/livechart/(?P<media_id>\\d+)",
+    "myanimelist": "/myanimelist/(?P<media_id>\\d+)",
+    "notify": "/notify/(?P<media_id>[\\w\\-_]+)",
+    "otakotaku": "/otakotaku/(?P<media_id>\\d+)",
+    "repo": "/",
+    "schema": "/schema(?:.json)?",
+    "shikimori": "/shikimori/(?P<media_id>\\d+)",
+    "shoboi": "/shoboi/(?P<media_id>\\d+)",
+    "silveryasha": "/silveryasha/(?P<media_id>\\d+)",
+    "status": "/status",
+    "syobocal": "/syobocal/(?P<media_id>\\d+)",
+    "themoviedb": "/themoviedb/movie/(?P<media_id>\\d+)",
+    "trakt": "/trakt/(?P<media_type>show|movie)(s)?/(?P<media_id>\\d+)(?:/season(s)?/(?P<season_id>\\d+))?",
+    "updated": "/updated"
+  }
+}
+```
 <!-- /status -->
 
 </details>
@@ -226,6 +296,9 @@ GET /updated
 <summary>Response example</summary>
 
 <!-- updated-txt -->
+```json
+Updated on 07/20/2023 04:59:05 UTC
+```
 <!-- /updated-txt -->
 
 </details>
@@ -341,7 +414,7 @@ GET https://animeapi.my.id/myanimelist/1
   "livechart": 3418,
   "myanimelist": 1,
   "notify": "Tk3ccKimg",
-  "otakotaku": 1149,
+  "otakotaku": null,
   "shikimori": 1,
   "shoboi": 538,
   "silveryasha": 2652,
@@ -436,7 +509,7 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
   "livechart": 10780,
   "myanimelist": 49784,
   "notify": "Okl9YtInR",
-  "otakotaku": 2305,
+  "otakotaku": null,
   "shikimori": 49784,
   "shoboi": 6489,
   "silveryasha": 3702,
