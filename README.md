@@ -46,7 +46,7 @@ automate, and Python for backend.
 
 ## Statistics
 
-This API has been updated on 07/20/2023 07:37:20 UTC, with a total of **31560** titles indexed.
+This API has been updated on 07/21/2023 07:35:37 UTC, with a total of **31560** titles indexed.
 
 |              Provider |     Code      | Count  |
 | --------------------: | :-----------: | :----- |
@@ -64,7 +64,7 @@ This API has been updated on 07/20/2023 07:37:20 UTC, with a total of **31560** 
 |             Shikimori |  `shikimori`  | 25008 |
 |       Shoboi Calendar |    `shoboi`   | 4700 |
 | DB Tontonan Indonesia | `silveryasha` | 3827 |
-|                 Trakt |    `trakt`    | 4437 |
+|                 Trakt |    `trakt`    | 4439 |
 
 ## Returned Value
 
