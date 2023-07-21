@@ -103,7 +103,7 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 21 July 2023 05:15:30 UTC
+Last updated: 21 July 2023 07:52:34 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -125,7 +125,7 @@ Last updated: 21 July 2023 05:15:30 UTC
 | Shoboi/Syobocal    |      `shoboi` |      4707 |
 | Silver Yasha       | `silveryasha` |      3982 |
 | The Movie Database |  `themoviedb` |       280 |
-| Trakt              |       `trakt` |      4448 |
+| Trakt              |       `trakt` |      4450 |
 |                    |               |           |
 |                    |     **Total** | **31560** |
 <!-- /counters -->
@@ -190,8 +190,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1689916530,
-    "iso": "2023-07-21T05:15:30.180184+00:00"
+    "timestamp": 1689925954,
+    "iso": "2023-07-21T07:52:34.769143+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -223,7 +223,7 @@ GET /status
     "shoboi": 4707,
     "silveryasha": 3982,
     "themoviedb": 280,
-    "trakt": 4448,
+    "trakt": 4450,
     "total": 31560
   },
   "endpoints": {
@@ -297,7 +297,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```json
-Updated on 07/21/2023 05:15:30 UTC
+Updated on 07/21/2023 07:52:34 UTC
 ```
 <!-- /updated-txt -->
 
