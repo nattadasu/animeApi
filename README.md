@@ -103,7 +103,7 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 23 July 2023 05:14:48 UTC
+Last updated: 24 July 2023 05:19:36 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -111,13 +111,13 @@ Last updated: 23 July 2023 05:14:48 UTC
 | :----------------- | ------------: | --------: |
 | aniDB              |       `anidb` |     12892 |
 | AniList            |     `anilist` |     18957 |
-| Anime-Planet       | `animeplanet` |     22962 |
+| Anime-Planet       | `animeplanet` |     22961 |
 | aniSearch          |   `anisearch` |     17906 |
 | Annict             |      `annict` |      8850 |
 | IMDb               |        `imdb` |      2256 |
-| Kaize              |       `kaize` |     22980 |
+| Kaize              |       `kaize` |     22979 |
 | Kitsu              |       `kitsu` |     19289 |
-| LiveChart          |   `livechart` |     10851 |
+| LiveChart          |   `livechart` |     10850 |
 | MyAnimeList        | `myanimelist` |     25206 |
 | Notify.moe         |      `notify` |     15834 |
 | Otak Otaku         |   `otakotaku` |      2540 |
@@ -127,7 +127,7 @@ Last updated: 23 July 2023 05:14:48 UTC
 | The Movie Database |  `themoviedb` |       280 |
 | Trakt              |       `trakt` |      4450 |
 |                    |               |           |
-|                    |     **Total** | **31663** |
+|                    |     **Total** | **31634** |
 <!-- /counters -->
 
 ## Usage
@@ -190,8 +190,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1690089288,
-    "iso": "2023-07-23T05:14:48.787405+00:00"
+    "timestamp": 1690175976,
+    "iso": "2023-07-24T05:19:36.612365+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -209,13 +209,13 @@ GET /status
   "counts": {
     "anidb": 12892,
     "anilist": 18957,
-    "animeplanet": 22962,
+    "animeplanet": 22961,
     "anisearch": 17906,
     "annict": 8850,
     "imdb": 2256,
-    "kaize": 22980,
+    "kaize": 22979,
     "kitsu": 19289,
-    "livechart": 10851,
+    "livechart": 10850,
     "myanimelist": 25206,
     "notify": 15834,
     "otakotaku": 2540,
@@ -224,7 +224,7 @@ GET /status
     "silveryasha": 3982,
     "themoviedb": 280,
     "trakt": 4450,
-    "total": 31663
+    "total": 31634
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format",
@@ -297,7 +297,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```json
-Updated on 07/23/2023 05:14:48 UTC
+Updated on 07/24/2023 05:19:36 UTC
 ```
 <!-- /updated-txt -->
 
