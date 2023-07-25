@@ -1,6 +1,8 @@
 <!-- markdownlint-disable MD028 MD033 -->
 <!-- omit in toc -->
 # nattadasu's AnimeAPI RESTful API
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fnattadasu%2FanimeApi.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fnattadasu%2FanimeApi?ref=badge_shield)
+
 
 AnimeAPI (also known as aniApi) is a RESTful API that provides anime relation
 mapping across multiple anime databases. It mainly focuses on providing
@@ -258,6 +260,9 @@ GET /status
 <!-- /status -->
 
 </details>
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fnattadasu%2FanimeApi.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fnattadasu%2FanimeApi?ref=badge_large)
 
 ### Get latency report
 
