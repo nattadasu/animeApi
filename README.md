@@ -46,22 +46,22 @@ automate, and Python for backend.
 
 ## Statistics
 
-This API has been updated on 07/24/2023 07:44:55 UTC, with a total of **31634** titles indexed.
+This API has been updated on 07/26/2023 07:38:25 UTC, with a total of **31655** titles indexed.
 
 |              Provider |     Code      | Count  |
 | --------------------: | :-----------: | :----- |
-|                 aniDb |    `anidb`    | 12892 |
-|               AniList |   `anilist`   | 17324 |
-|          Anime-Planet | `animeplanet` | 22961 |
-|             aniSearch |  `anisearch`  | 17906 |
+|                 aniDb |    `anidb`    | 12896 |
+|               AniList |   `anilist`   | 17328 |
+|          Anime-Planet | `animeplanet` | 22977 |
+|             aniSearch |  `anisearch`  | 17908 |
 |                Annict |   `annict`    | 8818 |
-|                 Kaize |    `kaize`    | 24089 |
-|                 Kitsu |    `kitsu`    | 19289 |
-|             LiveChart |  `livechart`  | 10850 |
-|           MyAnimeList | `myanimelist` | 25099 |
-|                Notify |    `notify`   | 15834 |
-|            Otak Otaku |  `otakotaku`  | 2537 |
-|             Shikimori |  `shikimori`  | 25099 |
+|                 Kaize |    `kaize`    | 24087 |
+|                 Kitsu |    `kitsu`    | 19303 |
+|             LiveChart |  `livechart`  | 10857 |
+|           MyAnimeList | `myanimelist` | 25121 |
+|                Notify |    `notify`   | 15835 |
+|            Otak Otaku |  `otakotaku`  | 2538 |
+|             Shikimori |  `shikimori`  | 25121 |
 |       Shoboi Calendar |    `shoboi`   | 4700 |
 | DB Tontonan Indonesia | `silveryasha` | 3827 |
 |                 Trakt |    `trakt`    | 4439 |
