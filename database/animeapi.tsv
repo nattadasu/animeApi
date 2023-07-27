@@ -30,7 +30,7 @@ title	anidb	anilist	animeplanet	anisearch	annict	imdb	kaize	kaize_id	kitsu	livec
 #holoEN3DRepeat									47617											
 #Ima made de Ichiban Yokatta Sex The Animation		146951		17271							51723			51723						
 'Twas the Night Before Christmas									43395											
-(a long day of) Mr. Calpaccio			a-long-day-of-mr-calpaccio				a-long-day-of-mr-calpaccio		41656		36734			36734						
+(a long day of) Mr. Calpaccio			a-long-day-of-mr-calpaccio				a-long-day-of-mr-calpaccio	3489	41656		36734			36734						
 (K)NoW_NAME: Harvest			knowname-harvest																	
 (K)NoW_NAME: Knew day			know-name-knew-day																	
 (Making of) Evangelion: Another Impact			making-of-evangelion-another-impact																	
@@ -373,7 +373,7 @@ A tree in the room			a-tree-in-the-room
 A U: Wei Chengzhang Jia You				15592																
 A Viva Non Non		143551	tempalay-a-viva-non-non				a-viva-non-non				50909			50909						
 A Walk With the Colors							a-walk-with-the-colors				53208			53208						
-A Woman in a Fashion Building		119790	a-woman-in-a-fashion-building				a-woman-in-a-fashion-building		41787		37452			37452						
+A Woman in a Fashion Building		119790	a-woman-in-a-fashion-building				a-woman-in-a-fashion-building	3458	41787		37452			37452						
 A-Channel	8107	9776	a-channel	6585	247		a-channel	816	5861	1239	9776	TPaGtKiig		9776	2134			62526	shows	1
 A-Channel+smile	8597	11339	a-channel-plus-smile	7252	4534		a-channelsmile	817	6495	2639	11339	0DpStFiig		11339	2886					
 A-Channel: +A-Channel		10737	a-channel-specials	7148	9577		a-channel-a-channel	833	6325	1562	10737	sML4pFiig		10737						
@@ -2396,7 +2396,7 @@ Beam!		110221	inshow-ha-beam				beam		42835		39714			39714
 Bean Bandit	13915	104329	bean-bandit	13635			bean-bandit	2844	42363	3229	37483	XnBlnqnZR		37483		3941				
 Beanuts			beanuts				beanuts		10240		29351	azlstFmig		29351						
 Bear Bear Bear Kuma Punch!		164538		18562	10782				47432	11933	55225	OQDu2N_4R		55225						
-Bear Bear Bear Kuma Punch!! Daiundoukai-hen		166369								11934										
+Bear Bear Bear Kuma Punch!! Daiundoukai-hen		166369					bear-bear-bear-kuma-punch-daiundoukai-hen			11934										
 Bear Bear Bear Kuma!		124896	bear-bear-bear-kuma	15901	7721		bear-bear-bear-kuma		43790	10181	43353	d8Y0yapGR		43353		2326				
 Bear Bear Bear Kuma! Kumadam-hen		127863	bear-bear-bear-kumadam-hen				bear-bear-bear-kuma-kumadam-hen			10308	45605	t7a7G7_7g		45605						
 Bear Bear Bear Kuma! Tokuten Sono				16690																
@@ -15409,7 +15409,7 @@ Long Riders!	11201	21171	long-riders	10538	4775		long-riders		10878	1548	30652	b
 Long Riders! Recap			long-riders-recap	13128			long-riders-recap		12731		34367	WMwihFiiR		34367						
 Long She Yanyi	17179	141887	dragons-disciple	17041			long-she-yanyi		45730		50544			50544		3857				
 Long Shen Zhizi			long-shen-zhizi				long-shen-zhizi				45118			45118						
-Long Shidai		166323	long-shidai								56041			56041						
+Long Shidai		166323	long-shidai				long-shidai				56041			56041						
 Long Taizi							long-taizi				45958			45958						
 Long Taizi: Yanre Xingqiu Zhi Mi							long-taizi-yanre-xingqiu-zhi-mi				45960			45960						
 Long Taizi: Yinhe Da Maoxian							long-taizi-yinhe-da-maoxian				45959			45959						
@@ -21196,7 +21196,7 @@ Potemayo	4919	2744	potemayo	4033	1975		potemayo		2504	5613	2744	3FCycKmmg		2744	
 Potemayo Specials		3292	potemayo-specials	7674	7069		potemayo-specials		2913	9299	3292	LxcQ5KiiR		3292						
 Poten Dog				17319																
 Potential 0: Shinigami no Guitar			potential-0-shinigami-no-guitar																	
-Potion-danomi de Ikinobimasu!	17878	161992	i-shall-survive-using-potions	18248	10546		potion-danomi-de-ikinobimasu		47154	11820	54616	ooqEuJbVg		54616		4814				
+Potion-danomi de Ikinobimasu!	17878	161992	i-shall-survive-using-potions	18248	10546		potion-danomi-de-ikinobimasu	24583	47154	11820	54616	ooqEuJbVg		54616		4814				
 Pow Pow Bing: Pow Pow Xiang Qian Chong			pow-pow-bing-pow-pow-xiang-qian-chong				pow-pow-bing-pow-pow-xiang-qian-chong				45901			45901						
 Pow Pow Xiang Qian Chong			pow-pow-xiang-qian-chong				pow-pow-xiang-qian-chong				45900			45900						
 Power (R3HAB Remix)											55083			55083						
@@ -27827,8 +27827,8 @@ Trepanation		133442	millennium-parade-trepanation	16241			trepanation		44500		48
 Tres Marias: Sannin no Sei Shojo		3377		115			tres-marias-sannin-no-sei-shojo				3377			3377						
 Trese									43704			OKkkusgnR								
 TriadD Grid: On My Wingless Back			triadd-grid-on-my-wingless-back	11687																
-Triage X	10818	20839	triage-x	9827	4218		triage-x		8952	787	26443	89BxpKimR	1516	26443	3700			95745	shows	1
-Triage X: Recollection XOXO	11121	21338	triage-x-recollection-xoxo	10436			triage-x-recollection-xoxo		10842	1429	30250	NROlpKimR		30250						
+Triage X	10818	20839	triage-x	9827	4218				8952	787	26443	89BxpKimR	1516	26443	3700			95745	shows	1
+Triage X: Recollection XOXO	11121	21338	triage-x-recollection-xoxo	10436					10842	1429	30250	NROlpKimR		30250						
 Triangle Blue		6694		5454			triangle-blue				6694			6694						
 Triangle Heart: Sazanami Joshi Ryo		4849		1110			triangle-heart-sazanami-joshi-ryo				4849			4849						
 Triangle Heart: Sweet Songs Forever	958	176	triangle-heart-sweet-songs-forever	2056			triangle-heart-sweet-songs-forever		153	6145	176	HG9p5FmmR		176						
