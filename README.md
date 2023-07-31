@@ -103,7 +103,7 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 30 July 2023 05:16:29 UTC
+Last updated: 31 July 2023 05:15:14 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -115,7 +115,7 @@ Last updated: 30 July 2023 05:16:29 UTC
 | aniSearch          |   `anisearch` |     17908 |
 | Annict             |      `annict` |      8899 |
 | IMDb               |        `imdb` |      2256 |
-| Kaize              |       `kaize` |     22974 |
+| Kaize              |       `kaize` |     22973 |
 | Kitsu              |       `kitsu` |     19303 |
 | LiveChart          |   `livechart` |     10857 |
 | MyAnimeList        | `myanimelist` |     25229 |
@@ -190,8 +190,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1690694189,
-    "iso": "2023-07-30T05:16:29.790915+00:00"
+    "timestamp": 1690780514,
+    "iso": "2023-07-31T05:15:14.307749+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -213,7 +213,7 @@ GET /status
     "anisearch": 17908,
     "annict": 8899,
     "imdb": 2256,
-    "kaize": 22974,
+    "kaize": 22973,
     "kitsu": 19303,
     "livechart": 10857,
     "myanimelist": 25229,
@@ -297,7 +297,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```json
-Updated on 07/30/2023 05:16:29 UTC
+Updated on 07/31/2023 05:15:14 UTC
 ```
 <!-- /updated-txt -->
 
