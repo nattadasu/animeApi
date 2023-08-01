@@ -103,7 +103,7 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 31 July 2023 05:15:14 UTC
+Last updated: 01 August 2023 05:43:02 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -115,12 +115,12 @@ Last updated: 31 July 2023 05:15:14 UTC
 | aniSearch          |   `anisearch` |     17908 |
 | Annict             |      `annict` |      8899 |
 | IMDb               |        `imdb` |      2256 |
-| Kaize              |       `kaize` |     22973 |
+| Kaize              |       `kaize` |     22971 |
 | Kitsu              |       `kitsu` |     19303 |
 | LiveChart          |   `livechart` |     10857 |
 | MyAnimeList        | `myanimelist` |     25229 |
 | Notify.moe         |      `notify` |     15835 |
-| Otak Otaku         |   `otakotaku` |      2541 |
+| Otak Otaku         |   `otakotaku` |      2542 |
 | Shikimori          |   `shikimori` |     25229 |
 | Shoboi/Syobocal    |      `shoboi` |      4710 |
 | Silver Yasha       | `silveryasha` |      3982 |
@@ -190,8 +190,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1690780514,
-    "iso": "2023-07-31T05:15:14.307749+00:00"
+    "timestamp": 1690868582,
+    "iso": "2023-08-01T05:43:02.088121+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -213,12 +213,12 @@ GET /status
     "anisearch": 17908,
     "annict": 8899,
     "imdb": 2256,
-    "kaize": 22973,
+    "kaize": 22971,
     "kitsu": 19303,
     "livechart": 10857,
     "myanimelist": 25229,
     "notify": 15835,
-    "otakotaku": 2541,
+    "otakotaku": 2542,
     "shikimori": 25229,
     "shoboi": 4710,
     "silveryasha": 3982,
@@ -297,7 +297,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```json
-Updated on 07/31/2023 05:15:14 UTC
+Updated on 08/01/2023 05:43:02 UTC
 ```
 <!-- /updated-txt -->
 
