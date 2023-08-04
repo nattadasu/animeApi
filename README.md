@@ -46,7 +46,7 @@ automate, and Python for backend.
 
 ## Statistics
 
-This API has been updated on 08/03/2023 07:34:10 UTC, with a total of **31727** titles indexed.
+This API has been updated on 08/04/2023 07:42:13 UTC, with a total of **31695** titles indexed.
 
 |              Provider |     Code      | Count  |
 | --------------------: | :-----------: | :----- |
@@ -55,8 +55,8 @@ This API has been updated on 08/03/2023 07:34:10 UTC, with a total of **31727** 
 |          Anime-Planet | `animeplanet` | 22993 |
 |             aniSearch |  `anisearch`  | 17921 |
 |                Annict |   `annict`    | 8889 |
-|                 Kaize |    `kaize`    | 24080 |
-|                 Kitsu |    `kitsu`    | 19333 |
+|                 Kaize |    `kaize`    | 24081 |
+|                 Kitsu |    `kitsu`    | 19332 |
 |             LiveChart |  `livechart`  | 10860 |
 |           MyAnimeList | `myanimelist` | 25179 |
 |                Notify |    `notify`   | 15835 |
