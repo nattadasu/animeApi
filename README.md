@@ -103,7 +103,7 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 03 August 2023 05:17:15 UTC
+Last updated: 04 August 2023 05:16:24 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -115,8 +115,8 @@ Last updated: 03 August 2023 05:17:15 UTC
 | aniSearch          |   `anisearch` |     17921 |
 | Annict             |      `annict` |      8922 |
 | IMDb               |        `imdb` |      2256 |
-| Kaize              |       `kaize` |     22958 |
-| Kitsu              |       `kitsu` |     19333 |
+| Kaize              |       `kaize` |     22957 |
+| Kitsu              |       `kitsu` |     19332 |
 | LiveChart          |   `livechart` |     10860 |
 | MyAnimeList        | `myanimelist` |     25288 |
 | Notify.moe         |      `notify` |     15835 |
@@ -127,7 +127,7 @@ Last updated: 03 August 2023 05:17:15 UTC
 | The Movie Database |  `themoviedb` |       280 |
 | Trakt              |       `trakt` |      4451 |
 |                    |               |           |
-|                    |     **Total** | **31727** |
+|                    |     **Total** | **31695** |
 <!-- /counters -->
 
 ## Usage
@@ -190,8 +190,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1691039835,
-    "iso": "2023-08-03T05:17:15.602562+00:00"
+    "timestamp": 1691126184,
+    "iso": "2023-08-04T05:16:24.247214+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -213,8 +213,8 @@ GET /status
     "anisearch": 17921,
     "annict": 8922,
     "imdb": 2256,
-    "kaize": 22958,
-    "kitsu": 19333,
+    "kaize": 22957,
+    "kitsu": 19332,
     "livechart": 10860,
     "myanimelist": 25288,
     "notify": 15835,
@@ -224,7 +224,7 @@ GET /status
     "silveryasha": 3982,
     "themoviedb": 280,
     "trakt": 4451,
-    "total": 31727
+    "total": 31695
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format",
@@ -297,7 +297,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```json
-Updated on 08/03/2023 05:17:15 UTC
+Updated on 08/04/2023 05:16:24 UTC
 ```
 <!-- /updated-txt -->
 
