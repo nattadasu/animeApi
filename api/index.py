@@ -199,7 +199,9 @@ def tmdb_exclusive_route(media_type: str, media_id: int, season_id: Union[str, N
 @app.route("/<platform>", methods=["GET"])
 @app.route("/<platform>.json", methods=["GET"])
 @app.route("/<platform>()", methods=["GET"])
+@app.route("/<platform>%28%29", methods=["GET"])
 @app.route("/<platform>().json", methods=["GET"])
+@app.route("/<platform>%28%29.json", methods=["GET"])
 def platform_array(platform: str = "animeapi"):
     """
     Platform array route, redirects to the raw JSON file on GitHub
@@ -216,7 +218,7 @@ def platform_array(platform: str = "animeapi"):
     # remove .json if present
     if route.endswith(".json"):
         route = route.replace(".json", "")
-    if not route.endswith("()") and platform != "animeapi":
+    if not (route.endswith("()") or route.endswith("%28%29")) and platform != "animeapi":
         platform = platform + "_object"
     if platform == "syobocal":
         platform = "shoboi"
