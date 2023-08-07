@@ -836,8 +836,8 @@ def combine_fribb(
                     data_fbi = {}
                     data_fbi['imdb'] = imdb
                     if isinstance(tmdb, str):
-                        tmdbl: list[str] = tmdb.split(",")
-                        tmdb: int = int(tmdb[0])
+                        tmdbl = tmdb.split(",")
+                        tmdb = int(tmdbl[0])
                     data_fbi['themoviedb'] = tmdb
                     # if item["trakt_type"] and tmdb:
                     #     data_fbi['themoviedb'] = tmdb
