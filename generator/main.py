@@ -830,11 +830,14 @@ def combine_fribb(
             for fbi in fribb:
                 anidb_id = fbi.get('anidb_id', None)
                 imdb = fbi.get('imdb_id', None)
-                tmdb = fbi.get('themoviedb_id', None)
+                tmdb: str | int | None = fbi.get('themoviedb_id', None)
                 if anidb is not None and anidb_id == anidb:
                     # Combine the data from fribb_item with the item in aod_data
                     data_fbi = {}
                     data_fbi['imdb'] = imdb
+                    if isinstance(tmdb, str):
+                        tmdbl: list[str] = tmdb.split(",")
+                        tmdb: int = int(tmdb[0])
                     data_fbi['themoviedb'] = tmdb
                     # if item["trakt_type"] and tmdb:
                     #     data_fbi['themoviedb'] = tmdb
