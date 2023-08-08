@@ -103,7 +103,7 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 07 August 2023 12:39:02 UTC
+Last updated: 08 August 2023 05:15:44 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -120,7 +120,7 @@ Last updated: 07 August 2023 12:39:02 UTC
 | LiveChart          |   `livechart` |     10860 |
 | MyAnimeList        | `myanimelist` |     25288 |
 | Notify.moe         |      `notify` |     15835 |
-| Otak Otaku         |   `otakotaku` |      2544 |
+| Otak Otaku         |   `otakotaku` |      2545 |
 | Shikimori          |   `shikimori` |     25288 |
 | Shoboi/Syobocal    |      `shoboi` |      4713 |
 | Silver Yasha       | `silveryasha` |      3982 |
@@ -190,8 +190,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1691411942,
-    "iso": "2023-08-07T12:39:02.233916+00:00"
+    "timestamp": 1691471744,
+    "iso": "2023-08-08T05:15:44.418441+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -218,7 +218,7 @@ GET /status
     "livechart": 10860,
     "myanimelist": 25288,
     "notify": 15835,
-    "otakotaku": 2544,
+    "otakotaku": 2545,
     "shikimori": 25288,
     "shoboi": 4713,
     "silveryasha": 3982,
@@ -297,7 +297,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```json
-Updated on 08/07/2023 12:39:02 UTC
+Updated on 08/08/2023 05:15:44 UTC
 ```
 <!-- /updated-txt -->
 
