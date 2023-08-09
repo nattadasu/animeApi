@@ -103,7 +103,7 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 08 August 2023 05:15:44 UTC
+Last updated: 09 August 2023 05:16:59 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -120,11 +120,11 @@ Last updated: 08 August 2023 05:15:44 UTC
 | LiveChart          |   `livechart` |     10860 |
 | MyAnimeList        | `myanimelist` |     25288 |
 | Notify.moe         |      `notify` |     15835 |
-| Otak Otaku         |   `otakotaku` |      2545 |
+| Otak Otaku         |   `otakotaku` |      2546 |
 | Shikimori          |   `shikimori` |     25288 |
 | Shoboi/Syobocal    |      `shoboi` |      4713 |
 | Silver Yasha       | `silveryasha` |      3982 |
-| The Movie Database |  `themoviedb` |       280 |
+| The Movie Database |  `themoviedb` |       289 |
 | Trakt              |       `trakt` |      4451 |
 |                    |               |           |
 |                    |     **Total** | **31695** |
@@ -190,8 +190,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1691471744,
-    "iso": "2023-08-08T05:15:44.418441+00:00"
+    "timestamp": 1691558219,
+    "iso": "2023-08-09T05:16:59.083554+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -218,11 +218,11 @@ GET /status
     "livechart": 10860,
     "myanimelist": 25288,
     "notify": 15835,
-    "otakotaku": 2545,
+    "otakotaku": 2546,
     "shikimori": 25288,
     "shoboi": 4713,
     "silveryasha": 3982,
-    "themoviedb": 280,
+    "themoviedb": 289,
     "trakt": 4451,
     "total": 31695
   },
@@ -297,7 +297,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```json
-Updated on 08/08/2023 05:15:44 UTC
+Updated on 08/09/2023 05:16:59 UTC
 ```
 <!-- /updated-txt -->
 
