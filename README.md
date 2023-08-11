@@ -16,6 +16,9 @@ and [arm] by [kawaiioverflow][ko], while adding support for more databases.
 <summary>Click to expand</summary>
 
 * [Why use AnimeAPI?](#why-use-animeapi)
+* [Featured on](#featured-on)
+  * [Libraries](#libraries)
+  * [Projects, Apps, and Websites](#projects-apps-and-websites)
 * [Statistic](#statistic)
 * [Usage](#usage)
   * [Differences between v1, v2, and v3](#differences-between-v1-v2-and-v3)
@@ -97,6 +100,33 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 * ATIP: [ryuuganime/aniTrakt-IndexParser][atip]
 * BQA: [BeeeQueue/arm-server][bq]
 * FAL: [Fribb/anime-lists][fal]
+
+## Featured on
+
+Do you want to integrate AnimeAPI into your project? Or do you want to see how
+AnimeAPI is used in other projects and their use cases? Check out the list below!
+
+> **Note**
+>
+> If you want to add your project to this list, please open a pull request
+> adding your project to the table below. Please make sure to add a short
+> description of your project and a link to your project's homepage.
+
+<!-- markdownlint-disable MD034 -->
+### Libraries
+
+| Package Name  | Language | Repo                                     | Hosted Link                           | Description                                                                  |
+| :------------ | :------- | :--------------------------------------- | :------------------------------------ | :--------------------------------------------------------------------------- |
+| `animeapi-py` | Python   | https://github.com/nattadasu/animeapi-py | https://pypi.org/project/animeapi-py/ | A Python wrapper for AnimeAPI with type hinting and additional async support |
+
+### Projects, Apps, and Websites
+
+| Name                  | Language           | Homepage                                                     | Description                                                                                 |
+| :-------------------- | :----------------- | :----------------------------------------------------------- | :------------------------------------------------------------------------------------------ |
+| Ryuuzaki Ryuusei      | Python             | https://github/nattadasu/ryuuRyuusei                         | A Discord bot that uses AnimeAPI to fetch anime maps                                        |
+| animeManga-autoBackup | Powershell, Python | https://github.com/Animanga-Initiative/animeManga-autoBackup | A script that uses AnimeAPI to get info one of your anime/manga lists and save it to a file |
+
+<!-- markdownlint-enable MD034 -->
 
 ## Statistic
 
