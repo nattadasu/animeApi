@@ -123,7 +123,7 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 
 | Name                  | Language           | Homepage                                                     | Description                                                                                 |
 | :-------------------- | :----------------- | :----------------------------------------------------------- | :------------------------------------------------------------------------------------------ |
-| Ryuuzaki Ryuusei      | Python             | https://github/nattadasu/ryuuRyuusei                         | A Discord bot that uses AnimeAPI to fetch anime maps                                        |
+| Ryuuzaki Ryuusei      | Python             | https://github.com/nattadasu/ryuuRyuusei                         | A Discord bot that uses AnimeAPI to fetch anime maps                                        |
 | animeManga-autoBackup | Powershell, Python | https://github.com/Animanga-Initiative/animeManga-autoBackup | A script that uses AnimeAPI to get info one of your anime/manga lists and save it to a file |
 
 <!-- markdownlint-enable MD034 -->
