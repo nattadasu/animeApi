@@ -191,7 +191,7 @@ def update_attribution(data: list[dict[str, Any]], attr: dict[str, Any]) -> dict
     pprint.print(
         Platform.SYSTEM,
         Status.PASS,
-        "attr updated",
+        "Attribution updated",
     )
     return attr
 
@@ -286,7 +286,7 @@ def update_markdown(attr: dict[str, dict[str, int | str] | str | int | list[str]
         "Updating updated timestamp in README.md",
     )
     # update updated timestamp
-    now: int = attribution["updated"]["timestamp"]  # type: ignore
+    now: int = attr["updated"]["timestamp"]  # type: ignore
     readme = re.sub(
         r"<!-- updated -->(.|\n)*<!-- \/updated -->",
         f"<!-- updated -->\nLast updated: {datetime.fromtimestamp(now).strftime('%d %B %Y %H:%M:%S UTC')}\n<!-- /updated -->",  # type: ignore
