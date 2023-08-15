@@ -41,12 +41,14 @@ jobs:
       - name: Update JSON File with main.py and then commit
         shell: pwsh
         run: |
+          $date = Get-Date -Format "yyyy-MM-dd"
+          $time = Get-Date -Format "HH:mm:ss"
           try {
             python3 generator
             git config --local user.email "nattadasu@nattadasu.my.id"
             git config --local user.name "Natsu Tadama"
             git add .
-            git commit -m "Update JSON for v3"
+            git commit -m "Update JSON for v3 at $date $time"
             git push
           }
           catch {
