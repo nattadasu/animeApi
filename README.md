@@ -133,7 +133,7 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 15 August 2023 05:44:32 UTC
+Last updated: 15 August 2023 18:50:23 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -145,19 +145,19 @@ Last updated: 15 August 2023 05:44:32 UTC
 | aniSearch          |   `anisearch` |     17961 |
 | Annict             |      `annict` |      8922 |
 | IMDb               |        `imdb` |      2256 |
-| Kaize              |       `kaize` |     22951 |
+| Kaize              |       `kaize` |     22897 |
 | Kitsu              |       `kitsu` |     19369 |
 | LiveChart          |   `livechart` |     10875 |
 | MyAnimeList        | `myanimelist` |     25373 |
 | Notify.moe         |      `notify` |     15857 |
-| Otak Otaku         |   `otakotaku` |      2548 |
+| Otak Otaku         |   `otakotaku` |      2554 |
 | Shikimori          |   `shikimori` |     25373 |
 | Shoboi/Syobocal    |      `shoboi` |      4713 |
-| Silver Yasha       | `silveryasha` |      3982 |
-| The Movie Database |  `themoviedb` |       289 |
+| Silver Yasha       | `silveryasha` |      4030 |
+| The Movie Database |  `themoviedb` |       292 |
 | Trakt              |       `trakt` |      4451 |
 |                    |               |           |
-|                    |     **Total** | **31844** |
+|                    |     **Total** | **31841** |
 <!-- /counters -->
 
 ## Usage
@@ -220,8 +220,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1692078272,
-    "iso": "2023-08-15T05:44:32.132198+00:00"
+    "timestamp": 1692125423,
+    "iso": "2023-08-15T18:50:23.174745+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -243,18 +243,18 @@ GET /status
     "anisearch": 17961,
     "annict": 8922,
     "imdb": 2256,
-    "kaize": 22951,
+    "kaize": 22897,
     "kitsu": 19369,
     "livechart": 10875,
     "myanimelist": 25373,
     "notify": 15857,
-    "otakotaku": 2548,
+    "otakotaku": 2554,
     "shikimori": 25373,
     "shoboi": 4713,
-    "silveryasha": 3982,
-    "themoviedb": 289,
+    "silveryasha": 4030,
+    "themoviedb": 292,
     "trakt": 4451,
-    "total": 31844
+    "total": 31841
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format",
@@ -327,7 +327,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```json
-Updated on 08/15/2023 05:44:32 UTC
+Updated on 08/15/2023 18:50:23 UTC
 ```
 <!-- /updated-txt -->
 
