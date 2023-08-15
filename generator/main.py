@@ -7,8 +7,8 @@ from typing import Any
 from alive_progress import alive_bar  # type: ignore
 from const import (KAIZE_EMAIL, KAIZE_PASSWORD, KAIZE_SESSION,
                    KAIZE_XSRF_TOKEN, attribution, pprint)
-from converter import (combine_anitrakt, combine_arm, combine_fribb,
-                       link_kaize_to_mal, link_otakotaku_to_mal,
+from combiner import combine_anitrakt, combine_arm, combine_fribb
+from converter import (link_kaize_to_mal, link_otakotaku_to_mal,
                        link_silveryasha_to_mal)
 from dumper import update_attribution, update_markdown
 from fetcher import (get_anime_offline_database, get_anitrakt, get_arm,
