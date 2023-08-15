@@ -326,8 +326,8 @@ GET /updated
 <summary>Response example</summary>
 
 <!-- updated-txt -->
-```json
-Updated on 08/15/2023 05:44:32 UTC
+```txt
+Updated on 08/15/2023 19:17:22 UTC
 ```
 <!-- /updated-txt -->
 
