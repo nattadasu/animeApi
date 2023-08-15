@@ -27,6 +27,7 @@ class DataDump:
             "User-Agent": rand_fua,
         }
         try:
+            # raise ConnectionError("Force use local file")
             response = req.get(self.url, headers=headers, timeout=None)
             if response.status_code == 200:
                 return response

@@ -61,7 +61,7 @@ def link_kaize_to_mal(
             bar()
     # on unlinked, fuzzy search the title name
     with alive_bar(len(unlinked),
-                   title="Fuzzy searching unlinked data",
+                   title="Fuzzy match title from both databases",
                    spinner=None) as bar:  # type: ignore
         for item in unlinked:
             title = item["title"]
@@ -91,7 +91,7 @@ def link_kaize_to_mal(
     with open("database/raw/kaize_manual.json", "r", encoding="utf-8") as file:
         manual_link: dict[str, dict[str, str | int | None]] = json.load(file)
     with alive_bar(len(manual_link),
-                   title="Linking manually linked data",
+                   title="Insert manual mappings",
                    spinner=None) as bar:  # type: ignore
         for title, kz_item in manual_link.items():
             # if kz_item["kaize"] doesn't exist in unlinked under slug key, skip
@@ -115,7 +115,7 @@ def link_kaize_to_mal(
             bar()
     # remove if unlinked data is already linked
     with alive_bar(len(kz_fixed),
-                   title="Removing linked data from unlinked data",
+                   title="Removing unrequired data from unlinked",
                    spinner=None) as bar:  # type: ignore
         for item in kz_fixed:
             if item in unlinked:
@@ -138,7 +138,7 @@ def link_kaize_to_mal(
 
     # add missing items from old AOD data
     with alive_bar(len(aod_list),
-                   title="Adding missing items from old AOD data",
+                   title="Reintroduce old list items",
                    spinner=None) as bar:  # type: ignore
         for item in aod_list:
             if item not in aod:
@@ -222,7 +222,7 @@ def link_otakotaku_to_mal(
             bar()
     # on unlinked, fuzzy search the title name
     with alive_bar(len(unlinked),
-                   title="Fuzzy searching unlinked data",
+                   title="Fuzzy match title from both databases",
                    spinner=None) as bar:  # type: ignore
         for item in unlinked:
             title = item["title"]
@@ -241,7 +241,7 @@ def link_otakotaku_to_mal(
     with open("database/raw/otakotaku_manual.json", "r", encoding="utf-8") as file:
         manual_link: dict[str, int] = json.load(file)
     with alive_bar(len(manual_link),
-                   title="Linking manually linked data",
+                   title="Insert manual mappings",
                    spinner=None) as bar:  # type: ignore
         for title, oo_id in manual_link.items():
             # skip if not in unlinked
@@ -263,7 +263,7 @@ def link_otakotaku_to_mal(
             bar()
     # remove if unlinked data is already linked
     with alive_bar(len(ot_fixed),
-                   title="Removing linked data from unlinked data",
+                   title="Removing unrequired data from unlinked",
                    spinner=None) as bar:  # type: ignore
         for item in ot_fixed:
             if item in unlinked:
@@ -283,7 +283,7 @@ def link_otakotaku_to_mal(
 
     # add missing items from old AOD data
     with alive_bar(len(aod_list),
-                   title="Adding missing items from old AOD data",
+                   title="Reintroduce old list items",
                    spinner=None) as bar:  # type: ignore
         for item in aod_list:
             if item not in aod:
@@ -309,7 +309,7 @@ def link_silveryasha_to_mal(
     silveryasha: list[dict[str, Any]],
     aod: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
-    """Link Silveryasha ID to MyAnimeList ID based similarity in title name over 85% in fuzzy search"""
+    """Link SilverYasha ID to MyAnimeList ID based similarity in title name over 85% in fuzzy search"""
     unlinked: list[dict[str, Any]] = []
     sy_fixed: list[dict[str, Any]] = []
     sy_dict: dict[str, Any] = {}
@@ -324,7 +324,7 @@ def link_silveryasha_to_mal(
                 aod_dict[item["title"]] = item
             bar()
     with alive_bar(len(silveryasha),
-                   title="Translating Silveryasha list to a dict with MAL ID",
+                   title="Translating SilverYasha list to a dict with MAL ID",
                    spinner=None) as bar:  # type: ignore
         for item in silveryasha:
             mal_id = item["myanimelist"]
@@ -340,7 +340,7 @@ def link_silveryasha_to_mal(
                 }
             bar()
     with alive_bar(len(sy_dict),
-                   title="Linking Silveryasha ID to MyAnimeList ID",
+                   title="Linking SilverYasha ID to MyAnimeList ID",
                    spinner=None) as bar:  # type: ignore
         for mal_id, sy_item in sy_dict.items():
             if mal_id in aod_dict:
@@ -360,7 +360,7 @@ def link_silveryasha_to_mal(
             bar()
     # on unlinked, fuzzy search the title name
     with alive_bar(len(unlinked),
-                   title="Fuzzy searching unlinked data",
+                   title="Fuzzy match title from both databases",
                    spinner=None) as bar:  # type: ignore
         for item in unlinked:
             title = item["title"]
@@ -379,7 +379,7 @@ def link_silveryasha_to_mal(
     with open("database/raw/silveryasha_manual.json", "r", encoding="utf-8") as file:
         manual_link: dict[str, int] = json.load(file)
     with alive_bar(len(manual_link),
-                   title="Linking manually linked data",
+                   title="Insert manual mappings",
                    spinner=None) as bar:  # type: ignore
         for title, sy_id in manual_link.items():
             if sy_id not in [item["silveryasha"] for item in unlinked]:
@@ -400,7 +400,7 @@ def link_silveryasha_to_mal(
             bar()
     # remove if unlinked data is already linked
     with alive_bar(len(sy_fixed),
-                   title="Removing linked data from unlinked data",
+                   title="Removing unrequired data from unlinked",
                    spinner=None) as bar:  # type: ignore
         for item in sy_fixed:
             if item in unlinked:
@@ -420,7 +420,7 @@ def link_silveryasha_to_mal(
 
     # add missing items from old AOD data
     with alive_bar(len(aod_list),
-                   title="Adding missing items from old AOD data",
+                   title="Reintroduce old list items",
                    spinner=None) as bar:  # type: ignore
         for item in aod_list:
             if item not in aod:
@@ -431,7 +431,7 @@ def link_silveryasha_to_mal(
     pprint.print(
         Platform.SILVERYASHA,
         Status.PASS,
-        "Silveryasha entry linked to MyAnimeList ID, unlinked data will be saved to silveryasha_unlinked.json.",
+        "SilverYasha entry linked to MyAnimeList ID, unlinked data will be saved to silveryasha_unlinked.json.",
         "Total linked data:",
         f"{len(sy_fixed)},",
         "total unlinked data:",
@@ -498,6 +498,8 @@ def combine_arm(
         f"{linked},",
         "AOD data:",
         f"{len(aod)}",
+        "ARM data:",
+        f"{len(arm)}",
     )
     return aod
 
@@ -556,6 +558,8 @@ def combine_anitrakt(
         f"{linked},",
         "AOD data:",
         f"{len(aod)}",
+        "AniTrakt data:",
+        f"{len(anitrakt)}",
     )
     return aod
 
@@ -613,5 +617,7 @@ def combine_fribb(
         f"{linked},",
         "AOD data:",
         f"{len(aod)}",
+        "Fribb's Animelists data:",
+        f"{len(fribb)}",
     )
     return aod

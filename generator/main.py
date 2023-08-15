@@ -42,15 +42,15 @@ def main() -> None:
         fribb = get_fribb_animelists()
         git_changes = check_git_any_changes()
         if git_changes is True:
-            pprint.print(Platform.SYSTEM, Status.INFO, "Generating data")
+            pprint.print(Platform.SYSTEM, Status.INFO, "Build database")
             pprint.print(Platform.KAIZE, Status.BUILD,
-                         "Linking Kaize slug to MyAnimeList ID")
+                         "Linking Kaize slug to MyAnimeList ID by fuzzy matching")
             aod_arr = link_kaize_to_mal(kza, aod_arr)
             pprint.print(Platform.OTAKOTAKU, Status.BUILD,
-                         "Linking Otak Otaku ID to MyAnimeList ID")
+                         "Linking Otak Otaku ID to MyAnimeList ID by fuzzy matching")
             aod_arr = link_otakotaku_to_mal(ota, aod_arr)
             pprint.print(Platform.SILVERYASHA, Status.BUILD,
-                         "Linking Silveryasha ID to MyAnimeList ID")
+                         "Linking SilverYasha ID to MyAnimeList ID by fuzzy matching")
             aod_arr = link_silveryasha_to_mal(sy_, aod_arr)
             pprint.print(Platform.ARM, Status.BUILD,
                          "Combining ARM data with AOD data")
@@ -117,7 +117,7 @@ def main() -> None:
 * Otak-Otaku: {counts["otakotaku"]}
 * Shikimori: {counts["shikimori"]}
 * Shoboi: {counts["shoboi"]}
-* Silveryasha: {counts["silveryasha"]}
+* SilverYasha: {counts["silveryasha"]}
 * The Movie DB: {counts["themoviedb"]}
 * Trakt: {counts["trakt"]}
 """)
