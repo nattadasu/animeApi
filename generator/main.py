@@ -395,6 +395,31 @@ def link_kaize_to_mal(
                         "kaize": item["slug"],
                         "kaize_id": None if item["kaize"] == 0 else item["kaize"],
                     })
+                    # in unlinked, remove the item with the same id
+                    unlinked.remove(item)
+                    break
+            bar()
+    # load manual link data
+    with open("database/raw/kaize_manual.json", "r", encoding="utf-8") as file:
+        manual_link: dict[str, int] = json.load(file)
+    with alive_bar(len(manual_link),
+                   title="Linking manually linked data",
+                   spinner=None) as bar:  # type: ignore
+        for title, kz_item in manual_link.items():
+            for aod_item in aod:
+                aod_title = aod_item["title"]
+                if title == aod_title:
+                    kz_dat = {
+                        "kaize": kz_item["kaize"],
+                        "kaize_id": None if kz_item["kaize"] == 0 else kz_item["kaize"],
+                    }
+                    aod_item.update(kz_dat)
+                    kz_fixed.append(aod_item)
+                    # in unlinked, remove the item with the same id
+                    for item in unlinked:
+                        if item["kaize"] == kz_item["kaize"]:
+                            unlinked.remove(item)
+                            break
                     break
             bar()
     # remove if unlinked data is already linked
@@ -442,8 +467,6 @@ def link_kaize_to_mal(
     )
     with open("database/raw/kaize_unlinked.json", "w", encoding="utf-8") as file:
         json.dump(unlinked, file)
-    with open("database/raw/kaize_linked.json", "w", encoding="utf-8") as file:
-        json.dump(kz_fixed, file)
     return aod_list
 
 
@@ -451,7 +474,7 @@ def link_otakotaku_to_mal(
     otakotaku: list[dict[str, Any]],
     aod: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
-    """Link Otakotaku slug to MyAnimeList ID based similarity in title name over 85% in fuzzy search"""
+    """Link Otak Otaku ID to MyAnimeList ID based similarity in title name over 85% in fuzzy search"""
     unlinked: list[dict[str, Any]] = []
     ot_fixed: list[dict[str, Any]] = []
     ot_dict: dict[str, Any] = {}
@@ -488,7 +511,7 @@ def link_otakotaku_to_mal(
                 }
             bar()
     with alive_bar(len(ot_dict),
-                   title="Linking Otakotaku slug to MyAnimeList ID",
+                   title="Linking Otak Otaku ID to MyAnimeList ID",
                    spinner=None) as bar:  # type: ignore
         for mal_id, ot_item in ot_dict.items():
             if mal_id in aod_dict:
@@ -521,6 +544,31 @@ def link_otakotaku_to_mal(
                     }
                     aod_item.update(ot_dat)
                     ot_fixed.append(aod_item)
+                    # in unlinked, remove the item with the same id
+                    for item in unlinked:
+                        if item["otakotaku"] == ot_dat["otakotaku"]:
+                            unlinked.remove(item)
+                    break
+            bar()
+    # load manual link data
+    with open("database/raw/otakotaku_manual.json", "r", encoding="utf-8") as file:
+        manual_link: dict[str, int] = json.load(file)
+    with alive_bar(len(manual_link),
+                   title="Linking manually linked data",
+                   spinner=None) as bar:  # type: ignore
+        for title, oo_id in manual_link.items():
+            for aod_item in aod:
+                aod_title = aod_item["title"]
+                if title == aod_title:
+                    oo_dat = {
+                        "otakotaku": oo_id,
+                    }
+                    aod_item.update(oo_dat)
+                    ot_fixed.append(aod_item)
+                    # in unlinked, remove the item with the same id
+                    for item in unlinked:
+                        if item["otakotaku"] == oo_id:
+                            unlinked.remove(item)
                     break
             bar()
     # remove if unlinked data is already linked
@@ -556,7 +604,7 @@ def link_otakotaku_to_mal(
     pprint.print(
         Platform.OTAKOTAKU,
         Status.PASS,
-        "Otakotaku slug linked to MyAnimeList ID, unlinked data will be saved to otakotaku_unlinked.json.",
+        "Otak Otaku entries linked to MyAnimeList ID, unlinked data will be saved to otakotaku_unlinked.json.",
         "Total linked data:",
         f"{len(ot_fixed)},",
         "total unlinked data:",
@@ -564,8 +612,6 @@ def link_otakotaku_to_mal(
     )
     with open("database/raw/otakotaku_unlinked.json", "w", encoding="utf-8") as file:
         json.dump(unlinked, file)
-    with open("database/raw/otakotaku_linked.json", "w", encoding="utf-8") as file:
-        json.dump(ot_fixed, file)
     return aod_list
 
 
@@ -573,7 +619,7 @@ def link_silveryasha_to_mal(
     silveryasha: list[dict[str, Any]],
     aod: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
-    """Link Silveryasha slug to MyAnimeList ID based similarity in title name over 85% in fuzzy search"""
+    """Link Silveryasha ID to MyAnimeList ID based similarity in title name over 85% in fuzzy search"""
     unlinked: list[dict[str, Any]] = []
     sy_fixed: list[dict[str, Any]] = []
     sy_dict: dict[str, Any] = {}
@@ -604,7 +650,7 @@ def link_silveryasha_to_mal(
                 }
             bar()
     with alive_bar(len(sy_dict),
-                   title="Linking Silveryasha slug to MyAnimeList ID",
+                   title="Linking Silveryasha ID to MyAnimeList ID",
                    spinner=None) as bar:  # type: ignore
         for mal_id, sy_item in sy_dict.items():
             if mal_id in aod_dict:
@@ -637,6 +683,32 @@ def link_silveryasha_to_mal(
                     }
                     aod_item.update(sy_dat)
                     sy_fixed.append(aod_item)
+                    # in unlinked, remove the item with the same id
+                    for item in unlinked:
+                        if item["silveryasha"] == sy_id:
+                            unlinked.remove(item)
+                            break
+                    break
+            bar()
+    # load manual link data
+    with open("database/raw/silveryasha_manual.json", "r", encoding="utf-8") as file:
+        manual_link: dict[str, int] = json.load(file)
+    with alive_bar(len(manual_link),
+                   title="Linking manually linked data",
+                   spinner=None) as bar:  # type: ignore
+        for title, sy_id in manual_link.items():
+            for aod_item in aod:
+                aod_title = aod_item["title"]
+                if title == aod_title:
+                    sy_dat = {
+                        "silveryasha": sy_id,
+                    }
+                    aod_item.update(sy_dat)
+                    sy_fixed.append(aod_item)
+                    # in unlinked, remove the item with the same id
+                    for item in unlinked:
+                        if item["silveryasha"] == sy_id:
+                            unlinked.remove(item)
                     break
             bar()
     # remove if unlinked data is already linked
@@ -672,7 +744,7 @@ def link_silveryasha_to_mal(
     pprint.print(
         Platform.SILVERYASHA,
         Status.PASS,
-        "Silveryasha slug linked to MyAnimeList ID, unlinked data will be saved to silveryasha_unlinked.json.",
+        "Silveryasha entry linked to MyAnimeList ID, unlinked data will be saved to silveryasha_unlinked.json.",
         "Total linked data:",
         f"{len(sy_fixed)},",
         "total unlinked data:",
@@ -680,8 +752,6 @@ def link_silveryasha_to_mal(
     )
     with open("database/raw/silveryasha_unlinked.json", "w", encoding="utf-8") as file:
         json.dump(unlinked, file)
-    with open("database/raw/silveryasha_linked.json", "w", encoding="utf-8") as file:
-        json.dump(sy_fixed, file)
     return aod_list
 
 
@@ -736,7 +806,7 @@ def combine_arm(
     pprint.print(
         Platform.ARM,
         Status.PASS,
-        "ARM data combined with AOD data, unlinked data will be saved to arm_unlinked.json.",
+        "ARM data combined with AOD data.",
         "Total linked data:",
         f"{linked},",
         "AOD data:",
@@ -794,7 +864,7 @@ def combine_anitrakt(
     pprint.print(
         Platform.ANITRAKT,
         Status.PASS,
-        "AniTrakt data combined with AOD data, unlinked data will be saved to anitrakt_unlinked.json.",
+        "AniTrakt data combined with AOD data.",
         "Total linked data:",
         f"{linked},",
         "AOD data:",
@@ -820,8 +890,6 @@ def combine_fribb(
                 item.update({
                     'imdb': None,
                     'themoviedb': None,
-                    # 'themoviedb_type': None,
-                    # 'themoviedb_season': None,
                 })
                 bar()
                 continue
@@ -839,14 +907,6 @@ def combine_fribb(
                         tmdbl = tmdb.split(",")
                         tmdb = int(tmdbl[0])
                     data_fbi['themoviedb'] = tmdb
-                    # if item["trakt_type"] and tmdb:
-                    #     data_fbi['themoviedb'] = tmdb
-                    #     data_fbi["themoviedb_type"] = "movie" if item["trakt_type"] in ["movies", "movie"] else "tv"
-                    #     data_fbi["themoviedb_season"] = item["trakt_season"]
-                    # else:
-                    #     data_fbi['themoviedb'] = None
-                    #     data_fbi["themoviedb_type"] = None
-                    #     data_fbi["themoviedb_season"] = None
                     item.update(data_fbi)
                     linked += 1
                     matched = True
@@ -856,14 +916,12 @@ def combine_fribb(
                 item.update({
                     'imdb': None,
                     'themoviedb': None,
-                    # 'themoviedb_type': None,
-                    # 'themoviedb_season': None,
                 })
             bar()
     pprint.print(
         Platform.FRIBB,
         Status.PASS,
-        "Fribb's Animelists data combined with AOD data, unlinked data will be saved to fribb_unlinked.json.",
+        "Fribb's Animelists data combined with AOD data.",
         "Total linked data:",
         f"{linked},",
         "AOD data:",
