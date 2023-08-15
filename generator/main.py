@@ -401,7 +401,7 @@ def link_kaize_to_mal(
             bar()
     # load manual link data
     with open("database/raw/kaize_manual.json", "r", encoding="utf-8") as file:
-        manual_link: dict[str, int] = json.load(file)
+        manual_link: dict[str, dict[str, str | int | None]] = json.load(file)
     with alive_bar(len(manual_link),
                    title="Linking manually linked data",
                    spinner=None) as bar:  # type: ignore
