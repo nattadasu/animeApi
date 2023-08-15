@@ -133,7 +133,7 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 15 August 2023 18:50:23 UTC
+Last updated: 15 August 2023 21:00:12 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -145,15 +145,15 @@ Last updated: 15 August 2023 18:50:23 UTC
 | aniSearch          |   `anisearch` |     17961 |
 | Annict             |      `annict` |      8922 |
 | IMDb               |        `imdb` |      2256 |
-| Kaize              |       `kaize` |     22897 |
+| Kaize              |       `kaize` |     22978 |
 | Kitsu              |       `kitsu` |     19369 |
 | LiveChart          |   `livechart` |     10875 |
 | MyAnimeList        | `myanimelist` |     25373 |
 | Notify.moe         |      `notify` |     15857 |
-| Otak Otaku         |   `otakotaku` |      2554 |
+| Otak Otaku         |   `otakotaku` |      2555 |
 | Shikimori          |   `shikimori` |     25373 |
 | Shoboi/Syobocal    |      `shoboi` |      4713 |
-| Silver Yasha       | `silveryasha` |      4030 |
+| Silver Yasha       | `silveryasha` |      4032 |
 | The Movie Database |  `themoviedb` |       292 |
 | Trakt              |       `trakt` |      4451 |
 |                    |               |           |
@@ -220,8 +220,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1692125423,
-    "iso": "2023-08-15T18:50:23.174745+00:00"
+    "timestamp": 1692133212,
+    "iso": "2023-08-15T21:00:12.874584+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -243,15 +243,15 @@ GET /status
     "anisearch": 17961,
     "annict": 8922,
     "imdb": 2256,
-    "kaize": 22897,
+    "kaize": 22978,
     "kitsu": 19369,
     "livechart": 10875,
     "myanimelist": 25373,
     "notify": 15857,
-    "otakotaku": 2554,
+    "otakotaku": 2555,
     "shikimori": 25373,
     "shoboi": 4713,
-    "silveryasha": 4030,
+    "silveryasha": 4032,
     "themoviedb": 292,
     "trakt": 4451,
     "total": 31841
@@ -326,8 +326,8 @@ GET /updated
 <summary>Response example</summary>
 
 <!-- updated-txt -->
-```txt
-Updated on 08/15/2023 19:17:22 UTC
+```json
+Updated on 08/15/2023 21:00:12 UTC
 ```
 <!-- /updated-txt -->
 
