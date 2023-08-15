@@ -11,12 +11,13 @@ from typing import Any, Union
 
 import requests as req
 from alive_progress import alive_bar  # type: ignore
-from datadump import DataDump
 from fuzzywuzzy import fuzz  # type: ignore
-from kaize import Kaize
-from otakotaku import OtakOtaku
-from prettyprint import Platform, PrettyPrint, Status
 from slugify import slugify
+
+from .datadump import DataDump
+from .kaize import Kaize
+from .otakotaku import OtakOtaku
+from .prettyprint import Platform, PrettyPrint, Status
 
 KAIZE_XSRF_TOKEN = os.getenv("KAIZE_XSRF_TOKEN")
 KAIZE_SESSION = os.getenv("KAIZE_SESSION")
@@ -685,7 +686,7 @@ def link_silveryasha_to_mal(
                     sy_fixed.append(aod_item)
                     # in unlinked, remove the item with the same id
                     for item in unlinked:
-                        if item["silveryasha"] == sy_id:
+                        if item["silveryasha"] == sy_dat["silveryasha"]:
                             unlinked.remove(item)
                             break
                     break
