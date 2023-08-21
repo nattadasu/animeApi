@@ -133,31 +133,32 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 21 August 2023 05:15:35 UTC
+Last updated: 21 August 2023 10:08:34 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |            ID |     Count |
 | :----------------- | ------------: | --------: |
-| aniDB              |       `anidb` |     12913 |
-| AniList            |     `anilist` |     19024 |
-| Anime-Planet       | `animeplanet` |     23038 |
-| aniSearch          |   `anisearch` |     17961 |
-| Annict             |      `annict` |      8939 |
-| IMDb               |        `imdb` |      2256 |
-| Kaize              |       `kaize` |     22977 |
-| Kitsu              |       `kitsu` |     19369 |
-| LiveChart          |   `livechart` |     10875 |
-| MyAnimeList        | `myanimelist` |     25373 |
-| Notify.moe         |      `notify` |     15857 |
-| Otak Otaku         |   `otakotaku` |      2554 |
-| Shikimori          |   `shikimori` |     25373 |
-| Shoboi/Syobocal    |      `shoboi` |      4713 |
-| Silver Yasha       | `silveryasha` |      4032 |
-| The Movie Database |  `themoviedb` |       292 |
-| Trakt              |       `trakt` |      4451 |
+| aniDB              |       `anidb` |     12860 |
+| AniList            |     `anilist` |     18930 |
+| Anime-Planet       | `animeplanet` |     22961 |
+| aniSearch          |   `anisearch` |     17893 |
+| Annict             |      `annict` |      8908 |
+| IMDb               |        `imdb` |      2251 |
+| Kaize              |       `kaize` |     22828 |
+| Kitsu              |       `kitsu` |     19287 |
+| LiveChart          |   `livechart` |     10842 |
+| MyAnimeList        | `myanimelist` |     25276 |
+| Nautiljon          |   `nautiljon` |      8366 |
+| Notify.moe         |      `notify` |     15806 |
+| Otak Otaku         |   `otakotaku` |      2551 |
+| Shikimori          |   `shikimori` |     25276 |
+| Shoboi/Syobocal    |      `shoboi` |      4695 |
+| Silver Yasha       | `silveryasha` |      4031 |
+| The Movie Database |  `themoviedb` |       290 |
+| Trakt              |       `trakt` |      4436 |
 |                    |               |           |
-|                    |     **Total** | **31816** |
+|                    |     **Total** | **31635** |
 <!-- /counters -->
 
 ## Usage
@@ -220,8 +221,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1692594935,
-    "iso": "2023-08-21T05:15:35.495538+00:00"
+    "timestamp": 1692612514,
+    "iso": "2023-08-21T10:08:34.413514+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -232,29 +233,31 @@ GET /status
     "ryuuganime/aniTrakt-IndexParser",
     "https://db.silveryasha.web.id",
     "https://kaize.io",
+    "https://nautiljon.com",
     "https://otakotaku.com"
   ],
   "license": "AGPL-3.0",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 12913,
-    "anilist": 19024,
-    "animeplanet": 23038,
-    "anisearch": 17961,
-    "annict": 8939,
-    "imdb": 2256,
-    "kaize": 22977,
-    "kitsu": 19369,
-    "livechart": 10875,
-    "myanimelist": 25373,
-    "notify": 15857,
-    "otakotaku": 2554,
-    "shikimori": 25373,
-    "shoboi": 4713,
-    "silveryasha": 4032,
-    "themoviedb": 292,
-    "trakt": 4451,
-    "total": 31816
+    "anidb": 12860,
+    "anilist": 18930,
+    "animeplanet": 22961,
+    "anisearch": 17893,
+    "annict": 8908,
+    "imdb": 2251,
+    "kaize": 22828,
+    "kitsu": 19287,
+    "livechart": 10842,
+    "myanimelist": 25276,
+    "nautiljon": 8366,
+    "notify": 15806,
+    "otakotaku": 2551,
+    "shikimori": 25276,
+    "shoboi": 4695,
+    "silveryasha": 4031,
+    "themoviedb": 290,
+    "trakt": 4436,
+    "total": 31635
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format",
@@ -270,6 +273,7 @@ GET /status
     "kitsu": "/kitsu/(?P<media_id>\\d+)",
     "livechart": "/livechart/(?P<media_id>\\d+)",
     "myanimelist": "/myanimelist/(?P<media_id>\\d+)",
+    "nautiljon": "/nautiljon/(?P<media_id>[\\w\\+!\\-_\\(\\)\\[\\]]+)",
     "notify": "/notify/(?P<media_id>[\\w\\-_]+)",
     "otakotaku": "/otakotaku/(?P<media_id>\\d+)",
     "repo": "/",
@@ -326,8 +330,8 @@ GET /updated
 <summary>Response example</summary>
 
 <!-- updated-txt -->
-```json
-Updated on 08/21/2023 05:15:35 UTC
+```txt
+Updated on 08/21/2023 10:08:34 UTC
 ```
 <!-- /updated-txt -->
 
@@ -443,6 +447,8 @@ GET https://animeapi.my.id/myanimelist/1
   "kitsu": 1,
   "livechart": 3418,
   "myanimelist": 1,
+  "nautiljon": null,
+  "nautijilon_id": null,
   "notify": "Tk3ccKimg",
   "otakotaku": 1149,
   "shikimori": 1,
@@ -538,6 +544,8 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
   "kitsu": 45154,
   "livechart": 10780,
   "myanimelist": 49784,
+  "nautiljon": null,
+  "nautijilon_id": null,
   "notify": "Okl9YtInR",
   "otakotaku": 2305,
   "shikimori": 49784,
@@ -694,6 +702,16 @@ Add the following schema URI to your JSON file.
           "description": "MyAnimeList ID, website: https://myanimelist.net/",
           "$ref": "#/definitions/numbernull"
         },
+        "nautiljon": {
+          "title": "Nautiljon",
+          "description": "Nautiljon slug in plus, website: https://www.nautiljon.com/",
+          "$ref": "#/definitions/stringnull"
+        },
+        "nautiljon_id": {
+          "title": "Nautiljon ID",
+          "description": "Nautiljon ID in integer format, used internally",
+          "$ref": "#/definitions/numbernull"
+        },
         "notify": {
           "title": "Notify.moe",
           "description": "Notify.moe Base64 ID, website: https://notify.moe/",
@@ -785,10 +803,16 @@ Add the following schema URI to your JSON file.
     {
       "$comment": "Use this schema if you want to validate an object known in each provider",
       "type": "object",
-      "additionalProperties": {
-        "$ref": "#/definitions/anime"
-      },
-      "minProperties": 1
+      "oneOf": [
+        {
+          "$ref": "#/definitions/anime"
+        },
+        {
+          "additionalProperties": {
+            "$ref": "#/definitions/anime"
+          }
+        }
+      ]
     }
   ]
 }
