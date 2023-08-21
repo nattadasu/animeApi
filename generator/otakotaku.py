@@ -1,18 +1,19 @@
 import json
 import os
-from typing import Union, Any
 from datetime import datetime
+from typing import Any, Union
 
-from fake_useragent import FakeUserAgent  # type: ignore
-from bs4 import BeautifulSoup, Tag
 import requests as req
 from alive_progress import alive_bar  # type: ignore
-
-from prettyprint import PrettyPrint, Platform, Status
+from bs4 import BeautifulSoup, Tag
+from const import GITHUB_DISPATCH
+from fake_useragent import FakeUserAgent  # type: ignore
+from prettyprint import Platform, PrettyPrint, Status
 
 pprint = PrettyPrint()
 fua = FakeUserAgent(browsers=["firefox", "chrome", "edge", "safari"])
 rand_fua: str = f"{fua.random}"  # type: ignore
+
 
 class OtakOtaku:
     """OtakOtaku anime data scraper"""
@@ -62,24 +63,29 @@ class OtakOtaku:
         soup = BeautifulSoup(response.text, "html.parser")
         link = soup.find("div", class_='anime-img')
         if not isinstance(link, Tag):
-            pprint.print(Platform.OTAKOTAKU, Status.ERR, "Failed to get latest anime")
+            pprint.print(Platform.OTAKOTAKU, Status.ERR,
+                         "Failed to get latest anime")
             return 0
         link = link.find("a")
         if not isinstance(link, Tag):
-            pprint.print(Platform.OTAKOTAKU, Status.ERR, "Failed to get latest anime")
+            pprint.print(Platform.OTAKOTAKU, Status.ERR,
+                         "Failed to get latest anime")
             return 0
         href = link.get("href")
         if not href:
-            pprint.print(Platform.OTAKOTAKU, Status.ERR, "Failed to get latest anime")
+            pprint.print(Platform.OTAKOTAKU, Status.ERR,
+                         "Failed to get latest anime")
             return 0
         if isinstance(href, list):
             href = href[0]
         anime_id = href.rstrip("/").split("/")[-2]
-        pprint.print(Platform.OTAKOTAKU, Status.PASS, f"Latest anime id: {anime_id}")
+        pprint.print(Platform.OTAKOTAKU, Status.PASS,
+                     f"Latest anime id: {anime_id}")
         return int(anime_id)
 
     def _get_data_index(self, anime_id: int) -> Union[dict[str, Any], None]:
-        response = self._get(f"https://otakotaku.com/api/anime/view/{anime_id}")
+        response = self._get(
+            f"https://otakotaku.com/api/anime/view/{anime_id}")
         if not response:
             raise ConnectionError("Failed to connect to otakotaku.com")
         json: dict[str, Any] = response.json()
@@ -121,7 +127,7 @@ class OtakOtaku:
             latest_id = self.get_latest_anime()
             if not latest_id:
                 raise ConnectionError("Failed to connect to otakotaku.com")
-            if not datetime.now().day in [1, 15] and len(anime_list) > 0:
+            if not datetime.now().day in [1, 15] and len(anime_list) > 0 and not GITHUB_DISPATCH:
                 with open(latest_file_path, "r", encoding="utf-8") as file:
                     latest = int(file.read().strip())
                 if latest == latest_id:
@@ -151,6 +157,7 @@ class OtakOtaku:
             with open(latest_file_path, "w", encoding="utf-8") as file:
                 file.write(str(latest_id))
             with open(file_path, "w", encoding="utf-8") as file:
+                anime_data.sort(key=lambda x: x['title'])  # type: ignore
                 json.dump(anime_list, file)
             pprint.print(
                 Platform.OTAKOTAKU,
@@ -165,6 +172,7 @@ class OtakOtaku:
             )
             with open(file_path, "r", encoding="utf-8") as file:
                 anime_list = json.load(file)
+        anime_list.sort(key=lambda x: x['title'])  # type: ignore
         return anime_list
 
     @staticmethod

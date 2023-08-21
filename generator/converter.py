@@ -47,6 +47,9 @@ def link_kaize_to_mal(
                 if aod_item:
                     # add more data from kaize
                     kz_item.update({
+                        "anidb": aod_item["anidb"],
+                        "anilist": aod_item["anilist"],
+                        "kitsu": aod_item["kitsu"],
                         "myanimelist": aod_item["myanimelist"],
                     })
                     kz_fixed.append(kz_item)
@@ -159,6 +162,122 @@ def link_kaize_to_mal(
     with open("database/raw/kaize_unlinked.json", "w", encoding="utf-8") as file:
         json.dump(unlinked, file)
     return aod_list
+
+
+def link_nautiljon_to_mal(
+    nautiljon: list[dict[str, Any]],
+    aod: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
+    """Link Nautiljon ID to MyAnimeList ID based similarity in title name over 85% in fuzzy search"""
+    for item in aod:
+        item.update({
+            "nautiljon": None,
+            "nautiljon_id": None,
+        })
+    unlinked: list[dict[str, Any]] = []
+    nautiljon_fixed: list[dict[str, Any]] = []
+    nautiljon_dict: dict[str, Any] = {}
+    aod_dict: dict[str, Any] = {}
+    with alive_bar(len(aod),
+                   title="Translating AOD list to a dict using title as key",
+                   spinner=None) as bar:  # type: ignore
+        for item in aod:
+            # if previous key exists, skip
+            if item["title"] in aod_dict:
+                bar()
+                continue
+            aod_dict[item["title"]] = item
+            bar()
+    with alive_bar(len(nautiljon),
+                   title="Translating Nautiljon list to a dict with title as key",
+                   spinner=None) as bar:  # type: ignore
+        for item in nautiljon:
+            nautiljon_dict[item["title"]] = item
+            bar()
+    # link nautiljon to aod
+    with alive_bar(len(nautiljon_dict),
+                   title="Linking Nautiljon ID to AOD",
+                   spinner=None) as bar:  # type: ignore
+        for title, nautiljon_item in nautiljon_dict.items():
+            if title in aod_dict:
+                aod_item = aod_dict.get(title)
+                if aod_item:
+                    aod_item.update({
+                        "nautiljon": nautiljon_item["slug"],
+                        "nautiljon_id": nautiljon_item["entry_id"],
+                    })
+                    nautiljon_item.update({
+                        "anidb": aod_item["anidb"],
+                        "anilist": aod_item["anilist"],
+                        "kitsu": aod_item["kitsu"],
+                        "myanimelist": aod_item["myanimelist"],
+                    })
+                    nautiljon_fixed.append(nautiljon_item)
+                else:
+                    unlinked.append(nautiljon_item)
+            else:
+                unlinked.append(nautiljon_item)
+            bar()
+    # fuzzy search the rest of unlinked data
+    with alive_bar(len(unlinked),
+                   title="Fuzzy match title from both databases",
+                   spinner=None) as bar:  # type: ignore
+        for item in unlinked:
+            title = item["title"]
+            for aod_item in aod:
+                aod_title = aod_item["title"]
+                ratio = fuzz.ratio(title, aod_title)  # type: ignore
+                if ratio >= 70:
+                    item.update({
+                        "anidb": aod_item["anidb"],
+                        "anilist": aod_item["anilist"],
+                        "kitsu": aod_item["kitsu"],
+                        "myanimelist": aod_item["myanimelist"],
+                    })
+                    nautiljon_fixed.append(item)
+                    aod_item.update({
+                        "nautiljon": item["slug"],
+                        "nautiljon_id": item["entry_id"],
+                    })
+                    break
+            bar()
+    # remove fixed data from unlinked
+    with alive_bar(len(nautiljon_fixed),
+                   title="Removing fixed data from unlinked",
+                   spinner=None) as bar:  # type: ignore
+        for item in nautiljon_fixed:
+            if item in unlinked:
+                unlinked.remove(item)
+            bar()
+    aod_list: list[dict[str, Any]] = []
+    with alive_bar(len(aod_dict),
+                   title="Translating AOD dict to a list",
+                   spinner=None) as bar:  # type: ignore
+        for _, value in aod_dict.items():
+            aod_list.append(value)
+            bar()
+    merged: list[dict[str, Any]] = []
+    merged.extend(aod_list)
+    with alive_bar(len(aod_list),
+                   title="Reintroduce old list items",
+                   spinner=None) as bar:  # type: ignore
+        for item in aod_list:
+            if item not in aod:
+                merged.append(item)
+            bar()
+
+    pprint.print(
+        Platform.NAUTILJON,
+        Status.PASS,
+        "Nautiljon slug linked to MyAnimeList ID, unlinked data will be saved to nautiljon_unlinked.json.",
+        "Total linked data:",
+        f"{len(nautiljon_fixed)},",
+        "total unlinked data:",
+        f"{len(unlinked)}",
+    )
+    with open("database/raw/nautiljon_unlinked.json", "w", encoding="utf-8") as file:
+        json.dump(unlinked, file)
+    return merged
 
 
 def link_otakotaku_to_mal(

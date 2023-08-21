@@ -5,4 +5,8 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    # if python version is lower than 3.10, raise error
+    import sys
+    if sys.version_info < (3, 10):
+        raise RuntimeError("Python version >= 3.10 is required.")
     main()

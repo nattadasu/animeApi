@@ -79,7 +79,7 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 | [![f:kts] Kitsu][kts]           | ✔                                      | ❌                           | ✔                  | ✔                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
 | [![f:lc] LiveChart][lc]         | ✔                                      | ❌                           | ✔                  | ❌                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
 | [![f:mal] MyAnimeList][mal]     | ✔                                      | ✔                           | ✔                  | ✔                         | ✔                       | ❌            | ✔                                                                   | ✔             | ❌                                      | ✔                |
-| [![f:ntj] Nautiljon][ntj]       | ❌                                      | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:ntj] Nautiljon][ntj]       | ✔                                      | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
 | [![f:ntf] Notify][ntf]          | ✔                                      | ❌                           | ✔                  | ✔                         | ❌                       | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
 | [![f:oo] Otak Otaku][oo]        | ✔                                      | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
 | [![f:shk] Shikimori][shk]       | ✔                                      | ✔ via MAL                   | ✔ via MAL          | ✔ via MAL                 | ✔ via MAL               | ❌            | ✔ via MAL                                                           | ✔ via MAL     | ❌                                      | ✔ via MAL        |
@@ -87,7 +87,7 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 | [![f:sy] SilverYasha DBTI][sy]  | ✔                                      | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
 | [![f:smk] SIMKL][smk]           | ✔ via IMDb                             | ❌                           | ❌                  | ❌                         | ✔                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
 | [![f:tmdb] TMDB][tmdb]          | ✔, only movie                          | ❌                           | ✔, only movie      | ❌                         | ✔                       | ✔            | ❌                                                                   | ✔, only movie | ✔                                      | ❌                |
-| [![f:trk] Trakt][trk]           | ✔                                      | ❌                           | ❌                  | ❌                         | ❌                       | ✔            | ❌                                                                   | ❌             | ❌                                      | ✔                |
+| [![f:trk] Trakt][trk]           | ✔                                      | ❌                           | ❌                  | ❌                         | ✔                       | ✔            | ❌                                                                   | ❌             | ❌                                      | ✔                |
 | [![f:tvdb] TVDB][tvdb]          | ❌                                      | ❌                           | ❌                  | ❌                         | ✔                       | ✔            | ❌                                                                   | ✔             | ✔                                      | ❌                |
 | [![f:tvtm] TVTime][tvtm]        | ❌                                      | ❌                           | ❌                  | ❌                         | ✔ via TVDB              | ✔ via TVDB   | ❌                                                                   | ✔ via TVDB    | ✔ via TVDB                             | ❌                |
 
@@ -821,6 +821,8 @@ interface Anime = {
     kitsu:             NumberNull; // Kitsu ID, slug is not supported
     livechart:         NumberNull;
     myanimelist:       NumberNull;
+    nautiljon:         StringNull; // Plus Slug based
+    nautiljon_id:      NumberNull; // int counterpart of Nautiljon slug, used internally
     notify:            StringNull; // Base64 based
     otakotaku:         NumberNull;
     shikimori:         NumberNull;
@@ -874,6 +876,8 @@ class Anime:
     kitsu:             NumberNull  # Kitsu ID, slug is not supported
     livechart:         NumberNull
     myanimelist:       NumberNull
+    nautiljon:         StringNull  # Plus Slug based
+    nautijlon_id:      NumberNull  # int counterpart of Nautiljon slug, used internally
     notify:            StringNull  # Base64 based
     otakotaku:         NumberNull
     shikimori:         NumberNull

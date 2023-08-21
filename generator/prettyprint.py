@@ -17,6 +17,7 @@ class Platform(Enum):
     KITSU = 0xF85235
     LIVECHART = 0x67A427
     MYANIMELIST = 0x2F51A3
+    NAUTILJON = 0x3C5891
     NOTIFY = 0xDEA99E
     OTAKOTAKU = 0xBE2222
     SHIKIMORI = 0x2E2E2E
@@ -122,8 +123,9 @@ class PrettyPrint:
             anullen = "\n"
             self.previously_clear = False
         cr_ = "\r" if end == "" else ""
+        message = sep.join(args)
         print(
-            f"{anullen}{cr_}{self._format_date()}{self._format_to_hex(platform)} {self._format_to_hex(status)} {sep.join(args)}",
+            f"{anullen}{cr_}{self._format_date()}{self._format_to_hex(platform)} {self._format_to_hex(status)} {message}",
             end=end,
         )
 

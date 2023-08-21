@@ -3,11 +3,19 @@ import os
 from prettyprint import PrettyPrint
 
 KAIZE_XSRF_TOKEN = os.getenv("KAIZE_XSRF_TOKEN")
+"""Kaize XSRF token"""
 KAIZE_SESSION = os.getenv("KAIZE_SESSION")
+"""Kaize session cookie"""
 KAIZE_EMAIL = os.getenv("KAIZE_EMAIL")
+"""User email for Kaize login"""
 KAIZE_PASSWORD = os.getenv("KAIZE_PASSWORD")
+"""User password for Kaize login"""
+
+GITHUB_DISPATCH = os.getenv("GITHUB_EVENT_NAME") == "workflow_dispatch"
+"""Whether the script is running from GitHub Actions workflow_dispatch event"""
 
 pprint = PrettyPrint()
+"""PrettyPrint class instance"""
 
 attribution = {
     "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
@@ -24,6 +32,7 @@ attribution = {
         "ryuuganime/aniTrakt-IndexParser",
         "https://db.silveryasha.web.id",
         "https://kaize.io",
+        "https://nautiljon.com",
         "https://otakotaku.com",
     ],
     "license": "AGPL-3.0",
@@ -39,6 +48,7 @@ attribution = {
         "kitsu": 0,
         "livechart": 0,
         "myanimelist": 0,
+        "nautiljon": 0,
         "notify": 0,
         "otakotaku": 0,
         "shikimori": 0,
@@ -62,6 +72,7 @@ attribution = {
         "kitsu": r"/kitsu/(?P<media_id>\d+)",
         "livechart": r"/livechart/(?P<media_id>\d+)",
         "myanimelist": r"/myanimelist/(?P<media_id>\d+)",
+        "nautiljon": r"/nautiljon/(?P<media_id>[\w\+!\-_\(\)\[\]]+)",
         "notify": r"/notify/(?P<media_id>[\w\-_]+)",
         "otakotaku": r"/otakotaku/(?P<media_id>\d+)",
         "repo": r"/",
@@ -76,3 +87,4 @@ attribution = {
         "updated": r"/updated",
     }
 }
+"""Attribution data"""
