@@ -227,7 +227,7 @@ def link_nautiljon_to_mal(
             for aod_item in aod:
                 aod_title = aod_item["title"]
                 ratio = fuzz.ratio(title, aod_title)  # type: ignore
-                if ratio >= 70:
+                if ratio >= 85:
                     item.update({
                         "anidb": aod_item["anidb"],
                         "anilist": aod_item["anilist"],
