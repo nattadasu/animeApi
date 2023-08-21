@@ -3,18 +3,13 @@ from typing import Any
 
 from alive_progress import alive_bar  # type: ignore
 from const import pprint
-from datadump import DataDump
+from downloader import Downloader
 from prettyprint import Platform, Status
 
 
 def get_anime_offline_database() -> dict[str, Any]:
     """Get info from manami-project/anime-offline-database"""
-    pprint.print(
-        Platform.ANIMEOFFLINEDATABASE,
-        Status.READY,
-        "anime-offline-database ready to use",
-    )
-    ddump = DataDump(
+    ddump = Downloader(
         url="https://raw.githubusercontent.com/manami-project/anime-offline-database/master/anime-offline-database-minified.json",
         file_name="aod",
         file_type="json",
@@ -29,12 +24,8 @@ def get_anime_offline_database() -> dict[str, Any]:
 
 
 def get_arm() -> list[dict[str, Any]]:
-    pprint.print(
-        Platform.ARM,
-        Status.READY,
-        "ARM ready to use",
-    )
-    ddump = DataDump(
+    """Get info from kawaiioverflow/arm"""
+    ddump = Downloader(
         url="https://raw.githubusercontent.com/kawaiioverflow/arm/master/arm.json",
         file_name="arm",
         file_type="json",
@@ -49,35 +40,21 @@ def get_arm() -> list[dict[str, Any]]:
 
 
 def get_anitrakt() -> list[dict[str, Any]]:
-    pprint.print(
-        Platform.ANITRAKT,
-        Status.READY,
-        "AniTrakt ready to use",
-    )
+    """Get info from ryuuganime/aniTrakt-IndexParser"""
     base_url = "https://raw.githubusercontent.com/ryuuganime/aniTrakt-IndexParser/main/db/"
-    ddump_tv = DataDump(
+    ddump_tv = Downloader(
         url=f"{base_url}tv.json",
         file_name="anitrakt_tv",
         file_type="json",
     )
     data_tv: list[dict[str, Any]] = ddump_tv.dumper()
-    pprint.print(
-        Platform.ANITRAKT,
-        Status.PASS,
-        "AniTrakt data for TV retrieved successfully",
-    )
 
-    ddump_movie = DataDump(
+    ddump_movie = Downloader(
         url=f"{base_url}movies.json",
         file_name="anitrakt_movie",
         file_type="json",
     )
     data_movie: list[dict[str, Any]] = ddump_movie.dumper()
-    pprint.print(
-        Platform.ANITRAKT,
-        Status.PASS,
-        "AniTrakt data for Movie retrieved successfully",
-    )
     with alive_bar(len(data_movie),
                    title="Fixing AniTrakt data for movie",
                    spinner=None) as bar:  # type: ignore
@@ -97,12 +74,8 @@ def get_anitrakt() -> list[dict[str, Any]]:
 
 
 def get_silveryasha() -> list[dict[str, Any]]:
-    pprint.print(
-        Platform.SILVERYASHA,
-        Status.READY,
-        "Silveryasha ready to use",
-    )
-    ddump = DataDump(
+    """Get info from Silveryasha"""
+    ddump = Downloader(
         url="https://db.silveryasha.web.id/ajax/anime/dtanime",
         file_name="silveryasha",
         file_type="json",
@@ -118,12 +91,8 @@ def get_silveryasha() -> list[dict[str, Any]]:
 
 
 def get_fribb_animelists() -> list[dict[str, Any]]:
-    pprint.print(
-        Platform.FRIBB,
-        Status.READY,
-        "Fribb Animelists ready to use",
-    )
-    ddump = DataDump(
+    """Get info from Fribb's Animelists"""
+    ddump = Downloader(
         url="https://raw.githubusercontent.com/Fribb/anime-lists/master/anime-lists-reduced.json",
         file_name="fribb_animelists",
         file_type="json",

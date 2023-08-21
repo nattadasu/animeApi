@@ -1,5 +1,6 @@
 alive-progress
 beautifulsoup4
+cloudscraper
 fake-useragent
 Flask
 fuzzywuzzy

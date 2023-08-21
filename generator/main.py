@@ -8,19 +8,20 @@ from alive_progress import alive_bar  # type: ignore
 from const import (KAIZE_EMAIL, KAIZE_PASSWORD, KAIZE_SESSION,
                    KAIZE_XSRF_TOKEN, attribution, pprint)
 from combiner import combine_anitrakt, combine_arm, combine_fribb
-from converter import (link_kaize_to_mal, link_otakotaku_to_mal,
-                       link_silveryasha_to_mal)
+from converter import (link_kaize_to_mal, link_nautiljon_to_mal,
+                       link_otakotaku_to_mal, link_silveryasha_to_mal)
 from dumper import update_attribution, update_markdown
 from fetcher import (get_anime_offline_database, get_anitrakt, get_arm,
                      get_fribb_animelists, simplify_aod_data,
                      simplify_silveryasha_data)
 from kaize import Kaize
+from nautiljon import Nautiljon
 from otakotaku import OtakOtaku
 from prettyprint import Platform, Status
 from utils import check_git_any_changes
 
-if (KAIZE_XSRF_TOKEN is None) and (KAIZE_SESSION is None) and (KAIZE_EMAIL is None) and (KAIZE_PASSWORD is None):
-    raise Exception('Kaize login info does not available in environment variables')
+# if (KAIZE_XSRF_TOKEN is None) and (KAIZE_SESSION is None) and (KAIZE_EMAIL is None) and (KAIZE_PASSWORD is None):
+#     raise Exception('Kaize login info does not available in environment variables')
 
 
 def main() -> None:
@@ -35,6 +36,7 @@ def main() -> None:
             email=KAIZE_EMAIL,
             password=KAIZE_PASSWORD,
             xsrf_token=KAIZE_XSRF_TOKEN).get_anime()
+        nau = Nautiljon().get_animes()
         ota = OtakOtaku().get_anime()
         sy_ = simplify_silveryasha_data()
         arm = get_arm()
@@ -46,11 +48,14 @@ def main() -> None:
             pprint.print(Platform.KAIZE, Status.BUILD,
                          "Linking Kaize slug to MyAnimeList ID by fuzzy matching")
             aod_arr = link_kaize_to_mal(kza, aod_arr)
+            pprint.print(Platform.NAUTILJON, Status.BUILD,
+                         "Linking Nautiljon slug to MyAnimeList ID by fuzzy matching")
+            aod_arr = link_nautiljon_to_mal(nau, aod_arr)
             pprint.print(Platform.OTAKOTAKU, Status.BUILD,
-                         "Linking Otak Otaku ID to MyAnimeList ID by fuzzy matching")
+                         "Linking Otak Otaku ID to MyAnimeList ID")
             aod_arr = link_otakotaku_to_mal(ota, aod_arr)
             pprint.print(Platform.SILVERYASHA, Status.BUILD,
-                         "Linking SilverYasha ID to MyAnimeList ID by fuzzy matching")
+                         "Linking SilverYasha ID to MyAnimeList ID")
             aod_arr = link_silveryasha_to_mal(sy_, aod_arr)
             pprint.print(Platform.ARM, Status.BUILD,
                          "Combining ARM data with AOD data")
@@ -79,6 +84,8 @@ def main() -> None:
                         "kitsu": item.get("kitsu", None),
                         "livechart": item.get("livechart", None),
                         "myanimelist": item.get("myanimelist", None),
+                        "nautiljon": item.get("nautiljon", None),
+                        "nautijilon_id": item.get("nautiljon_id", None),
                         "notify": item.get("notify", None),
                         "otakotaku": item.get("otakotaku", None),
                         "shikimori": item.get("shikimori", None),
@@ -102,25 +109,11 @@ def main() -> None:
         attr = update_attribution(final_arr, attribution)
         attr = update_markdown(attr=attr)
         counts: dict[str, int] = attr["counts"]  # type: ignore
-        print(f"""Data parsed:
-* aniDB: {counts["anidb"]}
-* AniList: {counts["anilist"]}
-* Anime-Planet: {counts["animeplanet"]}
-* aniSearch: {counts["anisearch"]}
-* Annict: {counts["annict"]}
-* IMDb: {counts["imdb"]}
-* Kaize: {counts["kaize"]}
-* Kitsu: {counts["kitsu"]}
-* LiveChart.me: {counts["livechart"]}
-* MyAnimeList: {counts["myanimelist"]}
-* Notify.moe: {counts["notify"]}
-* Otak-Otaku: {counts["otakotaku"]}
-* Shikimori: {counts["shikimori"]}
-* Shoboi: {counts["shoboi"]}
-* SilverYasha: {counts["silveryasha"]}
-* The Movie DB: {counts["themoviedb"]}
-* Trakt: {counts["trakt"]}
-""")
+        print(f"Data parsed:")
+        for key, value in counts.items():
+            if key == "total":
+                continue
+            print(f"* {key}: {value}")
         end_time = time()
         pprint.print(
             Platform.SYSTEM,

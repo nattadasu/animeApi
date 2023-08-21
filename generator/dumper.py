@@ -80,6 +80,7 @@ def save_platform_loop(data: list[dict[str, Any]], attr: dict[str, Any]) -> dict
         "kitsu",
         "livechart",
         "myanimelist",
+        "nautiljon",
         "notify",
         "otakotaku",
         "shikimori",
@@ -117,6 +118,8 @@ def save_platform_loop(data: list[dict[str, Any]], attr: dict[str, Any]) -> dict
                 name = Platform.LIVECHART
             case "myanimelist":
                 name = Platform.MYANIMELIST
+            case "nautiljon":
+                name = Platform.NAUTILJON
             case "notify":
                 name = Platform.NOTIFY
             case "otakotaku":
@@ -231,6 +234,7 @@ def update_markdown(attr: dict[str, dict[str, int | str] | str | int | list[str]
     kts = add_spaces(counts["kitsu"])
     lvc = add_spaces(counts["livechart"])
     mal = add_spaces(counts["myanimelist"])
+    nau = add_spaces(counts["nautiljon"])
     ntf = add_spaces(counts["notify"])
     ook = add_spaces(counts["otakotaku"])
     shk = add_spaces(counts["shikimori"])
@@ -251,6 +255,7 @@ def update_markdown(attr: dict[str, dict[str, int | str] | str | int | list[str]
 | Kitsu              |       `kitsu` | {kts} |
 | LiveChart          |   `livechart` | {lvc} |
 | MyAnimeList        | `myanimelist` | {mal} |
+| Nautiljon          |   `nautiljon` | {nau} |
 | Notify.moe         |      `notify` | {ntf} |
 | Otak Otaku         |   `otakotaku` | {ook} |
 | Shikimori          |   `shikimori` | {shk} |
@@ -296,7 +301,7 @@ def update_markdown(attr: dict[str, dict[str, int | str] | str | int | list[str]
         now).strftime("%m/%d/%Y %H:%M:%S UTC")  # type: ignore
     readme = re.sub(
         r"<!-- updated-txt -->(.|\n)*<!-- \/updated-txt -->",
-        f"<!-- updated-txt -->\n```json\nUpdated on {formatted_time}\n```\n<!-- /updated-txt -->",
+        f"<!-- updated-txt -->\n```txt\nUpdated on {formatted_time}\n```\n<!-- /updated-txt -->",
         readme,
     )
 

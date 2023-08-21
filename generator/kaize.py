@@ -2,14 +2,13 @@ import json
 import math
 import re
 import time
-from typing import Union, Optional, Any, Literal
+from typing import Any, Literal, Optional, Union
 
-from alive_progress import alive_bar  # type: ignore
-from fake_useragent import FakeUserAgent  # type: ignore
-from bs4 import BeautifulSoup, Tag
 import requests as req
-
-from prettyprint import PrettyPrint, Platform, Status
+from alive_progress import alive_bar  # type: ignore
+from bs4 import BeautifulSoup, Tag
+from fake_useragent import FakeUserAgent  # type: ignore
+from prettyprint import Platform, PrettyPrint, Status
 
 pprint = PrettyPrint()
 fua = FakeUserAgent(browsers=["firefox", "chrome", "edge", "safari"])
@@ -253,6 +252,7 @@ class Kaize:
                     anime_data.extend(self._get_data_index(page))
                     bar()
             with open(file_path, "w", encoding="utf-8") as file:
+                anime_data.sort(key=lambda x: x['title'])  # type: ignore
                 json.dump(anime_data, file)
             pprint.print(
                 Platform.KAIZE,
@@ -269,6 +269,7 @@ class Kaize:
             )
             with open(file_path, "r", encoding="utf-8") as file:
                 anime_data = json.load(file)
+        anime_data.sort(key=lambda x: x['title'])  # type: ignore
         return anime_data
 
     @staticmethod
