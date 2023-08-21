@@ -85,7 +85,7 @@ def main() -> None:
                         "livechart": item.get("livechart", None),
                         "myanimelist": item.get("myanimelist", None),
                         "nautiljon": item.get("nautiljon", None),
-                        "nautijilon_id": item.get("nautiljon_id", None),
+                        "nautiljon_id": item.get("nautiljon_id", None),
                         "notify": item.get("notify", None),
                         "otakotaku": item.get("otakotaku", None),
                         "shikimori": item.get("shikimori", None),
