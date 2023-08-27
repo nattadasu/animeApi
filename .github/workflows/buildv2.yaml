@@ -41,7 +41,7 @@ jobs:
           $date = Get-Date -Format "yyyy-MM-dd"
           $time = Get-Date -Format "HH:mm:ss"
           try {
-            python3 generator
+            python3 main.py
             git config --local user.email "nattadasu@nattadasu.my.id"
             git config --local user.name "Natsu Tadama"
             git add .
