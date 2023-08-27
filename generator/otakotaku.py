@@ -11,7 +11,7 @@ from fake_useragent import FakeUserAgent  # type: ignore
 from prettyprint import Platform, PrettyPrint, Status
 
 pprint = PrettyPrint()
-fua = FakeUserAgent(browsers=["firefox", "chrome", "edge", "safari"])
+fua = FakeUserAgent(browsers=["chrome"])
 rand_fua: str = f"{fua.random}"  # type: ignore
 
 
@@ -25,8 +25,8 @@ class OtakOtaku:
             'accept-language': 'en-US,en;q=0.9',
             'cookie': 'lang=id',
             'dnt': '1',
-            'referer': 'https://otakotaku.com/anime/view/1',
-            'sec-ch-ua': '"Chromium";v="92", " Not A;Brand";v="99", "Microsoft Edge";v="92"',
+            'referer': 'https://otakotaku.com/anime/view/1/yahari-ore-no-seishun-love-comedy-wa-machigatteiru',
+            'sec-ch-ua': '"Chromium";v="116", " Not)A;Brand";v="24", "Microsoft Edge";v="116"',
             'sec-ch-ua-mobile': '?0',
             'sec-ch-ua-platform': '"Windows"',
             'sec-fetch-dest': 'empty',
@@ -45,11 +45,10 @@ class OtakOtaku:
 
     def _get(self, url: str) -> Union[req.Response, None]:
         """Get the response from the url"""
+        response = req.get(url, headers=self.headers, timeout=15)
         try:
-            response = req.get(url, headers=self.headers, timeout=15)
-            if response.status_code == 200:
-                return response
-            return None
+            response.raise_for_status()
+            return response
         except Exception as err:
             pprint.print(Platform.OTAKOTAKU, Status.ERR, f"Error: {err}")
             return None
@@ -138,9 +137,11 @@ class OtakOtaku:
                     )
                     return anime_list
                 latest = latest + 1
+                loop = latest_id - latest + 1
             else:
                 latest = 1
-            with alive_bar(latest_id, title="Getting data", spinner=None) as bar:  # type: ignore
+                loop = latest_id
+            with alive_bar(loop, title="Getting data", spinner=None) as bar:  # type: ignore
                 for anime_id in range(latest, latest_id + 1):
                     data_index = self._get_data_index(anime_id)
                     if not data_index:
@@ -157,7 +158,7 @@ class OtakOtaku:
             with open(latest_file_path, "w", encoding="utf-8") as file:
                 file.write(str(latest_id))
             with open(file_path, "w", encoding="utf-8") as file:
-                anime_data.sort(key=lambda x: x['title'])  # type: ignore
+                anime_list.sort(key=lambda x: x['title'])  # type: ignore
                 json.dump(anime_list, file)
             pprint.print(
                 Platform.OTAKOTAKU,
