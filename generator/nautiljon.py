@@ -148,7 +148,7 @@ class Nautiljon:
                 f"Expected pages: {last_page}",
             )
         except ConnectionError as err:
-            pprint.print(Platform.NAUTILJON, status.ERR,
+            pprint.print(Platform.NAUTILJON, Status.ERR,
                          f"Error: {err}")
             pprint.print(Platform.NAUTILJON, Status.ERR,
                          "Connection error, using local file")
