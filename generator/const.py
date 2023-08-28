@@ -1,11 +1,11 @@
 import os
 
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 from prettyprint import PrettyPrint
 
 # if .env file exists, load it
-# if os.path.isfile(".env"):
-#     load_dotenv()
+if os.path.isfile(".env"):
+    load_dotenv()
 
 KAIZE_XSRF_TOKEN = os.getenv("KAIZE_XSRF_TOKEN")
 """Kaize XSRF token"""
