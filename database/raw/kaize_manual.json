@@ -134,5 +134,21 @@
     "Zettai 15-byou Animation!": {
         "kaize": "gokiburi-taisou",
         "kaize_id": null
+    },
+    "Heat Guy J: Toriko - Angel": {
+        "kaize": "heat-guy-j-special",
+        "kaize_id": null
+    },
+    "RUANN: I AM STANDING": {
+        "kaize": "i-am-standing",
+        "kaize_id": 24566
+    },
+    "Ie Naki Ko Remy Specials": {
+        "kaize": "ie-naki-ko-remi-ova",
+        "kaize_id": 11434
+    },
+    "Kizutsukedo, Aishiteru.": {
+        "kaize": "it-might-be-painful-but-i-still-love-it",
+        "kaize_id": 24374
     }
 }
