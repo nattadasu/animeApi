@@ -11,11 +11,18 @@ pprint = PrettyPrint()
 class Downloader:
     """Download json file"""
 
-    def __init__(self, url: str, file_name: str, file_type: Literal["json", "txt"] = "json") -> None:
+    def __init__(
+        self,
+        url: str,
+        file_name: str,
+        file_type: Literal["json", "txt"] = "json",
+        platform: Platform = Platform.SYSTEM,
+    ) -> None:
         """Initialize the Downloader class"""
         self.url = url
         self.file_name = file_name
         self.file_type = file_type
+        self.platform = platform
         self.scrape = cloudscraper.create_scraper(  # type: ignore
             browser={
                 "browser": "chrome",
@@ -24,7 +31,7 @@ class Downloader:
             }
         )
         pprint.print(
-            Platform.SYSTEM,
+            self.platform,
             Status.NOTICE,
             f"Prepare to download {self.file_name}.{self.file_type}",
         )
@@ -41,7 +48,7 @@ class Downloader:
                 )
             return response
         except ConnectionError as err:
-            pprint.print(Platform.SYSTEM, Status.ERR, f"Error: {err}")
+            pprint.print(self.platform, Status.ERR, f"Error: {err}")
             return None
 
     def dumper(self) -> Any:
@@ -56,14 +63,14 @@ class Downloader:
                 with open(f"database/raw/{self.file_name}.txt", "w", encoding="utf-8") as file:
                     file.write(content)
             pprint.print(
-                Platform.SYSTEM,
+                self.platform,
                 Status.PASS,
                 f"Successfully download {self.file_name}.{self.file_type}",
             )
             return content
         else:
             pprint.print(
-                Platform.SYSTEM,
+                self.platform,
                 Status.ERR,
                 "Failed to dump data, loading from local file",
             )
@@ -81,7 +88,7 @@ class Downloader:
         # file not found
         except FileNotFoundError:
             pprint.print(
-                Platform.SYSTEM,
+                self.platform,
                 Status.ERR,
                 "Failed to load data, please download the data first, or check your internet connection",
             )
