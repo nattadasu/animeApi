@@ -34,6 +34,15 @@ def extract_table_data(html_content: str) -> list[dict[str, str | int | None]]:
             if len(columns) >= 4:
                 title = columns[1].find('a',
                     class_='eTitre').get_text().strip()  # type: ignore
+                francais = columns[1].find('span', class_="infos_small")
+                try:
+                    if francais:
+                        francais = francais.get_text().strip()
+                        francais = francais.removeprefix("(").removesuffix(")")
+                    else:
+                        francais = title
+                except Exception:
+                    francais = title
                 slug = columns[0].find('a')['href']  # type: ignore
                 # remove animes/ and .html
                 slug = slug.split('/')[-1].split('.')[0]  # type: ignore
@@ -54,6 +63,7 @@ def extract_table_data(html_content: str) -> list[dict[str, str | int | None]]:
 
                 data_list.append({
                     'title': f"{title}",
+                    'francais': f"{francais}",
                     'slug': f"{slug}",
                     'entry_id': entry_id,
                     'format': format_value,
@@ -137,7 +147,9 @@ class Nautiljon:
                 f"or around {math.ceil(len(anime_data) / 15)} pages.",
                 f"Expected pages: {last_page}",
             )
-        except ConnectionError:
+        except ConnectionError as err:
+            pprint.print(Platform.NAUTILJON, status.ERR,
+                         f"Error: {err}")
             pprint.print(Platform.NAUTILJON, Status.ERR,
                          "Connection error, using local file")
             with open(file_path, 'r', encoding='utf-8') as f:
