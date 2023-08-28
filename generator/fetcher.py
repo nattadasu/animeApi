@@ -48,7 +48,7 @@ def get_anitrakt() -> list[dict[str, Any]]:
         url=f"{base_url}tv.json",
         file_name="anitrakt_tv",
         file_type="json",
-        plaform=Platform.ANITRAKT,
+        platform=Platform.ANITRAKT,
     )
     data_tv: list[dict[str, Any]] = ddump_tv.dumper()
 
@@ -56,7 +56,7 @@ def get_anitrakt() -> list[dict[str, Any]]:
         url=f"{base_url}movies.json",
         file_name="anitrakt_movie",
         file_type="json",
-        plaform=Platform.ANITRAKT,
+        platform=Platform.ANITRAKT,
     )
     data_movie: list[dict[str, Any]] = ddump_movie.dumper()
     with alive_bar(len(data_movie),
@@ -83,7 +83,7 @@ def get_silveryasha() -> list[dict[str, Any]]:
         url="https://db.silveryasha.web.id/ajax/anime/dtanime",
         file_name="silveryasha",
         file_type="json",
-        plaform=Platform.SILVERYASHA,
+        platform=Platform.SILVERYASHA,
     )
     data_: dict[str, Any] = ddump.dumper()
     data: list[dict[str, Any]] = data_["data"]
@@ -101,6 +101,7 @@ def get_fribb_animelists() -> list[dict[str, Any]]:
         url="https://raw.githubusercontent.com/Fribb/anime-lists/master/anime-lists-reduced.json",
         file_name="fribb_animelists",
         file_type="json",
+        platform=Platform.FRIBB,
     )
     data: list[dict[str, Any]] = ddump.dumper()
     pprint.print(
