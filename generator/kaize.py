@@ -47,9 +47,9 @@ class Kaize:
         if self.xsrf_token:
             headers["X-XSRF-TOKEN"] = self.xsrf_token
             self.cookies = "XSRF-TOKEN=" + self.xsrf_token
-        if self.session and self.xsrf_token and self.cookies == "":
+        if self.session:
             # set cookie
-            self.cookies = f"kaize_session={self.session}; XSRF-TOKEN={self.xsrf_token}"
+            self.cookies = f"{self.cookies}; kaize_session={self.session}"
         headers["Cookie"] = self.cookies
         try:
             response = req.get(url, headers=headers, timeout=15)
