@@ -13,6 +13,7 @@ def get_anime_offline_database() -> dict[str, Any]:
         url="https://raw.githubusercontent.com/manami-project/anime-offline-database/master/anime-offline-database-minified.json",
         file_name="aod",
         file_type="json",
+        platform=Platform.ANIMEOFFLINEDATABASE
     )
     content: dict[str, Any] = ddump.dumper()
     pprint.print(
@@ -29,6 +30,7 @@ def get_arm() -> list[dict[str, Any]]:
         url="https://raw.githubusercontent.com/kawaiioverflow/arm/master/arm.json",
         file_name="arm",
         file_type="json",
+        platform=Platform.ARM
     )
     data: list[dict[str, Any]] = ddump.dumper()
     pprint.print(
@@ -46,6 +48,7 @@ def get_anitrakt() -> list[dict[str, Any]]:
         url=f"{base_url}tv.json",
         file_name="anitrakt_tv",
         file_type="json",
+        plaform=Platform.ANITRAKT,
     )
     data_tv: list[dict[str, Any]] = ddump_tv.dumper()
 
@@ -53,6 +56,7 @@ def get_anitrakt() -> list[dict[str, Any]]:
         url=f"{base_url}movies.json",
         file_name="anitrakt_movie",
         file_type="json",
+        plaform=Platform.ANITRAKT,
     )
     data_movie: list[dict[str, Any]] = ddump_movie.dumper()
     with alive_bar(len(data_movie),
@@ -79,6 +83,7 @@ def get_silveryasha() -> list[dict[str, Any]]:
         url="https://db.silveryasha.web.id/ajax/anime/dtanime",
         file_name="silveryasha",
         file_type="json",
+        plaform=Platform.SILVERYASHA,
     )
     data_: dict[str, Any] = ddump.dumper()
     data: list[dict[str, Any]] = data_["data"]
