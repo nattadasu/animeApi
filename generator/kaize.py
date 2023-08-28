@@ -33,32 +33,44 @@ class Kaize:
         self.email = email
         self.password = password
         self.cookies = ""
+        self.headers = {
+            "User-Agent": self.user_agent,
+        }
         pprint.print(
             Platform.KAIZE,
             Status.READY,
             "Kaize anime data scraper ready to use",
         )
 
+    def _session_set(self) -> None:
+        """Set the session and XSRF token"""
+        if self.session in ["", None] or self.xsrf_token in ["", None]:
+            self.cookies = self._get_xsrf_token()
+            split_cookie = self.cookies.split("; ")
+            # find XSRF token
+            for cookie in split_cookie:
+                cookie = cookie.strip()
+                if cookie.startswith("XSRF-TOKEN"):
+                    self.xsrf_token = cookie.split("=")[-1]
+                if cookie.startswith("kaize_session"):
+                    self.session = cookie.split("=")[-1]
+        else:
+            self.cookies = f"XSRF-TOKEN={self.xsrf_token}; kaize_session={self.session}"
+        self.headers["Cookie"] = self.cookies
+        self.headers["X-XSRF-TOKEN"] = str(self.xsrf_token)
+
+
     def _get(self, url: str) -> Union[req.Response, None]:
         """Get the response from the url"""
-        headers = {
-            "User-Agent": self.user_agent,
-        }
-        if self.xsrf_token:
-            headers["X-XSRF-TOKEN"] = self.xsrf_token
-            self.cookies = "XSRF-TOKEN=" + self.xsrf_token
-        if self.session:
-            # set cookie
-            self.cookies = f"{self.cookies}; kaize_session={self.session}"
-        headers["Cookie"] = self.cookies
         try:
-            response = req.get(url, headers=headers, timeout=15)
+            response = req.get(url, headers=self.headers, timeout=15)
             if response.status_code == 200:
                 return response
             return None
         except Exception as err:
             pprint.print(Platform.KAIZE, Status.ERR, f"Error: {err}")
             return None
+
 
     def _post(
         self,
@@ -67,11 +79,7 @@ class Kaize:
         header: Union[dict[str, Any], None] = None
     ) -> Union[req.Response, None]:
         """Do POST request to the url"""
-        headers = {
-            "User-Agent": self.user_agent,
-        }
-        if self.xsrf_token:
-            headers["X-XSRF-TOKEN"] = self.xsrf_token
+        headers = self.headers
         if header:
             headers.update(header)
         try:
@@ -124,8 +132,6 @@ class Kaize:
 
     def pages(self, media: Literal['anime', 'manga'] = 'anime') -> int:
         """Get the total pages"""
-        if self.session == "" or self.xsrf_token == "":
-            self.session = self._get_xsrf_token()
         kzp = 0
         pgHundreds = True
         pgTens = True
@@ -218,10 +224,6 @@ class Kaize:
         kz_dat = soup.find_all("div", {"class": "anime-list-element"})
         result: list[dict[str, Any]] = []
         for kz in kz_dat:
-            rank: str = kz.find("div", {"class": "rank"}).text
-            rank = rank.replace("#", "")
-            rank = rank.replace("\n", "")
-            rank = rank.replace("\t", "")
             title: str = kz.find("a", {"class": "name"}).text
             link = kz.find("a", {"class": "name"}).get("href")
             slug: str = link.split("/")[-1]
@@ -233,7 +235,6 @@ class Kaize:
             else:
                 media_id = 0
             result.append({
-                "rank": int(rank),
                 "title": title,
                 "slug": slug,
                 "kaize": int(media_id),
@@ -246,6 +247,7 @@ class Kaize:
         file_path = "database/raw/kaize.json"
         try:
             # raise ConnectionError("Force use local file")
+            self._session_set()
             pages = self.pages()
             with alive_bar(pages, title="Getting data", spinner=None) as bar:  # type: ignore
                 for page in range(1, pages + 1):
