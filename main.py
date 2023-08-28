@@ -174,60 +174,11 @@ except Exception as e:
 try:
     if USE_CACHE is True:
         raise Exception('Cache usage activated')
-    print("\033[35m[FETCH]\033[0m \033[90m[Otak Otaku]\033[0m Checking latest anime...")
-    ooFeed = r.get('https://otakotaku.com/anime/feed', headers=oohead)
-    if ooFeed.status_code == 200:
-        # using bs4, check the latest anime on otak otaku
-        soup = bs(ooFeed.content, 'html.parser')
-        # find the link to the latest anime
-        oolink = soup.find('div', class_='anime-img').find('a')['href']
+    raw_file = r.get("https://raw.githubusercontent.com/nattadasu/animeApi/v3/database/raw/otakotaku.json")
+    raw_file.raise_for_status()
+    with open('oo.raw.json', 'w', encoding="utf-8") as f:
+        j.dump(raw_file, f, ensure_ascii=False)
 
-        # extract the ID from the link
-        ooidlast: int = int(oolink.rstrip('/').split('/')[-2])
-        print(
-            f"\033[34m[INFO]\033[0m \033[90m[Otak Otaku]\033[0m Latest anime ID: {ooidlast} (Brute force will start following this ID)")
-
-        ooRaw = []
-
-        for i in range(1, ooidlast + 1):
-            try:
-                # create a percentage
-                percentage = int((i / ooidlast) * 100)
-                print(
-                    f"\033[2K\r\033[32m[BUILD]\033[0m \033[90m[Otak Otaku]\033[0m Processing {i}/{ooidlast} ({percentage}% completed, brute force)", end='')
-                ooAnime = r.get(
-                    f'https://otakotaku.com/api/anime/view/{i}', headers=oohead)
-                ooAnime = ooAnime.json()
-                ooRaw += [
-                    {
-                        'otakotaku': int(ooAnime['data']['id_anime']),
-                        'title': ooAnime['data']['judul_anime'],
-                        'myanimelist': int(ooAnime['data']['mal_id_anime']) if ooAnime['data']['mal_id_anime'] else None,
-                        'animeplanet': ooAnime['data']['ap_id_anime'],
-                        'anidb': int(ooAnime['data']['anidb_id_anime']) if ooAnime['data']['anidb_id_anime'] else None,
-                        'animenewsnetwork': int(ooAnime['data']['ann_id_anime']) if ooAnime['data']['ann_id_anime'] else None,
-                    }
-                ]
-                ooAnime = None
-            except KeyboardInterrupt:
-                print(
-                    f'\033[2K\r\033[31m[ERROR]\033[0m \033[90m[System]\033[0m Otak Otaku loop stopped by user, exiting...')
-                end = time.time()
-                print(f'\n\n\033[34m[INFO]\033[0m \033[90m[Benchmark]\033[0m Total time: {end - start} seconds')
-                exit(1)
-            except TypeError:
-                hyper = link(f'https://otakotaku.com/anime/view/{i}', f'[{i}]')
-                print(
-                    f'\033[2K\r\033[31m[ERROR]\033[0m \033[90m[Otak Otaku]\033[0m Anime with ID: {hyper} can not be found')
-            except Exception as e:
-                hyper = link(f'https://otakotaku.com/anime/view/{i}', f'[{i}]')
-                print(
-                    f'\033[2K\r\033[31m[ERROR]\033[0m \033[90m[Otak Otaku]\033[0m Unknown error while processing anime with ID: {hyper}')
-                continue
-        with open('oo.raw.json', 'w', encoding='utf-8') as f:
-            j.dump(ooRaw, f, ensure_ascii=False)
-    else:
-        raise Exception('Failed to fetch information')
     print('\033[2K\r\033[34m[INFO]\033[0m \033[90m[Otak Otaku]\033[0m Successfully download the database')
 except Exception as e:
     print('\033[31m[ERROR]\033[0m \033[90m[Otak Otaku]\033[0m Failed to fetch information, using old database')
