@@ -103,9 +103,11 @@ class OtakOtaku:
         ann = data.get('ann_id_anime', None)
         if ann:
             ann = int(ann)
+        title = data['judul_anime']
+        title = title.replace("&quot;", '"')
         result = {
             'otakotaku': int(data['id_anime']),
-            'title': data['judul_anime'],
+            'title': title,
             'myanimelist': mal,
             'animeplanet': apla,
             'anidb': anidb,
@@ -139,6 +141,7 @@ class OtakOtaku:
                 latest = latest + 1
                 loop = latest_id - latest + 1
             else:
+                anime_list = []  # remove possible duplicate
                 latest = 1
                 loop = latest_id
             with alive_bar(loop, title="Getting data", spinner=None) as bar:  # type: ignore
