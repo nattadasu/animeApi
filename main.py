@@ -149,9 +149,9 @@ try:
     print('\033[35m[FETCH]\033[0m \033[90m[Otak Otaku]\033[0m Downloading database from v3 (This may take a while)')
     raw_file = r.get("https://raw.githubusercontent.com/nattadasu/animeApi/v3/database/raw/otakotaku.json")
     if raw_file.status_code == 200:
-        raw_json = raw_file.json()
+        ooRaw = raw_file.json()
         with open('oo.raw.json', 'w', encoding="utf-8") as f:
-            j.dump(raw_json, f, ensure_ascii=False)
+            j.dump(ooRaw, f, ensure_ascii=False)
     else:
         raw_file.raise_for_status()
 
@@ -166,12 +166,13 @@ try:
     if USE_CACHE is True:
         raise Exception('Cache usage activated')
     print('\033[35m[FETCH]\033[0m \033[90m[Kaize]\033[0m Downloading database from v3 (This may take a while)')
-    kzUnmapped = r.get("https://raw.githubusercontent.com/nattadasu/animeApi/v3/database/raw/kaize.json")
-    if kzUnmapped.status_code == 200:
+    kaize = r.get("https://raw.githubusercontent.com/nattadasu/animeApi/v3/database/raw/kaize.json")
+    if kaize.status_code == 200:
         with open('kz.unmapped.raw.json', 'w') as f:
-            j.dump(kzUnmapped.json(), f, ensure_ascii=False)
+            kzUnmapped = kaize.json()
+            j.dump(kzUnmapped, f, ensure_ascii=False)
     else:
-        kzUnmapped.raise_for_status()
+        kaize.raise_for_status()
 except Exception as e:
     print('\033[31m[ERROR]\033[0m \033[90m[Kaize]\033[0m Failed to fetch information, using old database')
     with open('kz.unmapped.raw.json', 'r') as f:
