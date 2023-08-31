@@ -4,6 +4,7 @@
 
 import json
 from datetime import datetime
+from urllib.parse import unquote
 from time import time
 from typing import Any, Union
 
@@ -23,6 +24,13 @@ def platform_id_content(platform: str, platform_id: Union[int, str]) -> dict[str
     Returns:
         dict[str, Any]: Platform ID content
     """
+    extensions_to_remove = ['.json', '.html']
+    platform_id = str(platform_id)
+    for extension in extensions_to_remove:
+        platform_id = platform_id.replace(extension, '')
+
+    platform_id = unquote(platform_id)
+
     with open(f"database/{platform}_object.json", "r", encoding="utf-8") as file_:
         data = json.loads(file_.read())
     return data[str(platform_id)]
@@ -198,9 +206,7 @@ def tmdb_exclusive_route(media_type: str, media_id: int, season_id: Union[str, N
 
 @app.route("/<platform>", methods=["GET"])
 @app.route("/<platform>.json", methods=["GET"])
-@app.route("/<platform>()", methods=["GET"])
 @app.route("/<platform>%28%29", methods=["GET"])
-@app.route("/<platform>().json", methods=["GET"])
 @app.route("/<platform>%28%29.json", methods=["GET"])
 def platform_array(platform: str = "animeapi"):
     """
@@ -226,7 +232,7 @@ def platform_array(platform: str = "animeapi"):
         f"https://raw.githubusercontent.com/nattadasu/animeApi/v3/database/{platform}.json")
 
 @app.route("/<platform>/<platform_id>", methods=["GET"])
-def platform_lookup(platform: str, platform_id: int):
+def platform_lookup(platform: str, platform_id: Union[int, str]):
     """
     Platform lookup route
 
