@@ -41,6 +41,7 @@ def before_request():
     """Before request"""
     g.start = time()
 
+
 @app.route("/", methods=["GET"])
 def index():
     """Index route"""
@@ -118,14 +119,6 @@ def robots():
         return Response(file_.read(), mimetype="text/plain", status=200)
 
 
-@app.route("/animeapi.tsv", methods=["GET"])
-@app.route("/animeApi.tsv", methods=["GET"])
-def animeapi_tsv():
-    """AnimeAPI TSV route"""
-    with open("api/animeapi.tsv", "r", encoding="utf-8") as file_:
-        return Response(file_.read(), mimetype="text/tab-separated-values", status=200)
-
-
 @app.route("/trakt/<media_type>/<media_id>", methods=["GET"])
 @app.route("/trakt/<media_type>/<media_id>/seasons/<season_id>", methods=["GET"])
 @app.route("/trakt/<media_type>/<media_id>/season/<season_id>", methods=["GET"])
@@ -141,8 +134,6 @@ def trakt_exclusive_route(media_type: str, media_id: int, season_id: Union[str, 
     Returns:
         Response: Response
     """
-    with open("database/trakt_object.json", "r", encoding="utf-8") as file_:
-        data = json.loads(file_.read())
     if season_id == "0" and media_type in ["shows", "show"]:
         return jsonify({
             "error": "Invalid season ID",
@@ -155,8 +146,8 @@ def trakt_exclusive_route(media_type: str, media_id: int, season_id: Union[str, 
         else:
             media_type_ = media_type
         if season_id is None:
-            return jsonify(data[f"{media_type_}/{media_id}"])
-        return jsonify(data[f"{media_type_}/{media_id}/seasons/{season_id}"])
+            return platform_id_content("trakt", f"{media_type_}/{media_id}")
+        return platform_id_content("trakt", f"{media_type_}/{media_id}/seasons/{season_id}")
     except KeyError:
         return jsonify({
             "error": "Not found",
@@ -183,8 +174,6 @@ def tmdb_exclusive_route(media_type: str, media_id: int, season_id: Union[str, N
     Returns:
         Response: Response
     """
-    with open("database/themoviedb_object.json", "r", encoding="utf-8") as file_:
-        data = json.loads(file_.read())
     media_type_ = media_type
     if media_type == "tv" or season_id is not None:
         return jsonify({
@@ -195,7 +184,7 @@ def tmdb_exclusive_route(media_type: str, media_id: int, season_id: Union[str, N
     try:
         if media_type.endswith("s"):
             media_type_ = media_type[:-1]
-        return jsonify(data[f"{media_type_}/{media_id}"])
+        return platform_id_content("themoviedb", f"movie/{media_id}")
     except KeyError:
         return jsonify({
             "error": "Not found",
@@ -205,9 +194,7 @@ def tmdb_exclusive_route(media_type: str, media_id: int, season_id: Union[str, N
 
 
 @app.route("/<platform>", methods=["GET"])
-@app.route("/<platform>.json", methods=["GET"])
 @app.route("/<platform>%28%29", methods=["GET"])
-@app.route("/<platform>%28%29.json", methods=["GET"])
 def platform_array(platform: str = "animeapi"):
     """
     Platform array route, redirects to the raw JSON file on GitHub
@@ -221,13 +208,18 @@ def platform_array(platform: str = "animeapi"):
     # get current route
     route = request.path
     platform = platform.lower()
+    if route.endswith(".tsv"):
+        with open("database/animeapi.tsv", "r", encoding="utf-8") as file_:
+            response = Response(file_.read(), mimetype="text/tab-separated-values", status=200)
+            response.headers['Content-Disposition'] = 'inline; filename="animeapi.tsv"'
+            return response
     # remove .json if present
     if route.endswith(".json"):
         route = route.replace(".json", "")
     if not (route.endswith("()") or route.endswith("%28%29")) and platform != "animeapi":
         platform = platform + "_object"
     else:
-        platform = platform.removesuffix("%28%29")
+        platform = unquote(platform).replace('()', '')
     if platform == "syobocal":
         platform = "shoboi"
     return redirect(
