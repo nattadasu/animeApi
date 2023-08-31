@@ -1,6 +1,7 @@
 import json
 import math
 import random
+import re
 from datetime import datetime
 from time import sleep
 
@@ -45,15 +46,16 @@ def extract_table_data(html_content: str) -> list[dict[str, str | int | None]]:
                     francais = title
                 slug = columns[0].find('a')['href']  # type: ignore
                 # remove animes/ and .html
-                slug = slug.split('/')[-1].split('.')[0]  # type: ignore
+                slug = slug.split('/')[-1]  # type: ignore
+                slug = re.sub(".html$", "", slug)
                 # img src="/imagesmin/anime/00/68/offside_tv_12086.webp?1692218537
                 # search for anime id in img src, before .webp and after last _
                 try:
-                    entry_id = columns[0].find('img')['src'].split(  # type: ignore
-                        '/')[-1].split('_')[-1].split('.')[0]  # type: ignore
-                    entry_id = f"{entry_id}"
-                    if entry_id.isdigit():
-                        entry_id = int(entry_id)
+                    img_src = columns[0].find('img')['src']  # type: ignore
+                    entry_id_match = re.search(r'_(\d+)\.webp', img_src)
+                    
+                    if entry_id_match:
+                        entry_id = int(entry_id_match.group(1))  # type: ignore
                     else:
                         entry_id = None
                 except KeyError:
