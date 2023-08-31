@@ -226,6 +226,8 @@ def platform_array(platform: str = "animeapi"):
         route = route.replace(".json", "")
     if not (route.endswith("()") or route.endswith("%28%29")) and platform != "animeapi":
         platform = platform + "_object"
+    else:
+        platform = platform.removesuffix("%28%29")
     if platform == "syobocal":
         platform = "shoboi"
     return redirect(
