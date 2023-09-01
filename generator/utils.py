@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: MIT
+
 import subprocess
 
 from const import pprint, GITHUB_DISPATCH

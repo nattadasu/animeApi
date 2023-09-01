@@ -40,7 +40,7 @@ attribution = {
         "https://nautiljon.com",
         "https://otakotaku.com",
     ],
-    "license": "AGPL-3.0",
+    "license": "AGPL-3.0-only AND MIT AND CC0-1.0+",
     "website": "https://animeapi.my.id",
     "counts": {
         "anidb": 0,
