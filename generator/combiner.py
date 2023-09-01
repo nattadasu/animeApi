@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-only AND MIT
+
 from typing import Any
 
 from alive_progress import alive_bar  # type: ignore

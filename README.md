@@ -9,6 +9,10 @@ relations between anime titles from different databases.
 This project was derived on [anime-offline-database][aod] by [manami-project][mp]
 and [arm] by [kawaiioverflow][ko], while adding support for more databases.
 
+This project is primarily licensed under AGPL-3.0-only, unless otherwise stated.
+Please read more information regarding using the API on your project in
+[Why avoid using AnimeAPI?](#why-avoid-using-animeapi).
+
 <!-- omit in toc -->
 ## Table of Contents
 
@@ -16,6 +20,7 @@ and [arm] by [kawaiioverflow][ko], while adding support for more databases.
 <summary>Click to expand</summary>
 
 * [Why use AnimeAPI?](#why-use-animeapi)
+* [Why avoid using AnimeAPI?](#why-avoid-using-animeapi)
 * [Featured on](#featured-on)
   * [Libraries](#libraries)
   * [Projects, Apps, and Websites](#projects-apps-and-websites)
@@ -57,9 +62,11 @@ although with the cost of larger repository size.
 
 Below is the comparison between AnimeAPI and other relation mapping API.
 
+<!-- markdownlint-disable MD013 -->
+
 | Highlights                      | AnimeAPI                                        | [ARM][arm]                  | [BQA][bq]          | [Hato][hato]              | [SIMKL][smk]            | [Trakt][trk] | [AOD][aod]                                                          | [FAL][fal]    | [ALAL][alal]                           | [ATIP][atip]     |
 | ------------------------------- | ----------------------------------------------- | --------------------------- | ------------------ | ------------------------- | ----------------------- | ------------ | ------------------------------------------------------------------- | ------------- | -------------------------------------- | ---------------- |
-| License                         | AGPL-3.0                                        | MIT                         | AGPL-3.0           | Apache-2.0                | Proprietary             | Proprietary  | AGPL-3.0                                                            | Unknown       | Unknown                                | Unknown          |
+| License                         | AGPL-3.0-only, MIT, CC0                         | MIT                         | AGPL-3.0           | Apache-2.0                | Proprietary             | Proprietary  | AGPL-3.0                                                            | Unknown       | Unknown                                | Unknown          |
 | Access                          | Public                                          | Public                      | Public             | Paid, API Key             | API Key                 | API Key      | Public                                                              | Public        | Public                                 | Public           |
 | Format                          | REST, JSON, TSV                                 | Node.js Package, REST, JSON | REST               | REST                      | REST                    | REST         | JSON                                                                | JSON          | XML                                    | JSON             |
 | Main Languages                  | Python, JSON                                    | JavaScript, JSON            | TypeScript, SQLite | C#, MySQL, PostgreSQL     | -                       | -            | JSON                                                                | JSON          | XLSL, XML                              | PowerShell, JSON |
@@ -92,6 +99,7 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 | [![f:tvdb] TVDB][tvdb]          | ❌                                               | ❌                           | ❌                  | ❌                         | ✔                       | ✔            | ❌                                                                   | ✔             | ✔                                      | ❌                |
 | [![f:tvtm] TVTime][tvtm]        | ❌                                               | ❌                           | ❌                  | ❌                         | ✔ via TVDB              | ✔ via TVDB   | ❌                                                                   | ✔ via TVDB    | ✔ via TVDB                             | ❌                |
 
+<!-- markdownlint-enable MD013 -->
 <!-- omit in toc -->
 ### Legends
 
@@ -101,6 +109,26 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 * ATIP: [ryuuganime/aniTrakt-IndexParser][atip]
 * BQA: [BeeeQueue/arm-server][bq]
 * FAL: [Fribb/anime-lists][fal]
+
+## Why Avoid Using AnimeAPI?
+
+AnimeAPI is licensed under the AGPL-3.0-only, primarily because it's derived
+from the [manami-project/anime-offline-database][aod]. We strongly discourage
+integrating this project into your own if you intend to maintain a permissive
+licensing model for your work.
+
+There is an alternative approach you can consider. You could make your project
+closed-source and set up a private instance of AnimeAPI for your specific use.
+However, it's essential to recognize that this approach raises ethical
+considerations, and we recommend proceeding with caution while also exploring
+other options or alternatives.
+
+It's worth noting that there are exceptions to this rule, particularly regarding
+the raw files from original sources. The scraper scripts for Kaize, Nautiljon,
+and Otak-Otaku are licensed under the MIT license, and the raw JSON files they
+generate are licensed under the CC0 license instead. You are free to use these
+files and build your own database with them. For more information, please refer
+to [`database/raw/README.md`](database/raw/README.md).
 
 ## Featured on
 
@@ -113,12 +141,12 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 > adding your project to the table below. Please make sure to add a short
 > description of your project and a link to your project's homepage.
 
-<!-- markdownlint-disable MD034 -->
+<!-- markdownlint-disable MD034 MD013 -->
 ### Libraries
 
-| Package Name  | Language | Repo                                     | Hosted Link                           | Description                                                                  |
-| :------------ | :------- | :--------------------------------------- | :------------------------------------ | :--------------------------------------------------------------------------- |
-| `animeapi-py` | Python   | https://github.com/nattadasu/animeapi-py | https://pypi.org/project/animeapi-py/ | A Python wrapper for AnimeAPI with type hinting and additional async support |
+| Package Name  | Language | Package Link                          | Description                                                                  |
+| :------------ | :------- | :------------------------------------ | :--------------------------------------------------------------------------- |
+| `animeapi-py` | Python   | https://pypi.org/project/animeapi-py/ | A Python wrapper for AnimeAPI with type hinting and additional async support |
 
 ### Projects, Apps, and Websites
 
@@ -127,7 +155,7 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 | Ryuuzaki Ryuusei      | Python             | https://github.com/nattadasu/ryuuRyuusei                     | A Discord bot that uses AnimeAPI to fetch anime maps                                        |
 | animeManga-autoBackup | Powershell, Python | https://github.com/Animanga-Initiative/animeManga-autoBackup | A script that uses AnimeAPI to get info one of your anime/manga lists and save it to a file |
 
-<!-- markdownlint-enable MD034 -->
+<!-- markdownlint-enable MD034 MD013 -->
 
 ## Statistic
 
@@ -191,6 +219,8 @@ All requests must be `GET`, and response always will be in JSON format.
 AnimeAPI has 3 versions, which are `v1`, `v2`, and `v3`. The differences between
 each version are as follows:
 
+<!-- markdownlint-disable MD013 -->
+
 |                    | v1                         | v2                               | v3                                |
 | ------------------ | -------------------------- | -------------------------------- | --------------------------------- |
 | Base URL           | *inactive*                 | `https://aniapi.nattadasu.my.id` | `https://animeapi.my.id`          |
@@ -203,6 +233,8 @@ each version are as follows:
 | Status Codes       | `200`, `404`               | `200`, `404`                     | `200`, `302`, `400`, `404`, `500` |
 | Response Schema    | -                          | -                                | [JSON Schema](#json-schema)       |
 | Documented         | ❌                          | ✔                                | ✔                                 |
+
+<!-- markdownlint-enable MD013 -->
 
 ### Get status and statistics
 
@@ -578,6 +610,7 @@ Add the following schema URI to your JSON file.
 <details>
 <summary>Click to expand, if you want to see the content of the schema</summary>
 
+<!-- markdownlint-disable MD013 -->
 <!-- jsonschema -->
 ```json
 {
@@ -819,7 +852,7 @@ Add the following schema URI to your JSON file.
 }
 ```
 <!-- /jsonschema -->
-
+<!-- markdownlint-enable MD013 -->
 </details>
 
 ### TypeScript

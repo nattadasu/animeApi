@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-only AND MIT
+
 import json
 import sys
 import traceback

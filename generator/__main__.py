@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-only AND MIT
+
 def main() -> None:
     """Main function"""
     from main import main as _main

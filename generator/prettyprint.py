@@ -1,4 +1,8 @@
-"""Pretty print for the proccess"""
+"""
+SPDX-License-Identifier: MIT
+
+Pretty print for the proccess
+"""
 from enum import Enum
 from datetime import datetime
 
