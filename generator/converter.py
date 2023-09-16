@@ -99,8 +99,14 @@ def link_kaize_to_mal(
                    title="Insert manual mappings",
                    spinner=None) as bar:  # type: ignore
         for title, kz_item in manual_link.items():
+            if isinstance(kz_item, list):
+                kz_item = kz_item[0]
+                override = True
+            else:
+                override = False
             # if kz_item["kaize"] doesn't exist in unlinked under slug key, skip
-            if kz_item["kaize"] not in [item["slug"] for item in unlinked]:
+            if override is False and kz_item["kaize"] not in [item["slug"] for item in unlinked]:
+                bar()
                 continue
             for aod_item in aod:
                 aod_title = aod_item["title"]
@@ -123,8 +129,11 @@ def link_kaize_to_mal(
                    title="Removing unrequired data from unlinked",
                    spinner=None) as bar:  # type: ignore
         for item in kz_fixed:
-            if item in unlinked:
-                unlinked.remove(item)
+            # if item exist with same id, remove
+            for unlinked_item in unlinked:
+                if item["kaize"] == unlinked_item["kaize"]:
+                    unlinked.remove(unlinked_item)
+                    break
             bar()
     aod_list: list[dict[str, Any]] = []
     with alive_bar(len(aod_dict),
@@ -229,7 +238,7 @@ def link_nautiljon_to_mal(
             for aod_item in aod:
                 aod_title = aod_item["title"]
                 ratio = fuzz.ratio(title, aod_title)  # type: ignore
-                if ratio >= 85:
+                if ratio >= 90:
                     item.update({
                         "anidb": aod_item["anidb"],
                         "anilist": aod_item["anilist"],
@@ -248,8 +257,10 @@ def link_nautiljon_to_mal(
                    title="Removing fixed data from unlinked",
                    spinner=None) as bar:  # type: ignore
         for item in nautiljon_fixed:
-            if item in unlinked:
-                unlinked.remove(item)
+            for unlinked_item in unlinked:
+                if item["slug"] == unlinked_item["slug"]:
+                    unlinked.remove(unlinked_item)
+                    break
             bar()
     aod_list: list[dict[str, Any]] = []
     with alive_bar(len(aod_dict),
@@ -295,40 +306,20 @@ def link_otakotaku_to_mal(
                    title="Translating AOD list to a dict with MAL ID",
                    spinner=None) as bar:  # type: ignore
         for item in aod:
-            if item["myanimelist"]:
-                aod_dict[f"{item['myanimelist']}"] = item
-            else:
-                aod_dict[item["title"]] = item
+            aod_dict[item["title"]] = item
             bar()
     with alive_bar(len(otakotaku),
                    title="Translating Otakotaku list to a dict with MAL ID",
                    spinner=None) as bar:  # type: ignore
         for item in otakotaku:
-            mal_id = item["myanimelist"]
-            if mal_id:
-                ot_dict[f"{mal_id}"] = {
-                    "title": item["title"],
-                    "otakotaku": item["otakotaku"],
-                    "animeplanet": item["animeplanet"],
-                    "anidb": item["anidb"],
-                    "animenewsnetwork": item["animenewsnetwork"],
-                }
-            else:
-                ot_dict[item["title"]] = {
-                    "title": item["title"],
-                    "otakotaku": item["otakotaku"],
-                    "animeplanet": item["animeplanet"],
-                    "anidb": item["anidb"],
-                    "animenewsnetwork": item["animenewsnetwork"],
-                }
+            ot_dict[item["title"]] = item
             bar()
     with alive_bar(len(ot_dict),
                    title="Linking Otak Otaku ID to MyAnimeList ID",
                    spinner=None) as bar:  # type: ignore
-        for mal_id, ot_item in ot_dict.items():
-            if mal_id in aod_dict:
-                aod_item: Union[dict[str, Any], None] = aod_dict.get(
-                    f"{mal_id}", None)
+        for title, ot_item in ot_dict.items():
+            if title in aod_dict:
+                aod_item: Union[dict[str, Any], None] = aod_dict.get(title, None)
                 if aod_item:
                     # add more data from otakotaku
                     ot_dat = {
@@ -347,10 +338,19 @@ def link_otakotaku_to_mal(
                    spinner=None) as bar:  # type: ignore
         for item in unlinked:
             title = item["title"]
+            replace_dict = {
+                "Season 2": "2nd Season",
+                "Season 3": "3rd Season",
+                "Season 4": "4th Season",
+                "Season 5": "5th Season",
+                "Season 6": "6th Season",
+            }
+            for key, value in replace_dict.items():
+                title = title.replace(key, value)
             for aod_item in aod:
                 aod_title = aod_item["title"]
                 ratio = fuzz.ratio(title, aod_title)  # type: ignore
-                if ratio >= 85:
+                if ratio >= 90:
                     ot_dat = {
                         "otakotaku": item["otakotaku"],
                     }
@@ -365,8 +365,14 @@ def link_otakotaku_to_mal(
                    title="Insert manual mappings",
                    spinner=None) as bar:  # type: ignore
         for title, oo_id in manual_link.items():
+            if isinstance(oo_id, list):
+                oo_id = oo_id[0]
+                override = True
+            else:
+                override = False
             # skip if not in unlinked
-            if oo_id not in [item["otakotaku"] for item in unlinked]:
+            if override is False and oo_id not in [item["otakotaku"] for item in unlinked]:
+                bar()
                 continue
             for aod_item in aod:
                 aod_title = aod_item["title"]
@@ -387,8 +393,11 @@ def link_otakotaku_to_mal(
                    title="Removing unrequired data from unlinked",
                    spinner=None) as bar:  # type: ignore
         for item in ot_fixed:
-            if item in unlinked:
-                unlinked.remove(item)
+            # if item exist with same id, remove
+            for unlinked_item in unlinked:
+                if item["otakotaku"] == unlinked_item["otakotaku"]:
+                    unlinked.remove(unlinked_item)
+                    break
             bar()
     aod_list: list[dict[str, Any]] = []
     with alive_bar(len(aod_dict),
@@ -488,7 +497,7 @@ def link_silveryasha_to_mal(
             for aod_item in aod:
                 aod_title = aod_item["title"]
                 ratio = fuzz.ratio(title, aod_title)  # type: ignore
-                if ratio >= 85:
+                if ratio >= 95:
                     sy_dat = {
                         "silveryasha": item["silveryasha"],
                     }
@@ -503,7 +512,13 @@ def link_silveryasha_to_mal(
                    title="Insert manual mappings",
                    spinner=None) as bar:  # type: ignore
         for title, sy_id in manual_link.items():
-            if sy_id not in [item["silveryasha"] for item in unlinked]:
+            if isinstance(sy_id, list):
+                sy_id = sy_id[0]
+                override = True
+            else:
+                override = False
+            if override is False and sy_id not in [item["silveryasha"] for item in unlinked]:
+                bar()
                 continue
             for aod_item in aod:
                 aod_title = aod_item["title"]
@@ -524,8 +539,11 @@ def link_silveryasha_to_mal(
                    title="Removing unrequired data from unlinked",
                    spinner=None) as bar:  # type: ignore
         for item in sy_fixed:
-            if item in unlinked:
-                unlinked.remove(item)
+            # if item exist with same id, remove
+            for unlinked_item in unlinked:
+                if item["silveryasha"] == unlinked_item["silveryasha"]:
+                    unlinked.remove(unlinked_item)
+                    break
             bar()
     aod_list: list[dict[str, Any]] = []
     with alive_bar(len(aod_dict),
