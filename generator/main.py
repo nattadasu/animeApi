@@ -16,6 +16,7 @@ from dumper import update_attribution, update_markdown
 from fetcher import (get_anime_offline_database, get_anitrakt, get_arm,
                      get_fribb_animelists, simplify_aod_data,
                      simplify_silveryasha_data)
+from clock import convert_float_to_time
 from kaize import Kaize
 from nautiljon import Nautiljon
 from otakotaku import OtakOtaku
@@ -117,10 +118,12 @@ def main() -> None:
                 continue
             print(f"* {key}: {value}")
         end_time = time()
+        total_time = end_time - start_time
+        total_time_str = convert_float_to_time(total_time)
         pprint.print(
             Platform.SYSTEM,
             Status.INFO,
-            f"Generator finished in {end_time - start_time:.2f} seconds",
+            f"Generator finished in {total_time_str}",
         )
     except KeyboardInterrupt:
         print()

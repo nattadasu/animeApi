@@ -40,6 +40,36 @@ it is your responsibility to ensure that your actions comply with the applicable
 licensing agreements. Be aware of any specific requirements, such as providing
 proper attribution or sharing your contributions under the same license.
 
+For `*_manual.json` files, you are free to modify the contents of the file with
+following rules:
+
+1. Key name must be exact from `aod.json`
+2. Value must be a dict/object if has multiple properties, or a string or int
+   if it has only one property
+3. If you want to override default behavior of skipping a mapping if the syste
+   already link, convert the value as an array/list of dict/object/string/int.
+
+For example:
+
+<!-- markdownlint-disable MD013 -->
+```jsonc
+{
+    
+    "Beyond the Boundary: Yakusoku no Kizuna": 734,
+    "Baka Bakka": {
+        "kaize": "fools-fools-fools",
+        "kaize_id": 24511
+    },
+    "Circle": [{
+        "kaize": "circle-music",
+        "kaize_id": 24509
+    }], // override default behavior. From "Circle" mapping in the service, use the 24509th entry
+    "Big Order (TV)": [266], // override default behavior. From "Big Order" mapping in the service, use the 266th entry
+    "Big Order": [265], // override default behavior. From "Big Order OVA" mapping in the service, use the 265th entry
+}
+```
+<!-- markdownlint-enable MD013 -->
+
 ## Questions and Clarifications
 
 If you have any questions or require clarification regarding the licensing of
