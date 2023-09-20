@@ -162,7 +162,7 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 19 September 2023 05:12:44 UTC
+Last updated: 20 September 2023 05:22:46 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -173,7 +173,7 @@ Last updated: 19 September 2023 05:12:44 UTC
 | Anime-Planet       | `animeplanet` |     23022 |
 | aniSearch          |   `anisearch` |     17960 |
 | Annict             |      `annict` |      8918 |
-| IMDb               |        `imdb` |      2257 |
+| IMDb               |        `imdb` |      2259 |
 | Kaize              |       `kaize` |     22826 |
 | Kitsu              |       `kitsu` |     19344 |
 | LiveChart          |   `livechart` |     10870 |
@@ -184,7 +184,7 @@ Last updated: 19 September 2023 05:12:44 UTC
 | Shikimori          |   `shikimori` |     25536 |
 | Shoboi/Syobocal    |      `shoboi` |      4697 |
 | Silver Yasha       | `silveryasha` |      4049 |
-| The Movie Database |  `themoviedb` |       382 |
+| The Movie Database |  `themoviedb` |       412 |
 | Trakt              |       `trakt` |      4436 |
 |                    |               |           |
 |                    |     **Total** | **31934** |
@@ -254,8 +254,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1695100364,
-    "iso": "2023-09-19T05:12:44.723884+00:00"
+    "timestamp": 1695187366,
+    "iso": "2023-09-20T05:22:46.190248+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -277,7 +277,7 @@ GET /status
     "animeplanet": 23022,
     "anisearch": 17960,
     "annict": 8918,
-    "imdb": 2257,
+    "imdb": 2259,
     "kaize": 22826,
     "kitsu": 19344,
     "livechart": 10870,
@@ -288,7 +288,7 @@ GET /status
     "shikimori": 25536,
     "shoboi": 4697,
     "silveryasha": 4049,
-    "themoviedb": 382,
+    "themoviedb": 412,
     "trakt": 4436,
     "total": 31934
   },
@@ -364,7 +364,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 09/19/2023 05:12:44 UTC
+Updated on 09/20/2023 05:22:46 UTC
 ```
 <!-- /updated-txt -->
 
