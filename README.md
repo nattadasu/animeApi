@@ -162,7 +162,7 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 30 September 2023 05:22:31 UTC
+Last updated: 01 October 2023 05:11:42 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -254,8 +254,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1696051351,
-    "iso": "2023-09-30T05:22:31.105799+00:00"
+    "timestamp": 1696137102,
+    "iso": "2023-10-01T05:11:42.668907+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -364,7 +364,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 09/30/2023 05:22:31 UTC
+Updated on 10/01/2023 05:11:42 UTC
 ```
 <!-- /updated-txt -->
 
