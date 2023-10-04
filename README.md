@@ -162,7 +162,7 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 03 October 2023 05:12:52 UTC
+Last updated: 04 October 2023 05:19:02 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -173,7 +173,7 @@ Last updated: 03 October 2023 05:12:52 UTC
 | Anime-Planet       | `animeplanet` |     23064 |
 | aniSearch          |   `anisearch` |     17987 |
 | Annict             |      `annict` |      8979 |
-| IMDb               |        `imdb` |      2264 |
+| IMDb               |        `imdb` |      2265 |
 | Kaize              |       `kaize` |     22821 |
 | Kitsu              |       `kitsu` |     19406 |
 | LiveChart          |   `livechart` |     10894 |
@@ -184,7 +184,7 @@ Last updated: 03 October 2023 05:12:52 UTC
 | Shikimori          |   `shikimori` |     25597 |
 | Shoboi/Syobocal    |      `shoboi` |      4740 |
 | Silver Yasha       | `silveryasha` |      4048 |
-| The Movie Database |  `themoviedb` |       415 |
+| The Movie Database |  `themoviedb` |       437 |
 | Trakt              |       `trakt` |      4510 |
 |                    |               |           |
 |                    |     **Total** | **31931** |
@@ -254,11 +254,11 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1696309972,
-    "iso": "2023-10-03T05:12:52.017137+00:00"
+    "timestamp": 1696396742,
+    "iso": "2023-10-04T05:19:02.314928+00:00"
   },
   "contributors": [
-    "nattadasu"
+    ""
   ],
   "sources": [
     "manami-project/anime-offline-database",
@@ -277,7 +277,7 @@ GET /status
     "animeplanet": 23064,
     "anisearch": 17987,
     "annict": 8979,
-    "imdb": 2264,
+    "imdb": 2265,
     "kaize": 22821,
     "kitsu": 19406,
     "livechart": 10894,
@@ -288,7 +288,7 @@ GET /status
     "shikimori": 25597,
     "shoboi": 4740,
     "silveryasha": 4048,
-    "themoviedb": 415,
+    "themoviedb": 437,
     "trakt": 4510,
     "total": 31931
   },
@@ -364,7 +364,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 10/03/2023 05:12:52 UTC
+Updated on 10/04/2023 05:19:02 UTC
 ```
 <!-- /updated-txt -->
 
