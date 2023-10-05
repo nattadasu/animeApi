@@ -21,6 +21,7 @@ class OtakOtaku:
     """OtakOtaku anime data scraper"""
 
     def __init__(self) -> None:
+        """Initiate the class"""
         self.headers = {
             'authority': 'otakotaku.com',
             'accept': '*/*',
@@ -46,7 +47,14 @@ class OtakOtaku:
         )
 
     def _get(self, url: str) -> Union[req.Response, None]:
-        """Get the response from the url"""
+        """
+        Get the response from the url
+
+        :param url: The url to get the response
+        :type url: str
+        :return: The response from the url
+        :rtype: Union[req.Response, None]
+        """
         response = req.get(url, headers=self.headers, timeout=15)
         try:
             response.raise_for_status()
@@ -56,7 +64,12 @@ class OtakOtaku:
             return None
 
     def get_latest_anime(self) -> int:
-        """Get latest anime from the website"""
+        """
+        Get latest anime from the website
+
+        :return: The latest anime id
+        :rtype: int
+        """
         url = "https://otakotaku.com/anime/feed"
         response = self._get(url)
         if not response:
@@ -85,8 +98,16 @@ class OtakOtaku:
         return int(anime_id)
 
     def _get_data_index(self, anime_id: int) -> Union[dict[str, Any], None]:
+        """
+        Get anime data
+        
+        :param anime_id: The anime id
+        :type anime_id: int
+        :return: The anime data
+        :rtype: Union[dict[str, Any], None]
+        """
         response = self._get(
-            f"https://otakotaku.com/api/anime/view/{anime_id}")
+            f"https://otakotaku.com/api/anime/view/{anime_id}/yahari-ore-no-seishun-love-comedy-wa-machigatteiru")
         if not response:
             raise ConnectionError("Failed to connect to otakotaku.com")
         json_: dict[str, Any] = response.json()
@@ -118,7 +139,12 @@ class OtakOtaku:
         return result
 
     def get_anime(self) -> list[dict[str, Any]]:
-        """Get complete anime data"""
+        """
+        Get complete anime data
+
+        :return: The anime data
+        :rtype: list[dict[str, Any]]
+        """
         file_path = "database/raw/otakotaku.json"
         anime_list: list[dict[str, Any]] = []
         latest_file_path = "database/raw/_latest_otakotaku.txt"
@@ -183,7 +209,14 @@ class OtakOtaku:
 
     @staticmethod
     def convert_list_to_dict(data: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
-        """Convert list to dict"""
+        """
+        Convert list to dict
+
+        :param data: The list to convert
+        :type data: list[dict[str, Any]]
+        :return: The converted list
+        :rtype: dict[str, dict[str, Any]]
+        """
         result: dict[str, dict[str, Any]] = {}
         for item in data:
             result[str(item['otakotaku'])] = item

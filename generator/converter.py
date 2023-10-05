@@ -14,7 +14,17 @@ def link_kaize_to_mal(
     kaize: list[dict[str, Any]],
     aod: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
-    """Link Kaize slug to MyAnimeList ID based similarity in title name over 85% in fuzzy search"""
+    """
+    Link Kaize slug to MyAnimeList ID based similarity in title name over 85% in
+    fuzzy search
+
+    :param kaize: Kaize data
+    :type kaize: list[dict[str, Any]]
+    :param aod: AOD data
+    :type aod: list[dict[str, Any]]
+    :return: Crude AniAPI data, requires refinement after the process
+    :rtype: list[dict[str, Any]]
+    """
     # add dummy data to aod
     for item in aod:
         item.update({
@@ -179,7 +189,17 @@ def link_nautiljon_to_mal(
     nautiljon: list[dict[str, Any]],
     aod: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
-    """Link Nautiljon ID to MyAnimeList ID based similarity in title name over 85% in fuzzy search"""
+    """
+    Link Nautiljon ID to MyAnimeList ID based similarity in title name over 85%
+    in fuzzy search
+
+    :param nautiljon: Nautiljon data
+    :type nautiljon: list[dict[str, Any]]
+    :param aod: AOD data
+    :type aod: list[dict[str, Any]]
+    :return: Crude AniAPI data, requires refinement after the process
+    :rtype: list[dict[str, Any]]
+    """
     for item in aod:
         item.update({
             "nautiljon": None,
@@ -297,7 +317,17 @@ def link_otakotaku_to_mal(
     otakotaku: list[dict[str, Any]],
     aod: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
-    """Link Otak Otaku ID to MyAnimeList ID based similarity in title name over 85% in fuzzy search"""
+    """
+    Link Otak Otaku ID to MyAnimeList ID based similarity in title name over 85%
+    in fuzzy search
+
+    :param otakotaku: Otak Otaku data
+    :type otakotaku: list[dict[str, Any]]
+    :param aod: AOD data
+    :type aod: list[dict[str, Any]]
+    :return: Crude AniAPI data, requires refinement after the process
+    :rtype: list[dict[str, Any]]
+    """
     unlinked: list[dict[str, Any]] = []
     ot_fixed: list[dict[str, Any]] = []
     ot_dict: dict[str, Any] = {}
@@ -439,7 +469,17 @@ def link_silveryasha_to_mal(
     silveryasha: list[dict[str, Any]],
     aod: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
-    """Link SilverYasha ID to MyAnimeList ID based similarity in title name over 85% in fuzzy search"""
+    """
+    Link SilverYasha ID to MyAnimeList ID based similarity in title name over
+    85% in fuzzy search
+
+    :param silveryasha: SilverYasha data
+    :type silveryasha: list[dict[str, Any]]
+    :param aod: AOD data
+    :type aod: list[dict[str, Any]]
+    :return: Crude AniAPI data, requires refinement after the process
+    :rtype: list[dict[str, Any]]
+    """
     unlinked: list[dict[str, Any]] = []
     sy_fixed: list[dict[str, Any]] = []
     sy_dict: dict[str, Any] = {}

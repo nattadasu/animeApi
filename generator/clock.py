@@ -3,13 +3,13 @@ from datetime import timedelta
 def pluralize(count: int, word: str) -> str:
     """
     Pluralize a word if the count is not 1.
-    
-    Args:
-        count (int): The count.
-        word (str): The word to pluralize.
 
-    Returns:
-        str: The pluralized word.
+    :param count: The count.
+    :type count: int
+    :param word: The word to pluralize.
+    :type word: str
+    :return: The pluralized word, e.g. "1 day" or "2 days".
+    :rtype: str
     """
     if count in [0, 1]:
         return f"{count} {word}"
@@ -27,15 +27,17 @@ def convert_float_to_time(
     show_milliseconds: bool = True,
 ) -> str:
     """
-    Convert a float representing a number of days to a string representing the number of days, hours, and minutes.
-
-    Args:
-        time_float (float, int): The number of days.
-        show_weeks (bool, optional): Whether to show weeks in the output. Defaults to False.
-        show_milliseconds (bool, optional): Whether to show milliseconds in the output. Defaults to True.
-
-    Returns:
-        str: A string representing the number of months, days, hours, and minutes.
+    Convert a float representing a number of days to a string representing the
+    number of days, hours, and minutes.
+    
+    :param time_float: The number of days.
+    :type time_float: float | int
+    :param show_weeks: Whether to show weeks in the output, defaults to False
+    :type show_weeks: bool, optional
+    :param show_milliseconds: Whether to show milliseconds in the output, defaults to True
+    :type show_milliseconds: bool, optional
+    :return: A string representing the number of months, days, hours, and minutes.
+    :rtype: str
     """
     # Create a timedelta object with the total seconds
     delta = timedelta(seconds=total_seconds)

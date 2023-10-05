@@ -10,7 +10,12 @@ from prettyprint import Platform, Status
 
 
 def check_git_any_changes() -> bool:
-    """Check if there's any changes in git"""
+    """
+    Check if there's any changes in git
+
+    :return: True if there's any changes, False otherwise
+    :rtype: bool
+    """
     if GITHUB_DISPATCH:
         pprint.print(
             Platform.SYSTEM,

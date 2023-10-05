@@ -13,7 +13,14 @@ from prettyprint import Platform, Status
 
 
 def populate_contributors(attr: dict[str, Any]) -> dict[str, Any]:
-    """Read total contributors from GitHub API"""
+    """
+    Read total contributors from GitHub API
+
+    :param attr: attribution dict
+    :type attr: dict[str, Any]
+    :return: attribution dict that has been updated
+    :rtype: dict[str, Any]
+    """
     response = requests.get(
         "https://api.github.com/repos/nattadasu/animeApi/contributors?per_page=100",
         headers={
@@ -31,7 +38,18 @@ def populate_contributors(attr: dict[str, Any]) -> dict[str, Any]:
 
 
 def save_to_file(data: list[dict[str, Any]], platform: str, attr: dict[str, Any]) -> None:
-    """Save data to file"""
+    """
+    Save data to file
+
+    :param data: data to save
+    :type data: list[dict[str, Any]]
+    :param platform: platform name
+    :type platform: str
+    :param attr: attribution dict
+    :type attr: dict[str, Any]
+    :return: None
+    :rtype: None
+    """
     items: list[dict[str, Any]] = []
     with alive_bar(len(data),
                    title="Removing None values",
@@ -70,7 +88,16 @@ def save_to_file(data: list[dict[str, Any]], platform: str, attr: dict[str, Any]
 
 
 def save_platform_loop(data: list[dict[str, Any]], attr: dict[str, Any]) -> dict[str, Any]:
-    """Loop through platforms and save data to file"""
+    """
+    Loop through platforms and save data to file
+
+    :param data: data to save
+    :type data: list[dict[str, Any]]
+    :param attr: attribution dict
+    :type attr: dict[str, Any]
+    :return: attribution dict that has been updated
+    :rtype: dict[str, Any]
+    """
     platforms = [
         "anidb",
         "anilist",
@@ -148,7 +175,16 @@ def save_platform_loop(data: list[dict[str, Any]], attr: dict[str, Any]) -> dict
 
 
 def save_list_to_tsv(data: list[dict[str, Any]], file_path: str) -> None:
-    """Save list to TSV"""
+    """
+    Save list to TSV
+
+    :param data: data to save
+    :type data: list[dict[str, Any]]
+    :param file_path: file path
+    :type file_path: str
+    :return: None
+    :rtype: None
+    """
     with open(f"{file_path}.tsv", "w", encoding="utf-8", newline="") as file_:
         writer = csv.writer(file_, delimiter="\t", lineterminator="\n")
         writer.writerow(data[0].keys())
@@ -162,7 +198,16 @@ def save_list_to_tsv(data: list[dict[str, Any]], file_path: str) -> None:
 
 
 def update_attribution(data: list[dict[str, Any]], attr: dict[str, Any]) -> dict[str, Any]:
-    """Update attr"""
+    """
+    Update attr
+
+    :param data: data to save
+    :type data: list[dict[str, Any]]
+    :param attr: attribution dict
+    :type attr: dict[str, Any]
+    :return: attribution dict that has been updated
+    :rtype: dict[str, Any]
+    """
     pprint.print(
         Platform.SYSTEM,
         Status.INFO,
@@ -202,17 +247,28 @@ def update_attribution(data: list[dict[str, Any]], attr: dict[str, Any]) -> dict
 
 
 def add_spaces(data: int, spaces_max: int = 9) -> str:
-    """Add spaces to data"""
+    """
+    Add spaces to data
+
+    :param data: data to add spaces
+    :type data: int
+    :param spaces_max: maximum spaces, defaults to 9
+    :type spaces_max: int, optional
+    :return: data with spaces
+    :rtype: str
+    """
     spaces = spaces_max - len(f"{data}")
     return f"{' ' * spaces}{data}"
 
 
-def update_markdown(attr: dict[str, dict[str, int | str] | str | int | list[str]]) -> dict[str, Any]:
+def update_markdown(
+    attr: dict[str, dict[str, int | str] | str | int | list[str]]
+) -> dict[str, Any]:
     """
     Update counters in README.md by looking <!-- counters --><!-- /counters -->
 
     :param attr: attribution
-    :type attr: dict[str, Any]
+    :type attr: dict[str, dict[str, int | str] | str | int | list[str]]
     :param now: current datetime
     :type now: datetime
     :return: attribution

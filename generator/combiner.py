@@ -10,7 +10,16 @@ def combine_arm(
     arm: list[dict[str, Any]],
     aod: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
-    """Combine ARM data with AOD data"""
+    """
+    Combine ARM data with AOD data
+
+    :param arm: ARM data
+    :type arm: list[dict[str, Any]]
+    :param aod: AOD data
+    :type aod: list[dict[str, Any]]
+    :return: AOD data
+    :rtype: list[dict[str, Any]]
+    """
     linked = 0
     with alive_bar(len(aod),
                    title="Combining ARM data with AOD data",
@@ -72,7 +81,16 @@ def combine_anitrakt(
     anitrakt: list[dict[str, Any]],
     aod: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
-    """Combine AniTrakt data with AOD data"""
+    """
+    Combine AniTrakt data with AOD data
+
+    :param anitrakt: AniTrakt data
+    :type anitrakt: list[dict[str, Any]]
+    :param aod: AOD data
+    :type aod: list[dict[str, Any]]
+    :return: AOD data
+    :rtype: list[dict[str, Any]]
+    """
     linked = 0
     with alive_bar(len(aod),
                    title="Combining AniTrakt data with AOD data",
@@ -132,7 +150,17 @@ def combine_fribb(
     fribb: list[dict[str, Any]],
     aod: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
-    """Combine Fribb's Animelists data with AOD data to obtain IMDb and TMDB IDs via AniDB"""
+    """
+    Combine Fribb's Animelists data with AOD data to obtain IMDb and TMDB IDs
+    via AniDB
+
+    :param fribb: Fribb's Animelists data
+    :type fribb: list[dict[str, Any]]
+    :param aod: AOD data
+    :type aod: list[dict[str, Any]]
+    :return: AOD data
+    :rtype: list[dict[str, Any]]
+    """
     linked = 0
     with alive_bar(len(aod),
                    title="Combining Fribb's Animelists data with AOD data",
