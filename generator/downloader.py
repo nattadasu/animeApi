@@ -20,7 +20,18 @@ class Downloader:
         file_type: Literal["json", "txt"] = "json",
         platform: Platform = Platform.SYSTEM,
     ) -> None:
-        """Initialize the Downloader class"""
+        """
+        Initialize the Downloader class
+
+        :param url: The url to download the json file
+        :type url: str
+        :param file_name: The name of the file
+        :type file_name: str
+        :param file_type: The type of the file, defaults to "json"
+        :type file_type: Literal["json", "txt"], optional
+        :param platform: The platform to print the message, defaults to Platform.SYSTEM
+        :type platform: Platform, optional
+        """
         self.url = url
         self.file_name = file_name
         self.file_type = file_type
@@ -39,7 +50,12 @@ class Downloader:
         )
 
     def _get(self) -> Union[Response, None]:
-        """Get the response from the url"""
+        """
+        Get the response from the url
+
+        :return: The response from the url
+        :rtype: Union[Response, None]
+        """
         response = self.scrape.get(self.url, timeout=None)
         try:
             # raise ConnectionError("Force use local file")
@@ -54,7 +70,12 @@ class Downloader:
             return None
 
     def dumper(self) -> Any:
-        """Dump the data to json file"""
+        """
+        Dump the data to process
+
+        :return: The data to process
+        :rtype: Any
+        """
         response = self._get()
         if response:
             content = response.json() if self.file_type == "json" else response.text
@@ -79,7 +100,12 @@ class Downloader:
             return self.loader()
 
     def loader(self) -> Any:
-        """Load the data from json file"""
+        """
+        Load the data from a file
+
+        :return: The data to process
+        :rtype: Any
+        """
         try:
             if self.file_type == "json":
                 with open(f"database/raw/{self.file_name}.json", "r", encoding="utf-8") as file:

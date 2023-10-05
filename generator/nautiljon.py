@@ -17,7 +17,15 @@ from requests import Response, HTTPError
 pprint = PrettyPrint()
 
 
-def extract_table_data(html_content: str) -> list[dict[str, str | int | None]]:
+def nautiljon_extract_table(html_content: str) -> list[dict[str, str | int | None]]:
+    """
+    Extract the table data from the html content, only for Nautiljon
+
+    :param html_content: The html content
+    :type html_content: str
+    :return: The table data
+    :rtype: list[dict[str, str | int | None]]
+    """
     soup = BeautifulSoup(html_content, 'html.parser')
     table = soup.find('table', class_='search')
     if not isinstance(table, Tag):
@@ -81,7 +89,12 @@ class Nautiljon:
     """Nautiljon class"""
 
     def __init__(self, scraper_: cloudscraper.CloudScraper | None = None) -> None:
-        """Initialize the Nautiljon class"""
+        """
+        Initialize the Nautiljon class
+        
+        :param scraper_: The scraper to use, defaults to None
+        :type scraper_: cloudscraper.CloudScraper, optional
+        """
         if scraper_ is None:
             self.scraper = cloudscraper.create_scraper()  # type: ignore
         else:
@@ -92,14 +105,26 @@ class Nautiljon:
                      "Nautiljon anime data scraper ready to use")
 
     def _get(self, url: str) -> Response:
-        """Get the content of the url"""
+        """
+        Get the content of the url
+
+        :param url: The url to get
+        :type url: str
+        :return: The response
+        :rtype: Response
+        """
         resp = self.scraper.get(url)
         if resp.status_code != 200:
             resp.raise_for_status()
         return resp
 
     def get_animes(self) -> list[dict[str, str | int | None]]:
-        """Get the animes"""
+        """
+        Get anime data from Nautiljon
+
+        :return: List of anime data
+        :rtype: list[dict[str, str | int | None]]
+        """
         anime_data: list[dict[str, str | int | None]] = []
         file_path = "database/raw/nautiljon.json"
         try:
@@ -122,7 +147,7 @@ class Nautiljon:
                 last_page,
                 title="Getting animes from Nautiljon",
                 spinner=None) as bar:  # type: ignore
-                scraped = extract_table_data(page.text)
+                scraped = nautiljon_extract_table(page.text)
                 # append the first page
                 anime_data.extend(scraped)
                 bar()
@@ -130,7 +155,7 @@ class Nautiljon:
                     # random sleep between 0.1 and 1.5 seconds
                     sleep(random.uniform(0.1, 1.5))
                     page = self._get(f"{self.search_url}?dbt={page_number}")
-                    scrape = extract_table_data(page.text)
+                    scrape = nautiljon_extract_table(page.text)
                     # if scrape has less than 15 items and not in the last page
                     if len(scrape) < 15 and page_number < last_page * 15:
                         pg = (page_number//15)+1

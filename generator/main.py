@@ -47,30 +47,30 @@ def main() -> None:
             proc_stop(start_time, Status.INFO, "No changes in git, exiting")
         pprint.print(Platform.SYSTEM, Status.INFO, "Build database")
         pprint.print(Platform.KAIZE, Status.BUILD,
-                        "Linking Kaize slug to MyAnimeList ID by fuzzy matching")
+                     "Linking Kaize slug to MyAnimeList ID by fuzzy matching")
         aod_arr = link_kaize_to_mal(kza, aod_arr)
         pprint.print(Platform.NAUTILJON, Status.BUILD,
-                        "Linking Nautiljon slug to MyAnimeList ID by fuzzy matching")
+                     "Linking Nautiljon slug to MyAnimeList ID by fuzzy matching")
         aod_arr = link_nautiljon_to_mal(nau, aod_arr)
         pprint.print(Platform.OTAKOTAKU, Status.BUILD,
-                        "Linking Otak Otaku ID to MyAnimeList ID")
+                     "Linking Otak Otaku ID to MyAnimeList ID")
         aod_arr = link_otakotaku_to_mal(ota, aod_arr)
         pprint.print(Platform.SILVERYASHA, Status.BUILD,
-                        "Linking SilverYasha ID to MyAnimeList ID")
+                     "Linking SilverYasha ID to MyAnimeList ID")
         aod_arr = link_silveryasha_to_mal(sy_, aod_arr)
         pprint.print(Platform.ARM, Status.BUILD,
-                        "Combining ARM data with AOD data")
+                     "Combining ARM data with AOD data")
         aod_arr = combine_arm(arm, aod_arr)
         pprint.print(Platform.ANITRAKT, Status.BUILD,
-                        "Combining AniTrakt data with AOD data")
+                     "Combining AniTrakt data with AOD data")
         aod_arr = combine_anitrakt(anitrakt, aod_arr)
         pprint.print(Platform.FRIBB, Status.BUILD,
-                        "Combining Fribb's Animelists data with AOD data")
+                     "Combining Fribb's Animelists data with AOD data")
         aod_arr = combine_fribb(fribb, aod_arr)
         final_arr: list[dict[str, Any]] = []
         with alive_bar(len(aod_arr),
-                        title="Fixing missing keys",
-                        spinner=None) as bar:  # type: ignore
+                       title="Fixing missing keys",
+                       spinner=None) as bar:  # type: ignore
             for item in aod_arr:
                 data = {
                     "title": item.get("title", None),

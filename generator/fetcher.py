@@ -10,7 +10,12 @@ from prettyprint import Platform, Status
 
 
 def get_anime_offline_database() -> dict[str, Any]:
-    """Get info from manami-project/anime-offline-database"""
+    """
+    Get info from manami-project/anime-offline-database
+
+    :return: AOD data
+    :rtype: dict[str, Any]
+    """
     ddump = Downloader(
         url="https://raw.githubusercontent.com/manami-project/anime-offline-database/master/anime-offline-database-minified.json",
         file_name="aod",
@@ -27,7 +32,12 @@ def get_anime_offline_database() -> dict[str, Any]:
 
 
 def get_arm() -> list[dict[str, Any]]:
-    """Get info from kawaiioverflow/arm"""
+    """
+    Get info from kawaiioverflow/arm
+
+    :return: ARM data
+    :rtype: list[dict[str, Any]]
+    """
     ddump = Downloader(
         url="https://raw.githubusercontent.com/kawaiioverflow/arm/master/arm.json",
         file_name="arm",
@@ -44,7 +54,12 @@ def get_arm() -> list[dict[str, Any]]:
 
 
 def get_anitrakt() -> list[dict[str, Any]]:
-    """Get info from ryuuganime/aniTrakt-IndexParser"""
+    """
+    Get info from ryuuganime/aniTrakt-IndexParser
+
+    :return: AniTrakt data; merged TV and movie data
+    :rtype: list[dict[str, Any]]
+    """
     base_url = "https://raw.githubusercontent.com/ryuuganime/aniTrakt-IndexParser/main/db/"
     ddump_tv = Downloader(
         url=f"{base_url}tv.json",
@@ -80,7 +95,14 @@ def get_anitrakt() -> list[dict[str, Any]]:
 
 
 def get_silveryasha() -> list[dict[str, Any]]:
-    """Get info from Silveryasha"""
+    """
+    Get info from Silveryasha. However due to Cloudflare protection, we need to
+    manually download the data and save it to database/raw/silveryasha.json
+    instead of using Downloader class, until we can find a way to bypass it.
+
+    :return: Silveryasha data
+    :rtype: list[dict[str, Any]]
+    """
     ddump = Downloader(
         url="https://db.silveryasha.web.id/ajax/anime/dtanime",
         file_name="silveryasha",
@@ -98,7 +120,12 @@ def get_silveryasha() -> list[dict[str, Any]]:
 
 
 def get_fribb_animelists() -> list[dict[str, Any]]:
-    """Get info from Fribb's Animelists"""
+    """
+    Get info from Fribb's Animelists for IMDb and TMDB IDs
+
+    :return: Fribb's Animelists data
+    :rtype: list[dict[str, Any]]
+    """
     ddump = Downloader(
         url="https://raw.githubusercontent.com/Fribb/anime-lists/master/anime-lists-reduced.json",
         file_name="fribb_animelists",
@@ -115,7 +142,14 @@ def get_fribb_animelists() -> list[dict[str, Any]]:
 
 
 def simplify_aod_data(aod: dict[str, Any]) -> list[dict[str, Any]]:
-    """Convert AOD data to a format that is easier to work with"""
+    """
+    Convert AOD data to a format that is easier to work with
+
+    :param aod: AOD data
+    :type aod: dict[str, Any]
+    :return: Simplified AOD data
+    :rtype: list[dict[str, Any]]
+    """
     data: list[dict[str, Any]] = []
     items: list[dict[str, Any]] = aod["data"]
     with alive_bar(len(items),
@@ -170,7 +204,12 @@ def simplify_aod_data(aod: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def simplify_silveryasha_data() -> list[dict[str, Any]]:
-    """Simplify data from silveryasha"""
+    """
+    Simplify data from silveryasha
+
+    :return: Simplified Silveryasha data
+    :rtype: list[dict[str, Any]]
+    """
     final: list[dict[str, Any]] = []
     data = get_silveryasha()
     with alive_bar(len(data),

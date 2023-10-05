@@ -27,7 +27,20 @@ class Kaize:
         email: Optional[str] = None,
         password: Optional[str] = None
     ) -> None:
-        """Initialize the Kaize class"""
+        """
+        Initialize the Kaize class
+
+        :param session: The session, defaults to None
+        :type session: Optional[str], optional
+        :param xsrf_token: The XSRF token, defaults to None
+        :type xsrf_token: Optional[str], optional
+        :param user_agent: The user agent, defaults to None
+        :type user_agent: Optional[str], optional
+        :param email: The email, defaults to None
+        :type email: Optional[str], optional
+        :param password: The password, defaults to None
+        :type password: Optional[str], optional
+        """
         self.base_url = "https://kaize.io"
         self.session = session
         self.xsrf_token = xsrf_token
@@ -45,7 +58,13 @@ class Kaize:
         )
 
     def _session_set(self) -> None:
-        """Set the session and XSRF token"""
+        """
+        Set the session and XSRF token
+
+        :raises ValueError: Email or password not provided
+        :raises ValueError: XSRF token not found
+        :raises ConnectionError: Unable to connect to kaize.io
+        """
         if self.session in ["", None] or self.xsrf_token in ["", None]:
             self.cookies = self._get_xsrf_token()
             split_cookie = self.cookies.split("; ")
@@ -63,7 +82,14 @@ class Kaize:
 
 
     def _get(self, url: str) -> Union[req.Response, None]:
-        """Get the response from the url"""
+        """
+        Get the response from the url
+
+        :param url: The url to get the response
+        :type url: str
+        :return: The response
+        :rtype: Union[req.Response, None]
+        """
         try:
             response = req.get(url, headers=self.headers, timeout=15)
             if response.status_code == 200:
@@ -80,7 +106,18 @@ class Kaize:
         data: Union[dict[str, Any], str],
         header: Union[dict[str, Any], None] = None
     ) -> Union[req.Response, None]:
-        """Do POST request to the url"""
+        """
+        Do POST request to the url
+
+        :param url: The url to do the POST request
+        :type url: str
+        :param data: The data to POST
+        :type data: Union[dict[str, Any], str]
+        :param header: The header, defaults to None
+        :type header: Union[dict[str, Any], None], optional
+        :return: The response
+        :rtype: Union[req.Response, None]
+        """
         headers = self.headers
         if header:
             headers.update(header)
@@ -94,7 +131,15 @@ class Kaize:
             return None
 
     def _get_xsrf_token(self) -> str:
-        """Get the xsrf token"""
+        """
+        Get the XSRF token
+
+        :raises ValueError: Email or password not provided
+        :raises ValueError: XSRF token not found
+        :raises ConnectionError: Unable to connect to kaize.io
+        :return: The XSRF token
+        :rtype: str
+        """
         if not self.email or not self.password:
             raise ValueError("Email or password not provided")
         base_url = f"{self.base_url}/login"
@@ -133,7 +178,15 @@ class Kaize:
         return cookie
 
     def pages(self, media: Literal['anime', 'manga'] = 'anime') -> int:
-        """Get the total pages"""
+        """
+        Get the total pages
+        
+        :param media: The media, defaults to 'anime'
+        :type media: Literal['anime', 'manga'], optional
+        :raises ConnectionError: Unable to connect to kaize.io
+        :return: The total pages
+        :rtype: int
+        """
         kzp = 0
         pgHundreds = True
         pgTens = True
@@ -217,8 +270,20 @@ class Kaize:
         )
         return kzpg
 
-    def _get_data_index(self, page: int, media: Literal['anime', 'manga'] = 'anime') -> list[dict[str, Any]]:
-        """Get the data from the index"""
+    def _get_data_index(self,
+                        page: int,
+                        media: Literal['anime', 'manga'] = 'anime') -> list[dict[str, Any]]:
+        """
+        Get the data from the index
+
+        :param page: The page
+        :type page: int
+        :param media: The media, defaults to 'anime'
+        :type media: Literal['anime', 'manga'], optional
+        :raises ConnectionError: Unable to connect to kaize.io
+        :return: The data
+        :rtype: list[dict[str, Any]]
+        """
         response = self._get(f"{self.base_url}/{media}/top?page={page}")
         if not response:
             raise ConnectionError("Unable to connect to kaize.io")
@@ -244,7 +309,13 @@ class Kaize:
         return result
 
     def get_anime(self) -> list[dict[str, Any]]:
-        """Get complete anime data"""
+        """
+        Get complete anime data
+
+        :raises ConnectionError: Unable to connect to kaize.io
+        :return: The anime data
+        :rtype: list[dict[str, Any]]
+        """
         anime_data: list[dict[str, Any]] = []
         file_path = "database/raw/kaize.json"
         try:
@@ -278,7 +349,14 @@ class Kaize:
 
     @staticmethod
     def convert_list_to_dict(data: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
-        """Convert list of dict to dict"""
+        """
+        Convert list of dict to dict
+
+        :param data: The data
+        :type data: list[dict[str, Any]]
+        :return: The dict
+        :rtype: dict[str, dict[str, Any]]
+        """
         result: dict[str, dict[str, Any]] = {}
         for item in data:
             result[item["slug"]] = item
