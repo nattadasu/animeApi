@@ -1,25 +1,25 @@
 from datetime import timedelta
 
-def pluralize(word: str, count: int = 2) -> str:
+def pluralize(count: int, word: str) -> str:
     """
     Pluralize a word if the count is not 1.
     
     Args:
+        count (int): The count.
         word (str): The word to pluralize.
-        count (int, optional): The count. Defaults to 2.
 
     Returns:
         str: The pluralized word.
     """
-    if count == 1:
-        return word
+    if count in [0, 1]:
+        return f"{count} {word}"
     else:
         if word.endswith("y"):
-            return word[:-1] + "ies"
+            return f"{count} {word[:-1]}ies"
         elif word.endswith("s"):
-            return word + "es"
+            return f"{count} {word}es"
         else:
-            return word + "s"
+            return f"{count} {word}s"
 
 def convert_float_to_time(
     total_seconds: float | int,
@@ -59,14 +59,14 @@ def convert_float_to_time(
         milliseconds = None
 
     words = [
-        f"{years} {pluralize('year', years)}" if years else "",
-        f"{months} {pluralize('month', months)}" if months else "",
-        f"{weeks} {pluralize('week', weeks)}" if weeks else "",
-        f"{days} {pluralize('day', days)}" if days else "",
-        f"{hours} {pluralize('hour', hours)}" if hours else "",
-        f"{minutes} {pluralize('minute', minutes)}" if minutes else "",
-        f"{seconds} {pluralize('second', seconds)}" if seconds else "",
-        f"{milliseconds} {pluralize('millisecond', milliseconds)}" if milliseconds else "",
+        pluralize(years, "year") if years else "",
+        pluralize(months, "month") if months else "",
+        pluralize(weeks, "week") if weeks else "",
+        pluralize(days, "day") if days else "",
+        pluralize(hours, "hour") if hours else "",
+        pluralize(minutes, "minute") if minutes else "",
+        pluralize(seconds, "second") if seconds else "",
+        pluralize(milliseconds, "millisecond") if milliseconds else "",
     ]
 
     result = ""
