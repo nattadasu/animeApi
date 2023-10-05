@@ -97,7 +97,7 @@ class OtakOtaku:
                      f"Latest anime id: {anime_id}")
         return int(anime_id)
 
-    def _get_data_index(self, anime_id: int) -> Union[dict[str, Any], None]:
+    def _get_data(self, anime_id: int) -> Union[dict[str, Any], None]:
         """
         Get anime data
         
@@ -152,29 +152,29 @@ class OtakOtaku:
             with open(file_path, "r", encoding="utf-8") as file:
                 anime_list = json.load(file)
         try:
-            raise ConnectionError("Failed to connect to otakotaku.com")
+            # raise ConnectionError("Failed to connect to otakotaku.com")
             latest_id = self.get_latest_anime()
             if not latest_id:
                 raise ConnectionError("Failed to connect to otakotaku.com")
-            # if not datetime.now().day in [1, 15] and len(anime_list) > 0 and not GITHUB_DISPATCH:
-            #     with open(latest_file_path, "r", encoding="utf-8") as file:
-            #         latest = int(file.read().strip())
-            #     if latest == latest_id:
-            #         pprint.print(
-            #             Platform.OTAKOTAKU,
-            #             Status.PASS,
-            #             "Data is up to date, loading from local file",
-            #         )
-            #         return anime_list
-            #     latest = latest + 1
-            #     loop = latest_id - latest + 1
-            # else:
-            anime_list = []  # remove possible duplicate
-            latest = 1
-            loop = latest_id
+            if not datetime.now().day in [1, 15] and len(anime_list) > 0 and not GITHUB_DISPATCH:
+                with open(latest_file_path, "r", encoding="utf-8") as file:
+                    latest = int(file.read().strip())
+                if latest == latest_id:
+                    pprint.print(
+                        Platform.OTAKOTAKU,
+                        Status.PASS,
+                        "Data is up to date, loading from local file",
+                    )
+                    return anime_list
+                latest = latest + 1
+                loop = latest_id - latest + 1
+            else:
+                anime_list = []  # remove possible duplicate
+                latest = 1
+                loop = latest_id
             with alive_bar(loop, title="Getting data", spinner=None) as bar:  # type: ignore
                 for anime_id in range(latest, latest_id + 1):
-                    data_index = self._get_data_index(anime_id)
+                    data_index = self._get_data(anime_id)
                     if not data_index:
                         pprint.print(
                             Platform.OTAKOTAKU,
