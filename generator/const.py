@@ -80,6 +80,7 @@ attribution = {
         "nautiljon": r"/nautiljon/(?P<media_id>[\w\+!\-_\(\)\[\]]+)",
         "notify": r"/notify/(?P<media_id>[\w\-_]+)",
         "otakotaku": r"/otakotaku/(?P<media_id>\d+)",
+        "redirect": r"/(redirect|rd)",
         "repo": r"/",
         "schema": r"/schema(?:.json)?",
         "shikimori": r"/shikimori/(?P<media_id>\d+)",
