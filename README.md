@@ -45,6 +45,7 @@ Please read more information regarding using the API on your project in
     * [Redirect: Response](#redirect-response)
       * [Recommended/verbose path format](#recommendedverbose-path-format)
       * [Short/aliased/alternative path format](#shortaliasedalternative-path-format)
+      * [Provider with slash (`/`) in `mediaid`](#provider-with-slash--in-mediaid)
       * [Raw path format](#raw-path-format)
 * [Schema](#schema)
   * [JSON Schema](#json-schema)
@@ -335,7 +336,9 @@ GET /status
 
 ### Get latency report
 
-> **Note**: This endpoint is only available on v3
+> **Note**
+>
+> This endpoint is only available on v3
 
 MIME Type: `application/json`
 
@@ -439,7 +442,9 @@ GET /:platform().json
 Additionally, on `v3`, you can use `imdb`, `nautiljon`, and `themoviedb` on
 `:platform`.
 
-> **Note**: The `()` in the endpoint is not a typo, it's part of the endpoint.
+> **Note**
+>
+> The `()` in the endpoint is not a typo, it's part of the endpoint.
 > If you can't access the endpoint, try to encode the `()` to `%28%29`.
 
 On `v3`, you will automatically redirected to GitHub raw file URL of the
@@ -603,7 +608,9 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
 
 ### Redirect to provider's page
 
-> **Note**: This endpoint is only available on v3
+> **Note**
+>
+> This endpoint is only available on v3
 
 HTTP Status Code: `302` OR `200` (if required)\
 MIME Type: None OR `text/plain` (if required)
@@ -650,7 +657,9 @@ GET /rd?from=:platform&id=:mediaid&to=:platform
   |  `simkl` | `smk`, `simkl.com` |
   <!-- markdownlint-enable MD013 -->
 
-* `:mediaid` is the ID of the anime in the platform.
+* `:mediaid` is the ID of the anime in the platform. Please follow the instruction
+  written in [Provider exclusive rules](#provider-exclusive-rules) to avoid any
+  conflict during redirection.
 
 #### Redirect: Parameters
 
@@ -674,7 +683,7 @@ parameters are as follows:
 GET https://animeapi.my.id/redirect?platform=myanimelist&mediaid=1&target=trakt
 
 HTTP/1.1 302 Found
-Location: https://trakt.tv/shows/cowboy-bebop/seasons/1
+Location: https://trakt.tv/shows/30857/seasons/1
 ```
 
 ##### Short/aliased/alternative path format
@@ -683,7 +692,19 @@ Location: https://trakt.tv/shows/cowboy-bebop/seasons/1
 GET https://animeapi.my.id/rd?from=al&id=154587&to=shk
 
 HTTP/1.1 302 Found
-Location: https://shikimori.me/animes/52991-sousou-no-frieren
+Location: https://shikimori.me/animes/52991
+```
+
+##### Provider with slash (`/`) in `mediaid`
+
+There is no exclusive rule in this, as AnimeAPI will automatically understand
+your query
+
+```http
+GET https://animeapi.my.id/redirect?platform=trakt&mediaid=shows/152334/seasons/3&target=myanimelist
+
+HTTP/1.1 302 Found
+Location: https://myanimelist.net/anime/49784
 ```
 
 ##### Raw path format
