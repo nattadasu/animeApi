@@ -376,25 +376,32 @@ def redirect_route():
     # if target specified, redirect to target
     maps = platform_id_content(platform=platform, platform_id=platform_id)
     uri = ""
-    if target not in ["trakt", "simkl"]:
-        uri = f"{route_path[target]}{maps[target]}"
-    if target == "trakt":
-        media_type = maps["trakt_type"]
-        season = maps["trakt_season"]
-        if not season:
-            uri = f"{route_path[target]}{media_type}/{maps[target]}"
-        else:
-            uri = f"{route_path[target]}{media_type}/{maps[target]}/seasons/{season}"
-    if target == "simkl":
-        # if does not have anidb id, raise error
-        if not maps["anidb"]:
-            return jsonify({
-                "error": "Not found",
-                "code": 404,
-                "message": "AniDB ID not found, which is the main database source for Simkl. Please issue missing show to SIMKL or create a creq on AniDB if the entry is not a special or OVA"
-            }), 404
-        uri = f"https://api.simkl.com/redirect?to=Simkl&anidb={maps['anidb']}"
-    else:
+    try:
+        if target not in ["trakt", "simkl"]:
+            tgt_id = maps[target]
+            if tgt_id is None:
+                raise ValueError
+            uri = f"{route_path[target]}{tgt_id}"
+        elif target == "trakt":
+            tgt_id = maps["trakt"]
+            if tgt_id is None:
+                raise ValueError
+            media_type = maps["trakt_type"]
+            season = maps["trakt_season"]
+            if not season:
+                uri = f"{route_path[target]}{media_type}/{tgt_id}"
+            else:
+                uri = f"{route_path[target]}{media_type}/{tgt_id}/seasons/{season}"
+        elif target == "simkl":
+            # if does not have anidb id, raise error
+            if not maps["anidb"]:
+                return jsonify({
+                    "error": "Not found",
+                    "code": 404,
+                    "message": "AniDB ID not found, which is the main database source for Simkl. Please issue missing show to SIMKL or create a creq on AniDB if the entry is not a special or OVA"
+                }), 404
+            uri = f"https://api.simkl.com/redirect?to=Simkl&anidb={maps['anidb']}"
+    except ValueError:
         try:
             title = maps["title"]
         except KeyError:
@@ -403,6 +410,12 @@ def redirect_route():
             "error": "Not found",
             "code": 404,
             "message": f"{title} does not exist on {target} using {platform} with ID {platform_id}"
+        }), 404
+    except KeyError:
+        return jsonify({
+            "error": "Not found",
+            "code": 404,
+            "message": f"{target} not found on {platform} with ID {platform_id}"
         }), 404
 
     if not israw:
