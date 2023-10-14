@@ -20,7 +20,7 @@ Please read more information regarding using the API on your project in
 <summary>Click to expand</summary>
 
 * [Why use AnimeAPI?](#why-use-animeapi)
-* [Why avoid using AnimeAPI?](#why-avoid-using-animeapi)
+* [Why Avoid Using AnimeAPI?](#why-avoid-using-animeapi)
 * [Featured on](#featured-on)
   * [Libraries](#libraries)
   * [Projects, Apps, and Websites](#projects-apps-and-websites)
@@ -40,6 +40,12 @@ Please read more information regarding using the API on your project in
       * [Shikimori](#shikimori)
       * [The Movie DB](#the-movie-db)
       * [Trakt](#trakt)
+  * [Redirect to provider's page](#redirect-to-providers-page)
+    * [Redirect: Parameters](#redirect-parameters)
+    * [Redirect: Response](#redirect-response)
+      * [Recommended/verbose path format](#recommendedverbose-path-format)
+      * [Short/aliased/alternative path format](#shortaliasedalternative-path-format)
+      * [Raw path format](#raw-path-format)
 * [Schema](#schema)
   * [JSON Schema](#json-schema)
   * [TypeScript](#typescript)
@@ -593,6 +599,102 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
 <!-- /trakt152334 -->
 
 </details>
+
+### Redirect to provider's page
+
+> **Note**: This endpoint is only available on v3
+
+HTTP Status Code: `302` OR `200` (if required)\
+MIME Type: None OR `text/plain` (if required)
+
+```http
+GET /redirect?platform=:platform&mediaid=:mediaid&target=:platform
+```
+
+or
+
+```http
+GET /rd?from=:platform&id=:mediaid&to=:platform
+```
+
+* `:platform` can be one of the following:
+
+  <!-- markdownlint-disable MD013 -->
+  |      Platform | Aliases                                                                                               |
+  | ------------: | :---------------------------------------------------------------------------------------------------- |
+  |       `anidb` | `adb`, `anidb.net`                                                                                    |
+  |     `anilist` | `al`, `anilist.co`                                                                                    |
+  | `animeplanet` | `ap`, `anime-planet.com` `anime-planet`                                                               |
+  |   `anisearch` | `as`, `anisearch.com`, `anisearch.de`, `anisearch.it`, `anisearch.es`, `anisearch.fr`, `anisearch.jp` |
+  |      `annict` | `anc`, `act`, `ac`, `annict.com`, `annict.jp`, `en.annict.com`                                        |
+  |        `imdb` | `imdb.com`                                                                                            |
+  |       `kaize` | `kz`, `kaize.io`                                                                                      |
+  |       `kitsu` | `kt`, `kts`, `kitsu.io`                                                                               |
+  |   `livechart` | `lc`, `livechart.me`                                                                                  |
+  | `myanimelist` | `mal`, `myanimelist.net`                                                                              |
+  |   `nautiljon` | `ntj`, `nautiljon.com`                                                                                |
+  |      `notify` | `ntf`, `ntm`, `nf`, `nm`, `notifymoe`, `notify.moe`                                                   |
+  |   `otakotaku` | `oo`, `otakotaku.com`                                                                                 |
+  |   `shikimori` | `shiki`, `shk`, `shikimori.me`, `shikimori.one`, `shikimori.org`                                      |
+  |      `shoboi` | `shb`, `syb`, `sb`, `shobocal`, `syoboi`, `syobocal`, `cal.syoboi.jp`                                 |
+  | `silveryasha` | `sy`, `dbti`, `db.silveryasha.web.id`                                                                 |
+  |  `themoviedb` | `tmdb`, `themoviedb.org`                                                                              |
+  |       `trakt` | `trk`, `trakt.tv`                                                                                     |
+  
+  Additionally, on `target`/`to` parameter, there are additional supported
+  platforms, and can't be used as source/`from` due to some limitations:
+
+  | Platform | Aliases            |
+  | -------: | :----------------- |
+  |  `simkl` | `smk`, `simkl.com` |
+  <!-- markdownlint-enable MD013 -->
+
+* `:mediaid` is the ID of the anime in the platform.
+
+#### Redirect: Parameters
+
+In AnimeAPI, we use query parameters to specify the output of the API. The query
+parameters are as follows:
+
+<!-- markdownlint-disable MD013 -->
+| Parameter  | Aliases | Is Required | Description                                                                                                                        |
+| ---------- | ------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `platform` | `from`  | Yes         | The platform you want to get the data from.                                                                                        |
+| `mediaid`  | `id`    | Yes         | The ID of the anime in the platform.                                                                                               |
+| `target`   | `to`    | No          | The platform you want to redirect to. If you don't specify this parameter, the API will redirect to specified platform's homepage. |
+| `raw`      | `r`     | No          | If you set this parameter to `true`, the API will only show the URI link instead of redirecting automatically                      |
+<!-- markdownlint-enable MD013 -->
+
+#### Redirect: Response
+
+##### Recommended/verbose path format
+
+```http
+GET https://animeapi.my.id/redirect?platform=myanimelist&mediaid=1&target=trakt
+
+HTTP/1.1 302 Found
+Location: https://trakt.tv/shows/cowboy-bebop/seasons/1
+```
+
+##### Short/aliased/alternative path format
+
+```http
+GET https://animeapi.my.id/rd?from=al&id=154587&to=shk
+
+HTTP/1.1 302 Found
+Location: https://shikimori.me/animes/52991-sousou-no-frieren
+```
+
+##### Raw path format
+
+```http
+GET https://animeapi.my.id/redirect?platform=animeplanet&mediaid=cells-at-work&target=simkl&raw=true
+
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=utf-8
+
+https://api.simkl.com/redirect?to=Simkl&anidb=13743
+```
 
 ## Schema
 
