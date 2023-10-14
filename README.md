@@ -168,7 +168,7 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 13 October 2023 05:22:41 UTC
+Last updated: 14 October 2023 02:44:44 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -180,7 +180,7 @@ Last updated: 13 October 2023 05:22:41 UTC
 | aniSearch          |   `anisearch` |     18016 |
 | Annict             |      `annict` |      8977 |
 | IMDb               |        `imdb` |      2266 |
-| Kaize              |       `kaize` |     22823 |
+| Kaize              |       `kaize` |     22824 |
 | Kitsu              |       `kitsu` |     19471 |
 | LiveChart          |   `livechart` |     10913 |
 | MyAnimeList        | `myanimelist` |     25682 |
@@ -260,8 +260,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1697174561,
-    "iso": "2023-10-13T05:22:41.988106+00:00"
+    "timestamp": 1697251484,
+    "iso": "2023-10-14T02:44:44.065719+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -284,7 +284,7 @@ GET /status
     "anisearch": 18016,
     "annict": 8977,
     "imdb": 2266,
-    "kaize": 22823,
+    "kaize": 22824,
     "kitsu": 19471,
     "livechart": 10913,
     "myanimelist": 25682,
@@ -315,6 +315,7 @@ GET /status
     "nautiljon": "/nautiljon/(?P<media_id>[\\w\\+!\\-_\\(\\)\\[\\]]+)",
     "notify": "/notify/(?P<media_id>[\\w\\-_]+)",
     "otakotaku": "/otakotaku/(?P<media_id>\\d+)",
+    "redirect": "/(redirect|rd)",
     "repo": "/",
     "schema": "/schema(?:.json)?",
     "shikimori": "/shikimori/(?P<media_id>\\d+)",
@@ -370,7 +371,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 10/13/2023 05:22:41 UTC
+Updated on 10/14/2023 02:44:44 UTC
 ```
 <!-- /updated-txt -->
 
