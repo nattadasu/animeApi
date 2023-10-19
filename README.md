@@ -231,15 +231,15 @@ each version are as follows:
 |                    | v1                         | v2                               | v3                                |
 | ------------------ | -------------------------- | -------------------------------- | --------------------------------- |
 | Base URL           | *inactive*                 | `https://aniapi.nattadasu.my.id` | `https://animeapi.my.id`          |
-| Active?            | ❌                          | ✔, maintenance                   | ✔                                 |
+| EOL                | *discontinued*             | December 31, 2023                | Until further verion              |
 | Host               | -                          | GitHub Pages                     | Vercel                            |
 | Language           | PowerShell                 | Python                           | Python                            |
-| Framework          | -                          | GitHub Pages                     | Flask                             |
+| Backend            | -                          | GitHub Pages                     | Flask                             |
 | Database           | JSON                       | JSON                             | JSON                              |
 | Expected MIME Type | `application/octet-stream` | `application/octet-stream`       | `application/json`                |
 | Status Codes       | `200`, `404`               | `200`, `404`                     | `200`, `302`, `400`, `404`, `500` |
 | Response Schema    | -                          | -                                | [JSON Schema](#json-schema)       |
-| Documented         | ❌                          | ✔                                | ✔                                 |
+| Documented         | -                          | ✔                                | ✔                                 |
 
 <!-- markdownlint-enable MD013 -->
 
@@ -394,9 +394,13 @@ if you want to use this endpoint.
 
 ### Fetch all item as TSV (Tab Separated Values) file
 
-> **Note**: This endpoint is only available on v3
+> **Note**
+>
+> This endpoint is only available on v3
 
-> **Note**: Use this endpoint if you want to import the data to spreadsheet.
+> **Note**
+>
+> Use this endpoint if you want to import the data to spreadsheet.
 
 MIME Type: `text/tab-separated-values`
 
@@ -1113,7 +1117,7 @@ This project uses multiple sources to compile the data, including:
 [kno]: https://kinopoisk.ru
 [ko]: https://github.com/kawaiioverflow
 [kts]: https://kitsu.io
-[kz]: https://kaize.moe
+[kz]: https://kaize.io
 [lc]: https://livechart.me
 [mal]: https://myanimelist.net
 [mp]: https://github.com/manami-project
