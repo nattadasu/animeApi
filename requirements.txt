@@ -1,0 +1,11 @@
+alive-progress
+beautifulsoup4
+cloudscraper
+fake-useragent
+Flask
+fuzzywuzzy
+python-dotenv
+python-Levenshtein
+python-slugify
+requests
+typer[all]
