@@ -79,8 +79,8 @@ class PrettyPrint:
                status: Status,
                *args: str,
                clean_line: bool = False,
-               end: str = "\n",
-               sep: str = " ",) -> str:
+               end: str | None = "\n",
+               sep: str = " ") -> str:
         """
         Format the string
 
@@ -118,7 +118,7 @@ class PrettyPrint:
               status: Status,
               *args: str,
               clean_line: bool = False,
-              end: str = "\n",
+              end: str | None = "\n",
               sep: str = " ") -> None:
         """
         Print the formatted string
