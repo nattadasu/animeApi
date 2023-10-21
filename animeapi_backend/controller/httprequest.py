@@ -14,7 +14,7 @@ from alive_progress import alive_bar  # type: ignore
 
 from animeapi_backend.config.const import PPRINT, START_TIME
 from animeapi_backend.config.variables import is_debug, is_verbose
-from animeapi_backend.prettyprint import Platform, Status
+from animeapi_backend.prettyprint import Platform, PrettyPrint, Status
 from animeapi_backend.utils.process import proc_stop
 
 
@@ -42,8 +42,14 @@ class HTTPRequest:
         :param platform: The platform to print the message, defaults to Platform.SYSTEM
         :type platform: Platform, optional
         """
-        self.user_agent = user_agent
-        self.headers = headers
+        if headers is not None:
+            self.headers: dict[str, Any] = headers
+        # check if the user agent is set in the headers, if not apply the user agent
+        # to the headers
+        if headers is None:
+            self.headers = {"User-Agent": user_agent}
+        elif "User-Agent" not in headers or headers["User-Agent"] in ["", None]:
+            self.headers["User-Agent"] = user_agent
         self.timeout = timeout
         self.platform = platform
         self.scrape = cloudscraper.create_scraper(  # type: ignore
@@ -74,7 +80,12 @@ class HTTPRequest:
             PPRINT.print(self.platform,
                          Status.NOTICE,
                          f"Getting response from {url}")
-        with alive_bar(100, title="GET content", spinner="dots_waves2") as bar:  # type: ignore
+        print_str = PrettyPrint(False, False).string(
+            self.platform,
+            Status.INFO,
+            "GET content",
+            end=None)
+        with alive_bar(100, title=print_str, spinner="dots_waves2") as bar:  # type: ignore
             response = self.scrape.get(url,
                                        headers=self.headers,
                                        timeout=self.timeout,
@@ -109,8 +120,6 @@ class HTTPRequest:
                          Status.NOTICE,
                          f"Posting data to {url}")
 
-        if self.headers is None:
-            self.headers = {"Content-Type": self.user_agent}
         elif "Content-Type" not in self.headers or self.headers["Content-Type"] in ["", None]:
             self.headers["Content-Type"] = content_type
         elif self.headers["Content-Type"] != content_type:
