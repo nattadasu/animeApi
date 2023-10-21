@@ -11,6 +11,10 @@ from animeapi_backend.prettyprint import PrettyPrint
 if os.path.isfile(".env"):
     load_dotenv()
 
+# User Agent, honest identifier
+USER_AGENT = "NattadasuAnimeAPI/4.0.0"
+"""Global user agent identifier"""
+
 # Kaize login credentials
 KAIZE_XSRF_TOKEN = os.getenv("KAIZE_XSRF_TOKEN")
 """Kaize XSRF token"""
