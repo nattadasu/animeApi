@@ -74,17 +74,15 @@ class PrettyPrint:
             sp = " "
         return f"\033[48;2;{col[0]};{col[1]};{col[2]}m{sp}{enums.name}{sp}\033[0m"
 
-    def print(
-        self,
-        platform: Platform,
-        status: Status,
-        *args: str,
-        clean_line: bool = False,
-        end: str = "\n",
-        sep: str = " ",
-    ) -> None:
+    def string(self,
+               platform: Platform,
+               status: Status,
+               *args: str,
+               clean_line: bool = False,
+               end: str = "\n",
+               sep: str = " ",) -> str:
         """
-        Print the data
+        Format the string
 
         :param platform: The platform to be used
         :type platform: Platform
@@ -99,6 +97,8 @@ class PrettyPrint:
         :param sep: The separator, defaults to " "
         :type sep: str, optional
         :raises ValueError: clean_line and end cannot be used together
+        :return: The formatted string
+        :rtype: str
         """
         if clean_line and end == "\n":
             raise ValueError("clean_line and end cannot be used together")
@@ -111,7 +111,35 @@ class PrettyPrint:
             self.previously_clear = False
         cr_ = "\r" if end == "" else ""
         message = sep.join(args)
-        print(
-            f"{anullen}{cr_}{self._format_date()}{self._format_to_hex(platform)} {self._format_to_hex(status)} {message}",
-            end=end,
-        )
+        return f"{anullen}{cr_}{self._format_date()}{self._format_to_hex(platform)} {self._format_to_hex(status)} {message}"
+
+    def print(self,
+              platform: Platform,
+              status: Status,
+              *args: str,
+              clean_line: bool = False,
+              end: str = "\n",
+              sep: str = " ") -> None:
+        """
+        Print the formatted string
+
+        :param platform: The platform to be used
+        :type platform: Platform
+        :param status: The status to be used
+        :type status: Status
+        :param args: The arguments to be printed
+        :type args: str
+        :param clean_line: Clean the line, defaults to False
+        :type clean_line: bool, optional
+        :param end: The end character, defaults to "\\n"
+        :type end: str, optional
+        :param sep: The separator, defaults to " "
+        :type sep: str, optional
+        """
+        print(self.string(platform,
+                          status,
+                          *args,
+                          clean_line=clean_line,
+                          end=end,
+                          sep=sep),
+              end=end)
