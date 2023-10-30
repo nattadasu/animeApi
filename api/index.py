@@ -291,12 +291,12 @@ def redirect_route():
         "nautiljon": "https://www.nautiljon.com/animes/",
         "notify": "https://notify.moe/anime/",
         "otakotaku": "https://otakotaku.com/anime/view/",
-        "shikimori": "https://shikimori.me/animes/",
+        "shikimori": "https://shikimori.one/animes/",
         "shoboi": "https://cal.syoboi.jp/tid/",
         "silveryasha": "https://db.silveryasha.web.id/anime/",
         "themoviedb": "https://www.themoviedb.org/movie/",
         "trakt": "https://trakt.tv/",
-        "simkl": "https://simkl.com/"
+        "simkl": "https://simkl.com/",
     }
     # handle synonyms
     synonyms = {
