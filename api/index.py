@@ -330,14 +330,12 @@ def redirect_route():
     pf_check = False
     tg_check = False if target else True
     for key, value in synonyms.items():
-        if not pf_check:
-            if platform in value:
-                pf_check = True
-                platform = key
-        if not tg_check:
-            if target in value:
-                tg_check = True
-                target = key
+        if not pf_check and platform in value:
+            pf_check = True
+            platform = key
+        if not tg_check and target in value:
+            tg_check = True
+            target = key
         if pf_check and tg_check:
             break
 
