@@ -169,23 +169,23 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 29 November 2023 05:15:01 UTC
+Last updated: 30 November 2023 05:14:49 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |            ID |     Count |
 | :----------------- | ------------: | --------: |
-| aniDB              |       `anidb` |     12943 |
+| aniDB              |       `anidb` |     12944 |
 | AniList            |     `anilist` |     19367 |
 | Anime-Planet       | `animeplanet` |     23227 |
 | aniSearch          |   `anisearch` |     18140 |
 | Annict             |      `annict` |      8979 |
 | IMDb               |        `imdb` |      2266 |
 | Kaize              |       `kaize` |     22853 |
-| Kitsu              |       `kitsu` |     19657 |
+| Kitsu              |       `kitsu` |     19656 |
 | LiveChart          |   `livechart` |     10966 |
 | MyAnimeList        | `myanimelist` |     26010 |
-| Nautiljon          |   `nautiljon` |      8003 |
+| Nautiljon          |   `nautiljon` |      8002 |
 | Notify.moe         |      `notify` |     15982 |
 | Otak Otaku         |   `otakotaku` |      2519 |
 | Shikimori          |   `shikimori` |     26010 |
@@ -194,7 +194,7 @@ Last updated: 29 November 2023 05:15:01 UTC
 | The Movie Database |  `themoviedb` |       447 |
 | Trakt              |       `trakt` |      4511 |
 |                    |               |           |
-|                    |     **Total** | **32468** |
+|                    |     **Total** | **32455** |
 <!-- /counters -->
 
 ## Usage
@@ -261,8 +261,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1701234901,
-    "iso": "2023-11-29T05:15:01.069926+00:00"
+    "timestamp": 1701321289,
+    "iso": "2023-11-30T05:14:49.990401+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -279,17 +279,17 @@ GET /status
   "license": "AGPL-3.0-only AND MIT AND CC0-1.0+",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 12943,
+    "anidb": 12944,
     "anilist": 19367,
     "animeplanet": 23227,
     "anisearch": 18140,
     "annict": 8979,
     "imdb": 2266,
     "kaize": 22853,
-    "kitsu": 19657,
+    "kitsu": 19656,
     "livechart": 10966,
     "myanimelist": 26010,
-    "nautiljon": 8003,
+    "nautiljon": 8002,
     "notify": 15982,
     "otakotaku": 2519,
     "shikimori": 26010,
@@ -297,7 +297,7 @@ GET /status
     "silveryasha": 4048,
     "themoviedb": 447,
     "trakt": 4511,
-    "total": 32468
+    "total": 32455
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format",
@@ -374,7 +374,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 11/29/2023 05:15:01 UTC
+Updated on 11/30/2023 05:14:49 UTC
 ```
 <!-- /updated-txt -->
 
