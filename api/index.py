@@ -371,6 +371,15 @@ def redirect_route():
         else:
             return Response(uri, mimetype="text/plain", status=200)
 
+    trakt_arr: list[str] = platform_id.split("/")
+
+    if platform == "trakt" and len(trakt_arr > 1) and not trakt_arr[1].isdigit():
+        return jsonify({
+            "error": "Invalid Trakt ID",
+            "code": 400,
+            "message": f"Trakt ID for {'/'.join(trakt_arr[0..1])} is not an `int`. Please convert the slug to `int` ID using Trakt API to proceed.", 
+        }), 400 
+
     # if target specified, redirect to target
     maps = platform_id_content(platform=platform, platform_id=platform_id)
     uri = ""
