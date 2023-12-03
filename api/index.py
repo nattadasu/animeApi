@@ -374,7 +374,7 @@ def redirect_route():
     trakt_arr: list[str] = platform_id.split("/")
 
     if platform == "trakt" and (len(trakt_arr) > 1) and not trakt_arr[1].isdigit():
-        final_id = "/".join(trakt_arr[0:1])
+        final_id = "/".join(trakt_arr[0:2])
         return jsonify({
             "error": "Invalid Trakt ID",
             "code": 400,
