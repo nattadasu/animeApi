@@ -270,11 +270,11 @@ def redirect_route():
     """
     args = request.args
     # get platform and platform ID
-    platform = args.get("platform") or args.get("from")
-    platform = str(platform).lower()
-    platform_id = args.get("mediaid") or args.get("id")
-    target = args.get("target") or args.get("to")
-    israw = args.get("raw") or args.get("r")
+    platform: str = args.get("platform") or args.get("from")
+    platform: str = str(platform).lower()
+    platform_id: str = args.get("mediaid") or args.get("id")
+    target: str | None = args.get("target") or args.get("to")
+    israw: str | bool | None = args.get("raw") or args.get("r")
     # convert to switch bool whatever the value is in raw if exist
     israw = israw is not None
     route_path = {
@@ -373,11 +373,12 @@ def redirect_route():
 
     trakt_arr: list[str] = platform_id.split("/")
 
-    if platform == "trakt" and len(trakt_arr > 1) and not trakt_arr[1].isdigit():
+    if platform == "trakt" and (len(trakt_arr) > 1) and not trakt_arr[1].isdigit():
+        final_id = "/".join(trakt_arr[0:1])
         return jsonify({
             "error": "Invalid Trakt ID",
             "code": 400,
-            "message": f"Trakt ID for {'/'.join(trakt_arr[0..1])} is not an `int`. Please convert the slug to `int` ID using Trakt API to proceed.", 
+            "message": f"Trakt ID for {final_id} is not an `int`. Please convert the slug to `int` ID using Trakt API to proceed.", 
         }), 400 
 
     # if target specified, redirect to target
