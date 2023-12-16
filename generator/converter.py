@@ -366,15 +366,25 @@ def link_otakotaku_to_mal(
     with alive_bar(len(unlinked),
                    title="Fuzzy match title from both databases",
                    spinner=None) as bar:  # type: ignore
+        replace_dict = {
+            "Season 2": "2nd Season",
+            "Season 3": "3rd Season",
+        }
+        # autopopulate the replace dict with ordinal numbers from 4 to 100
+        for i in range(4, 21):
+            # if it's 11, 12, 13, use th, else use st, nd, rd
+            if i in [11, 12, 13]:
+                replace_dict[f"Season {i}"] = f"{i}th Season"
+            elif i % 10 == 1:
+                replace_dict[f"Season {i}"] = f"{i}st Season"
+            elif i % 10 == 2:
+                replace_dict[f"Season {i}"] = f"{i}nd Season"
+            elif i % 10 == 3:
+                replace_dict[f"Season {i}"] = f"{i}rd Season"
+            else:
+                replace_dict[f"Season {i}"] = f"{i}th Season"
         for item in unlinked:
             title = item["title"]
-            replace_dict = {
-                "Season 2": "2nd Season",
-                "Season 3": "3rd Season",
-                "Season 4": "4th Season",
-                "Season 5": "5th Season",
-                "Season 6": "6th Season",
-            }
             for key, value in replace_dict.items():
                 title = title.replace(key, value)
             for aod_item in aod:
