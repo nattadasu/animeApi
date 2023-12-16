@@ -67,7 +67,7 @@ def link_kaize_to_mal(
                     kz_fixed.append(kz_item)
                     aod_item.update({
                         "kaize": kz_item["slug"],
-                        "kaize_id": None if kz_item["kaize"] == 0 else kz_item["kaize"],
+                        "kaize_id": None if kz_item["kaize_id"] == 0 else kz_item["kaize_id"],
                     })
                 else:
                     unlinked.append(kz_item)
