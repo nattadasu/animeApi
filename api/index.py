@@ -202,28 +202,44 @@ def platform_array(platform: str = "animeapi"):
     Returns:
         Response: Redirect response
     """
-    # get current route
     route = request.path
-    print(route)
-    goto = route.replace("/", "")
+    goto = get_goto(route)
+    
     if route.endswith(".tsv"):
-        with open("database/animeapi.tsv", "r", encoding="utf-8") as file_:
-            response = Response(
-                file_.read(), mimetype="text/tab-separated-values", status=200)
-            response.headers['Content-Disposition'] = 'inline; filename="animeapi.tsv"'
-            return response
-    # remove .json if present
+        return serve_tsv_response()
+
+    return redirect_to_github(goto)
+
+
+def get_goto(route: str) -> str:
+    goto = route.replace("/", "")
+
     if goto.endswith(".json"):
         goto = goto.replace(".json", "")
+
     if not (goto.endswith("()") or goto.endswith("%28%29")) and goto != "animeapi":
-        goto = goto + "_object"
+        goto += "_object"
     else:
         goto = unquote(goto).replace('()', '')
+
     if goto == "syobocal":
         goto = "shoboi"
-    print(goto)
-    return redirect(
-        f"https://raw.githubusercontent.com/nattadasu/animeApi/v3/database/{goto}.json")
+
+    return goto
+
+
+def serve_tsv_response() -> Response:
+    with open("database/animeapi.tsv", "r", encoding="utf-8") as file_:
+        response = Response(
+            file_.read(), mimetype="text/tab-separated-values", status=200
+        )
+        response.headers['Content-Disposition'] = 'inline; filename="animeapi.tsv"'
+        return response
+
+
+def redirect_to_github(goto: str) -> Response:
+    github_url = f"https://raw.githubusercontent.com/nattadasu/animeApi/v3/database/{goto}.json"
+    return redirect(github_url)
 
 
 @app.route("/<platform>/<platform_id>", methods=["GET"])
