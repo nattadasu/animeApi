@@ -204,7 +204,8 @@ def platform_array(platform: str = "animeapi"):
     """
     # get current route
     route = request.path
-    platform = platform.lower()
+    print(route)
+    goto = route.replace("/", "")
     if route.endswith(".tsv"):
         with open("database/animeapi.tsv", "r", encoding="utf-8") as file_:
             response = Response(
@@ -212,16 +213,17 @@ def platform_array(platform: str = "animeapi"):
             response.headers['Content-Disposition'] = 'inline; filename="animeapi.tsv"'
             return response
     # remove .json if present
-    if route.endswith(".json"):
-        route = route.replace(".json", "")
-    if not (route.endswith("()") or route.endswith("%28%29")) and platform != "animeapi":
-        platform = platform + "_object"
+    if goto.endswith(".json"):
+        goto = goto.replace(".json", "")
+    if not (goto.endswith("()") or goto.endswith("%28%29")) and goto != "animeapi":
+        goto = goto + "_object"
     else:
-        platform = unquote(platform).replace('()', '')
-    if platform == "syobocal":
-        platform = "shoboi"
+        goto = unquote(goto).replace('()', '')
+    if goto == "syobocal":
+        goto = "shoboi"
+    print(goto)
     return redirect(
-        f"https://raw.githubusercontent.com/nattadasu/animeApi/v3/database/{platform}.json")
+        f"https://raw.githubusercontent.com/nattadasu/animeApi/v3/database/{goto}.json")
 
 
 @app.route("/<platform>/<platform_id>", methods=["GET"])
