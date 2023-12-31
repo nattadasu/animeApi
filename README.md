@@ -151,16 +151,17 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 <!-- markdownlint-disable MD034 MD013 -->
 ### Libraries
 
-| Package Name  | Language | Package Link                          | Description                                                                  |
-| :------------ | :------- | :------------------------------------ | :--------------------------------------------------------------------------- |
-| `animeapi-py` | Python   | https://pypi.org/project/animeapi-py/ | A Python wrapper for AnimeAPI with type hinting and additional async support |
+| Package Name  | Language | Package Link                                  | Description                                                                  |
+| :------------ | :------- | :-------------------------------------------- | :--------------------------------------------------------------------------- |
+| `animeapi-py` | Python   | [pypi](https://pypi.org/project/animeapi-py/) | A Python wrapper for AnimeAPI with type hinting and additional async support |
 
 ### Projects, Apps, and Websites
 
-| Name                  | Language           | Homepage                                                     | Description                                                                                 |
-| :-------------------- | :----------------- | :----------------------------------------------------------- | :------------------------------------------------------------------------------------------ |
-| Ryuuzaki Ryuusei      | Python             | https://github.com/nattadasu/ryuuRyuusei                     | A Discord bot that uses AnimeAPI to fetch anime maps                                        |
-| animeManga-autoBackup | Powershell, Python | https://github.com/Animanga-Initiative/animeManga-autoBackup | A script that uses AnimeAPI to get info one of your anime/manga lists and save it to a file |
+| Name                    | Language           | Homepage                                                               | Description                                                                                 |
+| :---------------------- | :----------------- | :--------------------------------------------------------------------- | :------------------------------------------------------------------------------------------ |
+| Ryuuzaki Ryuusei        | Python             | [GitHub](https://github.com/nattadasu/ryuuRyuusei)                     | A Discord bot that uses AnimeAPI to fetch anime maps                                        |
+| animeManga-autoBackup   | Powershell, Python | [GitHub](https://github.com/Animanga-Initiative/animeManga-autoBackup) | A script that uses AnimeAPI to get info one of your anime/manga lists and save it to a file |
+| Hikaru Aegis (codename) | Python             | [GitHub](https://github.com/Animanga-Initiative/hikaru-aegis)          | Rewrite of animeManga-autoBackup in Python                                                  |
 
 <!-- markdownlint-enable MD034 MD013 -->
 
