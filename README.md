@@ -170,27 +170,27 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 22 January 2024 05:15:17 UTC
+Last updated: 23 January 2024 05:15:08 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |            ID |     Count |
 | :----------------- | ------------: | --------: |
 | aniDB              |       `anidb` |     13080 |
-| AniList            |     `anilist` |     19508 |
+| AniList            |     `anilist` |     19515 |
 | Anime-Planet       | `animeplanet` |     23379 |
 | aniSearch          |   `anisearch` |     18277 |
-| Annict             |      `annict` |      9895 |
+| Annict             |      `annict` |      9915 |
 | IMDb               |        `imdb` |      2260 |
-| Kaize              |       `kaize` |     22885 |
+| Kaize              |       `kaize` |     22900 |
 | Kitsu              |       `kitsu` |     19808 |
 | LiveChart          |   `livechart` |     11044 |
-| MyAnimeList        | `myanimelist` |     26396 |
+| MyAnimeList        | `myanimelist` |     26400 |
 | Nautiljon          |   `nautiljon` |      8100 |
 | Notify.moe         |      `notify` |     16045 |
 | Otak Otaku         |   `otakotaku` |      2541 |
-| Shikimori          |   `shikimori` |     26396 |
-| Shoboi/Syobocal    |      `shoboi` |      4876 |
+| Shikimori          |   `shikimori` |     26400 |
+| Shoboi/Syobocal    |      `shoboi` |      4879 |
 | Silver Yasha       | `silveryasha` |      4048 |
 | The Movie Database |  `themoviedb` |       482 |
 | Trakt              |       `trakt` |      4574 |
@@ -262,8 +262,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1705900517,
-    "iso": "2024-01-22T05:15:17.002467+00:00"
+    "timestamp": 1705986908,
+    "iso": "2024-01-23T05:15:08.092332+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -281,20 +281,20 @@ GET /status
   "website": "https://animeapi.my.id",
   "counts": {
     "anidb": 13080,
-    "anilist": 19508,
+    "anilist": 19515,
     "animeplanet": 23379,
     "anisearch": 18277,
-    "annict": 9895,
+    "annict": 9915,
     "imdb": 2260,
-    "kaize": 22885,
+    "kaize": 22900,
     "kitsu": 19808,
     "livechart": 11044,
-    "myanimelist": 26396,
+    "myanimelist": 26400,
     "nautiljon": 8100,
     "notify": 16045,
     "otakotaku": 2541,
-    "shikimori": 26396,
-    "shoboi": 4876,
+    "shikimori": 26400,
+    "shoboi": 4879,
     "silveryasha": 4048,
     "themoviedb": 482,
     "trakt": 4574,
@@ -375,7 +375,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 01/22/2024 05:15:17 UTC
+Updated on 01/23/2024 05:15:08 UTC
 ```
 <!-- /updated-txt -->
 
