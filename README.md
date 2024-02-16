@@ -170,7 +170,7 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 15 February 2024 05:36:02 UTC
+Last updated: 16 February 2024 05:32:43 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -186,7 +186,7 @@ Last updated: 15 February 2024 05:36:02 UTC
 | Kitsu              |       `kitsu` |     19902 |
 | LiveChart          |   `livechart` |     11068 |
 | MyAnimeList        | `myanimelist` |     26528 |
-| Nautiljon          |   `nautiljon` |      8135 |
+| Nautiljon          |   `nautiljon` |      8157 |
 | Notify.moe         |      `notify` |     16075 |
 | Otak Otaku         |   `otakotaku` |      2546 |
 | Shikimori          |   `shikimori` |     26528 |
@@ -262,8 +262,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1707975362,
-    "iso": "2024-02-15T05:36:02.458084+00:00"
+    "timestamp": 1708061563,
+    "iso": "2024-02-16T05:32:43.644499+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -290,7 +290,7 @@ GET /status
     "kitsu": 19902,
     "livechart": 11068,
     "myanimelist": 26528,
-    "nautiljon": 8135,
+    "nautiljon": 8157,
     "notify": 16075,
     "otakotaku": 2546,
     "shikimori": 26528,
@@ -375,7 +375,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 02/15/2024 05:36:02 UTC
+Updated on 02/16/2024 05:32:43 UTC
 ```
 <!-- /updated-txt -->
 
@@ -500,8 +500,8 @@ GET https://animeapi.my.id/myanimelist/1
   "kitsu": 1,
   "livechart": 3418,
   "myanimelist": 1,
-  "nautiljon": null,
-  "nautiljon_id": null,
+  "nautiljon": "cowboy+bebop",
+  "nautiljon_id": 4,
   "notify": "Tk3ccKimg",
   "otakotaku": 1149,
   "shikimori": 1,
