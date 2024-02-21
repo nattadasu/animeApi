@@ -170,7 +170,7 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 20 February 2024 05:16:41 UTC
+Last updated: 21 February 2024 05:17:06 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -181,14 +181,14 @@ Last updated: 20 February 2024 05:16:41 UTC
 | Anime-Planet       | `animeplanet` |     23452 |
 | aniSearch          |   `anisearch` |     18323 |
 | Annict             |      `annict` |      9981 |
-| IMDb               |        `imdb` |      2263 |
+| IMDb               |        `imdb` |      2265 |
 | Kaize              |       `kaize` |     22912 |
 | Kitsu              |       `kitsu` |     19921 |
 | LiveChart          |   `livechart` |     11080 |
 | MyAnimeList        | `myanimelist` |     26584 |
 | Nautiljon          |   `nautiljon` |      8161 |
 | Notify.moe         |      `notify` |     16090 |
-| Otak Otaku         |   `otakotaku` |      2554 |
+| Otak Otaku         |   `otakotaku` |      2555 |
 | Shikimori          |   `shikimori` |     26584 |
 | Shoboi/Syobocal    |      `shoboi` |      4890 |
 | Silver Yasha       | `silveryasha` |      4047 |
@@ -262,8 +262,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1708406201,
-    "iso": "2024-02-20T05:16:41.241122+00:00"
+    "timestamp": 1708492626,
+    "iso": "2024-02-21T05:17:06.143423+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -285,14 +285,14 @@ GET /status
     "animeplanet": 23452,
     "anisearch": 18323,
     "annict": 9981,
-    "imdb": 2263,
+    "imdb": 2265,
     "kaize": 22912,
     "kitsu": 19921,
     "livechart": 11080,
     "myanimelist": 26584,
     "nautiljon": 8161,
     "notify": 16090,
-    "otakotaku": 2554,
+    "otakotaku": 2555,
     "shikimori": 26584,
     "shoboi": 4890,
     "silveryasha": 4047,
@@ -375,7 +375,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 02/20/2024 05:16:41 UTC
+Updated on 02/21/2024 05:17:06 UTC
 ```
 <!-- /updated-txt -->
 
