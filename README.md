@@ -89,11 +89,9 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 | [![f:bgm] Bangumi][bgm]         | ❌                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
 | [![f:imdb] IMDB][imdb]          | ✔                                               | ❌                           | ✔                  | ❌                         | ✔                       | ✔            | ❌                                                                   | ✔             | ✔                                      | ❌                |
 | [![f:kz] Kaize][kz]             | ✔                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
-| [![f:kno] Kinopoisk][kno]       | ❌                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
 | [![f:kts] Kitsu][kts]           | ✔                                               | ❌                           | ✔                  | ✔                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
 | [![f:lc] LiveChart][lc]         | ✔                                               | ❌                           | ✔                  | ❌                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
 | [![f:mal] MyAnimeList][mal]     | ✔                                               | ✔                           | ✔                  | ✔                         | ✔                       | ❌            | ✔                                                                   | ✔             | ❌                                      | ✔                |
-| [![f:mys] MyShows][mys]         | ❌                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
 | [![f:ntj] Nautiljon][ntj]       | ✔                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
 | [![f:ntf] Notify][ntf]          | ✔                                               | ❌                           | ✔                  | ✔                         | ❌                       | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
 | [![f:oo] Otak Otaku][oo]        | ✔                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
@@ -142,7 +140,7 @@ to [`database/raw/README.md`](database/raw/README.md).
 Do you want to integrate AnimeAPI into your project? Or do you want to see how
 AnimeAPI is used in other projects and their use cases? Check out the list below!
 
-> **Note**
+> [!TIP]
 >
 > If you want to add your project to this list, please open a pull request
 > adding your project to the table below. Please make sure to add a short
@@ -216,7 +214,7 @@ To use this API, you can access the following base URLs:
 
 All requests must be `GET`, and response always will be in JSON format.
 
-> **Warning**
+> [!ATTENTION]
 >
 > In `v2`, If an entry can not be found, the API will return default GitHub
 > Pages' 404 html page, **NOT** JSON response. This is because `v2` and earlier
@@ -246,7 +244,9 @@ each version are as follows:
 
 ### Get status and statistics
 
-> **Note**: This endpoint is only available on v3
+> [!WARNING]
+>
+> This endpoint is only available on v3
 
 MIME Type: `application/json`
 
@@ -337,7 +337,7 @@ GET /status
 
 ### Get latency report
 
-> **Note**
+> [!WARNING]
 >
 > This endpoint is only available on v3
 
@@ -395,11 +395,11 @@ if you want to use this endpoint.
 
 ### Fetch all item as TSV (Tab Separated Values) file
 
-> **Note**
+> [!WARNING]
 >
 > This endpoint is only available on v3
 
-> **Note**
+> [!TIP]
 >
 > Use this endpoint if you want to import the data to spreadsheet.
 
@@ -447,7 +447,7 @@ GET /:platform().json
 Additionally, on `v3`, you can use `imdb`, `nautiljon`, and `themoviedb` on
 `:platform`.
 
-> **Note**
+> [!NOTE]
 >
 > The `()` in the endpoint is not a typo, it's part of the endpoint.
 > If you can't access the endpoint, try to encode the `()` to `%28%29`.
@@ -566,7 +566,7 @@ GET https://api.trakt.tv/search/trakt/<ID>?type=<movie|show>
 To get exact season mapping, append `/seasons/:season_inc` to the end of the ID,
 where `:season_inc` is the season number of the title in the provider.
 
-> **Warning**
+> [!WARNING]
 >
 > `/seasons/0` is invalid, and will return `400` status code.
 
@@ -613,7 +613,7 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
 
 ### Redirect to provider's page
 
-> **Note**
+> [!WARNING]
 >
 > This endpoint is only available on v3
 
@@ -1115,14 +1115,12 @@ This project uses multiple sources to compile the data, including:
 [fal]: https://github.com/Fribb/anime-lists
 [hato]: https://github.com/Atelier-Shiori/Hato
 [imdb]: https://imdb.com
-[kno]: https://kinopoisk.ru
 [ko]: https://github.com/kawaiioverflow
 [kts]: https://kitsu.io
 [kz]: https://kaize.io
 [lc]: https://livechart.me
 [mal]: https://myanimelist.net
 [mp]: https://github.com/manami-project
-[mys]: https://en.myshows.me
 [ntf]: https://notify.moe
 [ntj]: https://nautiljon.com
 [oo]: https://otakotaku.com
@@ -1141,12 +1139,10 @@ This project uses multiple sources to compile the data, including:
 [f:as]: https://www.google.com/s2/favicons?domain=anisearch.com&sz=16
 [f:bgm]: https://www.google.com/s2/favicons?domain=bangumi.tv&sz=16
 [f:imdb]: https://www.google.com/s2/favicons?domain=imdb.com&sz=16
-[f:kno]: https://www.google.com/s2/favicons?domain=kinopoisk.ru&sz=16
 [f:kts]: https://www.google.com/s2/favicons?domain=kitsu.io&sz=16
 [f:kz]: https://www.google.com/s2/favicons?domain=kaize.io&sz=16
 [f:lc]: https://www.google.com/s2/favicons?domain=livechart.me&sz=16
 [f:mal]: https://www.google.com/s2/favicons?domain=myanimelist.net&sz=16
-[f:mys]: https://www.google.com/s2/favicons?domain=myshows.me&sz=16
 [f:ntf]: https://www.google.com/s2/favicons?domain=notify.moe&sz=16
 [f:ntj]: https://www.google.com/s2/favicons?domain=nautiljon.com&sz=16
 [f:oo]: https://www.google.com/s2/favicons?domain=otakotaku.com&sz=16
