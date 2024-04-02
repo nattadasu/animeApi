@@ -214,7 +214,7 @@ To use this API, you can access the following base URLs:
 
 All requests must be `GET`, and response always will be in JSON format.
 
-> [!ATTENTION]
+> [!WARNING]
 >
 > In `v2`, If an entry can not be found, the API will return default GitHub
 > Pages' 404 html page, **NOT** JSON response. This is because `v2` and earlier
@@ -227,18 +227,18 @@ each version are as follows:
 
 <!-- markdownlint-disable MD013 -->
 
-|                    | v1                         | v2                               | v3                                |
-| ------------------ | -------------------------- | -------------------------------- | --------------------------------- |
-| Base URL           | *inactive*                 | `https://aniapi.nattadasu.my.id` | `https://animeapi.my.id`          |
-| EOL                | *discontinued*             | December 31, 2023                | Until further verion              |
-| Host               | -                          | GitHub Pages                     | Vercel                            |
-| Language           | PowerShell                 | Python                           | Python                            |
-| Backend            | -                          | GitHub Pages                     | Flask                             |
-| Database           | JSON                       | JSON                             | JSON                              |
-| Expected MIME Type | `application/octet-stream` | `application/octet-stream`       | `application/json`                |
-| Status Codes       | `200`, `404`               | `200`, `404`                     | `200`, `302`, `400`, `404`, `500` |
-| Response Schema    | -                          | -                                | [JSON Schema](#json-schema)       |
-| Documented         | -                          | ✔                                | ✔                                 |
+|                    | v2                         | v3                                |
+| ------------------ | -------------------------- | --------------------------------- |
+| Base URL           | *inactive*                 | `https://animeapi.my.id`          |
+| EOL                | *discontinued*             | Until further verion              |
+| Host               | GitHub Pages               | Vercel                            |
+| Language           | Python                     | Python                            |
+| Backend            | GitHub Pages               | Flask                             |
+| Database           | JSON                       | JSON                              |
+| Expected MIME Type | `application/octet-stream` | `application/json`                |
+| Status Codes       | `200`, `404`               | `200`, `302`, `400`, `404`, `500` |
+| Response Schema    | -                          | [JSON Schema](#json-schema)       |
+| Documented         | ✔                          | ✔                                 |
 
 <!-- markdownlint-enable MD013 -->
 
