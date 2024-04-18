@@ -168,25 +168,25 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 17 April 2024 05:18:40 UTC
+Last updated: 18 April 2024 05:16:52 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |            ID |     Count |
 | :----------------- | ------------: | --------: |
 | aniDB              |       `anidb` |     13223 |
-| AniList            |     `anilist` |     19801 |
+| AniList            |     `anilist` |     19804 |
 | Anime-Planet       | `animeplanet` |     23687 |
 | aniSearch          |   `anisearch` |     18493 |
-| Annict             |      `annict` |     10163 |
+| Annict             |      `annict` |     10166 |
 | IMDb               |        `imdb` |      2267 |
-| Kaize              |       `kaize` |     22945 |
+| Kaize              |       `kaize` |     22946 |
 | Kitsu              |       `kitsu` |     20100 |
 | LiveChart          |   `livechart` |     11188 |
 | MyAnimeList        | `myanimelist` |     26938 |
 | Nautiljon          |   `nautiljon` |      8190 |
 | Notify.moe         |      `notify` |     16205 |
-| Otak Otaku         |   `otakotaku` |      2649 |
+| Otak Otaku         |   `otakotaku` |      2650 |
 | Shikimori          |   `shikimori` |     26938 |
 | Shoboi/Syobocal    |      `shoboi` |      4955 |
 | Silver Yasha       | `silveryasha` |      4290 |
@@ -262,8 +262,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1713331120,
-    "iso": "2024-04-17T05:18:40.048116+00:00"
+    "timestamp": 1713417412,
+    "iso": "2024-04-18T05:16:52.343250+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -281,18 +281,18 @@ GET /status
   "website": "https://animeapi.my.id",
   "counts": {
     "anidb": 13223,
-    "anilist": 19801,
+    "anilist": 19804,
     "animeplanet": 23687,
     "anisearch": 18493,
-    "annict": 10163,
+    "annict": 10166,
     "imdb": 2267,
-    "kaize": 22945,
+    "kaize": 22946,
     "kitsu": 20100,
     "livechart": 11188,
     "myanimelist": 26938,
     "nautiljon": 8190,
     "notify": 16205,
-    "otakotaku": 2649,
+    "otakotaku": 2650,
     "shikimori": 26938,
     "shoboi": 4955,
     "silveryasha": 4290,
@@ -375,7 +375,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 04/17/2024 05:18:40 UTC
+Updated on 04/18/2024 05:16:52 UTC
 ```
 <!-- /updated-txt -->
 
