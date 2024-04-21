@@ -168,7 +168,7 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 18 April 2024 05:16:52 UTC
+Last updated: 21 April 2024 05:18:26 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -180,7 +180,7 @@ Last updated: 18 April 2024 05:16:52 UTC
 | aniSearch          |   `anisearch` |     18493 |
 | Annict             |      `annict` |     10166 |
 | IMDb               |        `imdb` |      2267 |
-| Kaize              |       `kaize` |     22946 |
+| Kaize              |       `kaize` |     22947 |
 | Kitsu              |       `kitsu` |     20100 |
 | LiveChart          |   `livechart` |     11188 |
 | MyAnimeList        | `myanimelist` |     26938 |
@@ -262,8 +262,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1713417412,
-    "iso": "2024-04-18T05:16:52.343250+00:00"
+    "timestamp": 1713676706,
+    "iso": "2024-04-21T05:18:26.847502+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -286,7 +286,7 @@ GET /status
     "anisearch": 18493,
     "annict": 10166,
     "imdb": 2267,
-    "kaize": 22946,
+    "kaize": 22947,
     "kitsu": 20100,
     "livechart": 11188,
     "myanimelist": 26938,
@@ -375,7 +375,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 04/18/2024 05:16:52 UTC
+Updated on 04/21/2024 05:18:26 UTC
 ```
 <!-- /updated-txt -->
 
