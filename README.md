@@ -168,19 +168,19 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 22 May 2024 05:18:03 UTC
+Last updated: 23 May 2024 05:17:15 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |            ID |     Count |
 | :----------------- | ------------: | --------: |
 | aniDB              |       `anidb` |     13260 |
-| AniList            |     `anilist` |     19931 |
+| AniList            |     `anilist` |     19926 |
 | Anime-Planet       | `animeplanet` |     23769 |
 | aniSearch          |   `anisearch` |     18533 |
-| Annict             |      `annict` |     10199 |
+| Annict             |      `annict` |     10204 |
 | IMDb               |        `imdb` |      2267 |
-| Kaize              |       `kaize` |     22979 |
+| Kaize              |       `kaize` |     22976 |
 | Kitsu              |       `kitsu` |     20242 |
 | LiveChart          |   `livechart` |     11220 |
 | MyAnimeList        | `myanimelist` |     27066 |
@@ -262,8 +262,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1716355083,
-    "iso": "2024-05-22T05:18:03.168134+00:00"
+    "timestamp": 1716441435,
+    "iso": "2024-05-23T05:17:15.836250+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -281,12 +281,12 @@ GET /status
   "website": "https://animeapi.my.id",
   "counts": {
     "anidb": 13260,
-    "anilist": 19931,
+    "anilist": 19926,
     "animeplanet": 23769,
     "anisearch": 18533,
-    "annict": 10199,
+    "annict": 10204,
     "imdb": 2267,
-    "kaize": 22979,
+    "kaize": 22976,
     "kitsu": 20242,
     "livechart": 11220,
     "myanimelist": 27066,
@@ -375,7 +375,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 05/22/2024 05:18:03 UTC
+Updated on 05/23/2024 05:17:15 UTC
 ```
 <!-- /updated-txt -->
 
