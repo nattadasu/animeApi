@@ -168,7 +168,7 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 04 July 2024 05:17:58 UTC
+Last updated: 05 July 2024 05:16:51 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -180,18 +180,18 @@ Last updated: 04 July 2024 05:17:58 UTC
 | aniSearch          |   `anisearch` |     18702 |
 | Annict             |      `annict` |     10310 |
 | IMDb               |        `imdb` |      2269 |
-| Kaize              |       `kaize` |     23008 |
+| Kaize              |       `kaize` |     23029 |
 | Kitsu              |       `kitsu` |     20353 |
 | LiveChart          |   `livechart` |     11287 |
 | MyAnimeList        | `myanimelist` |     27303 |
 | Nautiljon          |   `nautiljon` |      8270 |
 | Notify.moe         |      `notify` |     16282 |
-| Otak Otaku         |   `otakotaku` |      2682 |
+| Otak Otaku         |   `otakotaku` |      2683 |
 | Shikimori          |   `shikimori` |     27303 |
 | Shoboi/Syobocal    |      `shoboi` |      5007 |
 | Silver Yasha       | `silveryasha` |      4289 |
 | The Movie Database |  `themoviedb` |       526 |
-| Trakt              |       `trakt` |      4715 |
+| Trakt              |       `trakt` |      4725 |
 |                    |               |           |
 |                    |     **Total** | **33930** |
 <!-- /counters -->
@@ -262,8 +262,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1720070278,
-    "iso": "2024-07-04T05:17:58.569098+00:00"
+    "timestamp": 1720156611,
+    "iso": "2024-07-05T05:16:51.608656+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -286,18 +286,18 @@ GET /status
     "anisearch": 18702,
     "annict": 10310,
     "imdb": 2269,
-    "kaize": 23008,
+    "kaize": 23029,
     "kitsu": 20353,
     "livechart": 11287,
     "myanimelist": 27303,
     "nautiljon": 8270,
     "notify": 16282,
-    "otakotaku": 2682,
+    "otakotaku": 2683,
     "shikimori": 27303,
     "shoboi": 5007,
     "silveryasha": 4289,
     "themoviedb": 526,
-    "trakt": 4715,
+    "trakt": 4725,
     "total": 33930
   },
   "endpoints": {
@@ -375,7 +375,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 07/04/2024 05:17:58 UTC
+Updated on 07/05/2024 05:16:51 UTC
 ```
 <!-- /updated-txt -->
 
