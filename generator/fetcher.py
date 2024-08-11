@@ -173,7 +173,7 @@ def simplify_aod_data(aod: dict[str, Any]) -> list[dict[str, Any]]:
                     ap_slug = sauce.split("/")[-1]
                 elif sauce.startswith("https://anisearch.com/anime/"):
                     as_id = int(sauce.split("/")[-1])
-                elif sauce.startswith("https://kitsu.io/anime/"):
+                elif sauce.startswith("https://kitsu.io/anime/") or sauce.startswith("https://kitsu.app/anime/")
                     kt_id = int(sauce.split("/")[-1])
                 elif sauce.startswith("https://livechart.me/anime/"):
                     lc_id = int(sauce.split("/")[-1])
