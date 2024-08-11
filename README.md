@@ -525,14 +525,14 @@ GET https://animeapi.my.id/myanimelist/1
 instead, you can resolve/convert it to ID using following Kitsu API endpoint:
 
 ```http
-GET https://kitsu.io/api/edge/anime?filter[slug]=<ID>
+GET https://kitsu.app/api/edge/anime?filter[slug]=<ID>
 ```
 
 For example, if you want to get anime data from Kitsu with slug `cowboy-bebop`,
 you can use the following endpoint:
 
 ```http
-GET https://kitsu.io/api/edge/anime?filter[slug]=cowboy-bebop
+GET https://kitsu.app/api/edge/anime?filter[slug]=cowboy-bebop
 ```
 
 The response will be in JSON format, and you can get the ID from `data[0].id`
@@ -642,7 +642,7 @@ GET /rd?from=:platform&id=:mediaid&to=:platform
   |      `annict` | `anc`, `act`, `ac`, `annict.com`, `annict.jp`, `en.annict.com`                                        |
   |        `imdb` | `imdb.com`                                                                                            |
   |       `kaize` | `kz`, `kaize.io`                                                                                      |
-  |       `kitsu` | `kt`, `kts`, `kitsu.io`                                                                               |
+  |       `kitsu` | `kt`, `kts`, `kitsu.io`, `kitsu.app`                                                                  |
   |   `livechart` | `lc`, `livechart.me`                                                                                  |
   | `myanimelist` | `mal`, `myanimelist.net`                                                                              |
   |   `nautiljon` | `ntj`, `nautiljon.com`                                                                                |
@@ -852,7 +852,7 @@ Add the following schema URI to your JSON file.
         },
         "kitsu": {
           "title": "Kitsu",
-          "description": "Kitsu ID in integer, slug not suppported, website: https://kitsu.io/",
+          "description": "Kitsu ID in integer, slug not suppported, website: https://kitsu.app/",
           "$ref": "#/definitions/numbernull"
         },
         "livechart": {
@@ -1116,7 +1116,7 @@ This project uses multiple sources to compile the data, including:
 [hato]: https://github.com/Atelier-Shiori/Hato
 [imdb]: https://imdb.com
 [ko]: https://github.com/kawaiioverflow
-[kts]: https://kitsu.io
+[kts]: https://kitsu.app
 [kz]: https://kaize.io
 [lc]: https://livechart.me
 [mal]: https://myanimelist.net
@@ -1139,7 +1139,7 @@ This project uses multiple sources to compile the data, including:
 [f:as]: https://www.google.com/s2/favicons?domain=anisearch.com&sz=16
 [f:bgm]: https://www.google.com/s2/favicons?domain=bangumi.tv&sz=16
 [f:imdb]: https://www.google.com/s2/favicons?domain=imdb.com&sz=16
-[f:kts]: https://www.google.com/s2/favicons?domain=kitsu.io&sz=16
+[f:kts]: https://www.google.com/s2/favicons?domain=kitsu.app&sz=16
 [f:kz]: https://www.google.com/s2/favicons?domain=kaize.io&sz=16
 [f:lc]: https://www.google.com/s2/favicons?domain=livechart.me&sz=16
 [f:mal]: https://www.google.com/s2/favicons?domain=myanimelist.net&sz=16
