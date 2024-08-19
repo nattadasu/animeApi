@@ -657,9 +657,10 @@ GET /rd?from=:platform&id=:mediaid&to=:platform
   Additionally, on `target`/`to` parameter, there are additional supported
   platforms, and can't be used as source/`from` due to some limitations:
 
-  | Platform | Aliases            |
-  | -------: | :----------------- |
-  |  `simkl` | `smk`, `simkl.com` |
+  |   Platform | Aliases                     | Additional Notes                |
+  | ---------: | :-------------------------- | :------------------------------ |
+  |    `simkl` | `smk`, `simkl.com`          |                                 |
+  | `kurozora` | `kr`, `krz`, `kurozora.app` | Requires Kurozora+ subscription |
   <!-- markdownlint-enable MD013 -->
 
 * `:mediaid` is the ID of the anime in the platform. Please follow the instruction
