@@ -168,7 +168,7 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 01 September 2024 05:37:48 UTC
+Last updated: 02 September 2024 05:36:11 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -180,11 +180,11 @@ Last updated: 01 September 2024 05:37:48 UTC
 | aniSearch          |   `anisearch` |     18801 |
 | Annict             |      `annict` |     10424 |
 | IMDb               |        `imdb` |      2269 |
-| Kaize              |       `kaize` |     23004 |
+| Kaize              |       `kaize` |     22998 |
 | Kitsu              |       `kitsu` |     20489 |
 | LiveChart          |   `livechart` |     11347 |
 | MyAnimeList        | `myanimelist` |     27651 |
-| Nautiljon          |   `nautiljon` |      8310 |
+| Nautiljon          |   `nautiljon` |      8335 |
 | Notify.moe         |      `notify` |     16321 |
 | Otak Otaku         |   `otakotaku` |      2722 |
 | Shikimori          |   `shikimori` |     27651 |
@@ -262,8 +262,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1725169068,
-    "iso": "2024-09-01T05:37:48.506030+00:00"
+    "timestamp": 1725255371,
+    "iso": "2024-09-02T05:36:11.129739+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -286,11 +286,11 @@ GET /status
     "anisearch": 18801,
     "annict": 10424,
     "imdb": 2269,
-    "kaize": 23004,
+    "kaize": 22998,
     "kitsu": 20489,
     "livechart": 11347,
     "myanimelist": 27651,
-    "nautiljon": 8310,
+    "nautiljon": 8335,
     "notify": 16321,
     "otakotaku": 2722,
     "shikimori": 27651,
@@ -375,7 +375,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 09/01/2024 05:37:48 UTC
+Updated on 09/02/2024 05:36:11 UTC
 ```
 <!-- /updated-txt -->
 
