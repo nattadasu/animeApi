@@ -104,7 +104,7 @@ def get_silveryasha() -> list[dict[str, Any]]:
     :rtype: list[dict[str, Any]]
     """
     ddump = Downloader(
-        url="https://raw.githubusercontent.com/rensetsu/db.rensetsu.public-dump/main/Silveryasha/silveryasha.json",
+        url="https://raw.githubusercontent.com/rensetsu/db.rensetsu.public-dump/main/Silveryasha/silveryasha_raw.json",
         file_name="silveryasha",
         file_type="json",
         platform=Platform.SILVERYASHA,
