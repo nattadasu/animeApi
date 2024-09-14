@@ -60,7 +60,7 @@ def get_anitrakt() -> list[dict[str, Any]]:
     :return: AniTrakt data; merged TV and movie data
     :rtype: list[dict[str, Any]]
     """
-    base_url = "https://raw.githubusercontent.com/ryuuganime/aniTrakt-IndexParser/main/db/"
+    base_url = "https://raw.githubusercontent.com/rensetsu/db.trakt.anitrakt/main/db/"
     ddump_tv = Downloader(
         url=f"{base_url}tv.json",
         file_name="anitrakt_tv",
@@ -104,7 +104,7 @@ def get_silveryasha() -> list[dict[str, Any]]:
     :rtype: list[dict[str, Any]]
     """
     ddump = Downloader(
-        url="https://db.silveryasha.web.id/ajax/anime/dtanime",
+        url="https://raw.githubusercontent.com/rensetsu/db.rensetsu.public-dump/main/Silveryasha/silveryasha.json",
         file_name="silveryasha",
         file_type="json",
         platform=Platform.SILVERYASHA,
