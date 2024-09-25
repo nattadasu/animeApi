@@ -168,7 +168,7 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 24 September 2024 05:20:36 UTC
+Last updated: 25 September 2024 05:20:38 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -190,7 +190,7 @@ Last updated: 24 September 2024 05:20:36 UTC
 | Shikimori          |   `shikimori` |     27691 |
 | Shoboi/Syobocal    |      `shoboi` |      5052 |
 | Silver Yasha       | `silveryasha` |      4482 |
-| The Movie Database |  `themoviedb` |       534 |
+| The Movie Database |  `themoviedb` |       540 |
 | Trakt              |       `trakt` |      4720 |
 |                    |               |           |
 |                    |     **Total** | **34341** |
@@ -262,8 +262,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1727155236,
-    "iso": "2024-09-24T05:20:36.143148+00:00"
+    "timestamp": 1727241638,
+    "iso": "2024-09-25T05:20:38.457140+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -296,7 +296,7 @@ GET /status
     "shikimori": 27691,
     "shoboi": 5052,
     "silveryasha": 4482,
-    "themoviedb": 534,
+    "themoviedb": 540,
     "trakt": 4720,
     "total": 34341
   },
@@ -375,7 +375,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 09/24/2024 05:20:36 UTC
+Updated on 09/25/2024 05:20:38 UTC
 ```
 <!-- /updated-txt -->
 
