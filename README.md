@@ -168,32 +168,32 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 02 October 2024 05:36:06 UTC
+Last updated: 04 October 2024 05:17:14 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |            ID |     Count |
 | :----------------- | ------------: | --------: |
-| aniDB              |       `anidb` |     13475 |
-| AniList            |     `anilist` |     20563 |
-| Anime-Planet       | `animeplanet` |     24038 |
-| aniSearch          |   `anisearch` |     18901 |
-| Annict             |      `annict` |     10496 |
-| IMDb               |        `imdb` |      2267 |
-| Kaize              |       `kaize` |     23031 |
-| Kitsu              |       `kitsu` |     20577 |
-| LiveChart          |   `livechart` |     11404 |
-| MyAnimeList        | `myanimelist` |     27830 |
+| aniDB              |       `anidb` |     13477 |
+| AniList            |     `anilist` |     20572 |
+| Anime-Planet       | `animeplanet` |     24039 |
+| aniSearch          |   `anisearch` |     18900 |
+| Annict             |      `annict` |     10534 |
+| IMDb               |        `imdb` |      2268 |
+| Kaize              |       `kaize` |     23041 |
+| Kitsu              |       `kitsu` |     20580 |
+| LiveChart          |   `livechart` |     11403 |
+| MyAnimeList        | `myanimelist` |     27853 |
 | Nautiljon          |   `nautiljon` |      8364 |
-| Notify.moe         |      `notify` |     16450 |
-| Otak Otaku         |   `otakotaku` |      2740 |
-| Shikimori          |   `shikimori` |     27830 |
-| Shoboi/Syobocal    |      `shoboi` |      5066 |
-| Silver Yasha       | `silveryasha` |      4496 |
+| Notify.moe         |      `notify` |     16452 |
+| Otak Otaku         |   `otakotaku` |      2741 |
+| Shikimori          |   `shikimori` |     27853 |
+| Shoboi/Syobocal    |      `shoboi` |      5075 |
+| Silver Yasha       | `silveryasha` |      4495 |
 | The Movie Database |  `themoviedb` |       541 |
-| Trakt              |       `trakt` |      4724 |
+| Trakt              |       `trakt` |      4822 |
 |                    |               |           |
-|                    |     **Total** | **34491** |
+|                    |     **Total** | **34507** |
 <!-- /counters -->
 
 ## Usage
@@ -262,8 +262,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1727847366,
-    "iso": "2024-10-02T05:36:06.012419+00:00"
+    "timestamp": 1728019034,
+    "iso": "2024-10-04T05:17:14.024206+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -280,25 +280,25 @@ GET /status
   "license": "AGPL-3.0-only AND MIT AND CC0-1.0+",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 13475,
-    "anilist": 20563,
-    "animeplanet": 24038,
-    "anisearch": 18901,
-    "annict": 10496,
-    "imdb": 2267,
-    "kaize": 23031,
-    "kitsu": 20577,
-    "livechart": 11404,
-    "myanimelist": 27830,
+    "anidb": 13477,
+    "anilist": 20572,
+    "animeplanet": 24039,
+    "anisearch": 18900,
+    "annict": 10534,
+    "imdb": 2268,
+    "kaize": 23041,
+    "kitsu": 20580,
+    "livechart": 11403,
+    "myanimelist": 27853,
     "nautiljon": 8364,
-    "notify": 16450,
-    "otakotaku": 2740,
-    "shikimori": 27830,
-    "shoboi": 5066,
-    "silveryasha": 4496,
+    "notify": 16452,
+    "otakotaku": 2741,
+    "shikimori": 27853,
+    "shoboi": 5075,
+    "silveryasha": 4495,
     "themoviedb": 541,
-    "trakt": 4724,
-    "total": 34491
+    "trakt": 4822,
+    "total": 34507
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format",
@@ -375,7 +375,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 10/02/2024 05:36:06 UTC
+Updated on 10/04/2024 05:17:14 UTC
 ```
 <!-- /updated-txt -->
 
