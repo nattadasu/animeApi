@@ -168,7 +168,7 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 21 November 2024 05:18:00 UTC
+Last updated: 22 November 2024 05:17:34 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -186,10 +186,10 @@ Last updated: 21 November 2024 05:18:00 UTC
 | MyAnimeList        | `myanimelist` |     28003 |
 | Nautiljon          |   `nautiljon` |      8393 |
 | Notify.moe         |      `notify` |     16497 |
-| Otak Otaku         |   `otakotaku` |      2771 |
+| Otak Otaku         |   `otakotaku` |      2772 |
 | Shikimori          |   `shikimori` |     28003 |
 | Shoboi/Syobocal    |      `shoboi` |      5120 |
-| Silver Yasha       | `silveryasha` |      4520 |
+| Silver Yasha       | `silveryasha` |      4556 |
 | The Movie Database |  `themoviedb` |       542 |
 | Trakt              |       `trakt` |      4820 |
 |                    |               |           |
@@ -262,8 +262,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1732166280,
-    "iso": "2024-11-21T05:18:00.629112+00:00"
+    "timestamp": 1732252654,
+    "iso": "2024-11-22T05:17:34.639167+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -292,10 +292,10 @@ GET /status
     "myanimelist": 28003,
     "nautiljon": 8393,
     "notify": 16497,
-    "otakotaku": 2771,
+    "otakotaku": 2772,
     "shikimori": 28003,
     "shoboi": 5120,
-    "silveryasha": 4520,
+    "silveryasha": 4556,
     "themoviedb": 542,
     "trakt": 4820,
     "total": 34689
@@ -375,7 +375,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 11/21/2024 05:18:00 UTC
+Updated on 11/22/2024 05:17:34 UTC
 ```
 <!-- /updated-txt -->
 
