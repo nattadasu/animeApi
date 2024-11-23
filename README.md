@@ -168,7 +168,7 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 22 November 2024 05:17:34 UTC
+Last updated: 23 November 2024 05:18:05 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -177,7 +177,7 @@ Last updated: 22 November 2024 05:17:34 UTC
 | aniDB              |       `anidb` |     13549 |
 | AniList            |     `anilist` |     20691 |
 | Anime-Planet       | `animeplanet` |     24198 |
-| aniSearch          |   `anisearch` |     19012 |
+| aniSearch          |   `anisearch` |     19017 |
 | Annict             |      `annict` |     11125 |
 | IMDb               |        `imdb` |      2272 |
 | Kaize              |       `kaize` |     23071 |
@@ -193,7 +193,7 @@ Last updated: 22 November 2024 05:17:34 UTC
 | The Movie Database |  `themoviedb` |       542 |
 | Trakt              |       `trakt` |      4820 |
 |                    |               |           |
-|                    |     **Total** | **34689** |
+|                    |     **Total** | **34681** |
 <!-- /counters -->
 
 ## Usage
@@ -262,8 +262,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1732252654,
-    "iso": "2024-11-22T05:17:34.639167+00:00"
+    "timestamp": 1732339085,
+    "iso": "2024-11-23T05:18:05.962635+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -283,7 +283,7 @@ GET /status
     "anidb": 13549,
     "anilist": 20691,
     "animeplanet": 24198,
-    "anisearch": 19012,
+    "anisearch": 19017,
     "annict": 11125,
     "imdb": 2272,
     "kaize": 23071,
@@ -298,7 +298,7 @@ GET /status
     "silveryasha": 4556,
     "themoviedb": 542,
     "trakt": 4820,
-    "total": 34689
+    "total": 34681
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format",
@@ -375,7 +375,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 11/22/2024 05:17:34 UTC
+Updated on 11/23/2024 05:18:05 UTC
 ```
 <!-- /updated-txt -->
 
