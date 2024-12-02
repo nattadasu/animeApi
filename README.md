@@ -168,32 +168,32 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 01 December 2024 05:44:54 UTC
+Last updated: 02 December 2024 05:37:49 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |            ID |     Count |
 | :----------------- | ------------: | --------: |
-| aniDB              |       `anidb` |     13549 |
-| AniList            |     `anilist` |     20700 |
-| Anime-Planet       | `animeplanet` |     24198 |
-| aniSearch          |   `anisearch` |     19017 |
-| Annict             |      `annict` |     11134 |
+| aniDB              |       `anidb` |     13556 |
+| AniList            |     `anilist` |     20723 |
+| Anime-Planet       | `animeplanet` |     24208 |
+| aniSearch          |   `anisearch` |     19039 |
+| Annict             |      `annict` |     11137 |
 | IMDb               |        `imdb` |      2272 |
-| Kaize              |       `kaize` |     23078 |
-| Kitsu              |       `kitsu` |     20665 |
-| LiveChart          |   `livechart` |     11457 |
-| MyAnimeList        | `myanimelist` |     28003 |
-| Nautiljon          |   `nautiljon` |      8393 |
-| Notify.moe         |      `notify` |     16497 |
-| Otak Otaku         |   `otakotaku` |      2780 |
-| Shikimori          |   `shikimori` |     28003 |
+| Kaize              |       `kaize` |     23074 |
+| Kitsu              |       `kitsu` |     20686 |
+| LiveChart          |   `livechart` |     11467 |
+| MyAnimeList        | `myanimelist` |     28056 |
+| Nautiljon          |   `nautiljon` |      8419 |
+| Notify.moe         |      `notify` |     16508 |
+| Otak Otaku         |   `otakotaku` |      2781 |
+| Shikimori          |   `shikimori` |     28056 |
 | Shoboi/Syobocal    |      `shoboi` |      5120 |
-| Silver Yasha       | `silveryasha` |      4556 |
+| Silver Yasha       | `silveryasha` |      4558 |
 | The Movie Database |  `themoviedb` |       565 |
-| Trakt              |       `trakt` |      4820 |
+| Trakt              |       `trakt` |      4818 |
 |                    |               |           |
-|                    |     **Total** | **34681** |
+|                    |     **Total** | **34740** |
 <!-- /counters -->
 
 ## Usage
@@ -262,8 +262,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1733031894,
-    "iso": "2024-12-01T05:44:54.623714+00:00"
+    "timestamp": 1733117869,
+    "iso": "2024-12-02T05:37:49.169081+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -280,25 +280,25 @@ GET /status
   "license": "AGPL-3.0-only AND MIT AND CC0-1.0+",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 13549,
-    "anilist": 20700,
-    "animeplanet": 24198,
-    "anisearch": 19017,
-    "annict": 11134,
+    "anidb": 13556,
+    "anilist": 20723,
+    "animeplanet": 24208,
+    "anisearch": 19039,
+    "annict": 11137,
     "imdb": 2272,
-    "kaize": 23078,
-    "kitsu": 20665,
-    "livechart": 11457,
-    "myanimelist": 28003,
-    "nautiljon": 8393,
-    "notify": 16497,
-    "otakotaku": 2780,
-    "shikimori": 28003,
+    "kaize": 23074,
+    "kitsu": 20686,
+    "livechart": 11467,
+    "myanimelist": 28056,
+    "nautiljon": 8419,
+    "notify": 16508,
+    "otakotaku": 2781,
+    "shikimori": 28056,
     "shoboi": 5120,
-    "silveryasha": 4556,
+    "silveryasha": 4558,
     "themoviedb": 565,
-    "trakt": 4820,
-    "total": 34681
+    "trakt": 4818,
+    "total": 34740
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format",
@@ -375,7 +375,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 12/01/2024 05:44:54 UTC
+Updated on 12/02/2024 05:37:49 UTC
 ```
 <!-- /updated-txt -->
 
@@ -500,8 +500,8 @@ GET https://animeapi.my.id/myanimelist/1
   "kitsu": 1,
   "livechart": 3418,
   "myanimelist": 1,
-  "nautiljon": null,
-  "nautiljon_id": null,
+  "nautiljon": "cowboy+bebop",
+  "nautiljon_id": 4,
   "notify": "Tk3ccKimg",
   "otakotaku": 1149,
   "shikimori": 1,
