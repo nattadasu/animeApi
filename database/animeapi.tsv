@@ -301,7 +301,7 @@ title	anidb	anilist	animeplanet	anisearch	annict	imdb	kaize	kaize_id	kitsu	livec
 5-fun de Wakaru: Violet Evergarden			5-fun-de-wakaru-violet-evergarden	17792			5-fun-de-wakaru-violet-evergarden	742	45331					1G8lcKFnR								
 5-nin no Yuusha to 5-tsu no Sengen			5-nin-no-yuusha-to-5-tsu-no-sengen																			
 5-Okunen Button		150909	5-okunen-button	17466	9700		5-okunen-button	348	48530	11254	52162			0dD5kWRHR	2369	52162	6403			196579	shows	1
-5-Okunen Button (TV Special)		182434	5-okunen-button-2024	19679	14018					12841	60029			CT5uQNIHR		60029						
+5-Okunen Button (TV Special)		182434	5-okunen-button-2024	19679	14018		5-okunen-button-tv-special			12841	60029			CT5uQNIHR		60029						
 5-ten no Watashi		148831	5-ten-no-watashi						47670													
 5-toubun no Hanayome	14247	103572	the-quintessential-quintuplets	13794	6205		5-toubun-no-hanayome-2	24455	41966	3448	38101			3sBy4_AiR	1261	38101	5145	1591		140293	shows	1
 5-toubun no Hanayome 5-shuunen Kinen PV			5-toubun-no-hanayome-5-shuunen-kinen-pv																			
@@ -635,7 +635,7 @@ Agukaru: Play with Ibaraki-hen Episode 0			agukaru-agriculture-angel-baraki-play
 Aguu: Tensai Ningyou	14044	101631	aguu-tensai-ningyou	13581	6037		aguu-tensai-ningyou	2505	41380	3222	37769	aguu+-+tensai+ningyou	7780	1vUMwmDig	1176	37769	4972			131757	shows	1
 Aharen-san wa Hakarenai	16505	137281	aharen-san-wa-hakarenai	16522	8802		aharen-san-wa-hakarenai	37	44944	10722	49520	aharen-san+wa+hakarenai	10520	DM-eQxGng	2055	49520	6286	3084		185085	shows	1
 Aharen-san wa Hakarenai Mini		147728	aharen-san-wa-hakarenai-mini-anime	18440	9496		aharen-san-wa-hakarenai-mini	537	46319	11127	51243					51243		3954				
-Aharen-san wa Hakarenai Season 2	18798	179979	aharen-san-wa-hakarenai-season-2	19492	13746				49095	12787	59466	aharen-san+wa+hakarenai+season+2	12840	fk3YLLjSR	2960	59466						
+Aharen-san wa Hakarenai Season 2	18798	179979	aharen-san-wa-hakarenai-season-2	19492	13746		aharen-san-wa-hakarenai-season-2		49095	12787	59466	aharen-san+wa+hakarenai+season+2	12840	fk3YLLjSR	2960	59466						
 Ahiru ga Tonda Hi		148824	ahiru-ga-tonda-hi						47057													
 Ahiru no Gyouretsu		178697									57138					57138						
 Ahiru no Ko	12881	111796	ahiru-no-ko	12281	14240		ahiru-no-ko	5137	40754		35410			rS6v2KmiR		35410						
@@ -997,7 +997,7 @@ Aldnoah.Zero	10445	20632	aldnoah-zero	9470	4054		aldnoahzero	51	8297	443	22729	a
 Aldnoah.Zero (Re+)		185714																				
 Aldnoah.Zero Extra Archives			aldnoah-zero-extra-archives	10124			aldnoahzero-extra-archives	7420	10159		29223			gp0spKiiR		29223						
 Aldnoah.Zero Part 2	10846	20853	aldnoah-zero-2nd-season	9882	4292		aldnoahzero-part-2	52	9136	791	27655			K3OatKmmg		27655	3618			60763	shows	2
-Aldnoah.Zero: Ame no Danshou - The Penultimate Truth		181440	aldnoah-zero-ame-no-danshou-the-penultimate-truth	19755	14005		aldnoahzero-ame-no-danshou-the-penultimate-truth		49209	12836	59843	aldnoah.zero-+ame+no+danshou+-+the+penultimate+truth	13063	jlcTpiRHR		59843						
+Aldnoah.Zero: Ame no Danshou - The Penultimate Truth		181440	aldnoah-zero-ame-no-danshou-the-penultimate-truth	19755	14005		aldnoahzero-ame-no-danshou-the-penultimate-truth	25189	49209	12836	59843	aldnoah.zero-+ame+no+danshou+-+the+penultimate+truth	13063	jlcTpiRHR		59843						
 Alexander Senki	1194	1442	reign-the-conqueror	612	10490		alexander-senki	2531	1295	6107	1442	alexander+senki	2781	wYn-5Kimg		1442						
 Alexander Senki Movie	7528	5157	reign-the-conqueror-movie	6235			alexander-senki-movie	2532	3955	9074	5157	alexander+senki+movie	3751	um3r5FmmR		5157						
 Alexandros no Ketsudan	7122	10112	alexanders-decision	5820	14215	unknown	alexandros-no-ketsudan	2533	6040		10112			kip7tFmmR		10112						
@@ -9829,7 +9829,7 @@ Haishin Yuusha	14928	109638	the-brave-tuber	14433	7265		haishin-yuusha		44839	94
 Haita		148680	loin-haita	17706			haita		43451		39173					39173						
 Haitai Nanafa	9295	15043	haitai-nanafa	8089	1601		haitai-nanafa	2072	7201	939	15043	haitai+nanafa	2459	2U-dpFiiR		15043	2846			67794	shows	1
 Haitai Nanafa 2nd Season	9747	17727	haitai-nanafa-2	8412	1602		haitai-nanafa-2nd-season	2073	7721	813	17727			zXZptFimg		17727	3079			67794	shows	2
-Haite Kudasai, Takamine-san	18794	179965	please-put-them-on-takamine-san	19490	13742				49088	12784	59457	haite+kudasai,+takamine-san	12834	Pj6o-LjIg	2948	59457		5420				
+Haite Kudasai, Takamine-san	18794	179965	please-put-them-on-takamine-san	19490	13742		haite-kudasai-takamine-san		49088	12784	59457	haite+kudasai,+takamine-san	12834	Pj6o-LjIg	2948	59457		5420				
 Haitoku no Kyoukai		125515		15729							44194					44194						
 Haitoku no Shoujo		3411		1876							3411					3411						
 Haitoku Pistols no Kinkyuu Kaigi?			haitoku-pistols-no-kinkyuu-kaigi	18856			haitoku-pistols-no-kinkyuu-kaigi		42689		39464					39464						
@@ -11775,7 +11775,7 @@ Hyakumannen Attara, Dousuru?		19071	hyakumannen-attara-dousuru	8748			hyakumanne
 Hyakuren no Haou to Seiyaku no Valkyria	13896	101289	the-master-of-ragnarok-blesser-of-einherjar	13450	5790		hyakuren-no-haou-to-seiyaku-no-valkyria	11352	41052	3142	37446	hyakuren+no+haou+to+seiyaku+no+valkyria	7714	aCWFhFimR	1145	37446	4987			130313	shows	1
 Hyakushou Kizoku	17684	155971	hyakushou-kizoku	18495	10545		hyakushou-kizoku	22182	46667	11576	53426	hyakushou+kizoku	11506	dlVqrPDVg	2593	53426	6726	4682		204789	shows	1
 Hyakushou Kizoku 2 OVA		185716			14119				49440		60595					60595						
-Hyakushou Kizoku 2nd Season	18328	171689	hyakushou-kizoku-2	19478	12131		hyakushou-kizoku-2nd-season	25106	48336	12462	57562	hyakushou+kizoku+2nd+season	12407	jo-Q9RdSg	2874	57562	7194	5145		204789	shows	2
+Hyakushou Kizoku 2nd Season	18328	171689	hyakushou-kizoku-2	19478	12131		hyakushou-kizoku-2nd-season-specials		48336	12462	57562	hyakushou+kizoku+2nd+season	12407	jo-Q9RdSg	2874	57562	7194	5145		204789	shows	2
 Hyakushou Kizoku 3rd Season	19065	185694	hyakushou-kizoku-3		14968				49439	12980	60551			AfuIcLINR		60551						
 Hyakushou Kizoku Specials		169511	hyakushou-kizoku-specials	18799	11187		hyakushou-kizoku-specials	24685	48933	12255	56743			MeGLE6ZIg		56743						
 Hybe: Above and Beyond											57308					57308						
@@ -12073,7 +12073,7 @@ Ikoku Meiro no Croisée The Animation	8180	9938	croisee-in-a-foreign-labyrinth	6
 "Ikoku Meiro no Croisée The Animation: Ongakkai ""Récital"""		10804	croisee-in-a-foreign-labyrinth-concert	7431			ikoku-meiro-no-croisee-the-animation-ongakkai-recital		6358	5726	10804			JXw4pFmig		10804						
 Ikoku Meiro no Croisée: Yune & Alice		10832	croisee-in-a-foreign-labyrinth-yune-and-alice	8538			ikoku-meiro-no-croisee-yune-alice		6375	5507	10832	ikoku+meiro+no+croisée+-+yune+-+alice	4385	v79VtKimg		10832						
 Ikoku na Retro		21151		10130			ikoku-na-retro				29703					29703						
-Ikoku Nikki	18610	177385	ikoku-nikki	19241	12923				48830	12650	58788	ikoku+nikki	12659	ubXfo4YSg		58788						
+Ikoku Nikki	18610	177385	ikoku-nikki	19241	12923				48830	12650	58788	ikoku+nikki	12659	ubXfo4YSg	3024	58788						
 Ikuiku Succubus Saikyouiku		184765		19971							60351					60351						
 Ikumonogakari The Animation		157664		17901							53678					53678		4648				
 ikura			ikura																			
@@ -13215,11 +13215,11 @@ Juju Sanpo			juju-sanpo							10184
 Jujutsu Kaisen	15275	113415	jujutsu-kaisen	14790	7162		jujutsu-kaisen	92	42765	9680	40748	jujutsu+kaisen	9153	gJxHH6gGR	1688	40748	5764	1700		158594	shows	1
 Jujutsu Kaisen 0 Movie	16169	131573	jujutsu-kaisen-0-the-movie	16092	8181	tt14331144	jujutsu-kaisen-0-movie	606	44212	10491	48561			WR7lblwGR	1970	48561		2962	810693	644629	movies	
 Jujutsu Kaisen 2nd Season	17196	145064	jujutsu-kaisen-season-2	17085	9327		jujutsu-kaisen-2nd-season-recap	24602	45857	11083	51009	jujutsu+kaisen+2nd+season	10980	zFlagCa7g	2440	51009	6724	4527		158594	shows	2
-Jujutsu Kaisen 2nd Season Recaps			jujutsu-kaisen-season-2-recaps	18640			jujutsu-kaisen-2nd-season-recaps		47880		56243			j3fitJgIR		56243						
+Jujutsu Kaisen 2nd Season Recaps			jujutsu-kaisen-season-2-recaps	18640			jujutsu-kaisen-2nd-season-recaps	24864	47880		56243			j3fitJgIR		56243						
 Jujutsu Kaisen New Year's Special									43886													
 Jujutsu Kaisen Official PVs		147463	jujutsu-kaisen-pvs				jujutsu-kaisen-official-pv	5820	43748		38777			eV1mv6gMR		38777		3676				
 Jujutsu Kaisen Phantom Parade Opening Movie				17192																		
-Jujutsu Kaisen: Kaigyoku/Gyokusetsu	18835		jujutsu-kaisen-kaigyokugyokusetsu	19553	13831				49148	12808	59654			aJYrQleIg		59654						
+Jujutsu Kaisen: Kaigyoku/Gyokusetsu	18835		jujutsu-kaisen-kaigyokugyokusetsu	19553	13831		jujutsu-kaisen-kaigyokugyokusetsu		49148	12808	59654			aJYrQleIg		59654						
 Jujutsu Kaisen: Shimetsu Kaiyuu	18363	172463	jujutsu-kaisen-shimetsu-kaiyuu	18987	12323		jujutsu-kaisen-shimetsu-kaiyuu	24760	48363	12482	57658	jujutsu+kaisen-+shimetsu+kaiyuu	12433	EHxHo6dSg		57658						
 Jujutsu Kaisen: The Real 4-D				17722																		
 Jukujo Shigan		100006		12786			jukujo-shigan				36254					36254						
@@ -13544,7 +13544,7 @@ Kaijuu		104489	kaisoku-tokyo-kaijuu				kaijuu		13817		36088			tJ5S2Kiig		36088
 Kaijuu 8-gou	17550	153288	kaiju-no-8	17576	9770		kaijuu-8-gou	12104	46300	11352	52588			oJVCXqz4g	2664	52588	7001	4886		197270	shows	1
 Kaijuu 8-gou 2nd Season	18722	178754	kaiju-no-8-2nd-season	19444	13552				48994	12730	59177			6ZrTBywIR	3011	59177						
 Kaijuu 8-gou Movie		179998	kaiju-no-8-movie	19513	13750		kaijuu-8-gou-movie	25178	49102		59489			1Km1wLCSR		59489				1084337	movies	
-Kaijuu 8-gou: Hoshina no Kyuujitsu		179999	kaiju-no-8-hoshinas-day-off	19512	13751		kaijuu-8-gou-hoshina-no-kyuujitsu		49103	12789	59490			N3CFQYjSR		59490						
+Kaijuu 8-gou: Hoshina no Kyuujitsu		179999	kaiju-no-8-hoshinas-day-off	19512	13751		kaijuu-8-gou-hoshina-no-kyuujitsu	25188	49103	12789	59490			N3CFQYjSR		59490						
 Kaijuu Furo		140627	kaijuu-furo	13109																		
 Kaijuu ga Yattekuru		139016	kaijuu-ga-yattekuru				kaijuu-ga-yattekuru		46201		36820					36820						
 Kaijuu Girls Kuro: Ultra Kaijuu Gijinka Keikaku	13975	101372	kaijuu-girls-black	13518	6129		kaijuu-girls-kuro-ultra-kaijuu-gijinka-keikaku		41114	3187	37586	kaijuu+girls+~ultra+kaijuu+gijinka+keikaku~	6034	wKGYjpiiR		37586				399804	movies	
@@ -14126,7 +14126,7 @@ Kasumin 2nd Season	6058	20857	kasumin-2nd-season	9442	11144		kasumin-2nd-season	
 Kasumin 3rd Season	733	2738	kasumin-3rd-season	9443	11145		kasumin-3rd-season		2498		2738			ofrscFiig		2738						
 Kata no Ato		140029	the-mark-of-emi				kata-no-ato	3004	45354		50110			utNr-p94g		50110						
 Katainaka ni Totsuidekita ○-ssia Musume to H Shimakuru Ohanashi		100003		12931							36256					36256						
-Katainaka no Ossan, Kensei ni Naru	18793	179955	from-old-country-bumpkin-to-master-swordsman-my-hotshot-disciples-are-all-grown-up-now-and-they-wont-leave-me-alone	19507	13738				49119	12774	59452	katainaka+no+ossan,+kensei+ni+naru	12830	h_5gaLCSR	2923	59452		5315				
+Katainaka no Ossan, Kensei ni Naru	18793	179955	from-old-country-bumpkin-to-master-swordsman-my-hotshot-disciples-are-all-grown-up-now-and-they-wont-leave-me-alone	19507	13738		katainaka-no-ossan-kensei-ni-naru		49119	12774	59452	katainaka+no+ossan,+kensei+ni+naru	12830	h_5gaLCSR	2923	59452		5315				
 Katakoi Meteor Shower											60232					60232						
 Kataku	6987	7170	house-of-flame	5748	14888	tt1238114	kataku		4890		7170			W3bgpFiiR		7170						
 Katamichi Kippu no Yume				13545																		
@@ -15527,11 +15527,11 @@ Kono Shihai kara no Sotsugyou: Ozaki Yutaka	2063	12981	kono-shihai-kara-no-sotsu
 Kono Sora no Shita de	10097	121653		9177			kono-sora-no-shita-de		9401		26095			TScBpKimR		26095						
 Kono Sora no Shita de (2020)				18107																		
 Kono Subarashii Sekai ni Bakuen wo!	16446	150075	konosuba-an-explosion-on-this-wonderful-world	17417	9676		kono-subarashii-sekai-ni-bakuen-wo	5185	46139	10708	51958	kono+subarashii+sekai+ni+bakuen+wo!	11172	Pc8Gy1F4g	2382	51958	6648	4501		196186	shows	1
-Kono Subarashii Sekai ni Shukufuku wo!	11261	21202	konosuba-gods-blessing-on-this-wonderful-world	10448	4547		kono-subarashii-sekai-ni-shukufuku-wo-3-ova		10941	1615	30831	kono+subarashii+sekai+ni+shukufuku+wo!+oav	5126	NZ8lpFiig	244	30831	4016	1388		103803	shows	1
+Kono Subarashii Sekai ni Shukufuku wo!	11261	21202	konosuba-gods-blessing-on-this-wonderful-world	10448	4547		kono-subarashii-sekai-ni-shukufuku-wo	384	10941	1615	30831	kono+subarashii+sekai+ni+shukufuku+wo!+oav	5126	NZ8lpFiig	244	30831	4016	1388		103803	shows	1
 Kono Subarashii Sekai ni Shukufuku wo! 2	11992	21699	konosuba-gods-blessing-on-this-wonderful-world-2	11210	4902		kono-subarashii-sekai-ni-shukufuku-wo-2	1458	11937	2077	32937	kono+subarashii+sekai+ni+shukufuku+wo!+2	5420	vVO6tFmig	492	32937	4401	1387		103803	shows	2
 Kono Subarashii Sekai ni Shukufuku wo! 2: Kono Subarashii Geijutsu ni Shukufuku wo!	13317	97996	konosuba-gods-blessing-on-this-wonderful-world-2-ova	12616	5847		kono-subarashii-sekai-ni-shukufuku-wo-2-kono-subarashii-geijutsu-ni-shukufuku-wo	2665	13136	3359	34626			WmpG2Kmmg	829	34626		1604				
 Kono Subarashii Sekai ni Shukufuku wo! 3	17431	136804	konosuba-gods-blessing-on-this-wonderful-world-3	16505	8781		kono-subarashii-sekai-ni-shukufuku-wo-3	2666	44911	11233	49458	kono+subarashii+sekai+ni+shukufuku+wo!+3	10493	v-m-qxMng	2361	49458	6998	5014		103803	shows	3
-Kono Subarashii Sekai ni Shukufuku wo! 3: Bonus Stage	18865	181244	konosuba-gods-blessing-on-this-wonderful-world-3-bonus-stage	19628	13998				49203	12833	59833	kono+subarashii+sekai+ni+shukufuku+wo!+3+-bonus+stage-	13102	AfFuZ3eIg	3017	59833						
+Kono Subarashii Sekai ni Shukufuku wo! 3: Bonus Stage	18865	181244	konosuba-gods-blessing-on-this-wonderful-world-3-bonus-stage	19628	13998		kono-subarashii-sekai-ni-shukufuku-wo-3-bonus-stage	25038	49203	12833	59833	kono+subarashii+sekai+ni+shukufuku+wo!+3+-bonus+stage-	13102	AfFuZ3eIg	3017	59833						
 Kono Subarashii Sekai ni Shukufuku wo! Movie: Kurenai Densetsu	13310	102976	konosuba-gods-blessing-on-this-wonderful-world-movie-legend-of-crimson	12655	6141	tt9239552	kono-subarashii-sekai-ni-shukufuku-wo-movie-kurenai-densetsu	2667	41440	2806	38040	kono+subarashii+sekai+ni+shukufuku+wo!+kurenai+densetsu	7091	TNo6W6vmR	1219	38040		1200	532067	384112	movies	
 Kono Subarashii Sekai ni Shukufuku wo!: Kono Subarashii Choker ni Shukufuku wo!	11854	21574	konosuba-gods-blessing-on-this-wonderful-world-ova	11053			kono-subarashii-sekai-ni-shukufuku-wo-kono-subarashii-choker-ni-shukufuku-wo	4498	11752	1974	32380			Su23pFmig	316	32380						
 Kono Yo no Hate de Koi wo Utau Shoujo YU-NO	12693	97995	yu-no-a-girl-who-chants-love-at-the-bound-of-this-world	12155	6284		kono-yo-no-hate-de-koi-wo-utau-shoujo-yu-no	4647	13469	2492	34620	kono+yo+no+hate+de+koi+wo+utau+shoujo+yu-no+special	8731	geXn2KiiR	1032	34620	5251	1249		144416	shows	1
@@ -18411,7 +18411,7 @@ Meitantei Conan Movie 24: Hiiro no Dangan	14886	113653	detective-conan-movie-24-
 Meitantei Conan Movie 25: Halloween no Hanayome	17009	142219	detective-conan-movie-25-the-bride-of-halloween	16698	9178	tt19770970	meitantei-conan-movie-25-halloween-no-hanayome	2200	45544	10916	49320			6XwO5l27g		49320		3445		724481	movies	
 Meitantei Conan Movie 26: Kurogane no Submarine	17334	156841	detective-conan-movie-26-black-iron-submarine	17453	10220		meitantei-conan-movie-26-kurogane-no-submarine	22288	47435	11601	53540			P8npfJFVg		53540		4497	1047041	842500	movies	
 Meitantei Conan Movie 27: 100-man Dollar no Michishirube	18219	169754	detective-conan-movie-27-the-million-dollar-pentagram	18731	11800		meitantei-conan-100-man-dol-no-michishirube		48018	12355	56785			U8qPxpvIR	2808	56785		5053	1209217	974368	movies	
-Meitantei Conan Movie 28: Sekigan no Flashback	19025	185212	meitantei-conan-movie-28-sekigan-no-flashback	19934	14850					12954	60445			-zj0G5VHg		60445						
+Meitantei Conan Movie 28: Sekigan no Flashback	19025	185212	meitantei-conan-movie-28-sekigan-no-flashback	19934	14850		meitantei-conan-movie-28-sekigan-no-flashback			12954	60445			-zj0G5VHg		60445						
 Meitantei Conan OVA 01: Conan vs. Kid vs. Yaiba - Houtou Soudatsu Daikessen!!	3390	1369	detective-conan-conan-vs-kid-vs-yaiba-houtou-soudatsu-daikessen	2450		tt1339463	meitantei-conan-ova-01-conan-vs-kid-vs-yaiba-houtou-soudatsu-daikessen	7099	1223	6391	1369			XFCbcKmig		1369						
 Meitantei Conan OVA 02: 16-nin no Yougisha!?	3591	2512	detective-conan-16-suspects	907			meitantei-conan-ova-02-16-nin-no-yougisha	7216	2278	6441	2512			d4gscFmmR		2512			1177702			
 Meitantei Conan OVA 03: Conan to Heiji to Kieta Shounen	3596	2513	detective-conan-conan-and-heiji-and-the-vanished-boy	943		tt3737644	meitantei-conan-ova-03-conan-to-heiji-to-kieta-shounen	7094	2279	6411	2513			edgycFmmg		2513						
@@ -19048,7 +19048,7 @@ Mirror Mirror (Bombs BiS)		103513	vampillia-mirror-mirror-bombs-bis				mirror-mi
 Mirror Tune		147188	zutomayo-mirror-tune				mirror-tune	13708	46052		51587					51587						
 Miru Tights	14571	106967	miru-tights	14064	6440				42078	8695	38935	miru+tights	8403	6YpWhb8mg	1492	38935		1285		145592	shows	1
 Miru Tights: Cosplay Satsuei Tights		110738	miru-tights-special	14570	6921				42473	9548	40176	miru+tights+-+cosplay+satsuei+tights	8893	zyfxJvFZR		40176		1220				
-Miru: Watashi no Mirai	18073	166373	miru-watashi-no-mirai	18465	10931					12120	55727			rMi0L3uIg		55727		5305				
+Miru: Watashi no Mirai	18073	166373	miru-watashi-no-mirai	18465	10931		miru-watashi-no-mirai			12120	55727			rMi0L3uIg		55727		5305				
 Misaki no Mayoiga	15831	125838	misaki-no-mayoiga	15723	7744		misaki-no-mayoiga		43717	10205	43755	misaki+no+mayoiga	9820	xZJ-UvLMg	1957	43755		2991		599729	movies	
 Misato-chan no Yume Nikki		104953		5829			misato-chan-no-yume-nikki				29994					29994						
 Misawa x Weathering With You CM			misawa-x-weathering-with-you-cm																			
@@ -20329,7 +20329,7 @@ Natsume Yuujinchou Roku Specials		100283	natsumes-book-of-friends-season-6-speci
 Natsume Yuujinchou San	8286	10379	natsumes-book-of-friends-season-3	6909	1514		natsume-yuujinchou-san	3163	6157	1220	10379	natsume+yuujinchou+san	2034	oN3npKmig	167	10379	2211	3555		57330	shows	3
 Natsume Yuujinchou Shi	8667	11665	natsumes-book-of-friends-season-4	7310	1515		natsume-yuujinchou-shi	14368	6557	1154	11665	natsume+yuujinchou+shi	2130	mAEStFmmg	168	11665	2367	4878		57330	shows	4
 Natsume Yuujinchou Shichi	18089	166611	natsumes-book-of-friends-season-7	18506	10981		natsume-yuujinchou-shichi	24530	47678	12234	55823	natsume+yuujinchou+shichi+oav	13065	LkRJEF94g	2799	55823	7192	5135		57330	shows	7
-Natsume Yuujinchou Shichi Special		184762		19798	14687				49340	12875	60302			x8HrU7nHg		60302						
+Natsume Yuujinchou Shichi Special		184762		19798	14687		natsume-yuujinchou-shichi-special		49340	12875	60302			x8HrU7nHg		60302						
 Natsume Yuujinchou: Hitoyoshi Kuma de no Yasashii Jikan			natsumes-book-of-friends-a-day-out-in-hitoyoshi-kuma	16908	8894		natsume-yuujinchou-hitoyoshi-kuma-de-no-yasashii-jikan	7207	44866		48953					48953		2986				
 Natsume Yuujinchou: Ishi Okoshi to Ayashiki Raihousha	15732	124132	natsumes-book-of-friends-movie-2	15600	7679	tt13210990	natsume-yuujinchou-ishi-okoshi-to-ayashiki-raihousha	14369	44338	10155	42894	natsume+yuujinchou+-+ishi+okoshi+to+ayashiki+raihousha	9746	lIpDtLdGR	1818	42894		2316	773621	611432	movies	
 Natsume Yuujinchou: Itsuka Yuki no Hi ni	10447	20478	natsume-yuujinchou-itsuka-yuki-no-hi-ni	9030	3929		natsume-yuujinchou-itsuka-yuki-no-hi-ni	14370	8054	255	20651	natsume+yuujinchou+-+itsuka+yuki+no+hi+ni	2651	aCY2pFimR		20651	3665			159847	movies	
@@ -21190,7 +21190,7 @@ Nuiguru Papa											56446					56446
 Nukazuke no Uta		178525					nukazuke-no-uta				38322					38322						
 Nuki Doki! Tenshi to Akuma no Sakusei Battle		17867		8447							17867					17867						
 Nuki Doki! Tenshi to Akuma no Sakusei Battle - Revolution		97905		12094							34492					34492						
-Nukitashi the Animation	18459	174188	nukitashi-the-animation	19045	12474				48476	12517	57969	nukitashi+the+animation	12813	jcQkkshIg		57969						
+Nukitashi the Animation	18459	174188	nukitashi-the-animation	19045	12474				48476	12517	57969	nukitashi+the+animation	12813	jcQkkshIg	3025	57969						
 Nukko.	9119		nukko	7731	11592		nukko		9911		22585			1YDPpKmmR		22585						
 Null Peta	15023	110789	null-and-peta	14531	6941		null-peta	14757	42469	9544	40178	null+peta	8854	Chr7bDKWg	1614	40178	5462	768		152337	shows	1
 Null Peta: Doki♥ Nurunuru Petapeta! Mizugi-darake no Oneechan Taikai!		113187	null-and-peta-special	15082	9034		null-peta-doki-nurunuru-petapeta-mizugi-darake-no-oneechan-taikai		42702	9656	40932			yFfnFN8ZR		40932		467				
@@ -21934,7 +21934,7 @@ Ore to Issho ni Training			ore-to-issho-ni-training				ore-to-issho-ni-training	
 Ore wa Chokkaku	7334	19831	ore-wa-chokkaku	4635	3907		ore-wa-chokkaku		9515	12566	19831			_Z_fpKiiR		19831						
 Ore wa Hitori de		176886									57563					57563						
 Ore wa Kanojo wo Shinjiteru!		9638		6536							9638					9638						
-Ore wa Seikan Kokka no Akutoku Ryoushu!	18939	183274	im-the-evil-lord-of-an-intergalactic-empire	19718	14306					12892	60154			O0LCqVGHR	2954	60154		5404				
+Ore wa Seikan Kokka no Akutoku Ryoushu!	18939	183274	im-the-evil-lord-of-an-intergalactic-empire	19718	14306		ore-wa-seikan-kokka-no-akutoku-ryoushu			12892	60154			O0LCqVGHR	2954	60154		5404				
 "Ore wa Subete wo ""Parry"" suru: Gyaku Kanchigai no Sekai Saikyou wa Boukensha ni Naritai"	18266	170695	i-parry-everything-what-do-you-mean-im-the-strongest-im-not-even-an-adventurer-yet	18836	11469		ore-wa-subete-wo-parry-suru-gyaku-kanchigai-no-sekai-saikyou-wa-boukensha-ni-naritai	24756	48202	12397	57058	ore+wa+subete+wo+-parry-+suru+-+gyaku+kanchigai+no+sekai+saikyou+wa+boukensha+ni+naritai	12307	tdWD0T4Sg	2783	57058	7089	5121		231172	shows	1
 Ore wa Teppei	3485	3827	ore-wa-teppei	1049	316		ore-wa-teppei		3281	12572	3827	ore+wa+teppei	6508	0WBlcFimR		3827						
 Ore wo Suki nano wa Omae dake ka yo	14442	104464	oresuki-are-you-the-only-one-who-loves-me	13938	6303	tt10883006	ore-wo-suki-nano-wa-omae-dake-ka-yo	3089	42047	3557	38483	ore+wo+suki+nano+wa+omae+dake+ka+yo	8231	5Vd6nwsiR	1330	38483	5415	715		152024	shows	1
@@ -24904,7 +24904,7 @@ Saikyou Donbei x Hanma Baki: Saikyou no Dongitsune Genrutsutsu			saikyou-donbei-
 Saikyou Ginga Ultimate Zero: Battle Spirits	10005	19825	battle-spirits-saikyou-ginga-ultimate-zero	8909	842		saikyou-ginga-ultimate-zero-battle-spirits		7977	208	19825			DYv2tKmiR		19825	3164					
 Saikyou Kamizmode!	15651	122632	saikyou-kamizmode	15602	7637		saikyou-kamizmode		43560	10084	42522	saikyou+kamizmode!	9653	8NNjSJSGR		42522	5809	2957		167790	shows	1
 Saikyou no Don Gitsune Genru Tutu				18992																		
-Saikyou no Ousama, Nidome no Jinsei wa Nani wo Suru?	18935	183161	the-beginning-after-the-end	19716	14304				49294	12887	60146	saikyou+no+ousama,+nidome+no+jinsei+wa+nani+wo+suru-	12997	g1Rv3VMNg	2987	60146						
+Saikyou no Ousama, Nidome no Jinsei wa Nani wo Suru?	18935	183161	the-beginning-after-the-end	19716	14304		saikyou-no-ousama-nidome-no-jinsei-wa-nani-wo-suru		49294	12887	60146	saikyou+no+ousama,+nidome+no+jinsei+wa+nani+wo+suru-	12997	g1Rv3VMNg	2987	60146						
 "Saikyou no Shienshoku ""Wajutsushi"" de Aru Ore wa Sekai Saikyou Clan wo Shitagaeru"	18592	177104	the-most-notorious-talker-runs-the-worlds-greatest-clan	19232	12903		saikyou-no-shienshoku-wajutsushi-de-aru-ore-wa-sekai-saikyou-clan-wo-shitagaeru	25064	48837	12638	58714	saikyou+no+shienshoku+-wajutsushi-+de+aru+ore+wa+sekai+saikyou+clan+wo+shitagaeru	12639	pNwIdZfIR	2828	58714	7216	5187		247716	shows	1
 Saikyou Onmyouji Mini		162802	the-reincarnation-of-the-strongest-exorcist-in-another-world-mini-anime	19222			saikyou-onmyouji-mini	24534			54683					54683						
 Saikyou Onmyouji no Isekai Tenseiki	17159	144553	the-reincarnation-of-the-strongest-exorcist-in-another-world	17076	9314		saikyou-onmyouji-no-isekai-tenseiki	16315	45813	11057	50932			8wfvLc-7g	2401	50932	6577	4117		197137	shows	1
@@ -25770,7 +25770,7 @@ Sensou: Kodomo-tachi no Yuigon			sensou-kodomo-tachi-no-yuigon				sensou-kodomo-
 Sensuikan Cassiopeia	14353	116710	sensuikan-cassiopeia	10313			sensuikan-cassiopeia		10493		29647			all8tFimR		29647						
 Sensuikan ni Koi wo Shita Kujira no Hanashi	5810		sensuikan-ni-koi-wo-shita-kujira-no-hanashi	4786		unknown	sensuikan-ni-koi-wo-shita-kujira-no-hanashi		9575		25329			AQzYtFimg		25329						
 Sentai Daishikkaku	17703	158417	go-go-loser-ranger	17914	10229		sentai-daishikkaku	23560	46840	11714	53770	sentai+daishikkaku	11639	zTk5ksK4g	2731	53770	6988	5082				
-Sentai Daishikkaku 2nd Season	18725	178781	go-go-loser-ranger-2nd-season	19451	13580				49004	12732	59189	sentai+daishikkaku+2nd+season	12790	DHx5LywIR	2972	59189		5414				
+Sentai Daishikkaku 2nd Season	18725	178781	go-go-loser-ranger-2nd-season	19451	13580		sentai-daishikkaku-2nd-season		49004	12732	59189	sentai+daishikkaku+2nd+season	12790	DHx5LywIR	2972	59189		5414				
 Sentai Hero Sukiyaki Force: Gunma no Heiwa wo Negau Season	12572	97887	sentai-hero-sukiyaki-force	12123	5090		sentai-hero-sukiyaki-force-gunma-no-heiwa-wo-negau-season		12838	2435	34456	sentai+hero+sukiyaki+force+-+gunma+no+heiwa+wo+negau+season+e,+mata-	8474	LzNW2FiiR		34456	4463					
 Sentai Hero Sukiyaki Force: Gunma no Heiwa wo Negau Season e, Mata?	13716		sentai-hero-sukiyaki-force-gunma-no-heiwa-wo-negau-season-e-mata	13209	5719		sentai-hero-sukiyaki-force-gunma-no-heiwa-wo-negau-season-e-mata			3039	37054					37054	5085					
 Sentai Red Isekai de Boukensha ni Naru	18809	180052	the-red-ranger-becomes-an-adventurer-in-another-world	19572	13761		sentai-red-isekai-de-boukensha-ni-naru	25156	49121	12793	59514	sentai+red+isekai+de+boukensha+ni+naru	12911	bSy5eYCSg	2896	59514	7320	5363		251448	shows	1
@@ -26267,7 +26267,7 @@ Shiguang Dailiren x Laneige: Cheng Xiaoshi Po Fang Weiji											51825					518
 Shiguang Dailiren x realme: Shenmi Q Xiansheng de Weituo			link-click-x-realme-shenmi-q-xiansheng-de-weituo				shiguang-dailiren-x-realme-shenmi-q-xiansheng-de-weituo		47865		51824					51824						
 Shiguang Dailiren x Vatti: Nan Qin Na Yi Wan Mifang Da Gongkai!			link-click-x-vatti-cm				shiguang-daili-ren-x-vatti-nan-qin-na-yi-wan-mifang-da-gongkai				51665					51665		4382				
 Shiguang Dailiren x Wanglaoji: Guanjian Shike Hai de Kan Guang Lu a!							shiguang-dailiren-x-wanglaoji-guanjian-shike-hai-de-kan-guang-lu-a				50202					50202		4381				
-Shiguang Dailiren: Yingdu Pian		170166	link-click-bridon-arc	18756			shiguang-dailiren-yingdu-pian		48133	12746	56752					56752						
+Shiguang Dailiren: Yingdu Pian		170166	link-click-bridon-arc	18756			shiguang-dailiren-yingdu-pian	25191	48133	12746	56752					56752						
 Shiguang Guiyu	13726	99706	shiguang-guiyu	15558			shiguang-guiyu		12493	8050	33801			4yPk2FimR		33801						
 Shiguang Guiyu: Juchang Ban									13152					WKoMhFmig								
 Shiguang Zhaoxiangguan de Richang		140175	link-click-the-daily-life-in-lightime	16650			shiguang-zhaoxiangguan-de-richang	1483	45503	10836	50105					50105		3365				
@@ -26615,7 +26615,7 @@ Shinrabanshou.mp3		113976	space-shower-tv-shinrabanshoump3-id				shinrabanshoump
 Shinrabanshou: Tenchi Shinmei no Shou	10690		shinrabanshou-tenchi-shinmei-no-shou	9726	4102		shinrabanshou-tenchi-shinmei-no-shou		8549	624	24719			_il0pFimR		24719						
 Shinran Shounin to Ousha-jou no Higeki	12075	102912	shinran-shounin-to-ousha-jou-no-higeki	11837			shinran-shounin-to-ousha-jou-no-higeki		13403		34926			GBf72FimR		34926						
 Shinran-sama: Negai, Soshite Hikari	6277	5693	shinran-sama-negai-soshite-hikari	5225	11770	unknown	shinran-sama-negai-soshite-hikari		4250		5693			yo_j5FmmR		5693						
-Shinran: Jinsei no Mokuteki			shinran-jinsei-no-mokuteki	19924			shinran-jinsei-no-mokuteki			12820	59729			7qbqkueIR		59729						
+Shinran: Jinsei no Mokuteki			shinran-jinsei-no-mokuteki	19924			shinran-jinsei-no-mokuteki	25187		12820	59729			7qbqkueIR		59729						
 Shinrei Tantei Yakumo	7233	7662	psychic-detective-yakumo	5851	946		shinrei-tantei-yakumo	19900	5073	3879	7662	shinrei+tantei+yakumo	1850	mlDztFimg		7662	2027			45188	shows	1
 Shinreigari	5127	2596	ghost-hound	4219	989		shinreigari	1392	2360	3969	2596			RIds5Kmmg		2596	1237			35868	shows	1
 Shinryaku! Ika Musume	7486	8557	squid-girl	6173	918		shinryaku-ika-musume-1	4869	5389	3745	8557	shinryaku!+ika+musume	1890	mXfmpFmiR	2194	8557	2042	4976		35295	shows	1
@@ -31464,7 +31464,7 @@ Uta no☆Prince-sama♪ Maji Love Revolutions	10292	20662	uta-no-prince-sama-maj
 Uta no☆Prince-sama♪ Maji Love ST☆RISH Tours: Tabi no Hajimari	17361	153146	uta-no-prince-sama-maji-love-starish-tours-tabi-no-hajimari	17384	9656		uta-noprince-sama-maji-love-strish-tours-tabi-no-hajimari		46305	10911	52573	uta+no☆prince-sama♪+maji+love+st☆rish+tours+-+tabi+no+hajimari	11194			52573						
 Uta no☆Prince-sama♪ Movie: Maji Love Kingdom	12688	107252	uta-no-prince-sama-maji-love-kingdom	12501	5656		uta-noprince-sama-movie-maji-love-kingdom		42081	2487	35645			h1uutb8ig		35645	5812	1352		431508	movies	
 Uta no☆Prince-sama♪ Movie: Maji Love ST☆RISH Tours	16173	132055	uta-no-prince-sama-maji-love-starish-tours	16169	8183		uta-noprince-sama-movie-maji-love-strish-tours		44421	10493	48573	uta+no☆prince-sama♪+maji+love+st☆rish+tours	10957	Pj3Zfiang		48573		3592		798926	movies	
-Uta no☆Prince-sama♪ Movie: Taboo Night Kisses	18961	172393	uta-no-prince-sama-maji-love-taboo-night-xxxx	19890	14949					12827	57622			CNljSX6Sg		57622						
+Uta no☆Prince-sama♪ Movie: Taboo Night Kisses	18961	172393	uta-no-prince-sama-maji-love-taboo-night-xxxx	19890	14949		uta-noprince-sama-movie-taboo-night-kisses			12827	57622			CNljSX6Sg		57622						
 Utagoe wa Mille-Feuille	18065	166215	utagoe-wa-mille-feuille	18504	10926					12110	55689	utagoe+wa+mille-feuille	12088	uPwnBDX4R	2931	55689						
 Utaimashou Narashimashou									48749		58428					58428						
 Utakata				12869																		
@@ -31602,7 +31602,7 @@ Video Senshi Lezarion	1934	6672	video-senshi-laserion	2317	1787		video-senshi-le
 Vie Durant	711	4266	vie-durant	3375	3795		vie-durant		3543		4266			3ZbucFmmR		4266						
 View				7863																		
 Viewtiful Joe	2611	278	viewtiful-joe	997	1789		viewtiful-joe		253	8489	278	viewtiful+joe	818	qu5hcKiiR		278						
-Vigilante: Boku no Hero Academia Illegals	19069	185736	my-hero-academia-vigilantes	19991	14990				49435	12988	60593				3008	60593						
+Vigilante: Boku no Hero Academia Illegals	19069	185736	my-hero-academia-vigilantes	19991	14990		vigilante-boku-no-hero-academia-illegals		49435	12988	60593				3008	60593						
 Viking		141073	le-jouet-viking	18162					45408		55443					55443						
 Vinland Saga	13945	101348	vinland-saga	13486	5818		vinland-saga	560	41084	3169	37521	vinland+saga	7677	Y3IK2Fiig	1280	37521	5390	1093		143851	shows	1
 Vinland Saga Season 2	16426	136430	vinland-saga-season-2	16485	8692		vinland-saga-season-2	3687	44875	10618	49387	vinland+saga+season+2	10452	8BDBKMinR	2405	49387	6552	4027		143851	shows	2
@@ -32187,7 +32187,7 @@ Willy Fog 2: Part 2				4821
 Willy's Night of Surprises									12547					g8ezhKiiR								
 Wind		121061	wind				wind		46413		42279					42279						
 Wind Breaker	17963	163270	wind-breaker	18324	10656		wind-breaker	24805	47271	11916	54900	wind+breaker	11851	Xhmw_nYVR	2714	54900	6990	4940				
-Wind Breaker Season 2	18718	178680	wind-breaker-season-2	19385	13512				48992	12725	59160	wind+breaker+season+2	12772	-nVs6EQIg	2934	59160		5394				
+Wind Breaker Season 2	18718	178680	wind-breaker-season-2	19385	13512		wind-breaker-season-2		48992	12725	59160	wind+breaker+season+2	12772	-nVs6EQIg	2934	59160		5394				
 Wind: A Breath of Heart	1038	2015	wind-a-breath-of-heart-omake-ova	1656	14701		wind-a-breath-of-heart		1814	8305	2015			J4cLcFimR		2015						
 Wind: A Breath of Heart (TV)	2147	546	wind-a-breath-of-heart	2976	186		wind-a-breath-of-heart-tv		504	5893	546			2Sfo5Fmmg		546	402					
 Wind: A Breath of Heart OVA	2266	547	wind-a-breath-of-heart-ova	2285	5738		wind-a-breath-of-heart-ova		505	7000	547			oKfocKiig		547	1063					
