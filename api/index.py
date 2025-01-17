@@ -3,15 +3,32 @@
 # pylint: disable=import-error
 
 import json
-from datetime import datetime
+from datetime import datetime as dtime
+from datetime import timezone as tz
 from time import time
-from typing import Any, Union
+from typing import Any, TypedDict, Union
 from urllib.parse import unquote
 
-from flask import send_from_directory  # type: ignore
-from flask import Flask, Response, g, jsonify, redirect, request
+from flask import (
+    Flask,
+    Response,
+    g,
+    jsonify,
+    redirect,
+    request,
+    send_from_directory,  # type: ignore
+)
+from werkzeug.wrappers import Response as wzResponse
 
 app = Flask(__name__)
+
+runtime = time()
+
+
+class CorruptedResp(TypedDict):
+    error: str
+    code: int
+    message: str
 
 
 def platform_id_content(platform: str, platform_id: Union[int, str]) -> dict[str, Any]:
@@ -24,10 +41,10 @@ def platform_id_content(platform: str, platform_id: Union[int, str]) -> dict[str
     Returns:
         dict[str, Any]: Platform ID content
     """
-    extensions_to_remove = ['.json', '.html']
+    extensions_to_remove = [".json", ".html"]
     platform_id = str(platform_id)
     for extension in extensions_to_remove:
-        platform_id = platform_id.replace(extension, '')
+        platform_id = platform_id.replace(extension, "")
 
     platform_id = unquote(platform_id)
 
@@ -62,10 +79,10 @@ def heartbeat():
     """Heartbeat route"""
     # get request time
     start = time()
-    corrupted_msg = {
+    corrupted_msg: CorruptedResp = {
         "error": "Internal server error",
         "code": 500,
-        "message": "myanimelist_object.json is corrupted"
+        "message": "myanimelist_object.json is corrupted",
     }
     platform = "myanimelist"
     mid = 1
@@ -74,14 +91,15 @@ def heartbeat():
         if test_mal["myanimelist"] != mid:
             raise KeyError
         end = time()
-        return jsonify({
-            "status": "OK",
-            "code": 200,
-            "response_time": f"{round(end - start, 3)}s",
-            # get info from g.start
-            "request_time": f"{round(end - g.start, 3)}s",
-            "request_epoch": g.start,
-        })
+        return jsonify(
+            {
+                "status": "OK",
+                "code": 200,
+                "request_time": f"{round(end - runtime, 3)}s",
+                "response_time": f"{round(end - start, 3)}s",
+                "request_epoch": g.start,
+            }
+        )
     except FileNotFoundError:
         return jsonify(corrupted_msg), 500
     except KeyError:
@@ -107,8 +125,9 @@ def updated():
     """Updated route"""
     with open("api/status.json", "r", encoding="utf-8") as file_:
         updated_time = json.loads(file_.read())["updated"]["timestamp"]
-    formatted_time = datetime.utcfromtimestamp(
-        updated_time).strftime("%m/%d/%Y %H:%M:%S UTC")
+    formatted_time = dtime.fromtimestamp(updated_time, tz=tz.utc).strftime(
+        "%m/%d/%Y %H:%M:%S UTC"
+    )
     return Response(f"Updated on {formatted_time}", mimetype="text/plain")
 
 
@@ -122,7 +141,9 @@ def robots():
 @app.route("/trakt/<media_type>/<media_id>", methods=["GET"])
 @app.route("/trakt/<media_type>/<media_id>/seasons/<season_id>", methods=["GET"])
 @app.route("/trakt/<media_type>/<media_id>/season/<season_id>", methods=["GET"])
-def trakt_exclusive_route(media_type: str, media_id: int, season_id: Union[str, None] = None):
+def trakt_exclusive_route(
+    media_type: str, media_id: int, season_id: Union[str, None] = None
+):
     """
     Trakt exclusive route
 
@@ -135,11 +156,13 @@ def trakt_exclusive_route(media_type: str, media_id: int, season_id: Union[str, 
         Response: Response
     """
     if season_id == "0" and media_type in ["shows", "show"]:
-        return jsonify({
-            "error": "Invalid season ID",
-            "code": 400,
-            "message": "Season ID cannot be 0"
-        }), 400
+        return jsonify(
+            {
+                "error": "Invalid season ID",
+                "code": 400,
+                "message": "Season ID cannot be 0",
+            }
+        ), 400
     try:
         if not media_type.endswith("s"):
             media_type_ = f"{media_type}s"
@@ -147,22 +170,28 @@ def trakt_exclusive_route(media_type: str, media_id: int, season_id: Union[str, 
             media_type_ = media_type
         if season_id is None:
             return platform_id_content("trakt", f"{media_type_}/{media_id}")
-        return platform_id_content("trakt", f"{media_type_}/{media_id}/seasons/{season_id}")
+        return platform_id_content(
+            "trakt", f"{media_type_}/{media_id}/seasons/{season_id}"
+        )
     except KeyError:
-        return jsonify({
-            "error": "Not found",
-            "code": 404,
-            "message": f"""Media type {media_type} with ID {media_id} {
-                'and season ID ' + str(season_id) + ' '
-                if season_id is not None
-                else ''
-            }not found"""
-        }), 404
+        return jsonify(
+            {
+                "error": "Not found",
+                "code": 404,
+                "message": f"""Media type {media_type} with ID {media_id} {
+                    "and season ID " + str(season_id) + " "
+                    if season_id is not None
+                    else ""
+                }not found""",
+            }
+        ), 404
 
 
 @app.route("/themoviedb/<media_type>/<media_id>", methods=["GET"])
 @app.route("/themoviedb/<media_type>/<media_id>/season/<season_id>", methods=["GET"])
-def tmdb_exclusive_route(media_type: str, media_id: int, season_id: Union[str, None] = None):
+def tmdb_exclusive_route(
+    media_type: str, media_id: int, season_id: Union[str, None] = None
+):
     """
     The Movie Database exclusive route
 
@@ -175,19 +204,23 @@ def tmdb_exclusive_route(media_type: str, media_id: int, season_id: Union[str, N
         Response: Response
     """
     if media_type == "tv" or season_id is not None:
-        return jsonify({
-            "error": "Invalid request",
-            "code": 400,
-            "message": "Currently, only `movie` are supported"
-        }), 400
+        return jsonify(
+            {
+                "error": "Invalid request",
+                "code": 400,
+                "message": "Currently, only `movie` are supported",
+            }
+        ), 400
     try:
         return platform_id_content("themoviedb", f"movie/{media_id}")
     except KeyError:
-        return jsonify({
-            "error": "Not found",
-            "code": 404,
-            "message": f"Media type {media_type} with ID {media_id} not found"
-        }), 404
+        return jsonify(
+            {
+                "error": "Not found",
+                "code": 404,
+                "message": f"Media type {media_type} with ID {media_id} not found",
+            }
+        ), 404
 
 
 @app.route("/<platform>", methods=["GET"])
@@ -204,7 +237,7 @@ def platform_array(platform: str = "animeapi"):
     """
     route = request.path
     goto = get_goto(route)
-    
+
     if route.endswith(".tsv"):
         return serve_tsv_response()
 
@@ -220,7 +253,7 @@ def get_goto(route: str) -> str:
     if not (goto.endswith("()") or goto.endswith("%28%29")) and goto != "animeapi":
         goto += "_object"
     else:
-        goto = unquote(goto).replace('()', '')
+        goto = unquote(goto).replace("()", "")
 
     if goto == "syobocal":
         goto = "shoboi"
@@ -233,12 +266,14 @@ def serve_tsv_response() -> Response:
         response = Response(
             file_.read(), mimetype="text/tab-separated-values", status=200
         )
-        response.headers['Content-Disposition'] = 'inline; filename="animeapi.tsv"'
+        response.headers["Content-Disposition"] = 'inline; filename="animeapi.tsv"'
         return response
 
 
-def redirect_to_github(goto: str) -> Response:
-    github_url = f"https://raw.githubusercontent.com/nattadasu/animeApi/v3/database/{goto}.json"
+def redirect_to_github(goto: str) -> wzResponse:
+    github_url = (
+        f"https://raw.githubusercontent.com/nattadasu/animeApi/v3/database/{goto}.json"
+    )
     return redirect(github_url)
 
 
@@ -261,22 +296,25 @@ def platform_lookup(platform: str, platform_id: Union[int, str]):
         data = platform_id_content(platform, platform_id)
         return jsonify(data)
     except FileNotFoundError:
-        return jsonify({
-            "error": "Not found",
-            "code": 404,
-            "message": f"Platform {platform} not found"
-        }), 404
+        return jsonify(
+            {
+                "error": "Not found",
+                "code": 404,
+                "message": f"Platform {platform} not found",
+            }
+        ), 404
     except KeyError:
-        return jsonify({
-            "error": "Not found",
-            "code": 404,
-            "message": f"Platform {platform} with ID {platform_id} not found"
-        }), 404
+        return jsonify(
+            {
+                "error": "Not found",
+                "code": 404,
+                "message": f"Platform {platform} with ID {platform_id} not found",
+            }
+        ), 404
+
 
 # redirect route
 # example: /rd?platform=anilist&platform_id=1&to=kitsu
-
-
 @app.route("/rd", methods=["GET"])
 @app.route("/redirect", methods=["GET"])
 def redirect_route():
@@ -291,16 +329,28 @@ def redirect_route():
     israw = israw is not None
 
     if not platform:
-        return error_response("Invalid platform", 400, f"Platform not found, please specify platform by adding `platform` parameter.")
+        return error_response(
+            "Invalid platform",
+            400,
+            "Platform not found, please specify platform by adding `platform` parameter.",
+        )
 
     if not platform_id:
-        return error_response("Invalid platform ID", 400, "Platform ID not found, please specify platform ID by adding `platform_id` parameter")
+        return error_response(
+            "Invalid platform ID",
+            400,
+            "Platform ID not found, please specify platform ID by adding `platform_id` parameter",
+        )
 
     platform = resolve_platform(platform)
     target = resolve_platform(target)
 
     if not platform:
-        return error_response("Invalid platform", 400, f"Platform not found, please check if `{platform}` is a valid platform")
+        return error_response(
+            "Invalid platform",
+            400,
+            f"Platform not found, please check if `{platform}` is a valid platform",
+        )
 
     if target and not is_valid_target(target):
         return error_response("Invalid target", 400, f"Target {target} not found")
@@ -313,6 +363,8 @@ def redirect_route():
         response = handle_trakt_case(platform_id)
         if response:
             return response
+    if platform == "themoviedb" and ("movie" not in platform_id):
+        platform_id = f"movie/{platform_id}"
 
     maps = platform_id_content(platform=platform, platform_id=platform_id)
     uri = build_target_uri(target, maps, platform, platform_id)
@@ -321,6 +373,7 @@ def redirect_route():
 
     return generate_response(uri, israw)
 
+
 def extract_params(args):
     platform = (args.get("platform") or args.get("from") or "").lower()
     platform_id = args.get("mediaid") or args.get("id")
@@ -328,12 +381,10 @@ def extract_params(args):
     israw = args.get("raw") or args.get("r")
     return platform, platform_id, target, israw
 
+
 def error_response(error, code, message):
-    return jsonify({
-        "error": error,
-        "code": code,
-        "message": message
-    }), code
+    return jsonify({"error": error, "code": code, "message": message}), code
+
 
 def resolve_platform(platform):
     synonyms = {
@@ -346,15 +397,16 @@ def resolve_platform(platform):
         "kaize": ["kaize", "kz", "kaize.io"],
         "kitsu": ["kitsu", "kts", "kt", "kitsu.app", "kitsu.io"],
         "kurozora": ["kurozora", "kr", "krz", "kurozora.app"],
+        "letterboxd": ["letterboxd", "lb", "letterboxd.com"],
         "livechart": ["livechart", "lc", "livechart.me"],
         "myanimelist": ["myanimelist", "mal", "myanimelist.net"],
         "nautiljon": ["nautiljon", "ntj", "nautiljon.com"],
         "notify": ["notify", "ntf", "notifymoe", "notify.moe"],
         "otakotaku": ["otakotaku", "oo", "otakotaku.com"],
-        "simkl": ["simkl", "smk", "simkl.com"],
         "shikimori": ["shikimori", "shiki", "shikimori.one"],
         "shoboi": ["shoboi", "syoboi", "syb", "cal.syoboi.jp"],
         "silveryasha": ["silveryasha", "dbti", "sy"],
+        "simkl": ["simkl", "smk", "simkl.com"],
         "themoviedb": ["themoviedb", "tmdb", "tmdb.org"],
         "trakt": ["trakt", "trk", "trakt.tv"],
     }
@@ -363,34 +415,46 @@ def resolve_platform(platform):
             return key
     return None
 
+
 def is_valid_target(target):
-    valid_targets = ["anidb", "anilist", "animeplanet", "anisearch", "annict", "imdb", "kaize", "kitsu", "kurozora", "livechart", "myanimelist", "nautiljon", "notify", "otakotaku", "shikimori", "shoboi", "silveryasha", "themoviedb", "trakt", "simkl"]
+    # fmt: off
+    valid_targets = [
+        "anidb", "anilist", "animeplanet", "anisearch", "annict", "imdb", "kaize",
+        "kitsu", "kurozora", "livechart", "myanimelist", "nautiljon", "notify",
+        "otakotaku", "shikimori", "shoboi", "silveryasha", "themoviedb", "trakt",
+        "simkl", "letterboxd",
+    ]
     return target in valid_targets
 
+
+route_path = {
+    "anidb": "https://anidb.net/anime/",
+    "anilist": "https://anilist.co/anime/",
+    "animeplanet": "https://www.anime-planet.com/anime/",
+    "anisearch": "https://www.anisearch.com/anime/",
+    "annict": "https://annict.com/works/",
+    "imdb": "https://www.imdb.com/title/",
+    "kaize": "https://kaize.io/anime/",
+    "kitsu": "https://kitsu.app/anime/",
+    "kurozora": "https://kurozora.app/myanimelist.net/anime/",
+    "letterboxd": "https://letterboxd.com/tmdb/",
+    "livechart": "https://www.livechart.me/anime/",
+    "myanimelist": "https://myanimelist.net/anime/",
+    "nautiljon": "https://www.nautiljon.com/animes/",
+    "notify": "https://notify.moe/anime/",
+    "otakotaku": "https://otakotaku.com/anime/view/",
+    "shikimori": "https://shikimori.one/animes/",
+    "shoboi": "https://cal.syoboi.jp/tid/",
+    "silveryasha": "https://db.silveryasha.web.id/anime/",
+    "simkl": "https://api.simkl.com/redirect?to=Simkl&anidb=",
+    "themoviedb": "https://www.themoviedb.org/movie/",
+    "trakt": "https://trakt.tv/",
+}
+
+
 def build_uri(platform, platform_id):
-    route_path = {
-        "anidb": "https://anidb.net/anime/",
-        "anilist": "https://anilist.co/anime/",
-        "animeplanet": "https://www.anime-planet.com/anime/",
-        "anisearch": "https://www.anisearch.com/anime/",
-        "annict": "https://annict.com/works/",
-        "imdb": "https://www.imdb.com/title/",
-        "kaize": "https://kaize.io/anime/",
-        "kitsu": "https://kitsu.app/anime/",
-        "kurozora": "https://kurozora.app/",
-        "livechart": "https://www.livechart.me/anime/",
-        "myanimelist": "https://myanimelist.net/anime/",
-        "nautiljon": "https://www.nautiljon.com/animes/",
-        "notify": "https://notify.moe/anime/",
-        "otakotaku": "https://otakotaku.com/anime/view/",
-        "shikimori": "https://shikimori.one/animes/",
-        "shoboi": "https://cal.syoboi.jp/tid/",
-        "silveryasha": "https://db.silveryasha.web.id/anime/",
-        "themoviedb": "https://www.themoviedb.org/movie/",
-        "trakt": "https://trakt.tv/",
-        "simkl": "https://simkl.com/",
-    }
     return route_path.get(platform, "") + str(platform_id)
+
 
 def generate_response(uri, israw):
     if not israw:
@@ -398,26 +462,62 @@ def generate_response(uri, israw):
     else:
         return Response(uri, mimetype="text/plain", status=200)
 
+
 def handle_trakt_case(platform_id):
     trakt_arr = platform_id.split("/")
     if len(trakt_arr) > 1 and not trakt_arr[1].isdigit():
         final_id = "/".join(trakt_arr[:2])
-        return error_response("Invalid Trakt ID", 400, f"Trakt ID for {final_id} is not an `int`. Please convert the slug to `int` ID using Trakt API to proceed.")
+        return error_response(
+            "Invalid Trakt ID",
+            400,
+            f"Trakt ID for {final_id} is not an `int`. Please convert the slug to `int` ID using Trakt API to proceed.",
+        )
+
 
 def build_target_uri(target, maps, platform, platform_id):
     try:
         if target == "trakt":
             return build_trakt_uri(maps, target)
-        if target == "simkl" and not maps.get("anidb"):
-            return error_response("Not found", 404, "AniDB ID not found, which is the main database source for SIMKL. Please issue missing show to SIMKL or create a creq on AniDB if the entry is not a special or OVA")
-        if target == "kurozora" and not maps.get("myanimelist"):
-            return error_response("Not found", 404, "MyAnimeList ID not found, which is requirement for Kurozora's Universal Link.")
+        if target == "simkl":
+            if not maps.get("anidb"):
+                return error_response(
+                    "Not found",
+                    404,
+                    "AniDB ID not found, which is the main database source for SIMKL. Please issue missing show to SIMKL or create a creq on AniDB if the entry is not a special or OVA",
+                )
+            else:
+                return f"{route_path[target]}{maps['anidb']}"
+        if target == "kurozora":
+            if not maps.get("myanimelist"):
+                return error_response(
+                    "Not found",
+                    404,
+                    "MyAnimeList ID not found, which is requirement for Kurozora's Universal Link.",
+                )
+            else:
+                return f"{route_path[target]}{maps['myanimelist']}"
+        if target == "letterboxd":
+            if not maps.get("themoviedb"):
+                return error_response(
+                    "Not found",
+                    404,
+                    "TheMovieDB ID not found, which is the main database source for Letterboxd.",
+                )
+            else:
+                return f"{route_path[target]}{maps['themoviedb']}"
         return build_generic_uri(maps, target)
     except ValueError:
         title = maps.get("title", "(Unknown title)")
-        return error_response("Not found", 404, f"{title} does not exist on {target} using {platform} with ID {platform_id}")
+        return error_response(
+            "Not found",
+            404,
+            f"{title} does not exist on {target} using {platform} with ID {platform_id}",
+        )
     except KeyError:
-        return error_response("Not found", 404, f"{target} not found on {platform} with ID {platform_id}")
+        return error_response(
+            "Not found", 404, f"{target} not found on {platform} with ID {platform_id}"
+        )
+
 
 def build_trakt_uri(maps, target):
     tgt_id = maps.get("trakt")
@@ -430,15 +530,15 @@ def build_trakt_uri(maps, target):
     else:
         return f"{route_path[target]}{media_type}/{tgt_id}/seasons/{season}"
 
+
 def build_generic_uri(maps, target):
     tgt_id = maps.get(target)
     if tgt_id is None:
         raise ValueError
     return f"{route_path[target]}{tgt_id}"
 
+
 # general error handler
-
-
 @app.errorhandler(Exception)
 def handle_error(err: Exception):
     """
