@@ -168,17 +168,17 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 19 February 2025 05:17:22 UTC
+Last updated: 20 February 2025 05:17:49 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |            ID |     Count |
 | :----------------- | ------------: | --------: |
 | aniDB              |       `anidb` |     13427 |
-| AniList            |     `anilist` |     20764 |
+| AniList            |     `anilist` |     20778 |
 | Anime-Planet       | `animeplanet` |     24230 |
 | aniSearch          |   `anisearch` |     19209 |
-| Annict             |      `annict` |     11294 |
+| Annict             |      `annict` |     11311 |
 | IMDb               |        `imdb` |      2250 |
 | Kaize              |       `kaize` |     22902 |
 | Kitsu              |       `kitsu` |     20663 |
@@ -186,7 +186,7 @@ Last updated: 19 February 2025 05:17:22 UTC
 | MyAnimeList        | `myanimelist` |     28256 |
 | Nautiljon          |   `nautiljon` |      8531 |
 | Notify.moe         |      `notify` |     16443 |
-| Otak Otaku         |   `otakotaku` |      2856 |
+| Otak Otaku         |   `otakotaku` |      2857 |
 | Shikimori          |   `shikimori` |     28256 |
 | Shoboi/Syobocal    |      `shoboi` |      5156 |
 | Silver Yasha       | `silveryasha` |      4656 |
@@ -262,8 +262,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1739942242,
-    "iso": "2025-02-19T05:17:22.195795+00:00"
+    "timestamp": 1740028669,
+    "iso": "2025-02-20T05:17:49.741358+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -281,10 +281,10 @@ GET /status
   "website": "https://animeapi.my.id",
   "counts": {
     "anidb": 13427,
-    "anilist": 20764,
+    "anilist": 20778,
     "animeplanet": 24230,
     "anisearch": 19209,
-    "annict": 11294,
+    "annict": 11311,
     "imdb": 2250,
     "kaize": 22902,
     "kitsu": 20663,
@@ -292,7 +292,7 @@ GET /status
     "myanimelist": 28256,
     "nautiljon": 8531,
     "notify": 16443,
-    "otakotaku": 2856,
+    "otakotaku": 2857,
     "shikimori": 28256,
     "shoboi": 5156,
     "silveryasha": 4656,
@@ -375,7 +375,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 02/19/2025 05:17:22 UTC
+Updated on 02/20/2025 05:17:49 UTC
 ```
 <!-- /updated-txt -->
 
