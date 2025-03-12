@@ -168,7 +168,7 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 11 March 2025 05:17:03 UTC
+Last updated: 12 March 2025 05:17:14 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -180,13 +180,13 @@ Last updated: 11 March 2025 05:17:03 UTC
 | aniSearch          |   `anisearch` |     19321 |
 | Annict             |      `annict` |     11431 |
 | IMDb               |        `imdb` |      2254 |
-| Kaize              |       `kaize` |     22937 |
+| Kaize              |       `kaize` |     22921 |
 | Kitsu              |       `kitsu` |     20760 |
 | LiveChart          |   `livechart` |     11488 |
 | MyAnimeList        | `myanimelist` |     28441 |
 | Nautiljon          |   `nautiljon` |      8547 |
 | Notify.moe         |      `notify` |     16503 |
-| Otak Otaku         |   `otakotaku` |      2872 |
+| Otak Otaku         |   `otakotaku` |      2874 |
 | Shikimori          |   `shikimori` |     28441 |
 | Shoboi/Syobocal    |      `shoboi` |      5190 |
 | Silver Yasha       | `silveryasha` |      4657 |
@@ -262,8 +262,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1741670223,
-    "iso": "2025-03-11T05:17:03.841158+00:00"
+    "timestamp": 1741756634,
+    "iso": "2025-03-12T05:17:14.542858+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -286,13 +286,13 @@ GET /status
     "anisearch": 19321,
     "annict": 11431,
     "imdb": 2254,
-    "kaize": 22937,
+    "kaize": 22921,
     "kitsu": 20760,
     "livechart": 11488,
     "myanimelist": 28441,
     "nautiljon": 8547,
     "notify": 16503,
-    "otakotaku": 2872,
+    "otakotaku": 2874,
     "shikimori": 28441,
     "shoboi": 5190,
     "silveryasha": 4657,
@@ -375,7 +375,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 03/11/2025 05:17:03 UTC
+Updated on 03/12/2025 05:17:14 UTC
 ```
 <!-- /updated-txt -->
 
