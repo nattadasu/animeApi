@@ -194,8 +194,8 @@ def simplify_aod_data(aod: dict[str, Any]) -> list[dict[str, Any]]:
                 "livechart": lc_id,
                 "myanimelist": mal_id,
                 "notify": ntf_b64,
-                "simkl": smk_id,
                 "shikimori": mal_id,
+                "simkl": smk_id,
             })
             bar()
     pprint.print(
