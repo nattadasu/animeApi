@@ -24,9 +24,9 @@ Please read more information regarding using the API on your project in
 * [Featured on](#featured-on)
   * [Libraries](#libraries)
   * [Projects, Apps, and Websites](#projects-apps-and-websites)
+* [Supported Platforms and Aliases](#supported-platforms-and-aliases)
 * [Statistic](#statistic)
 * [Usage](#usage)
-  * [Differences between v1, v2, and v3](#differences-between-v1-v2-and-v3)
   * [Get status and statistics](#get-status-and-statistics)
   * [Get latency report](#get-latency-report)
   * [Get updated date and time](#get-updated-date-and-time)
@@ -37,6 +37,7 @@ Please read more information regarding using the API on your project in
   * [Get anime relation mapping data](#get-anime-relation-mapping-data)
     * [Provider exclusive rules](#provider-exclusive-rules)
       * [Kitsu](#kitsu)
+      * [SIMKL](#simkl)
       * [Shikimori](#shikimori)
       * [The Movie DB](#the-movie-db)
       * [Trakt](#trakt)
@@ -98,7 +99,7 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 | [![f:shk] Shikimori][shk]       | ✔                                               | ✔ via MAL                   | ✔ via MAL          | ✔ via MAL                 | ✔ via MAL               | ❌            | ✔ via MAL                                                           | ✔ via MAL     | ❌                                      | ✔ via MAL        |
 | [![f:shb] Shoboi Calendar][shb] | ✔                                               | ✔                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
 | [![f:sy] SilverYasha DBTI][sy]  | ✔                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
-| [![f:smk] SIMKL][smk]           | ✔ via IMDb                                      | ❌                           | ❌                  | ❌                         | ✔                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:smk] SIMKL][smk]           | ✔                                               | ❌                           | ❌                  | ❌                         | ✔                       | ❌            | ✔                                                                   | ❌             | ❌                                      | ❌                |
 | [![f:tmdb] TMDB][tmdb]          | ✔, only movie                                   | ❌                           | ✔, only movie      | ❌                         | ✔                       | ✔            | ❌                                                                   | ✔, only movie | ✔, only movie                          | ❌                |
 | [![f:trk] Trakt][trk]           | ✔                                               | ❌                           | ❌                  | ❌                         | ✔                       | ✔            | ❌                                                                   | ❌             | ❌                                      | ✔                |
 | [![f:tvdb] TVDB][tvdb]          | ❌                                               | ❌                           | ❌                  | ❌                         | ✔                       | ✔            | ❌                                                                   | ✔             | ✔                                      | ❌                |
@@ -161,6 +162,33 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 | animeManga-autoBackup   | Powershell, Python | [GitHub](https://github.com/Animanga-Initiative/animeManga-autoBackup) | A script that uses AnimeAPI to get info one of your anime/manga lists and save it to a file |
 | Hikaru Aegis (codename) | Python             | [GitHub](https://github.com/Animanga-Initiative/hikaru-aegis)          | Rewrite of animeManga-autoBackup in Python                                                  |
 
+## Supported Platforms and Aliases
+
+AnimeAPI supported following sites for media lookup. You can use this as an
+alias cheatsheet as well.
+
+|      Platform | Aliases                                                                                               |
+| ------------: | :---------------------------------------------------------------------------------------------------- |
+|       `anidb` | `adb`, `anidb.net`                                                                                    |
+|     `anilist` | `al`, `anilist.co`                                                                                    |
+| `animeplanet` | `ap`, `anime-planet.com` `anime-planet`                                                               |
+|   `anisearch` | `as`, `anisearch.com`, `anisearch.de`, `anisearch.it`, `anisearch.es`, `anisearch.fr`, `anisearch.jp` |
+|      `annict` | `anc`, `act`, `ac`, `annict.com`, `annict.jp`, `en.annict.com`                                        |
+|        `imdb` | `imdb.com`                                                                                            |
+|       `kaize` | `kz`, `kaize.io`                                                                                      |
+|       `kitsu` | `kt`, `kts`, `kitsu.io`, `kitsu.app`                                                                  |
+|   `livechart` | `lc`, `livechart.me`                                                                                  |
+| `myanimelist` | `mal`, `myanimelist.net`                                                                              |
+|   `nautiljon` | `ntj`, `nautiljon.com`                                                                                |
+|      `notify` | `ntf`, `ntm`, `nf`, `nm`, `notifymoe`, `notify.moe`                                                   |
+|   `otakotaku` | `oo`, `otakotaku.com`                                                                                 |
+|       `simkl` | `smk`, `simkl.com`, `animecountdown`, `ac`, `animecountdown.com`                                      |
+|   `shikimori` | `shiki`, `shk`, `shikimori.me`, `shikimori.one`, `shikimori.org`                                      |
+|      `shoboi` | `shb`, `syb`, `sb`, `shobocal`, `syoboi`, `syobocal`, `cal.syoboi.jp`                                 |
+| `silveryasha` | `sy`, `dbti`, `db.silveryasha.id`, `db.silveryasha.web.id`                                            |
+|  `themoviedb` | `tmdb`, `themoviedb.org`                                                                              |
+|       `trakt` | `trk`, `trakt.tv`                                                                                     |
+
 <!-- markdownlint-enable MD034 MD013 -->
 
 ## Statistic
@@ -206,41 +234,7 @@ To use this API, you can access the following base URLs:
   GET https://animeapi.my.id
   ```
 
-* v2:
-  
-  ```http
-  GET https://aniapi.nattadasu.my.id
-  ```
-
 All requests must be `GET`, and response always will be in JSON format.
-
-> [!WARNING]
->
-> In `v2`, If an entry can not be found, the API will return default GitHub
-> Pages' 404 html page, **NOT** JSON response. This is because `v2` and earlier
-> versions are hosted on GitHub Pages and API was a mock RESTful response.
-
-### Differences between v1, v2, and v3
-
-AnimeAPI has 3 versions, which are `v1`, `v2`, and `v3`. The differences between
-each version are as follows:
-
-<!-- markdownlint-disable MD013 -->
-
-|                    | v2                         | v3                                |
-| ------------------ | -------------------------- | --------------------------------- |
-| Base URL           | *inactive*                 | `https://animeapi.my.id`          |
-| EOL                | *discontinued*             | Until further verion              |
-| Host               | GitHub Pages               | Vercel                            |
-| Language           | Python                     | Python                            |
-| Backend            | GitHub Pages               | Flask                             |
-| Database           | JSON                       | JSON                              |
-| Expected MIME Type | `application/octet-stream` | `application/json`                |
-| Status Codes       | `200`, `404`               | `200`, `302`, `400`, `404`, `500` |
-| Response Schema    | -                          | [JSON Schema](#json-schema)       |
-| Documented         | ✔                          | ✔                                 |
-
-<!-- markdownlint-enable MD013 -->
 
 ### Get status and statistics
 
@@ -417,14 +411,8 @@ MIME Type: `application/json`
 GET /:platform.json
 ```
 
-`:platform` can be one of the following:
-
-`anidb`, `anilist`, `animeplanet`, `anisearch`, `annict`, `kaize`, `kitsu`,
-`livechart`, `myanimelist`, `notify`, `otakotaku`, `shikimori`, `shoboi`,
-`silveryasha`, `trakt`
-
-Additionally, on `v3`, you can use `imdb`, `nautiljon`, and `themoviedb` on
-`:platform`.
+`:platform` can be one of the following listed in
+[Supported Platforms and Aliases](#supported-platforms-and-aliases).
 
 On `v3`, you will automatically redirected to GitHub raw file URL of the
 provider's JSON file. Make sure to allow `302` status code on your application
@@ -438,14 +426,8 @@ MIME Type: `application/json`
 GET /:platform().json
 ```
 
-`:platform` can be one of the following:
-
-`anidb`, `anilist`, `animeplanet`, `anisearch`, `annict`, `kaize`, `kitsu`,
-`livechart`, `myanimelist`, `notify`, `otakotaku`, `shikimori`, `shoboi`,
-`silveryasha`, `trakt`
-
-Additionally, on `v3`, you can use `imdb`, `nautiljon`, and `themoviedb` on
-`:platform`.
+`:platform` can be one of the following listed in
+[Supported Platforms and Aliases](#supported-platforms-and-aliases).
 
 > [!NOTE]
 >
@@ -464,18 +446,11 @@ MIME Type: `application/json` on `v3`, `application/octet-stream` on `v2`
 GET /:platform/:mediaid
 ```
 
-* `:platform` can be one of the following:
-
-  `anidb`, `anilist`, `animeplanet`, `anisearch`, `annict`, `kaize`, `kitsu`,
-  `livechart`, `myanimelist`, `notify`, `otakotaku`, `shikimori`, `shoboi`,
-  `silveryasha`, `trakt`
-
-  Additionally, on `v3`, you can use `imdb`, `nautiljon`, and `themoviedb` on
-  `:platform`.
-
+* `:platform` can be one of the following listed in
+  [Supported Platforms and Aliases](#supported-platforms-and-aliases).
 * `:mediaid` is the ID of the anime in the platform.
-* To use `kitsu`, `shikimori`, `themoviedb`, and `trakt` path, please read
-  additional information in [# Provider exclusive rules](#provider-exclusive-rules)
+* To use `kitsu`, `simkl`, `shikimori`, `themoviedb`, and `trakt` path, please
+  read additional information in [# Provider exclusive rules](#provider-exclusive-rules)
   before proceeding to avoid unwanted error.
 
 <details>
@@ -536,6 +511,14 @@ GET https://kitsu.app/api/edge/anime?filter[slug]=cowboy-bebop
 ```
 
 The response will be in JSON format, and you can get the ID from `data[0].id`
+
+##### SIMKL
+
+> [!NOTE]
+>
+> Also applicable to AnimeCountdown
+
+`simkl` ID is only applicable for media entries in Anime category.
 
 ##### Shikimori
 
@@ -630,38 +613,19 @@ or
 GET /rd?from=:platform&id=:mediaid&to=:platform
 ```
 
-* `:platform` can be one of the following:
+* `:platform` can be one of the following listed in
+  [Supported Platforms and Aliases](#supported-platforms-and-aliases).
 
-  <!-- markdownlint-disable MD013 -->
-  |      Platform | Aliases                                                                                               |
-  | ------------: | :---------------------------------------------------------------------------------------------------- |
-  |       `anidb` | `adb`, `anidb.net`                                                                                    |
-  |     `anilist` | `al`, `anilist.co`                                                                                    |
-  | `animeplanet` | `ap`, `anime-planet.com` `anime-planet`                                                               |
-  |   `anisearch` | `as`, `anisearch.com`, `anisearch.de`, `anisearch.it`, `anisearch.es`, `anisearch.fr`, `anisearch.jp` |
-  |      `annict` | `anc`, `act`, `ac`, `annict.com`, `annict.jp`, `en.annict.com`                                        |
-  |        `imdb` | `imdb.com`                                                                                            |
-  |       `kaize` | `kz`, `kaize.io`                                                                                      |
-  |       `kitsu` | `kt`, `kts`, `kitsu.io`, `kitsu.app`                                                                  |
-  |   `livechart` | `lc`, `livechart.me`                                                                                  |
-  | `myanimelist` | `mal`, `myanimelist.net`                                                                              |
-  |   `nautiljon` | `ntj`, `nautiljon.com`                                                                                |
-  |      `notify` | `ntf`, `ntm`, `nf`, `nm`, `notifymoe`, `notify.moe`                                                   |
-  |   `otakotaku` | `oo`, `otakotaku.com`                                                                                 |
-  |   `shikimori` | `shiki`, `shk`, `shikimori.me`, `shikimori.one`, `shikimori.org`                                      |
-  |      `shoboi` | `shb`, `syb`, `sb`, `shobocal`, `syoboi`, `syobocal`, `cal.syoboi.jp`                                 |
-  | `silveryasha` | `sy`, `dbti`, `db.silveryasha.web.id`                                                                 |
-  |  `themoviedb` | `tmdb`, `themoviedb.org`                                                                              |
-  |       `trakt` | `trk`, `trakt.tv`                                                                                     |
-  
   Additionally, on `target`/`to` parameter, there are additional supported
   platforms, and can't be used as source/`from` due to some limitations:
 
+  <!-- markdownlint-disable MD013 -->
+
   |     Platform | Aliases                     | Additional Notes                |
   | -----------: | :-------------------------- | :------------------------------ |
-  |      `simkl` | `smk`, `simkl.com`          |                                 |
   |   `kurozora` | `kr`, `krz`, `kurozora.app` | Requires Kurozora+ subscription |
   | `letterboxd` | `lb`, `letterboxd.com`      | Only available for movies       |
+
   <!-- markdownlint-enable MD013 -->
 
 * `:mediaid` is the ID of the anime in the platform. Please follow the instruction
@@ -900,7 +864,7 @@ Add the following schema URI to your JSON file.
         },
         "silveryasha": {
           "title": "Silveryasha",
-          "description": "Silveryasha ID, website: https://db.silveryasha.web.id/",
+          "description": "Silveryasha ID, website: https://db.silveryasha.id/",
           "$ref": "#/definitions/numbernull"
         },
         "themoviedb": {
@@ -1014,6 +978,7 @@ interface Anime = {
     nautiljon_id:      NumberNull; // int counterpart of Nautiljon slug, used internally
     notify:            StringNull; // Base64 based
     otakotaku:         NumberNull;
+    simkl:             NumberNull;
     shikimori:         NumberNull;
     shoboi:            NumberNull;
     silveryasha:       NumberNull;
@@ -1069,6 +1034,7 @@ class Anime:
     nautijlon_id:      NumberNull  # int counterpart of Nautiljon slug, used internally
     notify:            StringNull  # Base64 based
     otakotaku:         NumberNull
+    simkl:             NumberNull
     shikimori:         NumberNull
     shoboi:            NumberNull
     silveryasha:       NumberNull
@@ -1129,7 +1095,7 @@ This project uses multiple sources to compile the data, including:
 [shb]: https://cal.syoboi.jp
 [shk]: https://shikimori.me
 [smk]: https://simkl.com
-[sy]: https://db.silveryasha.web.id
+[sy]: https://db.silveryasha.id
 [tmdb]: https://themoviedb.org
 [trk]: https://trakt.tv
 [tvdb]: https://thetvdb.com
@@ -1151,7 +1117,7 @@ This project uses multiple sources to compile the data, including:
 [f:shb]: https://www.google.com/s2/favicons?domain=cal.syoboi.jp&sz=16
 [f:shk]: https://www.google.com/s2/favicons?domain=shikimori.me&sz=16
 [f:smk]: https://www.google.com/s2/favicons?domain=simkl.com&sz=16
-[f:sy]: https://www.google.com/s2/favicons?domain=db.silveryasha.web.id&sz=16
+[f:sy]: https://www.google.com/s2/favicons?domain=db.silveryasha.id&sz=16
 [f:tmdb]: https://www.google.com/s2/favicons?domain=themoviedb.org&sz=16
 [f:trk]: https://www.google.com/s2/favicons?domain=trakt.tv&sz=16
 [f:tvdb]: https://www.google.com/s2/favicons?domain=thetvdb.com&sz=16
