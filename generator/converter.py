@@ -92,6 +92,7 @@ def link_kaize_to_mal(
                         "kitsu": aod_item["kitsu"],
                         "myanimelist": aod_item["myanimelist"],
                         "notify": aod_item["notify"],
+                        "simkl": aod_item["simkl"],
                         "shikimori": aod_item["shikimori"],
                     }
                     item.update(kz_dat)

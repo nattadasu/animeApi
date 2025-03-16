@@ -112,6 +112,7 @@ def save_platform_loop(data: list[dict[str, Any]], attr: dict[str, Any]) -> dict
         "nautiljon",
         "notify",
         "otakotaku",
+        "simkl",
         "shikimori",
         "shoboi",
         "silveryasha",
@@ -153,6 +154,8 @@ def save_platform_loop(data: list[dict[str, Any]], attr: dict[str, Any]) -> dict
                 name = Platform.NOTIFY
             case "otakotaku":
                 name = Platform.OTAKOTAKU
+            case "simkl":
+                name = Platform.SIMKL
             case "shikimori":
                 name = Platform.SHIKIMORI
             case "shoboi":
@@ -295,6 +298,7 @@ def update_markdown(
     nau = add_spaces(counts["nautiljon"])
     ntf = add_spaces(counts["notify"])
     ook = add_spaces(counts["otakotaku"])
+    smk = add_spaces(counts["simkl"])
     shk = add_spaces(counts["shikimori"])
     shb = add_spaces(counts["shoboi"])
     sys = add_spaces(counts["silveryasha"])
@@ -303,26 +307,27 @@ def update_markdown(
     ttl = counts["total"]
     table = f"""| Platform           |            ID |     Count |
 | :----------------- | ------------: | --------: |
-| aniDB              |       `anidb` | {adb} |
-| AniList            |     `anilist` | {anl} |
-| Anime-Planet       | `animeplanet` | {apl} |
-| aniSearch          |   `anisearch` | {ase} |
-| Annict             |      `annict` | {anc} |
-| IMDb               |        `imdb` | {idb} |
-| Kaize              |       `kaize` | {kze} |
-| Kitsu              |       `kitsu` | {kts} |
-| LiveChart          |   `livechart` | {lvc} |
-| MyAnimeList        | `myanimelist` | {mal} |
-| Nautiljon          |   `nautiljon` | {nau} |
-| Notify.moe         |      `notify` | {ntf} |
-| Otak Otaku         |   `otakotaku` | {ook} |
-| Shikimori          |   `shikimori` | {shk} |
-| Shoboi/Syobocal    |      `shoboi` | {shb} |
-| Silver Yasha       | `silveryasha` | {sys} |
-| The Movie Database |  `themoviedb` | {tmd} |
-| Trakt              |       `trakt` | {trk} |
-|                    |               |           |
-|                    |     **Total** | **{ttl}** |
+| aniDB              | {adb} |
+| AniList            | {anl} |
+| Anime-Planet       | {apl} |
+| aniSearch          | {ase} |
+| Annict             | {anc} |
+| IMDb               | {idb} |
+| Kaize              | {kze} |
+| Kitsu              | {kts} |
+| LiveChart          | {lvc} |
+| MyAnimeList        | {mal} |
+| Nautiljon          | {nau} |
+| Notify.moe         | {ntf} |
+| Otak Otaku         | {ook} |
+| SIMKL              | {smk} |
+| Shikimori          | {shk} |
+| Shoboi/Syobocal    | {shb} |
+| Silver Yasha       | {sys} |
+| The Movie Database | {tmd} |
+| Trakt              | {trk} |
+|                    |       |
+|          **Total** | **{ttl}** |
 """
     readme = re.sub(
         r"<!-- counters -->(.|\n)*<!-- \/counters -->",

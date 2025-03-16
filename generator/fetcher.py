@@ -164,6 +164,7 @@ def simplify_aod_data(aod: dict[str, Any]) -> list[dict[str, Any]]:
             lc_id: int | None = None
             mal_id: int | None = None
             ntf_b64: str | None = None
+            smk_id: int | None = None
             for sauce in item["sources"]:
                 if sauce.startswith("https://anidb.net/anime/"):
                     adb_id = int(sauce.split("/")[-1])
@@ -181,6 +182,8 @@ def simplify_aod_data(aod: dict[str, Any]) -> list[dict[str, Any]]:
                     mal_id = int(sauce.split("/")[-1])
                 elif sauce.startswith("https://notify.moe/anime/"):
                     ntf_b64 = sauce.split("/")[-1]
+                elif sauce.startswith("https://simkl.com/anime/"):
+                    smk_id = int(sauce.split("/")[-1])
             data.append({
                 "title": item["title"],
                 "anidb": adb_id,
@@ -191,6 +194,7 @@ def simplify_aod_data(aod: dict[str, Any]) -> list[dict[str, Any]]:
                 "livechart": lc_id,
                 "myanimelist": mal_id,
                 "notify": ntf_b64,
+                "simkl": smk_id,
                 "shikimori": mal_id,
             })
             bar()

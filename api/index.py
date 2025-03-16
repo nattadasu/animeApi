@@ -244,7 +244,7 @@ def platform_array(platform: str = "animeapi"):
     return redirect_to_github(goto)
 
 
-def get_goto(route: str) -> str:
+def get_goto(route: str, raw_platform: str) -> str:
     goto = route.replace("/", "")
 
     if goto.endswith(".json"):
@@ -258,7 +258,7 @@ def get_goto(route: str) -> str:
     if goto == "syobocal":
         goto = "shoboi"
 
-    return goto
+    return goto.replace(raw_platform, resolve_platform(raw_platform))
 
 
 def serve_tsv_response() -> Response:
@@ -290,8 +290,7 @@ def platform_lookup(platform: str, platform_id: Union[int, str]):
         Response: JSON response
     """
     platform = platform.lower()
-    if platform == "syobocal":
-        platform = "shoboi"
+    platform = resolve_platform(platform=platform)
     try:
         data = platform_id_content(platform, platform_id)
         return jsonify(data)
@@ -388,32 +387,31 @@ def error_response(error, code, message):
 
 def resolve_platform(platform):
     synonyms = {
-        "anidb": ["anidb", "adb", "anidb.net"],
-        "anilist": ["anilist", "al", "anilist.co"],
-        "animeplanet": ["animeplanet", "ap", "anime-planet", "anime-planet.com"],
-        "anisearch": ["anisearch", "as", "anisearch.com"],
-        "annict": ["annict", "anc", "act", "ac", "annict.com"],
-        "imdb": ["imdb", "imdb.com"],
-        "kaize": ["kaize", "kz", "kaize.io"],
-        "kitsu": ["kitsu", "kts", "kt", "kitsu.app", "kitsu.io"],
-        "kurozora": ["kurozora", "kr", "krz", "kurozora.app"],
-        "letterboxd": ["letterboxd", "lb", "letterboxd.com"],
-        "livechart": ["livechart", "lc", "livechart.me"],
-        "myanimelist": ["myanimelist", "mal", "myanimelist.net"],
-        "nautiljon": ["nautiljon", "ntj", "nautiljon.com"],
-        "notify": ["notify", "ntf", "notifymoe", "notify.moe"],
-        "otakotaku": ["otakotaku", "oo", "otakotaku.com"],
-        "shikimori": ["shikimori", "shiki", "shikimori.one"],
-        "shoboi": ["shoboi", "syoboi", "syb", "cal.syoboi.jp"],
-        "silveryasha": ["silveryasha", "dbti", "sy"],
-        "simkl": ["simkl", "smk", "simkl.com"],
-        "themoviedb": ["themoviedb", "tmdb", "tmdb.org"],
-        "trakt": ["trakt", "trk", "trakt.tv"],
+        "anidb": ["adb", "anidb.net"],
+        "anilist": ["al", "anilist.co"],
+        "animeplanet": ["ap", "anime-planet", "anime-planet.com"],
+        "anisearch": ["as", "anisearch.com"],
+        "annict": ["anc", "act", "ac", "annict.com"],
+        "imdb": ["imdb.com"],
+        "kaize": ["kz", "kaize.io"],
+        "kitsu": ["kts", "kt", "kitsu.app", "kitsu.io"],
+        "kurozora": ["kr", "krz", "kurozora.app"],
+        "letterboxd": ["lb", "letterboxd.com"],
+        "livechart": ["lc", "livechart.me"],
+        "myanimelist": ["mal", "myanimelist.net"],
+        "nautiljon": ["ntj", "nautiljon.com"],
+        "notify": ["ntf", "notifymoe", "notify.moe"],
+        "otakotaku": ["oo", "otakotaku.com"],
+        "shikimori": ["shiki", "shikimori.one"],
+        "shoboi": ["syoboi", "syb", "cal.syoboi.jp"],
+        "silveryasha": ["dbti", "sy"],
+        "simkl": ["smk", "simkl.com", "animecountdown", "animecountdown.com", "ac"],
+        "themoviedb": ["tmdb", "tmdb.org"],
+        "trakt": ["trk", "trakt.tv"],
     }
-    for key, value in synonyms.items():
-        if platform in value:
-            return key
-    return None
+    # Create a lookup dictionary including both proper names and aliases
+    lookup = {alias: key for key, aliases in synonyms.items() for alias in [key] + aliases}
+    return lookup.get(platform)
 
 
 def is_valid_target(target):
@@ -445,8 +443,8 @@ route_path = {
     "otakotaku": "https://otakotaku.com/anime/view/",
     "shikimori": "https://shikimori.one/animes/",
     "shoboi": "https://cal.syoboi.jp/tid/",
-    "silveryasha": "https://db.silveryasha.web.id/anime/",
-    "simkl": "https://api.simkl.com/redirect?to=Simkl&anidb=",
+    "silveryasha": "https://db.silveryasha.id/anime/",
+    "simkl": "https://simkl.com/anime/",
     "themoviedb": "https://www.themoviedb.org/movie/",
     "trakt": "https://trakt.tv/",
 }
@@ -478,15 +476,6 @@ def build_target_uri(target, maps, platform, platform_id):
     try:
         if target == "trakt":
             return build_trakt_uri(maps, target)
-        if target == "simkl":
-            if not maps.get("anidb"):
-                return error_response(
-                    "Not found",
-                    404,
-                    "AniDB ID not found, which is the main database source for SIMKL. Please issue missing show to SIMKL or create a creq on AniDB if the entry is not a special or OVA",
-                )
-            else:
-                return f"{route_path[target]}{maps['anidb']}"
         if target == "kurozora":
             if not maps.get("myanimelist"):
                 return error_response(
