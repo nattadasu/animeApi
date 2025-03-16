@@ -405,7 +405,7 @@ def resolve_platform(platform):
         "shikimori": ["shiki", "shikimori.one"],
         "shoboi": ["syoboi", "syb", "cal.syoboi.jp"],
         "silveryasha": ["dbti", "sy"],
-        "simkl": ["smk", "simkl.com", "animecountdown", "animecountdown.com", "ac"],
+        "simkl": ["smk", "simkl.com", "animecountdown", "animecountdown.com"],
         "themoviedb": ["tmdb", "tmdb.org"],
         "trakt": ["trk", "trakt.tv"],
     }

@@ -112,10 +112,10 @@ def save_platform_loop(data: list[dict[str, Any]], attr: dict[str, Any]) -> dict
         "nautiljon",
         "notify",
         "otakotaku",
-        "simkl",
         "shikimori",
         "shoboi",
         "silveryasha",
+        "simkl",
         "trakt",
         "themoviedb",
     ]
@@ -154,14 +154,14 @@ def save_platform_loop(data: list[dict[str, Any]], attr: dict[str, Any]) -> dict
                 name = Platform.NOTIFY
             case "otakotaku":
                 name = Platform.OTAKOTAKU
-            case "simkl":
-                name = Platform.SIMKL
             case "shikimori":
                 name = Platform.SHIKIMORI
             case "shoboi":
                 name = Platform.SHOBOI
             case "silveryasha":
                 name = Platform.SILVERYASHA
+            case "simkl":
+                name = Platform.SIMKL
             case "trakt":
                 name = Platform.ANITRAKT
             case "themoviedb":
@@ -298,10 +298,10 @@ def update_markdown(
     nau = add_spaces(counts["nautiljon"])
     ntf = add_spaces(counts["notify"])
     ook = add_spaces(counts["otakotaku"])
-    smk = add_spaces(counts["simkl"])
     shk = add_spaces(counts["shikimori"])
     shb = add_spaces(counts["shoboi"])
     sys = add_spaces(counts["silveryasha"])
+    smk = add_spaces(counts["simkl"])
     tmd = add_spaces(counts["themoviedb"])
     trk = add_spaces(counts["trakt"])
     ttl = counts["total"]
@@ -320,10 +320,10 @@ def update_markdown(
 | Nautiljon          | {nau} |
 | Notify.moe         | {ntf} |
 | Otak Otaku         | {ook} |
-| SIMKL              | {smk} |
 | Shikimori          | {shk} |
 | Shoboi/Syobocal    | {shb} |
 | Silver Yasha       | {sys} |
+| SIMKL              | {smk} |
 | The Movie Database | {tmd} |
 | Trakt              | {trk} |
 |                    |       |

@@ -182,10 +182,10 @@ alias cheatsheet as well.
 |   `nautiljon` | `ntj`, `nautiljon.com`                                                                                |
 |      `notify` | `ntf`, `ntm`, `nf`, `nm`, `notifymoe`, `notify.moe`                                                   |
 |   `otakotaku` | `oo`, `otakotaku.com`                                                                                 |
-|       `simkl` | `smk`, `simkl.com`, `animecountdown`, `ac`, `animecountdown.com`                                      |
 |   `shikimori` | `shiki`, `shk`, `shikimori.me`, `shikimori.one`, `shikimori.org`                                      |
 |      `shoboi` | `shb`, `syb`, `sb`, `shobocal`, `syoboi`, `syobocal`, `cal.syoboi.jp`                                 |
 | `silveryasha` | `sy`, `dbti`, `db.silveryasha.id`, `db.silveryasha.web.id`                                            |
+|       `simkl` | `smk`, `simkl.com`, `animecountdown`, `animecountdown.com`                                            |
 |  `themoviedb` | `tmdb`, `themoviedb.org`                                                                              |
 |       `trakt` | `trk`, `trakt.tv`                                                                                     |
 
@@ -1078,7 +1078,7 @@ This project uses multiple sources to compile the data, including:
 [as]: https://anisearch.com
 [atip]: https://github.com/ryuuganime/aniTrakt-IndexParser
 [atrk]: https://anitrakt.huere.net/
-[bgm]: https://bangumi.tv
+[bgm]: https://bgm.tv
 [bq]: https://github.com/BeeeQueue/arm-server
 [fal]: https://github.com/Fribb/anime-lists
 [hato]: https://github.com/Atelier-Shiori/Hato
@@ -1100,14 +1100,14 @@ This project uses multiple sources to compile the data, including:
 [trk]: https://trakt.tv
 [tvdb]: https://thetvdb.com
 [tvtm]: https://tvtime.com
-[f:adb]: https://www.google.com/s2/favicons?domain=anidb.net&sz=16
+[f:adb]: https://favicone.com/anidb.net
 [f:al]: https://www.google.com/s2/favicons?domain=anilist.co&sz=16
 [f:an]: https://www.google.com/s2/favicons?domain=annict.com&sz=16
 [f:ap]: https://www.google.com/s2/favicons?domain=anime-planet.com&sz=16
 [f:as]: https://www.google.com/s2/favicons?domain=anisearch.com&sz=16
-[f:bgm]: https://www.google.com/s2/favicons?domain=bangumi.tv&sz=16
+[f:bgm]: https://favicone.com/bgm.tv
 [f:imdb]: https://www.google.com/s2/favicons?domain=imdb.com&sz=16
-[f:kts]: https://www.google.com/s2/favicons?domain=kitsu.app&sz=16
+[f:kts]: https://favicone.com/kitsu.app
 [f:kz]: https://www.google.com/s2/favicons?domain=kaize.io&sz=16
 [f:lc]: https://www.google.com/s2/favicons?domain=livechart.me&sz=16
 [f:mal]: https://www.google.com/s2/favicons?domain=myanimelist.net&sz=16
