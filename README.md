@@ -196,32 +196,33 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 15 March 2025 05:47:16 UTC
+Last updated: 16 March 2025 02:28:19 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |            ID |     Count |
 | :----------------- | ------------: | --------: |
-| aniDB              |       `anidb` |     13519 |
-| AniList            |     `anilist` |     20935 |
-| Anime-Planet       | `animeplanet` |     24392 |
-| aniSearch          |   `anisearch` |     19350 |
-| Annict             |      `annict` |     11462 |
-| IMDb               |        `imdb` |      2254 |
-| Kaize              |       `kaize` |     22910 |
-| Kitsu              |       `kitsu` |     20784 |
-| LiveChart          |   `livechart` |     11503 |
-| MyAnimeList        | `myanimelist` |     28470 |
-| Nautiljon          |   `nautiljon` |      8548 |
-| Notify.moe         |      `notify` |     16519 |
-| Otak Otaku         |   `otakotaku` |      2878 |
-| Shikimori          |   `shikimori` |     28470 |
-| Shoboi/Syobocal    |      `shoboi` |      5209 |
-| Silver Yasha       | `silveryasha` |      4657 |
-| The Movie Database |  `themoviedb` |       573 |
-| Trakt              |       `trakt` |      4847 |
-|                    |               |           |
-|                    |     **Total** | **35660** |
+| aniDB              |     13516 |
+| AniList            |     20934 |
+| Anime-Planet       |     24392 |
+| aniSearch          |     19353 |
+| Annict             |     11461 |
+| IMDb               |      2254 |
+| Kaize              |     22908 |
+| Kitsu              |     20782 |
+| LiveChart          |     11502 |
+| MyAnimeList        |     28469 |
+| Nautiljon          |      8573 |
+| Notify.moe         |     16518 |
+| Otak Otaku         |      2880 |
+| Shikimori          |     28469 |
+| Shoboi/Syobocal    |      5209 |
+| Silver Yasha       |      4711 |
+| SIMKL              |     13504 |
+| The Movie Database |       573 |
+| Trakt              |      4847 |
+|                    |       |
+|          **Total** | **35656** |
 <!-- /counters -->
 
 ## Usage
@@ -256,8 +257,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1742017636,
-    "iso": "2025-03-15T05:47:16.450967+00:00"
+    "timestamp": 1742092099,
+    "iso": "2025-03-16T02:28:19.930781+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -266,7 +267,7 @@ GET /status
     "manami-project/anime-offline-database",
     "kawaiioverflow/arm",
     "ryuuganime/aniTrakt-IndexParser",
-    "https://db.silveryasha.web.id",
+    "https://db.silveryasha.id",
     "https://kaize.io",
     "https://nautiljon.com",
     "https://otakotaku.com"
@@ -274,28 +275,29 @@ GET /status
   "license": "AGPL-3.0-only AND MIT AND CC0-1.0+",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 13519,
-    "anilist": 20935,
+    "anidb": 13516,
+    "anilist": 20934,
     "animeplanet": 24392,
-    "anisearch": 19350,
-    "annict": 11462,
+    "anisearch": 19353,
+    "annict": 11461,
     "imdb": 2254,
-    "kaize": 22910,
-    "kitsu": 20784,
-    "livechart": 11503,
-    "myanimelist": 28470,
-    "nautiljon": 8548,
-    "notify": 16519,
-    "otakotaku": 2878,
-    "shikimori": 28470,
+    "kaize": 22908,
+    "kitsu": 20782,
+    "livechart": 11502,
+    "myanimelist": 28469,
+    "nautiljon": 8573,
+    "notify": 16518,
+    "otakotaku": 2880,
+    "shikimori": 28469,
     "shoboi": 5209,
-    "silveryasha": 4657,
+    "silveryasha": 4711,
+    "simkl": 13504,
     "themoviedb": 573,
     "trakt": 4847,
-    "total": 35660
+    "total": 35656
   },
   "endpoints": {
-    "$comment": "The endpoints are stated in Python regex format",
+    "$comment": "The endpoints are stated in Python regex format. Platform aliases supported for direct lookup",
     "anidb": "/anidb/(?P<media_id>\\d+)",
     "anilist": "/anilist/(?P<media_id>\\d+)",
     "animeapi_tsv": "/anime(a|A)pi.tsv",
@@ -317,6 +319,7 @@ GET /status
     "shikimori": "/shikimori/(?P<media_id>\\d+)",
     "shoboi": "/shoboi/(?P<media_id>\\d+)",
     "silveryasha": "/silveryasha/(?P<media_id>\\d+)",
+    "simkl": "/simkl/(?P<media_id>\\d+)",
     "status": "/status",
     "syobocal": "/syobocal/(?P<media_id>\\d+)",
     "themoviedb": "/themoviedb/movie/(?P<media_id>\\d+)",
@@ -369,7 +372,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 03/15/2025 05:47:16 UTC
+Updated on 03/16/2025 02:28:19 UTC
 ```
 <!-- /updated-txt -->
 
@@ -482,6 +485,7 @@ GET https://animeapi.my.id/myanimelist/1
   "shikimori": 1,
   "shoboi": 538,
   "silveryasha": 2652,
+  "simkl": 37089,
   "themoviedb": null,
   "trakt": 30857,
   "trakt_type": "shows",
@@ -584,6 +588,7 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
   "shikimori": 49784,
   "shoboi": 6489,
   "silveryasha": 3702,
+  "simkl": 1728821,
   "themoviedb": null,
   "trakt": 152334,
   "trakt_type": "shows",
@@ -852,6 +857,11 @@ Add the following schema URI to your JSON file.
           "description": "Otak Otaku ID, website: https://otakotaku.com/",
           "$ref": "#/definitions/numbernull"
         },
+        "simkl": {
+          "title": "SIMKL",
+          "description": "SIMKKL ID, website: https://simkl.com/",
+          "$ref": "#/definitions/numbernull"
+        },
         "shikimori": {
           "title": "Shikimori/Шикимори",
           "description": "Shikimori ID (nonprefixed), based on MyAnimeList ID. Remove prefix if found on the ID, website: https://shikimori.one/",
@@ -911,6 +921,7 @@ Add the following schema URI to your JSON file.
         "myanimelist",
         "notify",
         "otakotaku",
+        "simkl",
         "shikimori",
         "shoboi",
         "silveryasha",
