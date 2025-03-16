@@ -89,6 +89,7 @@ def main() -> None:
                     "nautiljon_id": item.get("nautiljon_id", None),
                     "notify": item.get("notify", None),
                     "otakotaku": item.get("otakotaku", None),
+                    "simkl": item.get("simkl", None),
                     "shikimori": item.get("shikimori", None),
                     "shoboi": item.get("shoboi", None),
                     "silveryasha": item.get("silveryasha", None),
