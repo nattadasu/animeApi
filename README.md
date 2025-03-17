@@ -196,33 +196,33 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 16 March 2025 02:28:19 UTC
+Last updated: 17 March 2025 05:18:47 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |            ID |     Count |
 | :----------------- | ------------: | --------: |
-| aniDB              |     13516 |
-| AniList            |     20934 |
-| Anime-Planet       |     24392 |
-| aniSearch          |     19353 |
-| Annict             |     11461 |
-| IMDb               |      2254 |
-| Kaize              |     22908 |
-| Kitsu              |     20782 |
-| LiveChart          |     11502 |
-| MyAnimeList        |     28469 |
-| Nautiljon          |      8573 |
-| Notify.moe         |     16518 |
-| Otak Otaku         |      2880 |
-| Shikimori          |     28469 |
-| Shoboi/Syobocal    |      5209 |
-| Silver Yasha       |      4711 |
-| SIMKL              |     13504 |
-| The Movie Database |       573 |
-| Trakt              |      4847 |
+| aniDB              |     13634 |
+| AniList            |     21029 |
+| Anime-Planet       |     24501 |
+| aniSearch          |     19466 |
+| Annict             |     11533 |
+| IMDb               |      2265 |
+| Kaize              |     23059 |
+| Kitsu              |     20878 |
+| LiveChart          |     11580 |
+| MyAnimeList        |     28570 |
+| Nautiljon          |      8547 |
+| Notify.moe         |     16611 |
+| Otak Otaku         |      2879 |
+| Shikimori          |     28570 |
+| Shoboi/Syobocal    |      5225 |
+| Silver Yasha       |      4710 |
+| SIMKL              |     13621 |
+| The Movie Database |       577 |
+| Trakt              |      4857 |
 |                    |       |
-|          **Total** | **35656** |
+|          **Total** | **35444** |
 <!-- /counters -->
 
 ## Usage
@@ -257,8 +257,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1742092099,
-    "iso": "2025-03-16T02:28:19.930781+00:00"
+    "timestamp": 1742188727,
+    "iso": "2025-03-17T05:18:47.294645+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -275,26 +275,26 @@ GET /status
   "license": "AGPL-3.0-only AND MIT AND CC0-1.0+",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 13516,
-    "anilist": 20934,
-    "animeplanet": 24392,
-    "anisearch": 19353,
-    "annict": 11461,
-    "imdb": 2254,
-    "kaize": 22908,
-    "kitsu": 20782,
-    "livechart": 11502,
-    "myanimelist": 28469,
-    "nautiljon": 8573,
-    "notify": 16518,
-    "otakotaku": 2880,
-    "shikimori": 28469,
-    "shoboi": 5209,
-    "silveryasha": 4711,
-    "simkl": 13504,
-    "themoviedb": 573,
-    "trakt": 4847,
-    "total": 35656
+    "anidb": 13634,
+    "anilist": 21029,
+    "animeplanet": 24501,
+    "anisearch": 19466,
+    "annict": 11533,
+    "imdb": 2265,
+    "kaize": 23059,
+    "kitsu": 20878,
+    "livechart": 11580,
+    "myanimelist": 28570,
+    "nautiljon": 8547,
+    "notify": 16611,
+    "otakotaku": 2879,
+    "shikimori": 28570,
+    "shoboi": 5225,
+    "silveryasha": 4710,
+    "simkl": 13621,
+    "themoviedb": 577,
+    "trakt": 4857,
+    "total": 35444
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format. Platform aliases supported for direct lookup",
@@ -372,7 +372,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 03/16/2025 02:28:19 UTC
+Updated on 03/17/2025 05:18:47 UTC
 ```
 <!-- /updated-txt -->
 
