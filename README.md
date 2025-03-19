@@ -173,27 +173,27 @@ alias cheatsheet as well.
 >   data you want.
 > * 2K is the two-letter abbreviation for the platform.
 
-|      Platform |     2K     | Aliases                                                                                         |
-| ------------: | :--------: | ----------------------------------------------------------------------------------------------- |
-|       `anidb` |    `ad`    | `adb`, `anidb.net`                                                                              |
-|     `anilist` |    `al`    | `anilist.co`                                                                                    |
-| `animeplanet` |    `ap`    | `anime-planet.com` `anime-planet`, `animeplanet.com`                                            |
-|   `anisearch` |    `as`    | `anisearch.com`, `anisearch.de`, `anisearch.it`, `anisearch.es`, `anisearch.fr`, `anisearch.jp` |
-|      `annict` |    `ac`    | `anc`, `act`, `annict.com`, `annict.jp`, `en.annict.com`                                        |
-|        `imdb` |    `im`    | `imdb.com`                                                                                      |
-|       `kaize` |    `kz`    | `kaize.io`                                                                                      |
-|       `kitsu` |    `kt`    | `kts`, `kitsu.io`, `kitsu.app`                                                                  |
-|   `livechart` |    `lc`    | `livechart.me`                                                                                  |
-| `myanimelist` | `ma`, `ml` | `mal`, `myanimelist.net`                                                                        |
-|   `nautiljon` |    `nj`    | `ntj`, `nautiljon.com`                                                                          |
-|      `notify` | `nf`, `nm` | `ntf`, `ntm`, `notifymoe`, `notify.moe`                                                         |
-|   `otakotaku` |    `oo`    | `otakotaku.com`                                                                                 |
-|   `shikimori` |    `sh`    | `shiki`, `shk`, `shikimori.me`, `shikimori.one`, `shikimori.org`                                |
-|      `shoboi` |    `sb`    | `shb`, `syb`, `shobocal`, `syoboi`, `syobocal`, `cal.syoboi.jp`                                 |
-| `silveryasha` |    `sy`    | `dbti`, `db.silveryasha.id`, `db.silveryasha.web.id`                                            |
-|       `simkl` |    `sm`    | `smk`, `simkl.com`, `animecountdown`, `animecountdown.com`                                      |
-|  `themoviedb` |    `tm`    | `tmdb`, `themoviedb.org`                                                                        |
-|       `trakt` |    `tr`    | `trk`, `trakt.tv`                                                                               |
+|      Platform |  2K   | Aliases                                                                                         |
+| ------------: | :---: | ----------------------------------------------------------------------------------------------- |
+|       `anidb` | `ad`  | `adb`, `anidb.net`                                                                              |
+|     `anilist` | `al`  | `anilist.co`                                                                                    |
+| `animeplanet` | `ap`  | `anime-planet.com` `anime-planet`, `animeplanet.com`                                            |
+|   `anisearch` | `as`  | `anisearch.com`, `anisearch.de`, `anisearch.it`, `anisearch.es`, `anisearch.fr`, `anisearch.jp` |
+|      `annict` | `ac`  | `anc`, `act`, `annict.com`, `annict.jp`, `en.annict.com`                                        |
+|        `imdb` | `im`  | `imdb.com`                                                                                      |
+|       `kaize` | `kz`  | `kaize.io`                                                                                      |
+|       `kitsu` | `kt`  | `kts`, `kitsu.io`, `kitsu.app`                                                                  |
+|   `livechart` | `lc`  | `livechart.me`                                                                                  |
+| `myanimelist` | `ma`  | `mal`, `myanimelist.net`                                                                        |
+|   `nautiljon` | `nj`  | `ntj`, `nautiljon.com`                                                                          |
+|      `notify` | `nf`  | `ntf`, `ntm`, `notifymoe`, `notify.moe`                                                         |
+|   `otakotaku` | `oo`  | `otakotaku.com`                                                                                 |
+|   `shikimori` | `sh`  | `shiki`, `shk`, `shikimori.me`, `shikimori.one`, `shikimori.org`                                |
+|      `shoboi` | `sb`  | `shb`, `syb`, `shobocal`, `syoboi`, `syobocal`, `cal.syoboi.jp`                                 |
+| `silveryasha` | `sy`  | `dbti`, `db.silveryasha.id`, `db.silveryasha.web.id`                                            |
+|       `simkl` | `sm`  | `smk`, `simkl.com`, `animecountdown`, `animecountdown.com`                                      |
+|  `themoviedb` | `tm`  | `tmdb`, `themoviedb.org`                                                                        |
+|       `trakt` | `tr`  | `trk`, `trakt.tv`                                                                               |
 
 <!-- markdownlint-enable MD034 MD013 -->
 
@@ -628,10 +628,11 @@ GET /rd?from=:platform&id=:mediaid&to=:platform
 
   <!-- markdownlint-disable MD013 -->
 
-  |     Platform |  2K   | Aliases               | Additional Notes                |
-  | -----------: | :---: | --------------------- | :------------------------------ |
-  |   `kurozora` | `kr`  | `krz`, `kurozora.app` | Requires Kurozora+ subscription |
-  | `letterboxd` | `lb`  | `letterboxd.com`      | Only available for movies       |
+  |     Platform |  2K   | Aliases               | Additional Notes                            |
+  | -----------: | :---: | --------------------- | :------------------------------------------ |
+  |   `kurozora` | `kr`  | `krz`, `kurozora.app` | Requires Kurozora+ subscription and MAL ID  |
+  | `letterboxd` | `lb`  | `letterboxd.com`      | Only available for movies, requires TMDB ID |
+  |    `myanili` | `my`  | `myani.li`            | Requires MAL ID; a web app to manage list   |
 
   <!-- markdownlint-enable MD013 -->
 
