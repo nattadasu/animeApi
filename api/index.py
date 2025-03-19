@@ -296,7 +296,10 @@ def get_goto(route: str, raw_platform: str) -> str:
     raw_platform = unquote(raw_platform).replace("()", "")
     goto = goto.replace(goto, resolve_platform(raw_platform))
     goto = goto.replace("aa", "animeapi")
-    if not (goto.endswith("()") or goto.endswith("%28%29")) and goto not in ["animeapi", "aa"]:
+    if not (goto.endswith("()") or goto.endswith("%28%29")) and goto not in [
+        "animeapi",
+        "aa",
+    ]:
         goto += "_object"
     else:
         goto = unquote(goto).replace("()", "")
@@ -437,6 +440,23 @@ def redirect_route():
     return generate_response(uri, israw)
 
 
+def alias_get(data: dict[str, Any], known_aliases: list[str]) -> str:
+    """
+    Get data from alias
+
+    :param data: Data
+    :type data: dict[str, Any]
+    :param known_aliases: Known aliases
+    :type known_aliases: list[str]
+    :return: Alias
+    :rtype: str
+    """
+    for alias in known_aliases:
+        if data.get(alias):
+            return data[alias]
+    return ""
+
+
 def extract_params(args: dict[str, Any]) -> tuple[str, Union[int, str], str, bool]:
     """
     Extract parameters
@@ -446,15 +466,18 @@ def extract_params(args: dict[str, Any]) -> tuple[str, Union[int, str], str, boo
     :return: Platform, platform ID, target, is raw
     :rtype: tuple[str, Union[int, str], str, bool]
     """
-    platform = (args.get("platform") or args.get("from") or "").lower()
+    platform = alias_get(args, ["platform", "from", "f"]).lower()
     platform = resolve_platform(platform)
-    platform_id = args.get("mediaid") or args.get("id")
-    platform_id = 0 if not platform_id else platform_id
-    target = args.get("target") or args.get("to")
+    platform_id = alias_get(args, ["mediaid", "id", "i"])
+    platform_id = platform_id if platform_id else 0
+    target = alias_get(args, ["target", "to", "t"]).lower()
     target = resolve_platform(target) if target else platform
     try:
         try:
-            israw = args["raw"]
+            try:
+                israw = args["israw"]
+            except KeyError:
+                israw = args["raw"]
         except KeyError:
             israw = args["r"]
         israw = True
@@ -496,6 +519,7 @@ def resolve_platform(platform: str) -> str:
         for alias in [key] + aliases
     }
     return lookup.get(platform, platform)
+
 
 def is_valid_target(target: str) -> bool:
     """
