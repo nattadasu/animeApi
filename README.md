@@ -644,12 +644,12 @@ parameters are as follows:
 
 <!-- markdownlint-disable MD013 -->
 
-| Parameter  | Aliases | Is Required | Description                                                                                                                        |
-| ---------- | ------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `platform` | `from`  | Yes         | The platform you want to get the data from.                                                                                        |
-| `mediaid`  | `id`    | Yes         | The ID of the anime in the platform.                                                                                               |
-| `target`   | `to`    | No          | The platform you want to redirect to. If you don't specify this parameter, the API will redirect to specified platform's homepage. |
-| `raw`      | `r`     | No          | As long as this parameter is present, the API will return the raw URL instead of redirecting.                                     |
+| Parameter  | Aliases      | Is Required | Description                                                                                                                        |
+| ---------- | ------------ | ----------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `platform` | `from`, `f`  | Yes         | The platform you want to get the data from.                                                                                        |
+| `mediaid`  | `id`, `i`    | Yes         | The ID of the anime in the platform.                                                                                               |
+| `target`   | `to`, `t`    | No          | The platform you want to redirect to. If you don't specify this parameter, the API will redirect to specified platform's homepage. |
+| `israw`    | `raw`, `r`   | No          | As long as this parameter is present, the API will return the raw URL instead of redirecting.                                     |
 
 <!-- markdownlint-enable MD013 -->
 
@@ -688,7 +688,7 @@ Location: https://myanimelist.net/anime/49784
 ##### Raw path format
 
 ```http
-GET https://animeapi.my.id/redirect?platform=animeplanet&mediaid=cells-at-work&target=simkl&raw
+GET https://animeapi.my.id/redirect?platform=animeplanet&mediaid=cells-at-work&target=simkl&israw
 
 HTTP/1.1 200 OK
 Content-Type: text/plain; charset=utf-8
