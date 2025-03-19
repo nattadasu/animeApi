@@ -167,27 +167,33 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 AnimeAPI supported following sites for media lookup. You can use this as an
 alias cheatsheet as well.
 
-|      Platform | Aliases                                                                                               |
-| ------------: | :---------------------------------------------------------------------------------------------------- |
-|       `anidb` | `adb`, `anidb.net`                                                                                    |
-|     `anilist` | `al`, `anilist.co`                                                                                    |
-| `animeplanet` | `ap`, `anime-planet.com` `anime-planet`                                                               |
-|   `anisearch` | `as`, `anisearch.com`, `anisearch.de`, `anisearch.it`, `anisearch.es`, `anisearch.fr`, `anisearch.jp` |
-|      `annict` | `anc`, `act`, `ac`, `annict.com`, `annict.jp`, `en.annict.com`                                        |
-|        `imdb` | `imdb.com`                                                                                            |
-|       `kaize` | `kz`, `kaize.io`                                                                                      |
-|       `kitsu` | `kt`, `kts`, `kitsu.io`, `kitsu.app`                                                                  |
-|   `livechart` | `lc`, `livechart.me`                                                                                  |
-| `myanimelist` | `mal`, `myanimelist.net`                                                                              |
-|   `nautiljon` | `ntj`, `nautiljon.com`                                                                                |
-|      `notify` | `ntf`, `ntm`, `nf`, `nm`, `notifymoe`, `notify.moe`                                                   |
-|   `otakotaku` | `oo`, `otakotaku.com`                                                                                 |
-|   `shikimori` | `shiki`, `shk`, `shikimori.me`, `shikimori.one`, `shikimori.org`                                      |
-|      `shoboi` | `shb`, `syb`, `sb`, `shobocal`, `syoboi`, `syobocal`, `cal.syoboi.jp`                                 |
-| `silveryasha` | `sy`, `dbti`, `db.silveryasha.id`, `db.silveryasha.web.id`                                            |
-|       `simkl` | `smk`, `simkl.com`, `animecountdown`, `animecountdown.com`                                            |
-|  `themoviedb` | `tmdb`, `themoviedb.org`                                                                              |
-|       `trakt` | `trk`, `trakt.tv`                                                                                     |
+> [!NOTE]
+>
+> * The aliases are case-insensitive. You can use any of the aliases to get the
+>   data you want.
+> * 2K is the two-letter abbreviation for the platform.
+
+|      Platform |     2K     | Aliases                                                                                         |
+| ------------: | :--------: | ----------------------------------------------------------------------------------------------- |
+|       `anidb` |    `ad`    | `adb`, `anidb.net`                                                                              |
+|     `anilist` |    `al`    | `anilist.co`                                                                                    |
+| `animeplanet` |    `ap`    | `anime-planet.com` `anime-planet`, `animeplanet.com`                                            |
+|   `anisearch` |    `as`    | `anisearch.com`, `anisearch.de`, `anisearch.it`, `anisearch.es`, `anisearch.fr`, `anisearch.jp` |
+|      `annict` |    `ac`    | `anc`, `act`, `annict.com`, `annict.jp`, `en.annict.com`                                        |
+|        `imdb` |    `im`    | `imdb.com`                                                                                      |
+|       `kaize` |    `kz`    | `kaize.io`                                                                                      |
+|       `kitsu` |    `kt`    | `kts`, `kitsu.io`, `kitsu.app`                                                                  |
+|   `livechart` |    `lc`    | `livechart.me`                                                                                  |
+| `myanimelist` | `ma`, `ml` | `mal`, `myanimelist.net`                                                                        |
+|   `nautiljon` |    `nj`    | `ntj`, `nautiljon.com`                                                                          |
+|      `notify` | `nf`, `nm` | `ntf`, `ntm`, `notifymoe`, `notify.moe`                                                         |
+|   `otakotaku` |    `oo`    | `otakotaku.com`                                                                                 |
+|   `shikimori` |    `sh`    | `shiki`, `shk`, `shikimori.me`, `shikimori.one`, `shikimori.org`                                |
+|      `shoboi` |    `sb`    | `shb`, `syb`, `shobocal`, `syoboi`, `syobocal`, `cal.syoboi.jp`                                 |
+| `silveryasha` |    `sy`    | `dbti`, `db.silveryasha.id`, `db.silveryasha.web.id`                                            |
+|       `simkl` |    `sm`    | `smk`, `simkl.com`, `animecountdown`, `animecountdown.com`                                      |
+|  `themoviedb` |    `tm`    | `tmdb`, `themoviedb.org`                                                                        |
+|       `trakt` |    `tr`    | `trk`, `trakt.tv`                                                                               |
 
 <!-- markdownlint-enable MD034 MD013 -->
 
@@ -238,10 +244,6 @@ To use this API, you can access the following base URLs:
 All requests must be `GET`, and response always will be in JSON format.
 
 ### Get status and statistics
-
-> [!WARNING]
->
-> This endpoint is only available on v3
 
 MIME Type: `application/json`
 
@@ -336,10 +338,6 @@ GET /status
 
 ### Get latency report
 
-> [!WARNING]
->
-> This endpoint is only available on v3
-
 MIME Type: `application/json`
 
 ```http
@@ -382,21 +380,20 @@ Updated on 03/18/2025 05:17:23 UTC
 
 ### Get all items in Array
 
+HTTP Status Code: `302` (redirect to GitHub raw file URL)\
 MIME Type: `application/json`
 
 ```http
 GET /animeApi.json
 ```
 
-On `v3`, you will automatically redirected to GitHub raw file URL of the
-provider's JSON file. Make sure to allow `302` status code on your application
-if you want to use this endpoint.
+or
+
+```http
+GET /aa.json
+```
 
 ### Fetch all item as TSV (Tab Separated Values) file
-
-> [!WARNING]
->
-> This endpoint is only available on v3
 
 > [!TIP]
 >
@@ -408,8 +405,15 @@ MIME Type: `text/tab-separated-values`
 GET /animeApi.tsv
 ```
 
+or
+
+```http
+GET /aa.tsv
+```
+
 ### Get All ID in Object/Dictionary format of each provider
 
+HTTP Status Code: `302` (redirect to GitHub raw file URL)\
 MIME Type: `application/json`
 
 ```http
@@ -419,12 +423,9 @@ GET /:platform.json
 `:platform` can be one of the following listed in
 [Supported Platforms and Aliases](#supported-platforms-and-aliases).
 
-On `v3`, you will automatically redirected to GitHub raw file URL of the
-provider's JSON file. Make sure to allow `302` status code on your application
-if you want to use this endpoint.
-
 ### Get All ID in Array/List format of each provider
 
+HTTP Status Code: `302` (redirect to GitHub raw file URL)\
 MIME Type: `application/json`
 
 ```http
@@ -439,13 +440,9 @@ GET /:platform().json
 > The `()` in the endpoint is not a typo, it's part of the endpoint.
 > If you can't access the endpoint, try to encode the `()` to `%28%29`.
 
-On `v3`, you will automatically redirected to GitHub raw file URL of the
-provider's JSON file. Make sure to allow `302` status code on your application
-if you want to use this endpoint.
-
 ### Get anime relation mapping data
 
-MIME Type: `application/json` on `v3`, `application/octet-stream` on `v2`
+MIME Type: `application/json`
 
 ```http
 GET /:platform/:mediaid
@@ -552,6 +549,11 @@ instead, you can resolve/convert it to ID using following Trakt API endpoint:
 GET https://api.trakt.tv/search/trakt/<ID>?type=<movie|show>
 ```
 
+> [!NOTE]
+>
+> The Trakt API requires an API key to access the endpoint. You can get the API
+> key by registering on the Trakt website.
+
 To get exact season mapping, append `/seasons/:season_inc` to the end of the ID,
 where `:season_inc` is the season number of the title in the provider.
 
@@ -603,10 +605,6 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
 
 ### Redirect to provider's page
 
-> [!WARNING]
->
-> This endpoint is only available on v3
-
 HTTP Status Code: `302` OR `200` (if required)\
 MIME Type: None OR `text/plain` (if required)
 
@@ -628,10 +626,10 @@ GET /rd?from=:platform&id=:mediaid&to=:platform
 
   <!-- markdownlint-disable MD013 -->
 
-  |     Platform | Aliases                     | Additional Notes                |
-  | -----------: | :-------------------------- | :------------------------------ |
-  |   `kurozora` | `kr`, `krz`, `kurozora.app` | Requires Kurozora+ subscription |
-  | `letterboxd` | `lb`, `letterboxd.com`      | Only available for movies       |
+  |     Platform |  2K   | Aliases               | Additional Notes                |
+  | -----------: | :---: | --------------------- | :------------------------------ |
+  |   `kurozora` | `kr`  | `krz`, `kurozora.app` | Requires Kurozora+ subscription |
+  | `letterboxd` | `lb`  | `letterboxd.com`      | Only available for movies       |
 
   <!-- markdownlint-enable MD013 -->
 
@@ -645,12 +643,14 @@ In AnimeAPI, we use query parameters to specify the output of the API. The query
 parameters are as follows:
 
 <!-- markdownlint-disable MD013 -->
+
 | Parameter  | Aliases | Is Required | Description                                                                                                                        |
 | ---------- | ------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `platform` | `from`  | Yes         | The platform you want to get the data from.                                                                                        |
 | `mediaid`  | `id`    | Yes         | The ID of the anime in the platform.                                                                                               |
 | `target`   | `to`    | No          | The platform you want to redirect to. If you don't specify this parameter, the API will redirect to specified platform's homepage. |
-| `raw`      | `r`     | No          | If you set this parameter to `true`, the API will only show the URI link instead of redirecting automatically                      |
+| `raw`      | `r`     | No          | As long as this parameter is present, the API will return the raw URL instead of redirecting.                                     |
+
 <!-- markdownlint-enable MD013 -->
 
 #### Redirect: Response
@@ -688,12 +688,12 @@ Location: https://myanimelist.net/anime/49784
 ##### Raw path format
 
 ```http
-GET https://animeapi.my.id/redirect?platform=animeplanet&mediaid=cells-at-work&target=simkl&raw=true
+GET https://animeapi.my.id/redirect?platform=animeplanet&mediaid=cells-at-work&target=simkl&raw
 
 HTTP/1.1 200 OK
 Content-Type: text/plain; charset=utf-8
 
-https://api.simkl.com/redirect?to=Simkl&anidb=13743
+https://simkl.com/anime/757695
 ```
 
 ## Schema
@@ -962,6 +962,9 @@ Add the following schema URI to your JSON file.
 <!-- /jsonschema -->
 <!-- markdownlint-enable MD013 -->
 </details>
+
+You can also read human-readable schema in [JSON Schema](api/SCHEMA.md) if you
+want to create your own wrapper.
 
 ### TypeScript
 
