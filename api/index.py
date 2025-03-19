@@ -37,9 +37,10 @@ PLATFORM_SYNONYMS = {
     "kurozora": ["kr", "krz", "kurozora.app"],
     "letterboxd": ["lb", "letterboxd.com"],
     "livechart": ["lc", "livechart.me"],
-    "myanimelist": ["ma", "ml", "mal", "myanimelist.net"],
+    "myanili": ["my", "myani.li"],
+    "myanimelist": ["ma", "mal", "myanimelist.net"],
     "nautiljon": ["nj", "ntj", "nautiljon.com"],
-    "notify": ["nf", "nm", "ntf", "ntm", "notifymoe", "notify.moe"],
+    "notify": ["nf", "ntf", "ntm", "notifymoe", "notify.moe"],
     "otakotaku": ["oo", "otakotaku.com"],
     "shikimori": ["sh", "shk", "shiki", "shikimori.me", "shikimori.one", "shikimori.org"],
     "shoboi": ["sb", "shb", "syb", "syoboi", "shobocal", "syobocal", "cal.syoboi.jp"],
@@ -416,6 +417,13 @@ def redirect_route():
             f"Platform not found, please check if `{platform}` is a valid platform",
         )
 
+    if platform in ["kurozora", "myanili", "letterboxd"]:
+        return error_response(
+            "Invalid platform source",
+            400,
+            f"Platform `{platform}` is not supported as redirect source (one-way)",
+        )
+
     if target and not is_valid_target(target):
         return error_response("Invalid target", 400, f"Target {target} not found")
 
@@ -546,6 +554,7 @@ route_path = {
     "kurozora": "https://kurozora.app/myanimelist.net/anime/",
     "letterboxd": "https://letterboxd.com/tmdb/",
     "livechart": "https://www.livechart.me/anime/",
+    "myanili": "https://myani.li/#/anime/details/",
     "myanimelist": "https://myanimelist.net/anime/",
     "nautiljon": "https://www.nautiljon.com/animes/",
     "notify": "https://notify.moe/anime/",
@@ -630,12 +639,12 @@ def build_target_uri(
     try:
         if target == "trakt":
             return build_trakt_uri(maps, target)
-        if target == "kurozora":
+        if target == "kurozora" or target == "myanili":
             if not maps.get("myanimelist"):
                 return error_response(
                     "Not found",
                     404,
-                    "MyAnimeList ID not found, which is requirement for Kurozora's Universal Link.",
+                    f"MyAnimeList ID not found, which is requirement for {target}.",
                 )
             else:
                 return f"{route_path[target]}{maps['myanimelist']}"
