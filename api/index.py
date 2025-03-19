@@ -6,7 +6,7 @@ import json
 from datetime import datetime as dtime
 from datetime import timezone as tz
 from time import time
-from typing import Any, TypedDict, Union
+from typing import Any, Tuple, TypedDict, Union
 from urllib.parse import unquote
 
 from flask import (
@@ -24,6 +24,32 @@ app = Flask(__name__)
 
 runtime = time()
 
+# fmt: off
+PLATFORM_SYNONYMS = {
+    "anidb": ["ad", "adb", "anidb.net"],
+    "anilist": ["al", "anilist.co"],
+    "animeplanet": ["ap", "anime-planet", "anime-planet.com", "animeplanet.com"],
+    "anisearch": ["as", "anisearch.de", "anisearch.es", "anisearch.fr", "anisearch.it", "anisearch.jp", "anisearch.com"],
+    "annict": ["ac", "act", "anc", "annict.com", "annict.jp", "en.annict.com"],
+    "imdb": ["im", "imdb.com"],
+    "kaize": ["kz", "kaize.io"],
+    "kitsu": ["kt", "kts", "kitsu.app", "kitsu.io"],
+    "kurozora": ["kr", "krz", "kurozora.app"],
+    "letterboxd": ["lb", "letterboxd.com"],
+    "livechart": ["lc", "livechart.me"],
+    "myanimelist": ["ma", "ml", "mal", "myanimelist.net"],
+    "nautiljon": ["nj", "ntj", "nautiljon.com"],
+    "notify": ["nf", "nm", "ntf", "ntm", "notifymoe", "notify.moe"],
+    "otakotaku": ["oo", "otakotaku.com"],
+    "shikimori": ["sh", "shk", "shiki", "shikimori.me", "shikimori.one", "shikimori.org"],
+    "shoboi": ["sb", "shb", "syb", "syoboi", "shobocal", "syobocal", "cal.syoboi.jp"],
+    "silveryasha": ["sy", "dbti", "db.silveryasha.id", "db.silveryasha.web.id"],
+    "simkl": ["sm", "smk", "simkl.com", "animecountdown", "animecountdown.com"],
+    "themoviedb": ["tm", "tmdb", "tmdb.org"],
+    "trakt": ["tr", "trk", "trakt.tv"],
+}
+# fmt: on
+
 
 class CorruptedResp(TypedDict):
     error: str
@@ -34,12 +60,12 @@ class CorruptedResp(TypedDict):
 def platform_id_content(platform: str, platform_id: Union[int, str]) -> dict[str, Any]:
     """Get content of platform ID
 
-    Args:
-        platform (str): Platform name
-        platform_id (int): Platform ID
-
-    Returns:
-        dict[str, Any]: Platform ID content
+    :param platform: Platform name
+    :type platform: str
+    :param platform_id: Platform ID
+    :type platform_id: Union[int, str]
+    :return: Platform ID content
+    :rtype: dict[str, Any]
     """
     extensions_to_remove = [".json", ".html"]
     platform_id = str(platform_id)
@@ -147,13 +173,14 @@ def trakt_exclusive_route(
     """
     Trakt exclusive route
 
-    Args:
-        media_type (str): Media type, must be `movie` or `show`
-        media_id (int): Media ID
-        season_id (Union[str, None], optional): Season ID. Defaults to None.
-
-    Returns:
-        Response: Response
+    :param media_type: Media type, must be `movie` or `show`
+    :type media_type: str
+    :param media_id: Media ID
+    :type media_id: int
+    :param season_id: Season ID, defaults to None
+    :type season_id: Union[str, None], optional
+    :return: Response
+    :rtype: Response
     """
     if season_id == "0" and media_type in ["shows", "show"]:
         return jsonify(
@@ -195,13 +222,14 @@ def tmdb_exclusive_route(
     """
     The Movie Database exclusive route
 
-    Args:
-        media_type (str): Media type, must be `movie`
-        media_id (int): Media ID
-        season_id (Union[str, None], optional): Season ID. Defaults to None.
-
-    Returns:
-        Response: Response
+    :param media_type: Media type, must be `movie`
+    :type media_type: str
+    :param media_id: Media ID
+    :type media_id: int
+    :param season_id: Season ID, defaults to None
+    :type season_id: Union[str, None], optional
+    :return: Response
+    :rtype: Response
     """
     if media_type == "tv" or season_id is not None:
         return jsonify(
@@ -229,28 +257,46 @@ def platform_array(platform: str = "animeapi"):
     """
     Platform array route, redirects to the raw JSON file on GitHub
 
-    Args:
-        platform (str, optional): Platform name. Defaults to "animeapi".
-
-    Returns:
-        Response: Redirect response
+    :param platform: Platform name, defaults to "animeapi"
+    :type platform: str, optional
+    :return: Redirect response
+    :rtype: Response
     """
     route = request.path
-    goto = get_goto(route)
+    goto = get_goto(route, platform)
 
-    if route.endswith(".tsv"):
+    if route == "/animeapi.tsv" or route == "/aa.tsv":
         return serve_tsv_response()
 
-    return redirect_to_github(goto)
+    if is_valid_target(platform) or platform in ["animeapi", "aa"]:
+        return redirect_to_github(goto)
+    return error_response(
+        "Invalid platform",
+        400,
+        f"Platform {platform} not found, please check if it is a valid platform",
+    )
 
 
 def get_goto(route: str, raw_platform: str) -> str:
+    """
+    Redirect to the raw JSON file on GitHub
+
+    :param route: Route
+    :type route: str
+    :param raw_platform: Raw platform
+    :type raw_platform: str
+    :return: Redirect URL
+    :rtype: str
+    """
     goto = route.replace("/", "")
 
     if goto.endswith(".json"):
         goto = goto.replace(".json", "")
 
-    if not (goto.endswith("()") or goto.endswith("%28%29")) and goto != "animeapi":
+    raw_platform = unquote(raw_platform).replace("()", "")
+    goto = goto.replace(goto, resolve_platform(raw_platform))
+    goto = goto.replace("aa", "animeapi")
+    if not (goto.endswith("()") or goto.endswith("%28%29")) and goto not in ["animeapi", "aa"]:
         goto += "_object"
     else:
         goto = unquote(goto).replace("()", "")
@@ -258,10 +304,16 @@ def get_goto(route: str, raw_platform: str) -> str:
     if goto == "syobocal":
         goto = "shoboi"
 
-    return goto.replace(raw_platform, resolve_platform(raw_platform))
+    return goto
 
 
 def serve_tsv_response() -> Response:
+    """
+    Serve TSV response
+
+    :return: Response
+    :rtype: Response
+    """
     with open("database/animeapi.tsv", "r", encoding="utf-8") as file_:
         response = Response(
             file_.read(), mimetype="text/tab-separated-values", status=200
@@ -271,6 +323,14 @@ def serve_tsv_response() -> Response:
 
 
 def redirect_to_github(goto: str) -> wzResponse:
+    """
+    Redirect to GitHub
+
+    :param goto: Goto
+    :type goto: str
+    :return: Redirect response
+    :rtype: wzResponse
+    """
     github_url = (
         f"https://raw.githubusercontent.com/nattadasu/animeApi/v3/database/{goto}.json"
     )
@@ -278,28 +338,30 @@ def redirect_to_github(goto: str) -> wzResponse:
 
 
 @app.route("/<platform>/<platform_id>", methods=["GET"])
-def platform_lookup(platform: str, platform_id: Union[int, str]):
+def platform_lookup(
+    platform: str, platform_id: Union[int, str]
+) -> Tuple[Response, int]:
     """
     Platform lookup route
 
-    Args:
-        platform (str): Platform name
-        platform_id (int): Platform ID
-
-    Returns:
-        Response: JSON response
+    :param platform: Platform name
+    :type platform: str
+    :param platform_id: Platform ID
+    :type platform_id: Union[int, str]
+    :return: JSON response
+    :rtype: Tuple[Response, int]
     """
     platform = platform.lower()
     platform = resolve_platform(platform=platform)
     try:
         data = platform_id_content(platform, platform_id)
-        return jsonify(data)
+        return jsonify(data), 200
     except FileNotFoundError:
         return jsonify(
             {
                 "error": "Not found",
                 "code": 404,
-                "message": f"Platform {platform} not found",
+                "message": f"Platform {platform} not found or not supported",
             }
         ), 404
     except KeyError:
@@ -325,7 +387,7 @@ def redirect_route():
     """
     args = request.args
     platform, platform_id, target, israw = extract_params(args)
-    israw = israw is not None
+    israw = True if israw else False
 
     if not platform:
         return error_response(
@@ -359,71 +421,92 @@ def redirect_route():
         return generate_response(uri, israw)
 
     if platform == "trakt":
-        response = handle_trakt_case(platform_id)
+        response = handle_trakt_case(str(platform_id))
         if response:
             return response
-    if platform == "themoviedb" and ("movie" not in platform_id):
+    if platform == "themoviedb" and ("movie" not in str(platform_id)):
         platform_id = f"movie/{platform_id}"
 
     maps = platform_id_content(platform=platform, platform_id=platform_id)
-    uri = build_target_uri(target, maps, platform, platform_id)
+    uri = build_target_uri(target, maps, platform, str(platform_id))
     if isinstance(uri, Response):
         return uri
 
+    if isinstance(uri, tuple):
+        return uri
     return generate_response(uri, israw)
 
 
-def extract_params(args):
+def extract_params(args: dict[str, Any]) -> tuple[str, Union[int, str], str, bool]:
+    """
+    Extract parameters
+
+    :param args: Arguments
+    :type args: dict[str, Any]
+    :return: Platform, platform ID, target, is raw
+    :rtype: tuple[str, Union[int, str], str, bool]
+    """
     platform = (args.get("platform") or args.get("from") or "").lower()
+    platform = resolve_platform(platform)
     platform_id = args.get("mediaid") or args.get("id")
+    platform_id = 0 if not platform_id else platform_id
     target = args.get("target") or args.get("to")
-    israw = args.get("raw") or args.get("r")
+    target = resolve_platform(target) if target else platform
+    try:
+        try:
+            israw = args["raw"]
+        except KeyError:
+            israw = args["r"]
+        israw = True
+    except KeyError:
+        israw = False
     return platform, platform_id, target, israw
 
 
-def error_response(error, code, message):
+def error_response(error: str, code: int, message: str) -> Tuple[Response, int]:
+    """
+    Error response
+
+    :param error: Error
+    :type error: str
+    :param code: Code
+    :type code: int
+    :param message: Message
+    :type message: str
+    :return: JSON response
+    :rtype: Tuple[Response, int]
+    """
     return jsonify({"error": error, "code": code, "message": message}), code
 
 
-def resolve_platform(platform):
-    synonyms = {
-        "anidb": ["adb", "anidb.net"],
-        "anilist": ["al", "anilist.co"],
-        "animeplanet": ["ap", "anime-planet", "anime-planet.com"],
-        "anisearch": ["as", "anisearch.com"],
-        "annict": ["anc", "act", "ac", "annict.com"],
-        "imdb": ["imdb.com"],
-        "kaize": ["kz", "kaize.io"],
-        "kitsu": ["kts", "kt", "kitsu.app", "kitsu.io"],
-        "kurozora": ["kr", "krz", "kurozora.app"],
-        "letterboxd": ["lb", "letterboxd.com"],
-        "livechart": ["lc", "livechart.me"],
-        "myanimelist": ["mal", "myanimelist.net"],
-        "nautiljon": ["ntj", "nautiljon.com"],
-        "notify": ["ntf", "notifymoe", "notify.moe"],
-        "otakotaku": ["oo", "otakotaku.com"],
-        "shikimori": ["shiki", "shikimori.one"],
-        "shoboi": ["syoboi", "syb", "cal.syoboi.jp"],
-        "silveryasha": ["dbti", "sy"],
-        "simkl": ["smk", "simkl.com", "animecountdown", "animecountdown.com"],
-        "themoviedb": ["tmdb", "tmdb.org"],
-        "trakt": ["trk", "trakt.tv"],
-    }
+def resolve_platform(platform: str) -> str:
+    """
+    Resolve platform input to a standard platform name
+
+    :param platform: Platform name
+    :type platform: str
+    :return: Standard platform name
+    :rtype: str
+    """
+    platform = platform.lower()
     # Create a lookup dictionary including both proper names and aliases
     lookup = {
-        alias: key for key, aliases in synonyms.items() for alias in [key] + aliases
+        alias: key
+        for key, aliases in PLATFORM_SYNONYMS.items()
+        for alias in [key] + aliases
     }
-    return lookup.get(platform)
+    return lookup.get(platform, platform)
 
+def is_valid_target(target: str) -> bool:
+    """
+    Check if target is valid
 
-def is_valid_target(target):
-    # fmt: off
-    valid_targets = [
-        "anidb", "anilist", "animeplanet", "anisearch", "annict", "imdb", "kaize",
-        "kitsu", "kurozora", "livechart", "myanimelist", "nautiljon", "notify",
-        "otakotaku", "shikimori", "shoboi", "silveryasha", "themoviedb", "trakt",
-        "simkl", "letterboxd",
-    ]
+    :param target: Target
+    :type target: str
+    :return: True if valid, False otherwise
+    :rtype: bool
+    """
+    valid_targets = PLATFORM_SYNONYMS.keys()
     return target in valid_targets
 
 
@@ -452,18 +535,46 @@ route_path = {
 }
 
 
-def build_uri(platform, platform_id):
+def build_uri(platform: str, platform_id: Union[int, str]) -> str:
+    """
+    Build URI
+
+    :param platform: Platform
+    :type platform: str
+    :param platform_id: Platform ID
+    :type platform_id: Union[int, str]
+    :return: URI
+    :rtype: str
+    """
     return route_path.get(platform, "") + str(platform_id)
 
 
-def generate_response(uri, israw):
+def generate_response(uri: str, israw: bool) -> Union[Response, wzResponse]:
+    """
+    Generate response
+
+    :param uri: URI
+    :type uri: str
+    :param israw: Return raw response
+    :type israw: bool
+    :return: Response
+    :rtype: Union[Response, wzResponse]
+    """
     if not israw:
         return redirect(uri)
     else:
         return Response(uri, mimetype="text/plain", status=200)
 
 
-def handle_trakt_case(platform_id):
+def handle_trakt_case(platform_id: str) -> Union[Tuple[Response, int], None]:
+    """
+    Handle Trakt case
+
+    :param platform_id: Platform ID
+    :type platform_id: str
+    :return: Response or None
+    :rtype: Union[Response, None]
+    """
     trakt_arr = platform_id.split("/")
     if len(trakt_arr) > 1 and not trakt_arr[1].isdigit():
         final_id = "/".join(trakt_arr[:2])
@@ -474,7 +585,24 @@ def handle_trakt_case(platform_id):
         )
 
 
-def build_target_uri(target, maps, platform, platform_id):
+# def build_target_uri(target, maps, platform, platform_id):
+def build_target_uri(
+    target: str, maps: dict[str, Any], platform: str, platform_id: str
+) -> Union[str, Tuple[Response, int]]:
+    """
+    Build target URI
+
+    :param target: Target
+    :type target: str
+    :param maps: Maps
+    :type maps: dict[str, Any]
+    :param platform: Platform
+    :type platform: str
+    :param platform_id: Platform ID
+    :type platform_id: str
+    :return: URI or Response
+    :rtype: Union[str, Tuple[Response, int]]
+    """
     try:
         if target == "trakt":
             return build_trakt_uri(maps, target)
@@ -510,7 +638,17 @@ def build_target_uri(target, maps, platform, platform_id):
         )
 
 
-def build_trakt_uri(maps, target):
+def build_trakt_uri(maps: dict[str, Any], target: str) -> str:
+    """
+    Build Trakt URI
+
+    :param maps: Maps
+    :type maps: dict[str, Any]
+    :param target: Target
+    :type target: str
+    :return: URI
+    :rtype: str
+    """
     tgt_id = maps.get("trakt")
     if tgt_id is None:
         raise ValueError
@@ -522,7 +660,17 @@ def build_trakt_uri(maps, target):
         return f"{route_path[target]}{media_type}/{tgt_id}/seasons/{season}"
 
 
-def build_generic_uri(maps, target):
+def build_generic_uri(maps: dict[str, Any], target: str) -> str:
+    """
+    Build generic URI
+
+    :param maps: Maps
+    :type maps: dict[str, Any]
+    :param target: Target
+    :type target: str
+    :return: URI
+    :rtype: str
+    """
     tgt_id = maps.get(target)
     if tgt_id is None:
         raise ValueError
@@ -543,7 +691,7 @@ def handle_error(err: Exception):
     """
     err_split = str(err).split(":")
     get_code = err_split[0].split(" ")
-    data = {
+    data: dict[str, Union[str, int]] = {
         "error": " ".join(err_split[-1:]).strip(),
         "code": int(get_code[0]),
     }
