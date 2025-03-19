@@ -360,8 +360,9 @@ def update_markdown(
         f"<!-- updated -->\nLast updated: {datetime.fromtimestamp(now).strftime('%d %B %Y %H:%M:%S UTC')}\n<!-- /updated -->",  # type: ignore
         readme,
     )
-    formatted_time = datetime.utcfromtimestamp(
-        now).strftime("%m/%d/%Y %H:%M:%S UTC")  # type: ignore
+    formatted_time = datetime.fromtimestamp(now, timezone.utc).strftime(
+        "%m/%d/%Y %H:%M:%S UTC"
+    )  # type: ignore
     readme = re.sub(
         r"<!-- updated-txt -->(.|\n)*<!-- \/updated-txt -->",
         f"<!-- updated-txt -->\n```txt\nUpdated on {formatted_time}\n```\n<!-- /updated-txt -->",
