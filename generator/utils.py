@@ -5,7 +5,7 @@ import sys
 from time import time
 
 from clock import convert_float_to_time as seconds_to_time_context
-from const import pprint, GITHUB_DISPATCH
+from const import GITHUB_DISPATCH, pprint
 from prettyprint import Platform, Status
 
 
@@ -34,11 +34,14 @@ def check_git_any_changes() -> bool:
         )
         return True
 
-def proc_stop(start_time: float,
-              status: Status,
-              message: str | None = None,
-              exit_code: int = 0,
-              show_traceback: bool = False) -> None:
+
+def proc_stop(
+    start_time: float,
+    status: Status,
+    message: str | None = None,
+    exit_code: int = 0,
+    show_traceback: bool = False,
+) -> None:
     """
     Show message and exit from program
 
@@ -59,12 +62,11 @@ def proc_stop(start_time: float,
     subtract_time = end_time - start_time
     context = seconds_to_time_context(subtract_time)
     print()
-    pprint.print(Platform.SYSTEM,
-                 Status.INFO,
-                 f"Generator finished in {context}")
+    pprint.print(Platform.SYSTEM, Status.INFO, f"Generator finished in {context}")
     if message:
         pprint.print(Platform.SYSTEM, status, message)
     if show_traceback:
         import traceback
+
         traceback.print_exc()
     sys.exit(exit_code)

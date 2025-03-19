@@ -16,6 +16,7 @@ pprint = PrettyPrint()
 fua = FakeUserAgent(browsers=["firefox", "chrome", "edge", "safari"])
 rand_fua: str = f"{fua.random}"  # type: ignore
 
+
 class Kaize:
     """Kaize anime data scraper"""
 
@@ -25,7 +26,7 @@ class Kaize:
         xsrf_token: Optional[str] = None,
         user_agent: Optional[str] = None,
         email: Optional[str] = None,
-        password: Optional[str] = None
+        password: Optional[str] = None,
     ) -> None:
         """
         Initialize the Kaize class
@@ -80,7 +81,6 @@ class Kaize:
         self.headers["Cookie"] = self.cookies
         self.headers["X-XSRF-TOKEN"] = str(self.xsrf_token)
 
-
     def _get(self, url: str) -> Union[req.Response, None]:
         """
         Get the response from the url
@@ -99,12 +99,11 @@ class Kaize:
             pprint.print(Platform.KAIZE, Status.ERR, f"Error: {err}")
             return None
 
-
     def _post(
         self,
         url: str,
         data: Union[dict[str, Any], str],
-        header: Union[dict[str, Any], None] = None
+        header: Union[dict[str, Any], None] = None,
     ) -> Union[req.Response, None]:
         """
         Do POST request to the url
@@ -156,9 +155,11 @@ class Kaize:
         # post login
         header_login = {
             "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-            "Cookie": (response.headers["Set-Cookie"].split(",")[0].split(";")[0] +
-                       "; " +
-                       response.headers["Set-Cookie"].split(",")[2].split(";")[0])
+            "Cookie": (
+                response.headers["Set-Cookie"].split(",")[0].split(";")[0]
+                + "; "
+                + response.headers["Set-Cookie"].split(",")[2].split(";")[0]
+            ),
         }
         data_raw: list[str] = [
             f"_token={token}",
@@ -171,16 +172,16 @@ class Kaize:
             raise ConnectionError("Unable to connect to kaize.io")
         # set cookie
         cookie = (
-            response.headers["Set-Cookie"].split(",")[0].split(";")[0] +
-            "; " +
-            response.headers["Set-Cookie"].split(",")[2].split(";")[0]
+            response.headers["Set-Cookie"].split(",")[0].split(";")[0]
+            + "; "
+            + response.headers["Set-Cookie"].split(",")[2].split(";")[0]
         )
         return cookie
 
-    def pages(self, media: Literal['anime', 'manga'] = 'anime') -> int:
+    def pages(self, media: Literal["anime", "manga"] = "anime") -> int:
         """
         Get the total pages
-        
+
         :param media: The media, defaults to 'anime'
         :type media: Literal['anime', 'manga'], optional
         :raises ConnectionError: Unable to connect to kaize.io
@@ -203,7 +204,8 @@ class Kaize:
             pg_check = self._get(f"{self.base_url}/{media}/top?page={kzp}")
             if not pg_check:
                 pprint.print(
-                    Platform.KAIZE, Status.ERR, "Unable to connect to kaize.io")
+                    Platform.KAIZE, Status.ERR, "Unable to connect to kaize.io"
+                )
                 break
             soup = BeautifulSoup(pg_check.text, "html.parser")
             try:
@@ -227,7 +229,8 @@ class Kaize:
             pg_check = self._get(f"{self.base_url}/{media}/top?page={kzp}")
             if not pg_check:
                 pprint.print(
-                    Platform.KAIZE, Status.ERR, "Unable to connect to kaize.io")
+                    Platform.KAIZE, Status.ERR, "Unable to connect to kaize.io"
+                )
                 break
             soup = BeautifulSoup(pg_check.text, "html.parser")
             try:
@@ -251,7 +254,8 @@ class Kaize:
             pg_check = self._get(f"{self.base_url}/{media}/top?page={kzp}")
             if not pg_check:
                 pprint.print(
-                    Platform.KAIZE, Status.ERR, "Unable to connect to kaize.io")
+                    Platform.KAIZE, Status.ERR, "Unable to connect to kaize.io"
+                )
                 break
             soup = BeautifulSoup(pg_check.text, "html.parser")
             try:
@@ -270,9 +274,9 @@ class Kaize:
         )
         return kzpg
 
-    def _get_data_index(self,
-                        page: int,
-                        media: Literal['anime', 'manga'] = 'anime') -> list[dict[str, Any]]:
+    def _get_data_index(
+        self, page: int, media: Literal["anime", "manga"] = "anime"
+    ) -> list[dict[str, Any]]:
         """
         Get the data from the index
 
@@ -301,11 +305,13 @@ class Kaize:
                 media_id = media_id.group(1)
             else:
                 media_id = 0
-            result.append({
-                "title": title,
-                "slug": slug,
-                "kaize": int(media_id),
-            })
+            result.append(
+                {
+                    "title": title,
+                    "slug": slug,
+                    "kaize": int(media_id),
+                }
+            )
         return result
 
     def get_anime(self) -> list[dict[str, Any]]:
@@ -327,14 +333,15 @@ class Kaize:
                     anime_data.extend(self._get_data_index(page))
                     bar()
             with open(file_path, "w", encoding="utf-8") as file:
-                anime_data.sort(key=lambda x: x['title'])  # type: ignore
+                anime_data.sort(key=lambda x: x["title"])  # type: ignore
                 json.dump(anime_data, file)
             pprint.print(
                 Platform.KAIZE,
                 Status.PASS,
                 f"Done getting data, total data: {len(anime_data)},",
                 f"or around {str(math.ceil(len(anime_data) / 50))} pages,",
-                "expected pages:", str(pages)
+                "expected pages:",
+                str(pages),
             )
         except ConnectionError:
             pprint.print(
@@ -344,7 +351,7 @@ class Kaize:
             )
             with open(file_path, "r", encoding="utf-8") as file:
                 anime_data = json.load(file)
-        anime_data.sort(key=lambda x: x['title'])  # type: ignore
+        anime_data.sort(key=lambda x: x["title"])  # type: ignore
         return anime_data
 
     @staticmethod

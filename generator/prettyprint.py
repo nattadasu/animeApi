@@ -3,11 +3,14 @@ SPDX-License-Identifier: MIT
 
 Pretty print for the proccess
 """
-from enum import Enum
+
 from datetime import datetime
+from enum import Enum
+
 
 class Platform(Enum):
     """Platform color to be used for pretty printing."""
+
     ALLCINEMA = 0xEC0A0A
     ANIDB = 0x2A2F46
     ANILIST = 0x2F80ED
@@ -54,6 +57,7 @@ class Status(Enum):
         - Ready
         - Assert
     """
+
     # Use Hex color codes instead of ANSI color codes
     PASS = 0x2ECC71
     FAIL = 0xE74C3C
@@ -66,6 +70,7 @@ class Status(Enum):
     NOTICE = 0x1E90FF
     ASSERT = 0x808080
     BUILD = 0x4B0082
+
 
 def translate_hex_to_rgb(hex_: int) -> tuple[int, int, int]:
     """Translate hex to rgb"""
@@ -124,7 +129,7 @@ class PrettyPrint:
     def _format_to_hex(self, enums: Platform | Status) -> str:
         """
         Format the text block to hex
-        
+
         :param enums: The enum to be formatted
         :type enums: Platform | Status
         :return: The formatted text block
@@ -177,5 +182,6 @@ class PrettyPrint:
             f"{anullen}{cr_}{self._format_date()}{self._format_to_hex(platform)} {self._format_to_hex(status)} {message}",
             end=end,
         )
+
 
 __all__ = ["PrettyPrint", "Platform", "Status"]

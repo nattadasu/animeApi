@@ -5,15 +5,30 @@ from time import time
 from typing import Any
 
 from alive_progress import alive_bar  # type: ignore
-from const import (KAIZE_EMAIL, KAIZE_PASSWORD, KAIZE_SESSION,
-                   KAIZE_XSRF_TOKEN, attribution, pprint)
 from combiner import combine_anitrakt, combine_arm, combine_fribb
-from converter import (link_kaize_to_mal, link_nautiljon_to_mal,
-                       link_otakotaku_to_mal, link_silveryasha_to_mal)
+from const import (
+    KAIZE_EMAIL,
+    KAIZE_PASSWORD,
+    KAIZE_SESSION,
+    KAIZE_XSRF_TOKEN,
+    attribution,
+    pprint,
+)
+from converter import (
+    link_kaize_to_mal,
+    link_nautiljon_to_mal,
+    link_otakotaku_to_mal,
+    link_silveryasha_to_mal,
+)
 from dumper import update_attribution, update_markdown
-from fetcher import (get_anime_offline_database, get_anitrakt, get_arm,
-                     get_fribb_animelists, simplify_aod_data,
-                     simplify_silveryasha_data)
+from fetcher import (
+    get_anime_offline_database,
+    get_anitrakt,
+    get_arm,
+    get_fribb_animelists,
+    simplify_aod_data,
+    simplify_silveryasha_data,
+)
 from kaize import Kaize
 from nautiljon import Nautiljon
 from otakotaku import OtakOtaku
@@ -35,7 +50,8 @@ def main() -> None:
             session=KAIZE_SESSION,
             email=KAIZE_EMAIL,
             password=KAIZE_PASSWORD,
-            xsrf_token=KAIZE_XSRF_TOKEN).get_anime()
+            xsrf_token=KAIZE_XSRF_TOKEN,
+        ).get_anime()
         nau = Nautiljon().get_animes()
         ota = OtakOtaku().get_anime()
         sy_ = simplify_silveryasha_data()
@@ -46,31 +62,42 @@ def main() -> None:
         if git_changes is False:
             proc_stop(start_time, Status.INFO, "No changes in git, exiting")
         pprint.print(Platform.SYSTEM, Status.INFO, "Build database")
-        pprint.print(Platform.KAIZE, Status.BUILD,
-                     "Linking Kaize slug to MyAnimeList ID by fuzzy matching")
+        pprint.print(
+            Platform.KAIZE,
+            Status.BUILD,
+            "Linking Kaize slug to MyAnimeList ID by fuzzy matching",
+        )
         aod_arr = link_kaize_to_mal(kza, aod_arr)
-        pprint.print(Platform.NAUTILJON, Status.BUILD,
-                     "Linking Nautiljon slug to MyAnimeList ID by fuzzy matching")
+        pprint.print(
+            Platform.NAUTILJON,
+            Status.BUILD,
+            "Linking Nautiljon slug to MyAnimeList ID by fuzzy matching",
+        )
         aod_arr = link_nautiljon_to_mal(nau, aod_arr)
-        pprint.print(Platform.OTAKOTAKU, Status.BUILD,
-                     "Linking Otak Otaku ID to MyAnimeList ID")
+        pprint.print(
+            Platform.OTAKOTAKU, Status.BUILD, "Linking Otak Otaku ID to MyAnimeList ID"
+        )
         aod_arr = link_otakotaku_to_mal(ota, aod_arr)
-        pprint.print(Platform.SILVERYASHA, Status.BUILD,
-                     "Linking SilverYasha ID to MyAnimeList ID")
+        pprint.print(
+            Platform.SILVERYASHA,
+            Status.BUILD,
+            "Linking SilverYasha ID to MyAnimeList ID",
+        )
         aod_arr = link_silveryasha_to_mal(sy_, aod_arr)
-        pprint.print(Platform.ARM, Status.BUILD,
-                     "Combining ARM data with AOD data")
+        pprint.print(Platform.ARM, Status.BUILD, "Combining ARM data with AOD data")
         aod_arr = combine_arm(arm, aod_arr)
-        pprint.print(Platform.ANITRAKT, Status.BUILD,
-                     "Combining AniTrakt data with AOD data")
+        pprint.print(
+            Platform.ANITRAKT, Status.BUILD, "Combining AniTrakt data with AOD data"
+        )
         aod_arr = combine_anitrakt(anitrakt, aod_arr)
-        pprint.print(Platform.FRIBB, Status.BUILD,
-                     "Combining Fribb's Animelists data with AOD data")
+        pprint.print(
+            Platform.FRIBB,
+            Status.BUILD,
+            "Combining Fribb's Animelists data with AOD data",
+        )
         aod_arr = combine_fribb(fribb, aod_arr)
         final_arr: list[dict[str, Any]] = []
-        with alive_bar(len(aod_arr),
-                       title="Fixing missing keys",
-                       spinner=None) as bar:  # type: ignore
+        with alive_bar(len(aod_arr), title="Fixing missing keys", spinner=None) as bar:  # type: ignore
             for item in aod_arr:
                 data = {
                     "title": item.get("title", None),
@@ -108,7 +135,7 @@ def main() -> None:
         attr = update_attribution(final_arr, attribution)
         attr = update_markdown(attr=attr)
         counts: dict[str, int] = attr["counts"]  # type: ignore
-        print(f"Data parsed:")
+        print("Data parsed:")
         for key, value in counts.items():
             if key == "total":
                 continue

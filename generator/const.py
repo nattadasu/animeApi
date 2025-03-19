@@ -1,4 +1,5 @@
 import os
+from typing import Any
 
 from dotenv import load_dotenv
 from prettyprint import PrettyPrint
@@ -22,15 +23,10 @@ GITHUB_DISPATCH = os.getenv("GITHUB_EVENT_NAME") == "workflow_dispatch"
 pprint = PrettyPrint()
 """PrettyPrint class instance"""
 
-attribution = {
+attribution: dict[str, Any] = {
     "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
-    "updated": {
-        "timestamp": 0,
-        "iso": ""
-    },
-    "contributors": [
-        ""
-    ],
+    "updated": {"timestamp": 0, "iso": ""},
+    "contributors": [""],
     "sources": [
         "manami-project/anime-offline-database",
         "kawaiioverflow/arm",
@@ -93,6 +89,6 @@ attribution = {
         "themoviedb": r"/themoviedb/movie/(?P<media_id>\d+)",
         "trakt": r"/trakt/(?P<media_type>show|movie)(s)?/(?P<media_id>\d+)(?:/season(s)?/(?P<season_id>\d+))?",
         "updated": r"/updated",
-    }
+    },
 }
 """Attribution data"""

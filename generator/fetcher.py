@@ -20,7 +20,7 @@ def get_anime_offline_database() -> dict[str, Any]:
         url="https://raw.githubusercontent.com/manami-project/anime-offline-database/master/anime-offline-database-minified.json",
         file_name="aod",
         file_type="json",
-        platform=Platform.ANIMEOFFLINEDATABASE
+        platform=Platform.ANIMEOFFLINEDATABASE,
     )
     content: dict[str, Any] = ddump.dumper()
     pprint.print(
@@ -42,7 +42,7 @@ def get_arm() -> list[dict[str, Any]]:
         url="https://raw.githubusercontent.com/kawaiioverflow/arm/master/arm.json",
         file_name="arm",
         file_type="json",
-        platform=Platform.ARM
+        platform=Platform.ARM,
     )
     data: list[dict[str, Any]] = ddump.dumper()
     pprint.print(
@@ -76,9 +76,9 @@ def get_anitrakt() -> list[dict[str, Any]]:
         platform=Platform.ANITRAKT,
     )
     data_movie: list[dict[str, Any]] = ddump_movie.dumper()
-    with alive_bar(len(data_movie),
-                   title="Fixing AniTrakt data for movie",
-                   spinner=None) as bar:  # type: ignore
+    with alive_bar(
+        len(data_movie), title="Fixing AniTrakt data for movie", spinner=None
+    ) as bar:  # type: ignore
         for index, item in enumerate(data_movie):
             item["season"] = None
             data_movie[index] = item
@@ -152,9 +152,7 @@ def simplify_aod_data(aod: dict[str, Any]) -> list[dict[str, Any]]:
     """
     data: list[dict[str, Any]] = []
     items: list[dict[str, Any]] = aod["data"]
-    with alive_bar(len(items),
-                   title="Simplifying AOD data",
-                   spinner=None) as bar:  # type: ignore
+    with alive_bar(len(items), title="Simplifying AOD data", spinner=None) as bar:  # type: ignore
         for item in items:
             adb_id: int | None = None
             al_id: int | None = None
@@ -174,7 +172,9 @@ def simplify_aod_data(aod: dict[str, Any]) -> list[dict[str, Any]]:
                     ap_slug = sauce.split("/")[-1]
                 elif sauce.startswith("https://anisearch.com/anime/"):
                     as_id = int(sauce.split("/")[-1])
-                elif sauce.startswith("https://kitsu.io/anime/") or sauce.startswith("https://kitsu.app/anime/"):
+                elif sauce.startswith("https://kitsu.io/anime/") or sauce.startswith(
+                    "https://kitsu.app/anime/"
+                ):
                     kt_id = int(sauce.split("/")[-1])
                 elif sauce.startswith("https://livechart.me/anime/"):
                     lc_id = int(sauce.split("/")[-1])
@@ -184,19 +184,21 @@ def simplify_aod_data(aod: dict[str, Any]) -> list[dict[str, Any]]:
                     ntf_b64 = sauce.split("/")[-1]
                 elif sauce.startswith("https://simkl.com/anime/"):
                     smk_id = int(sauce.split("/")[-1])
-            data.append({
-                "title": item["title"],
-                "anidb": adb_id,
-                "anilist": al_id,
-                "animeplanet": ap_slug,
-                "anisearch": as_id,
-                "kitsu": kt_id,
-                "livechart": lc_id,
-                "myanimelist": mal_id,
-                "notify": ntf_b64,
-                "shikimori": mal_id,
-                "simkl": smk_id,
-            })
+            data.append(
+                {
+                    "title": item["title"],
+                    "anidb": adb_id,
+                    "anilist": al_id,
+                    "animeplanet": ap_slug,
+                    "anisearch": as_id,
+                    "kitsu": kt_id,
+                    "livechart": lc_id,
+                    "myanimelist": mal_id,
+                    "notify": ntf_b64,
+                    "shikimori": mal_id,
+                    "simkl": smk_id,
+                }
+            )
             bar()
     pprint.print(
         Platform.ANIMEOFFLINEDATABASE,
@@ -216,15 +218,17 @@ def simplify_silveryasha_data() -> list[dict[str, Any]]:
     """
     final: list[dict[str, Any]] = []
     data = get_silveryasha()
-    with alive_bar(len(data),
-                   title="Simplifying Silveryasha data",
-                   spinner=None) as bar:  # type: ignore
+    with alive_bar(
+        len(data), title="Simplifying Silveryasha data", spinner=None
+    ) as bar:  # type: ignore
         for item in data:
-            final.append({
-                "title": item["title"],
-                "alternative_titles": item["title_alt"],
-                "silveryasha": item["id"],
-                "myanimelist": item["mal_id"],
-            })
+            final.append(
+                {
+                    "title": item["title"],
+                    "alternative_titles": item["title_alt"],
+                    "silveryasha": item["id"],
+                    "myanimelist": item["mal_id"],
+                }
+            )
             bar()
     return final
