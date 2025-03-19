@@ -305,8 +305,8 @@ def update_markdown(
     tmd = add_spaces(counts["themoviedb"])
     trk = add_spaces(counts["trakt"])
     ttl = counts["total"]
-    table = f"""| Platform           |            ID |     Count |
-| :----------------- | ------------: | --------: |
+    table = f"""| Platform           |     Count |
+| :----------------- | --------: |
 | aniDB              | {adb} |
 | AniList            | {anl} |
 | Anime-Planet       | {apl} |
@@ -326,8 +326,8 @@ def update_markdown(
 | SIMKL              | {smk} |
 | The Movie Database | {tmd} |
 | Trakt              | {trk} |
-|                    |       |
-|          **Total** | **{ttl}** |
+|                    |           |
+| **Total**          | **{ttl}** |
 """
     readme = re.sub(
         r"<!-- counters -->(.|\n)*<!-- \/counters -->",
