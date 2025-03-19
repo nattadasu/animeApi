@@ -252,6 +252,7 @@ GET /status
 <details>
 <summary>Response example</summary>
 
+<!-- markdownlint-disable MD034 MD013 -->
 <!-- status -->
 ```json
 {
@@ -329,6 +330,7 @@ GET /status
 }
 ```
 <!-- /status -->
+<!-- markdownlint-enable MD034 MD013 -->
 
 </details>
 
