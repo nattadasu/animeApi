@@ -6,9 +6,9 @@ from alive_progress import alive_bar  # type: ignore
 from const import pprint
 from prettyprint import Platform, Status
 
+
 def combine_arm(
-    arm: list[dict[str, Any]],
-    aod: list[dict[str, Any]]
+    arm: list[dict[str, Any]], aod: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
     """
     Combine ARM data with AOD data
@@ -21,45 +21,55 @@ def combine_arm(
     :rtype: list[dict[str, Any]]
     """
     linked = 0
-    with alive_bar(len(aod),
-                   title="Combining ARM data with AOD data",
-                   spinner=None) as bar:  # type: ignore
+    with alive_bar(
+        len(aod), title="Combining ARM data with AOD data", spinner=None
+    ) as bar:  # type: ignore
         for item in aod:
-            myanimelist = item['myanimelist']
-            anilist = item['anilist']
+            myanimelist = item["myanimelist"]
+            anilist = item["anilist"]
             # Skip if both myanimelist and anilist are null
             if myanimelist is None and anilist is None:
-                item.update({
-                    'shoboi': None,
-                    'annict': None,
-                })
+                item.update(
+                    {
+                        "shoboi": None,
+                        "annict": None,
+                    }
+                )
                 bar()
                 continue
 
             # Check if mal_id and anilist_id exist in arm_data
             for arm_item in arm:
-                mal_id = arm_item.get('mal_id', None)
-                anilist_id = arm_item.get('anilist_id', None)
-                syoboi = arm_item.get('syobocal_tid', None)
-                annict = arm_item.get('annict_id', None)
+                mal_id = arm_item.get("mal_id", None)
+                anilist_id = arm_item.get("anilist_id", None)
+                syoboi = arm_item.get("syobocal_tid", None)
+                annict = arm_item.get("annict_id", None)
                 if myanimelist is not None and mal_id == myanimelist:
                     # Combine the data from arm_item with the item in aod_data
-                    item.update({
-                        'shoboi': syoboi,
-                        'annict': annict,
-                        'anilist': anilist if anilist is not None else anilist_id,
-                    })
+                    item.update(
+                        {
+                            "shoboi": syoboi,
+                            "annict": annict,
+                            "anilist": anilist if anilist is not None else anilist_id,
+                        }
+                    )
 
                     linked += 1
                     break
                 elif anilist is not None and anilist_id == anilist:
                     # Combine the data from arm_item with the item in aod_data
-                    item.update({
-                        'shoboi': syoboi,
-                        'annict': annict,
-                        'myanimelist': myanimelist if myanimelist is not None else mal_id,
-                        'shikimori': myanimelist if myanimelist is not None else mal_id,
-                    })
+                    item.update(
+                        {
+                            "shoboi": syoboi,
+                            "annict": annict,
+                            "myanimelist": myanimelist
+                            if myanimelist is not None
+                            else mal_id,
+                            "shikimori": myanimelist
+                            if myanimelist is not None
+                            else mal_id,
+                        }
+                    )
                     linked += 1
                     break
             bar()
@@ -78,8 +88,7 @@ def combine_arm(
 
 
 def combine_anitrakt(
-    anitrakt: list[dict[str, Any]],
-    aod: list[dict[str, Any]]
+    anitrakt: list[dict[str, Any]], aod: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
     """
     Combine AniTrakt data with AOD data
@@ -92,45 +101,51 @@ def combine_anitrakt(
     :rtype: list[dict[str, Any]]
     """
     linked = 0
-    with alive_bar(len(aod),
-                   title="Combining AniTrakt data with AOD data",
-                   spinner=None) as bar:  # type: ignore
+    with alive_bar(
+        len(aod), title="Combining AniTrakt data with AOD data", spinner=None
+    ) as bar:  # type: ignore
         for item in aod:
             matched = False
-            myanimelist = item['myanimelist']
+            myanimelist = item["myanimelist"]
             # Skip if both myanimelist and anilist are null
             if myanimelist is None:
-                item.update({
-                    'trakt': None,
-                    'trakt_type': None,
-                    'trakt_season': None,
-                })
+                item.update(
+                    {
+                        "trakt": None,
+                        "trakt_type": None,
+                        "trakt_season": None,
+                    }
+                )
                 bar()
                 continue
 
             # Check if mal_id and anilist_id exist in anitrakt_data
             for anitrakt_item in anitrakt:
-                mal_id = anitrakt_item.get('mal_id', None)
-                trakt = anitrakt_item.get('trakt_id', None)
-                media_type = anitrakt_item.get('type', None)
-                media_season = anitrakt_item.get('season', None)
+                mal_id = anitrakt_item.get("mal_id", None)
+                trakt = anitrakt_item.get("trakt_id", None)
+                media_type = anitrakt_item.get("type", None)
+                media_season = anitrakt_item.get("season", None)
                 if myanimelist is not None and mal_id == myanimelist:
                     # Combine the data from anitrakt_item with the item in aod_data
-                    item.update({
-                        'trakt': trakt,
-                        'trakt_type': media_type,
-                        'trakt_season': media_season,
-                    })
+                    item.update(
+                        {
+                            "trakt": trakt,
+                            "trakt_type": media_type,
+                            "trakt_season": media_season,
+                        }
+                    )
                     linked += 1
                     matched = True
                     break
 
             if not matched:
-                item.update({
-                    'trakt': None,
-                    'trakt_type': None,
-                    'trakt_season': None,
-                })
+                item.update(
+                    {
+                        "trakt": None,
+                        "trakt_type": None,
+                        "trakt_season": None,
+                    }
+                )
             bar()
     pprint.print(
         Platform.ANITRAKT,
@@ -147,8 +162,7 @@ def combine_anitrakt(
 
 
 def combine_fribb(
-    fribb: list[dict[str, Any]],
-    aod: list[dict[str, Any]]
+    fribb: list[dict[str, Any]], aod: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
     """
     Combine Fribb's Animelists data with AOD data to obtain IMDb and TMDB IDs
@@ -162,44 +176,48 @@ def combine_fribb(
     :rtype: list[dict[str, Any]]
     """
     linked = 0
-    with alive_bar(len(aod),
-                   title="Combining Fribb's Animelists data with AOD data",
-                   spinner=None) as bar:  # type: ignore
+    with alive_bar(
+        len(aod), title="Combining Fribb's Animelists data with AOD data", spinner=None
+    ) as bar:  # type: ignore
         for item in aod:
             matched = False
-            anidb = item['anidb']
+            anidb = item["anidb"]
             # Skip if anidb is null
             if anidb is None:
-                item.update({
-                    'imdb': None,
-                    'themoviedb': None,
-                })
+                item.update(
+                    {
+                        "imdb": None,
+                        "themoviedb": None,
+                    }
+                )
                 bar()
                 continue
 
             # Check if anidb_id exist in fribb_data
             for fbi in fribb:
-                anidb_id = fbi.get('anidb_id', None)
-                imdb = fbi.get('imdb_id', None)
-                tmdb: str | int | None = fbi.get('themoviedb_id', None)
+                anidb_id = fbi.get("anidb_id", None)
+                imdb = fbi.get("imdb_id", None)
+                tmdb: str | int | None = fbi.get("themoviedb_id", None)
                 if anidb is not None and anidb_id == anidb:
                     # Combine the data from fribb_item with the item in aod_data
-                    data_fbi = {}
-                    data_fbi['imdb'] = imdb
+                    data_fbi: dict[str, Any] = {}
+                    data_fbi["imdb"] = imdb
                     if isinstance(tmdb, str):
                         tmdbl = tmdb.split(",")
                         tmdb = int(tmdbl[0])
-                    data_fbi['themoviedb'] = tmdb
+                    data_fbi["themoviedb"] = tmdb
                     item.update(data_fbi)
                     linked += 1
                     matched = True
                     break
 
             if not matched:
-                item.update({
-                    'imdb': None,
-                    'themoviedb': None,
-                })
+                item.update(
+                    {
+                        "imdb": None,
+                        "themoviedb": None,
+                    }
+                )
             bar()
     pprint.print(
         Platform.FRIBB,

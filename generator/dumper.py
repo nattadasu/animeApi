@@ -31,13 +31,13 @@ def populate_contributors(attr: dict[str, Any]) -> dict[str, Any]:
     if response.status_code == 200:
         # clear the list first
         attr["contributors"] = []
-        attr["contributors"] = [
-            contributor["login"] for contributor in response.json()
-        ]
+        attr["contributors"] = [contributor["login"] for contributor in response.json()]
     return attr
 
 
-def save_to_file(data: list[dict[str, Any]], platform: str, attr: dict[str, Any]) -> None:
+def save_to_file(
+    data: list[dict[str, Any]], platform: str, attr: dict[str, Any]
+) -> None:
     """
     Save data to file
 
@@ -51,9 +51,7 @@ def save_to_file(data: list[dict[str, Any]], platform: str, attr: dict[str, Any]
     :rtype: None
     """
     items: list[dict[str, Any]] = []
-    with alive_bar(len(data),
-                   title="Removing None values",
-                   spinner=None) as bar:  # type: ignore
+    with alive_bar(len(data), title="Removing None values", spinner=None) as bar:  # type: ignore
         for item in data:
             # if platform key in item not None, then add it to items
             pkey = item.get(f"{platform}", None)
@@ -64,9 +62,9 @@ def save_to_file(data: list[dict[str, Any]], platform: str, attr: dict[str, Any]
         json.dump(items, file)
     # save object-formatted data to file
     obj_data: dict[str, dict[str, Any]] = {}
-    with alive_bar(len(items),
-                   title="Converting data to object format",
-                   spinner=None) as bar:  # type: ignore
+    with alive_bar(
+        len(items), title="Converting data to object format", spinner=None
+    ) as bar:  # type: ignore
         for item in items:
             if platform not in ["trakt", "themoviedb"]:
                 obj_data[item[f"{platform}"]] = item
@@ -76,7 +74,9 @@ def save_to_file(data: list[dict[str, Any]], platform: str, attr: dict[str, Any]
                 else:
                     if item["trakt_season"] == 1:
                         obj_data[f"{item['trakt_type']}/{item['trakt']}"] = item
-                    obj_data[f"{item['trakt_type']}/{item['trakt']}/seasons/{item['trakt_season']}"] = item
+                    obj_data[
+                        f"{item['trakt_type']}/{item['trakt']}/seasons/{item['trakt_season']}"
+                    ] = item
             elif platform == "themoviedb":
                 obj_data[f"movie/{item['themoviedb']}"] = item
             bar()
@@ -87,7 +87,9 @@ def save_to_file(data: list[dict[str, Any]], platform: str, attr: dict[str, Any]
     return None
 
 
-def save_platform_loop(data: list[dict[str, Any]], attr: dict[str, Any]) -> dict[str, Any]:
+def save_platform_loop(
+    data: list[dict[str, Any]], attr: dict[str, Any]
+) -> dict[str, Any]:
     """
     Loop through platforms and save data to file
 
@@ -191,16 +193,16 @@ def save_list_to_tsv(data: list[dict[str, Any]], file_path: str) -> None:
     with open(f"{file_path}.tsv", "w", encoding="utf-8", newline="") as file_:
         writer = csv.writer(file_, delimiter="\t", lineterminator="\n")
         writer.writerow(data[0].keys())
-        with alive_bar(len(data),
-                       title="Saving data to TSV",
-                       spinner=None) as bar:  # type: ignore
+        with alive_bar(len(data), title="Saving data to TSV", spinner=None) as bar:  # type: ignore
             for item in data:
                 writer.writerow(item.values())
                 bar()
     return None
 
 
-def update_attribution(data: list[dict[str, Any]], attr: dict[str, Any]) -> dict[str, Any]:
+def update_attribution(
+    data: list[dict[str, Any]], attr: dict[str, Any]
+) -> dict[str, Any]:
     """
     Update attr
 
@@ -265,7 +267,7 @@ def add_spaces(data: int, spaces_max: int = 9) -> str:
 
 
 def update_markdown(
-    attr: dict[str, dict[str, int | str] | str | int | list[str]]
+    attr: dict[str, dict[str, int | str] | str | int | list[str]],
 ) -> dict[str, Any]:
     """
     Update counters in README.md by looking <!-- counters --><!-- /counters -->
@@ -340,8 +342,7 @@ def update_markdown(
         Status.INFO,
         "Updating status example in README.md",
     )
-    status = json.dumps(attr, indent=2,
-                        ensure_ascii=False).replace('\\', '\\\\')
+    status = json.dumps(attr, indent=2, ensure_ascii=False).replace("\\", "\\\\")
     readme = re.sub(
         r"<!-- status -->(.|\n)*<!-- \/status -->",
         f"<!-- status -->\n```json\n{status}\n```\n<!-- /status -->",
@@ -357,7 +358,7 @@ def update_markdown(
     now: int = attr["updated"]["timestamp"]  # type: ignore
     readme = re.sub(
         r"<!-- updated -->(.|\n)*<!-- \/updated -->",
-        f"<!-- updated -->\nLast updated: {datetime.fromtimestamp(now).strftime('%d %B %Y %H:%M:%S UTC')}\n<!-- /updated -->",  # type: ignore
+        f"<!-- updated -->\nLast updated: {datetime.fromtimestamp(now, timezone.utc).strftime('%d %B %Y %H:%M:%S UTC')}\n<!-- /updated -->",  # type: ignore
         readme,
     )
     formatted_time = datetime.fromtimestamp(now, timezone.utc).strftime(
@@ -375,15 +376,12 @@ def update_markdown(
         "Updating JSON Schema in README.md",
     )
     with open("api/schema.json", "r", encoding="utf-8") as file:
-        jschema = json.dumps(
-            json.load(file),
-            indent=2,
-            ensure_ascii=False)
+        jschema = json.dumps(json.load(file), indent=2, ensure_ascii=False)
         jschema = jschema.replace("\\", "\\\\")
     readme = re.sub(
         r"<!-- jsonschema -->(.|\n)*<!-- \/jsonschema -->",
         f"<!-- jsonschema -->\n```json\n{jschema}\n```\n<!-- /jsonschema -->",
-        readme
+        readme,
     )
 
     pprint.print(

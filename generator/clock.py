@@ -1,5 +1,6 @@
 from datetime import timedelta
 
+
 def pluralize(count: int, word: str) -> str:
     """
     Pluralize a word if the count is not 1.
@@ -21,6 +22,7 @@ def pluralize(count: int, word: str) -> str:
         else:
             return f"{count} {word}s"
 
+
 def convert_float_to_time(
     total_seconds: float | int,
     show_weeks: bool = False,
@@ -29,7 +31,7 @@ def convert_float_to_time(
     """
     Convert a float representing a number of days to a string representing the
     number of days, hours, and minutes.
-    
+
     :param time_float: The number of days.
     :type time_float: float | int
     :param show_weeks: Whether to show weeks in the output, defaults to False

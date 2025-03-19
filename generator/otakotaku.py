@@ -23,22 +23,22 @@ class OtakOtaku:
     def __init__(self) -> None:
         """Initiate the class"""
         self.headers = {
-            'authority': 'otakotaku.com',
-            'accept': '*/*',
-            'accept-language': 'en-US,en;q=0.9',
-            'cookie': 'lang=id',
-            'dnt': '1',
-            'referer': 'https://otakotaku.com/anime/view/1/yahari-ore-no-seishun-love-comedy-wa-machigatteiru',
-            'sec-ch-ua': '"Chromium";v="116", " Not)A;Brand";v="24", "Microsoft Edge";v="116"',
-            'sec-ch-ua-mobile': '?0',
-            'sec-ch-ua-platform': '"Windows"',
-            'sec-fetch-dest': 'empty',
-            'sec-fetch-mode': 'cors',
-            'sec-fetch-site': 'same-origin',
-            'sec-gpc': '1',
-            'user-agent': rand_fua,
-            'x-requested-with': 'XMLHttpRequest',
-            'Content-Encoding': 'gzip'
+            "authority": "otakotaku.com",
+            "accept": "*/*",
+            "accept-language": "en-US,en;q=0.9",
+            "cookie": "lang=id",
+            "dnt": "1",
+            "referer": "https://otakotaku.com/anime/view/1/yahari-ore-no-seishun-love-comedy-wa-machigatteiru",
+            "sec-ch-ua": '"Chromium";v="116", " Not)A;Brand";v="24", "Microsoft Edge";v="116"',
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": '"Windows"',
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-origin",
+            "sec-gpc": "1",
+            "user-agent": rand_fua,
+            "x-requested-with": "XMLHttpRequest",
+            "Content-Encoding": "gzip",
         }
         pprint.print(
             Platform.OTAKOTAKU,
@@ -75,66 +75,63 @@ class OtakOtaku:
         if not response:
             raise ConnectionError("Failed to connect to otakotaku.com")
         soup = BeautifulSoup(response.text, "html.parser")
-        link = soup.find("div", class_='anime-img')
+        link = soup.find("div", class_="anime-img")
         if not isinstance(link, Tag):
-            pprint.print(Platform.OTAKOTAKU, Status.ERR,
-                         "Failed to get latest anime")
+            pprint.print(Platform.OTAKOTAKU, Status.ERR, "Failed to get latest anime")
             return 0
         link = link.find("a")
         if not isinstance(link, Tag):
-            pprint.print(Platform.OTAKOTAKU, Status.ERR,
-                         "Failed to get latest anime")
+            pprint.print(Platform.OTAKOTAKU, Status.ERR, "Failed to get latest anime")
             return 0
         href = link.get("href")
         if not href:
-            pprint.print(Platform.OTAKOTAKU, Status.ERR,
-                         "Failed to get latest anime")
+            pprint.print(Platform.OTAKOTAKU, Status.ERR, "Failed to get latest anime")
             return 0
         if isinstance(href, list):
             href = href[0]
         anime_id = href.rstrip("/").split("/")[-2]
-        pprint.print(Platform.OTAKOTAKU, Status.PASS,
-                     f"Latest anime id: {anime_id}")
+        pprint.print(Platform.OTAKOTAKU, Status.PASS, f"Latest anime id: {anime_id}")
         return int(anime_id)
 
     def _get_data(self, anime_id: int) -> Union[dict[str, Any], None]:
         """
         Get anime data
-        
+
         :param anime_id: The anime id
         :type anime_id: int
         :return: The anime data
         :rtype: Union[dict[str, Any], None]
         """
         response = self._get(
-            f"https://otakotaku.com/api/anime/view/{anime_id}/yahari-ore-no-seishun-love-comedy-wa-machigatteiru")
+            f"https://otakotaku.com/api/anime/view/{anime_id}/yahari-ore-no-seishun-love-comedy-wa-machigatteiru"
+        )
         if not response:
             raise ConnectionError("Failed to connect to otakotaku.com")
         json_: dict[str, Any] = response.json()
         if not json_:
             return None
-        data: dict[str, Any] = json_['data']
-        mal: Union[str, int, None] = data.get('`mal_id_anime', None)
+        data: dict[str, Any] = json_["data"]
+        mal: Union[str, int, None] = data.get("`mal_id_anime", None)
         if mal:
             mal = int(mal)
-        apla = data.get('ap_id_anime', None)
+        apla = data.get("ap_id_anime", None)
         if apla:
             apla = int(apla)
-        anidb = data.get('anidb_id_anime', None)
+        anidb = data.get("anidb_id_anime", None)
         if anidb:
             anidb = int(anidb)
-        ann = data.get('ann_id_anime', None)
+        ann = data.get("ann_id_anime", None)
         if ann:
             ann = int(ann)
-        title = data['judul_anime']
+        title = data["judul_anime"]
         title = title.replace("&quot;", '"')
-        result = {
-            'otakotaku': int(data['id_anime']),
-            'title': title,
-            'myanimelist': mal,
-            'animeplanet': apla,
-            'anidb': anidb,
-            'animenewsnetwork': ann,
+        result: dict[str, Union[str, int, None]] = {
+            "otakotaku": int(data["id_anime"]),
+            "title": title,
+            "myanimelist": mal,
+            "animeplanet": apla,
+            "anidb": anidb,
+            "animenewsnetwork": ann,
         }
         return result
 
@@ -156,7 +153,11 @@ class OtakOtaku:
             latest_id = self.get_latest_anime()
             if not latest_id:
                 raise ConnectionError("Failed to connect to otakotaku.com")
-            if not datetime.now().day in [1, 15] and len(anime_list) > 0 and not GITHUB_DISPATCH:
+            if (
+                not datetime.now().day in [1, 15]
+                and len(anime_list) > 0
+                and not GITHUB_DISPATCH
+            ):
                 with open(latest_file_path, "r", encoding="utf-8") as file:
                     latest = int(file.read().strip())
                 if latest == latest_id:
@@ -189,12 +190,10 @@ class OtakOtaku:
             with open(latest_file_path, "w", encoding="utf-8") as file:
                 file.write(str(latest_id))
             with open(file_path, "w", encoding="utf-8") as file:
-                anime_list.sort(key=lambda x: x['title'])  # type: ignore
+                anime_list.sort(key=lambda x: x["title"])  # type: ignore
                 json.dump(anime_list, file)
             pprint.print(
-                Platform.OTAKOTAKU,
-                Status.PASS,
-                f"Total anime data: {len(anime_list)}"
+                Platform.OTAKOTAKU, Status.PASS, f"Total anime data: {len(anime_list)}"
             )
         except ConnectionError:
             pprint.print(
@@ -204,7 +203,7 @@ class OtakOtaku:
             )
             with open(file_path, "r", encoding="utf-8") as file:
                 anime_list = json.load(file)
-        anime_list.sort(key=lambda x: x['title'])  # type: ignore
+        anime_list.sort(key=lambda x: x["title"])  # type: ignore
         return anime_list
 
     @staticmethod
@@ -219,5 +218,5 @@ class OtakOtaku:
         """
         result: dict[str, dict[str, Any]] = {}
         for item in data:
-            result[str(item['otakotaku'])] = item
+            result[str(item["otakotaku"])] = item
         return result

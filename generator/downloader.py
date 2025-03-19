@@ -1,14 +1,14 @@
 # SPDX-License-Identifier: MIT
 
 import json
+from typing import Any, Literal, Union
+
 import cloudscraper # type: ignore
+from prettyprint import Platform, PrettyPrint, Status
 from requests import Response
-from typing import Any, Union, Literal
-
-from prettyprint import PrettyPrint, Platform, Status
-
 
 pprint = PrettyPrint()
+
 
 class Downloader:
     """Download json file"""
@@ -36,7 +36,7 @@ class Downloader:
         self.file_name = file_name
         self.file_type = file_type
         self.platform = platform
-        self.scrape = cloudscraper.create_scraper(  # type: ignore
+        self.scrape: cloudscraper.CloudScraper = cloudscraper.create_scraper(  # type: ignore
             browser={
                 "browser": "chrome",
                 "platform": "windows",
@@ -56,6 +56,9 @@ class Downloader:
         :return: The response from the url
         :rtype: Union[Response, None]
         """
+        if not self.scrape:
+            pprint.print(self.platform, Status.ERR, "Failed to create cloudscraper")
+            return None
         response = self.scrape.get(self.url, timeout=None)
         try:
             # raise ConnectionError("Force use local file")
@@ -80,10 +83,14 @@ class Downloader:
         if response:
             content = response.json() if self.file_type == "json" else response.text
             if self.file_type == "json":
-                with open(f"database/raw/{self.file_name}.json", "w", encoding="utf-8") as file:
+                with open(
+                    f"database/raw/{self.file_name}.json", "w", encoding="utf-8"
+                ) as file:
                     json.dump(content, file)
             else:
-                with open(f"database/raw/{self.file_name}.txt", "w", encoding="utf-8") as file:
+                with open(
+                    f"database/raw/{self.file_name}.txt", "w", encoding="utf-8"
+                ) as file:
                     file.write(content)
             pprint.print(
                 self.platform,
@@ -108,10 +115,14 @@ class Downloader:
         """
         try:
             if self.file_type == "json":
-                with open(f"database/raw/{self.file_name}.json", "r", encoding="utf-8") as file:
+                with open(
+                    f"database/raw/{self.file_name}.json", "r", encoding="utf-8"
+                ) as file:
                     return json.load(file)
             else:
-                with open(f"database/raw/{self.file_name}.txt", "r", encoding="utf-8") as file:
+                with open(
+                    f"database/raw/{self.file_name}.txt", "r", encoding="utf-8"
+                ) as file:
                     return file.read()
         # file not found
         except FileNotFoundError:

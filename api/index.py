@@ -410,7 +410,9 @@ def resolve_platform(platform):
         "trakt": ["trk", "trakt.tv"],
     }
     # Create a lookup dictionary including both proper names and aliases
-    lookup = {alias: key for key, aliases in synonyms.items() for alias in [key] + aliases}
+    lookup = {
+        alias: key for key, aliases in synonyms.items() for alias in [key] + aliases
+    }
     return lookup.get(platform)
 
 

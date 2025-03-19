@@ -12,7 +12,7 @@ from alive_progress import alive_bar  # type: ignore
 from bs4 import BeautifulSoup, Tag
 from const import GITHUB_DISPATCH
 from prettyprint import Platform, PrettyPrint, Status
-from requests import Response, HTTPError
+from requests import HTTPError, Response
 
 pprint = PrettyPrint()
 
@@ -26,8 +26,8 @@ def nautiljon_extract_table(html_content: str) -> list[dict[str, str | int | Non
     :return: The table data
     :rtype: list[dict[str, str | int | None]]
     """
-    soup = BeautifulSoup(html_content, 'html.parser')
-    table = soup.find('table', class_='search')
+    soup = BeautifulSoup(html_content, "html.parser")
+    table = soup.find("table", class_="search")
     if not isinstance(table, Tag):
         return []
 
@@ -35,17 +35,16 @@ def nautiljon_extract_table(html_content: str) -> list[dict[str, str | int | Non
 
     if table:
         # find tbody
-        tbody: Tag = table.find('tbody')  # type: ignore
+        tbody: Tag = table.find("tbody")  # type: ignore
         # find all rows
-        rows = tbody.find_all('tr')
+        rows = tbody.find_all("tr")
 
         for row in rows:
-            columns: list[Tag] = row.find_all('td')
+            columns: list[Tag] = row.find_all("td")
 
             if len(columns) >= 4:
-                title = columns[1].find('a',
-                    class_='eTitre').get_text().strip()  # type: ignore
-                francais = columns[1].find('span', class_="infos_small")
+                title = columns[1].find("a", class_="eTitre").get_text().strip()  # type: ignore
+                francais = columns[1].find("span", class_="infos_small")
                 try:
                     if francais:
                         francais = francais.get_text().strip()
@@ -54,16 +53,16 @@ def nautiljon_extract_table(html_content: str) -> list[dict[str, str | int | Non
                         francais = title
                 except Exception:
                     francais = title
-                slug = columns[0].find('a')['href']  # type: ignore
+                slug = columns[0].find("a")["href"]  # type: ignore
                 # remove animes/ and .html
-                slug = slug.split('/')[-1]  # type: ignore
+                slug = slug.split("/")[-1]  # type: ignore
                 slug = re.sub(".html$", "", slug)
                 # img src="/imagesmin/anime/00/68/offside_tv_12086.webp?1692218537
                 # search for anime id in img src, before .webp and after last _
                 try:
-                    img_src = columns[0].find('img')['src']  # type: ignore
-                    entry_id_match = re.search(r'_(\d+)\.webp', img_src)
-                    
+                    img_src = columns[0].find("img")["src"]  # type: ignore
+                    entry_id_match = re.search(r"_(\d+)\.webp", img_src)
+
                     if entry_id_match:
                         entry_id = int(entry_id_match.group(1))  # type: ignore
                     else:
@@ -73,14 +72,16 @@ def nautiljon_extract_table(html_content: str) -> list[dict[str, str | int | Non
                 format_value = columns[2].get_text().strip()
                 status = columns[3].get_text().strip()
 
-                data_list.append({
-                    'title': f"{title}",
-                    'francais': f"{francais}",
-                    'slug': f"{slug}",
-                    'entry_id': entry_id,
-                    'format': format_value,
-                    'status': status
-                })
+                data_list.append(
+                    {
+                        "title": f"{title}",
+                        "francais": f"{francais}",
+                        "slug": f"{slug}",
+                        "entry_id": entry_id,
+                        "format": format_value,
+                        "status": status,
+                    }
+                )
 
     return data_list
 
@@ -91,7 +92,7 @@ class Nautiljon:
     def __init__(self, scraper_: cloudscraper.CloudScraper | None = None) -> None:
         """
         Initialize the Nautiljon class
-        
+
         :param scraper_: The scraper to use, defaults to None
         :type scraper_: cloudscraper.CloudScraper, optional
         """
@@ -99,10 +100,13 @@ class Nautiljon:
             self.scraper = cloudscraper.create_scraper()  # type: ignore
         else:
             self.scraper = scraper_
-        self.base_url = 'https://www.nautiljon.com'
+        self.base_url = "https://www.nautiljon.com"
         self.search_url = f"{self.base_url}/animes/"
-        pprint.print(Platform.NAUTILJON, Status.READY,
-                     "Nautiljon anime data scraper ready to use")
+        pprint.print(
+            Platform.NAUTILJON,
+            Status.READY,
+            "Nautiljon anime data scraper ready to use",
+        )
 
     def _get(self, url: str) -> Response:
         """
@@ -131,22 +135,26 @@ class Nautiljon:
             # raise ConnectionError("Force use local file")
             if datetime.now().day not in [2, 16] and not GITHUB_DISPATCH:
                 raise ConnectionError("Scraper is not allowed to run today")
-            pprint.print(Platform.NAUTILJON, Status.INFO,
-                         "Getting animes from Nautiljon")
+            pprint.print(
+                Platform.NAUTILJON, Status.INFO, "Getting animes from Nautiljon"
+            )
             page = self._get(self.search_url)
             # get the last page number
-            soup = BeautifulSoup(page.content, 'html.parser')
+            soup = BeautifulSoup(page.content, "html.parser")
             # get dbt= from the last page
-            last_page = soup.find('p', class_='menupage').find_all(  # type: ignore
-                'a')[-1]['href'].split('=')[-1]  # type: ignore
+            last_page = (
+                soup.find("p", class_="menupage")
+                .find_all(  # type: ignore
+                    "a"
+                )[-1]["href"]
+                .split("=")[-1]
+            )  # type: ignore
             last_page = round(int(f"{last_page}") / 15)
-            pprint.print(Platform.NAUTILJON, Status.NOTICE,
-                         f"Last page: {last_page}")
+            pprint.print(Platform.NAUTILJON, Status.NOTICE, f"Last page: {last_page}")
             # loop through the other pages, by incrementing the page number * 15
             with alive_bar(
-                last_page,
-                title="Getting animes from Nautiljon",
-                spinner=None) as bar:  # type: ignore
+                last_page, title="Getting animes from Nautiljon", spinner=None
+            ) as bar:  # type: ignore
                 scraped = nautiljon_extract_table(page.text)
                 # append the first page
                 anime_data.extend(scraped)
@@ -158,15 +166,18 @@ class Nautiljon:
                     scrape = nautiljon_extract_table(page.text)
                     # if scrape has less than 15 items and not in the last page
                     if len(scrape) < 15 and page_number < last_page * 15:
-                        pg = (page_number//15)+1
-                        pprint.print(Platform.NAUTILJON, Status.WARN,
-                                     f"Page {pg} has less than 15 animes,"
-                                     f"only {len(scrape)} animes scraped")
+                        pg = (page_number // 15) + 1
+                        pprint.print(
+                            Platform.NAUTILJON,
+                            Status.WARN,
+                            f"Page {pg} has less than 15 animes,"
+                            f"only {len(scrape)} animes scraped",
+                        )
                     anime_data.extend(scrape)
                     bar()
-            with open(file_path, 'w', encoding='utf-8') as file:
+            with open(file_path, "w", encoding="utf-8") as file:
                 # sort by title
-                anime_data.sort(key=lambda x: x['title'])  # type: ignore
+                anime_data.sort(key=lambda x: x["title"])  # type: ignore
                 json.dump(anime_data, file)
             pprint.print(
                 Platform.NAUTILJON,
@@ -177,17 +188,19 @@ class Nautiljon:
                 f"Expected pages: {last_page}",
             )
         except ConnectionError as err:
-            pprint.print(Platform.NAUTILJON, Status.ERR,
-                         f"Error: {err}")
-            pprint.print(Platform.NAUTILJON, Status.ERR,
-                         "Connection error, using local file")
-            with open(file_path, 'r', encoding='utf-8') as f:
+            pprint.print(Platform.NAUTILJON, Status.ERR, f"Error: {err}")
+            pprint.print(
+                Platform.NAUTILJON, Status.ERR, "Connection error, using local file"
+            )
+            with open(file_path, "r", encoding="utf-8") as f:
                 anime_data = json.load(f)
         except HTTPError as http:
-            pprint.print(Platform.NAUTILJON, Status.ERR,
-                         "Connection error, using local file."
-                         f"HTTPError: {http.response}")
-            with open(file_path, 'r', encoding='utf-8') as f:
+            pprint.print(
+                Platform.NAUTILJON,
+                Status.ERR,
+                f"Connection error, using local file.HTTPError: {http.response}",
+            )
+            with open(file_path, "r", encoding="utf-8") as f:
                 anime_data = json.load(f)
-        anime_data.sort(key=lambda x: x['title'])  # type: ignore
+        anime_data.sort(key=lambda x: x["title"])  # type: ignore
         return anime_data
