@@ -1,2 +1,8 @@
+# robots.txt file for https://animeapi.my.id
+
 User-agent: *
 Disallow: /
+Allow: /favicon.ico
+Allow: /schema
+Allow: /schema.json
+Allow: /status
