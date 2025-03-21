@@ -202,7 +202,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 21 March 2025 05:18:43 UTC
+Last updated: 21 March 2025 16:24:30 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -214,7 +214,7 @@ Last updated: 21 March 2025 05:18:43 UTC
 | aniSearch          |     19546 |
 | Annict             |     11619 |
 | IMDb               |      2271 |
-| Kaize              |     23148 |
+| Kaize              |         0 |
 | Kitsu              |     20951 |
 | LiveChart          |     11637 |
 | MyAnimeList        |     28660 |
@@ -260,17 +260,17 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1742534323,
-    "iso": "2025-03-21T05:18:43.672532+00:00"
+    "timestamp": 1742574270,
+    "iso": "2025-03-21T16:24:30.336423+00:00"
   },
   "contributors": [
     "nattadasu"
   ],
   "sources": [
-    "manami-project/anime-offline-database",
     "kawaiioverflow/arm",
-    "ryuuganime/aniTrakt-IndexParser",
-    "https://db.silveryasha.id",
+    "manami-project/anime-offline-database",
+    "rensetsu/db.rensetsu.public-dump",
+    "rensetsu/db.trakt.anitrakt",
     "https://kaize.io",
     "https://nautiljon.com",
     "https://otakotaku.com"
@@ -284,7 +284,7 @@ GET /status
     "anisearch": 19546,
     "annict": 11619,
     "imdb": 2271,
-    "kaize": 23148,
+    "kaize": 0,
     "kitsu": 20951,
     "livechart": 11637,
     "myanimelist": 28660,
@@ -374,7 +374,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 03/21/2025 05:18:43 UTC
+Updated on 03/21/2025 16:24:30 UTC
 ```
 <!-- /updated-txt -->
 
@@ -474,8 +474,8 @@ GET https://animeapi.my.id/myanimelist/1
   "anisearch": 1572,
   "annict": 360,
   "imdb": null,
-  "kaize": "cowboy-bebop",
-  "kaize_id": 265,
+  "kaize": null,
+  "kaize_id": null,
   "kitsu": 1,
   "livechart": 3418,
   "myanimelist": 1,
@@ -582,8 +582,8 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
   "anisearch": 16582,
   "annict": 8883,
   "imdb": null,
-  "kaize": "mairimashita-iruma-kun-3rd-season",
-  "kaize_id": 4989,
+  "kaize": null,
+  "kaize_id": null,
   "kitsu": 45154,
   "livechart": 10780,
   "myanimelist": 49784,
