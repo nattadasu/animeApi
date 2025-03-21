@@ -538,6 +538,7 @@ def is_valid_target(target: str) -> bool:
     :return: True if valid, False otherwise
     :rtype: bool
     """
+    target = resolve_platform(target)
     valid_targets = PLATFORM_SYNONYMS.keys()
     return target in valid_targets
 
