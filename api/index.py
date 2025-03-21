@@ -266,10 +266,10 @@ def platform_array(platform: str = "animeapi"):
     route = request.path
     goto = get_goto(route, platform)
 
-    if route == "/animeapi.tsv" or route == "/aa.tsv":
+    if route in ["/animeapi.tsv", "/aa.tsv"]:
         return serve_tsv_response()
 
-    if is_valid_target(platform) or platform in ["animeapi", "aa"]:
+    if is_valid_target(goto.replace("_object", "")) or platform in ["animeapi", "aa"]:
         return redirect_to_github(goto)
     return error_response(
         "Invalid platform",
@@ -289,24 +289,20 @@ def get_goto(route: str, raw_platform: str) -> str:
     :return: Redirect URL
     :rtype: str
     """
-    goto = route.replace("/", "")
+    goto = unquote(route.strip("/"))
+    raw_platform = unquote(raw_platform)
 
     if goto.endswith(".json"):
-        goto = goto.replace(".json", "")
+        goto = goto[:-5]
+        raw_platform = raw_platform[:-5]
+    is_array = raw_platform.endswith("()")
 
-    raw_platform = unquote(raw_platform).replace("()", "")
-    goto = goto.replace(goto, resolve_platform(raw_platform))
+    raw_platform = raw_platform.rstrip("()")
+    goto = resolve_platform(raw_platform)
     goto = goto.replace("aa", "animeapi")
-    if not (goto.endswith("()") or goto.endswith("%28%29")) and goto not in [
-        "animeapi",
-        "aa",
-    ]:
-        goto += "_object"
-    else:
-        goto = unquote(goto).replace("()", "")
 
-    if goto == "syobocal":
-        goto = "shoboi"
+    if not is_array and "animeapi" not in goto:
+        goto = f"{goto}_object"
 
     return goto
 
