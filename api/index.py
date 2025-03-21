@@ -136,7 +136,7 @@ def heartbeat():
 @app.route("/favicon.ico", methods=["GET"])
 def favicon():
     """Favicon route, if browser/SEO bot requests it"""
-    return send_from_directory("api", "favicon.ico")  # type: ignore
+    return send_from_directory(".", "favicon.ico", mimetype="image/vnd.microsoft.icon")
 
 
 @app.route("/schema.json", methods=["GET"])
