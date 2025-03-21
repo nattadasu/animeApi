@@ -28,10 +28,10 @@ attribution: dict[str, Any] = {
     "updated": {"timestamp": 0, "iso": ""},
     "contributors": [""],
     "sources": [
-        "manami-project/anime-offline-database",
         "kawaiioverflow/arm",
-        "ryuuganime/aniTrakt-IndexParser",
-        "https://db.silveryasha.id",
+        "manami-project/anime-offline-database",
+        "rensetsu/db.rensetsu.public-dump",
+        "rensetsu/db.trakt.anitrakt",
         "https://kaize.io",
         "https://nautiljon.com",
         "https://otakotaku.com",
