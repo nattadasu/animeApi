@@ -202,7 +202,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 01 April 2025 05:48:54 UTC
+Last updated: 02 April 2025 05:37:52 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -213,19 +213,19 @@ Last updated: 01 April 2025 05:48:54 UTC
 | Anime-Planet       |     24574 |
 | aniSearch          |     19547 |
 | Annict             |     11642 |
-| IMDb               |      2270 |
+| IMDb               |      2269 |
 | Kaize              |     23162 |
 | Kitsu              |     20952 |
 | LiveChart          |     11638 |
 | MyAnimeList        |     28662 |
-| Nautiljon          |      8534 |
+| Nautiljon          |      8562 |
 | Notify.moe         |     16672 |
 | Otak Otaku         |      2890 |
 | Shikimori          |     28662 |
 | Shoboi/Syobocal    |      5248 |
 | Silver Yasha       |      4713 |
 | SIMKL              |     13686 |
-| The Movie Database |       576 |
+| The Movie Database |       590 |
 | Trakt              |      4929 |
 |                    |           |
 | **Total**          | **35331** |
@@ -260,8 +260,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1743486534,
-    "iso": "2025-04-01T05:48:54.692906+00:00"
+    "timestamp": 1743572272,
+    "iso": "2025-04-02T05:37:52.110503+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -283,19 +283,19 @@ GET /status
     "animeplanet": 24574,
     "anisearch": 19547,
     "annict": 11642,
-    "imdb": 2270,
+    "imdb": 2269,
     "kaize": 23162,
     "kitsu": 20952,
     "livechart": 11638,
     "myanimelist": 28662,
-    "nautiljon": 8534,
+    "nautiljon": 8562,
     "notify": 16672,
     "otakotaku": 2890,
     "shikimori": 28662,
     "shoboi": 5248,
     "silveryasha": 4713,
     "simkl": 13686,
-    "themoviedb": 576,
+    "themoviedb": 590,
     "trakt": 4929,
     "total": 35331
   },
@@ -374,7 +374,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 04/01/2025 05:48:54 UTC
+Updated on 04/02/2025 05:37:52 UTC
 ```
 <!-- /updated-txt -->
 
@@ -479,8 +479,8 @@ GET https://animeapi.my.id/myanimelist/1
   "kitsu": 1,
   "livechart": 3418,
   "myanimelist": 1,
-  "nautiljon": null,
-  "nautiljon_id": null,
+  "nautiljon": "cowboy+bebop",
+  "nautiljon_id": 4,
   "notify": "Tk3ccKimg",
   "otakotaku": 1149,
   "shikimori": 1,
