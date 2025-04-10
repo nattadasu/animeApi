@@ -202,27 +202,27 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 09 April 2025 05:19:02 UTC
+Last updated: 10 April 2025 05:17:44 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
 | aniDB              |     13739 |
-| AniList            |     21226 |
+| AniList            |     21232 |
 | Anime-Planet       |     24737 |
 | aniSearch          |     19624 |
-| Annict             |     11665 |
+| Annict             |     11702 |
 | IMDb               |      2269 |
 | Kaize              |     23158 |
 | Kitsu              |     21055 |
 | LiveChart          |     11648 |
-| MyAnimeList        |     28755 |
+| MyAnimeList        |     28747 |
 | Nautiljon          |      8577 |
 | Notify.moe         |     16700 |
 | Otak Otaku         |      2895 |
-| Shikimori          |     28755 |
-| Shoboi/Syobocal    |      5253 |
+| Shikimori          |     28747 |
+| Shoboi/Syobocal    |      5257 |
 | Silver Yasha       |      4713 |
 | SIMKL              |     13703 |
 | The Movie Database |       591 |
@@ -260,8 +260,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1744175942,
-    "iso": "2025-04-09T05:19:02.570159+00:00"
+    "timestamp": 1744262264,
+    "iso": "2025-04-10T05:17:44.396279+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -279,20 +279,20 @@ GET /status
   "website": "https://animeapi.my.id",
   "counts": {
     "anidb": 13739,
-    "anilist": 21226,
+    "anilist": 21232,
     "animeplanet": 24737,
     "anisearch": 19624,
-    "annict": 11665,
+    "annict": 11702,
     "imdb": 2269,
     "kaize": 23158,
     "kitsu": 21055,
     "livechart": 11648,
-    "myanimelist": 28755,
+    "myanimelist": 28747,
     "nautiljon": 8577,
     "notify": 16700,
     "otakotaku": 2895,
-    "shikimori": 28755,
-    "shoboi": 5253,
+    "shikimori": 28747,
+    "shoboi": 5257,
     "silveryasha": 4713,
     "simkl": 13703,
     "themoviedb": 591,
@@ -374,7 +374,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 04/09/2025 05:19:02 UTC
+Updated on 04/10/2025 05:17:44 UTC
 ```
 <!-- /updated-txt -->
 
