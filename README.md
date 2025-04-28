@@ -202,33 +202,33 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 27 April 2025 05:18:17 UTC
+Last updated: 28 April 2025 05:19:08 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
-| aniDB              |     13764 |
-| AniList            |     21242 |
-| Anime-Planet       |     25173 |
-| aniSearch          |     19701 |
-| Annict             |     11711 |
+| aniDB              |     13781 |
+| AniList            |     21257 |
+| Anime-Planet       |     25557 |
+| aniSearch          |     19713 |
+| Annict             |     11714 |
 | IMDb               |      2269 |
-| Kaize              |     23165 |
-| Kitsu              |     21098 |
-| LiveChart          |     11678 |
-| MyAnimeList        |     28784 |
-| Nautiljon          |      8584 |
-| Notify.moe         |     16713 |
-| Otak Otaku         |      2915 |
-| Shikimori          |     28784 |
-| Shoboi/Syobocal    |      5261 |
+| Kaize              |     23176 |
+| Kitsu              |     21123 |
+| LiveChart          |     11689 |
+| MyAnimeList        |     28828 |
+| Nautiljon          |      8582 |
+| Notify.moe         |     16741 |
+| Otak Otaku         |      2916 |
+| Shikimori          |     28828 |
+| Shoboi/Syobocal    |      5262 |
 | Silver Yasha       |      4809 |
-| SIMKL              |     13741 |
+| SIMKL              |     13762 |
 | The Movie Database |       591 |
 | Trakt              |      4928 |
 |                    |           |
-| **Total**          | **35546** |
+| **Total**          | **35573** |
 <!-- /counters -->
 
 ## Usage
@@ -260,8 +260,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1745731097,
-    "iso": "2025-04-27T05:18:17.835759+00:00"
+    "timestamp": 1745817548,
+    "iso": "2025-04-28T05:19:08.057510+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -278,26 +278,26 @@ GET /status
   "license": "AGPL-3.0-only AND MIT AND CC0-1.0+",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 13764,
-    "anilist": 21242,
-    "animeplanet": 25173,
-    "anisearch": 19701,
-    "annict": 11711,
+    "anidb": 13781,
+    "anilist": 21257,
+    "animeplanet": 25557,
+    "anisearch": 19713,
+    "annict": 11714,
     "imdb": 2269,
-    "kaize": 23165,
-    "kitsu": 21098,
-    "livechart": 11678,
-    "myanimelist": 28784,
-    "nautiljon": 8584,
-    "notify": 16713,
-    "otakotaku": 2915,
-    "shikimori": 28784,
-    "shoboi": 5261,
+    "kaize": 23176,
+    "kitsu": 21123,
+    "livechart": 11689,
+    "myanimelist": 28828,
+    "nautiljon": 8582,
+    "notify": 16741,
+    "otakotaku": 2916,
+    "shikimori": 28828,
+    "shoboi": 5262,
     "silveryasha": 4809,
-    "simkl": 13741,
+    "simkl": 13762,
     "themoviedb": 591,
     "trakt": 4928,
-    "total": 35546
+    "total": 35573
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format. Platform aliases supported for direct lookup for platform specific endpoints (see ?P<alias> in regex).",
@@ -374,7 +374,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 04/27/2025 05:18:17 UTC
+Updated on 04/28/2025 05:19:08 UTC
 ```
 <!-- /updated-txt -->
 
