@@ -202,21 +202,21 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 09 May 2025 05:19:48 UTC
+Last updated: 10 May 2025 05:18:18 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
-| aniDB              |     13795 |
+| aniDB              |     13794 |
 | AniList            |     21278 |
 | Anime-Planet       |     25659 |
-| aniSearch          |     19722 |
+| aniSearch          |     19721 |
 | Annict             |     11715 |
-| IMDb               |      2269 |
-| Kaize              |     23158 |
+| IMDb               |      2268 |
+| Kaize              |     23156 |
 | Kitsu              |     21145 |
-| LiveChart          |     11701 |
+| LiveChart          |     11700 |
 | MyAnimeList        |     28897 |
 | Nautiljon          |      8607 |
 | Notify.moe         |     16755 |
@@ -224,7 +224,7 @@ Last updated: 09 May 2025 05:19:48 UTC
 | Shikimori          |     28897 |
 | Shoboi/Syobocal    |      5262 |
 | Silver Yasha       |      4853 |
-| SIMKL              |     13778 |
+| SIMKL              |     13777 |
 | The Movie Database |       591 |
 | Trakt              |      4928 |
 |                    |           |
@@ -260,8 +260,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1746767988,
-    "iso": "2025-05-09T05:19:48.750107+00:00"
+    "timestamp": 1746854298,
+    "iso": "2025-05-10T05:18:18.210773+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -278,15 +278,15 @@ GET /status
   "license": "AGPL-3.0-only AND MIT AND CC0-1.0+",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 13795,
+    "anidb": 13794,
     "anilist": 21278,
     "animeplanet": 25659,
-    "anisearch": 19722,
+    "anisearch": 19721,
     "annict": 11715,
-    "imdb": 2269,
-    "kaize": 23158,
+    "imdb": 2268,
+    "kaize": 23156,
     "kitsu": 21145,
-    "livechart": 11701,
+    "livechart": 11700,
     "myanimelist": 28897,
     "nautiljon": 8607,
     "notify": 16755,
@@ -294,7 +294,7 @@ GET /status
     "shikimori": 28897,
     "shoboi": 5262,
     "silveryasha": 4853,
-    "simkl": 13778,
+    "simkl": 13777,
     "themoviedb": 591,
     "trakt": 4928,
     "total": 35614
@@ -374,7 +374,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 05/09/2025 05:19:48 UTC
+Updated on 05/10/2025 05:18:18 UTC
 ```
 <!-- /updated-txt -->
 
