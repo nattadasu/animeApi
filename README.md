@@ -204,7 +204,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 03 June 2025 06:49:47 UTC
+Last updated: 03 June 2025 08:10:45 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -212,7 +212,7 @@ Last updated: 03 June 2025 06:49:47 UTC
 | :----------------- | --------: |
 | aniDB              |     13661 |
 | AniList            |     21154 |
-| Anime News Network |         0 |
+| Anime News Network |     11780 |
 | Anime-Planet       |     25537 |
 | aniSearch          |     19643 |
 | Annict             |     11576 |
@@ -263,8 +263,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1748933387,
-    "iso": "2025-06-03T06:49:47.062647+00:00"
+    "timestamp": 1748938245,
+    "iso": "2025-06-03T08:10:45.217921+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -283,7 +283,7 @@ GET /status
   "counts": {
     "anidb": 13661,
     "anilist": 21154,
-    "animenewsnetwork": 0,
+    "animenewsnetwork": 11780,
     "animeplanet": 25537,
     "anisearch": 19643,
     "annict": 11576,
@@ -379,7 +379,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 06/03/2025 06:49:47 UTC
+Updated on 06/03/2025 08:10:45 UTC
 ```
 <!-- /updated-txt -->
 
@@ -475,6 +475,7 @@ GET https://animeapi.my.id/myanimelist/1
   "title": "Cowboy Bebop",
   "anidb": 23,
   "anilist": 1,
+  "animenewsnetwork": 13,
   "animeplanet": "cowboy-bebop",
   "anisearch": 1572,
   "annict": 360,
@@ -583,6 +584,7 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
   "title": "Mairimashita! Iruma-kun 3rd Season",
   "anidb": 16627,
   "anilist": 139092,
+  "animenewsnetwork": null,
   "animeplanet": "welcome-to-demon-school-iruma-kun-3",
   "anisearch": 16582,
   "annict": 8883,
