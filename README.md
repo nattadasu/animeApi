@@ -204,7 +204,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 02 June 2025 05:43:53 UTC
+Last updated: 03 June 2025 06:49:47 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -212,6 +212,7 @@ Last updated: 02 June 2025 05:43:53 UTC
 | :----------------- | --------: |
 | aniDB              |     13661 |
 | AniList            |     21154 |
+| Anime News Network |         0 |
 | Anime-Planet       |     25537 |
 | aniSearch          |     19643 |
 | Annict             |     11576 |
@@ -262,8 +263,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1748843033,
-    "iso": "2025-06-02T05:43:53.010339+00:00"
+    "timestamp": 1748933387,
+    "iso": "2025-06-03T06:49:47.062647+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -282,6 +283,7 @@ GET /status
   "counts": {
     "anidb": 13661,
     "anilist": 21154,
+    "animenewsnetwork": 0,
     "animeplanet": 25537,
     "anisearch": 19643,
     "annict": 11576,
@@ -307,6 +309,7 @@ GET /status
     "anilist": "/(?P<alias>anilist)/(?P<media_id>\\d+)",
     "animeapi_dump": "/(anime(?:a|A)pi|aa)(?:\\\\\\.json)?",
     "animeapi_tsv": "/(anime(?:a|A)pi|aa).tsv",
+    "animenewsnetwork": "(?P<alias>animenewsnetwork)/(?P<media_id>\\d+)",
     "animeplanet": "/(?P<alias>animeplanet)/(?P<media_id>[\\w\\-]+)",
     "anisearch": "/(?P<alias>anisearch)/(?P<media_id>\\d+)",
     "annict": "/(?P<alias>annict)/(?P<media_id>\\d+)",
@@ -376,7 +379,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 06/02/2025 05:43:53 UTC
+Updated on 06/03/2025 06:49:47 UTC
 ```
 <!-- /updated-txt -->
 
@@ -760,6 +763,11 @@ Add the following schema URI to your JSON file.
           "description": "AniList ID, website: https://anilist.co/",
           "title": "AniList"
         },
+        "animenewsnetwork": {
+          "$ref": "#/definitions/numbernull",
+          "description": "Anime News Network, website: https://animenewsnetwork.com",
+          "title": "Anime News Network"
+        },
         "animeplanet": {
           "$ref": "#/definitions/stringnull",
           "description": "Anime-Planet slug, website: https://www.anime-planet.com/",
@@ -889,6 +897,7 @@ Add the following schema URI to your JSON file.
         "title",
         "anidb",
         "anilist",
+        "animenewsnetwork",
         "animeplanet",
         "anisearch",
         "annict",
