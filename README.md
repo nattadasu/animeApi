@@ -84,9 +84,10 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 | Anime Title                     | ✔                                               | ❌                           | ❌                  | ❌                         | ✔                       | ✔            | ✔                                                                   | ❌             | ✔                                      | ✔                |
 | [![f:adb] aniDB][adb]           | ✔                                               | ❌                           | ✔                  | ✔                         | ✔                       | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
 | [![f:al] AniList][al]           | ✔                                               | ✔                           | ✔                  | ✔                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
+| [![f:an] ANN][an]               | ✔                                               | ❌                           | ❌                  | ❌                         | ✔ Result Only           | ❌            | ✔                                                                   | ❌             | ❌                                      | ❌                |
 | [![f:ap] Anime-Planet][ap]      | ✔                                               | ❌                           | ✔                  | ❌                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
 | [![f:as] AniSearch][as]         | ✔                                               | ❌                           | ✔                  | ❌                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
-| [![f:an] Annict][an]            | ✔                                               | ✔                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:ac] Annict][ac]            | ✔                                               | ✔                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
 | [![f:bgm] Bangumi][bgm]         | ❌                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
 | [![f:imdb] IMDB][imdb]          | ✔                                               | ❌                           | ✔                  | ❌                         | ✔                       | ✔            | ❌                                                                   | ✔             | ✔                                      | ❌                |
 | [![f:kz] Kaize][kz]             | ✔                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
@@ -173,27 +174,28 @@ alias cheatsheet as well.
 >   data you want.
 > * 2K is the two-letter abbreviation for the platform.
 
-|      Platform |  2K   | Aliases                                                                                         |
-| ------------: | :---: | ----------------------------------------------------------------------------------------------- |
-|       `anidb` | `ad`  | `adb`, `anidb.net`                                                                              |
-|     `anilist` | `al`  | `anilist.co`                                                                                    |
-| `animeplanet` | `ap`  | `anime-planet.com` `anime-planet`, `animeplanet.com`                                            |
-|   `anisearch` | `as`  | `anisearch.com`, `anisearch.de`, `anisearch.it`, `anisearch.es`, `anisearch.fr`, `anisearch.jp` |
-|      `annict` | `ac`  | `anc`, `act`, `annict.com`, `annict.jp`, `en.annict.com`                                        |
-|        `imdb` | `im`  | `imdb.com`                                                                                      |
-|       `kaize` | `kz`  | `kaize.io`                                                                                      |
-|       `kitsu` | `kt`  | `kts`, `kitsu.io`, `kitsu.app`                                                                  |
-|   `livechart` | `lc`  | `livechart.me`                                                                                  |
-| `myanimelist` | `ma`  | `mal`, `myanimelist.net`                                                                        |
-|   `nautiljon` | `nj`  | `ntj`, `nautiljon.com`                                                                          |
-|      `notify` | `nf`  | `ntf`, `ntm`, `notifymoe`, `notify.moe`                                                         |
-|   `otakotaku` | `oo`  | `otakotaku.com`                                                                                 |
-|   `shikimori` | `sh`  | `shiki`, `shk`, `shikimori.me`, `shikimori.one`, `shikimori.org`                                |
-|      `shoboi` | `sb`  | `shb`, `syb`, `shobocal`, `syoboi`, `syobocal`, `cal.syoboi.jp`                                 |
-| `silveryasha` | `sy`  | `dbti`, `db.silveryasha.id`, `db.silveryasha.web.id`                                            |
-|       `simkl` | `sm`  | `smk`, `simkl.com`, `animecountdown`, `animecountdown.com`                                      |
-|  `themoviedb` | `tm`  | `tmdb`, `themoviedb.org`                                                                        |
-|       `trakt` | `tr`  | `trk`, `trakt.tv`                                                                               |
+|           Platform |  2K  | Aliases                                                                                         |
+| -----------------: | :--: | ----------------------------------------------------------------------------------------------- |
+|            `anidb` | `ad` | `adb`, `anidb.net`                                                                              |
+|          `anilist` | `al` | `anilist.co`                                                                                    |
+| `animenewsnetwork` | `an` | `ann`, `animenewsnetwork.com` |
+|      `animeplanet` | `ap` | `anime-planet.com` `anime-planet`, `animeplanet.com`                                            |
+|        `anisearch` | `as` | `anisearch.com`, `anisearch.de`, `anisearch.it`, `anisearch.es`, `anisearch.fr`, `anisearch.jp` |
+|           `annict` | `ac` | `anc`, `act`, `annict.com`, `annict.jp`, `en.annict.com`                                        |
+|             `imdb` | `im` | `imdb.com`                                                                                      |
+|            `kaize` | `kz` | `kaize.io`                                                                                      |
+|            `kitsu` | `kt` | `kts`, `kitsu.io`, `kitsu.app`                                                                  |
+|        `livechart` | `lc` | `livechart.me`                                                                                  |
+|      `myanimelist` | `ma` | `mal`, `myanimelist.net`                                                                        |
+|        `nautiljon` | `nj` | `ntj`, `nautiljon.com`                                                                          |
+|           `notify` | `nf` | `ntf`, `ntm`, `notifymoe`, `notify.moe`                                                         |
+|        `otakotaku` | `oo` | `otakotaku.com`                                                                                 |
+|        `shikimori` | `sh` | `shiki`, `shk`, `shikimori.me`, `shikimori.one`, `shikimori.org`                                |
+|           `shoboi` | `sb` | `shb`, `syb`, `shobocal`, `syoboi`, `syobocal`, `cal.syoboi.jp`                                 |
+|      `silveryasha` | `sy` | `dbti`, `db.silveryasha.id`, `db.silveryasha.web.id`                                            |
+|            `simkl` | `sm` | `smk`, `simkl.com`, `animecountdown`, `animecountdown.com`                                      |
+|       `themoviedb` | `tm` | `tmdb`, `themoviedb.org`                                                                        |
+|            `trakt` | `tr` | `trk`, `trakt.tv`                                                                               |
 
 <!-- markdownlint-enable MD034 MD013 -->
 
@@ -1030,6 +1032,7 @@ interface Anime = {
     title:                 string; // Required, title of the anime
     anidb:             NumberNull;
     anilist:           NumberNull;
+    animenewsnetwork:  NumberNull;
     animeplanet:       StringNull; // Slug based
     anisearch:         NumberNull;
     annict:            NumberNull;
@@ -1086,6 +1089,7 @@ class Anime:
     title:                    str  # Required, title of the anime
     anidb:             NumberNull
     anilist:           NumberNull
+    animenewsnetwork:  NumberNull
     animeplanet:       StringNull  # Slug based
     anisearch:         NumberNull
     annict:            NumberNull
@@ -1136,7 +1140,8 @@ This project uses multiple sources to compile the data, including:
 [adb]: https://anidb.net
 [al]: https://anilist.co
 [alal]: https://github.com/Anime-Lists/anime-lists
-[an]: https://annict.com
+[ac]: https://annict.com
+[an]: https://animenewsnetwork.com
 [aod]: https://github.com/manami-project/anime-offline-database
 [ap]: https://anime-planet.com
 [arm]: https://github.com/kawaiioverflow/arm
@@ -1167,7 +1172,8 @@ This project uses multiple sources to compile the data, including:
 [tvtm]: https://tvtime.com
 [f:adb]: https://favicone.com/anidb.net
 [f:al]: https://www.google.com/s2/favicons?domain=anilist.co&sz=16
-[f:an]: https://www.google.com/s2/favicons?domain=annict.com&sz=16
+[f:ac]: https://www.google.com/s2/favicons?domain=annict.com&sz=16
+[f:an]: https://www.google.com/s2/favicons?domain=animenewsnetwork.com&sz=16
 [f:ap]: https://www.google.com/s2/favicons?domain=anime-planet.com&sz=16
 [f:as]: https://www.google.com/s2/favicons?domain=anisearch.com&sz=16
 [f:bgm]: https://favicone.com/bgm.tv

@@ -28,6 +28,7 @@ runtime = time()
 PLATFORM_SYNONYMS = {
     "anidb": ["ad", "adb", "anidb.net"],
     "anilist": ["al", "anilist.co"],
+    "animenewsnetwork": ["an", "ann", "animenewsnetwork.com"],
     "animeplanet": ["ap", "anime-planet", "anime-planet.com", "animeplanet.com"],
     "anisearch": ["as", "anisearch.de", "anisearch.es", "anisearch.fr", "anisearch.it", "anisearch.jp", "anisearch.com"],
     "annict": ["ac", "act", "anc", "annict.com", "annict.jp", "en.annict.com"],
@@ -542,6 +543,7 @@ def is_valid_target(target: str) -> bool:
 route_path = {
     "anidb": "https://anidb.net/anime/",
     "anilist": "https://anilist.co/anime/",
+    "animenewsnetwork": "https://animenewsnetwork/encyclopedia/anime?id=",
     "animeplanet": "https://www.anime-planet.com/anime/",
     "anisearch": "https://www.anisearch.com/anime/",
     "annict": "https://annict.com/works/",

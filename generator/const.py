@@ -41,6 +41,7 @@ attribution: dict[str, Any] = {
     "counts": {
         "anidb": 0,
         "anilist": 0,
+        "animenewsnetwork": 0,
         "animeplanet": 0,
         "anisearch": 0,
         "annict": 0,
@@ -66,6 +67,7 @@ attribution: dict[str, Any] = {
         "anilist": r"/(?P<alias>anilist)/(?P<media_id>\d+)",
         "animeapi_dump": r"/(anime(?:a|A)pi|aa)(?:\\\.json)?",
         "animeapi_tsv": r"/(anime(?:a|A)pi|aa).tsv",
+        "animenewsnetwork": r"(?P<alias>animenewsnetwork)/(?P<media_id>\d+)",
         "animeplanet": r"/(?P<alias>animeplanet)/(?P<media_id>[\w\-]+)",
         "anisearch": r"/(?P<alias>anisearch)/(?P<media_id>\d+)",
         "annict": r"/(?P<alias>annict)/(?P<media_id>\d+)",

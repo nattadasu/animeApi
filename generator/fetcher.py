@@ -156,6 +156,7 @@ def simplify_aod_data(aod: dict[str, Any]) -> list[dict[str, Any]]:
         for item in items:
             adb_id: int | None = None
             al_id: int | None = None
+            ann_id: int | None = None
             ap_slug: str | None = None
             as_id: int | None = None
             kt_id: int | None = None
@@ -184,11 +185,14 @@ def simplify_aod_data(aod: dict[str, Any]) -> list[dict[str, Any]]:
                     ntf_b64 = sauce.split("/")[-1]
                 elif sauce.startswith("https://simkl.com/anime/"):
                     smk_id = int(sauce.split("/")[-1])
+                elif sauce.startswith("https://animenewsnetwork.com/"):
+                    ann_id = int(sauce.split("id=")[-1])
             data.append(
                 {
                     "title": item["title"],
                     "anidb": adb_id,
                     "anilist": al_id,
+                    "animenewsnetwork": ann_id,
                     "animeplanet": ap_slug,
                     "anisearch": as_id,
                     "kitsu": kt_id,
