@@ -103,6 +103,7 @@ def save_platform_loop(
     platforms = [
         "anidb",
         "anilist",
+        "animenewsnetwork",
         "animeplanet",
         "anisearch",
         "annict",
@@ -134,6 +135,8 @@ def save_platform_loop(
                 name = Platform.ANIDB
             case "anilist":
                 name = Platform.ANILIST
+            case "animenewsnetwork":
+                name = Platform.ANIMENEWSNETWORK
             case "animeplanet":
                 name = Platform.ANIMEPLANET
             case "anisearch":
@@ -289,6 +292,7 @@ def update_markdown(
     counts: dict[str, int] = attr["counts"]  # type: ignore
     adb = add_spaces(counts["anidb"])
     anl = add_spaces(counts["anilist"])
+    ann = add_spaces(counts["animenewsnetwork"])
     apl = add_spaces(counts["animeplanet"])
     ase = add_spaces(counts["anisearch"])
     anc = add_spaces(counts["annict"])
@@ -311,6 +315,7 @@ def update_markdown(
 | :----------------- | --------: |
 | aniDB              | {adb} |
 | AniList            | {anl} |
+| Anime News Network | {ann} |
 | Anime-Planet       | {apl} |
 | aniSearch          | {ase} |
 | Annict             | {anc} |
