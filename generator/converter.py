@@ -95,6 +95,7 @@ def link_kaize_to_mal(
                     kz_dat = {
                         "anidb": aod_item["anidb"],
                         "anilist": aod_item["anilist"],
+                        "animenewsnetwork": aod_item["animenewsnetwork"],
                         "animeplanet": aod_item["animeplanet"],
                         "anisearch": aod_item["anisearch"],
                         "kitsu": aod_item["kitsu"],

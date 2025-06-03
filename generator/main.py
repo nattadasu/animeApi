@@ -103,6 +103,7 @@ def main() -> None:
                     "title": item.get("title", None),
                     "anidb": item.get("anidb", None),
                     "anilist": item.get("anilist", None),
+                    "animenewsnetwork": item.get("animenewsnetwork", None),
                     "animeplanet": item.get("animeplanet", None),
                     "anisearch": item.get("anisearch", None),
                     "annict": item.get("annict", None),
