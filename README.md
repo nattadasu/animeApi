@@ -137,6 +137,8 @@ generate are licensed under the CC0 license instead. You are free to use these
 files and build your own database with them. For more information, please refer
 to [`database/raw/README.md`](database/raw/README.md).
 
+Additionally, since the project is object/key-value based and not array, the relation assumed by AnimeAPI is the same across database, where in fact it's not the case, especially with heavily moderated databases like AniDB, AniList, and Anime News Network. So, for any episode 0/prequel, specials, OVAs, movies, or older titles might get incorrect relationship. 
+
 ## Featured on
 
 Do you want to integrate AnimeAPI into your project? Or do you want to see how
