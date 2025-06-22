@@ -64,7 +64,6 @@ def link_kaize_to_mal(
                         {
                             "anidb": aod_item["anidb"],
                             "anilist": aod_item["anilist"],
-                            "kitsu": aod_item["kitsu"],
                             "myanimelist": aod_item["myanimelist"],
                         }
                     )
@@ -95,14 +94,7 @@ def link_kaize_to_mal(
                     kz_dat = {
                         "anidb": aod_item["anidb"],
                         "anilist": aod_item["anilist"],
-                        "animenewsnetwork": aod_item["animenewsnetwork"],
-                        "animeplanet": aod_item["animeplanet"],
-                        "anisearch": aod_item["anisearch"],
-                        "kitsu": aod_item["kitsu"],
                         "myanimelist": aod_item["myanimelist"],
-                        "notify": aod_item["notify"],
-                        "shikimori": aod_item["shikimori"],
-                        "simkl": aod_item["simkl"],
                     }
                     item.update(kz_dat)
                     kz_fixed.append(item)
@@ -264,7 +256,6 @@ def link_nautiljon_to_mal(
                         {
                             "anidb": aod_item["anidb"],
                             "anilist": aod_item["anilist"],
-                            "kitsu": aod_item["kitsu"],
                             "myanimelist": aod_item["myanimelist"],
                         }
                     )
@@ -288,7 +279,6 @@ def link_nautiljon_to_mal(
                         {
                             "anidb": aod_item["anidb"],
                             "anilist": aod_item["anilist"],
-                            "kitsu": aod_item["kitsu"],
                             "myanimelist": aod_item["myanimelist"],
                         }
                     )
