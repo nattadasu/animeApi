@@ -206,7 +206,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 22 June 2025 05:20:21 UTC
+Last updated: 22 June 2025 19:05:25 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -219,7 +219,7 @@ Last updated: 22 June 2025 05:20:21 UTC
 | aniSearch          |     19725 |
 | Annict             |     11576 |
 | IMDb               |      2260 |
-| Kaize              |     22894 |
+| Kaize              |     22896 |
 | Kitsu              |     21069 |
 | LiveChart          |     11597 |
 | MyAnimeList        |     28853 |
@@ -265,8 +265,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1750569621,
-    "iso": "2025-06-22T05:20:21.032970+00:00"
+    "timestamp": 1750619125,
+    "iso": "2025-06-22T19:05:25.941687+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -290,7 +290,7 @@ GET /status
     "anisearch": 19725,
     "annict": 11576,
     "imdb": 2260,
-    "kaize": 22894,
+    "kaize": 22896,
     "kitsu": 21069,
     "livechart": 11597,
     "myanimelist": 28853,
@@ -381,7 +381,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 06/22/2025 05:20:21 UTC
+Updated on 06/22/2025 19:05:25 UTC
 ```
 <!-- /updated-txt -->
 
