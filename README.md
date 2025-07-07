@@ -206,7 +206,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 06 July 2025 05:21:32 UTC
+Last updated: 07 July 2025 05:14:16 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -219,7 +219,7 @@ Last updated: 06 July 2025 05:21:32 UTC
 | aniSearch          |     19725 |
 | Annict             |     11576 |
 | IMDb               |      2261 |
-| Kaize              |     22919 |
+| Kaize              |         0 |
 | Kitsu              |     21069 |
 | LiveChart          |     11597 |
 | MyAnimeList        |     28853 |
@@ -265,8 +265,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1751779292,
-    "iso": "2025-07-06T05:21:32.331481+00:00"
+    "timestamp": 1751865256,
+    "iso": "2025-07-07T05:14:16.975598+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -290,7 +290,7 @@ GET /status
     "anisearch": 19725,
     "annict": 11576,
     "imdb": 2261,
-    "kaize": 22919,
+    "kaize": 0,
     "kitsu": 21069,
     "livechart": 11597,
     "myanimelist": 28853,
@@ -381,7 +381,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 07/06/2025 05:21:32 UTC
+Updated on 07/07/2025 05:14:16 UTC
 ```
 <!-- /updated-txt -->
 
@@ -482,8 +482,8 @@ GET https://animeapi.my.id/myanimelist/1
   "anisearch": 1572,
   "annict": 360,
   "imdb": null,
-  "kaize": "cowboy-bebop",
-  "kaize_id": 265,
+  "kaize": null,
+  "kaize_id": null,
   "kitsu": 1,
   "livechart": 3418,
   "myanimelist": 1,
@@ -591,8 +591,8 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
   "anisearch": 16582,
   "annict": 8883,
   "imdb": null,
-  "kaize": "mairimashita-iruma-kun-3rd-season",
-  "kaize_id": 4989,
+  "kaize": null,
+  "kaize_id": null,
   "kitsu": 45154,
   "livechart": 10780,
   "myanimelist": 49784,
