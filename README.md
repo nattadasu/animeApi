@@ -206,7 +206,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 08 July 2025 05:22:09 UTC
+Last updated: 09 July 2025 05:22:05 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -218,7 +218,7 @@ Last updated: 08 July 2025 05:22:09 UTC
 | Anime-Planet       |     25800 |
 | aniSearch          |     19725 |
 | Annict             |     11576 |
-| IMDb               |      2261 |
+| IMDb               |      1594 |
 | Kaize              |     22921 |
 | Kitsu              |     21069 |
 | LiveChart          |     11597 |
@@ -230,7 +230,7 @@ Last updated: 08 July 2025 05:22:09 UTC
 | Shoboi/Syobocal    |      5201 |
 | Silver Yasha       |      4954 |
 | SIMKL              |     13678 |
-| The Movie Database |       590 |
+| The Movie Database |       591 |
 | Trakt              |      4955 |
 |                    |           |
 | **Total**          | **38210** |
@@ -265,8 +265,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1751952129,
-    "iso": "2025-07-08T05:22:09.962870+00:00"
+    "timestamp": 1752038525,
+    "iso": "2025-07-09T05:22:05.131468+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -289,7 +289,7 @@ GET /status
     "animeplanet": 25800,
     "anisearch": 19725,
     "annict": 11576,
-    "imdb": 2261,
+    "imdb": 1594,
     "kaize": 22921,
     "kitsu": 21069,
     "livechart": 11597,
@@ -301,7 +301,7 @@ GET /status
     "shoboi": 5201,
     "silveryasha": 4954,
     "simkl": 13678,
-    "themoviedb": 590,
+    "themoviedb": 591,
     "trakt": 4955,
     "total": 38210
   },
@@ -381,7 +381,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 07/08/2025 05:22:09 UTC
+Updated on 07/09/2025 05:22:05 UTC
 ```
 <!-- /updated-txt -->
 
