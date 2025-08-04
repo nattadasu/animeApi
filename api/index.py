@@ -91,7 +91,7 @@ def before_request():
 def index():
     """Index route"""
     # redirect user to GitHub repo
-    return redirect("https://github.com/nattadasu/animeApi")
+    return redirect("https://github.com/nattadasu/animeApi/discussions/4")
 
 
 @app.route("/status", methods=["GET"])
@@ -592,10 +592,9 @@ def generate_response(uri: str, israw: bool) -> Union[Response, wzResponse]:
     :return: Response
     :rtype: Union[Response, wzResponse]
     """
-    if not israw:
-        return redirect(uri)
-    else:
+    if israw:
         return Response(uri, mimetype="text/plain", status=200)
+    return redirect(uri)
 
 
 def handle_trakt_case(platform_id: str) -> Union[Tuple[Response, int], None]:
@@ -639,23 +638,21 @@ def build_target_uri(
         if target == "trakt":
             return build_trakt_uri(maps, target)
         if target == "kurozora" or target == "myanili":
-            if not maps.get("myanimelist"):
-                return error_response(
-                    "Not found",
-                    404,
-                    f"MyAnimeList ID not found, which is requirement for {target}.",
-                )
-            else:
+            if maps.get("myanimelist"):
                 return f"{route_path[target]}{maps['myanimelist']}"
+            return error_response(
+                "Not found",
+                404,
+                f"MyAnimeList ID not found, which is requirement for {target}.",
+            )
         if target == "letterboxd":
-            if not maps.get("themoviedb"):
-                return error_response(
-                    "Not found",
-                    404,
-                    "TheMovieDB ID not found, which is the main database source for Letterboxd.",
-                )
-            else:
+            if maps.get("themoviedb"):
                 return f"{route_path[target]}{maps['themoviedb']}"
+            return error_response(
+                "Not found",
+                404,
+                "TheMovieDB ID not found, which is the main database source for Letterboxd.",
+            )
         return build_generic_uri(maps, target)
     except ValueError:
         title = maps.get("title", "(Unknown title)")
@@ -686,10 +683,9 @@ def build_trakt_uri(maps: dict[str, Any], target: str) -> str:
         raise ValueError
     media_type = maps.get("trakt_type")
     season = maps.get("trakt_season")
-    if not season:
-        return f"{route_path[target]}{media_type}/{tgt_id}"
-    else:
+    if season:
         return f"{route_path[target]}{media_type}/{tgt_id}/seasons/{season}"
+    return f"{route_path[target]}{media_type}/{tgt_id}"
 
 
 def build_generic_uri(maps: dict[str, Any], target: str) -> str:
