@@ -206,34 +206,34 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 05 August 2025 05:25:41 UTC
+Last updated: 06 August 2025 05:26:10 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
-| aniDB              |     13760 |
-| AniList            |     21279 |
-| Anime News Network |     11854 |
-| Anime-Planet       |     25911 |
-| aniSearch          |     19867 |
-| Annict             |     11577 |
-| IMDb               |      1594 |
-| Kaize              |     22973 |
-| Kitsu              |     21144 |
-| LiveChart          |     11648 |
-| MyAnimeList        |     29029 |
-| Nautiljon          |      8778 |
-| Notify.moe         |     16626 |
+| aniDB              |     13773 |
+| AniList            |     21290 |
+| Anime News Network |     11857 |
+| Anime-Planet       |     25917 |
+| aniSearch          |     19880 |
+| Annict             |     11579 |
+| IMDb               |      1595 |
+| Kaize              |     22975 |
+| Kitsu              |     21149 |
+| LiveChart          |     11652 |
+| MyAnimeList        |     29042 |
+| Nautiljon          |      8775 |
+| Notify.moe         |     16627 |
 | Otak Otaku         |      2946 |
-| Shikimori          |     29029 |
-| Shoboi/Syobocal    |      5210 |
+| Shikimori          |     29042 |
+| Shoboi/Syobocal    |      5211 |
 | Silver Yasha       |      4957 |
-| SIMKL              |     13757 |
+| SIMKL              |     13765 |
 | The Movie Database |       591 |
-| Trakt              |      4959 |
+| Trakt              |      4960 |
 |                    |           |
-| **Total**          | **38568** |
+| **Total**          | **38536** |
 <!-- /counters -->
 
 ## Usage
@@ -265,8 +265,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1754371541,
-    "iso": "2025-08-05T05:25:41.279318+00:00"
+    "timestamp": 1754457970,
+    "iso": "2025-08-06T05:26:10.126030+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -283,27 +283,27 @@ GET /status
   "license": "AGPL-3.0-only AND MIT AND CC0-1.0+",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 13760,
-    "anilist": 21279,
-    "animenewsnetwork": 11854,
-    "animeplanet": 25911,
-    "anisearch": 19867,
-    "annict": 11577,
-    "imdb": 1594,
-    "kaize": 22973,
-    "kitsu": 21144,
-    "livechart": 11648,
-    "myanimelist": 29029,
-    "nautiljon": 8778,
-    "notify": 16626,
+    "anidb": 13773,
+    "anilist": 21290,
+    "animenewsnetwork": 11857,
+    "animeplanet": 25917,
+    "anisearch": 19880,
+    "annict": 11579,
+    "imdb": 1595,
+    "kaize": 22975,
+    "kitsu": 21149,
+    "livechart": 11652,
+    "myanimelist": 29042,
+    "nautiljon": 8775,
+    "notify": 16627,
     "otakotaku": 2946,
-    "shikimori": 29029,
-    "shoboi": 5210,
+    "shikimori": 29042,
+    "shoboi": 5211,
     "silveryasha": 4957,
-    "simkl": 13757,
+    "simkl": 13765,
     "themoviedb": 591,
-    "trakt": 4959,
-    "total": 38568
+    "trakt": 4960,
+    "total": 38536
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format. Platform aliases supported for direct lookup for platform specific endpoints (see ?P<alias> in regex).",
@@ -381,7 +381,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 08/05/2025 05:25:41 UTC
+Updated on 08/06/2025 05:26:10 UTC
 ```
 <!-- /updated-txt -->
 
@@ -586,7 +586,7 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
   "title": "Mairimashita! Iruma-kun 3rd Season",
   "anidb": 16627,
   "anilist": 139092,
-  "animenewsnetwork": null,
+  "animenewsnetwork": 24018,
   "animeplanet": "welcome-to-demon-school-iruma-kun-3",
   "anisearch": 16582,
   "annict": 8883,
