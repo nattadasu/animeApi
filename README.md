@@ -206,7 +206,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 01 September 2025 05:42:19 UTC
+Last updated: 02 September 2025 05:38:31 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -219,11 +219,11 @@ Last updated: 01 September 2025 05:42:19 UTC
 | aniSearch          |     19880 |
 | Annict             |     11579 |
 | IMDb               |      1595 |
-| Kaize              |     22984 |
+| Kaize              |     22988 |
 | Kitsu              |     21152 |
 | LiveChart          |     11652 |
 | MyAnimeList        |     29053 |
-| Nautiljon          |      8788 |
+| Nautiljon          |      8793 |
 | Notify.moe         |     16627 |
 | Otak Otaku         |      2951 |
 | Shikimori          |     29053 |
@@ -265,8 +265,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1756705339,
-    "iso": "2025-09-01T05:42:19.069528+00:00"
+    "timestamp": 1756791511,
+    "iso": "2025-09-02T05:38:31.050281+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -290,11 +290,11 @@ GET /status
     "anisearch": 19880,
     "annict": 11579,
     "imdb": 1595,
-    "kaize": 22984,
+    "kaize": 22988,
     "kitsu": 21152,
     "livechart": 11652,
     "myanimelist": 29053,
-    "nautiljon": 8788,
+    "nautiljon": 8793,
     "notify": 16627,
     "otakotaku": 2951,
     "shikimori": 29053,
@@ -381,7 +381,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 09/01/2025 05:42:19 UTC
+Updated on 09/02/2025 05:38:31 UTC
 ```
 <!-- /updated-txt -->
 
