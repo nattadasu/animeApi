@@ -206,7 +206,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 30 September 2025 05:17:33 UTC
+Last updated: 01 October 2025 05:39:03 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -218,19 +218,19 @@ Last updated: 30 September 2025 05:17:33 UTC
 | Anime-Planet       |     25917 |
 | aniSearch          |     19880 |
 | Annict             |     11579 |
-| IMDb               |      1595 |
-| Kaize              |     23023 |
+| IMDb               |      1599 |
+| Kaize              |     23025 |
 | Kitsu              |     21152 |
 | LiveChart          |     11652 |
 | MyAnimeList        |     29053 |
 | Nautiljon          |      8805 |
 | Notify.moe         |     16627 |
-| Otak Otaku         |      2960 |
+| Otak Otaku         |      2961 |
 | Shikimori          |     29053 |
 | Shoboi/Syobocal    |      5211 |
 | Silver Yasha       |      5026 |
 | SIMKL              |     13765 |
-| The Movie Database |       591 |
+| The Movie Database |       592 |
 | Trakt              |      4968 |
 |                    |           |
 | **Total**          | **38551** |
@@ -265,8 +265,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1759209453,
-    "iso": "2025-09-30T05:17:33.329138+00:00"
+    "timestamp": 1759297143,
+    "iso": "2025-10-01T05:39:03.335788+00:00"
   },
   "contributors": [
     "nattadasu"
@@ -289,19 +289,19 @@ GET /status
     "animeplanet": 25917,
     "anisearch": 19880,
     "annict": 11579,
-    "imdb": 1595,
-    "kaize": 23023,
+    "imdb": 1599,
+    "kaize": 23025,
     "kitsu": 21152,
     "livechart": 11652,
     "myanimelist": 29053,
     "nautiljon": 8805,
     "notify": 16627,
-    "otakotaku": 2960,
+    "otakotaku": 2961,
     "shikimori": 29053,
     "shoboi": 5211,
     "silveryasha": 5026,
     "simkl": 13765,
-    "themoviedb": 591,
+    "themoviedb": 592,
     "trakt": 4968,
     "total": 38551
   },
@@ -381,7 +381,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 09/30/2025 05:17:33 UTC
+Updated on 10/01/2025 05:39:03 UTC
 ```
 <!-- /updated-txt -->
 
