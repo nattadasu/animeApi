@@ -4,6 +4,7 @@ import json
 import math
 import re
 import time
+from dataclasses import dataclass
 from typing import Any, Literal, Optional, Union
 
 import requests as req
@@ -15,6 +16,14 @@ from prettyprint import Platform, PrettyPrint, Status
 pprint = PrettyPrint()
 fua = FakeUserAgent(browsers=["firefox", "chrome", "edge", "safari"])
 rand_fua: str = f"{fua.random}"  # type: ignore
+
+
+@dataclass
+class Step:
+    """Step configuration for page finding"""
+    name: str
+    factor: int
+    iterations: int = 10
 
 
 class Kaize:
@@ -50,6 +59,8 @@ class Kaize:
         self.email = email
         self.password = password
         self.cookie_jar: dict[str, str] = {}
+        self.total_anime_count: Optional[int] = None
+        self.max_pages: Optional[int] = None
         self.session.headers.update({
             "User-Agent": self.user_agent,
         })
@@ -179,6 +190,82 @@ class Kaize:
             pprint.print(Platform.KAIZE, Status.ERR, f"Error: {err}")
             return None
 
+    def is_valid_page(self, response: req.Response) -> bool:
+        """
+        Check if a page is valid (contains anime entries)
+        
+        :param response: The response object
+        :type response: req.Response
+        :return: True if page is valid, False otherwise
+        :rtype: bool
+        """
+        if response.status_code != 200:
+            return False
+        soup = BeautifulSoup(response.text, "html.parser")
+        anime_elements = soup.find_all("div", {"class": "anime-list-element"})
+        return len(anime_elements) > 0
+    
+    def get_total_entries(self, response: req.Response) -> Optional[int]:
+        """
+        Extract total anime count from the page
+        
+        :param response: The response object
+        :type response: req.Response
+        :return: Total anime count if found, None otherwise
+        :rtype: Optional[int]
+        """
+        try:
+            soup = BeautifulSoup(response.text, "html.parser")
+            # Try to find total count in the page
+            # This is a placeholder - actual implementation depends on the page structure
+            return None
+        except Exception:
+            return None
+    
+    def find_max_page(self) -> int:
+        """
+        Find the maximum page number using a step-wise search approach
+        
+        :return: Maximum valid page number
+        :rtype: int
+        """
+        top_url: str = f"{self.base_url}/anime/top"
+        pprint.print(Platform.KAIZE, Status.INFO, "Finding maximum page...")
+        max_valid_page: int = 1  # Page 1 always exists
+        steps: list[Step] = [
+            Step("thousands", 1000),
+            Step("hundreds", 100),
+            Step("tens", 10),
+            Step("ones", 1),
+        ]
+        for step in steps:
+            base: int = (max_valid_page // step.factor) * step.factor
+            with alive_bar(step.iterations, title=f"Testing {step.name}", bar='smooth', spinner='dots_waves') as bar:  # type: ignore
+                for i in range(step.iterations):
+                    test_page: int = base + (i * step.factor)
+                    if test_page == 0:
+                        test_page = 1
+                    response: req.Response = self.session.get(f"{top_url}?page={test_page}")
+                    self.update_cookies(response)
+                    if self.is_valid_page(response):
+                        if test_page > max_valid_page:
+                            max_valid_page = test_page
+                            total_anime: Optional[int] = self.get_total_entries(response)
+                            if total_anime:
+                                self.total_anime_count = total_anime
+                        bar.text(f"Page {test_page} valid")  # type: ignore
+                    else:
+                        break
+                    bar()  # type: ignore
+                    time.sleep(0.1)
+        self.max_pages = max_valid_page
+        pprint.print(
+            Platform.KAIZE,
+            Status.PASS,
+            f"Maximum page found: {self.max_pages}",
+        )
+        return self.max_pages
+    
     def pages(self, media: Literal["anime", "manga"] = "anime") -> int:
         """
         Get the total pages
@@ -189,91 +276,8 @@ class Kaize:
         :return: The total pages
         :rtype: int
         """
-        kzp = 0
-        pgHundreds = True
-        pgTens = True
-        pgOnes = True
-        kzpg = 0
-        while pgHundreds is True:
-            pprint.print(
-                Platform.KAIZE,
-                Status.INFO,
-                f"Checking in hundreds, page {kzp}",
-                clean_line=True,
-                end="",
-            )
-            pg_check = self._get(f"{self.base_url}/{media}/top?page={kzp}")
-            if not pg_check:
-                pprint.print(
-                    Platform.KAIZE, Status.ERR, "Unable to connect to kaize.io"
-                )
-                break
-            soup = BeautifulSoup(pg_check.text, "html.parser")
-            try:
-                kzDat = soup.find_all("div", {"class": "anime-list-element"})
-                if kzDat[0].find("div", {"class": "rank"}).text:
-                    kzp += 100
-                    time.sleep(1.2)
-            except IndexError:
-                kzpg = kzp - 100
-                pgHundreds = False
-
-        kzp = kzpg + 10
-        while pgTens is True:
-            pprint.print(
-                Platform.KAIZE,
-                Status.INFO,
-                f"Checking in tens, page {kzp}",
-                clean_line=True,
-                end="",
-            )
-            pg_check = self._get(f"{self.base_url}/{media}/top?page={kzp}")
-            if not pg_check:
-                pprint.print(
-                    Platform.KAIZE, Status.ERR, "Unable to connect to kaize.io"
-                )
-                break
-            soup = BeautifulSoup(pg_check.text, "html.parser")
-            try:
-                kzDat = soup.find_all("div", {"class": "anime-list-element"})
-                if kzDat[0].find("div", {"class": "rank"}).text:
-                    kzp += 10
-                    time.sleep(1.2)
-            except IndexError:
-                kzpg = kzp - 10
-                pgTens = False
-
-        kzp = kzpg + 1
-        while pgOnes is True:
-            pprint.print(
-                Platform.KAIZE,
-                Status.INFO,
-                f"Checking in ones, page {kzp}",
-                clean_line=True,
-                end="",
-            )
-            pg_check = self._get(f"{self.base_url}/{media}/top?page={kzp}")
-            if not pg_check:
-                pprint.print(
-                    Platform.KAIZE, Status.ERR, "Unable to connect to kaize.io"
-                )
-                break
-            soup = BeautifulSoup(pg_check.text, "html.parser")
-            try:
-                kzDat = soup.find_all("div", {"class": "anime-list-element"})
-                if kzDat[0].find("div", {"class": "rank"}).text:
-                    kzp += 1
-                    time.sleep(1.2)
-            except IndexError:
-                kzpg = kzp - 1
-                pgOnes = False
-
-        pprint.print(
-            Platform.KAIZE,
-            Status.PASS,
-            f"Done checking, total pages: {kzpg}",
-        )
-        return kzpg
+        # Use the new find_max_page method
+        return self.find_max_page()
 
     def _get_data_index(
         self, page: int, media: Literal["anime", "manga"] = "anime"
