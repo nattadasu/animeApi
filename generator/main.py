@@ -9,8 +9,6 @@ from combiner import combine_anitrakt, combine_arm, combine_fribb
 from const import (
     KAIZE_EMAIL,
     KAIZE_PASSWORD,
-    KAIZE_SESSION,
-    KAIZE_XSRF_TOKEN,
     attribution,
     pprint,
 )
@@ -35,9 +33,6 @@ from otakotaku import OtakOtaku
 from prettyprint import Platform, Status
 from utils import check_git_any_changes, proc_stop
 
-# if (KAIZE_XSRF_TOKEN is None) and (KAIZE_SESSION is None) and (KAIZE_EMAIL is None) and (KAIZE_PASSWORD is None):
-#     raise Exception('Kaize login info does not available in environment variables')
-
 
 def main() -> None:
     """Main function"""
@@ -47,10 +42,8 @@ def main() -> None:
         aod = get_anime_offline_database()
         aod_arr = simplify_aod_data(aod)
         kza = Kaize(
-            session=KAIZE_SESSION,
             email=KAIZE_EMAIL,
             password=KAIZE_PASSWORD,
-            xsrf_token=KAIZE_XSRF_TOKEN,
         ).get_anime()
         nau = Nautiljon().get_animes()
         ota = OtakOtaku().get_anime()

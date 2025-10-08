@@ -31,8 +31,6 @@ class Kaize:
 
     def __init__(
         self,
-        session: Optional[str] = None,
-        xsrf_token: Optional[str] = None,
         user_agent: Optional[str] = None,
         email: Optional[str] = None,
         password: Optional[str] = None,
@@ -53,7 +51,7 @@ class Kaize:
         """
         self.base_url = "https://kaize.io"
         self.session = req.Session()
-        self.xsrf_token = xsrf_token
+        self.xsrf_token: Optional[str] = None
         self.csrf_token: Optional[str] = None
         self.user_agent = user_agent or rand_fua
         self.email = email
