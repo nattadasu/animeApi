@@ -203,12 +203,12 @@ class Kaize:
         anime_elements = soup.find_all("div", {"class": "anime-list-element"})
         return len(anime_elements) > 0
     
-    def get_total_entries(self, response: requests.Response) -> Optional[int]:
+    def get_total_entries(self, response: req.Response) -> Optional[int]:
         """
         Extract total anime count from the last item on a page.
         
         :param response: HTTP response from an anime list page
-        :type response: requests.Response
+        :type response: req.Response
         :return: Total anime count or None if not found
         :rtype: Optional[int]
         """
