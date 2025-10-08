@@ -43,21 +43,76 @@ class Kaize:
         :type password: Optional[str], optional
         """
         self.base_url = "https://kaize.io"
-        self.session = session
+        self.session = req.Session()
         self.xsrf_token = xsrf_token
+        self.csrf_token: Optional[str] = None
         self.user_agent = user_agent or rand_fua
         self.email = email
         self.password = password
-        self.cookies = ""
-        self.headers = {
+        self.cookie_jar: dict[str, str] = {}
+        self.session.headers.update({
             "User-Agent": self.user_agent,
-        }
+        })
         pprint.print(
             Platform.KAIZE,
             Status.READY,
             "Kaize anime data scraper ready to use",
         )
 
+    def get_csrf_tokens(self) -> None:
+        """
+        Get the CSRF tokens from the login page
+        """
+        login_url: str = f"{self.base_url}/login"
+        response: req.Response = self.session.get(login_url)
+        if 'XSRF-TOKEN' in response.cookies:
+            self.xsrf_token = response.cookies['XSRF-TOKEN']
+            self.cookie_jar['XSRF-TOKEN'] = self.xsrf_token
+        soup: BeautifulSoup = BeautifulSoup(response.text, 'html.parser')
+        csrf_meta: Optional[Tag] = soup.find('meta', {'name': 'csrf-token'})
+        if csrf_meta:
+            self.csrf_token = csrf_meta.get('content')
+    
+    def update_cookies(self, response: req.Response) -> None:
+        """
+        Update cookies from response
+        
+        :param response: The response object
+        :type response: req.Response
+        """
+        for cookie_name in ['XSRF-TOKEN', 'kaize_session', 'remember_web']:
+            if cookie_name in response.cookies:
+                self.cookie_jar[cookie_name] = response.cookies[cookie_name]
+    
+    def login(self, email: str, password: str) -> bool:
+        """
+        Login to Kaize
+        
+        :param email: Email address
+        :type email: str
+        :param password: Password
+        :type password: str
+        :return: True if login successful, False otherwise
+        :rtype: bool
+        """
+        login_url: str = f"{self.base_url}/login"
+        login_data: dict[str, str] = {
+            '_token': str(self.csrf_token),
+            'email': email,
+            'password': password,
+            'remember': 'on'
+        }
+        response: req.Response = self.session.post(
+            login_url, data=login_data, allow_redirects=False
+        )
+        if response.status_code == 302:
+            pprint.print(Platform.KAIZE, Status.PASS, "Login successful")
+            self.update_cookies(response)
+            return True
+        else:
+            pprint.print(Platform.KAIZE, Status.ERR, f"Login failed with status code: {response.status_code}")
+            return False
+    
     def _session_set(self) -> None:
         """
         Set the session and XSRF token
@@ -66,20 +121,15 @@ class Kaize:
         :raises ValueError: XSRF token not found
         :raises ConnectionError: Unable to connect to kaize.io
         """
-        if self.session in ["", None] or self.xsrf_token in ["", None]:
-            self.cookies = self._get_xsrf_token()
-            split_cookie = self.cookies.split("; ")
-            # find XSRF token
-            for cookie in split_cookie:
-                cookie = cookie.strip()
-                if cookie.startswith("XSRF-TOKEN"):
-                    self.xsrf_token = cookie.split("=")[-1]
-                if cookie.startswith("kaize_session"):
-                    self.session = cookie.split("=")[-1]
-        else:
-            self.cookies = f"XSRF-TOKEN={self.xsrf_token}; kaize_session={self.session}"
-        self.headers["Cookie"] = self.cookies
-        self.headers["X-XSRF-TOKEN"] = str(self.xsrf_token)
+        if not self.email or not self.password:
+            raise ValueError("Email or password not provided")
+        
+        # Get CSRF tokens
+        self.get_csrf_tokens()
+        
+        # Login
+        if not self.login(self.email, self.password):
+            raise ConnectionError("Unable to login to kaize.io")
 
     def _get(self, url: str) -> Union[req.Response, None]:
         """
@@ -91,8 +141,9 @@ class Kaize:
         :rtype: Union[req.Response, None]
         """
         try:
-            response = req.get(url, headers=self.headers, timeout=15)
+            response = self.session.get(url, timeout=15)
             if response.status_code == 200:
+                self.update_cookies(response)
                 return response
             return None
         except Exception as err:
@@ -117,66 +168,16 @@ class Kaize:
         :return: The response
         :rtype: Union[req.Response, None]
         """
-        headers = self.headers
-        if header:
-            headers.update(header)
+        headers = header if header else {}
         try:
-            response = req.post(url, headers=headers, data=data, timeout=15)
+            response = self.session.post(url, headers=headers, data=data, timeout=15)
             if response.status_code == 200 or response.status_code == 302:
+                self.update_cookies(response)
                 return response
             return None
         except Exception as err:
             pprint.print(Platform.KAIZE, Status.ERR, f"Error: {err}")
             return None
-
-    def _get_xsrf_token(self) -> str:
-        """
-        Get the XSRF token
-
-        :raises ValueError: Email or password not provided
-        :raises ValueError: XSRF token not found
-        :raises ConnectionError: Unable to connect to kaize.io
-        :return: The XSRF token
-        :rtype: str
-        """
-        if not self.email or not self.password:
-            raise ValueError("Email or password not provided")
-        base_url = f"{self.base_url}/login"
-        response = self._get(base_url)
-        if not response:
-            raise ConnectionError("Unable to connect to kaize.io")
-        soup = BeautifulSoup(response.text, "html.parser")
-        xsrf_token = soup.find("meta", attrs={"name": "csrf-token"})
-        if not isinstance(xsrf_token, Tag):
-            raise ValueError("XSRF token not found")
-        token = xsrf_token.get("content", None)
-        if not token:
-            raise ValueError("XSRF token not found")
-        # post login
-        header_login = {
-            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-            "Cookie": (
-                response.headers["Set-Cookie"].split(",")[0].split(";")[0]
-                + "; "
-                + response.headers["Set-Cookie"].split(",")[2].split(";")[0]
-            ),
-        }
-        data_raw: list[str] = [
-            f"_token={token}",
-            f"email={self.email}",
-            f"password={self.password}",
-        ]
-        data: str = "&".join(data_raw)
-        response = self._post(f"{base_url}", data, header_login)
-        if not response:
-            raise ConnectionError("Unable to connect to kaize.io")
-        # set cookie
-        cookie = (
-            response.headers["Set-Cookie"].split(",")[0].split(";")[0]
-            + "; "
-            + response.headers["Set-Cookie"].split(",")[2].split(";")[0]
-        )
-        return cookie
 
     def pages(self, media: Literal["anime", "manga"] = "anime") -> int:
         """
@@ -275,7 +276,7 @@ class Kaize:
         return kzpg
 
     def _get_data_index(
-        self, page: int, media: Literal["anime", "manga"] = "anime", refresh_token: bool = False
+        self, page: int, media: Literal["anime", "manga"] = "anime"
     ) -> list[dict[str, Any]]:
         """
         Get the data from the index
@@ -284,16 +285,10 @@ class Kaize:
         :type page: int
         :param media: The media, defaults to 'anime'
         :type media: Literal['anime', 'manga'], optional
-        :param refresh_token: Whether to refresh the token before fetching, defaults to False
-        :type refresh_token: bool, optional
         :raises ConnectionError: Unable to connect to kaize.io
         :return: The data
         :rtype: list[dict[str, Any]]
         """
-        # Refresh token if requested (for account-required entries)
-        if refresh_token:
-            self._session_set()
-        
         response = self._get(f"{self.base_url}/{media}/top?page={page}")
         if not response:
             raise ConnectionError("Unable to connect to kaize.io")
@@ -336,8 +331,7 @@ class Kaize:
             pages = self.pages()
             with alive_bar(pages, title="Getting data", spinner=None) as bar:  # type: ignore
                 for page in range(1, pages + 1):
-                    # Refresh token every page to handle account-required entries
-                    anime_data.extend(self._get_data_index(page, refresh_token=True))
+                    anime_data.extend(self._get_data_index(page))
                     bar()
             with open(file_path, "w", encoding="utf-8") as file:
                 anime_data.sort(key=lambda x: x["title"])  # type: ignore
