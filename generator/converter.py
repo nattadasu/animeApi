@@ -172,9 +172,14 @@ def link_kaize_to_mal(
     with alive_bar(
         len(aod_list), title="Reintroduce old list items", spinner=None
     ) as bar:  # type: ignore
+        # Create a set of existing MAL IDs for faster lookup
+        existing_mal_ids = {item.get("myanimelist") for item in merged if item.get("myanimelist")}
+        
         for item in aod_list:
-            if item not in aod:
+            mal_id = item.get("myanimelist")
+            if mal_id and mal_id not in existing_mal_ids:
                 merged.append(item)
+                existing_mal_ids.add(mal_id)
             bar()
 
     aod_list = merged
