@@ -93,6 +93,31 @@ class Kaize:
             if cookie_name in response.cookies:
                 self.cookie_jar[cookie_name] = response.cookies[cookie_name]
     
+    def get_logged_in_username(self) -> Optional[str]:
+        """
+        Extract the logged-in username from the page
+        
+        :return: Username if found, None otherwise
+        :rtype: Optional[str]
+        """
+        try:
+            response = self._get(f"{self.base_url}/anime/top")
+            if not response:
+                return None
+            soup = BeautifulSoup(response.text, "html.parser")
+            account_div = soup.find("div", {"class": "account"})
+            if account_div:
+                main_div = account_div.find("div", {"class": "main"})
+                if main_div:
+                    # Extract text and clean it (username is between the image div and the caret icon)
+                    text_content = main_div.get_text(strip=True)
+                    # Remove the caret icon text
+                    username = text_content.replace("", "").strip()
+                    return username if username else None
+            return None
+        except Exception:
+            return None
+    
     def login(self, email: str, password: str) -> bool:
         """
         Login to Kaize
@@ -115,8 +140,13 @@ class Kaize:
             login_url, data=login_data, allow_redirects=False
         )
         if response.status_code == 302:
-            pprint.print(Platform.KAIZE, Status.PASS, "Login successful")
             self.update_cookies(response)
+            # Get username from the page
+            username = self.get_logged_in_username()
+            if username:
+                pprint.print(Platform.KAIZE, Status.PASS, f"Login successful as {username}")
+            else:
+                pprint.print(Platform.KAIZE, Status.PASS, "Login successful")
             return True
         else:
             pprint.print(Platform.KAIZE, Status.ERR, f"Login failed with status code: {response.status_code}")
