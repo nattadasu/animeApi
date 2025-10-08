@@ -275,7 +275,7 @@ class Kaize:
         return kzpg
 
     def _get_data_index(
-        self, page: int, media: Literal["anime", "manga"] = "anime"
+        self, page: int, media: Literal["anime", "manga"] = "anime", refresh_token: bool = False
     ) -> list[dict[str, Any]]:
         """
         Get the data from the index
@@ -284,10 +284,16 @@ class Kaize:
         :type page: int
         :param media: The media, defaults to 'anime'
         :type media: Literal['anime', 'manga'], optional
+        :param refresh_token: Whether to refresh the token before fetching, defaults to False
+        :type refresh_token: bool, optional
         :raises ConnectionError: Unable to connect to kaize.io
         :return: The data
         :rtype: list[dict[str, Any]]
         """
+        # Refresh token if requested (for account-required entries)
+        if refresh_token:
+            self._session_set()
+        
         response = self._get(f"{self.base_url}/{media}/top?page={page}")
         if not response:
             raise ConnectionError("Unable to connect to kaize.io")
@@ -330,7 +336,8 @@ class Kaize:
             pages = self.pages()
             with alive_bar(pages, title="Getting data", spinner=None) as bar:  # type: ignore
                 for page in range(1, pages + 1):
-                    anime_data.extend(self._get_data_index(page))
+                    # Refresh token every page to handle account-required entries
+                    anime_data.extend(self._get_data_index(page, refresh_token=True))
                     bar()
             with open(file_path, "w", encoding="utf-8") as file:
                 anime_data.sort(key=lambda x: x["title"])  # type: ignore
