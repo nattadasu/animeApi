@@ -1,0 +1,11 @@
+{
+    "[markdown]": {
+        "editor.rulers": [
+            80
+        ]
+    },
+    "cSpell.enabled": false,
+    "cSpell.enableFiletypes": [
+        "markdown"
+    ]
+}

@@ -1,0 +1,388 @@
+<!-- omit in toc -->
+# nattadasu's Mock REST API for Anime (AnimeAPI)
+
+<!-- omit in toc -->
+## Table of Contents
+
+* [About the project](#about-the-project)
+* [Supported Providers](#supported-providers)
+* [Statistics](#statistics)
+* [Returned Value](#returned-value)
+* [Usage](#usage)
+  * [Get all items in Array](#get-all-items-in-array)
+  * [Get All ID in Object/Dictionary format of each provider](#get-all-id-in-objectdictionary-format-of-each-provider)
+  * [Get All ID in Array/List format of each provider](#get-all-id-in-arraylist-format-of-each-provider)
+  * [Get a relation of ID to title](#get-a-relation-of-id-to-title)
+    * [Provider exclusive rules](#provider-exclusive-rules)
+      * [Kitsu](#kitsu)
+      * [Shikimori](#shikimori)
+      * [Trakt](#trakt)
+* [Repository Files](#repository-files)
+* [Acknowledgements](#acknowledgements)
+
+## About the project
+
+This is a mock REST API by utilizing GitHub Pages to host, GitHub Actions to
+automate, and Python for backend.
+
+## Supported Providers
+
+* [x] [aniDb](https://anidb.net/)
+* [x] [AniList](https://anilist.co/)
+* [x] [Anime-Planet](https://www.anime-planet.com/)
+* [x] [aniSearch](https://anisearch.com/)
+* [x] [Annict](https://en.annict.com/)
+* [x] [Kaize][kz]
+* [x] [Kitsu](https://kitsu.io/)
+* [x] [LiveChart](https://livechart.me/)
+* [x] [MyAnimeList](https://myanimelist.net/)
+* [x] [Notify](https://notify.moe/)
+* [x] [Otak Otaku][oo]
+* [x] [Shikimori](https://shikimori.one/) (uses MyAnimeList ID)
+* [x] [Shoboi Calendar](https://cal.syoboi.jp/)
+* [x] [Silver-Yasha DB Tontonan Indonesia][sy]
+* [x] [Trakt](https://trakt.tv/)
+
+## Statistics
+
+<!-- statistic -->
+
+This API has been updated on 08/27/2023 10:51:23 UTC, with a total of **31900** titles indexed.
+
+|              Provider |     Code      | Count  |
+| --------------------: | :-----------: | :----- |
+|                 aniDb |    `anidb`    | 12919 |
+|               AniList |   `anilist`   | 17390 |
+|          Anime-Planet | `animeplanet` | 23050 |
+|             aniSearch |  `anisearch`  | 17982 |
+|                Annict |   `annict`    | 8915 |
+|                 Kaize |    `kaize`    | 24076 |
+|                 Kitsu |    `kitsu`    | 19379 |
+|             LiveChart |  `livechart`  | 10882 |
+|           MyAnimeList | `myanimelist` | 25348 |
+|                Notify |    `notify`   | 15903 |
+|            Otak Otaku |  `otakotaku`  | 2549 |
+|             Shikimori |  `shikimori`  | 25348 |
+|       Shoboi Calendar |    `shoboi`   | 4707 |
+| DB Tontonan Indonesia | `silveryasha` | 3827 |
+|                 Trakt |    `trakt`    | 4439 |
+
+<!-- /statistic -->
+
+## Returned Value
+
+```ts
+type StringNull = string | null;
+type NumberNull = number | null;
+type TraktType = "movies" | "shows" | null;
+
+interface Anime = {
+    title:            string;
+    anidb:        NumberNull;
+    anilist:      NumberNull;
+    animeplanet:  StringNull;
+    anisearch:    NumberNull;
+    annict:       NumberNull;
+    kaize:        StringNull;
+    kitsu:        NumberNull; // Kitsu ID, slug is not supported
+    livechart:    NumberNull;
+    myanimelist:  NumberNull;
+    notify:       StringNull;
+    otakotaku:    NumberNull;
+    shikimori:    NumberNull;
+    shoboi:       NumberNull;
+    silveryasha:  NumberNull;
+    trakt:        NumberNull; // Trakt ID, slug is currently not supported
+    trakt_type:    TraktType;
+    trakt_season: NumberNull;
+}
+
+// Array/List format
+type AnimeList = Anime[];
+
+// Object/Dictionary format
+type AnimeObject = {
+    [key: string]: Anime;
+}
+```
+
+Or, in Python >= 3.10:
+
+```py
+from enum import Enum
+from typing import List, Dict, Literal
+
+StringNull = str | None
+NumberNull = int | None
+
+TraktType = Literal["shows", "movies"] | None
+
+@dataclass
+class Anime:
+    title:               str
+    anidb:        NumberNull
+    anilist:      NumberNull
+    animeplanet:  StringNull  # Slug based
+    anisearch:    NumberNull
+    annict:       NumberNull
+    kaize:        StringNull  # Slug based
+    kitsu:        NumberNull  # Kitsu ID, slug is not supported
+    livechart:    NumberNull
+    myanimelist:  NumberNull
+    notify:       StringNull  # Base64 based
+    otakotaku:    NumberNull
+    shikimori:    NumberNull
+    shoboi:       NumberNull
+    silveryasha:  NumberNull
+    trakt:        NumberNull  # Trakt ID, slug is currently not supported
+    trakt_type:    TraktType
+    trakt_season: NumberNull
+
+# Array/List format
+anime_list = List[Anime]
+
+# Object/Dictionary format
+anime_object = Dict[str, Anime]
+```
+
+Or, in old-plain JSON:
+
+```jsonc
+"$Anime": {
+    "title": "string",
+    "anidb": 0,
+    "anilist": 0,
+    "animeplanet": "string",
+    "anisearch": 0,
+    "annict": 0,
+    "kaize": "string",
+    "kitsu": 0,
+    "livechart": 0,
+    "myanimelist": 0,
+    "notify": "string",
+    "otakotaku": 0,
+    "shikimori": 0,
+    "shoboi": 0,
+    "silveryasha": 0,
+    "trakt": 0,
+    "trakt_type": "string(shows|movies)",
+    "trakt_season": 0
+}
+
+// Array/List format
+["$Anime"]
+
+// Object/Dictionary format
+{
+    "id": "$Anime"
+}
+```
+
+All keys is always present, but the value can be `null` if service/provider
+does not have the ID of the title, except for `title` key value, which will be
+always present.
+
+Example of `myanimelist/1`:
+
+<!-- mal-1 -->
+
+```json
+{
+    "title": "Cowboy Bebop",
+    "anidb": 23,
+    "anilist": 1,
+    "animeplanet": "cowboy-bebop",
+    "anisearch": 1572,
+    "annict": 360,
+    "kaize": "cowboy-bebop",
+    "kitsu": 1,
+    "livechart": 3418,
+    "myanimelist": 1,
+    "notify": "Tk3ccKimg",
+    "otakotaku": 1149,
+    "shikimori": 1,
+    "shoboi": 538,
+    "silveryasha": 2652,
+    "trakt": 30857,
+    "trakt_type": "shows",
+    "trakt_season": 1
+}
+```
+
+<!-- /mal-1 -->
+
+## Usage
+
+To use this API, you can access the following endpoints:
+
+```http
+GET https://aniapi.nattadasu.my.id/
+```
+
+All requests must be `GET`, and response always will be in JSON format.
+
+> **Warning**
+>
+> If an entry can not be found, the API will return `404` status code and GitHub
+> Pages' default 404 page.
+
+### Get all items in Array
+
+```http
+GET /animeApi.json
+```
+
+### Get All ID in Object/Dictionary format of each provider
+
+> **Note**
+>
+> Use this endpoint as "cache"-like for your application, so you don't have to
+> query the API for every title you want to get the ID, which is useful for
+> offline indexer that already have the ID from supported providers.
+
+```http
+GET /<PROVIDER>.json
+```
+
+`<PROVIDER>` can be one of the following:
+
+`anidb`, `anilist`, `animeplanet`, `anisearch`, `annict`, `kaize`, `kitsu`,
+`livechart`, `myanimelist`, `notify`, `otakotaku`, `shikimori`,
+`shoboi`, `silveryasha`, `trakt`
+
+### Get All ID in Array/List format of each provider
+
+```http
+GET /<PROVIDER>().json
+```
+
+`<PROVIDER>` can be one of the following:
+
+`anidb`, `anilist`, `animeplanet`, `anisearch`, `annict`, `kaize`, `kitsu`,
+`livechart`, `myanimelist`, `notify`, `otakotaku`, `shikimori`,
+`shoboi`, `silveryasha`, `trakt`
+
+If your application unable to reach the endpoint, replace `()` to `%28%29`.
+
+### Get a relation of ID to title
+
+```http
+GET /<PROVIDER>/<ID>
+```
+
+`<PROVIDER>` can be one of the following:
+
+`anidb`, `anilist`, `animeplanet`, `anisearch`, `annict`, `kaize`, `kitsu`,
+`livechart`, `myanimelist`, `notify`, `otakotaku`, `shikimori`,
+`shoboi`, `silveryasha`, `trakt`
+
+`<ID>` is the ID of the title in the provider.
+
+#### Provider exclusive rules
+
+##### Kitsu
+
+`kitsu` ID must in numerical value. If your application obtained slug as ID
+instead, you can resolve/convert it to ID using following Kitsu API endpoint:
+
+```http
+GET https://kitsu.io/api/edge/anime?filter[slug]=<ID>
+```
+
+##### Shikimori
+
+`shikimori` IDs are basically the same as `myanimelist` IDs. If you get a
+`404` status code, remove any alphabetical prefix from the ID and try again.
+
+For example: `z218` -> `218`
+
+##### Trakt
+
+For `trakt` provider, the ID is in the format of `<TYPE>/<ID>` where `<TYPE>`
+is either `movies` or `shows` and `<ID>` is the ID of the title in the provider.
+
+An ID on Trakt must in numerical value. If your application obtained slug as ID
+instead, you can resolve/convert it to ID using following Trakt API endpoint:
+
+```http
+GET https://api.trakt.tv/search/trakt/<ID>?type=<movie|show>
+```
+
+To get exact season mapping, append `/seasons/<SEASON>` to the end of the ID,
+where `<SEASON>` is the season number of the title in the provider.
+
+For example, to get the ID of `Mairimashita Iruma-kun` Season 3, you can use:
+
+```http
+GET https://aniapi.nattadasu.my.id/trakt/shows/152334/seasons/3
+```
+
+The response will be:
+
+<!-- trakt-152334-3 -->
+
+```json
+{
+    "title": "Mairimashita! Iruma-kun 3rd Season",
+    "anidb": 16627,
+    "anilist": 139092,
+    "animeplanet": "welcome-to-demon-school-iruma-kun-3",
+    "anisearch": 16582,
+    "annict": 8883,
+    "kaize": "mairimashita-iruma-kun-3rd-season",
+    "kitsu": 45154,
+    "livechart": 10780,
+    "myanimelist": 49784,
+    "notify": "Okl9YtInR",
+    "otakotaku": 2305,
+    "shikimori": 49784,
+    "shoboi": 6489,
+    "silveryasha": 3702,
+    "trakt": 152334,
+    "trakt_type": "shows",
+    "trakt_season": 3
+}
+```
+
+<!-- /trakt-152334-3 -->
+
+## Repository Files
+
+This repository contains multiple cache files, alongside main files, which are:
+
+* `.editorconfig`: EditorConfig file.
+* `.gitattributes`: Git attributes file.
+* `.gitignore`: Git ignore file.
+* `animeApi.json`: All data in Array format.
+* `aod.raw.json`: [Anime Offline Database][aod] raw data.
+* `arm.raw.json`: [Anime Relations Mapping][koarm] raw data.
+* `ati.raw.json`: [AniTrakt Index Parser][atip] raw data.
+* `kz.mapped.raw.json`: [Kaize][kz] raw data, mapped to MyAnimeList ID.
+* `kz.unknown.raw.json`: [Kaize][kz] raw data, with unknown MyAnimeList ID.
+* `kz.unmapped.raw.json`: [Kaize][kz] (true) raw data.
+* `oo.raw.json`: [Otak Otaku][oo] raw data.
+* `oo.unknown.raw.json`: [Otak Otaku][oo] raw data, with unknown MyAnimeList ID.
+* `README.md`: This file.
+* `requirements.txt`: Python requirements file.
+* `robots.txt`: Robots.txt file.
+* `sy.raw.json`: [Silver-Yasha][sy] raw data.
+
+## Acknowledgements
+
+This project uses multiple sources to compile the data, including:
+
+* [GitHub:kawaiioverflow/arm][koarm]
+* [GitHub:manami-project/anime-offline-database][aod]
+* [GitHub:ryuuganime/aniTrakt-IndexParser][atip], which an automatic parser of
+  [AniTrakt](https://anitrakt.huere.net/) index page.
+* [Kaize][kz]
+* [Otak Otaku][oo]
+* [Silver-Yasha][sy]
+
+<!-- References -->
+[aod]: https://github.com/manami-project/anime-offline-database
+[atip]: https://github.com/ryuuganime/aniTrakt-IndexParser
+[koarm]: https://github.com/kawaiioverflow/arm
+[kz]: https://kaize.io/
+[oo]: https://otakotaku.com/
+[sy]: https://db.silveryasha.web.id/
