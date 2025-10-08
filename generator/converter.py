@@ -177,6 +177,7 @@ def link_kaize_to_mal(
         
         for item in aod_list:
             mal_id = item.get("myanimelist")
+            # Only add if has MAL ID and it's not already in merged
             if mal_id and mal_id not in existing_mal_ids:
                 merged.append(item)
                 existing_mal_ids.add(mal_id)
