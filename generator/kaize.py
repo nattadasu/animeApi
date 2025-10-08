@@ -205,22 +205,31 @@ class Kaize:
         anime_elements = soup.find_all("div", {"class": "anime-list-element"})
         return len(anime_elements) > 0
     
-    def get_total_entries(self, response: req.Response) -> Optional[int]:
+    def get_total_entries(self, response: requests.Response) -> Optional[int]:
         """
-        Extract total anime count from the page
+        Extract total anime count from the last item on a page.
         
-        :param response: The response object
-        :type response: req.Response
-        :return: Total anime count if found, None otherwise
+        :param response: HTTP response from an anime list page
+        :type response: requests.Response
+        :return: Total anime count or None if not found
         :rtype: Optional[int]
         """
-        try:
-            soup = BeautifulSoup(response.text, "html.parser")
-            # Try to find total count in the page
-            # This is a placeholder - actual implementation depends on the page structure
+        if response.status_code != 200:
             return None
-        except Exception:
-            return None
+            
+        soup: BeautifulSoup = BeautifulSoup(response.text, 'html.parser')
+        anime_elements: List[Tag] = soup.find_all('div', class_='anime-list-element')
+        
+        if anime_elements:
+            # Get the last element's rank
+            last_element: Tag = anime_elements[-1]
+            rank_elem: Optional[Tag] = last_element.find('div', class_='rank')
+            if rank_elem:
+                try:
+                    return int(rank_elem.text.strip().replace('#', ''))
+                except ValueError:
+                    return None
+        return None
     
     def find_max_page(self) -> int:
         """
