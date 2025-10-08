@@ -5,7 +5,7 @@ from typing import Any, Union
 
 from alive_progress import alive_bar  # type: ignore
 from const import pprint
-from fuzzywuzzy import fuzz  # type: ignore
+from thefuzz import fuzz, process  # type: ignore
 from prettyprint import Platform, Status
 from slugify import slugify
 
@@ -85,26 +85,30 @@ def link_kaize_to_mal(
     with alive_bar(
         len(unlinked), title="Fuzzy match title from both databases", spinner=None
     ) as bar:  # type: ignore
+        # Create a dict mapping AOD titles to AOD items for faster lookup
+        aod_title_dict = {aod_item["title"]: aod_item for aod_item in aod}
+        aod_titles = list(aod_title_dict.keys())
+        
         for item in unlinked:
             title = item["title"]
-            for aod_item in aod:
-                aod_title = aod_item["title"]
-                ratio = fuzz.ratio(title, aod_title)  # type: ignore
-                if ratio >= 85:
-                    kz_dat = {
-                        "anidb": aod_item["anidb"],
-                        "anilist": aod_item["anilist"],
-                        "myanimelist": aod_item["myanimelist"],
+            # Use process.extractOne for optimized fuzzy matching
+            result = process.extractOne(title, aod_titles, scorer=fuzz.ratio)  # type: ignore
+            if result and result[1] >= 85:
+                matched_title = result[0]
+                aod_item = aod_title_dict[matched_title]
+                kz_dat = {
+                    "anidb": aod_item["anidb"],
+                    "anilist": aod_item["anilist"],
+                    "myanimelist": aod_item["myanimelist"],
+                }
+                item.update(kz_dat)
+                kz_fixed.append(item)
+                aod_item.update(
+                    {
+                        "kaize": item["slug"],
+                        "kaize_id": None if item["kaize"] == 0 else item["kaize"],
                     }
-                    item.update(kz_dat)
-                    kz_fixed.append(item)
-                    aod_item.update(
-                        {
-                            "kaize": item["slug"],
-                            "kaize_id": None if item["kaize"] == 0 else item["kaize"],
-                        }
-                    )
-                    break
+                )
             bar()
     # load manual link data
     with open("database/raw/kaize_manual.json", "r", encoding="utf-8") as file:
@@ -275,27 +279,31 @@ def link_nautiljon_to_mal(
     with alive_bar(
         len(unlinked), title="Fuzzy match title from both databases", spinner=None
     ) as bar:  # type: ignore
+        # Create a dict mapping AOD titles to AOD items for faster lookup
+        aod_title_dict = {aod_item["title"]: aod_item for aod_item in aod}
+        aod_titles = list(aod_title_dict.keys())
+        
         for item in unlinked:
             title = item["title"]
-            for aod_item in aod:
-                aod_title = aod_item["title"]
-                ratio = fuzz.ratio(title, aod_title)  # type: ignore
-                if ratio >= 90:
-                    item.update(
-                        {
-                            "anidb": aod_item["anidb"],
-                            "anilist": aod_item["anilist"],
-                            "myanimelist": aod_item["myanimelist"],
-                        }
-                    )
-                    nautiljon_fixed.append(item)
-                    aod_item.update(
-                        {
-                            "nautiljon": item["slug"],
-                            "nautiljon_id": item["entry_id"],
-                        }
-                    )
-                    break
+            # Use process.extractOne for optimized fuzzy matching
+            result = process.extractOne(title, aod_titles, scorer=fuzz.ratio)  # type: ignore
+            if result and result[1] >= 90:
+                matched_title = result[0]
+                aod_item = aod_title_dict[matched_title]
+                item.update(
+                    {
+                        "anidb": aod_item["anidb"],
+                        "anilist": aod_item["anilist"],
+                        "myanimelist": aod_item["myanimelist"],
+                    }
+                )
+                nautiljon_fixed.append(item)
+                aod_item.update(
+                    {
+                        "nautiljon": item["slug"],
+                        "nautiljon_id": item["entry_id"],
+                    }
+                )
             bar()
     # remove fixed data from unlinked
     with alive_bar(
@@ -319,9 +327,15 @@ def link_nautiljon_to_mal(
     with alive_bar(
         len(aod_list), title="Reintroduce old list items", spinner=None
     ) as bar:  # type: ignore
+        # Create a set of existing MAL IDs for faster lookup
+        existing_mal_ids = {item.get("myanimelist") for item in merged if item.get("myanimelist")}
+        
         for item in aod_list:
-            if item not in aod:
+            mal_id = item.get("myanimelist")
+            # Only add if has MAL ID and it's not already in merged
+            if mal_id and mal_id not in existing_mal_ids:
                 merged.append(item)
+                existing_mal_ids.add(mal_id)
             bar()
 
     pprint.print(
@@ -409,20 +423,24 @@ def link_otakotaku_to_mal(
                 replace_dict[f"Season {i}"] = f"{i}rd Season"
             else:
                 replace_dict[f"Season {i}"] = f"{i}th Season"
+        # Create a dict mapping AOD titles to AOD items for faster lookup
+        aod_title_dict = {aod_item["title"]: aod_item for aod_item in aod}
+        aod_titles = list(aod_title_dict.keys())
+        
         for item in unlinked:
             title = item["title"]
             for key, value in replace_dict.items():
                 title = title.replace(key, value)
-            for aod_item in aod:
-                aod_title = aod_item["title"]
-                ratio = fuzz.ratio(title, aod_title)  # type: ignore
-                if ratio >= 90:
-                    ot_dat = {
-                        "otakotaku": item["otakotaku"],
-                    }
-                    aod_item.update(ot_dat)
-                    ot_fixed.append(aod_item)
-                    break
+            # Use process.extractOne for optimized fuzzy matching
+            result = process.extractOne(title, aod_titles, scorer=fuzz.ratio)  # type: ignore
+            if result and result[1] >= 90:
+                matched_title = result[0]
+                aod_item = aod_title_dict[matched_title]
+                ot_dat = {
+                    "otakotaku": item["otakotaku"],
+                }
+                aod_item.update(ot_dat)
+                ot_fixed.append(aod_item)
             bar()
     # load manual link data
     with open("database/raw/otakotaku_manual.json", "r", encoding="utf-8") as file:
@@ -481,9 +499,15 @@ def link_otakotaku_to_mal(
     with alive_bar(
         len(aod_list), title="Reintroduce old list items", spinner=None
     ) as bar:  # type: ignore
+        # Create a set of existing MAL IDs for faster lookup
+        existing_mal_ids = {item.get("myanimelist") for item in merged if item.get("myanimelist")}
+        
         for item in aod_list:
-            if item not in aod:
+            mal_id = item.get("myanimelist")
+            # Only add if has MAL ID and it's not already in merged
+            if mal_id and mal_id not in existing_mal_ids:
                 merged.append(item)
+                existing_mal_ids.add(mal_id)
             bar()
 
     aod_list = merged
@@ -568,18 +592,22 @@ def link_silveryasha_to_mal(
     with alive_bar(
         len(unlinked), title="Fuzzy match title from both databases", spinner=None
     ) as bar:  # type: ignore
+        # Create a dict mapping AOD titles to AOD items for faster lookup
+        aod_title_dict = {aod_item["title"]: aod_item for aod_item in aod}
+        aod_titles = list(aod_title_dict.keys())
+        
         for item in unlinked:
             title = item["title"]
-            for aod_item in aod:
-                aod_title = aod_item["title"]
-                ratio = fuzz.ratio(title, aod_title)  # type: ignore
-                if ratio >= 95:
-                    sy_dat = {
-                        "silveryasha": item["silveryasha"],
-                    }
-                    aod_item.update(sy_dat)
-                    sy_fixed.append(aod_item)
-                    break
+            # Use process.extractOne for optimized fuzzy matching
+            result = process.extractOne(title, aod_titles, scorer=fuzz.ratio)  # type: ignore
+            if result and result[1] >= 95:
+                matched_title = result[0]
+                aod_item = aod_title_dict[matched_title]
+                sy_dat = {
+                    "silveryasha": item["silveryasha"],
+                }
+                aod_item.update(sy_dat)
+                sy_fixed.append(aod_item)
             bar()
     # load manual link data
     with open("database/raw/silveryasha_manual.json", "r", encoding="utf-8") as file:
@@ -639,9 +667,15 @@ def link_silveryasha_to_mal(
     with alive_bar(
         len(aod_list), title="Reintroduce old list items", spinner=None
     ) as bar:  # type: ignore
+        # Create a set of existing MAL IDs for faster lookup
+        existing_mal_ids = {item.get("myanimelist") for item in merged if item.get("myanimelist")}
+        
         for item in aod_list:
-            if item not in aod:
+            mal_id = item.get("myanimelist")
+            # Only add if has MAL ID and it's not already in merged
+            if mal_id and mal_id not in existing_mal_ids:
                 merged.append(item)
+                existing_mal_ids.add(mal_id)
             bar()
 
     aod_list = merged
