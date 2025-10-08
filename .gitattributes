@@ -1,0 +1,10 @@
+anidb/*			linguist-language=json	linguist-detectable
+anilist/*		linguist-language=json	linguist-detectable
+animeplanet/*	linguist-language=json	linguist-detectable
+anisearch/*		linguist-language=json	linguist-detectable
+kaize/*			linguist-language=json	linguist-detectable
+kitsu/*			linguist-language=json	linguist-detectable
+livechart/*		linguist-language=json	linguist-detectable
+myanimelist/*	linguist-language=json	linguist-detectable
+notifymoe/*		linguist-language=json	linguist-detectable
+silveryasha/*		linguist-language=json	linguist-detectable 
