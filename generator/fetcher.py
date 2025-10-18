@@ -61,7 +61,7 @@ def get_anitrakt() -> list[dict[str, Any]]:
     :return: Extended AniTrakt data; merged TV and movie data
     :rtype: list[dict[str, Any]]
     """
-    base_url = "https://github.com/rensetsu/db.trakt.extended-anitrakt/raw/refs/heads/main/"
+    base_url = "https://raw.githubusercontent.com/rensetsu/db.trakt.extended-anitrakt/main/"
     ddump_tv = Downloader(
         url=f"{base_url}tv_ex.json",
         file_name="anitrakt_tv",
