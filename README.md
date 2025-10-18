@@ -206,18 +206,18 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 17 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 17 October 2025 05:08:59 UTC
+Last updated: 18 October 2025 05:09:14 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
 | aniDB              |     13774 |
-| AniList            |     21373 |
+| AniList            |     21377 |
 | Anime News Network |     11857 |
 | Anime-Planet       |     25917 |
 | aniSearch          |     19880 |
-| Annict             |     11983 |
+| Annict             |     12004 |
 | IMDb               |      1599 |
 | Kaize              |     24317 |
 | Kitsu              |     21152 |
@@ -227,7 +227,7 @@ Last updated: 17 October 2025 05:08:59 UTC
 | Notify.moe         |     16627 |
 | Otak Otaku         |      3012 |
 | Shikimori          |     29078 |
-| Shoboi/Syobocal    |      5360 |
+| Shoboi/Syobocal    |      5362 |
 | Silver Yasha       |      5078 |
 | SIMKL              |     13765 |
 | The Movie Database |       592 |
@@ -265,8 +265,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1760677739,
-    "iso": "2025-10-17T05:08:59.057096+00:00"
+    "timestamp": 1760764154,
+    "iso": "2025-10-18T05:09:14.014565+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -285,11 +285,11 @@ GET /status
   "website": "https://animeapi.my.id",
   "counts": {
     "anidb": 13774,
-    "anilist": 21373,
+    "anilist": 21377,
     "animenewsnetwork": 11857,
     "animeplanet": 25917,
     "anisearch": 19880,
-    "annict": 11983,
+    "annict": 12004,
     "imdb": 1599,
     "kaize": 24317,
     "kitsu": 21152,
@@ -299,7 +299,7 @@ GET /status
     "notify": 16627,
     "otakotaku": 3012,
     "shikimori": 29078,
-    "shoboi": 5360,
+    "shoboi": 5362,
     "silveryasha": 5078,
     "simkl": 13765,
     "themoviedb": 592,
@@ -382,7 +382,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 10/17/2025 05:08:59 UTC
+Updated on 10/18/2025 05:09:14 UTC
 ```
 <!-- /updated-txt -->
 
