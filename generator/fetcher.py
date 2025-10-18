@@ -147,7 +147,13 @@ def simplify_aod_data(aod: dict[str, Any]) -> list[dict[str, Any]]:
     Convert AOD data to a format that is easier to work with.
     
     This function now uses AodEntry dataclass to smartly parse entries and
-    handles duplicate titles by checking for overlapping IDs.
+    handles duplicate titles by merging entries with no overlapping IDs.
+    
+    When multiple entries have the same title:
+    - If they have NO overlapping IDs: They are the same anime from different 
+      sources and should be merged to create a complete entry.
+    - If they have overlapping IDs: They represent different entries that 
+      somehow got the same title (shouldn't happen in AOD).
 
     :param aod: AOD data
     :type aod: dict[str, Any]
@@ -168,21 +174,23 @@ def simplify_aod_data(aod: dict[str, Any]) -> list[dict[str, Any]]:
             if title not in title_to_entries:
                 title_to_entries[title] = [entry]
             else:
-                # Check if this entry can be merged with existing entries
+                # Try to merge with existing entries that have the same title
                 merged = False
                 for i, existing_entry in enumerate(title_to_entries[title]):
                     if not entry.has_overlapping_ids(existing_entry):
-                        # No overlapping IDs, these are different anime with same title
-                        # Keep both entries separate
-                        continue
-                    else:
-                        # Has overlapping IDs, they're the same anime
-                        # This shouldn't happen in AOD but handle it anyway
-                        merged = True
-                        break
+                        # No overlapping IDs - these are different representations 
+                        # of the same anime. Merge them!
+                        from aod_entry import merge_aod_entries_if_compatible
+                        merged_entry = merge_aod_entries_if_compatible(existing_entry, entry)
+                        if merged_entry:
+                            # Replace the existing entry with the merged one
+                            title_to_entries[title][i] = merged_entry
+                            merged = True
+                            break
+                    # If has overlapping IDs, skip and check next entry
                 
                 if not merged:
-                    # This is a different anime with the same title
+                    # Could not merge with any existing entry, add as separate
                     title_to_entries[title].append(entry)
             bar()
     
