@@ -4,10 +4,91 @@ import json
 from typing import Any, Union
 
 from alive_progress import alive_bar  # type: ignore
+from aod_entry import AodEntry
 from const import pprint
 from thefuzz import fuzz, process  # type: ignore
 from prettyprint import Platform, Status
 from slugify import slugify
+
+
+def fuzzy_match_with_id_check(
+    unlinked_title: str,
+    aod_list: list[dict[str, Any]],
+    threshold: int = 85,
+) -> tuple[dict[str, Any] | None, int]:
+    """
+    Perform fuzzy matching but prefer entries with more IDs mapped.
+    Returns the best match that has the most IDs.
+    
+    When multiple matches are above the threshold, prefer the one with
+    the most IDs mapped, as it's more likely to be correct and complete.
+    
+    This function handles duplicate titles correctly by evaluating all
+    entries with the same title and choosing the one with the most IDs.
+    
+    :param unlinked_title: Title to match
+    :param aod_list: List of AOD entries to match against
+    :param threshold: Minimum fuzzy match score
+    :return: Tuple of (matched entry or None, number of IDs in matched entry)
+    """
+    # Get all potential matches above threshold
+    # We need to match against items directly since titles may be duplicated
+    best_match = None
+    best_id_count = 0
+    best_score = 0
+    
+    for aod_item in aod_list:
+        title = aod_item["title"]
+        score = fuzz.ratio(unlinked_title, title)  # type: ignore
+        
+        if score < threshold:
+            continue
+        
+        # Count non-null IDs
+        id_count = sum(
+            1
+            for key in [
+                "anidb",
+                "anilist",
+                "animenewsnetwork",
+                "animeplanet",
+                "anisearch",
+                "kitsu",
+                "livechart",
+                "myanimelist",
+                "notify",
+                "simkl",
+            ]
+            if aod_item.get(key) is not None
+        )
+        
+        # Decision logic:
+        # 1. If this is the first match, use it
+        # 2. If ID count is significantly higher (2x or more), prefer it even if score is lower
+        # 3. If scores are close (within 5 points), prefer the one with more IDs
+        # 4. Otherwise, prefer higher score
+        if best_match is None:
+            best_match = aod_item
+            best_id_count = id_count
+            best_score = score
+        elif id_count >= best_id_count * 2 and best_id_count > 0:
+            # Significantly more IDs, prefer this match
+            best_match = aod_item
+            best_id_count = id_count
+            best_score = score
+        elif abs(score - best_score) <= 5:
+            # Scores are close, prefer more IDs
+            if id_count > best_id_count:
+                best_match = aod_item
+                best_id_count = id_count
+                best_score = score
+        elif score > best_score:
+            # Better score wins
+            best_match = aod_item
+            best_id_count = id_count
+            best_score = score
+    
+    return best_match, best_id_count
 
 
 def link_kaize_to_mal(
@@ -85,17 +166,12 @@ def link_kaize_to_mal(
     with alive_bar(
         len(unlinked), title="Fuzzy match title from both databases", spinner=None
     ) as bar:  # type: ignore
-        # Create a dict mapping AOD titles to AOD items for faster lookup
-        aod_title_dict = {aod_item["title"]: aod_item for aod_item in aod}
-        aod_titles = list(aod_title_dict.keys())
-        
         for item in unlinked:
             title = item["title"]
-            # Use process.extractOne for optimized fuzzy matching
-            result = process.extractOne(title, aod_titles, scorer=fuzz.ratio)  # type: ignore
-            if result and result[1] >= 85:
-                matched_title = result[0]
-                aod_item = aod_title_dict[matched_title]
+            # Use fuzzy_match_with_id_check to prefer entries with more IDs
+            aod_item, id_count = fuzzy_match_with_id_check(title, aod, threshold=85)
+            
+            if aod_item:
                 kz_dat = {
                     "anidb": aod_item["anidb"],
                     "anilist": aod_item["anilist"],
@@ -279,17 +355,12 @@ def link_nautiljon_to_mal(
     with alive_bar(
         len(unlinked), title="Fuzzy match title from both databases", spinner=None
     ) as bar:  # type: ignore
-        # Create a dict mapping AOD titles to AOD items for faster lookup
-        aod_title_dict = {aod_item["title"]: aod_item for aod_item in aod}
-        aod_titles = list(aod_title_dict.keys())
-        
         for item in unlinked:
             title = item["title"]
-            # Use process.extractOne for optimized fuzzy matching
-            result = process.extractOne(title, aod_titles, scorer=fuzz.ratio)  # type: ignore
-            if result and result[1] >= 90:
-                matched_title = result[0]
-                aod_item = aod_title_dict[matched_title]
+            # Use fuzzy_match_with_id_check to prefer entries with more IDs
+            aod_item, id_count = fuzzy_match_with_id_check(title, aod, threshold=90)
+            
+            if aod_item:
                 item.update(
                     {
                         "anidb": aod_item["anidb"],
@@ -423,19 +494,16 @@ def link_otakotaku_to_mal(
                 replace_dict[f"Season {i}"] = f"{i}rd Season"
             else:
                 replace_dict[f"Season {i}"] = f"{i}th Season"
-        # Create a dict mapping AOD titles to AOD items for faster lookup
-        aod_title_dict = {aod_item["title"]: aod_item for aod_item in aod}
-        aod_titles = list(aod_title_dict.keys())
         
         for item in unlinked:
             title = item["title"]
             for key, value in replace_dict.items():
                 title = title.replace(key, value)
-            # Use process.extractOne for optimized fuzzy matching
-            result = process.extractOne(title, aod_titles, scorer=fuzz.ratio)  # type: ignore
-            if result and result[1] >= 90:
-                matched_title = result[0]
-                aod_item = aod_title_dict[matched_title]
+            
+            # Use fuzzy_match_with_id_check to prefer entries with more IDs
+            aod_item, id_count = fuzzy_match_with_id_check(title, aod, threshold=90)
+            
+            if aod_item:
                 ot_dat = {
                     "otakotaku": item["otakotaku"],
                 }
@@ -592,17 +660,12 @@ def link_silveryasha_to_mal(
     with alive_bar(
         len(unlinked), title="Fuzzy match title from both databases", spinner=None
     ) as bar:  # type: ignore
-        # Create a dict mapping AOD titles to AOD items for faster lookup
-        aod_title_dict = {aod_item["title"]: aod_item for aod_item in aod}
-        aod_titles = list(aod_title_dict.keys())
-        
         for item in unlinked:
             title = item["title"]
-            # Use process.extractOne for optimized fuzzy matching
-            result = process.extractOne(title, aod_titles, scorer=fuzz.ratio)  # type: ignore
-            if result and result[1] >= 95:
-                matched_title = result[0]
-                aod_item = aod_title_dict[matched_title]
+            # Use fuzzy_match_with_id_check to prefer entries with more IDs
+            aod_item, id_count = fuzzy_match_with_id_check(title, aod, threshold=95)
+            
+            if aod_item:
                 sy_dat = {
                     "silveryasha": item["silveryasha"],
                 }
