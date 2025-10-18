@@ -4,6 +4,7 @@ import json
 from typing import Any, Literal, Union
 
 import cloudscraper # type: ignore
+from alive_progress import alive_bar
 from prettyprint import Platform, PrettyPrint, Status
 from requests import Response
 
@@ -90,19 +91,10 @@ class Downloader:
             total_size = int(response.headers.get('content-length', 0))
             
             if total_size > 0:
-                # Download with progress bar
-                from alive_progress import alive_bar
-                
                 block_size = 1024 * 1024  # 1 MiB
                 downloaded = 0
                 chunks = []
-                
-                pprint.print(
-                    self.platform,
-                    Status.NOTICE,
-                    f"Downloading {self._format_size(total_size)}...",
-                )
-                
+
                 with alive_bar(
                     total_size,
                     title=f"Downloading {self.file_name}.{self.file_type}",
