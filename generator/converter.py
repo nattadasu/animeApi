@@ -11,6 +11,13 @@ from prettyprint import Platform, Status
 from slugify import slugify
 
 
+# Constants for fuzzy matching logic
+# When ID count is this many times higher, prefer it even if score is lower
+ID_COUNT_MULTIPLIER_THRESHOLD = 2
+# When scores are within this many points, prefer the one with more IDs
+SCORE_DIFFERENCE_THRESHOLD = 5
+
+
 def fuzzy_match_with_id_check(
     unlinked_title: str,
     aod_list: list[dict[str, Any]],
@@ -71,12 +78,12 @@ def fuzzy_match_with_id_check(
             best_match = aod_item
             best_id_count = id_count
             best_score = score
-        elif id_count >= best_id_count * 2 and best_id_count > 0:
+        elif id_count >= best_id_count * ID_COUNT_MULTIPLIER_THRESHOLD and best_id_count > 0:
             # Significantly more IDs, prefer this match
             best_match = aod_item
             best_id_count = id_count
             best_score = score
-        elif abs(score - best_score) <= 5:
+        elif abs(score - best_score) <= SCORE_DIFFERENCE_THRESHOLD:
             # Scores are close, prefer more IDs
             if id_count > best_id_count:
                 best_match = aod_item

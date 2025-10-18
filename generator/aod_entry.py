@@ -28,7 +28,7 @@ class AodEntry:
     def __post_init__(self):
         """Extract IDs from sources and populate id_set"""
         self._extract_ids_from_sources()
-        self._populate_id_set()
+        self.populate_id_set()
     
     def _extract_ids_from_sources(self):
         """Parse sources array and extract IDs"""
@@ -54,8 +54,9 @@ class AodEntry:
             elif "animenewsnetwork.com/" in source and "id=" in source:
                 self.animenewsnetwork = int(source.split("id=")[-1])
     
-    def _populate_id_set(self):
+    def populate_id_set(self):
         """Create a set of all non-null IDs for comparison"""
+        self.id_set.clear()
         if self.anidb:
             self.id_set.add(f"anidb:{self.anidb}")
         if self.anilist:
@@ -129,17 +130,24 @@ def merge_aod_entries_if_compatible(
     entry1: AodEntry, entry2: AodEntry
 ) -> Optional[AodEntry]:
     """
-    Merge two AOD entries if they don't have overlapping IDs.
+    Merge two AOD entries if they represent different anime (no overlapping IDs).
     
-    When entries have the same title but different IDs, they represent
-    different anime and should not be merged.
+    The function checks if entries have overlapping IDs:
+    - If they have overlapping IDs: They are the SAME anime and should NOT be merged.
+      Returns None to indicate incompatibility.
+    - If they have NO overlapping IDs: They are DIFFERENT anime and CAN be merged.
+      Returns a merged entry combining all IDs from both.
+    
+    This is used during AOD data parsing to handle duplicate titles that
+    represent different anime (e.g., "Everyday Host" with different IDs).
     
     :param entry1: First AodEntry
     :param entry2: Second AodEntry
-    :return: Merged AodEntry if compatible, None if they have overlapping IDs
+    :return: Merged AodEntry if compatible (no overlapping IDs), None otherwise
     """
     if entry1.has_overlapping_ids(entry2):
-        # Entries have overlapping IDs, they're the same anime, can't merge
+        # Entries have overlapping IDs, they're the same anime
+        # Return None to indicate they should NOT be merged
         return None
     
     # Merge by combining all IDs
@@ -160,7 +168,7 @@ def merge_aod_entries_if_compatible(
     merged.notify = entry1.notify or entry2.notify
     merged.simkl = entry1.simkl or entry2.simkl
     
-    # Rebuild id_set
-    merged._populate_id_set()
+    # Rebuild id_set with the new IDs
+    merged.populate_id_set()
     
     return merged
