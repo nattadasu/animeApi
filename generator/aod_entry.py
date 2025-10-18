@@ -31,7 +31,12 @@ class AodEntry:
         self.populate_id_set()
     
     def _extract_ids_from_sources(self):
-        """Parse sources array and extract IDs"""
+        """
+        Parse sources array and extract IDs.
+        
+        Note: Sources come from anime-offline-database, a trusted curated dataset.
+        URL substring matching is used for ID extraction, not security validation.
+        """
         for source in self.sources:
             if "anidb.net/anime/" in source:
                 self.anidb = int(source.split("/")[-1])
