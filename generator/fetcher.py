@@ -56,14 +56,14 @@ def get_arm() -> list[dict[str, Any]]:
 
 def get_anitrakt() -> list[dict[str, Any]]:
     """
-    Get info from ryuuganime/aniTrakt-IndexParser
-
-    :return: AniTrakt data; merged TV and movie data
+    Get info from rensetsu/db.trakt.extended-anitrakt
+    
+    :return: Extended AniTrakt data; merged TV and movie data
     :rtype: list[dict[str, Any]]
     """
-    base_url = "https://raw.githubusercontent.com/rensetsu/db.trakt.anitrakt/main/db/"
+    base_url = "https://github.com/rensetsu/db.trakt.extended-anitrakt/raw/refs/heads/main/"
     ddump_tv = Downloader(
-        url=f"{base_url}tv.json",
+        url=f"{base_url}tv_ex.json",
         file_name="anitrakt_tv",
         file_type="json",
         platform=Platform.ANITRAKT,
@@ -71,26 +71,21 @@ def get_anitrakt() -> list[dict[str, Any]]:
     data_tv: list[dict[str, Any]] = ddump_tv.dumper()
 
     ddump_movie = Downloader(
-        url=f"{base_url}movies.json",
+        url=f"{base_url}movies_ex.json",
         file_name="anitrakt_movie",
         file_type="json",
         platform=Platform.ANITRAKT,
     )
     data_movie: list[dict[str, Any]] = ddump_movie.dumper()
-    with alive_bar(
-        len(data_movie), title="Fixing AniTrakt data for movie", spinner=None
-    ) as bar:  # type: ignore
-        for index, item in enumerate(data_movie):
-            item["season"] = None
-            data_movie[index] = item
-            bar()  # type: ignore
+    
+    # Merge TV and movie data
     data = data_tv + data_movie
     with open("database/raw/anitrakt.json", "w", encoding="utf-8") as file:
         json.dump(data, file)
     pprint.print(
         Platform.ANITRAKT,
         Status.PASS,
-        "Completely compiled AniTrakt data",
+        "Completely compiled Extended AniTrakt data",
     )
     return data
 
