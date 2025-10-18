@@ -55,7 +55,13 @@ class AodEntry:
                 self.animenewsnetwork = int(source.split("id=")[-1])
     
     def populate_id_set(self):
-        """Create a set of all non-null IDs for comparison"""
+        """
+        Create a set of all non-null IDs for comparison.
+        
+        This method clears and rebuilds the id_set from current ID values.
+        It's called during initialization but can also be called after
+        manual ID assignment to refresh the id_set.
+        """
         self.id_set.clear()
         if self.anidb:
             self.id_set.add(f"anidb:{self.anidb}")
