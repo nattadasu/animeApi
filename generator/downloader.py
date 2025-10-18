@@ -107,7 +107,8 @@ class Downloader:
                     total_size,
                     title=f"Downloading {self.file_name}.{self.file_type}",
                     spinner=None,
-                    unit="B"
+                    unit="B",
+                    scale="SI",
                 ) as bar:  # type: ignore
                     for chunk in response.iter_content(chunk_size=block_size):
                         if chunk:
