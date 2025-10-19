@@ -3,7 +3,7 @@ name = "animeapi"
 version = "0.1.0"
 description = "A RESTful API that provides anime relation mapping across multiple anime databases"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 license = {text = "AGPL-3.0-only AND MIT AND CC0-1.0+"}
 authors = [
     {name = "Natsu Tadama", email = "nattadasu@nattadasu.my.id"}
@@ -36,16 +36,9 @@ Repository = "https://github.com/nattadasu/animeApi"
 Documentation = "https://github.com/nattadasu/animeApi/blob/v3/README.md"
 Issues = "https://github.com/nattadasu/animeApi/issues"
 
-[project.scripts]
-animeapi-generator = "generator.main:main"
-animeapi-api = "api.__main__:main"
-
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
-
-[tool.setuptools]
-packages = ["generator", "api"]
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
