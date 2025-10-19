@@ -2,7 +2,6 @@
 
 # pylint: disable=import-error
 
-import csv
 import json
 from datetime import datetime as dtime
 from datetime import timezone as tz
@@ -225,7 +224,7 @@ def tmdb_exclusive_route(
 ):
     """
     The Movie Database exclusive route
-    
+
     Supports both movies and TV shows. Season numbers are from Trakt's verified data.
 
     :param media_type: Media type, must be `movie` or `tv`
@@ -259,12 +258,10 @@ def tmdb_exclusive_route(
 
 @app.route("/thetvdb/series/<series_id>", methods=["GET"])
 @app.route("/thetvdb/series/<series_id>/seasons/<season_id>", methods=["GET"])
-def tvdb_exclusive_route(
-    series_id: int, season_id: Union[str, None] = None
-):
+def tvdb_exclusive_route(series_id: int, season_id: Union[str, None] = None):
     """
     TheTVDB exclusive route
-    
+
     Season numbers are from Trakt's verified data, not TVDB's native season IDs.
 
     :param series_id: Series ID
@@ -285,18 +282,14 @@ def tvdb_exclusive_route(
     try:
         if season_id is None:
             return platform_id_content("thetvdb", f"series/{series_id}")
-        return platform_id_content(
-            "thetvdb", f"series/{series_id}/seasons/{season_id}"
-        )
+        return platform_id_content("thetvdb", f"series/{series_id}/seasons/{season_id}")
     except KeyError:
         return jsonify(
             {
                 "error": "Not found",
                 "code": 404,
                 "message": f"Series {series_id} {
-                    'season ' + str(season_id) + ' '
-                    if season_id is not None
-                    else ''
+                    'season ' + str(season_id) + ' ' if season_id is not None else ''
                 }not found",
             }
         ), 404
@@ -704,7 +697,7 @@ def build_target_uri(
                     tvdb_sid = maps.get("thetvdb_season_id")
                     if tvdb_sid:
                         return f"{base_uri}/seasons/{tvdb_sid}"
-                    return f"{base_uri}/seasons/{trakt_season}""
+                    return f"{base_uri}/seasons/{trakt_season}"
                 return base_uri
             return error_response(
                 "Not found",

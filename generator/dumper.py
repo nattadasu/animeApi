@@ -58,7 +58,7 @@ def save_to_file(
                 pkey = item.get("letterboxd_slug", None)
             else:
                 pkey = item.get(f"{platform}", None)
-            
+
             if pkey is not None:
                 items.append(item)
             bar()
@@ -118,7 +118,9 @@ def save_to_file(
                         if trakt_season:
                             obj_data[f"{season_key}/{trakt_season}"] = item
                         if item["themoviedb_season_id"]:
-                            obj_data[f"{season_key}/{item['themoviedb_season_id']}"]: item
+                            obj_data[
+                                f"{season_key}/{item['themoviedb_season_id']}"
+                            ]: item
             bar()
     with open(f"database/{platform}_object.json", "w", encoding="utf-8") as file:
         json.dump(obj_data, file)

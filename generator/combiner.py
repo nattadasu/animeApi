@@ -182,7 +182,7 @@ def combine_anitrakt(
                     elif trakt_type == "movies":
                         # Movie specific fields - set trakt_may_invalid to False for movies
                         trakt_may_invalid = False
-                        
+
                         movie_externals = trakt_info.get("externals", {})
                         themoviedb = movie_externals.get("tmdb", None)
                         imdb = movie_externals.get("imdb", None)
