@@ -608,6 +608,22 @@ where `:season_inc` is the season number of the title in the provider.
 >
 > `/seasons/0` is invalid, and will return `400` status code.
 
+> [!NOTE]
+>
+> Since Oct 19, 2025, AnimeAPI now features a split cour flag, where
+> `trakt_may_invalid` indicates whether a season mapping may be unreliable:
+>
+> * **`none`**: The entry is either a special, or a movie
+> * **`false`**: Season found on Trakt and mapping is reliable.
+> * **`true`**: Season not found separately on Trakt (split cour). Season
+ fields on Trakt, TMDB, and TVDB will be `null`.
+>
+> MAL may list split cours as separate seasons while Trakt/TMDB combines them
+> into one continuous season. When `true`, episodes are likely in the previous
+> season on Trakt.
+>
+> For more information, head to [db.trakt.extended-anitrakt][atip].
+
 For example, to get the ID of Mairimashita Iruma-kun Season 3, you can use:
 
 ```http
@@ -1176,10 +1192,11 @@ anime_object = Dict[str, Anime]
 
 This project uses multiple sources to compile the data, including:
 
-* [GitHub:kawaiioverflow/arm][arm]
-* [GitHub:manami-project/anime-offline-database][aod]
-* [GitHub:ryuuganime/aniTrakt-IndexParser][atip], which an automatic parser of
+* [gh:kawaiioverflow/arm][arm]
+* [gh:manami-project/anime-offline-database][aod]
+* [gh:rensetsu/db.takt.extended-anitrakt][atip], which an automatic parser of
   [AniTrakt][atrk] index page.
+* [gh:Fribb/anime-lists][fal]
 * [Nautiljon][ntj]
 * [Kaize][kz]
 * [Otak Otaku][oo]
@@ -1195,7 +1212,7 @@ This project uses multiple sources to compile the data, including:
 [ap]: https://anime-planet.com
 [arm]: https://github.com/kawaiioverflow/arm
 [as]: https://anisearch.com
-[atip]: https://github.com/ryuuganime/aniTrakt-IndexParser
+[atip]: https://github.com/rensetsu/db.trakt.extended-anitrakt
 [atrk]: https://anitrakt.huere.net/
 [bgm]: https://bgm.tv
 [bq]: https://github.com/BeeeQueue/arm-server
