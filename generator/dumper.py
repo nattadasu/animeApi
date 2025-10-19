@@ -381,7 +381,7 @@ def update_markdown(
 | Silver Yasha       | {sys} |
 | SIMKL              | {smk} |
 | The Movie Database | {tmd} |
-| TheTVDB            | {tvd} |
+| The TVDB           | {tvd} |
 | Trakt              | {trk} |
 |                    |           |
 | **Total**          | **{ttl}** |
