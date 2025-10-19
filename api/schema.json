@@ -219,7 +219,8 @@
             "shows"
           ],
           "title": "Trakt type"
-        },
+        }
+      },
       "required": [
         "title"
       ],

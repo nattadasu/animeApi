@@ -12,28 +12,31 @@
     - [1.1.8. Property `anime-api > data > Anime > kaize`](#data_items_kaize)
     - [1.1.9. Property `anime-api > data > Anime > kaize_id`](#data_items_kaize_id)
     - [1.1.10. Property `anime-api > data > Anime > kitsu`](#data_items_kitsu)
-    - [1.1.11. Property `anime-api > data > Anime > letterboxd`](#data_items_letterboxd)
+    - [1.1.11. Property `anime-api > data > Anime > letterboxd_slug`](#data_items_letterboxd_slug)
     - [1.1.12. Property `anime-api > data > Anime > letterboxd_lid`](#data_items_letterboxd_lid)
     - [1.1.13. Property `anime-api > data > Anime > letterboxd_uid`](#data_items_letterboxd_uid)
     - [1.1.14. Property `anime-api > data > Anime > livechart`](#data_items_livechart)
     - [1.1.15. Property `anime-api > data > Anime > myanimelist`](#data_items_myanimelist)
     - [1.1.16. Property `anime-api > data > Anime > nautiljon`](#data_items_nautiljon)
-    - [1.1.17. Property `anime-api > data > Anime > notify`](#data_items_notify)
-    - [1.1.18. Property `anime-api > data > Anime > otakotaku`](#data_items_otakotaku)
-    - [1.1.19. Property `anime-api > data > Anime > shikimori`](#data_items_shikimori)
-    - [1.1.20. Property `anime-api > data > Anime > shoboi`](#data_items_shoboi)
-    - [1.1.21. Property `anime-api > data > Anime > silveryasha`](#data_items_silveryasha)
-    - [1.1.22. Property `anime-api > data > Anime > simkl`](#data_items_simkl)
-    - [1.1.23. Property `anime-api > data > Anime > themoviedb`](#data_items_themoviedb)
-    - [1.1.24. Property `anime-api > data > Anime > themoviedb_season`](#data_items_themoviedb_season)
-    - [1.1.25. Property `anime-api > data > Anime > themoviedb_type`](#data_items_themoviedb_type)
-    - [1.1.26. Property `anime-api > data > Anime > thetvdb`](#data_items_thetvdb)
-    - [1.1.27. Property `anime-api > data > Anime > thetvdb_season_id`](#data_items_thetvdb_season_id)
-    - [1.1.28. Property `anime-api > data > Anime > title`](#data_items_title)
-    - [1.1.29. Property `anime-api > data > Anime > trakt`](#data_items_trakt)
-    - [1.1.30. Property `anime-api > data > Anime > trakt_season`](#data_items_trakt_season)
-    - [1.1.31. Property `anime-api > data > Anime > trakt_type`](#data_items_trakt_type)
-    - [1.1.32. Property `anime-api > data > Anime > type`](#data_items_type)
+    - [1.1.17. Property `anime-api > data > Anime > nautiljon_id`](#data_items_nautiljon_id)
+    - [1.1.18. Property `anime-api > data > Anime > notify`](#data_items_notify)
+    - [1.1.19. Property `anime-api > data > Anime > otakotaku`](#data_items_otakotaku)
+    - [1.1.20. Property `anime-api > data > Anime > shikimori`](#data_items_shikimori)
+    - [1.1.21. Property `anime-api > data > Anime > shoboi`](#data_items_shoboi)
+    - [1.1.22. Property `anime-api > data > Anime > silveryasha`](#data_items_silveryasha)
+    - [1.1.23. Property `anime-api > data > Anime > simkl`](#data_items_simkl)
+    - [1.1.24. Property `anime-api > data > Anime > themoviedb`](#data_items_themoviedb)
+    - [1.1.25. Property `anime-api > data > Anime > themoviedb_season_id`](#data_items_themoviedb_season_id)
+    - [1.1.26. Property `anime-api > data > Anime > themoviedb_type`](#data_items_themoviedb_type)
+    - [1.1.27. Property `anime-api > data > Anime > thetvdb`](#data_items_thetvdb)
+    - [1.1.28. Property `anime-api > data > Anime > thetvdb_season_id`](#data_items_thetvdb_season_id)
+    - [1.1.29. Property `anime-api > data > Anime > title`](#data_items_title)
+    - [1.1.30. Property `anime-api > data > Anime > trakt`](#data_items_trakt)
+    - [1.1.31. Property `anime-api > data > Anime > trakt_may_invalid`](#data_items_trakt_may_invalid)
+    - [1.1.32. Property `anime-api > data > Anime > trakt_season`](#data_items_trakt_season)
+    - [1.1.33. Property `anime-api > data > Anime > trakt_season_id`](#data_items_trakt_season_id)
+    - [1.1.34. Property `anime-api > data > Anime > trakt_slug`](#data_items_trakt_slug)
+    - [1.1.35. Property `anime-api > data > Anime > trakt_type`](#data_items_trakt_type)
 
 **Title:** anime-api
 
@@ -79,40 +82,43 @@
 
 **Description:** Schema for anime
 
-| Property                                              | Pattern | Type             | Deprecated | Definition                  | Title/Description         |
-| ----------------------------------------------------- | ------- | ---------------- | ---------- | --------------------------- | ------------------------- |
-| - [anidb](#data_items_anidb )                         | No      | number or null   | No         | In #/definitions/numbernull | aniDB                     |
-| - [anilist](#data_items_anilist )                     | No      | number or null   | No         | In #/definitions/numbernull | AniList                   |
-| - [animenewsnetwork](#data_items_animenewsnetwork )   | No      | number or null   | No         | In #/definitions/numbernull | Anime News Network        |
-| - [animeplanet](#data_items_animeplanet )             | No      | string or null   | No         | In #/definitions/stringnull | Anime-Planet              |
-| - [anisearch](#data_items_anisearch )                 | No      | number or null   | No         | In #/definitions/numbernull | AniSearch                 |
-| - [annict](#data_items_annict )                       | No      | number or null   | No         | In #/definitions/numbernull | Annict                    |
-| - [imdb](#data_items_imdb )                           | No      | string or null   | No         | In #/definitions/stringnull | IMDb                      |
-| - [kaize](#data_items_kaize )                         | No      | string or null   | No         | In #/definitions/stringnull | Kaize                     |
-| - [kaize_id](#data_items_kaize_id )                   | No      | number or null   | No         | In #/definitions/numbernull | Kaize ID                  |
-| - [kitsu](#data_items_kitsu )                         | No      | number or null   | No         | In #/definitions/numbernull | Kitsu                     |
-| - [letterboxd](#data_items_letterboxd )               | No      | string or null   | No         | In #/definitions/stringnull | Letterboxd                |
-| - [letterboxd_lid](#data_items_letterboxd_lid )       | No      | number or null   | No         | In #/definitions/numbernull | Letterboxd ID             |
-| - [letterboxd_uid](#data_items_letterboxd_uid )       | No      | string or null   | No         | In #/definitions/stringnull | Letterboxd General ID     |
-| - [livechart](#data_items_livechart )                 | No      | number or null   | No         | In #/definitions/numbernull | LiveChart                 |
-| - [myanimelist](#data_items_myanimelist )             | No      | number or null   | No         | In #/definitions/numbernull | MyAnimeList               |
-| - [nautiljon](#data_items_nautiljon )                 | No      | string or null   | No         | In #/definitions/stringnull | Nautiljon                 |
-| - [notify](#data_items_notify )                       | No      | string or null   | No         | In #/definitions/stringnull | Notify.moe                |
-| - [otakotaku](#data_items_otakotaku )                 | No      | string or null   | No         | In #/definitions/stringnull | Otak Otaku                |
-| - [shikimori](#data_items_shikimori )                 | No      | number or null   | No         | In #/definitions/numbernull | Shikimori                 |
-| - [shoboi](#data_items_shoboi )                       | No      | number or null   | No         | In #/definitions/numbernull | Shoboi/Syobocal           |
-| - [silveryasha](#data_items_silveryasha )             | No      | string or null   | No         | In #/definitions/stringnull | Silver Yasha              |
-| - [simkl](#data_items_simkl )                         | No      | number or null   | No         | In #/definitions/numbernull | SIMKL                     |
-| - [themoviedb](#data_items_themoviedb )               | No      | number or null   | No         | In #/definitions/numbernull | The Movie Database        |
-| - [themoviedb_season](#data_items_themoviedb_season ) | No      | number or null   | No         | In #/definitions/numbernull | The Movie Database season |
-| - [themoviedb_type](#data_items_themoviedb_type )     | No      | enum (of string) | No         | In #/definitions/stringnull | The Movie Database type   |
-| - [thetvdb](#data_items_thetvdb )                     | No      | string or null   | No         | In #/definitions/stringnull | The TVDB                  |
-| - [thetvdb_season_id](#data_items_thetvdb_season_id ) | No      | number or null   | No         | In #/definitions/numbernull | The TVDB season ID        |
-| + [title](#data_items_title )                         | No      | string           | No         | -                           | Title                     |
-| - [trakt](#data_items_trakt )                         | No      | number or null   | No         | In #/definitions/numbernull | Trakt                     |
-| - [trakt_season](#data_items_trakt_season )           | No      | number or null   | No         | In #/definitions/numbernull | Trakt season              |
-| - [trakt_type](#data_items_trakt_type )               | No      | enum (of string) | No         | In #/definitions/stringnull | Trakt type                |
-| + [type](#data_items_type )                           | No      | enum (of string) | No         | In #/definitions/stringnull | Type                      |
+| Property                                                    | Pattern | Type             | Deprecated | Definition                   | Title/Description            |
+| ----------------------------------------------------------- | ------- | ---------------- | ---------- | ---------------------------- | ---------------------------- |
+| - [anidb](#data_items_anidb )                               | No      | number or null   | No         | In #/definitions/numbernull  | aniDB                        |
+| - [anilist](#data_items_anilist )                           | No      | number or null   | No         | In #/definitions/numbernull  | AniList                      |
+| - [animenewsnetwork](#data_items_animenewsnetwork )         | No      | number or null   | No         | In #/definitions/numbernull  | Anime News Network           |
+| - [animeplanet](#data_items_animeplanet )                   | No      | string or null   | No         | In #/definitions/stringnull  | Anime-Planet                 |
+| - [anisearch](#data_items_anisearch )                       | No      | number or null   | No         | In #/definitions/numbernull  | AniSearch                    |
+| - [annict](#data_items_annict )                             | No      | number or null   | No         | In #/definitions/numbernull  | Annict                       |
+| - [imdb](#data_items_imdb )                                 | No      | string or null   | No         | In #/definitions/stringnull  | IMDb                         |
+| - [kaize](#data_items_kaize )                               | No      | string or null   | No         | In #/definitions/stringnull  | Kaize                        |
+| - [kaize_id](#data_items_kaize_id )                         | No      | number or null   | No         | In #/definitions/numbernull  | Kaize ID                     |
+| - [kitsu](#data_items_kitsu )                               | No      | number or null   | No         | In #/definitions/numbernull  | Kitsu                        |
+| - [letterboxd_slug](#data_items_letterboxd_slug )           | No      | string or null   | No         | In #/definitions/stringnull  | Letterboxd Slug              |
+| - [letterboxd_lid](#data_items_letterboxd_lid )             | No      | number or null   | No         | In #/definitions/numbernull  | Letterboxd ID                |
+| - [letterboxd_uid](#data_items_letterboxd_uid )             | No      | string or null   | No         | In #/definitions/stringnull  | Letterboxd General ID        |
+| - [livechart](#data_items_livechart )                       | No      | number or null   | No         | In #/definitions/numbernull  | LiveChart                    |
+| - [myanimelist](#data_items_myanimelist )                   | No      | number or null   | No         | In #/definitions/numbernull  | MyAnimeList                  |
+| - [nautiljon](#data_items_nautiljon )                       | No      | string or null   | No         | In #/definitions/stringnull  | Nautiljon                    |
+| - [nautiljon_id](#data_items_nautiljon_id )                 | No      | number or null   | No         | In #/definitions/numbernull  | Nautiljon ID                 |
+| - [notify](#data_items_notify )                             | No      | string or null   | No         | In #/definitions/stringnull  | Notify.moe                   |
+| - [otakotaku](#data_items_otakotaku )                       | No      | string or null   | No         | In #/definitions/stringnull  | Otak Otaku                   |
+| - [shikimori](#data_items_shikimori )                       | No      | number or null   | No         | In #/definitions/numbernull  | Shikimori                    |
+| - [shoboi](#data_items_shoboi )                             | No      | number or null   | No         | In #/definitions/numbernull  | Shoboi/Syobocal              |
+| - [silveryasha](#data_items_silveryasha )                   | No      | string or null   | No         | In #/definitions/stringnull  | Silver Yasha                 |
+| - [simkl](#data_items_simkl )                               | No      | number or null   | No         | In #/definitions/numbernull  | SIMKL                        |
+| - [themoviedb](#data_items_themoviedb )                     | No      | number or null   | No         | In #/definitions/numbernull  | The Movie Database           |
+| - [themoviedb_season_id](#data_items_themoviedb_season_id ) | No      | number or null   | No         | In #/definitions/numbernull  | The Movie Database season ID |
+| - [themoviedb_type](#data_items_themoviedb_type )           | No      | enum (of string) | No         | In #/definitions/stringnull  | The Movie Database type      |
+| - [thetvdb](#data_items_thetvdb )                           | No      | string or null   | No         | In #/definitions/stringnull  | The TVDB                     |
+| - [thetvdb_season_id](#data_items_thetvdb_season_id )       | No      | number or null   | No         | In #/definitions/numbernull  | The TVDB season ID           |
+| + [title](#data_items_title )                               | No      | string           | No         | -                            | Title                        |
+| - [trakt](#data_items_trakt )                               | No      | number or null   | No         | In #/definitions/numbernull  | Trakt                        |
+| - [trakt_may_invalid](#data_items_trakt_may_invalid )       | No      | boolean or null  | No         | In #/definitions/booleannull | Trakt May Invalid            |
+| - [trakt_season](#data_items_trakt_season )                 | No      | number or null   | No         | In #/definitions/numbernull  | Trakt season                 |
+| - [trakt_season_id](#data_items_trakt_season_id )           | No      | number or null   | No         | In #/definitions/numbernull  | Trakt Season ID              |
+| - [trakt_slug](#data_items_trakt_slug )                     | No      | string or null   | No         | In #/definitions/stringnull  | Trakt Slug                   |
+| - [trakt_type](#data_items_trakt_type )                     | No      | enum (of string) | No         | In #/definitions/stringnull  | Trakt type                   |
 
 #### <a name="data_items_anidb"></a>1.1.1. Property `anime-api > data > Anime > anidb`
 
@@ -246,9 +252,9 @@
 
 **Description:** Kitsu ID in integer, slug not suppported, website: https://kitsu.app/
 
-#### <a name="data_items_letterboxd"></a>1.1.11. Property `anime-api > data > Anime > letterboxd`
+#### <a name="data_items_letterboxd_slug"></a>1.1.11. Property `anime-api > data > Anime > letterboxd_slug`
 
-**Title:** Letterboxd
+**Title:** Letterboxd Slug
 
 |                |                          |
 | -------------- | ------------------------ |
@@ -258,9 +264,9 @@
 
 **Description:** Letterboxd slug, website: https://letterboxd.com/
 
-| Restrictions                      |                                                                                   |
-| --------------------------------- | --------------------------------------------------------------------------------- |
-| **Must match regular expression** | ```^[a-z0-9\-]+$``` [Test](https://regex101.com/?regex=%5E%5Ba-z0-9%5C-%5D%2B%24) |
+| Restrictions                      |                                                                               |
+| --------------------------------- | ----------------------------------------------------------------------------- |
+| **Must match regular expression** | ```^[a-z0-9\-]+``` [Test](https://regex101.com/?regex=%5E%5Ba-z0-9%5C-%5D%2B) |
 
 #### <a name="data_items_letterboxd_lid"></a>1.1.12. Property `anime-api > data > Anime > letterboxd_lid`
 
@@ -322,11 +328,23 @@
 
 **Description:** Nautiljon slug, website: https://www.nautiljon.com/
 
-| Restrictions                      |                                                                                   |
-| --------------------------------- | --------------------------------------------------------------------------------- |
-| **Must match regular expression** | ```^[a-z0-9\-]+$``` [Test](https://regex101.com/?regex=%5E%5Ba-z0-9%5C-%5D%2B%24) |
+| Restrictions                      |                                                                               |
+| --------------------------------- | ----------------------------------------------------------------------------- |
+| **Must match regular expression** | ```^[a-z0-9\-]+``` [Test](https://regex101.com/?regex=%5E%5Ba-z0-9%5C-%5D%2B) |
 
-#### <a name="data_items_notify"></a>1.1.17. Property `anime-api > data > Anime > notify`
+#### <a name="data_items_nautiljon_id"></a>1.1.17. Property `anime-api > data > Anime > nautiljon_id`
+
+**Title:** Nautiljon ID
+
+|                |                          |
+| -------------- | ------------------------ |
+| **Type**       | `number or null`         |
+| **Required**   | No                       |
+| **Defined in** | #/definitions/numbernull |
+
+**Description:** Nautiljon ID in integer format, not recommended as some entry can't be found its ID compared to slug
+
+#### <a name="data_items_notify"></a>1.1.18. Property `anime-api > data > Anime > notify`
 
 **Title:** Notify.moe
 
@@ -342,7 +360,7 @@
 | --------------------------------- | --------------------------------------------------------------------------------- |
 | **Must match regular expression** | ```^[a-zA-Z0-9]+$``` [Test](https://regex101.com/?regex=%5E%5Ba-zA-Z0-9%5D%2B%24) |
 
-#### <a name="data_items_otakotaku"></a>1.1.18. Property `anime-api > data > Anime > otakotaku`
+#### <a name="data_items_otakotaku"></a>1.1.19. Property `anime-api > data > Anime > otakotaku`
 
 **Title:** Otak Otaku
 
@@ -358,7 +376,7 @@
 | --------------------------------- | --------------------------------------------------------------------------------- |
 | **Must match regular expression** | ```^[a-z0-9\-]+$``` [Test](https://regex101.com/?regex=%5E%5Ba-z0-9%5C-%5D%2B%24) |
 
-#### <a name="data_items_shikimori"></a>1.1.19. Property `anime-api > data > Anime > shikimori`
+#### <a name="data_items_shikimori"></a>1.1.20. Property `anime-api > data > Anime > shikimori`
 
 **Title:** Shikimori
 
@@ -370,7 +388,7 @@
 
 **Description:** Shikimori ID, website: https://shikimori.one/
 
-#### <a name="data_items_shoboi"></a>1.1.20. Property `anime-api > data > Anime > shoboi`
+#### <a name="data_items_shoboi"></a>1.1.21. Property `anime-api > data > Anime > shoboi`
 
 **Title:** Shoboi/Syobocal
 
@@ -382,7 +400,7 @@
 
 **Description:** Shoboi/Syobocal ID, website: http://cal.syoboi.jp/
 
-#### <a name="data_items_silveryasha"></a>1.1.21. Property `anime-api > data > Anime > silveryasha`
+#### <a name="data_items_silveryasha"></a>1.1.22. Property `anime-api > data > Anime > silveryasha`
 
 **Title:** Silver Yasha
 
@@ -398,7 +416,7 @@
 | --------------------------------- | --------------------------------------------------------------------------------- |
 | **Must match regular expression** | ```^[a-z0-9\-]+$``` [Test](https://regex101.com/?regex=%5E%5Ba-z0-9%5C-%5D%2B%24) |
 
-#### <a name="data_items_simkl"></a>1.1.22. Property `anime-api > data > Anime > simkl`
+#### <a name="data_items_simkl"></a>1.1.23. Property `anime-api > data > Anime > simkl`
 
 **Title:** SIMKL
 
@@ -410,7 +428,7 @@
 
 **Description:** SIMKL ID, website: https://simkl.com/
 
-#### <a name="data_items_themoviedb"></a>1.1.23. Property `anime-api > data > Anime > themoviedb`
+#### <a name="data_items_themoviedb"></a>1.1.24. Property `anime-api > data > Anime > themoviedb`
 
 **Title:** The Movie Database
 
@@ -422,9 +440,9 @@
 
 **Description:** The Movie Database ID, can be used for movie or tv, website: https://www.themoviedb.org/
 
-#### <a name="data_items_themoviedb_season"></a>1.1.24. Property `anime-api > data > Anime > themoviedb_season`
+#### <a name="data_items_themoviedb_season_id"></a>1.1.25. Property `anime-api > data > Anime > themoviedb_season_id`
 
-**Title:** The Movie Database season
+**Title:** The Movie Database season ID
 
 |                |                          |
 | -------------- | ------------------------ |
@@ -432,9 +450,9 @@
 | **Required**   | No                       |
 | **Defined in** | #/definitions/numbernull |
 
-**Description:** The Movie Database season number, only available for TV shows
+**Description:** The Movie Database internal season ID, only available for TV shows
 
-#### <a name="data_items_themoviedb_type"></a>1.1.25. Property `anime-api > data > Anime > themoviedb_type`
+#### <a name="data_items_themoviedb_type"></a>1.1.26. Property `anime-api > data > Anime > themoviedb_type`
 
 **Title:** The Movie Database type
 
@@ -450,7 +468,7 @@ Must be one of:
 * "movie"
 * "tv"
 
-#### <a name="data_items_thetvdb"></a>1.1.26. Property `anime-api > data > Anime > thetvdb`
+#### <a name="data_items_thetvdb"></a>1.1.27. Property `anime-api > data > Anime > thetvdb`
 
 **Title:** The TVDB
 
@@ -460,9 +478,9 @@ Must be one of:
 | **Required**   | No                       |
 | **Defined in** | #/definitions/stringnull |
 
-**Description:** The TVDB ID, website: https://thetvdb.com/, can be prefixed with series/ or movie/ to deep link
+**Description:** The TVDB ID, website: https://thetvdb.com/, only to be prefixed with series/ to deep link
 
-#### <a name="data_items_thetvdb_season_id"></a>1.1.27. Property `anime-api > data > Anime > thetvdb_season_id`
+#### <a name="data_items_thetvdb_season_id"></a>1.1.28. Property `anime-api > data > Anime > thetvdb_season_id`
 
 **Title:** The TVDB season ID
 
@@ -472,9 +490,9 @@ Must be one of:
 | **Required**   | No                       |
 | **Defined in** | #/definitions/numbernull |
 
-**Description:** The TVDB season ID, can be used to build URL
+**Description:** The TVDB internal season ID, can be used to build URL
 
-#### <a name="data_items_title"></a>1.1.28. Property `anime-api > data > Anime > title`
+#### <a name="data_items_title"></a>1.1.29. Property `anime-api > data > Anime > title`
 
 **Title:** Title
 
@@ -485,7 +503,7 @@ Must be one of:
 
 **Description:** Title of the anime in English or Romaji
 
-#### <a name="data_items_trakt"></a>1.1.29. Property `anime-api > data > Anime > trakt`
+#### <a name="data_items_trakt"></a>1.1.30. Property `anime-api > data > Anime > trakt`
 
 **Title:** Trakt
 
@@ -497,7 +515,19 @@ Must be one of:
 
 **Description:** Trakt ID, can be used for movie or show, website: https://trakt.tv/
 
-#### <a name="data_items_trakt_season"></a>1.1.30. Property `anime-api > data > Anime > trakt_season`
+#### <a name="data_items_trakt_may_invalid"></a>1.1.31. Property `anime-api > data > Anime > trakt_may_invalid`
+
+**Title:** Trakt May Invalid
+
+|                |                           |
+| -------------- | ------------------------- |
+| **Type**       | `boolean or null`         |
+| **Required**   | No                        |
+| **Defined in** | #/definitions/booleannull |
+
+**Description:** Whether the entry is actually a split cour, which both Trakt and TMDB merge it into one
+
+#### <a name="data_items_trakt_season"></a>1.1.32. Property `anime-api > data > Anime > trakt_season`
 
 **Title:** Trakt season
 
@@ -509,7 +539,35 @@ Must be one of:
 
 **Description:** Trakt season number, only available for shows
 
-#### <a name="data_items_trakt_type"></a>1.1.31. Property `anime-api > data > Anime > trakt_type`
+#### <a name="data_items_trakt_season_id"></a>1.1.33. Property `anime-api > data > Anime > trakt_season_id`
+
+**Title:** Trakt Season ID
+
+|                |                          |
+| -------------- | ------------------------ |
+| **Type**       | `number or null`         |
+| **Required**   | No                       |
+| **Defined in** | #/definitions/numbernull |
+
+**Description:** Trakt season ID
+
+#### <a name="data_items_trakt_slug"></a>1.1.34. Property `anime-api > data > Anime > trakt_slug`
+
+**Title:** Trakt Slug
+
+|                |                          |
+| -------------- | ------------------------ |
+| **Type**       | `string or null`         |
+| **Required**   | No                       |
+| **Defined in** | #/definitions/stringnull |
+
+**Description:** Trakt slug
+
+| Restrictions                      |                                                                               |
+| --------------------------------- | ----------------------------------------------------------------------------- |
+| **Must match regular expression** | ```^[a-z0-9\-]+``` [Test](https://regex101.com/?regex=%5E%5Ba-z0-9%5C-%5D%2B) |
+
+#### <a name="data_items_trakt_type"></a>1.1.35. Property `anime-api > data > Anime > trakt_type`
 
 **Title:** Trakt type
 
@@ -522,28 +580,8 @@ Must be one of:
 **Description:** Trakt media type, can be movie or show
 
 Must be one of:
-* "movie"
-* "show"
-
-#### <a name="data_items_type"></a>1.1.32. Property `anime-api > data > Anime > type`
-
-**Title:** Type
-
-|                |                          |
-| -------------- | ------------------------ |
-| **Type**       | `enum (of string)`       |
-| **Required**   | Yes                      |
-| **Defined in** | #/definitions/stringnull |
-
-**Description:** Type of the anime
-
-Must be one of:
-* "TV"
-* "OVA"
-* "ONA"
-* "MOVIE"
-* "SPECIAL"
-* "UNKNOWN"
+* "movies"
+* "shows"
 
 ----------------------------------------------------------------------------------------------------------------------------
-Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2025-10-19 at 13:10:23 +0700
+Generated using [json-schema-for-humans](https://github.com/coveooss/json-schema-for-humans) on 2025-10-19 at 14:38:57 +0700
