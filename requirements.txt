@@ -4,6 +4,7 @@ cloudscraper
 fake-useragent
 Flask
 thefuzz
+jsonschema
 python-dotenv
 python-Levenshtein
 python-slugify
