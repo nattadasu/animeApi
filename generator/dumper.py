@@ -53,8 +53,12 @@ def save_to_file(
     items: list[dict[str, Any]] = []
     with alive_bar(len(data), title="Removing None values", spinner=None) as bar:  # type: ignore
         for item in data:
-            # if platform key in item not None, then add it to items
-            pkey = item.get(f"{platform}", None)
+            # Special handling for letterboxd and thetvdb
+            if platform == "letterboxd":
+                pkey = item.get("letterboxd_slug", None)
+            else:
+                pkey = item.get(f"{platform}", None)
+
             if pkey is not None:
                 items.append(item)
             bar()
@@ -66,19 +70,57 @@ def save_to_file(
         len(items), title="Converting data to object format", spinner=None
     ) as bar:  # type: ignore
         for item in items:
-            if platform not in ["trakt", "themoviedb"]:
+            if platform not in ["trakt", "themoviedb", "thetvdb", "letterboxd"]:
                 obj_data[item[f"{platform}"]] = item
+            elif platform == "letterboxd":
+                # Use letterboxd_slug for lookup
+                if item.get("letterboxd_slug"):
+                    obj_data[item["letterboxd_slug"]] = item
+            elif platform == "thetvdb":
+                # Use thetvdb for lookup
+                thetvdb_id = item.get("thetvdb")
+                trakt_season = item.get("trakt_season")
+                tvdb_sid = item.get("thetvdb_season_id")
+                if thetvdb_id:
+                    # Base entry: series/entry_id
+                    base_key = f"series/{thetvdb_id}"
+                    if trakt_season is None or trakt_season == 1:
+                        obj_data[base_key] = item
+                    # Season entry: series/entry_id/seasons/season_number
+                    if trakt_season is not None:
+                        season_key = f"{base_key}/seasons"
+                        obj_data[f"{season_key}/{trakt_season}"] = item
+                        obj_data[f"{season_key}/{tvdb_sid}"] = item
             elif platform == "trakt":
                 if item["trakt_type"] in ["movie", "movies"]:
                     obj_data[f"{item['trakt_type']}/{item['trakt']}"] = item
                 else:
-                    if item["trakt_season"] == 1:
-                        obj_data[f"{item['trakt_type']}/{item['trakt']}"] = item
-                    obj_data[
-                        f"{item['trakt_type']}/{item['trakt']}/seasons/{item['trakt_season']}"
-                    ] = item
+                    trakt_season = item["trakt_season"]
+                    if trakt_season:
+                        obj_data[
+                            f"{item['trakt_type']}/{item['trakt']}/seasons/{trakt_season}"
+                        ] = item
+                        if trakt_season == 1:
+                            obj_data[f"{item['trakt_type']}/{item['trakt']}"] = item
+
             elif platform == "themoviedb":
-                obj_data[f"movie/{item['themoviedb']}"] = item
+                themoviedb_type = item.get("themoviedb_type", "movie")
+                themoviedb_id = item.get("themoviedb")
+                trakt_season = item.get("trakt_season")
+                if themoviedb_id:
+                    # Base entry: type/entry_id
+                    base_key = f"{themoviedb_type}/{themoviedb_id}"
+                    if trakt_season is None or trakt_season == 1:
+                        obj_data[base_key] = item
+                    # Season entry for TV: type/entry_id/season/season_number
+                    if themoviedb_type == "tv":
+                        season_key = f"{base_key}/season"
+                        if trakt_season:
+                            obj_data[f"{season_key}/{trakt_season}"] = item
+                        if item["themoviedb_season_id"]:
+                            obj_data[
+                                f"{season_key}/{item['themoviedb_season_id']}"
+                            ]: item
             bar()
     with open(f"database/{platform}_object.json", "w", encoding="utf-8") as file:
         json.dump(obj_data, file)
@@ -110,6 +152,7 @@ def save_platform_loop(
         "imdb",
         "kaize",
         "kitsu",
+        "letterboxd",
         "livechart",
         "myanimelist",
         "nautiljon",
@@ -119,8 +162,9 @@ def save_platform_loop(
         "shoboi",
         "silveryasha",
         "simkl",
-        "trakt",
         "themoviedb",
+        "thetvdb",
+        "trakt",
     ]
     # sort key in data
     pprint.print(
@@ -149,6 +193,8 @@ def save_platform_loop(
                 name = Platform.KAIZE
             case "kitsu":
                 name = Platform.KITSU
+            case "letterboxd":
+                name = Platform.LETTERBOXD
             case "livechart":
                 name = Platform.LIVECHART
             case "myanimelist":
@@ -167,10 +213,12 @@ def save_platform_loop(
                 name = Platform.SILVERYASHA
             case "simkl":
                 name = Platform.SIMKL
-            case "trakt":
-                name = Platform.ANITRAKT
             case "themoviedb":
                 name = Platform.TMDB
+            case "thetvdb":
+                name = Platform.TVDB
+            case "trakt":
+                name = Platform.ANITRAKT
             case _:
                 name = Platform.SYSTEM
         pprint.print(
@@ -299,6 +347,7 @@ def update_markdown(
     idb = add_spaces(counts["imdb"])
     kze = add_spaces(counts["kaize"])
     kts = add_spaces(counts["kitsu"])
+    lbx = add_spaces(counts["letterboxd"])
     lvc = add_spaces(counts["livechart"])
     mal = add_spaces(counts["myanimelist"])
     nau = add_spaces(counts["nautiljon"])
@@ -309,6 +358,7 @@ def update_markdown(
     sys = add_spaces(counts["silveryasha"])
     smk = add_spaces(counts["simkl"])
     tmd = add_spaces(counts["themoviedb"])
+    tvd = add_spaces(counts["thetvdb"])
     trk = add_spaces(counts["trakt"])
     ttl = counts["total"]
     table = f"""| Platform           |     Count |
@@ -322,6 +372,7 @@ def update_markdown(
 | IMDb               | {idb} |
 | Kaize              | {kze} |
 | Kitsu              | {kts} |
+| Letterboxd         | {lbx} |
 | LiveChart          | {lvc} |
 | MyAnimeList        | {mal} |
 | Nautiljon          | {nau} |
@@ -332,6 +383,7 @@ def update_markdown(
 | Silver Yasha       | {sys} |
 | SIMKL              | {smk} |
 | The Movie Database | {tmd} |
+| The TVDB           | {tvd} |
 | Trakt              | {trk} |
 |                    |           |
 | **Total**          | **{ttl}** |

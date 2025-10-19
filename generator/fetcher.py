@@ -4,6 +4,7 @@ import json
 from typing import Any
 
 from alive_progress import alive_bar  # type: ignore
+from aod_entry import AodEntry
 from const import pprint
 from downloader import Downloader
 from prettyprint import Platform, Status
@@ -55,14 +56,16 @@ def get_arm() -> list[dict[str, Any]]:
 
 def get_anitrakt() -> list[dict[str, Any]]:
     """
-    Get info from ryuuganime/aniTrakt-IndexParser
+    Get info from rensetsu/db.trakt.extended-anitrakt
 
-    :return: AniTrakt data; merged TV and movie data
+    :return: Extended AniTrakt data; merged TV and movie data
     :rtype: list[dict[str, Any]]
     """
-    base_url = "https://raw.githubusercontent.com/rensetsu/db.trakt.anitrakt/main/db/"
+    base_url = (
+        "https://raw.githubusercontent.com/rensetsu/db.trakt.extended-anitrakt/main/"
+    )
     ddump_tv = Downloader(
-        url=f"{base_url}tv.json",
+        url=f"{base_url}tv_ex.json",
         file_name="anitrakt_tv",
         file_type="json",
         platform=Platform.ANITRAKT,
@@ -70,26 +73,21 @@ def get_anitrakt() -> list[dict[str, Any]]:
     data_tv: list[dict[str, Any]] = ddump_tv.dumper()
 
     ddump_movie = Downloader(
-        url=f"{base_url}movies.json",
+        url=f"{base_url}movies_ex.json",
         file_name="anitrakt_movie",
         file_type="json",
         platform=Platform.ANITRAKT,
     )
     data_movie: list[dict[str, Any]] = ddump_movie.dumper()
-    with alive_bar(
-        len(data_movie), title="Fixing AniTrakt data for movie", spinner=None
-    ) as bar:  # type: ignore
-        for index, item in enumerate(data_movie):
-            item["season"] = None
-            data_movie[index] = item
-            bar()  # type: ignore
+
+    # Merge TV and movie data
     data = data_tv + data_movie
     with open("database/raw/anitrakt.json", "w", encoding="utf-8") as file:
         json.dump(data, file)
     pprint.print(
         Platform.ANITRAKT,
         Status.PASS,
-        "Completely compiled AniTrakt data",
+        "Completely compiled Extended AniTrakt data",
     )
     return data
 
@@ -143,7 +141,16 @@ def get_fribb_animelists() -> list[dict[str, Any]]:
 
 def simplify_aod_data(aod: dict[str, Any]) -> list[dict[str, Any]]:
     """
-    Convert AOD data to a format that is easier to work with
+    Convert AOD data to a format that is easier to work with.
+
+    This function now uses AodEntry dataclass to smartly parse entries and
+    handles duplicate titles by merging entries with no overlapping IDs.
+
+    When multiple entries have the same title:
+    - If they have NO overlapping IDs: They are the same anime from different
+      sources and should be merged to create a complete entry.
+    - If they have overlapping IDs: They represent different entries that
+      somehow got the same title (shouldn't happen in AOD).
 
     :param aod: AOD data
     :type aod: dict[str, Any]
@@ -152,58 +159,54 @@ def simplify_aod_data(aod: dict[str, Any]) -> list[dict[str, Any]]:
     """
     data: list[dict[str, Any]] = []
     items: list[dict[str, Any]] = aod["data"]
-    with alive_bar(len(items), title="Simplifying AOD data", spinner=None) as bar:  # type: ignore
+
+    # Track entries by title to handle duplicates
+    title_to_entries: dict[str, list[AodEntry]] = {}
+
+    with alive_bar(
+        len(items), title="Parsing AOD data with smart entry detection", spinner=None
+    ) as bar:  # type: ignore
         for item in items:
-            adb_id: int | None = None
-            al_id: int | None = None
-            ann_id: int | None = None
-            ap_slug: str | None = None
-            as_id: int | None = None
-            kt_id: int | None = None
-            lc_id: int | None = None
-            mal_id: int | None = None
-            ntf_b64: str | None = None
-            smk_id: int | None = None
-            for sauce in item["sources"]:
-                if sauce.startswith("https://anidb.net/anime/"):
-                    adb_id = int(sauce.split("/")[-1])
-                elif sauce.startswith("https://anilist.co/anime/"):
-                    al_id = int(sauce.split("/")[-1])
-                elif sauce.startswith("https://anime-planet.com/anime/"):
-                    ap_slug = sauce.split("/")[-1]
-                elif sauce.startswith("https://anisearch.com/anime/"):
-                    as_id = int(sauce.split("/")[-1])
-                elif sauce.startswith("https://kitsu.io/anime/") or sauce.startswith(
-                    "https://kitsu.app/anime/"
-                ):
-                    kt_id = int(sauce.split("/")[-1])
-                elif sauce.startswith("https://livechart.me/anime/"):
-                    lc_id = int(sauce.split("/")[-1])
-                elif sauce.startswith("https://myanimelist.net/anime/"):
-                    mal_id = int(sauce.split("/")[-1])
-                elif sauce.startswith("https://notify.moe/anime/"):
-                    ntf_b64 = sauce.split("/")[-1]
-                elif sauce.startswith("https://simkl.com/anime/"):
-                    smk_id = int(sauce.split("/")[-1])
-                elif sauce.startswith("https://animenewsnetwork.com/"):
-                    ann_id = int(sauce.split("id=")[-1])
-            data.append(
-                {
-                    "title": item["title"],
-                    "anidb": adb_id,
-                    "anilist": al_id,
-                    "animenewsnetwork": ann_id,
-                    "animeplanet": ap_slug,
-                    "anisearch": as_id,
-                    "kitsu": kt_id,
-                    "livechart": lc_id,
-                    "myanimelist": mal_id,
-                    "notify": ntf_b64,
-                    "shikimori": mal_id,
-                    "simkl": smk_id,
-                }
-            )
+            entry = AodEntry.from_aod_dict(item)
+            title = entry.title
+
+            if title not in title_to_entries:
+                title_to_entries[title] = [entry]
+            else:
+                # Try to merge with existing entries that have the same title
+                merged = False
+                for i, existing_entry in enumerate(title_to_entries[title]):
+                    if not entry.has_overlapping_ids(existing_entry):
+                        # No overlapping IDs - these are different representations
+                        # of the same anime. Merge them!
+                        from aod_entry import merge_aod_entries_if_compatible
+
+                        merged_entry = merge_aod_entries_if_compatible(
+                            existing_entry, entry
+                        )
+                        if merged_entry:
+                            # Replace the existing entry with the merged one
+                            title_to_entries[title][i] = merged_entry
+                            merged = True
+                            break
+                    # If has overlapping IDs, skip and check next entry
+
+                if not merged:
+                    # Could not merge with any existing entry, add as separate
+                    title_to_entries[title].append(entry)
             bar()
+
+    # Convert all entries to simplified dict format
+    with alive_bar(
+        sum(len(entries) for entries in title_to_entries.values()),
+        title="Converting entries to simplified format",
+        spinner=None,
+    ) as bar:  # type: ignore
+        for entries in title_to_entries.values():
+            for entry in entries:
+                data.append(entry.to_simplified_dict())
+                bar()
+
     pprint.print(
         Platform.ANIMEOFFLINEDATABASE,
         Status.PASS,

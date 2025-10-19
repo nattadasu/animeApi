@@ -3,7 +3,8 @@
 import json
 from typing import Any, Literal, Union
 
-import cloudscraper # type: ignore
+import cloudscraper  # type: ignore
+from alive_progress import alive_bar
 from prettyprint import Platform, PrettyPrint, Status
 from requests import Response
 
@@ -49,9 +50,24 @@ class Downloader:
             f"Prepare to download {self.file_name}.{self.file_type}",
         )
 
+    def _format_size(self, size_bytes: int) -> str:
+        """
+        Format bytes to human-readable size with power of 2 units (MiB, GiB)
+
+        :param size_bytes: Size in bytes
+        :type size_bytes: int
+        :return: Formatted string with units
+        :rtype: str
+        """
+        for unit in ["B", "KiB", "MiB", "GiB", "TiB"]:
+            if size_bytes < 1024.0:
+                return f"{size_bytes:.2f} {unit}"
+            size_bytes /= 1024.0
+        return f"{size_bytes:.2f} PiB"
+
     def _get(self) -> Union[Response, None]:
         """
-        Get the response from the url
+        Get the response from the url with progress bar
 
         :return: The response from the url
         :rtype: Union[Response, None]
@@ -59,14 +75,45 @@ class Downloader:
         if not self.scrape:
             pprint.print(self.platform, Status.ERR, "Failed to create cloudscraper")
             return None
-        response = self.scrape.get(self.url, timeout=None)
+
         try:
+            # Stream the download to show progress
+            response = self.scrape.get(self.url, timeout=None, stream=True)
+
             # raise ConnectionError("Force use local file")
             if response.status_code != 200:
                 raise ConnectionError(
                     f"{response.status_code}",
                     f"{response.reason}",
                 )
+
+            # Get total file size
+            total_size = int(response.headers.get("content-length", 0))
+
+            if total_size > 0:
+                block_size = 1024 * 1024  # 1 MiB
+                downloaded = 0
+                chunks = []
+
+                with alive_bar(
+                    total_size,
+                    title=f"Downloading {self.file_name}.{self.file_type}",
+                    spinner=None,
+                    unit="B",
+                    scale="SI",
+                ) as bar:  # type: ignore
+                    for chunk in response.iter_content(chunk_size=block_size):
+                        if chunk:
+                            chunks.append(chunk)
+                            downloaded += len(chunk)
+                            bar(len(chunk))  # type: ignore
+
+                # Combine all chunks
+                response._content = b"".join(chunks)
+            else:
+                # No content-length header, download without progress
+                response._content = response.content
+
             return response
         except ConnectionError as err:
             pprint.print(self.platform, Status.ERR, f"Error: {err}")

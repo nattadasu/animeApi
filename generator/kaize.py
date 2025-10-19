@@ -21,6 +21,7 @@ rand_fua: str = f"{fua.random}"  # type: ignore
 @dataclass
 class Step:
     """Step configuration for page finding"""
+
     name: str
     factor: int
     iterations: int = 10
@@ -59,9 +60,11 @@ class Kaize:
         self.cookie_jar: dict[str, str] = {}
         self.total_anime_count: Optional[int] = None
         self.max_pages: Optional[int] = None
-        self.session.headers.update({
-            "User-Agent": self.user_agent,
-        })
+        self.session.headers.update(
+            {
+                "User-Agent": self.user_agent,
+            }
+        )
         pprint.print(
             Platform.KAIZE,
             Status.READY,
@@ -74,29 +77,29 @@ class Kaize:
         """
         login_url: str = f"{self.base_url}/login"
         response: req.Response = self.session.get(login_url)
-        if 'XSRF-TOKEN' in response.cookies:
-            self.xsrf_token = response.cookies['XSRF-TOKEN']
-            self.cookie_jar['XSRF-TOKEN'] = self.xsrf_token
-        soup: BeautifulSoup = BeautifulSoup(response.text, 'html.parser')
-        csrf_meta: Optional[Tag] = soup.find('meta', {'name': 'csrf-token'})
+        if "XSRF-TOKEN" in response.cookies:
+            self.xsrf_token = response.cookies["XSRF-TOKEN"]
+            self.cookie_jar["XSRF-TOKEN"] = self.xsrf_token
+        soup: BeautifulSoup = BeautifulSoup(response.text, "html.parser")
+        csrf_meta: Optional[Tag] = soup.find("meta", {"name": "csrf-token"})
         if csrf_meta:
-            self.csrf_token = csrf_meta.get('content')
-    
+            self.csrf_token = csrf_meta.get("content")
+
     def update_cookies(self, response: req.Response) -> None:
         """
         Update cookies from response
-        
+
         :param response: The response object
         :type response: req.Response
         """
-        for cookie_name in ['XSRF-TOKEN', 'kaize_session', 'remember_web']:
+        for cookie_name in ["XSRF-TOKEN", "kaize_session", "remember_web"]:
             if cookie_name in response.cookies:
                 self.cookie_jar[cookie_name] = response.cookies[cookie_name]
-    
+
     def get_logged_in_username(self) -> Optional[str]:
         """
         Extract the logged-in username from the page
-        
+
         :return: Username if found, None otherwise
         :rtype: Optional[str]
         """
@@ -117,11 +120,11 @@ class Kaize:
             return None
         except Exception:
             return None
-    
+
     def login(self, email: str, password: str) -> bool:
         """
         Login to Kaize
-        
+
         :param email: Email address
         :type email: str
         :param password: Password
@@ -131,10 +134,10 @@ class Kaize:
         """
         login_url: str = f"{self.base_url}/login"
         login_data: dict[str, str] = {
-            '_token': str(self.csrf_token),
-            'email': email,
-            'password': password,
-            'remember': 'on'
+            "_token": str(self.csrf_token),
+            "email": email,
+            "password": password,
+            "remember": "on",
         }
         response: req.Response = self.session.post(
             login_url, data=login_data, allow_redirects=False
@@ -144,14 +147,20 @@ class Kaize:
             # Get username from the page
             username = self.get_logged_in_username()
             if username:
-                pprint.print(Platform.KAIZE, Status.PASS, f"Login successful as {username}")
+                pprint.print(
+                    Platform.KAIZE, Status.PASS, f"Login successful as {username}"
+                )
             else:
                 pprint.print(Platform.KAIZE, Status.PASS, "Login successful")
             return True
         else:
-            pprint.print(Platform.KAIZE, Status.ERR, f"Login failed with status code: {response.status_code}")
+            pprint.print(
+                Platform.KAIZE,
+                Status.ERR,
+                f"Login failed with status code: {response.status_code}",
+            )
             return False
-    
+
     def _session_set(self) -> None:
         """
         Set the session and XSRF token
@@ -162,10 +171,10 @@ class Kaize:
         """
         if not self.email or not self.password:
             raise ValueError("Email or password not provided")
-        
+
         # Get CSRF tokens
         self.get_csrf_tokens()
-        
+
         # Login
         if not self.login(self.email, self.password):
             raise ConnectionError("Unable to login to kaize.io")
@@ -221,7 +230,7 @@ class Kaize:
     def is_valid_page(self, response: req.Response) -> bool:
         """
         Check if a page is valid (contains anime entries)
-        
+
         :param response: The response object
         :type response: req.Response
         :return: True if page is valid, False otherwise
@@ -232,11 +241,11 @@ class Kaize:
         soup = BeautifulSoup(response.text, "html.parser")
         anime_elements = soup.find_all("div", {"class": "anime-list-element"})
         return len(anime_elements) > 0
-    
+
     def get_total_entries(self, response: req.Response) -> Optional[int]:
         """
         Extract total anime count from the last item on a page.
-        
+
         :param response: HTTP response from an anime list page
         :type response: req.Response
         :return: Total anime count or None if not found
@@ -244,25 +253,25 @@ class Kaize:
         """
         if response.status_code != 200:
             return None
-            
-        soup: BeautifulSoup = BeautifulSoup(response.text, 'html.parser')
-        anime_elements: List[Tag] = soup.find_all('div', class_='anime-list-element')
-        
+
+        soup: BeautifulSoup = BeautifulSoup(response.text, "html.parser")
+        anime_elements: list[Tag] = soup.find_all("div", class_="anime-list-element")
+
         if anime_elements:
             # Get the last element's rank
             last_element: Tag = anime_elements[-1]
-            rank_elem: Optional[Tag] = last_element.find('div', class_='rank')
+            rank_elem: Optional[Tag] = last_element.find("div", class_="rank")
             if rank_elem:
                 try:
-                    return int(rank_elem.text.strip().replace('#', ''))
+                    return int(rank_elem.text.strip().replace("#", ""))
                 except ValueError:
                     return None
         return None
-    
+
     def find_max_page(self) -> int:
         """
         Find the maximum page number using a step-wise search approach
-        
+
         :return: Maximum valid page number
         :rtype: int
         """
@@ -277,17 +286,26 @@ class Kaize:
         ]
         for step in steps:
             base: int = (max_valid_page // step.factor) * step.factor
-            with alive_bar(step.iterations, title=f"Testing {step.name}", bar='smooth', spinner='dots_waves') as bar:  # type: ignore
+            with alive_bar(
+                step.iterations,
+                title=f"Testing {step.name}",
+                bar="smooth",
+                spinner="dots_waves",
+            ) as bar:  # type: ignore
                 for i in range(step.iterations):
                     test_page: int = base + (i * step.factor)
                     if test_page == 0:
                         test_page = 1
-                    response: req.Response = self.session.get(f"{top_url}?page={test_page}")
+                    response: req.Response = self.session.get(
+                        f"{top_url}?page={test_page}"
+                    )
                     self.update_cookies(response)
                     if self.is_valid_page(response):
                         if test_page > max_valid_page:
                             max_valid_page = test_page
-                            total_anime: Optional[int] = self.get_total_entries(response)
+                            total_anime: Optional[int] = self.get_total_entries(
+                                response
+                            )
                             if total_anime:
                                 self.total_anime_count = total_anime
                         bar.text(f"Page {test_page} valid")  # type: ignore
@@ -302,7 +320,7 @@ class Kaize:
             f"Maximum page found: {self.max_pages}",
         )
         return self.max_pages
-    
+
     def pages(self, media: Literal["anime", "manga"] = "anime") -> int:
         """
         Get the total pages

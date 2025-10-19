@@ -91,47 +91,133 @@ def combine_anitrakt(
     anitrakt: list[dict[str, Any]], aod: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
     """
-    Combine AniTrakt data with AOD data
+    Combine Extended AniTrakt data with AOD data
 
-    :param anitrakt: AniTrakt data
+    :param anitrakt: Extended AniTrakt data
     :type anitrakt: list[dict[str, Any]]
     :param aod: AOD data
     :type aod: list[dict[str, Any]]
-    :return: AOD data
+    :return: AOD data with Trakt and related IDs
     :rtype: list[dict[str, Any]]
     """
     linked = 0
     with alive_bar(
-        len(aod), title="Combining AniTrakt data with AOD data", spinner=None
+        len(aod), title="Combining Extended AniTrakt data with AOD data", spinner=None
     ) as bar:  # type: ignore
         for item in aod:
             matched = False
             myanimelist = item["myanimelist"]
-            # Skip if both myanimelist and anilist are null
+            # Skip if myanimelist is null
             if myanimelist is None:
                 item.update(
                     {
                         "trakt": None,
                         "trakt_type": None,
                         "trakt_season": None,
+                        "trakt_slug": None,
+                        "trakt_may_invalid": None,
+                        "trakt_season_id": None,
+                        "thetvdb": None,
+                        "thetvdb_season_id": None,
+                        "themoviedb_type": None,
+                        "themoviedb_season_id": None,
+                        "letterboxd_slug": None,
+                        "letterboxd_lid": None,
+                        "letterboxd_uid": None,
                     }
                 )
                 bar()
                 continue
 
-            # Check if mal_id and anilist_id exist in anitrakt_data
+            # Check if mal_id exists in anitrakt_data
             for anitrakt_item in anitrakt:
-                mal_id = anitrakt_item.get("mal_id", None)
-                trakt = anitrakt_item.get("trakt_id", None)
-                media_type = anitrakt_item.get("type", None)
-                media_season = anitrakt_item.get("season", None)
+                mal_id = anitrakt_item.get("myanimelist", {}).get("id", None)
                 if myanimelist is not None and mal_id == myanimelist:
-                    # Combine the data from anitrakt_item with the item in aod_data
+                    trakt_info = anitrakt_item.get("trakt", {})
+                    trakt_type = trakt_info.get("type", None)
+
+                    # Extract common fields
+                    trakt_id = trakt_info.get("id", None)
+                    trakt_slug = trakt_info.get("slug", None)
+
+                    # Initialize fields
+                    trakt_season = None
+                    trakt_may_invalid = None
+                    trakt_season_id = None
+                    thetvdb = None
+                    thetvdb_season_id = None
+                    themoviedb_type = None
+                    themoviedb_season_id = None
+                    letterboxd_slug = None
+                    letterboxd_lid = None
+                    letterboxd_uid = None
+
+                    if trakt_type == "shows":
+                        # TV show specific fields
+                        is_split_cour = trakt_info.get("is_split_cour", False)
+                        trakt_may_invalid = is_split_cour
+
+                        season_info = trakt_info.get("season", None)
+                        if season_info is not None and not is_split_cour:
+                            trakt_season = season_info.get("number", None)
+                            trakt_season_id = season_info.get("id", None)
+                            season_externals = season_info.get("externals", {})
+                            thetvdb_season_id = season_externals.get("tvdb", None)
+                            themoviedb_season_id = season_externals.get("tmdb", None)
+
+                        # Show-level externals
+                        show_externals = anitrakt_item.get("externals", {})
+                        thetvdb = show_externals.get("tvdb", None)
+                        themoviedb = show_externals.get("tmdb", None)
+                        imdb = show_externals.get("imdb", None)
+
+                        # Overwrite themoviedb and imdb with Trakt data
+                        if themoviedb is not None:
+                            item["themoviedb"] = themoviedb
+                        if imdb is not None:
+                            item["imdb"] = imdb
+
+                        themoviedb_type = "tv"
+
+                    elif trakt_type == "movies":
+                        # Movie specific fields - set trakt_may_invalid to False for movies
+                        trakt_may_invalid = False
+
+                        movie_externals = anitrakt_item.get("externals", {})
+                        themoviedb = movie_externals.get("tmdb", None)
+                        imdb = movie_externals.get("imdb", None)
+
+                        # Overwrite themoviedb and imdb with Trakt data
+                        if themoviedb is not None:
+                            item["themoviedb"] = themoviedb
+                        if imdb is not None:
+                            item["imdb"] = imdb
+
+                        themoviedb_type = "movie"
+
+                        # Letterboxd data
+                        letterboxd_info = movie_externals.get("letterboxd", {})
+                        if letterboxd_info:
+                            letterboxd_slug = letterboxd_info.get("slug", None)
+                            letterboxd_lid = letterboxd_info.get("lid", None)
+                            letterboxd_uid = letterboxd_info.get("uid", None)
+
+                    # Combine the data
                     item.update(
                         {
-                            "trakt": trakt,
-                            "trakt_type": media_type,
-                            "trakt_season": media_season,
+                            "trakt": trakt_id,
+                            "trakt_type": trakt_type,
+                            "trakt_season": trakt_season,
+                            "trakt_slug": trakt_slug,
+                            "trakt_may_invalid": trakt_may_invalid,
+                            "trakt_season_id": trakt_season_id,
+                            "thetvdb": thetvdb,
+                            "thetvdb_season_id": thetvdb_season_id,
+                            "themoviedb_type": themoviedb_type,
+                            "themoviedb_season_id": themoviedb_season_id,
+                            "letterboxd_slug": letterboxd_slug,
+                            "letterboxd_lid": letterboxd_lid,
+                            "letterboxd_uid": letterboxd_uid,
                         }
                     )
                     linked += 1
@@ -144,18 +230,28 @@ def combine_anitrakt(
                         "trakt": None,
                         "trakt_type": None,
                         "trakt_season": None,
+                        "trakt_slug": None,
+                        "trakt_may_invalid": None,
+                        "trakt_season_id": None,
+                        "thetvdb": None,
+                        "thetvdb_season_id": None,
+                        "themoviedb_type": None,
+                        "themoviedb_season_id": None,
+                        "letterboxd_slug": None,
+                        "letterboxd_lid": None,
+                        "letterboxd_uid": None,
                     }
                 )
             bar()
     pprint.print(
         Platform.ANITRAKT,
         Status.PASS,
-        "AniTrakt data combined with AOD data.",
+        "Extended AniTrakt data combined with AOD data.",
         "Total linked data:",
         f"{linked},",
         "AOD data:",
         f"{len(aod)}",
-        "AniTrakt data:",
+        "Extended AniTrakt data:",
         f"{len(anitrakt)}",
     )
     return aod

@@ -37,9 +37,11 @@ Please read more information regarding using the API on your project in
   * [Get anime relation mapping data](#get-anime-relation-mapping-data)
     * [Provider exclusive rules](#provider-exclusive-rules)
       * [Kitsu](#kitsu)
+      * [Letterboxd](#letterboxd)
       * [SIMKL](#simkl)
       * [Shikimori](#shikimori)
       * [The Movie DB](#the-movie-db)
+      * [The TVDB](#the-tvdb)
       * [Trakt](#trakt)
   * [Redirect to provider's page](#redirect-to-providers-page)
     * [Redirect: Parameters](#redirect-parameters)
@@ -72,39 +74,40 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 
 <!-- markdownlint-disable MD013 -->
 
-| Highlights                      | AnimeAPI                                        | [ARM][arm]                  | [BQA][bq]          | [Hato][hato]              | [SIMKL][smk]            | [Trakt][trk] | [AOD][aod]                                                          | [FAL][fal]    | [ALAL][alal]                           | [ATIP][atip]     |
-| ------------------------------- | ----------------------------------------------- | --------------------------- | ------------------ | ------------------------- | ----------------------- | ------------ | ------------------------------------------------------------------- | ------------- | -------------------------------------- | ---------------- |
-| License                         | AGPL-3.0-only, MIT, CC0                         | MIT                         | AGPL-3.0           | Apache-2.0                | Proprietary             | Proprietary  | AGPL-3.0                                                            | Unknown       | Unknown                                | Unknown          |
-| Access                          | Public                                          | Public                      | Public             | Paid, API Key             | API Key                 | API Key      | Public                                                              | Public        | Public                                 | Public           |
-| Format                          | REST, JSON, TSV                                 | Node.js Package, REST, JSON | REST               | REST                      | REST                    | REST         | JSON                                                                | JSON          | XML                                    | JSON             |
-| Main Languages                  | Python, JSON                                    | JavaScript, JSON            | TypeScript, SQLite | C#, MySQL, PostgreSQL     | -                       | -            | JSON                                                                | JSON          | XLSL, XML                              | PowerShell, JSON |
-| Base Data                       | AOD, ARM, ATIP, FAL<br>![f:kz] ![f:oo] ![f:ntj] | ![f:ntf]                    | FAL                | ![f:al] ![f:kts] ![f:ntf] | ![f:tvdb] ![f:adb]      | ![f:tmdb]    | ![f:mal] ![f:al] ![f:adb] ![f:kts] ![f:lc] ![f:as] ![f:ap] ![f:ntf] | AOD, ALAL     | ![f:adb] ![f:tvdb] ![f:tmdb] ![f:imdb] | [aniTrakt][atrk] |
-| Rate Limit                      | -                                               | -                           | -                  | -                         | 1000/day for unverified | 1000/5 mins  | Unapplicable                                                        | Unapplicable  | Unapplicable                           | Unapplicable     |
-|                                 |                                                 |                             |                    |                           |                         |              |                                                                     |               |                                        |                  |
-| Anime Title                     | ✔                                               | ❌                           | ❌                  | ❌                         | ✔                       | ✔            | ✔                                                                   | ❌             | ✔                                      | ✔                |
-| [![f:adb] aniDB][adb]           | ✔                                               | ❌                           | ✔                  | ✔                         | ✔                       | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
-| [![f:al] AniList][al]           | ✔                                               | ✔                           | ✔                  | ✔                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
-| [![f:an] ANN][an]               | ✔                                               | ❌                           | ❌                  | ❌                         | ✔ Result Only           | ❌            | ✔                                                                   | ❌             | ❌                                      | ❌                |
-| [![f:ap] Anime-Planet][ap]      | ✔                                               | ❌                           | ✔                  | ❌                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
-| [![f:as] AniSearch][as]         | ✔                                               | ❌                           | ✔                  | ❌                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
-| [![f:ac] Annict][ac]            | ✔                                               | ✔                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
-| [![f:bgm] Bangumi][bgm]         | ❌                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
-| [![f:imdb] IMDB][imdb]          | ✔                                               | ❌                           | ✔                  | ❌                         | ✔                       | ✔            | ❌                                                                   | ✔             | ✔                                      | ❌                |
-| [![f:kz] Kaize][kz]             | ✔                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
-| [![f:kts] Kitsu][kts]           | ✔                                               | ❌                           | ✔                  | ✔                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
-| [![f:lc] LiveChart][lc]         | ✔                                               | ❌                           | ✔                  | ❌                         | ✔ Result Only           | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
-| [![f:mal] MyAnimeList][mal]     | ✔                                               | ✔                           | ✔                  | ✔                         | ✔                       | ❌            | ✔                                                                   | ✔             | ❌                                      | ✔                |
-| [![f:ntj] Nautiljon][ntj]       | ✔                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
-| [![f:ntf] Notify][ntf]          | ✔                                               | ❌                           | ✔                  | ✔                         | ❌                       | ❌            | ✔                                                                   | ✔             | ❌                                      | ❌                |
-| [![f:oo] Otak Otaku][oo]        | ✔                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
-| [![f:shk] Shikimori][shk]       | ✔                                               | ✔ via MAL                   | ✔ via MAL          | ✔ via MAL                 | ✔ via MAL               | ❌            | ✔ via MAL                                                           | ✔ via MAL     | ❌                                      | ✔ via MAL        |
-| [![f:shb] Shoboi Calendar][shb] | ✔                                               | ✔                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
-| [![f:sy] SilverYasha DBTI][sy]  | ✔                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                                                                   | ❌             | ❌                                      | ❌                |
-| [![f:smk] SIMKL][smk]           | ✔                                               | ❌                           | ❌                  | ❌                         | ✔                       | ❌            | ✔                                                                   | ❌             | ❌                                      | ❌                |
-| [![f:tmdb] TMDB][tmdb]          | ✔, only movie                                   | ❌                           | ✔, only movie      | ❌                         | ✔                       | ✔            | ❌                                                                   | ✔, only movie | ✔, only movie                          | ❌                |
-| [![f:trk] Trakt][trk]           | ✔                                               | ❌                           | ❌                  | ❌                         | ✔                       | ✔            | ❌                                                                   | ❌             | ❌                                      | ✔                |
-| [![f:tvdb] TVDB][tvdb]          | ❌                                               | ❌                           | ❌                  | ❌                         | ✔                       | ✔            | ❌                                                                   | ✔             | ✔                                      | ❌                |
-| [![f:tvtm] TVTime][tvtm]        | ❌                                               | ❌                           | ❌                  | ❌                         | ✔ via TVDB              | ✔ via TVDB   | ❌                                                                   | ✔ via TVDB    | ✔ via TVDB                             | ❌                |
+| Highlights                      | AnimeAPI                                        | [ARM][arm]                  | [BQA][bq]          | [Hato][hato]              | [SIMKL][smk]            | [Trakt][trk] | [Letterboxd][lbx] | [AOD][aod]                                                          | [FAL][fal]    | [ALAL][alal]                           | [ATIP][atip]     |
+| ------------------------------- | ----------------------------------------------- | --------------------------- | ------------------ | ------------------------- | ----------------------- | ------------ | ----------------- | ------------------------------------------------------------------- | ------------- | -------------------------------------- | ---------------- |
+| License                         | AGPL-3.0-only, MIT, CC0                         | MIT                         | AGPL-3.0           | Apache-2.0                | Proprietary             | Proprietary  | Proprietary       | AGPL-3.0                                                            | Unknown       | Unknown                                | Unknown          |
+| Access                          | Public                                          | Public                      | Public             | Paid, API Key             | API Key                 | API Key      | API Key           | Public                                                              | Public        | Public                                 | Public           |
+| Format                          | REST, JSON, TSV                                 | Node.js Package, REST, JSON | REST               | REST                      | REST                    | REST         | REST              | JSON                                                                | JSON          | XML                                    | JSON             |
+| Main Languages                  | Python, JSON                                    | JavaScript, JSON            | TypeScript, SQLite | C#, MySQL, PostgreSQL     | -                       | -            | -                 | JSON                                                                | JSON          | XLSL, XML                              | PowerShell, JSON |
+| Base Data                       | AOD, ARM, ATIP, FAL<br>![f:kz] ![f:oo] ![f:ntj] | ![f:ntf]                    | FAL                | ![f:al] ![f:kts] ![f:ntf] | ![f:tvdb] ![f:adb]      | ![f:tmdb]    | -                 | ![f:mal] ![f:al] ![f:adb] ![f:kts] ![f:lc] ![f:as] ![f:ap] ![f:ntf] | AOD, ALAL     | ![f:adb] ![f:tvdb] ![f:tmdb] ![f:imdb] | [aniTrakt][atrk] |
+| Rate Limit                      | -                                               | -                           | -                  | -                         | 1000/day for unverified | 1000/5 mins  | 1000/day          | Unapplicable                                                        | Unapplicable  | Unapplicable                           | Unapplicable     |
+|                                 |                                                 |                             |                    |                           |                         |              |                   |                                                                     |               |                                        |                  |
+| Anime Title                     | ✔                                               | ❌                           | ❌                  | ❌                         | ✔                       | ✔            | ✔                 | ✔                                                                   | ❌             | ✔                                      | ✔                |
+| [![f:adb] aniDB][adb]           | ✔                                               | ❌                           | ✔                  | ✔                         | ✔                       | ❌            | ❌                 | ✔                                                                   | ✔             | ❌                                      | ❌                |
+| [![f:al] AniList][al]           | ✔                                               | ✔                           | ✔                  | ✔                         | ✔ Result Only           | ❌            | ❌                 | ✔                                                                   | ✔             | ❌                                      | ❌                |
+| [![f:an] ANN][an]               | ✔                                               | ❌                           | ❌                  | ❌                         | ✔ Result Only           | ❌            | ❌                 | ✔                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:ap] Anime-Planet][ap]      | ✔                                               | ❌                           | ✔                  | ❌                         | ✔ Result Only           | ❌            | ❌                 | ✔                                                                   | ✔             | ❌                                      | ❌                |
+| [![f:as] AniSearch][as]         | ✔                                               | ❌                           | ✔                  | ❌                         | ✔ Result Only           | ❌            | ❌                 | ✔                                                                   | ✔             | ❌                                      | ❌                |
+| [![f:ac] Annict][ac]            | ✔                                               | ✔                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                 | ❌                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:bgm] Bangumi][bgm]         | ❌                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                 | ❌                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:imdb] IMDB][imdb]          | ✔                                               | ❌                           | ✔                  | ❌                         | ✔                       | ✔            | ✔                 | ❌                                                                   | ✔             | ✔                                      | ❌                |
+| [![f:kz] Kaize][kz]             | ✔                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                 | ❌                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:kts] Kitsu][kts]           | ✔                                               | ❌                           | ✔                  | ✔                         | ✔ Result Only           | ❌            | ❌                 | ✔                                                                   | ✔             | ❌                                      | ❌                |
+| [![f:lbx] Letterboxd][lbx]      | ✔                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ✔                 | ❌                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:lc] LiveChart][lc]         | ✔                                               | ❌                           | ✔                  | ❌                         | ✔ Result Only           | ❌            | ❌                 | ✔                                                                   | ✔             | ❌                                      | ❌                |
+| [![f:mal] MyAnimeList][mal]     | ✔                                               | ✔                           | ✔                  | ✔                         | ✔                       | ❌            | ❌                 | ✔                                                                   | ✔             | ❌                                      | ✔                |
+| [![f:ntj] Nautiljon][ntj]       | ✔                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                 | ❌                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:ntf] Notify][ntf]          | ✔                                               | ❌                           | ✔                  | ✔                         | ❌                       | ❌            | ❌                 | ✔                                                                   | ✔             | ❌                                      | ❌                |
+| [![f:oo] Otak Otaku][oo]        | ✔                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                 | ❌                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:shk] Shikimori][shk]       | ✔                                               | ✔ via MAL                   | ✔ via MAL          | ✔ via MAL                 | ✔ via MAL               | ❌            | ❌                 | ✔ via MAL                                                           | ✔ via MAL     | ❌                                      | ✔ via MAL        |
+| [![f:shb] Shoboi Calendar][shb] | ✔                                               | ✔                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                 | ❌                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:sy] SilverYasha DBTI][sy]  | ✔                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                 | ❌                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:smk] SIMKL][smk]           | ✔                                               | ❌                           | ❌                  | ❌                         | ✔                       | ❌            | ❌                 | ✔                                                                   | ❌             | ❌                                      | ❌                |
+| [![f:tmdb] TMDB][tmdb]          | ✔, only movie                                   | ❌                           | ✔, only movie      | ❌                         | ✔                       | ✔            | ✔                 | ❌                                                                   | ✔, only movie | ✔, only movie                          | ❌                |
+| [![f:trk] Trakt][trk]           | ✔                                               | ❌                           | ❌                  | ❌                         | ✔                       | ✔            | ❌                 | ❌                                                                   | ❌             | ❌                                      | ✔                |
+| [![f:tvdb] TVDB][tvdb]          | ✔                                               | ❌                           | ❌                  | ❌                         | ✔                       | ✔            | ❌                 | ❌                                                                   | ✔             | ✔                                      | ❌                |
+| [![f:tvtm] TVTime][tvtm]        | ✔ via TVDB                                      | ❌                           | ❌                  | ❌                         | ✔ via TVDB              | ✔ via TVDB   | ❌                 | ❌                                                                   | ✔ via TVDB    | ✔ via TVDB                             | ❌                |
 
 <!-- markdownlint-enable MD013 -->
 <!-- omit in toc -->
@@ -116,6 +119,7 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 * ATIP: [ryuuganime/aniTrakt-IndexParser][atip]
 * BQA: [BeeeQueue/arm-server][bq]
 * FAL: [Fribb/anime-lists][fal]
+* LBX: [Letterboxd][lbx]
 
 ## Why Avoid Using AnimeAPI?
 
@@ -137,7 +141,11 @@ generate are licensed under the CC0 license instead. You are free to use these
 files and build your own database with them. For more information, please refer
 to [`database/raw/README.md`](database/raw/README.md).
 
-Additionally, since the project is object/key-value based and not array, the relation assumed by AnimeAPI is the same across database, where in fact it's not the case, especially with heavily moderated databases like AniDB, AniList, and Anime News Network. So, for any episode 0/prequel, specials, OVAs, movies, or older titles might get incorrect relationship. 
+Additionally, since the project is object/key-value based and not array, the
+relation assumed by AnimeAPI is the same across database, where in fact it's
+not the case, especially with heavily moderated databases like AniDB, AniList,
+and Anime News Network. So, for any episode 0/prequel, specials, OVAs, movies,
+or older titles might get incorrect relationship. 
 
 ## Featured on
 
@@ -180,13 +188,14 @@ alias cheatsheet as well.
 | -----------------: | :--: | ----------------------------------------------------------------------------------------------- |
 |            `anidb` | `ad` | `adb`, `anidb.net`                                                                              |
 |          `anilist` | `al` | `anilist.co`                                                                                    |
-| `animenewsnetwork` | `an` | `ann`, `animenewsnetwork.com` |
-|      `animeplanet` | `ap` | `anime-planet.com` `anime-planet`, `animeplanet.com`                                            |
+| `animenewsnetwork` | `an` | `ann`, `animenewsnetwork.com`                                                                   |
+|      `animeplanet` | `ap` | `anime-planet.com`, `anime-planet`, `animeplanet.com`                                           |
 |        `anisearch` | `as` | `anisearch.com`, `anisearch.de`, `anisearch.it`, `anisearch.es`, `anisearch.fr`, `anisearch.jp` |
 |           `annict` | `ac` | `anc`, `act`, `annict.com`, `annict.jp`, `en.annict.com`                                        |
 |             `imdb` | `im` | `imdb.com`                                                                                      |
 |            `kaize` | `kz` | `kaize.io`                                                                                      |
 |            `kitsu` | `kt` | `kts`, `kitsu.io`, `kitsu.app`                                                                  |
+|       `letterboxd` | `lb` | `lx`, `letterboxd.com`                                                                          |
 |        `livechart` | `lc` | `livechart.me`                                                                                  |
 |      `myanimelist` | `ma` | `mal`, `myanimelist.net`                                                                        |
 |        `nautiljon` | `nj` | `ntj`, `nautiljon.com`                                                                          |
@@ -197,13 +206,14 @@ alias cheatsheet as well.
 |      `silveryasha` | `sy` | `dbti`, `db.silveryasha.id`, `db.silveryasha.web.id`                                            |
 |            `simkl` | `sm` | `smk`, `simkl.com`, `animecountdown`, `animecountdown.com`                                      |
 |       `themoviedb` | `tm` | `tmdb`, `themoviedb.org`                                                                        |
+|          `thetvdb` | `tv` | `thetvdb.com`, `thetvdb`, `tvtime`, `tt`, `tvtime.com`                                          |
 |            `trakt` | `tr` | `trk`, `trakt.tv`                                                                               |
 
 <!-- markdownlint-enable MD034 MD013 -->
 
 ## Statistic
 
-So far, AnimeAPI has indexed data from 17 databases, with details as follows:
+So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
 Last updated: 18 October 2025 05:09:14 UTC
@@ -526,6 +536,13 @@ GET https://kitsu.app/api/edge/anime?filter[slug]=cowboy-bebop
 
 The response will be in JSON format, and you can get the ID from `data[0].id`
 
+##### Letterboxd
+
+`letterboxd` uses slug format for movie identification. The API will return the
+Letterboxd film URL using the stored slug value.
+
+For lookup operations, use the `letterboxd_slug` field from the response data.
+
 ##### SIMKL
 
 > [!NOTE]
@@ -544,8 +561,27 @@ For example: `z218` → `218`
 ##### The Movie DB
 
 For The Movie DB (TMDB), the ID is in the format of `:provider/:mediatype/:mediaid`
-where `:mediatype` is only `movie` and `:mediaid` is the ID of the title in the
-provider instead of typical `:provider/:mediaid` format.
+where `:mediatype` is either `movie` or `tv` and `:mediaid` is the ID of the title
+in the provider instead of typical `:provider/:mediaid` format. For TV shows, you
+can also specify a season by using the format of
+`:provider/:mediatype/:mediaid/season/:seasonid` where `:season_id` can be season
+index defined by Trakt's season number, or TMDB internal season ID.
+
+##### The TVDB
+
+For The TVDB, the ID follows the format `:provider/series/:mediaid` or
+`:provider/series/:mediaid/seasons/:season_id` for season-specific entries.
+
+When querying season data, you can use either the season number (from `trakt_season`)
+or the TVDB season ID (from `thetvdb_season_id`). Season 1 entries can be accessed
+using the base series URL.
+
+For example:
+```http
+GET https://animeapi.my.id/thetvdb/series/12345
+GET https://animeapi.my.id/thetvdb/series/12345/seasons/2
+GET https://animeapi.my.id/thetvdb/series/12345/seasons/789012
+```
 
 ##### Trakt
 
@@ -571,6 +607,22 @@ where `:season_inc` is the season number of the title in the provider.
 > [!WARNING]
 >
 > `/seasons/0` is invalid, and will return `400` status code.
+
+> [!NOTE]
+>
+> Since Oct 19, 2025, AnimeAPI now features a split cour flag, where
+> `trakt_may_invalid` indicates whether a season mapping may be unreliable:
+>
+> * **`none`**: The entry is either a special, or a movie
+> * **`false`**: Season found on Trakt and mapping is reliable.
+> * **`true`**: Season not found separately on Trakt (split cour). Season
+ fields on Trakt, TMDB, and TVDB will be `null`.
+>
+> MAL may list split cours as separate seasons while Trakt/TMDB combines them
+> into one continuous season. When `true`, episodes are likely in the previous
+> season on Trakt.
+>
+> For more information, head to [db.trakt.extended-anitrakt][atip].
 
 For example, to get the ID of Mairimashita Iruma-kun Season 3, you can use:
 
@@ -638,11 +690,10 @@ GET /rd?from=:platform&id=:mediaid&to=:platform
 
   <!-- markdownlint-disable MD013 -->
 
-  |     Platform |  2K   | Aliases               | Additional Notes                            |
-  | -----------: | :---: | --------------------- | :------------------------------------------ |
-  |   `kurozora` | `kr`  | `krz`, `kurozora.app` | Requires Kurozora+ subscription and MAL ID  |
-  | `letterboxd` | `lb`  | `letterboxd.com`      | Only available for movies, requires TMDB ID |
-  |    `myanili` | `my`  | `myani.li`            | Requires MAL ID; a web app to manage list   |
+  |     Platform |  2K  | Aliases               | Additional Notes                           |
+  | -----------: | :--: | --------------------- | :----------------------------------------- |
+  |   `kurozora` | `kr` | `krz`, `kurozora.app` | Requires Kurozora+ subscription and MAL ID |
+  |    `myanili` | `my` | `myani.li`            | Requires MAL ID; a web app to manage list  |
 
   <!-- markdownlint-enable MD013 -->
 
@@ -1141,10 +1192,11 @@ anime_object = Dict[str, Anime]
 
 This project uses multiple sources to compile the data, including:
 
-* [GitHub:kawaiioverflow/arm][arm]
-* [GitHub:manami-project/anime-offline-database][aod]
-* [GitHub:ryuuganime/aniTrakt-IndexParser][atip], which an automatic parser of
+* [gh:kawaiioverflow/arm][arm]
+* [gh:manami-project/anime-offline-database][aod]
+* [gh:rensetsu/db.takt.extended-anitrakt][atip], which an automatic parser of
   [AniTrakt][atrk] index page.
+* [gh:Fribb/anime-lists][fal]
 * [Nautiljon][ntj]
 * [Kaize][kz]
 * [Otak Otaku][oo]
@@ -1160,7 +1212,7 @@ This project uses multiple sources to compile the data, including:
 [ap]: https://anime-planet.com
 [arm]: https://github.com/kawaiioverflow/arm
 [as]: https://anisearch.com
-[atip]: https://github.com/ryuuganime/aniTrakt-IndexParser
+[atip]: https://github.com/rensetsu/db.trakt.extended-anitrakt
 [atrk]: https://anitrakt.huere.net/
 [bgm]: https://bgm.tv
 [bq]: https://github.com/BeeeQueue/arm-server
@@ -1170,6 +1222,7 @@ This project uses multiple sources to compile the data, including:
 [ko]: https://github.com/kawaiioverflow
 [kts]: https://kitsu.app
 [kz]: https://kaize.io
+[lbx]: https://letterboxd.com
 [lc]: https://livechart.me
 [mal]: https://myanimelist.net
 [mp]: https://github.com/manami-project
@@ -1194,9 +1247,10 @@ This project uses multiple sources to compile the data, including:
 [f:imdb]: https://www.google.com/s2/favicons?domain=imdb.com&sz=16
 [f:kts]: https://favicone.com/kitsu.app
 [f:kz]: https://www.google.com/s2/favicons?domain=kaize.io&sz=16
+[f:lbx]: https://www.google.com/s2/favicons?domain=letterboxd.com&sz=16
 [f:lc]: https://www.google.com/s2/favicons?domain=livechart.me&sz=16
 [f:mal]: https://www.google.com/s2/favicons?domain=myanimelist.net&sz=16
-[f:ntf]: https://www.google.com/s2/favicons?domain=notify.moe&sz=16
+[f:ntf]: https://favicone.com/notify.moe
 [f:ntj]: https://www.google.com/s2/favicons?domain=nautiljon.com&sz=16
 [f:oo]: https://www.google.com/s2/favicons?domain=otakotaku.com&sz=16
 [f:shb]: https://www.google.com/s2/favicons?domain=cal.syoboi.jp&sz=16

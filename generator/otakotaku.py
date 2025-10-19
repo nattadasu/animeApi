@@ -154,7 +154,7 @@ class OtakOtaku:
             if not latest_id:
                 raise ConnectionError("Failed to connect to otakotaku.com")
             if (
-                not datetime.now().day in [1, 15]
+                datetime.now().day not in [1, 15]
                 and len(anime_list) > 0
                 and not GITHUB_DISPATCH
             ):

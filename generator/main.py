@@ -31,7 +31,7 @@ from kaize import Kaize
 from nautiljon import Nautiljon
 from otakotaku import OtakOtaku
 from prettyprint import Platform, Status
-from utils import check_git_any_changes, proc_stop
+from utils import check_git_any_changes, proc_stop, validate_json_files
 
 
 def main() -> None:
@@ -41,16 +41,17 @@ def main() -> None:
         pprint.print(Platform.SYSTEM, Status.READY, "Generator ready to use")
         aod = get_anime_offline_database()
         aod_arr = simplify_aod_data(aod)
+        sy_ = simplify_silveryasha_data()
+        arm = get_arm()
+        anitrakt = get_anitrakt()
+        fribb = get_fribb_animelists()
+        ota = OtakOtaku().get_anime()
         kza = Kaize(
             email=KAIZE_EMAIL,
             password=KAIZE_PASSWORD,
         ).get_anime()
         nau = Nautiljon().get_animes()
-        ota = OtakOtaku().get_anime()
-        sy_ = simplify_silveryasha_data()
-        arm = get_arm()
-        anitrakt = get_anitrakt()
-        fribb = get_fribb_animelists()
+        validate_json_files()
         git_changes = check_git_any_changes()
         if git_changes is False:
             proc_stop(start_time, Status.INFO, "No changes in git, exiting")
@@ -80,18 +81,19 @@ def main() -> None:
         pprint.print(Platform.ARM, Status.BUILD, "Combining ARM data with AOD data")
         aod_arr = combine_arm(arm, aod_arr)
         pprint.print(
-            Platform.ANITRAKT, Status.BUILD, "Combining AniTrakt data with AOD data"
-        )
-        aod_arr = combine_anitrakt(anitrakt, aod_arr)
-        pprint.print(
             Platform.FRIBB,
             Status.BUILD,
             "Combining Fribb's Animelists data with AOD data",
         )
         aod_arr = combine_fribb(fribb, aod_arr)
+        pprint.print(
+            Platform.ANITRAKT, Status.BUILD, "Combining AniTrakt data with AOD data"
+        )
+        aod_arr = combine_anitrakt(anitrakt, aod_arr)
         final_arr: list[dict[str, Any]] = []
         with alive_bar(len(aod_arr), title="Fixing missing keys", spinner=None) as bar:  # type: ignore
             for item in aod_arr:
+                # Keys sorted alphabetically, but title must be first
                 data = {
                     "title": item.get("title", None),
                     "anidb": item.get("anidb", None),
@@ -104,6 +106,9 @@ def main() -> None:
                     "kaize": item.get("kaize", None),
                     "kaize_id": item.get("kaize_id", None),
                     "kitsu": item.get("kitsu", None),
+                    "letterboxd_lid": item.get("letterboxd_lid", None),
+                    "letterboxd_slug": item.get("letterboxd_slug", None),
+                    "letterboxd_uid": item.get("letterboxd_uid", None),
                     "livechart": item.get("livechart", None),
                     "myanimelist": item.get("myanimelist", None),
                     "nautiljon": item.get("nautiljon", None),
@@ -115,11 +120,16 @@ def main() -> None:
                     "silveryasha": item.get("silveryasha", None),
                     "simkl": item.get("simkl", None),
                     "themoviedb": item.get("themoviedb", None),
-                    # "themoviedb_type": item.get("themoviedb_type", None),
-                    # "themoviedb_season": item.get("themoviedb_season", None),
+                    "themoviedb_season_id": item.get("themoviedb_season_id", None),
+                    "themoviedb_type": item.get("themoviedb_type", None),
+                    "thetvdb": item.get("thetvdb", None),
+                    "thetvdb_season_id": item.get("thetvdb_season_id", None),
                     "trakt": item.get("trakt", None),
-                    "trakt_type": item.get("trakt_type", None),
+                    "trakt_may_invalid": item.get("trakt_may_invalid", None),
                     "trakt_season": item.get("trakt_season", None),
+                    "trakt_season_id": item.get("trakt_season_id", None),
+                    "trakt_slug": item.get("trakt_slug", None),
+                    "trakt_type": item.get("trakt_type", None),
                 }
                 final_arr.append(data)
                 bar()

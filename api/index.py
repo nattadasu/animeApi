@@ -36,7 +36,7 @@ PLATFORM_SYNONYMS = {
     "kaize": ["kz", "kaize.io"],
     "kitsu": ["kt", "kts", "kitsu.app", "kitsu.io"],
     "kurozora": ["kr", "krz", "kurozora.app"],
-    "letterboxd": ["lb", "letterboxd.com"],
+    "letterboxd": ["lb", "lx", "letterboxd.com"],
     "livechart": ["lc", "livechart.me"],
     "myanili": ["my", "myani.li"],
     "myanimelist": ["ma", "mal", "myanimelist.net"],
@@ -47,7 +47,8 @@ PLATFORM_SYNONYMS = {
     "shoboi": ["sb", "shb", "syb", "syoboi", "shobocal", "syobocal", "cal.syoboi.jp"],
     "silveryasha": ["sy", "dbti", "db.silveryasha.id", "db.silveryasha.web.id"],
     "simkl": ["sm", "smk", "simkl.com", "animecountdown", "animecountdown.com"],
-    "themoviedb": ["tm", "tmdb", "tmdb.org"],
+    "themoviedb": ["tm", "tmdb", "tmdb.org", "themoviedb.org"],
+    "thetvdb": ["tv", "thetvdb.com", "thetvdb", "tvtime", "tt", "tvtime.com"],
     "trakt": ["tr", "trk", "trakt.tv"],
 }
 # fmt: on
@@ -91,7 +92,7 @@ def before_request():
 def index():
     """Index route"""
     # redirect user to GitHub repo
-    return redirect("https://github.com/nattadasu/animeApi/discussions/4")
+    return redirect("https://github.com/nattadasu/animeApi")
 
 
 @app.route("/status", methods=["GET"])
@@ -224,31 +225,72 @@ def tmdb_exclusive_route(
     """
     The Movie Database exclusive route
 
-    :param media_type: Media type, must be `movie`
+    Supports both movies and TV shows. Season numbers are from Trakt's verified data.
+
+    :param media_type: Media type, must be `movie` or `tv`
     :type media_type: str
     :param media_id: Media ID
     :type media_id: int
-    :param season_id: Season ID, defaults to None
+    :param season_id: Season ID (Trakt season number), defaults to None
     :type season_id: Union[str, None], optional
     :return: Response
     :rtype: Response
     """
-    if media_type == "tv" or season_id is not None:
-        return jsonify(
-            {
-                "error": "Invalid request",
-                "code": 400,
-                "message": "Currently, only `movie` are supported",
-            }
-        ), 400
     try:
-        return platform_id_content("themoviedb", f"movie/{media_id}")
+        if season_id is None:
+            return platform_id_content("themoviedb", f"{media_type}/{media_id}")
+        return platform_id_content(
+            "themoviedb", f"{media_type}/{media_id}/season/{season_id}"
+        )
     except KeyError:
         return jsonify(
             {
                 "error": "Not found",
                 "code": 404,
-                "message": f"Media type {media_type} with ID {media_id} not found",
+                "message": f"Media type {media_type} with ID {media_id} {
+                    'and season ' + str(season_id) + ' '
+                    if season_id is not None
+                    else ''
+                }not found",
+            }
+        ), 404
+
+
+@app.route("/thetvdb/series/<series_id>", methods=["GET"])
+@app.route("/thetvdb/series/<series_id>/seasons/<season_id>", methods=["GET"])
+def tvdb_exclusive_route(series_id: int, season_id: Union[str, None] = None):
+    """
+    TheTVDB exclusive route
+
+    Season numbers are from Trakt's verified data, not TVDB's native season IDs.
+
+    :param series_id: Series ID
+    :type series_id: int
+    :param season_id: Season number (Trakt season number), defaults to None
+    :type season_id: Union[str, None], optional
+    :return: Response
+    :rtype: Response
+    """
+    if season_id == "0":
+        return jsonify(
+            {
+                "error": "Invalid season number",
+                "code": 400,
+                "message": "Season number cannot be 0",
+            }
+        ), 400
+    try:
+        if season_id is None:
+            return platform_id_content("thetvdb", f"series/{series_id}")
+        return platform_id_content("thetvdb", f"series/{series_id}/seasons/{season_id}")
+    except KeyError:
+        return jsonify(
+            {
+                "error": "Not found",
+                "code": 404,
+                "message": f"Series {series_id} {
+                    'season ' + str(season_id) + ' ' if season_id is not None else ''
+                }not found",
             }
         ), 404
 
@@ -414,7 +456,7 @@ def redirect_route():
             f"Platform not found, please check if `{platform}` is a valid platform",
         )
 
-    if platform in ["kurozora", "myanili", "letterboxd"]:
+    if platform in ["kurozora", "myanili"]:
         return error_response(
             "Invalid platform source",
             400,
@@ -551,7 +593,7 @@ route_path = {
     "kaize": "https://kaize.io/anime/",
     "kitsu": "https://kitsu.app/anime/",
     "kurozora": "https://kurozora.app/myanimelist.net/anime/",
-    "letterboxd": "https://letterboxd.com/tmdb/",
+    "letterboxd": "https://letterboxd.com/film/",
     "livechart": "https://www.livechart.me/anime/",
     "myanili": "https://myani.li/#/anime/details/",
     "myanimelist": "https://myanimelist.net/anime/",
@@ -563,6 +605,7 @@ route_path = {
     "silveryasha": "https://db.silveryasha.id/anime/",
     "simkl": "https://simkl.com/anime/",
     "themoviedb": "https://www.themoviedb.org/movie/",
+    "thetvdb": "https://www.thetvdb.com/",
     "trakt": "https://trakt.tv/",
 }
 
@@ -645,14 +688,27 @@ def build_target_uri(
                 404,
                 f"MyAnimeList ID not found, which is requirement for {target}.",
             )
-        if target == "letterboxd":
-            if maps.get("themoviedb"):
-                return f"{route_path[target]}{maps['themoviedb']}"
+        if target == "thetvdb":
+            thetvdb_id = maps.get("thetvdb")
+            trakt_season = maps.get("trakt_season")
+            if thetvdb_id:
+                base_uri = f"{route_path[target]}series/{thetvdb_id}"
+                if trakt_season and trakt_season > 0:
+                    tvdb_sid = maps.get("thetvdb_season_id")
+                    if tvdb_sid:
+                        return f"{base_uri}/seasons/{tvdb_sid}"
+                    return f"{base_uri}/seasons/{trakt_season}"
+                return base_uri
             return error_response(
                 "Not found",
                 404,
-                "TheMovieDB ID not found, which is the main database source for Letterboxd.",
+                "TheTVDB ID not found for this entry.",
             )
+        if target == "letterboxd":
+            letterboxd_slug = maps.get("letterboxd_slug")
+            if letterboxd_slug:
+                return f"{route_path[target]}{letterboxd_slug}"
+            raise ValueError
         return build_generic_uri(maps, target)
     except ValueError:
         title = maps.get("title", "(Unknown title)")
