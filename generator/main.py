@@ -92,6 +92,7 @@ def main() -> None:
         final_arr: list[dict[str, Any]] = []
         with alive_bar(len(aod_arr), title="Fixing missing keys", spinner=None) as bar:  # type: ignore
             for item in aod_arr:
+                # Keys sorted alphabetically, but title must be first
                 data = {
                     "title": item.get("title", None),
                     "anidb": item.get("anidb", None),
@@ -104,6 +105,9 @@ def main() -> None:
                     "kaize": item.get("kaize", None),
                     "kaize_id": item.get("kaize_id", None),
                     "kitsu": item.get("kitsu", None),
+                    "letterboxd_lid": item.get("letterboxd_lid", None),
+                    "letterboxd_slug": item.get("letterboxd_slug", None),
+                    "letterboxd_uid": item.get("letterboxd_uid", None),
                     "livechart": item.get("livechart", None),
                     "myanimelist": item.get("myanimelist", None),
                     "nautiljon": item.get("nautiljon", None),
@@ -115,19 +119,16 @@ def main() -> None:
                     "silveryasha": item.get("silveryasha", None),
                     "simkl": item.get("simkl", None),
                     "themoviedb": item.get("themoviedb", None),
-                    "themoviedb_type": item.get("themoviedb_type", None),
                     "themoviedb_season_id": item.get("themoviedb_season_id", None),
+                    "themoviedb_type": item.get("themoviedb_type", None),
                     "thetvdb": item.get("thetvdb", None),
                     "thetvdb_season_id": item.get("thetvdb_season_id", None),
                     "trakt": item.get("trakt", None),
-                    "trakt_type": item.get("trakt_type", None),
-                    "trakt_season": item.get("trakt_season", None),
-                    "trakt_slug": item.get("trakt_slug", None),
                     "trakt_may_invalid": item.get("trakt_may_invalid", None),
+                    "trakt_season": item.get("trakt_season", None),
                     "trakt_season_id": item.get("trakt_season_id", None),
-                    "letterboxd_slug": item.get("letterboxd_slug", None),
-                    "letterboxd_lid": item.get("letterboxd_lid", None),
-                    "letterboxd_uid": item.get("letterboxd_uid", None),
+                    "trakt_slug": item.get("trakt_slug", None),
+                    "trakt_type": item.get("trakt_type", None),
                 }
                 final_arr.append(data)
                 bar()

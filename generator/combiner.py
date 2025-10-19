@@ -169,29 +169,38 @@ def combine_anitrakt(
                         show_externals = trakt_info.get("externals", {})
                         thetvdb = show_externals.get("tvdb", None)
                         themoviedb = show_externals.get("tmdb", None)
+                        imdb = show_externals.get("imdb", None)
 
-                        # Update themoviedb in item if not already set
+                        # Merge themoviedb and imdb (preserve existing if present)
                         if item.get("themoviedb") is None and themoviedb is not None:
                             item["themoviedb"] = themoviedb
+                        if item.get("imdb") is None and imdb is not None:
+                            item["imdb"] = imdb
 
-                        themoviedb_type = "tv" if themoviedb is not None else None
+                        themoviedb_type = "tv"
 
                     elif trakt_type == "movies":
-                        # Movie specific fields
+                        # Movie specific fields - set trakt_may_invalid to False for movies
+                        trakt_may_invalid = False
+                        
                         movie_externals = trakt_info.get("externals", {})
                         themoviedb = movie_externals.get("tmdb", None)
+                        imdb = movie_externals.get("imdb", None)
 
-                        # Update themoviedb in item if not already set
+                        # Merge themoviedb and imdb (preserve existing if present)
                         if item.get("themoviedb") is None and themoviedb is not None:
                             item["themoviedb"] = themoviedb
+                        if item.get("imdb") is None and imdb is not None:
+                            item["imdb"] = imdb
 
-                        themoviedb_type = "movie" if themoviedb is not None else None
+                        themoviedb_type = "movie"
 
                         # Letterboxd data
                         letterboxd_info = movie_externals.get("letterboxd", {})
-                        letterboxd_slug = letterboxd_info.get("slug", None)
-                        letterboxd_lid = letterboxd_info.get("lid", None)
-                        letterboxd_uid = letterboxd_info.get("uid", None)
+                        if letterboxd_info:
+                            letterboxd_slug = letterboxd_info.get("slug", None)
+                            letterboxd_lid = letterboxd_info.get("lid", None)
+                            letterboxd_uid = letterboxd_info.get("uid", None)
 
                     # Combine the data
                     item.update(
