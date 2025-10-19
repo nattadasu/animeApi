@@ -1,3 +1,4 @@
 database/*
+database/raw/*
 !database/*_object.json
 !database/animeapi.tsv
