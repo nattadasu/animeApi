@@ -5,6 +5,7 @@ fake-useragent
 Flask
 thefuzz
 jsonschema
+pandas
 python-dotenv
 python-Levenshtein
 python-slugify
