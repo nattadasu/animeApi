@@ -1,0 +1,54 @@
+[project]
+name = "animeapi"
+version = "0.1.0"
+description = "A RESTful API that provides anime relation mapping across multiple anime databases"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "AGPL-3.0-only AND MIT AND CC0-1.0+"}
+authors = [
+    {name = "Natsu Tadama", email = "nattadasu@nattadasu.my.id"}
+]
+maintainers = [
+    {name = "Natsu Tadama", email = "nattadasu@nattadasu.my.id"}
+]
+keywords = ["anime", "api", "database", "mapping", "relation", "myanimelist", "anilist", "kitsu"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "License :: OSI Approved :: MIT License",
+    "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed"
+]
+
+dynamic = ["dependencies"]
+
+[project.urls]
+Homepage = "https://animeapi.my.id"
+Repository = "https://github.com/nattadasu/animeApi"
+Documentation = "https://github.com/nattadasu/animeApi/blob/v3/README.md"
+Issues = "https://github.com/nattadasu/animeApi/issues"
+
+[project.scripts]
+animeapi-generator = "generator.main:main"
+animeapi-api = "api.__main__:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["generator", "api"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.package-data]
+api = ["*.json", "*.txt", "*.ico", "*.md"]
