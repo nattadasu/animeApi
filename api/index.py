@@ -20,13 +20,22 @@ from flask import (
 )
 from werkzeug.wrappers import Response as wzResponse
 
-from data_loader import lookup_by_platform_id
-from utils import (
-    alias_get,
-    clean_platform_id,
-    is_valid_target,
-    resolve_platform,
-)
+try:
+    from .data_loader import lookup_by_platform_id
+    from .utils import (
+        alias_get,
+        clean_platform_id,
+        is_valid_target,
+        resolve_platform,
+    )
+except ImportError:
+    from data_loader import lookup_by_platform_id
+    from utils import (
+        alias_get,
+        clean_platform_id,
+        is_valid_target,
+        resolve_platform,
+    )
 
 app = Flask(__name__)
 app.json.compact = True
@@ -193,11 +202,9 @@ def trakt_exclusive_route(
             {
                 "error": "Not found",
                 "code": 404,
-                "message": f"""Media type {media_type} with ID {media_id} {
-                    "and season ID " + str(season_id) + " "
-                    if season_id is not None
-                    else ""
-                }not found""",
+                "message": f"Media type {media_type} with ID {media_id} "
+                + (f"and season ID {season_id} " if season_id is not None else "")
+                + "not found",
             }
         ), 404
 
@@ -232,11 +239,9 @@ def tmdb_exclusive_route(
             {
                 "error": "Not found",
                 "code": 404,
-                "message": f"Media type {media_type} with ID {media_id} {
-                    'and season ' + str(season_id) + ' '
-                    if season_id is not None
-                    else ''
-                }not found",
+                "message": f"Media type {media_type} with ID {media_id} "
+                + (f"and season {season_id} " if season_id is not None else "")
+                + "not found",
             }
         ), 404
 
@@ -273,9 +278,9 @@ def tvdb_exclusive_route(series_id: int, season_id: Union[str, None] = None):
             {
                 "error": "Not found",
                 "code": 404,
-                "message": f"Series {series_id} {
-                    'season ' + str(season_id) + ' ' if season_id is not None else ''
-                }not found",
+                "message": f"Series {series_id} "
+                + (f"season {season_id} " if season_id is not None else "")
+                + "not found",
             }
         ), 404
 

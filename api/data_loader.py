@@ -5,7 +5,10 @@ from typing import Any, Dict, Optional, Union
 
 import pandas as pd
 
-from models import AnimeEntry, row_to_entry
+try:
+    from .models import AnimeEntry, row_to_entry
+except ImportError:
+    from models import AnimeEntry, row_to_entry
 
 # Global cache for TSV data
 _tsv_cache: Optional[pd.DataFrame] = None
