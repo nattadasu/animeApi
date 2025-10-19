@@ -171,10 +171,10 @@ def combine_anitrakt(
                         themoviedb = show_externals.get("tmdb", None)
                         imdb = show_externals.get("imdb", None)
 
-                        # Merge themoviedb and imdb (preserve existing if present)
-                        if item.get("themoviedb") is None and themoviedb is not None:
+                        # Overwrite themoviedb and imdb with Trakt data
+                        if themoviedb is not None:
                             item["themoviedb"] = themoviedb
-                        if item.get("imdb") is None and imdb is not None:
+                        if imdb is not None:
                             item["imdb"] = imdb
 
                         themoviedb_type = "tv"
@@ -187,10 +187,10 @@ def combine_anitrakt(
                         themoviedb = movie_externals.get("tmdb", None)
                         imdb = movie_externals.get("imdb", None)
 
-                        # Merge themoviedb and imdb (preserve existing if present)
-                        if item.get("themoviedb") is None and themoviedb is not None:
+                        # Overwrite themoviedb and imdb with Trakt data
+                        if themoviedb is not None:
                             item["themoviedb"] = themoviedb
-                        if item.get("imdb") is None and imdb is not None:
+                        if imdb is not None:
                             item["imdb"] = imdb
 
                         themoviedb_type = "movie"

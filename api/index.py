@@ -36,7 +36,7 @@ PLATFORM_SYNONYMS = {
     "kaize": ["kz", "kaize.io"],
     "kitsu": ["kt", "kts", "kitsu.app", "kitsu.io"],
     "kurozora": ["kr", "krz", "kurozora.app"],
-    "letterboxd": ["lb", "letterboxd.com"],
+    "letterboxd": ["lb", "lx", "letterboxd.com"],
     "livechart": ["lc", "livechart.me"],
     "myanili": ["my", "myani.li"],
     "myanimelist": ["ma", "mal", "myanimelist.net"],
@@ -47,7 +47,8 @@ PLATFORM_SYNONYMS = {
     "shoboi": ["sb", "shb", "syb", "syoboi", "shobocal", "syobocal", "cal.syoboi.jp"],
     "silveryasha": ["sy", "dbti", "db.silveryasha.id", "db.silveryasha.web.id"],
     "simkl": ["sm", "smk", "simkl.com", "animecountdown", "animecountdown.com"],
-    "themoviedb": ["tm", "tmdb", "tmdb.org"],
+    "themoviedb": ["tm", "tmdb", "tmdb.org", "themoviedb.org"],
+    "thetvdb": ["tv", "thetvdb.com", "thetvdb"],
     "trakt": ["tr", "trk", "trakt.tv"],
 }
 # fmt: on
@@ -223,32 +224,79 @@ def tmdb_exclusive_route(
 ):
     """
     The Movie Database exclusive route
+    
+    Supports both movies and TV shows. Season numbers are from Trakt's verified data.
 
-    :param media_type: Media type, must be `movie`
+    :param media_type: Media type, must be `movie` or `tv`
     :type media_type: str
     :param media_id: Media ID
     :type media_id: int
-    :param season_id: Season ID, defaults to None
+    :param season_id: Season ID (Trakt season number), defaults to None
     :type season_id: Union[str, None], optional
     :return: Response
     :rtype: Response
     """
-    if media_type == "tv" or season_id is not None:
-        return jsonify(
-            {
-                "error": "Invalid request",
-                "code": 400,
-                "message": "Currently, only `movie` are supported",
-            }
-        ), 400
     try:
-        return platform_id_content("themoviedb", f"movie/{media_id}")
+        if season_id is None:
+            return platform_id_content("themoviedb", f"{media_type}/{media_id}")
+        return platform_id_content(
+            "themoviedb", f"{media_type}/{media_id}/season/{season_id}"
+        )
     except KeyError:
         return jsonify(
             {
                 "error": "Not found",
                 "code": 404,
-                "message": f"Media type {media_type} with ID {media_id} not found",
+                "message": f"Media type {media_type} with ID {media_id} {
+                    'and season ' + str(season_id) + ' '
+                    if season_id is not None
+                    else ''
+                }not found",
+            }
+        ), 404
+
+
+@app.route("/thetvdb/series/<series_id>", methods=["GET"])
+@app.route("/thetvdb/series/<series_id>/seasons/official/<season_id>", methods=["GET"])
+def tvdb_exclusive_route(
+    series_id: int, season_id: Union[str, None] = None
+):
+    """
+    TheTVDB exclusive route
+    
+    Season numbers are from Trakt's verified data, not TVDB's native season IDs.
+
+    :param series_id: Series ID
+    :type series_id: int
+    :param season_id: Season number (Trakt season number), defaults to None
+    :type season_id: Union[str, None], optional
+    :return: Response
+    :rtype: Response
+    """
+    if season_id == "0":
+        return jsonify(
+            {
+                "error": "Invalid season number",
+                "code": 400,
+                "message": "Season number cannot be 0",
+            }
+        ), 400
+    try:
+        if season_id is None:
+            return platform_id_content("thetvdb", f"series/{series_id}")
+        return platform_id_content(
+            "thetvdb", f"series/{series_id}/seasons/official/{season_id}"
+        )
+    except KeyError:
+        return jsonify(
+            {
+                "error": "Not found",
+                "code": 404,
+                "message": f"Series {series_id} {
+                    'season ' + str(season_id) + ' '
+                    if season_id is not None
+                    else ''
+                }not found",
             }
         ), 404
 
