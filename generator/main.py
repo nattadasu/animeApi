@@ -31,7 +31,7 @@ from kaize import Kaize
 from nautiljon import Nautiljon
 from otakotaku import OtakOtaku
 from prettyprint import Platform, Status
-from utils import check_git_any_changes, proc_stop
+from utils import check_git_any_changes, proc_stop, validate_json_files
 
 
 def main() -> None:
@@ -41,16 +41,17 @@ def main() -> None:
         pprint.print(Platform.SYSTEM, Status.READY, "Generator ready to use")
         aod = get_anime_offline_database()
         aod_arr = simplify_aod_data(aod)
+        sy_ = simplify_silveryasha_data()
+        arm = get_arm()
+        anitrakt = get_anitrakt()
+        fribb = get_fribb_animelists()
+        ota = OtakOtaku().get_anime()
         kza = Kaize(
             email=KAIZE_EMAIL,
             password=KAIZE_PASSWORD,
         ).get_anime()
         nau = Nautiljon().get_animes()
-        ota = OtakOtaku().get_anime()
-        sy_ = simplify_silveryasha_data()
-        arm = get_arm()
-        anitrakt = get_anitrakt()
-        fribb = get_fribb_animelists()
+        validate_json_files()
         git_changes = check_git_any_changes()
         if git_changes is False:
             proc_stop(start_time, Status.INFO, "No changes in git, exiting")
@@ -80,15 +81,15 @@ def main() -> None:
         pprint.print(Platform.ARM, Status.BUILD, "Combining ARM data with AOD data")
         aod_arr = combine_arm(arm, aod_arr)
         pprint.print(
-            Platform.ANITRAKT, Status.BUILD, "Combining AniTrakt data with AOD data"
-        )
-        aod_arr = combine_anitrakt(anitrakt, aod_arr)
-        pprint.print(
             Platform.FRIBB,
             Status.BUILD,
             "Combining Fribb's Animelists data with AOD data",
         )
         aod_arr = combine_fribb(fribb, aod_arr)
+        pprint.print(
+            Platform.ANITRAKT, Status.BUILD, "Combining AniTrakt data with AOD data"
+        )
+        aod_arr = combine_anitrakt(anitrakt, aod_arr)
         final_arr: list[dict[str, Any]] = []
         with alive_bar(len(aod_arr), title="Fixing missing keys", spinner=None) as bar:  # type: ignore
             for item in aod_arr:
