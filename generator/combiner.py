@@ -166,7 +166,7 @@ def combine_anitrakt(
                             themoviedb_season_id = season_externals.get("tmdb", None)
 
                         # Show-level externals
-                        show_externals = trakt_info.get("externals", {})
+                        show_externals = anitrakt_item.get("externals", {})
                         thetvdb = show_externals.get("tvdb", None)
                         themoviedb = show_externals.get("tmdb", None)
                         imdb = show_externals.get("imdb", None)
@@ -183,7 +183,7 @@ def combine_anitrakt(
                         # Movie specific fields - set trakt_may_invalid to False for movies
                         trakt_may_invalid = False
 
-                        movie_externals = trakt_info.get("externals", {})
+                        movie_externals = anitrakt_item.get("externals", {})
                         themoviedb = movie_externals.get("tmdb", None)
                         imdb = movie_externals.get("imdb", None)
 
