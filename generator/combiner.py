@@ -92,7 +92,7 @@ def combine_anitrakt(
 ) -> list[dict[str, Any]]:
     """
     Combine Extended AniTrakt data with AOD data
-    
+
     :param anitrakt: Extended AniTrakt data
     :type anitrakt: list[dict[str, Any]]
     :param aod: AOD data
@@ -135,11 +135,11 @@ def combine_anitrakt(
                 if myanimelist is not None and mal_id == myanimelist:
                     trakt_info = anitrakt_item.get("trakt", {})
                     trakt_type = trakt_info.get("type", None)
-                    
+
                     # Extract common fields
                     trakt_id = trakt_info.get("id", None)
                     trakt_slug = trakt_info.get("slug", None)
-                    
+
                     # Initialize fields
                     trakt_season = None
                     trakt_may_invalid = None
@@ -151,12 +151,12 @@ def combine_anitrakt(
                     letterboxd_slug = None
                     letterboxd_lid = None
                     letterboxd_uid = None
-                    
+
                     if trakt_type == "shows":
                         # TV show specific fields
                         is_split_cour = trakt_info.get("is_split_cour", False)
                         trakt_may_invalid = is_split_cour
-                        
+
                         season_info = trakt_info.get("season", None)
                         if season_info is not None and not is_split_cour:
                             trakt_season = season_info.get("number", None)
@@ -164,35 +164,35 @@ def combine_anitrakt(
                             season_externals = season_info.get("externals", {})
                             thetvdb_season_id = season_externals.get("tvdb", None)
                             themoviedb_season_id = season_externals.get("tmdb", None)
-                        
+
                         # Show-level externals
                         show_externals = trakt_info.get("externals", {})
                         thetvdb = show_externals.get("tvdb", None)
                         themoviedb = show_externals.get("tmdb", None)
-                        
+
                         # Update themoviedb in item if not already set
                         if item.get("themoviedb") is None and themoviedb is not None:
                             item["themoviedb"] = themoviedb
-                        
+
                         themoviedb_type = "tv" if themoviedb is not None else None
-                        
+
                     elif trakt_type == "movies":
                         # Movie specific fields
                         movie_externals = trakt_info.get("externals", {})
                         themoviedb = movie_externals.get("tmdb", None)
-                        
+
                         # Update themoviedb in item if not already set
                         if item.get("themoviedb") is None and themoviedb is not None:
                             item["themoviedb"] = themoviedb
-                        
+
                         themoviedb_type = "movie" if themoviedb is not None else None
-                        
+
                         # Letterboxd data
                         letterboxd_info = movie_externals.get("letterboxd", {})
                         letterboxd_slug = letterboxd_info.get("slug", None)
                         letterboxd_lid = letterboxd_info.get("lid", None)
                         letterboxd_uid = letterboxd_info.get("uid", None)
-                    
+
                     # Combine the data
                     item.update(
                         {
