@@ -92,7 +92,7 @@ def before_request():
 def index():
     """Index route"""
     # redirect user to GitHub repo
-    return redirect("https://github.com/nattadasu/animeApi/discussions/4")
+    return redirect("https://github.com/nattadasu/animeApi")
 
 
 @app.route("/status", methods=["GET"])
