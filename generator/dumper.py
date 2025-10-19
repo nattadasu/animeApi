@@ -56,8 +56,6 @@ def save_to_file(
             # Special handling for letterboxd and thetvdb
             if platform == "letterboxd":
                 pkey = item.get("letterboxd_slug", None)
-            elif platform == "thetvdb":
-                pkey = item.get("thetvdb", None)
             else:
                 pkey = item.get(f"{platform}", None)
             
@@ -82,24 +80,29 @@ def save_to_file(
                 # Use thetvdb for lookup
                 thetvdb_id = item.get("thetvdb")
                 trakt_season = item.get("trakt_season")
+                tvdb_sid = item.get("thetvdb_season_id")
                 if thetvdb_id:
                     # Base entry: series/entry_id
                     base_key = f"series/{thetvdb_id}"
                     if trakt_season is None or trakt_season == 1:
                         obj_data[base_key] = item
-                    # Season entry: series/entry_id/seasons/official/season_number
+                    # Season entry: series/entry_id/seasons/season_number
                     if trakt_season is not None:
-                        season_key = f"{base_key}/seasons/official/{trakt_season}"
-                        obj_data[season_key] = item
+                        season_key = f"{base_key}/seasons"
+                        obj_data[f"{season_key}/{trakt_season}"] = item
+                        obj_data[f"{season_key}/{tvdb_sid}"] = item
             elif platform == "trakt":
                 if item["trakt_type"] in ["movie", "movies"]:
                     obj_data[f"{item['trakt_type']}/{item['trakt']}"] = item
                 else:
-                    if item["trakt_season"] == 1:
-                        obj_data[f"{item['trakt_type']}/{item['trakt']}"] = item
-                    obj_data[
-                        f"{item['trakt_type']}/{item['trakt']}/seasons/{item['trakt_season']}"
-                    ] = item
+                    trakt_season = item["trakt_season"]
+                    if trakt_season:
+                        obj_data[
+                            f"{item['trakt_type']}/{item['trakt']}/seasons/{trakt_season}"
+                        ] = item
+                        if trakt_season == 1:
+                            obj_data[f"{item['trakt_type']}/{item['trakt']}"] = item
+
             elif platform == "themoviedb":
                 themoviedb_type = item.get("themoviedb_type", "movie")
                 themoviedb_id = item.get("themoviedb")
@@ -110,9 +113,12 @@ def save_to_file(
                     if trakt_season is None or trakt_season == 1:
                         obj_data[base_key] = item
                     # Season entry for TV: type/entry_id/season/season_number
-                    if themoviedb_type == "tv" and trakt_season is not None:
-                        season_key = f"{base_key}/season/{trakt_season}"
-                        obj_data[season_key] = item
+                    if themoviedb_type == "tv":
+                        season_key = f"{base_key}/season"
+                        if trakt_season:
+                            obj_data[f"{season_key}/{trakt_season}"] = item
+                        if item["themoviedb_season_id"]:
+                            obj_data[f"{season_key}/{item['themoviedb_season_id']}"]: item
             bar()
     with open(f"database/{platform}_object.json", "w", encoding="utf-8") as file:
         json.dump(obj_data, file)
