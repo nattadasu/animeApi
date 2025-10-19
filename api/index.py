@@ -2,6 +2,7 @@
 
 # pylint: disable=import-error
 
+import csv
 import json
 from datetime import datetime as dtime
 from datetime import timezone as tz
@@ -48,7 +49,7 @@ PLATFORM_SYNONYMS = {
     "silveryasha": ["sy", "dbti", "db.silveryasha.id", "db.silveryasha.web.id"],
     "simkl": ["sm", "smk", "simkl.com", "animecountdown", "animecountdown.com"],
     "themoviedb": ["tm", "tmdb", "tmdb.org", "themoviedb.org"],
-    "thetvdb": ["tv", "thetvdb.com", "thetvdb"],
+    "thetvdb": ["tv", "thetvdb.com", "thetvdb", "tvtime", "tt", "tvtime.com"],
     "trakt": ["tr", "trk", "trakt.tv"],
 }
 # fmt: on
@@ -257,7 +258,7 @@ def tmdb_exclusive_route(
 
 
 @app.route("/thetvdb/series/<series_id>", methods=["GET"])
-@app.route("/thetvdb/series/<series_id>/seasons/official/<season_id>", methods=["GET"])
+@app.route("/thetvdb/series/<series_id>/seasons/<season_id>", methods=["GET"])
 def tvdb_exclusive_route(
     series_id: int, season_id: Union[str, None] = None
 ):
@@ -285,7 +286,7 @@ def tvdb_exclusive_route(
         if season_id is None:
             return platform_id_content("thetvdb", f"series/{series_id}")
         return platform_id_content(
-            "thetvdb", f"series/{series_id}/seasons/official/{season_id}"
+            "thetvdb", f"series/{series_id}/seasons/{season_id}"
         )
     except KeyError:
         return jsonify(
@@ -462,7 +463,7 @@ def redirect_route():
             f"Platform not found, please check if `{platform}` is a valid platform",
         )
 
-    if platform in ["kurozora", "myanili", "letterboxd"]:
+    if platform in ["kurozora", "myanili"]:
         return error_response(
             "Invalid platform source",
             400,
@@ -599,7 +600,7 @@ route_path = {
     "kaize": "https://kaize.io/anime/",
     "kitsu": "https://kitsu.app/anime/",
     "kurozora": "https://kurozora.app/myanimelist.net/anime/",
-    "letterboxd": "https://letterboxd.com/tmdb/",
+    "letterboxd": "https://letterboxd.com/film/",
     "livechart": "https://www.livechart.me/anime/",
     "myanili": "https://myani.li/#/anime/details/",
     "myanimelist": "https://myanimelist.net/anime/",
@@ -611,6 +612,7 @@ route_path = {
     "silveryasha": "https://db.silveryasha.id/anime/",
     "simkl": "https://simkl.com/anime/",
     "themoviedb": "https://www.themoviedb.org/movie/",
+    "thetvdb": "https://www.thetvdb.com/",
     "trakt": "https://trakt.tv/",
 }
 
@@ -693,14 +695,27 @@ def build_target_uri(
                 404,
                 f"MyAnimeList ID not found, which is requirement for {target}.",
             )
-        if target == "letterboxd":
-            if maps.get("themoviedb"):
-                return f"{route_path[target]}{maps['themoviedb']}"
+        if target == "thetvdb":
+            thetvdb_id = maps.get("thetvdb")
+            trakt_season = maps.get("trakt_season")
+            if thetvdb_id:
+                base_uri = f"{route_path[target]}series/{thetvdb_id}"
+                if trakt_season and trakt_season > 0:
+                    tvdb_sid = maps.get("thetvdb_season_id")
+                    if tvdb_sid:
+                        return f"{base_uri}/seasons/{tvdb_sid}"
+                    return f"{base_uri}/seasons/{trakt_season}""
+                return base_uri
             return error_response(
                 "Not found",
                 404,
-                "TheMovieDB ID not found, which is the main database source for Letterboxd.",
+                "TheTVDB ID not found for this entry.",
             )
+        if target == "letterboxd":
+            letterboxd_slug = maps.get("letterboxd_slug")
+            if letterboxd_slug:
+                return f"{route_path[target]}{letterboxd_slug}"
+            raise ValueError
         return build_generic_uri(maps, target)
     except ValueError:
         title = maps.get("title", "(Unknown title)")
