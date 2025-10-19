@@ -216,32 +216,34 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 18 October 2025 05:09:14 UTC
+Last updated: 19 October 2025 12:44:07 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
-| aniDB              |     13774 |
-| AniList            |     21377 |
-| Anime News Network |     11857 |
-| Anime-Planet       |     25917 |
-| aniSearch          |     19880 |
-| Annict             |     12004 |
-| IMDb               |      1599 |
-| Kaize              |     24317 |
-| Kitsu              |     21152 |
-| LiveChart          |     11652 |
-| MyAnimeList        |     29078 |
-| Nautiljon          |      9643 |
-| Notify.moe         |     16627 |
-| Otak Otaku         |      3012 |
-| Shikimori          |     29078 |
-| Shoboi/Syobocal    |      5362 |
-| Silver Yasha       |      5078 |
-| SIMKL              |     13765 |
-| The Movie Database |       592 |
-| Trakt              |      5024 |
+| aniDB              |     13988 |
+| AniList            |     21607 |
+| Anime News Network |     11930 |
+| Anime-Planet       |     26160 |
+| aniSearch          |     20128 |
+| Annict             |     12184 |
+| IMDb               |      5723 |
+| Kaize              |     24741 |
+| Kitsu              |     21384 |
+| Letterboxd         |      1295 |
+| LiveChart          |     11834 |
+| MyAnimeList        |     29354 |
+| Nautiljon          |      8845 |
+| Notify.moe         |     16822 |
+| Otak Otaku         |      2996 |
+| Shikimori          |     29354 |
+| Shoboi/Syobocal    |      5429 |
+| Silver Yasha       |      5080 |
+| SIMKL              |     13973 |
+| The Movie Database |      5337 |
+| The TVDB           |      3697 |
+| Trakt              |      5028 |
 |                    |           |
 | **Total**          | **38551** |
 <!-- /counters -->
@@ -275,18 +277,19 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1760764154,
-    "iso": "2025-10-18T05:09:14.014565+00:00"
+    "timestamp": 1760877847,
+    "iso": "2025-10-19T12:44:07.936375+00:00"
   },
   "contributors": [
     "nattadasu",
     "Copilot"
   ],
   "sources": [
-    "kawaiioverflow/arm",
-    "manami-project/anime-offline-database",
-    "rensetsu/db.rensetsu.public-dump",
-    "rensetsu/db.trakt.anitrakt",
+    "gh:kawaiioverflow/arm",
+    "gh:manami-project/anime-offline-database",
+    "gh:rensetsu/db.rensetsu.public-dump",
+    "gh:rensetsu/db.trakt.extended-anitrakt",
+    "gh:Fribb/anime-lists",
     "https://kaize.io",
     "https://nautiljon.com",
     "https://otakotaku.com"
@@ -294,26 +297,28 @@ GET /status
   "license": "AGPL-3.0-only AND MIT AND CC0-1.0+",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 13774,
-    "anilist": 21377,
-    "animenewsnetwork": 11857,
-    "animeplanet": 25917,
-    "anisearch": 19880,
-    "annict": 12004,
-    "imdb": 1599,
-    "kaize": 24317,
-    "kitsu": 21152,
-    "livechart": 11652,
-    "myanimelist": 29078,
-    "nautiljon": 9643,
-    "notify": 16627,
-    "otakotaku": 3012,
-    "shikimori": 29078,
-    "shoboi": 5362,
-    "silveryasha": 5078,
-    "simkl": 13765,
-    "themoviedb": 592,
-    "trakt": 5024,
+    "anidb": 13988,
+    "anilist": 21607,
+    "animenewsnetwork": 11930,
+    "animeplanet": 26160,
+    "anisearch": 20128,
+    "annict": 12184,
+    "imdb": 5723,
+    "kaize": 24741,
+    "kitsu": 21384,
+    "letterboxd": 1295,
+    "livechart": 11834,
+    "myanimelist": 29354,
+    "nautiljon": 8845,
+    "notify": 16822,
+    "otakotaku": 2996,
+    "shikimori": 29354,
+    "shoboi": 5429,
+    "silveryasha": 5080,
+    "simkl": 13973,
+    "themoviedb": 5337,
+    "thetvdb": 3697,
+    "trakt": 5028,
     "total": 38551
   },
   "endpoints": {
@@ -330,6 +335,7 @@ GET /status
     "imdb": "/(?P<alias>imdb)/(?P<media_id>tt[\\d]+)",
     "kaize": "/(?P<alias>kaize)/(?P<media_id>[\\w\\-]+)",
     "kitsu": "/(?P<alias>kitsu)/(?P<media_id>\\d+)",
+    "letterboxd": "/(?P<alias>letterboxd)/(?P<media_id>[\\w\\-]+)",
     "livechart": "/(?P<alias>livechart)/(?P<media_id>\\d+)",
     "myanimelist": "/(?P<alias>myanimelist)/(?P<media_id>\\d+)",
     "nautiljon": "/(?P<alias>nautiljon)/(?P<media_id>[\\w\\+!\\-_\\(\\)\\[\\]]+)",
@@ -346,6 +352,7 @@ GET /status
     "status": "/status",
     "syobocal": "/(?P<alias>syobocal)/(?P<media_id>\\d+)",
     "themoviedb": "/(?P<alias>themoviedb)/movie/(?P<media_id>\\d+)",
+    "thetvdb": "/(?P<alias>thetvdb)/series/(?P<media_id>\\d+)(?:/seasons/(?P<season_id>\\d+))?",
     "trakt": "/(?P<alias>trakt)/(?P<media_type>show|movie)(s)?/(?P<media_id>\\d+)(?:/season(s)?/(?P<season_id>\\d+))?",
     "updated": "/updated"
   }
@@ -392,7 +399,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 10/18/2025 05:09:14 UTC
+Updated on 10/19/2025 12:44:07 UTC
 ```
 <!-- /updated-txt -->
 
@@ -492,10 +499,13 @@ GET https://animeapi.my.id/myanimelist/1
   "animeplanet": "cowboy-bebop",
   "anisearch": 1572,
   "annict": 360,
-  "imdb": null,
+  "imdb": "tt0213338",
   "kaize": "cowboy-bebop",
   "kaize_id": 265,
   "kitsu": 1,
+  "letterboxd_lid": null,
+  "letterboxd_slug": null,
+  "letterboxd_uid": null,
   "livechart": 3418,
   "myanimelist": 1,
   "nautiljon": null,
@@ -506,10 +516,17 @@ GET https://animeapi.my.id/myanimelist/1
   "shoboi": 538,
   "silveryasha": 2652,
   "simkl": 37089,
-  "themoviedb": null,
+  "themoviedb": 30991,
+  "themoviedb_season_id": 42587,
+  "themoviedb_type": "tv",
+  "thetvdb": 76885,
+  "thetvdb_season_id": 11636,
   "trakt": 30857,
-  "trakt_type": "shows",
-  "trakt_season": 1
+  "trakt_may_invalid": false,
+  "trakt_season": 1,
+  "trakt_season_id": 43328,
+  "trakt_slug": "cowboy-bebop",
+  "trakt_type": "shows"
 }
 ```
 <!-- /sample -->
@@ -643,10 +660,13 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
   "animeplanet": "welcome-to-demon-school-iruma-kun-3",
   "anisearch": 16582,
   "annict": 8883,
-  "imdb": null,
+  "imdb": "tt11034066",
   "kaize": "mairimashita-iruma-kun-3rd-season",
   "kaize_id": 4989,
   "kitsu": 45154,
+  "letterboxd_lid": null,
+  "letterboxd_slug": null,
+  "letterboxd_uid": null,
   "livechart": 10780,
   "myanimelist": 49784,
   "nautiljon": null,
@@ -657,10 +677,17 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
   "shoboi": 6489,
   "silveryasha": 3702,
   "simkl": 1728821,
-  "themoviedb": null,
+  "themoviedb": 91801,
+  "themoviedb_season_id": 306624,
+  "themoviedb_type": "tv",
+  "thetvdb": 369144,
+  "thetvdb_season_id": 1955315,
   "trakt": 152334,
-  "trakt_type": "shows",
-  "trakt_season": 3
+  "trakt_may_invalid": false,
+  "trakt_season": 3,
+  "trakt_season_id": 303584,
+  "trakt_slug": "welcome-to-demon-school-iruma-kun",
+  "trakt_type": "shows"
 }
 ```
 <!-- /trakt152334 -->
@@ -788,12 +815,12 @@ Add the following schema URI to your JSON file.
       "dependencies": {
         "themoviedb_type": {
           "properties": {
-            "themoviedb_season": {
+            "themoviedb_season_id": {
               "type": "number"
             }
           },
           "required": [
-            "themoviedb_season"
+            "themoviedb_season_id"
           ]
         },
         "trakt_type": {
@@ -862,6 +889,22 @@ Add the following schema URI to your JSON file.
           "description": "Kitsu ID in integer, slug not suppported, website: https://kitsu.app/",
           "title": "Kitsu"
         },
+        "letterboxd_slug": {
+          "$ref": "#/definitions/stringnull",
+          "description": "Letterboxd slug, website: https://letterboxd.com/",
+          "pattern": "^[a-z0-9\\-]+",
+          "title": "Letterboxd Slug"
+        },
+        "letterboxd_lid": {
+          "$ref": "#/definitions/numbernull",
+          "description": "Letterboxd Letter ID, only being used on 1st party API requests",
+          "title": "Letterboxd ID"
+        },
+        "letterboxd_uid": {
+          "$ref": "#/definitions/stringnull",
+          "description": "Letterboxd General ID, internally used",
+          "title": "Letterboxd General ID"
+        },
         "livechart": {
           "$ref": "#/definitions/numbernull",
           "description": "LiveChart ID, website: https://www.livechart.me/",
@@ -874,39 +917,42 @@ Add the following schema URI to your JSON file.
         },
         "nautiljon": {
           "$ref": "#/definitions/stringnull",
-          "description": "Nautiljon slug in plus, website: https://www.nautiljon.com/",
+          "description": "Nautiljon slug, website: https://www.nautiljon.com/",
+          "pattern": "^[a-z0-9\\-]+",
           "title": "Nautiljon"
         },
         "nautiljon_id": {
           "$ref": "#/definitions/numbernull",
-          "description": "Nautiljon ID in integer format, used internally",
+          "description": "Nautiljon ID in integer format, not recommended as some entry can't be found its ID compared to slug",
           "title": "Nautiljon ID"
         },
         "notify": {
           "$ref": "#/definitions/stringnull",
-          "description": "Notify.moe Base64 ID, website: https://notify.moe/",
-          "pattern": "^[a-zA-Z0-9\\-\\_]+$",
+          "description": "Notify.moe slug, website: https://notify.moe/",
+          "pattern": "^[a-zA-Z0-9]+$",
           "title": "Notify.moe"
         },
         "otakotaku": {
-          "$ref": "#/definitions/numbernull",
-          "description": "Otak Otaku ID, website: https://otakotaku.com/",
+          "$ref": "#/definitions/stringnull",
+          "description": "Otak Otaku slug, website: https://otakotaku.com/",
+          "pattern": "^[a-z0-9\\-]+$",
           "title": "Otak Otaku"
         },
         "shikimori": {
           "$ref": "#/definitions/numbernull",
-          "description": "Shikimori ID (nonprefixed), based on MyAnimeList ID. Remove prefix if found on the ID, website: https://shikimori.one/",
-          "title": "Shikimori/Шикимори"
+          "description": "Shikimori ID, website: https://shikimori.one/",
+          "title": "Shikimori"
         },
         "shoboi": {
           "$ref": "#/definitions/numbernull",
-          "description": "Shoboi ID, website: http://cal.syoboi.jp/",
-          "title": "Shoboi/Syobocal/しょぼいカレンダー"
+          "description": "Shoboi/Syobocal ID, website: http://cal.syoboi.jp/",
+          "title": "Shoboi/Syobocal"
         },
         "silveryasha": {
-          "$ref": "#/definitions/numbernull",
-          "description": "Silveryasha ID, website: https://db.silveryasha.id/",
-          "title": "Silveryasha"
+          "$ref": "#/definitions/stringnull",
+          "description": "Silver Yasha slug, website: https://silveryasha.com/",
+          "pattern": "^[a-z0-9\\-]+$",
+          "title": "Silver Yasha"
         },
         "simkl": {
           "$ref": "#/definitions/numbernull",
@@ -915,164 +961,109 @@ Add the following schema URI to your JSON file.
         },
         "themoviedb": {
           "$ref": "#/definitions/numbernull",
-          "description": "The Movie Database ID, website: https://www.themoviedb.org/",
-          "title": "The Movie Database (TMDB)"
+          "description": "The Movie Database ID, can be used for movie or tv, website: https://www.themoviedb.org/",
+          "title": "The Movie Database"
         },
-        "themoviedb_season": {
+        "themoviedb_season_id": {
           "$ref": "#/definitions/numbernull",
-          "description": "The Movie Database season number, only used if themoviedb_type is 'shows', else null",
-          "title": "The Movie Database (TMDB) Season"
+          "description": "The Movie Database internal season ID, only available for TV shows",
+          "title": "The Movie Database season ID"
         },
         "themoviedb_type": {
-          "$ref": "#/definitions/themoviedbtype",
-          "description": "The Movie Database type, either 'movie' or 'tv'",
-          "title": "The Movie Database (TMDB) Type"
-        },
-        "title": {
-          "description": "Title of the anime",
-          "title": "Title",
-          "type": "string"
-        },
-        "trakt": {
-          "$ref": "#/definitions/numbernull",
-          "description": "Trakt ID, slug not supported, website: https://trakt.tv/",
-          "title": "Trakt"
-        },
-        "trakt_season": {
-          "$ref": "#/definitions/numbernull",
-          "description": "Trakt season number, only used if trakt_type is 'shows', else null",
-          "title": "Trakt Season"
-        },
-        "trakt_type": {
-          "$ref": "#/definitions/trakttype",
-          "description": "Trakt type, either 'movies' or 'shows'",
-          "title": "Trakt Type"
-        }
-      },
-      "required": [
-        "title",
-        "anidb",
-        "anilist",
-        "animenewsnetwork",
-        "animeplanet",
-        "anisearch",
-        "annict",
-        "imdb",
-        "kaize",
-        "kaize_id",
-        "kitsu",
-        "livechart",
-        "myanimelist",
-        "nautiljon",
-        "nautiljon_id",
-        "notify",
-        "otakotaku",
-        "shikimori",
-        "shoboi",
-        "silveryasha",
-        "simkl",
-        "themoviedb",
-        "trakt",
-        "trakt_type",
-        "trakt_season"
-      ],
-      "title": "Anime Schema",
-      "type": "object"
-    },
-    "numbernull": {
-      "$comment": "Type: number or null",
-      "anyOf": [
-        {
-          "type": "number"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Type: this field value is either number or null",
-      "title": "Number or Null"
-    },
-    "stringnull": {
-      "$comment": "Type: string or null",
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Type: this field value is either string or null",
-      "title": "String or Null"
-    },
-    "themoviedbtype": {
-      "$comment": "Type: 'movie', 'tv', or null",
-      "anyOf": [
-        {
+          "$ref": "#/definitions/stringnull",
+          "description": "The Movie Database media type, can be movie or tv",
           "enum": [
             "movie",
             "tv"
           ],
-          "type": "string"
+          "title": "The Movie Database type"
         },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "description": "Type: this field value is either an enum of['movie', 'tv'], or null",
-      "title": "The Movie Database Type"
-    },
-    "trakttype": {
-      "$comment": "Type: 'movies', 'shows', or null",
-      "anyOf": [
-        {
+        "thetvdb": {
+          "$ref": "#/definitions/stringnull",
+          "description": "The TVDB ID, website: https://thetvdb.com/, only to be prefixed with series/ to deep link",
+          "title": "The TVDB"
+        },
+        "thetvdb_season_id": {
+          "$ref": "#/definitions/numbernull",
+          "description": "The TVDB internal season ID, can be used to build URL",
+          "title": "The TVDB season ID"
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the anime in English or Romaji",
+          "title": "Title"
+        },
+        "trakt": {
+          "$ref": "#/definitions/numbernull",
+          "description": "Trakt ID, can be used for movie or show, website: https://trakt.tv/",
+          "title": "Trakt"
+        },
+        "trakt_may_invalid": {
+          "$ref": "#/definitions/booleannull",
+          "description": "Whether the entry is actually a split cour, which both Trakt and TMDB merge it into one",
+          "title": "Trakt May Invalid"
+        },
+        "trakt_season": {
+          "$ref": "#/definitions/numbernull",
+          "description": "Trakt season number, only available for shows",
+          "title": "Trakt season"
+        },
+        "trakt_season_id": {
+          "$ref": "#/definitions/numbernull",
+          "description": "Trakt season ID",
+          "title": "Trakt Season ID"
+        },
+        "trakt_slug": {
+          "$ref": "#/definitions/stringnull",
+          "description": "Trakt slug",
+          "pattern": "^[a-z0-9\\-]+",
+          "title": "Trakt Slug"
+        },
+        "trakt_type": {
+          "$ref": "#/definitions/stringnull",
+          "description": "Trakt media type, can be movie or show",
           "enum": [
             "movies",
             "shows"
           ],
-          "type": "string"
-        },
-        {
-          "type": "null"
+          "title": "Trakt type"
         }
+      },
+      "required": [
+        "title"
       ],
-      "default": null,
-      "description": "Type: this field value is either an enum of['movies', 'shows'], or null",
-      "title": "Trakt Type"
+      "title": "Anime",
+      "type": "object"
+    },
+    "numbernull": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "stringnull": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "booleannull": {
+      "type": [
+        "boolean",
+        "null"
+      ]
     }
   },
-  "description": "This schema is used to validate the JSON response from AnimeAPI V3. Schema is not backward compatible with previous versions. Website: https://animeapi.my.id",
-  "oneOf": [
-    {
-      "$comment": "Use this schema if you want to validate an array of anime",
-      "description": "Schema for array of anime",
+  "properties": {
+    "data": {
       "items": {
         "$ref": "#/definitions/anime"
       },
-      "title": "Array of Anime",
       "type": "array"
-    },
-    {
-      "$comment": "Use this schema if you want to validate an object known in each provider",
-      "description": "Schema for anime object",
-      "oneOf": [
-        {
-          "$ref": "#/definitions/anime"
-        },
-        {
-          "additionalProperties": {
-            "$ref": "#/definitions/anime"
-          }
-        }
-      ],
-      "title": "Anime Object",
-      "type": "object"
     }
-  ],
-  "title": "JSON Schema for AnimeAPI V3"
+  },
+  "title": "anime-api",
+  "type": "object"
 }
 ```
 <!-- /jsonschema -->
