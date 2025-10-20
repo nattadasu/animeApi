@@ -216,7 +216,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 19 October 2025 12:44:07 UTC
+Last updated: 20 October 2025 05:16:16 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -229,7 +229,7 @@ Last updated: 19 October 2025 12:44:07 UTC
 | aniSearch          |     20128 |
 | Annict             |     12184 |
 | IMDb               |      5723 |
-| Kaize              |     24741 |
+| Kaize              |     24742 |
 | Kitsu              |     21384 |
 | Letterboxd         |      1295 |
 | LiveChart          |     11834 |
@@ -239,7 +239,7 @@ Last updated: 19 October 2025 12:44:07 UTC
 | Otak Otaku         |      2996 |
 | Shikimori          |     29354 |
 | Shoboi/Syobocal    |      5429 |
-| Silver Yasha       |      5080 |
+| Silver Yasha       |      5091 |
 | SIMKL              |     13973 |
 | The Movie Database |      5337 |
 | The TVDB           |      3697 |
@@ -277,8 +277,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1760877847,
-    "iso": "2025-10-19T12:44:07.936375+00:00"
+    "timestamp": 1760937376,
+    "iso": "2025-10-20T05:16:16.411094+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -304,7 +304,7 @@ GET /status
     "anisearch": 20128,
     "annict": 12184,
     "imdb": 5723,
-    "kaize": 24741,
+    "kaize": 24742,
     "kitsu": 21384,
     "letterboxd": 1295,
     "livechart": 11834,
@@ -314,7 +314,7 @@ GET /status
     "otakotaku": 2996,
     "shikimori": 29354,
     "shoboi": 5429,
-    "silveryasha": 5080,
+    "silveryasha": 5091,
     "simkl": 13973,
     "themoviedb": 5337,
     "thetvdb": 3697,
@@ -399,7 +399,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 10/19/2025 12:44:07 UTC
+Updated on 10/20/2025 05:16:16 UTC
 ```
 <!-- /updated-txt -->
 
