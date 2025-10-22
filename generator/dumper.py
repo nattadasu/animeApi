@@ -62,8 +62,8 @@ def save_to_file(
             if pkey is not None:
                 items.append(item)
             bar()
-    with open(f"database/{platform}.json", "w", encoding="utf-8") as file:
-        json.dump(items, file)
+    # with open(f"database/{platform}.json", "w", encoding="utf-8") as file:
+    #     json.dump(items, file)
     # save object-formatted data to file
     obj_data: dict[str, dict[str, Any]] = {}
     with alive_bar(
@@ -122,8 +122,8 @@ def save_to_file(
                                 f"{season_key}/{item['themoviedb_season_id']}"
                             ]: item
             bar()
-    with open(f"database/{platform}_object.json", "w", encoding="utf-8") as file:
-        json.dump(obj_data, file)
+    # with open(f"database/{platform}_object.json", "w", encoding="utf-8") as file:
+    #     json.dump(obj_data, file)
     # update attr
     attr["counts"][f"{platform}"] = len(items)  # type: ignore
     return None
