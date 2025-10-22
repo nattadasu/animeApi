@@ -6,6 +6,7 @@ import re
 from datetime import datetime, timezone
 from typing import Any
 
+import pandas as pd
 import requests
 from alive_progress import alive_bar  # type: ignore
 from const import pprint
@@ -62,8 +63,8 @@ def save_to_file(
             if pkey is not None:
                 items.append(item)
             bar()
-    with open(f"database/{platform}.json", "w", encoding="utf-8") as file:
-        json.dump(items, file)
+    # with open(f"database/{platform}.json", "w", encoding="utf-8") as file:
+    #     json.dump(items, file)
     # save object-formatted data to file
     obj_data: dict[str, dict[str, Any]] = {}
     with alive_bar(
@@ -122,8 +123,8 @@ def save_to_file(
                                 f"{season_key}/{item['themoviedb_season_id']}"
                             ]: item
             bar()
-    with open(f"database/{platform}_object.json", "w", encoding="utf-8") as file:
-        json.dump(obj_data, file)
+    # with open(f"database/{platform}_object.json", "w", encoding="utf-8") as file:
+    #     json.dump(obj_data, file)
     # update attr
     attr["counts"][f"{platform}"] = len(items)  # type: ignore
     return None
@@ -317,16 +318,141 @@ def add_spaces(data: int, spaces_max: int = 9) -> str:
     return f"{' ' * spaces}{data}"
 
 
+def count_non_null_entries(df: pd.DataFrame, column: str) -> int:
+    """
+    Count non-null entries in a DataFrame column
+
+    :param df: DataFrame to count from
+    :type df: pd.DataFrame
+    :param column: Column name to count
+    :type column: str
+    :return: Count of non-null entries
+    :rtype: int
+    """
+    return int(df[column].notna().sum())
+
+
+def load_tsv_for_counting() -> pd.DataFrame:
+    """
+    Load TSV data for counting platform entries
+
+    :return: DataFrame with TSV data
+    :rtype: pd.DataFrame
+    """
+    df = pd.read_csv(
+        "database/animeapi.tsv",
+        sep="\t",
+        dtype={
+            "title": str,
+            "anidb": "Int64",
+            "anilist": "Int64",
+            "animenewsnetwork": "Int64",
+            "animeplanet": str,
+            "anisearch": "Int64",
+            "annict": "Int64",
+            "imdb": str,
+            "kaize": str,
+            "kaize_id": "Int64",
+            "kitsu": "Int64",
+            "letterboxd_lid": str,
+            "letterboxd_slug": str,
+            "letterboxd_uid": str,
+            "livechart": "Int64",
+            "myanimelist": "Int64",
+            "nautiljon": str,
+            "nautiljon_id": "Int64",
+            "notify": str,
+            "otakotaku": "Int64",
+            "shikimori": "Int64",
+            "shoboi": "Int64",
+            "silveryasha": "Int64",
+            "simkl": "Int64",
+            "themoviedb": "Int64",
+            "themoviedb_season_id": "Int64",
+            "themoviedb_type": str,
+            "thetvdb": "Int64",
+            "thetvdb_season_id": "Int64",
+            "trakt": "Int64",
+            "trakt_may_invalid": str,
+            "trakt_season": "Int64",
+            "trakt_season_id": "Int64",
+            "trakt_slug": str,
+            "trakt_type": str,
+        },
+        keep_default_na=False,
+        na_values=[""],
+    )
+    return df
+
+
+def get_sample_data_from_tsv(df: pd.DataFrame, platform: str, platform_id: Any) -> dict:
+    """
+    Get sample data from TSV for a specific platform and ID
+
+    :param df: DataFrame with TSV data
+    :type df: pd.DataFrame
+    :param platform: Platform name
+    :type platform: str
+    :param platform_id: Platform ID to lookup
+    :type platform_id: Any
+    :return: Dictionary representation of the row
+    :rtype: dict
+    """
+    mask = df[platform] == platform_id
+    if not mask.any():
+        return {}
+
+    row = df[mask].iloc[0]
+    # Convert row to dict and handle NaN values
+    result = row.to_dict()
+    # Replace NaN with None for JSON serialization
+    for key, value in result.items():
+        if pd.isna(value):
+            result[key] = None
+        elif isinstance(value, (pd.Int64Dtype, int)) and not pd.isna(value):
+            result[key] = int(value)
+
+    return result
+
+
+def get_trakt_sample_from_tsv(df: pd.DataFrame, trakt_id: int, season: int) -> dict:
+    """
+    Get sample data from TSV for a specific Trakt show and season
+
+    :param df: DataFrame with TSV data
+    :type df: pd.DataFrame
+    :param trakt_id: Trakt ID
+    :type trakt_id: int
+    :param season: Season number
+    :type season: int
+    :return: Dictionary representation of the row
+    :rtype: dict
+    """
+    mask = (df["trakt"] == trakt_id) & (df["trakt_season"] == season)
+    if not mask.any():
+        return {}
+
+    row = df[mask].iloc[0]
+    result = row.to_dict()
+    # Replace NaN with None for JSON serialization
+    for key, value in result.items():
+        if pd.isna(value):
+            result[key] = None
+        elif isinstance(value, (pd.Int64Dtype, int)) and not pd.isna(value):
+            result[key] = int(value)
+
+    return result
+
+
 def update_markdown(
     attr: dict[str, dict[str, int | str] | str | int | list[str]],
 ) -> dict[str, Any]:
     """
     Update counters in README.md by looking <!-- counters --><!-- /counters -->
+    Uses TSV data instead of JSON objects for counting and samples.
 
     :param attr: attribution
     :type attr: dict[str, dict[str, int | str] | str | int | list[str]]
-    :param now: current datetime
-    :type now: datetime
     :return: attribution
     :rtype: dict[str, Any]
     """
@@ -335,59 +461,78 @@ def update_markdown(
         Status.INFO,
         "Updating counters in README.md",
     )
+
+    # Load TSV data
+    df = load_tsv_for_counting()
+
+    # Platform mapping: key = column name, value = (display name, count key)
+    # This allows us to dynamically build the counts and table
+    platform_mapping = [
+        ("anidb", "aniDB"),
+        ("anilist", "AniList"),
+        ("animenewsnetwork", "Anime News Network"),
+        ("animeplanet", "Anime-Planet"),
+        ("anisearch", "aniSearch"),
+        ("annict", "Annict"),
+        ("imdb", "IMDb"),
+        ("kaize", "Kaize"),
+        ("kitsu", "Kitsu"),
+        ("letterboxd_slug", "Letterboxd"),  # Use letterboxd_slug as the column
+        ("livechart", "LiveChart"),
+        ("myanimelist", "MyAnimeList"),
+        ("nautiljon", "Nautiljon"),
+        ("notify", "Notify.moe"),
+        ("otakotaku", "Otak Otaku"),
+        ("shikimori", "Shikimori"),
+        ("shoboi", "Shoboi/Syobocal"),
+        ("silveryasha", "Silver Yasha"),
+        ("simkl", "SIMKL"),
+        ("themoviedb", "The Movie Database"),
+        ("thetvdb", "The TVDB"),
+        ("trakt", "Trakt"),
+    ]
+
+    # Build counts dictionary dynamically
+    counts = {}
+    for column, display_name in platform_mapping:
+        # Convert display name to count key format
+        # Remove special chars and convert to lowercase for key
+        if column == "letterboxd_slug":
+            count_key = "letterboxd"
+        else:
+            count_key = column
+        counts[count_key] = count_non_null_entries(df, column)
+
+    counts["total"] = len(df)
+
+    # Update attr with counts
+    attr["counts"] = counts  # type: ignore
+
     with open("README.md", "r", encoding="utf-8") as file:
         readme = file.read()
-    counts: dict[str, int] = attr["counts"]  # type: ignore
-    adb = add_spaces(counts["anidb"])
-    anl = add_spaces(counts["anilist"])
-    ann = add_spaces(counts["animenewsnetwork"])
-    apl = add_spaces(counts["animeplanet"])
-    ase = add_spaces(counts["anisearch"])
-    anc = add_spaces(counts["annict"])
-    idb = add_spaces(counts["imdb"])
-    kze = add_spaces(counts["kaize"])
-    kts = add_spaces(counts["kitsu"])
-    lbx = add_spaces(counts["letterboxd"])
-    lvc = add_spaces(counts["livechart"])
-    mal = add_spaces(counts["myanimelist"])
-    nau = add_spaces(counts["nautiljon"])
-    ntf = add_spaces(counts["notify"])
-    ook = add_spaces(counts["otakotaku"])
-    shk = add_spaces(counts["shikimori"])
-    shb = add_spaces(counts["shoboi"])
-    sys = add_spaces(counts["silveryasha"])
-    smk = add_spaces(counts["simkl"])
-    tmd = add_spaces(counts["themoviedb"])
-    tvd = add_spaces(counts["thetvdb"])
-    trk = add_spaces(counts["trakt"])
-    ttl = counts["total"]
-    table = f"""| Platform           |     Count |
+
+    # Build table dynamically
+    table_header = """| Platform           |     Count |
 | :----------------- | --------: |
-| aniDB              | {adb} |
-| AniList            | {anl} |
-| Anime News Network | {ann} |
-| Anime-Planet       | {apl} |
-| aniSearch          | {ase} |
-| Annict             | {anc} |
-| IMDb               | {idb} |
-| Kaize              | {kze} |
-| Kitsu              | {kts} |
-| Letterboxd         | {lbx} |
-| LiveChart          | {lvc} |
-| MyAnimeList        | {mal} |
-| Nautiljon          | {nau} |
-| Notify.moe         | {ntf} |
-| Otak Otaku         | {ook} |
-| Shikimori          | {shk} |
-| Shoboi/Syobocal    | {shb} |
-| Silver Yasha       | {sys} |
-| SIMKL              | {smk} |
-| The Movie Database | {tmd} |
-| The TVDB           | {tvd} |
-| Trakt              | {trk} |
-|                    |           |
-| **Total**          | **{ttl}** |
 """
+    table_rows = []
+    for column, display_name in platform_mapping:
+        # Get the count key
+        if column == "letterboxd_slug":
+            count_key = "letterboxd"
+        else:
+            count_key = column
+
+        count_value = counts[count_key]
+        formatted_count = add_spaces(count_value)
+        table_rows.append(f"| {display_name:<18} | {formatted_count} |")
+
+    # Add separator and total
+    table_rows.append("|                    |           |")
+    table_rows.append(f"| **Total**          | **{counts['total']}** |")
+
+    table = table_header + "\n".join(table_rows) + "\n"
+
     readme = re.sub(
         r"<!-- counters -->(.|\n)*<!-- \/counters -->",
         f"<!-- counters -->\n{table}<!-- /counters -->",
@@ -411,19 +556,16 @@ def update_markdown(
         Status.INFO,
         "Updating updated timestamp in README.md",
     )
-    # update updated timestamp
     now: int = attr["updated"]["timestamp"]  # type: ignore
+    formatted = datetime.fromtimestamp(now, timezone.utc).strftime('%d %B %Y %H:%M:%S UTC')
     readme = re.sub(
         r"<!-- updated -->(.|\n)*<!-- \/updated -->",
-        f"<!-- updated -->\nLast updated: {datetime.fromtimestamp(now, timezone.utc).strftime('%d %B %Y %H:%M:%S UTC')}\n<!-- /updated -->",  # type: ignore
+        f"<!-- updated -->\nLast updated: {formatted}\n<!-- /updated -->",
         readme,
     )
-    formatted_time = datetime.fromtimestamp(now, timezone.utc).strftime(
-        "%m/%d/%Y %H:%M:%S UTC"
-    )  # type: ignore
     readme = re.sub(
         r"<!-- updated-txt -->(.|\n)*<!-- \/updated-txt -->",
-        f"<!-- updated-txt -->\n```txt\nUpdated on {formatted_time}\n```\n<!-- /updated-txt -->",
+        f"<!-- updated-txt -->\n```txt\nUpdated on {formatted}\n```\n<!-- /updated-txt -->",
         readme,
     )
 
@@ -446,29 +588,30 @@ def update_markdown(
         Status.INFO,
         "Updating sample data in README.md, using MyAnimeList ID 1",
     )
-    with open("database/myanimelist_object.json", "r", encoding="utf-8") as file:
-        sample = json.load(file)
-        sample = sample["1"]
-        readme = re.sub(
-            r"<!-- sample -->(.|\n)*<!-- \/sample -->",
-            f"<!-- sample -->\n```json\n{json.dumps(sample, indent=2)}\n```\n<!-- /sample -->",
-            readme,
-        )
+    # Get sample from TSV instead of JSON file
+    sample = get_sample_data_from_tsv(df, "myanimelist", 1)
+    readme = re.sub(
+        r"<!-- sample -->(.|\n)*<!-- \/sample -->",
+        f"<!-- sample -->\n```json\n{json.dumps(sample, indent=2)}\n```\n<!-- /sample -->",
+        readme,
+    )
 
     pprint.print(
         Platform.SYSTEM,
         Status.INFO,
         "Updating sample data in README.md, using Trakt ID 152334, season 3",
     )
-    with open("database/trakt_object.json", "r", encoding="utf-8") as file:
-        sampler = json.load(file)
-        readme = re.sub(
-            r"<!-- trakt152334 -->(.|\n)*<!-- \/trakt152334 -->",
-            f"<!-- trakt152334 -->\n```json\n{json.dumps(sampler['shows/152334/seasons/3'], indent=2)}\n```\n<!-- /trakt152334 -->",
-            readme,
-        )
+    # Get Trakt sample from TSV instead of JSON file
+    trakt_sample = get_trakt_sample_from_tsv(df, 152334, 3)
+    readme = re.sub(
+        r"<!-- trakt152334 -->(.|\n)*<!-- \/trakt152334 -->",
+        f"<!-- trakt152334 -->\n```json\n{json.dumps(trakt_sample, indent=2)}\n```\n<!-- /trakt152334 -->",
+        readme,
+    )
+
     with open("README.md", "w", encoding="utf-8") as file:
         file.write(readme)
+
     pprint.print(
         Platform.SYSTEM,
         Status.PASS,
