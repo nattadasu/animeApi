@@ -216,14 +216,14 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 20 October 2025 05:16:16 UTC
+Last updated: 22 October 2025 05:16:25 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
 | aniDB              |     13988 |
-| AniList            |     21607 |
+| AniList            |     21615 |
 | Anime News Network |     11930 |
 | Anime-Planet       |     26160 |
 | aniSearch          |     20128 |
@@ -236,9 +236,9 @@ Last updated: 20 October 2025 05:16:16 UTC
 | MyAnimeList        |     29354 |
 | Nautiljon          |      8845 |
 | Notify.moe         |     16822 |
-| Otak Otaku         |      2996 |
+| Otak Otaku         |      2997 |
 | Shikimori          |     29354 |
-| Shoboi/Syobocal    |      5429 |
+| Shoboi/Syobocal    |      5428 |
 | Silver Yasha       |      5091 |
 | SIMKL              |     13973 |
 | The Movie Database |      5337 |
@@ -277,8 +277,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1760937376,
-    "iso": "2025-10-20T05:16:16.411094+00:00"
+    "timestamp": 1761110185,
+    "iso": "2025-10-22T05:16:25.947802+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -298,7 +298,7 @@ GET /status
   "website": "https://animeapi.my.id",
   "counts": {
     "anidb": 13988,
-    "anilist": 21607,
+    "anilist": 21615,
     "animenewsnetwork": 11930,
     "animeplanet": 26160,
     "anisearch": 20128,
@@ -311,9 +311,9 @@ GET /status
     "myanimelist": 29354,
     "nautiljon": 8845,
     "notify": 16822,
-    "otakotaku": 2996,
+    "otakotaku": 2997,
     "shikimori": 29354,
-    "shoboi": 5429,
+    "shoboi": 5428,
     "silveryasha": 5091,
     "simkl": 13973,
     "themoviedb": 5337,
@@ -399,7 +399,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 10/20/2025 05:16:16 UTC
+Updated on 10/22/2025 05:16:25 UTC
 ```
 <!-- /updated-txt -->
 
