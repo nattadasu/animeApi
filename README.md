@@ -30,7 +30,7 @@ Please read more information regarding using the API on your project in
   * [Get status and statistics](#get-status-and-statistics)
   * [Get latency report](#get-latency-report)
   * [Get updated date and time](#get-updated-date-and-time)
-  * [Get all items in Array](#get-all-items-in-array)
+  * [Get all items in Array (Master Array)](#get-all-items-in-array-master-array)
   * [Fetch all item as TSV (Tab Separated Values) file](#fetch-all-item-as-tsv-tab-separated-values-file)
   * [Get All ID in Object/Dictionary format of each provider](#get-all-id-in-objectdictionary-format-of-each-provider)
   * [Get All ID in Array/List format of each provider](#get-all-id-in-arraylist-format-of-each-provider)
@@ -178,7 +178,7 @@ AnimeAPI is used in other projects and their use cases? Check out the list below
 AnimeAPI supported following sites for media lookup. You can use this as an
 alias cheatsheet as well.
 
-> [!NOTE]
+> [!IMPORTANT]
 >
 > * The aliases are case-insensitive. You can use any of the aliases to get the
 >   data you want.
@@ -405,7 +405,7 @@ Updated on 10/22/2025 05:16:25 UTC
 
 </details>
 
-### Get all items in Array
+### Get all items in Array (Master Array)
 
 HTTP Status Code: `302` (redirect to GitHub raw file URL)\
 MIME Type: `application/json`
@@ -440,6 +440,12 @@ GET /aa.tsv
 
 ### Get All ID in Object/Dictionary format of each provider
 
+> [!CAUTION]
+>
+> This endpoint is deprecated since October 22, 2025. Dataset might not be
+> updated regularly. Please use the TSV/master array endpoint and convert it to
+> your desired format locally.
+
 HTTP Status Code: `302` (redirect to GitHub raw file URL)\
 MIME Type: `application/json`
 
@@ -452,6 +458,12 @@ GET /:platform.json
 
 ### Get All ID in Array/List format of each provider
 
+> [!CAUTION]
+>
+> This endpoint is deprecated since October 22, 2025. Dataset might not be
+> updated regularly. Please use the TSV/master array endpoint and convert it to
+> your desired format locally.
+
 HTTP Status Code: `302` (redirect to GitHub raw file URL)\
 MIME Type: `application/json`
 
@@ -462,7 +474,7 @@ GET /:platform().json
 `:platform` can be one of the following listed in
 [Supported Platforms and Aliases](#supported-platforms-and-aliases).
 
-> [!NOTE]
+> [!IMPORTANT]
 >
 > The `()` in the endpoint is not a typo, it's part of the endpoint.
 > If you can't access the endpoint, try to encode the `()` to `%28%29`.
@@ -613,7 +625,7 @@ instead, you can resolve/convert it to ID using following Trakt API endpoint:
 GET https://api.trakt.tv/search/trakt/<ID>?type=<movie|show>
 ```
 
-> [!NOTE]
+> [!IMPORTANT]
 >
 > The Trakt API requires an API key to access the endpoint. You can get the API
 > key by registering on the Trakt website.
@@ -621,11 +633,11 @@ GET https://api.trakt.tv/search/trakt/<ID>?type=<movie|show>
 To get exact season mapping, append `/seasons/:season_inc` to the end of the ID,
 where `:season_inc` is the season number of the title in the provider.
 
-> [!WARNING]
+> [!CAUTION]
 >
 > `/seasons/0` is invalid, and will return `400` status code.
 
-> [!NOTE]
+> [!IMPORTANT]
 >
 > Since Oct 19, 2025, AnimeAPI now features a split cour flag, where
 > `trakt_may_invalid` indicates whether a season mapping may be unreliable:
