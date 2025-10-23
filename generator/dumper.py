@@ -382,6 +382,9 @@ def load_tsv_for_counting() -> pd.DataFrame:
         keep_default_na=False,
         na_values=[""],
     )
+    df["trakt_may_invalid"] = df["trakt_may_invalid"].replace(
+        {"True": True, "False": False, "": None}
+    )
     return df
 
 
@@ -556,16 +559,15 @@ def update_markdown(
         Status.INFO,
         "Updating updated timestamp in README.md",
     )
-    now: int = attr["updated"]["timestamp"]  # type: ignore
-    formatted = datetime.fromtimestamp(now, timezone.utc).strftime('%d %B %Y %H:%M:%S UTC')
+    now: datetime = datetime.fromtimestamp(attr["updated"]["timestamp"], timezone.utc)  # type: ignore
     readme = re.sub(
         r"<!-- updated -->(.|\n)*<!-- \/updated -->",
-        f"<!-- updated -->\nLast updated: {formatted}\n<!-- /updated -->",
+        f"<!-- updated -->\nLast updated: {now.strftime('%d %B %Y %H:%M:%S UTC')}\n<!-- /updated -->",
         readme,
     )
     readme = re.sub(
         r"<!-- updated-txt -->(.|\n)*<!-- \/updated-txt -->",
-        f"<!-- updated-txt -->\n```txt\nUpdated on {formatted}\n```\n<!-- /updated-txt -->",
+        f"<!-- updated-txt -->\n```txt\nUpdated on {now.strftime('%m/%d/%Y %H:%M:%S UTC')}\n```\n<!-- /updated-txt -->",
         readme,
     )
 
