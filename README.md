@@ -216,7 +216,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 23 October 2025 05:14:55 UTC
+Last updated: 26 October 2025 05:16:04 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -236,7 +236,7 @@ Last updated: 23 October 2025 05:14:55 UTC
 | MyAnimeList        |     29354 |
 | Nautiljon          |      8845 |
 | Notify.moe         |     16822 |
-| Otak Otaku         |      2998 |
+| Otak Otaku         |      2999 |
 | Shikimori          |     29354 |
 | Shoboi/Syobocal    |      5428 |
 | Silver Yasha       |      5091 |
@@ -277,8 +277,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1761196495,
-    "iso": "2025-10-23T05:14:55.273896+00:00"
+    "timestamp": 1761455764,
+    "iso": "2025-10-26T05:16:04.934552+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -311,7 +311,7 @@ GET /status
     "myanimelist": 29354,
     "nautiljon": 8845,
     "notify": 16822,
-    "otakotaku": 2998,
+    "otakotaku": 2999,
     "shikimori": 29354,
     "shoboi": 5428,
     "silveryasha": 5091,
@@ -399,7 +399,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 23 October 2025 05:14:55 UTC
+Updated on 10/26/2025 05:16:04 UTC
 ```
 <!-- /updated-txt -->
 
@@ -534,7 +534,7 @@ GET https://animeapi.my.id/myanimelist/1
   "thetvdb": 76885,
   "thetvdb_season_id": 11636,
   "trakt": 30857,
-  "trakt_may_invalid": "False",
+  "trakt_may_invalid": 0,
   "trakt_season": 1,
   "trakt_season_id": 43328,
   "trakt_slug": "cowboy-bebop",
@@ -695,7 +695,7 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
   "thetvdb": 369144,
   "thetvdb_season_id": 1955315,
   "trakt": 152334,
-  "trakt_may_invalid": "False",
+  "trakt_may_invalid": 0,
   "trakt_season": 3,
   "trakt_season_id": 303584,
   "trakt_slug": "welcome-to-demon-school-iruma-kun",
