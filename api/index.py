@@ -49,6 +49,26 @@ with open("api/status.json", "r", encoding="utf-8") as _status_file:
     API_VERSION = "v3"
     API_UPDATED = str(_status_data["updated"]["timestamp"])
 
+# Load server updated timestamp (for Vercel compatibility)
+try:
+    with open("api/.server_updated", "r", encoding="utf-8") as _server_file:
+        API_SERVER_UPDATED = _server_file.read().strip()
+except FileNotFoundError:
+    # Fallback to git if .server_updated doesn't exist (local development)
+    import subprocess
+    try:
+        result = subprocess.run(
+            ["git", "log", "-1", "--format=%ct", "--", "api/"],
+            capture_output=True,
+            text=True,
+            check=True,
+            timeout=5
+        )
+        API_SERVER_UPDATED = result.stdout.strip()
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired, FileNotFoundError):
+        # If git is not available or fails, use current timestamp
+        API_SERVER_UPDATED = str(int(time()))
+
 
 class CorruptedResp(TypedDict):
     error: str
@@ -93,6 +113,7 @@ def after_request(response):
     """Add custom headers to all responses"""
     response.headers["X-ANIMEAPI-VERSION"] = API_VERSION
     response.headers["X-ANIMEAPI-UPDATED"] = API_UPDATED
+    response.headers["X-ANIMEAPI-SERVER-UPDATED"] = API_SERVER_UPDATED
     return response
 
 
