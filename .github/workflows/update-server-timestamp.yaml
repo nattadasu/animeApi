@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - "api/**"
+      - "!api/.server_updated"
+      - "!api/*.json"
 
 permissions:
   contents: write
@@ -35,12 +37,12 @@ jobs:
 
       - name: Commit and push if changed
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git config --local user.email "nattadasu@nattadasu.my.id"
+          git config --local user.name "Natsu Tadama"
           git add api/.server_updated
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: update API server timestamp [skip ci]"
+            git commit -m "Update API server timestamp"
             git push
           fi
