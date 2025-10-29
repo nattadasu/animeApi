@@ -185,7 +185,7 @@ def lookup_composite_platform(
                 try:
                     season_num = int(parts[3])
                 except ValueError:
-                    pass
+                    season_num = None
 
             # Try numeric ID first
             try:
@@ -202,11 +202,9 @@ def lookup_composite_platform(
                 if "trakt_slug" in _tsv_indices and media_id_or_slug in _tsv_indices["trakt_slug"]:
                     row_idx = _tsv_indices["trakt_slug"][media_id_or_slug]
                     row = df.iloc[row_idx]
-                    # Verify media_type matches
-                    if row.get("trakt_type") == media_type:
-                        # If season specified, verify it matches
-                        if season_num is None or row.get("trakt_season") == season_num:
-                            return row_to_entry(row)
+                    # Verify media_type and season match
+                    if row.get("trakt_type") == media_type and (season_num is None or row.get("trakt_season") == season_num):
+                        return row_to_entry(row)
 
     elif platform == "themoviedb":
         # Format: movie/123 or tv/456 or tv/456/season/2
