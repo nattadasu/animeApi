@@ -23,7 +23,7 @@ class AnimeEntry:
     kitsu: Optional[int] = None
     letterboxd_lid: Optional[str] = None
     letterboxd_slug: Optional[str] = None
-    letterboxd_uid: Optional[str] = None
+    letterboxd_uid: Optional[int] = None
     livechart: Optional[int] = None
     myanimelist: Optional[int] = None
     nautiljon: Optional[str] = None
@@ -86,7 +86,7 @@ def row_to_entry(row: pd.Series) -> AnimeEntry:
         kitsu=safe_convert(row.get("kitsu"), int),
         letterboxd_lid=safe_convert(row.get("letterboxd_lid"), str),
         letterboxd_slug=safe_convert(row.get("letterboxd_slug"), str),
-        letterboxd_uid=safe_convert(row.get("letterboxd_uid"), str),
+        letterboxd_uid=safe_convert(row.get("letterboxd_uid"), int),
         livechart=safe_convert(row.get("livechart"), int),
         myanimelist=safe_convert(row.get("myanimelist"), int),
         nautiljon=safe_convert(row.get("nautiljon"), str),

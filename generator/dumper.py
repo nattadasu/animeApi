@@ -356,7 +356,7 @@ def load_tsv_for_counting() -> pd.DataFrame:
             "kitsu": "Int64",
             "letterboxd_lid": str,
             "letterboxd_slug": str,
-            "letterboxd_uid": str,
+            "letterboxd_uid": "Int64",
             "livechart": "Int64",
             "myanimelist": "Int64",
             "nautiljon": str,
