@@ -1,4 +1,5 @@
 name: "[v3] Generate Database"
+
 on:
   workflow_dispatch:
   schedule:
@@ -7,51 +8,120 @@ on:
     branches:
       - v3
     paths:
-      - "generator/*"
+      - "generator/**"
       - "requirements.txt"
       - "api/index.py"
       - "api/robots.txt"
       - "api/favicon.ico"
+
 permissions:
   contents: write
   pages: write
   id-token: write
+
 concurrency:
   group: "pages"
   cancel-in-progress: true
+
 jobs:
-  Build:
+  build:
     name: Build Database
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
-            ref: v3
-            fetch-depth: 1
-      - name: Load secrets to environment variables
+          ref: v3
+          fetch-depth: 1
+
+      - name: Wait for timestamp workflow to complete
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          while true; do
+            status=$(gh run list --workflow=update-server-timestamp.yaml --branch=v3 --limit 1 --json status --jq '.[0].status // "completed"')
+            if [[ "$status" == "completed" ]] || [[ -z "$status" ]]; then
+              echo "Timestamp workflow is not running or completed"
+              break
+            fi
+            echo "Timestamp workflow is still running (status: $status), waiting 10 seconds..."
+            sleep 10
+          done
+
+      - name: Pull latest changes
+        run: git pull origin v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Load secrets to environment
         uses: oNaiPs/secrets-to-env-action@v1
         with:
           secrets: ${{ toJSON(secrets) }}
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.11' 
-          cache: 'pip'
-      - name: Install Dependencies
+
+      - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Update JSON File with main.py and then commit
-        shell: pwsh
+
+      - name: Save status before generation
         run: |
-          try {
-            python3 generator
+          if [ -f api/status.json ]; then
+            cp api/status.json /tmp/status_before.json
+          else
+            echo '{}' > /tmp/status_before.json
+          fi
+
+      - name: Generate database
+        run: python3 generator
+
+      - name: Generate summary
+        if: always()
+        run: |
+          if [ -f api/status.json ]; then
+            echo "## Database Generation Summary" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### Count Changes" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "| Platform | Before | After | Change |" >> $GITHUB_STEP_SUMMARY
+            echo "|----------|--------|-------|--------|" >> $GITHUB_STEP_SUMMARY
+
+            for platform in $(jq -r '.counts | keys[]' api/status.json | grep -v "^total$"); do
+              before=$(jq -r ".counts.$platform // 0" /tmp/status_before.json)
+              after=$(jq -r ".counts.$platform // 0" api/status.json)
+              diff=$((after - before))
+              if [ $diff -gt 0 ]; then
+                change="+$diff"
+              else
+                change="$diff"
+              fi
+              echo "| $platform | $before | $after | $change |" >> $GITHUB_STEP_SUMMARY
+            done
+
+            echo "" >> $GITHUB_STEP_SUMMARY
+            before_total=$(jq -r '.counts.total // 0' /tmp/status_before.json)
+            after_total=$(jq -r '.counts.total // 0' api/status.json)
+            diff_total=$((after_total - before_total))
+            if [ $diff_total -gt 0 ]; then
+              change_total="+$diff_total"
+            else
+              change_total="$diff_total"
+            fi
+            echo "| **Total** | **$before_total** | **$after_total** | **$change_total** |" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "**Updated:** $(jq -r '.updated.iso' api/status.json)" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Commit and push changes
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
             git config --local user.email "nattadasu@nattadasu.my.id"
             git config --local user.name "Natsu Tadama"
             git add .
-            $date = Get-Date -Format "yyyy-MM-dd"
-            $time = Get-Date -Format "HH:mm:ss"
-            git commit -m "Update JSON for v3 at $date $time"
+            git commit -m "Update JSON for v3 at $(date -u +%Y-%m-%d) $(date -u +%H:%M:%S)"
             git push
-          }
-          catch {
-            write-host "No changes made"
-          }
+          else
+            echo "No changes to commit"
+          fi
