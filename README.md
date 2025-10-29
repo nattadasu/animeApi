@@ -27,6 +27,7 @@ Please read more information regarding using the API on your project in
 * [Supported Platforms and Aliases](#supported-platforms-and-aliases)
 * [Statistic](#statistic)
 * [Usage](#usage)
+  * [Response Headers](#response-headers)
   * [Get status and statistics](#get-status-and-statistics)
   * [Get latency report](#get-latency-report)
   * [Get updated date and time](#get-updated-date-and-time)
@@ -259,6 +260,34 @@ To use this API, you can access the following base URLs:
   ```
 
 All requests must be `GET`, and response always will be in JSON format.
+
+### Response Headers
+
+All API responses include the following custom headers:
+
+| Header                      | Description                                                                       | Example Value  |
+| --------------------------- | --------------------------------------------------------------------------------- | -------------- |
+| `X-ANIMEAPI-VERSION`        | Current API version                                                               | `v3`           |
+| `X-ANIMEAPI-UPDATED`        | Database last update timestamp (Unix epoch)                                       | `1761714944`   |
+| `X-ANIMEAPI-SERVER-UPDATED` | API server code last update timestamp (Unix epoch, tracks changes to `api/` folder) | `1761762026`   |
+
+These headers are useful for:
+- **Cache invalidation**: Use `X-ANIMEAPI-UPDATED` to detect when the database has been updated
+- **Version checking**: Ensure your application is compatible with the current API version
+- **Server monitoring**: Track when the API server code was last modified
+
+Example:
+
+```http
+GET /status HTTP/1.1
+Host: animeapi.my.id
+
+HTTP/1.1 200 OK
+X-ANIMEAPI-VERSION: v3
+X-ANIMEAPI-UPDATED: 1761714944
+X-ANIMEAPI-SERVER-UPDATED: 1761762026
+Content-Type: application/json
+```
 
 ### Get status and statistics
 
