@@ -92,7 +92,7 @@ attribution: dict[str, Any] = {
         "syobocal": r"/(?P<alias>syobocal)/(?P<media_id>\d+)",
         "themoviedb": r"/(?P<alias>themoviedb)/movie/(?P<media_id>\d+)",
         "thetvdb": r"/(?P<alias>thetvdb)/series/(?P<media_id>\d+)(?:/seasons/(?P<season_id>\d+))?",
-        "trakt": r"/(?P<alias>trakt)/(?P<media_type>show|movie)(s)?/(?P<media_id>\d+)(?:/season(s)?/(?P<season_id>\d+))?",
+        "trakt": r"/(?P<alias>trakt)/(?P<media_type>show|movie)(s)?/(?P<media_id>\w\-+)(?:/season(s)?/(?P<season_id>\d+))?",
         "updated": r"/updated",
     },
 }

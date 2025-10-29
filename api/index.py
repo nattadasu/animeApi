@@ -43,6 +43,32 @@ app.json.sort_keys = False
 
 runtime = time()
 
+# Load status data for headers
+with open("api/status.json", "r", encoding="utf-8") as _status_file:
+    _status_data = json.loads(_status_file.read())
+    API_VERSION = "v3"
+    API_UPDATED = str(_status_data["updated"]["timestamp"])
+
+# Load server updated timestamp (for Vercel compatibility)
+try:
+    with open("api/.server_updated", "r", encoding="utf-8") as _server_file:
+        API_SERVER_UPDATED = _server_file.read().strip()
+except FileNotFoundError:
+    # Fallback to git if .server_updated doesn't exist (local development)
+    import subprocess
+    try:
+        result = subprocess.run(
+            ["git", "log", "-1", "--format=%ct", "--", "api/"],
+            capture_output=True,
+            text=True,
+            check=True,
+            timeout=5
+        )
+        API_SERVER_UPDATED = result.stdout.strip()
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired, FileNotFoundError):
+        # If git is not available or fails, use current timestamp
+        API_SERVER_UPDATED = str(int(time()))
+
 
 class CorruptedResp(TypedDict):
     error: str
@@ -80,6 +106,15 @@ def platform_id_content(platform: str, platform_id: Union[int, str]) -> Dict[str
 def before_request():
     """Before request"""
     g.start = time()
+
+
+@app.after_request
+def after_request(response):
+    """Add custom headers to all responses"""
+    response.headers["X-ANIMEAPI-VERSION"] = API_VERSION
+    response.headers["X-ANIMEAPI-UPDATED"] = API_UPDATED
+    response.headers["X-ANIMEAPI-SERVER-UPDATED"] = API_SERVER_UPDATED
+    return response
 
 
 @app.route("/", methods=["GET"])
@@ -674,9 +709,12 @@ def build_trakt_uri(maps: dict[str, Any], target: str) -> str:
     :return: URI
     :rtype: str
     """
+    # Try trakt numeric ID first, then fall back to trakt_slug
     tgt_id = maps.get("trakt")
     if tgt_id is None:
-        raise ValueError
+        tgt_id = maps.get("trakt_slug")
+        if tgt_id is None:
+            raise ValueError
     media_type = maps.get("trakt_type")
     season = maps.get("trakt_season")
     if season:

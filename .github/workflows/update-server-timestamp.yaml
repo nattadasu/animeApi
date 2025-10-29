@@ -1,0 +1,46 @@
+name: "Update API Server Timestamp"
+on:
+  push:
+    branches:
+      - v3
+      - main
+    paths:
+      - "api/**"
+
+permissions:
+  contents: write
+
+jobs:
+  update-timestamp:
+    name: Update .server_updated file
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get latest commit timestamp for api folder
+        id: get_timestamp
+        run: |
+          TIMESTAMP=$(git log -1 --format=%ct -- api/)
+          echo "timestamp=$TIMESTAMP" >> $GITHUB_OUTPUT
+          echo "Latest API commit timestamp: $TIMESTAMP"
+
+      - name: Update .server_updated file
+        run: |
+          echo "${{ steps.get_timestamp.outputs.timestamp }}" > api/.server_updated
+          echo "Updated api/.server_updated with timestamp: ${{ steps.get_timestamp.outputs.timestamp }}"
+
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add api/.server_updated
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update API server timestamp [skip ci]"
+            git push
+          fi
