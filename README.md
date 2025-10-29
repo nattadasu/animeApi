@@ -263,18 +263,30 @@ All requests must be `GET`, and response always will be in JSON format.
 
 ### Response Headers
 
+> [!IMPORTANT]
+>
+> This feature was added in Oct 29, 2025. Make sure your program/custom library
+> supports this to avoid errors.
+
 All API responses include the following custom headers:
 
-| Header                      | Description                                                                       | Example Value  |
-| --------------------------- | --------------------------------------------------------------------------------- | -------------- |
-| `X-ANIMEAPI-VERSION`        | Current API version                                                               | `v3`           |
-| `X-ANIMEAPI-UPDATED`        | Database last update timestamp (Unix epoch)                                       | `1761714944`   |
+<!-- markdownlint-disable MD013 -->
+
+| Header                      | Description                                                                         | Example Value  |
+| --------------------------- | ----------------------------------------------------------------------------------- | -------------- |
+| `X-ANIMEAPI-VERSION`        | Current API version                                                                 | `v3`           |
+| `X-ANIMEAPI-UPDATED`        | Database last update timestamp (Unix epoch)                                         | `1761714944`   |
 | `X-ANIMEAPI-SERVER-UPDATED` | API server code last update timestamp (Unix epoch, tracks changes to `api/` folder) | `1761762026`   |
 
+<!-- markdownlint-enable MD013 -->
+
 These headers are useful for:
-- **Cache invalidation**: Use `X-ANIMEAPI-UPDATED` to detect when the database has been updated
-- **Version checking**: Ensure your application is compatible with the current API version
-- **Server monitoring**: Track when the API server code was last modified
+
+* **Cache invalidation**: Use `X-ANIMEAPI-UPDATED` to detect when the database
+  has been updated
+* **Version checking**: Ensure your application is compatible with the current
+  API version
+* **Server monitoring**: Track when the API server code was last modified
 
 Example:
 
@@ -599,8 +611,11 @@ The response will be in JSON format, and you can get the ID from `data[0].id`
 `letterboxd` supports multiple ID formats with priority-based lookup:
 
 1. **Slug** (`letterboxd_slug`) - Primary format (e.g., `your-name`)
-2. **Letter ID** (`letterboxd_lid`) - Fallback format (e.g., `cUqs`)
-3. **Unique ID** (`letterboxd_uid`) - Alternative fallback (e.g., `307684`)
+2. **Letter ID** (`letterboxd_lid`) - Fallback format (e.g., `cUqs`), useful
+   if you iterate from Letterboxd's official API directly.
+3. **Unique ID** (`letterboxd_uid`) - Alternative fallback (e.g., `307684`),
+   this ID is only used by Letterboxd internally, you may unable to interact
+   with the ID directly.
 
 When querying the API, it will automatically try these formats in order:
 
@@ -610,7 +625,8 @@ GET https://animeapi.my.id/letterboxd/cUqs           # Letter ID lookup
 GET https://animeapi.my.id/letterboxd/307684         # Unique ID lookup
 ```
 
-The API will return the Letterboxd film URL using the stored `letterboxd_slug` value.
+The API will return the Letterboxd film URL using the stored `letterboxd_slug`
+value.
 
 ##### SIMKL
 
@@ -646,6 +662,7 @@ or the TVDB season ID (from `thetvdb_season_id`). Season 1 entries can be access
 using the base series URL.
 
 For example:
+
 ```http
 GET https://animeapi.my.id/thetvdb/series/12345
 GET https://animeapi.my.id/thetvdb/series/12345/seasons/2
@@ -660,12 +677,16 @@ For Trakt, the ID is in the format of `:provider/:mediatype/:mediaid` where
 
 **Supported formats:**
 
+<!-- markdownlint-disable MD013 -->
+
 ```http
-GET https://animeapi.my.id/trakt/movies/224301              # Numeric ID
-GET https://animeapi.my.id/trakt/movies/your-name-2016      # Slug
-GET https://animeapi.my.id/trakt/shows/152334/seasons/3     # With season (numeric)
+GET https://animeapi.my.id/trakt/movies/224301                 # Numeric ID
+GET https://animeapi.my.id/trakt/movies/your-name-2016         # Slug
+GET https://animeapi.my.id/trakt/shows/152334/seasons/3        # With season (numeric)
 GET https://animeapi.my.id/trakt/shows/cowboy-bebop/seasons/1  # With season (slug)
 ```
+
+<!-- markdownlint-enable MD013 -->
 
 The API will first attempt to parse `:mediaid` as a numeric ID. If that fails, it
 will fall back to slug lookup using the `trakt_slug` field.
@@ -697,7 +718,7 @@ where `:season_inc` is the season number of the title in the provider.
 > * **`none`**: The entry is either a special, or a movie
 > * **`false`**: Season found on Trakt and mapping is reliable.
 > * **`true`**: Season not found separately on Trakt (split cour). Season
- fields on Trakt, TMDB, and TVDB will be `null`.
+>   fields on Trakt, TMDB, and TVDB will be `null`.
 >
 > MAL may list split cours as separate seasons while Trakt/TMDB combines them
 > into one continuous season. When `true`, episodes are likely in the previous

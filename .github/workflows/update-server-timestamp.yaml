@@ -20,19 +20,19 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Get latest commit timestamp for api folder
         id: get_timestamp
         run: |
           TIMESTAMP=$(git log -1 --format=%ct -- api/)
           echo "timestamp=$TIMESTAMP" >> $GITHUB_OUTPUT
           echo "Latest API commit timestamp: $TIMESTAMP"
-      
+
       - name: Update .server_updated file
         run: |
           echo "${{ steps.get_timestamp.outputs.timestamp }}" > api/.server_updated
           echo "Updated api/.server_updated with timestamp: ${{ steps.get_timestamp.outputs.timestamp }}"
-      
+
       - name: Commit and push if changed
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
