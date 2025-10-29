@@ -43,6 +43,12 @@ app.json.sort_keys = False
 
 runtime = time()
 
+# Load status data for headers
+with open("api/status.json", "r", encoding="utf-8") as _status_file:
+    _status_data = json.loads(_status_file.read())
+    API_VERSION = "v3"
+    API_UPDATED = str(_status_data["updated"]["timestamp"])
+
 
 class CorruptedResp(TypedDict):
     error: str
@@ -80,6 +86,14 @@ def platform_id_content(platform: str, platform_id: Union[int, str]) -> Dict[str
 def before_request():
     """Before request"""
     g.start = time()
+
+
+@app.after_request
+def after_request(response):
+    """Add custom headers to all responses"""
+    response.headers["X-ANIMEAPI-VERSION"] = API_VERSION
+    response.headers["X-ANIMEAPI-UPDATED"] = API_UPDATED
+    return response
 
 
 @app.route("/", methods=["GET"])
