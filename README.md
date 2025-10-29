@@ -353,7 +353,7 @@ GET /status
     "syobocal": "/(?P<alias>syobocal)/(?P<media_id>\\d+)",
     "themoviedb": "/(?P<alias>themoviedb)/movie/(?P<media_id>\\d+)",
     "thetvdb": "/(?P<alias>thetvdb)/series/(?P<media_id>\\d+)(?:/seasons/(?P<season_id>\\d+))?",
-    "trakt": "/(?P<alias>trakt)/(?P<media_type>show|movie)(s)?/(?P<media_id>\\d+)(?:/season(s)?/(?P<season_id>\\d+))?",
+    "trakt": "/(?P<alias>trakt)/(?P<media_type>show|movie)(s)?/(?P<media_id>[\\w\\-]+)(?:/season(s)?/(?P<season_id>\\d+))?",
     "updated": "/updated"
   }
 }
@@ -567,10 +567,21 @@ The response will be in JSON format, and you can get the ID from `data[0].id`
 
 ##### Letterboxd
 
-`letterboxd` uses slug format for movie identification. The API will return the
-Letterboxd film URL using the stored slug value.
+`letterboxd` supports multiple ID formats with priority-based lookup:
 
-For lookup operations, use the `letterboxd_slug` field from the response data.
+1. **Slug** (`letterboxd_slug`) - Primary format (e.g., `your-name`)
+2. **Letter ID** (`letterboxd_lid`) - Fallback format (e.g., `cUqs`)
+3. **Unique ID** (`letterboxd_uid`) - Alternative fallback (e.g., `307684`)
+
+When querying the API, it will automatically try these formats in order:
+
+```http
+GET https://animeapi.my.id/letterboxd/your-name      # Slug lookup
+GET https://animeapi.my.id/letterboxd/cUqs           # Letter ID lookup
+GET https://animeapi.my.id/letterboxd/307684         # Unique ID lookup
+```
+
+The API will return the Letterboxd film URL using the stored `letterboxd_slug` value.
 
 ##### SIMKL
 
@@ -615,20 +626,32 @@ GET https://animeapi.my.id/thetvdb/series/12345/seasons/789012
 ##### Trakt
 
 For Trakt, the ID is in the format of `:provider/:mediatype/:mediaid` where
-`:mediatype` is either `movies` or `shows` and `:mediaid` is the ID of the title
-in the provider instead of typical `:provider/:mediaid` format.
+`:mediatype` is either `movies` or `shows` and `:mediaid` can be either a 
+**numeric ID** or a **slug**.
 
-An ID on Trakt must in numerical value. If your application obtained slug as ID
-instead, you can resolve/convert it to ID using following Trakt API endpoint:
+**Supported formats:**
 
 ```http
-GET https://api.trakt.tv/search/trakt/<ID>?type=<movie|show>
+GET https://animeapi.my.id/trakt/movies/224301              # Numeric ID
+GET https://animeapi.my.id/trakt/movies/your-name-2016      # Slug
+GET https://animeapi.my.id/trakt/shows/152334/seasons/3     # With season (numeric)
+GET https://animeapi.my.id/trakt/shows/cowboy-bebop/seasons/1  # With season (slug)
 ```
 
-> [!IMPORTANT]
+The API will first attempt to parse `:mediaid` as a numeric ID. If that fails, it
+will fall back to slug lookup using the `trakt_slug` field.
+
+> [!NOTE]
 >
-> The Trakt API requires an API key to access the endpoint. You can get the API
-> key by registering on the Trakt website.
+> While you can now use slugs directly, numeric IDs are still recommended for
+> better performance. If you need to convert a slug to numeric ID externally,
+> you can use the Trakt API:
+>
+> ```http
+> GET https://api.trakt.tv/search/trakt/<ID>?type=<movie|show>
+> ```
+>
+> Note: The Trakt API requires an API key to access this endpoint.
 
 To get exact season mapping, append `/seasons/:season_inc` to the end of the ID,
 where `:season_inc` is the season number of the title in the provider.
