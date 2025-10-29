@@ -104,6 +104,10 @@ def lookup_by_platform_id(
     # Handle special cases for composite IDs
     if platform in ["trakt", "themoviedb", "thetvdb"]:
         return lookup_composite_platform(platform, platform_id, df)
+    
+    # Handle letterboxd with priority: letterboxd_slug -> letterboxd_lid -> letterboxd_uid
+    if platform == "letterboxd":
+        return lookup_letterboxd(platform_id, df)
 
     # Convert platform_id to appropriate type
     if platform in _tsv_indices:
@@ -136,6 +140,28 @@ def lookup_by_platform_id(
     return None
 
 
+def lookup_letterboxd(
+    platform_id: Union[int, str], df: pd.DataFrame
+) -> Optional[AnimeEntry]:
+    """
+    Handle letterboxd lookups with priority: letterboxd_slug -> letterboxd_lid -> letterboxd_uid
+
+    :param platform_id: Platform ID
+    :param df: DataFrame
+    :return: AnimeEntry or None
+    """
+    lookup_id = str(platform_id)
+    
+    # Priority order: letterboxd_slug -> letterboxd_lid -> letterboxd_uid
+    for field in ["letterboxd_slug", "letterboxd_lid", "letterboxd_uid"]:
+        if field in _tsv_indices and lookup_id in _tsv_indices[field]:
+            row_idx = _tsv_indices[field][lookup_id]
+            row = df.iloc[row_idx]
+            return row_to_entry(row)
+    
+    return None
+
+
 def lookup_composite_platform(
     platform: str, platform_id: str, df: pd.DataFrame
 ) -> Optional[AnimeEntry]:
@@ -149,16 +175,21 @@ def lookup_composite_platform(
     """
     if platform == "trakt":
         # Format: shows/123 or movies/456 or shows/123/seasons/2
+        # Also supports: shows/slug-name or movies/slug-name
         parts = str(platform_id).split("/")
         if len(parts) >= 2:
             media_type = parts[0]
-            try:
-                media_id = int(parts[1])
-                season_num = None
-                if len(parts) >= 4 and parts[2] == "seasons":
+            media_id_or_slug = parts[1]
+            season_num = None
+            if len(parts) >= 4 and parts[2] == "seasons":
+                try:
                     season_num = int(parts[3])
+                except ValueError:
+                    pass
 
-                # Search for matching trakt entry
+            # Try numeric ID first
+            try:
+                media_id = int(media_id_or_slug)
                 mask = (df["trakt"] == media_id) & (df["trakt_type"] == media_type)
                 if season_num is not None:
                     mask = mask & (df["trakt_season"] == season_num)
@@ -166,8 +197,16 @@ def lookup_composite_platform(
                 matches = df[mask]
                 if not matches.empty:
                     return row_to_entry(matches.iloc[0])
-            except (ValueError, IndexError):
-                pass
+            except ValueError:
+                # Not a numeric ID, try slug lookup
+                if "trakt_slug" in _tsv_indices and media_id_or_slug in _tsv_indices["trakt_slug"]:
+                    row_idx = _tsv_indices["trakt_slug"][media_id_or_slug]
+                    row = df.iloc[row_idx]
+                    # Verify media_type matches
+                    if row.get("trakt_type") == media_type:
+                        # If season specified, verify it matches
+                        if season_num is None or row.get("trakt_season") == season_num:
+                            return row_to_entry(row)
 
     elif platform == "themoviedb":
         # Format: movie/123 or tv/456 or tv/456/season/2

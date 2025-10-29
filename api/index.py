@@ -674,9 +674,12 @@ def build_trakt_uri(maps: dict[str, Any], target: str) -> str:
     :return: URI
     :rtype: str
     """
+    # Try trakt numeric ID first, then fall back to trakt_slug
     tgt_id = maps.get("trakt")
     if tgt_id is None:
-        raise ValueError
+        tgt_id = maps.get("trakt_slug")
+        if tgt_id is None:
+            raise ValueError
     media_type = maps.get("trakt_type")
     season = maps.get("trakt_season")
     if season:
