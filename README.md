@@ -217,7 +217,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 29 October 2025 05:15:44 UTC
+Last updated: 30 October 2025 05:15:36 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -230,7 +230,7 @@ Last updated: 29 October 2025 05:15:44 UTC
 | aniSearch          |     20128 |
 | Annict             |     12184 |
 | IMDb               |      5723 |
-| Kaize              |     24742 |
+| Kaize              |     24743 |
 | Kitsu              |     21384 |
 | Letterboxd         |      1295 |
 | LiveChart          |     11834 |
@@ -318,12 +318,13 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1761714944,
-    "iso": "2025-10-29T05:15:44.670887+00:00"
+    "timestamp": 1761801336,
+    "iso": "2025-10-30T05:15:36.809367+00:00"
   },
   "contributors": [
     "nattadasu",
-    "Copilot"
+    "Copilot",
+    "github-actions[bot]"
   ],
   "sources": [
     "gh:kawaiioverflow/arm",
@@ -345,7 +346,7 @@ GET /status
     "anisearch": 20128,
     "annict": 12184,
     "imdb": 5723,
-    "kaize": 24742,
+    "kaize": 24743,
     "kitsu": 21384,
     "letterboxd": 1295,
     "livechart": 11834,
@@ -394,7 +395,7 @@ GET /status
     "syobocal": "/(?P<alias>syobocal)/(?P<media_id>\\d+)",
     "themoviedb": "/(?P<alias>themoviedb)/movie/(?P<media_id>\\d+)",
     "thetvdb": "/(?P<alias>thetvdb)/series/(?P<media_id>\\d+)(?:/seasons/(?P<season_id>\\d+))?",
-    "trakt": "/(?P<alias>trakt)/(?P<media_type>show|movie)(s)?/(?P<media_id>[\\w\\-]+)(?:/season(s)?/(?P<season_id>\\d+))?",
+    "trakt": "/(?P<alias>trakt)/(?P<media_type>show|movie)(s)?/(?P<media_id>\\w\\-+)(?:/season(s)?/(?P<season_id>\\d+))?",
     "updated": "/updated"
   }
 }
@@ -440,7 +441,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 10/29/2025 05:15:44 UTC
+Updated on 10/30/2025 05:15:36 UTC
 ```
 <!-- /updated-txt -->
 
