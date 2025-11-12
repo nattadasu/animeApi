@@ -217,7 +217,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 11 November 2025 05:17:09 UTC
+Last updated: 12 November 2025 05:15:59 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -228,7 +228,7 @@ Last updated: 11 November 2025 05:17:09 UTC
 | Anime News Network |     11930 |
 | Anime-Planet       |     26160 |
 | aniSearch          |     20128 |
-| Annict             |     12198 |
+| Annict             |     12210 |
 | IMDb               |      5704 |
 | Kaize              |     24745 |
 | Kitsu              |     21384 |
@@ -239,7 +239,7 @@ Last updated: 11 November 2025 05:17:09 UTC
 | Notify.moe         |     16822 |
 | Otak Otaku         |      3010 |
 | Shikimori          |     29357 |
-| Shoboi/Syobocal    |      5437 |
+| Shoboi/Syobocal    |      5441 |
 | Silver Yasha       |      5091 |
 | SIMKL              |     13973 |
 | The Movie Database |      5311 |
@@ -318,8 +318,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1762838229,
-    "iso": "2025-11-11T05:17:09.216347+00:00"
+    "timestamp": 1762924559,
+    "iso": "2025-11-12T05:15:59.994406+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -344,7 +344,7 @@ GET /status
     "animenewsnetwork": 11930,
     "animeplanet": 26160,
     "anisearch": 20128,
-    "annict": 12198,
+    "annict": 12210,
     "imdb": 5704,
     "kaize": 24745,
     "kitsu": 21384,
@@ -355,7 +355,7 @@ GET /status
     "notify": 16822,
     "otakotaku": 3010,
     "shikimori": 29357,
-    "shoboi": 5437,
+    "shoboi": 5441,
     "silveryasha": 5091,
     "simkl": 13973,
     "themoviedb": 5311,
@@ -441,7 +441,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 11/11/2025 05:17:09 UTC
+Updated on 11/12/2025 05:15:59 UTC
 ```
 <!-- /updated-txt -->
 
