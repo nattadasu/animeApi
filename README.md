@@ -217,7 +217,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 15 November 2025 05:39:07 UTC
+Last updated: 16 November 2025 05:34:01 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -237,7 +237,7 @@ Last updated: 15 November 2025 05:39:07 UTC
 | MyAnimeList        |     29357 |
 | Nautiljon          |      8882 |
 | Notify.moe         |     16822 |
-| Otak Otaku         |      3011 |
+| Otak Otaku         |      3012 |
 | Shikimori          |     29357 |
 | Shoboi/Syobocal    |      5441 |
 | Silver Yasha       |      5091 |
@@ -318,8 +318,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1763185147,
-    "iso": "2025-11-15T05:39:07.110204+00:00"
+    "timestamp": 1763271241,
+    "iso": "2025-11-16T05:34:01.159271+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -353,7 +353,7 @@ GET /status
     "myanimelist": 29357,
     "nautiljon": 8882,
     "notify": 16822,
-    "otakotaku": 3011,
+    "otakotaku": 3012,
     "shikimori": 29357,
     "shoboi": 5441,
     "silveryasha": 5091,
@@ -441,7 +441,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 11/15/2025 05:39:07 UTC
+Updated on 11/16/2025 05:34:01 UTC
 ```
 <!-- /updated-txt -->
 
@@ -562,8 +562,8 @@ GET https://animeapi.my.id/myanimelist/1
   "letterboxd_uid": null,
   "livechart": 3418,
   "myanimelist": 1,
-  "nautiljon": null,
-  "nautiljon_id": null,
+  "nautiljon": "cowboy+bebop",
+  "nautiljon_id": 4,
   "notify": "Tk3ccKimg",
   "otakotaku": 1149,
   "shikimori": 1,
