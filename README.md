@@ -217,7 +217,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 27 November 2025 05:16:27 UTC
+Last updated: 28 November 2025 05:16:21 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -228,18 +228,18 @@ Last updated: 27 November 2025 05:16:27 UTC
 | Anime News Network |     11930 |
 | Anime-Planet       |     26160 |
 | aniSearch          |     20128 |
-| Annict             |     12221 |
+| Annict             |     12224 |
 | IMDb               |      5729 |
 | Kaize              |     24747 |
 | Kitsu              |     21384 |
 | Letterboxd         |      1295 |
 | LiveChart          |     11834 |
-| MyAnimeList        |     29358 |
+| MyAnimeList        |     29359 |
 | Nautiljon          |      8882 |
 | Notify.moe         |     16822 |
-| Otak Otaku         |      3017 |
-| Shikimori          |     29358 |
-| Shoboi/Syobocal    |      5442 |
+| Otak Otaku         |      3019 |
+| Shikimori          |     29359 |
+| Shoboi/Syobocal    |      5672 |
 | Silver Yasha       |      5091 |
 | SIMKL              |     13973 |
 | The Movie Database |      5338 |
@@ -318,8 +318,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1764220587,
-    "iso": "2025-11-27T05:16:27.020953+00:00"
+    "timestamp": 1764306981,
+    "iso": "2025-11-28T05:16:21.143632+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -344,18 +344,18 @@ GET /status
     "animenewsnetwork": 11930,
     "animeplanet": 26160,
     "anisearch": 20128,
-    "annict": 12221,
+    "annict": 12224,
     "imdb": 5729,
     "kaize": 24747,
     "kitsu": 21384,
     "letterboxd": 1295,
     "livechart": 11834,
-    "myanimelist": 29358,
+    "myanimelist": 29359,
     "nautiljon": 8882,
     "notify": 16822,
-    "otakotaku": 3017,
-    "shikimori": 29358,
-    "shoboi": 5442,
+    "otakotaku": 3019,
+    "shikimori": 29359,
+    "shoboi": 5672,
     "silveryasha": 5091,
     "simkl": 13973,
     "themoviedb": 5338,
@@ -441,7 +441,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 11/27/2025 05:16:27 UTC
+Updated on 11/28/2025 05:16:21 UTC
 ```
 <!-- /updated-txt -->
 
