@@ -92,7 +92,7 @@ class Downloader:
             total_size = int(response.headers.get("content-length", 0))
 
             if total_size > 0:
-                block_size = 1024 * 1024  # 1 MiB
+                block_size = 8192  # 8 KiB for smoother progress
                 downloaded = 0
                 chunks = []
 
@@ -101,7 +101,7 @@ class Downloader:
                     title=f"Downloading {self.file_name}.{self.file_type}",
                     spinner=None,
                     unit="B",
-                    scale="SI",
+                    scale="IEC",
                 ) as bar:  # type: ignore
                     for chunk in response.iter_content(chunk_size=block_size):
                         if chunk:
@@ -123,7 +123,8 @@ class Downloader:
                     f"Decompressing {self.file_name}.zst",
                 )
                 dctx = zstd.ZstdDecompressor()
-                decompressed = dctx.decompress(response._content)
+                # Use stream_reader for files without determinable content size
+                decompressed = dctx.decompress(response._content, max_output_size=2**31-1)
                 response._content = decompressed
                 pprint.print(
                     self.platform,
