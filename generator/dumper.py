@@ -412,6 +412,9 @@ def get_sample_data_from_tsv(df: pd.DataFrame, platform: str, platform_id: Any) 
     for key, value in result.items():
         if pd.isna(value):
             result[key] = None
+        elif isinstance(value, bool):
+            # Keep booleans as-is (must check before int since bool is subclass of int)
+            result[key] = value
         elif isinstance(value, (pd.Int64Dtype, int)) and not pd.isna(value):
             result[key] = int(value)
 
@@ -441,6 +444,9 @@ def get_trakt_sample_from_tsv(df: pd.DataFrame, trakt_id: int, season: int) -> d
     for key, value in result.items():
         if pd.isna(value):
             result[key] = None
+        elif isinstance(value, bool):
+            # Keep booleans as-is (must check before int since bool is subclass of int)
+            result[key] = value
         elif isinstance(value, (pd.Int64Dtype, int)) and not pd.isna(value):
             result[key] = int(value)
 
