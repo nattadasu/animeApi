@@ -91,7 +91,6 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 | [![f:ap] Anime-Planet][ap]      | ✔                                               | ❌                           | ✔                  | ❌                         | ✔ Result Only           | ❌            | ❌                 | ✔                                                                   | ✔             | ❌                                      | ❌                |
 | [![f:as] AniSearch][as]         | ✔                                               | ❌                           | ✔                  | ❌                         | ✔ Result Only           | ❌            | ❌                 | ✔                                                                   | ✔             | ❌                                      | ❌                |
 | [![f:ac] Annict][ac]            | ✔                                               | ✔                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                 | ❌                                                                   | ❌             | ❌                                      | ❌                |
-| [![f:bgm] Bangumi][bgm]         | ❌                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                 | ❌                                                                   | ❌             | ❌                                      | ❌                |
 | [![f:imdb] IMDB][imdb]          | ✔                                               | ❌                           | ✔                  | ❌                         | ✔                       | ✔            | ✔                 | ❌                                                                   | ✔             | ✔                                      | ❌                |
 | [![f:kz] Kaize][kz]             | ✔                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                 | ❌                                                                   | ❌             | ❌                                      | ❌                |
 | [![f:kts] Kitsu][kts]           | ✔                                               | ❌                           | ✔                  | ✔                         | ✔ Result Only           | ❌            | ❌                 | ✔                                                                   | ✔             | ❌                                      | ❌                |
@@ -99,7 +98,7 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 | [![f:lc] LiveChart][lc]         | ✔                                               | ❌                           | ✔                  | ❌                         | ✔ Result Only           | ❌            | ❌                 | ✔                                                                   | ✔             | ❌                                      | ❌                |
 | [![f:mal] MyAnimeList][mal]     | ✔                                               | ✔                           | ✔                  | ✔                         | ✔                       | ❌            | ❌                 | ✔                                                                   | ✔             | ❌                                      | ✔                |
 | [![f:ntj] Nautiljon][ntj]       | ✔                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                 | ❌                                                                   | ❌             | ❌                                      | ❌                |
-| [![f:ntf] Notify][ntf]          | ✔                                               | ❌                           | ✔                  | ✔                         | ❌                       | ❌            | ❌                 | ✔                                                                   | ✔             | ❌                                      | ❌                |
+| [![f:ntf] Notify][ntf]          | ✔                                               | ❌                           | ✔                  | ✔                         | ❌                       | ❌            | ❌                 | ❌                                                                   | ✔             | ❌                                      | ❌                |
 | [![f:oo] Otak Otaku][oo]        | ✔                                               | ❌                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                 | ❌                                                                   | ❌             | ❌                                      | ❌                |
 | [![f:shk] Shikimori][shk]       | ✔                                               | ✔ via MAL                   | ✔ via MAL          | ✔ via MAL                 | ✔ via MAL               | ❌            | ❌                 | ✔ via MAL                                                           | ✔ via MAL     | ❌                                      | ✔ via MAL        |
 | [![f:shb] Shoboi Calendar][shb] | ✔                                               | ✔                           | ❌                  | ❌                         | ❌                       | ❌            | ❌                 | ❌                                                                   | ❌             | ❌                                      | ❌                |
@@ -1291,7 +1290,6 @@ This project uses multiple sources to compile the data, including:
 [as]: https://anisearch.com
 [atip]: https://github.com/rensetsu/db.trakt.extended-anitrakt
 [atrk]: https://anitrakt.huere.net/
-[bgm]: https://bgm.tv
 [bq]: https://github.com/BeeeQueue/arm-server
 [fal]: https://github.com/Fribb/anime-lists
 [hato]: https://github.com/Atelier-Shiori/Hato
@@ -1320,7 +1318,6 @@ This project uses multiple sources to compile the data, including:
 [f:an]: https://www.google.com/s2/favicons?domain=animenewsnetwork.com&sz=16
 [f:ap]: https://www.google.com/s2/favicons?domain=anime-planet.com&sz=16
 [f:as]: https://www.google.com/s2/favicons?domain=anisearch.com&sz=16
-[f:bgm]: https://favicone.com/bgm.tv
 [f:imdb]: https://www.google.com/s2/favicons?domain=imdb.com&sz=16
 [f:kts]: https://favicone.com/kitsu.app
 [f:kz]: https://www.google.com/s2/favicons?domain=kaize.io&sz=16
@@ -1331,7 +1328,7 @@ This project uses multiple sources to compile the data, including:
 [f:ntj]: https://www.google.com/s2/favicons?domain=nautiljon.com&sz=16
 [f:oo]: https://www.google.com/s2/favicons?domain=otakotaku.com&sz=16
 [f:shb]: https://www.google.com/s2/favicons?domain=cal.syoboi.jp&sz=16
-[f:shk]: https://www.google.com/s2/favicons?domain=shikimori.me&sz=16
+[f:shk]: https://favicone.com/shikimori.me
 [f:smk]: https://www.google.com/s2/favicons?domain=simkl.com&sz=16
 [f:sy]: https://www.google.com/s2/favicons?domain=db.silveryasha.id&sz=16
 [f:tmdb]: https://www.google.com/s2/favicons?domain=themoviedb.org&sz=16
