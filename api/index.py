@@ -303,10 +303,10 @@ def platform_lookup(
     """
     platform = platform.lower()
     platform = resolve_platform(platform=platform)
-    
+
     # Validate season 0 for shows/series
     platform_id_str = str(platform_id)
-    if re.search(r'/seasons?/0\b', platform_id_str):
+    if re.search(r"/seasons?/0\b", platform_id_str):
         return jsonify(
             {
                 "error": "Invalid season",
@@ -314,7 +314,7 @@ def platform_lookup(
                 "message": "Season 0 is not allowed",
             }
         ), 400
-    
+
     try:
         data = platform_id_content(platform, platform_id)
         return jsonify(data), 200

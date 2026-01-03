@@ -70,7 +70,15 @@ def load_tsv_data() -> pd.DataFrame:
 
     # Convert trakt_may_invalid to boolean
     df["trakt_may_invalid"] = df["trakt_may_invalid"].replace(
-        {"True": True, "False": False, "1": True, "0": False, 1: True, 0: False, "": None}
+        {
+            "True": True,
+            "False": False,
+            "1": True,
+            "0": False,
+            1: True,
+            0: False,
+            "": None,
+        }
     )
 
     # Build indices for fast lookup by platform ID
