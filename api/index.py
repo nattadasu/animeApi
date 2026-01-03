@@ -3,6 +3,7 @@
 # pylint: disable=import-error
 
 import json
+import re
 from datetime import datetime as dtime
 from datetime import timezone as tz
 from time import time
@@ -201,130 +202,6 @@ def robots():
         return Response(file_.read(), mimetype="text/plain", status=200)
 
 
-@app.route("/trakt/<media_type>/<media_id>", methods=["GET"])
-@app.route("/trakt/<media_type>/<media_id>/seasons/<season_id>", methods=["GET"])
-@app.route("/trakt/<media_type>/<media_id>/season/<season_id>", methods=["GET"])
-def trakt_exclusive_route(
-    media_type: str, media_id: int, season_id: Union[str, None] = None
-):
-    """
-    Trakt exclusive route
-
-    :param media_type: Media type, must be `movie` or `show`
-    :type media_type: str
-    :param media_id: Media ID
-    :type media_id: int
-    :param season_id: Season ID, defaults to None
-    :type season_id: Union[str, None], optional
-    :return: Response
-    :rtype: Response
-    """
-    if season_id == "0" and media_type in ["shows", "show"]:
-        return jsonify(
-            {
-                "error": "Invalid season ID",
-                "code": 400,
-                "message": "Season ID cannot be 0",
-            }
-        ), 400
-    try:
-        if not media_type.endswith("s"):
-            media_type_ = f"{media_type}s"
-        else:
-            media_type_ = media_type
-        if season_id is None:
-            return platform_id_content("trakt", f"{media_type_}/{media_id}")
-        return platform_id_content(
-            "trakt", f"{media_type_}/{media_id}/seasons/{season_id}"
-        )
-    except KeyError:
-        return jsonify(
-            {
-                "error": "Not found",
-                "code": 404,
-                "message": f"Media type {media_type} with ID {media_id} "
-                + (f"and season ID {season_id} " if season_id is not None else "")
-                + "not found",
-            }
-        ), 404
-
-
-@app.route("/themoviedb/<media_type>/<media_id>", methods=["GET"])
-@app.route("/themoviedb/<media_type>/<media_id>/season/<season_id>", methods=["GET"])
-def tmdb_exclusive_route(
-    media_type: str, media_id: int, season_id: Union[str, None] = None
-):
-    """
-    The Movie Database exclusive route
-
-    Supports both movies and TV shows. Season numbers are from Trakt's verified data.
-
-    :param media_type: Media type, must be `movie` or `tv`
-    :type media_type: str
-    :param media_id: Media ID
-    :type media_id: int
-    :param season_id: Season ID (Trakt season number), defaults to None
-    :type season_id: Union[str, None], optional
-    :return: Response
-    :rtype: Response
-    """
-    try:
-        if season_id is None:
-            return platform_id_content("themoviedb", f"{media_type}/{media_id}")
-        return platform_id_content(
-            "themoviedb", f"{media_type}/{media_id}/season/{season_id}"
-        )
-    except KeyError:
-        return jsonify(
-            {
-                "error": "Not found",
-                "code": 404,
-                "message": f"Media type {media_type} with ID {media_id} "
-                + (f"and season {season_id} " if season_id is not None else "")
-                + "not found",
-            }
-        ), 404
-
-
-@app.route("/thetvdb/series/<series_id>", methods=["GET"])
-@app.route("/thetvdb/series/<series_id>/seasons/<season_id>", methods=["GET"])
-def tvdb_exclusive_route(series_id: int, season_id: Union[str, None] = None):
-    """
-    TheTVDB exclusive route
-
-    Season numbers are from Trakt's verified data, not TVDB's native season IDs.
-
-    :param series_id: Series ID
-    :type series_id: int
-    :param season_id: Season number (Trakt season number), defaults to None
-    :type season_id: Union[str, None], optional
-    :return: Response
-    :rtype: Response
-    """
-    if season_id == "0":
-        return jsonify(
-            {
-                "error": "Invalid season number",
-                "code": 400,
-                "message": "Season number cannot be 0",
-            }
-        ), 400
-    try:
-        if season_id is None:
-            return platform_id_content("thetvdb", f"series/{series_id}")
-        return platform_id_content("thetvdb", f"series/{series_id}/seasons/{season_id}")
-    except KeyError:
-        return jsonify(
-            {
-                "error": "Not found",
-                "code": 404,
-                "message": f"Series {series_id} "
-                + (f"season {season_id} " if season_id is not None else "")
-                + "not found",
-            }
-        ), 404
-
-
 @app.route("/<platform>", methods=["GET"])
 @app.route("/<platform>%28%29", methods=["GET"])
 def platform_array(platform: str = "animeapi"):
@@ -410,7 +287,7 @@ def redirect_to_github(goto: str) -> wzResponse:
     return redirect(github_url)
 
 
-@app.route("/<platform>/<platform_id>", methods=["GET"])
+@app.route("/<platform>/<path:platform_id>", methods=["GET"])
 def platform_lookup(
     platform: str, platform_id: Union[int, str]
 ) -> Tuple[Response, int]:
@@ -426,6 +303,18 @@ def platform_lookup(
     """
     platform = platform.lower()
     platform = resolve_platform(platform=platform)
+    
+    # Validate season 0 for shows/series
+    platform_id_str = str(platform_id)
+    if re.search(r'/seasons?/0\b', platform_id_str):
+        return jsonify(
+            {
+                "error": "Invalid season",
+                "code": 400,
+                "message": "Season 0 is not allowed",
+            }
+        ), 400
+    
     try:
         data = platform_id_content(platform, platform_id)
         return jsonify(data), 200
