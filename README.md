@@ -217,7 +217,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 02 January 2026 05:42:33 UTC
+Last updated: 03 January 2026 05:16:45 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -229,10 +229,10 @@ Last updated: 02 January 2026 05:42:33 UTC
 | Anime-Planet       |     26470 |
 | aniSearch          |     20461 |
 | Annict             |     12488 |
-| IMDb               |      5733 |
+| IMDb               |      5788 |
 | Kaize              |     24733 |
 | Kitsu              |     21687 |
-| Letterboxd         |      1295 |
+| Letterboxd         |      1313 |
 | LiveChart          |     12030 |
 | MyAnimeList        |     30008 |
 | Nautiljon          |      9026 |
@@ -242,9 +242,9 @@ Last updated: 02 January 2026 05:42:33 UTC
 | Shoboi/Syobocal    |      5906 |
 | Silver Yasha       |      5105 |
 | SIMKL              |     14193 |
-| The Movie Database |      5343 |
-| The TVDB           |      3699 |
-| Trakt              |      5030 |
+| The Movie Database |      5422 |
+| The TVDB           |      3762 |
+| Trakt              |      5111 |
 |                    |           |
 | **Total**          | **39499** |
 <!-- /counters -->
@@ -318,8 +318,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1767332553,
-    "iso": "2026-01-02T05:42:33.528893+00:00"
+    "timestamp": 1767417405,
+    "iso": "2026-01-03T05:16:45.647859+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -345,10 +345,10 @@ GET /status
     "animeplanet": 26470,
     "anisearch": 20461,
     "annict": 12488,
-    "imdb": 5733,
+    "imdb": 5788,
     "kaize": 24733,
     "kitsu": 21687,
-    "letterboxd": 1295,
+    "letterboxd": 1313,
     "livechart": 12030,
     "myanimelist": 30008,
     "nautiljon": 9026,
@@ -358,9 +358,9 @@ GET /status
     "shoboi": 5906,
     "silveryasha": 5105,
     "simkl": 14193,
-    "themoviedb": 5343,
-    "thetvdb": 3699,
-    "trakt": 5030,
+    "themoviedb": 5422,
+    "thetvdb": 3762,
+    "trakt": 5111,
     "total": 39499
   },
   "endpoints": {
@@ -441,7 +441,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 01/02/2026 05:42:33 UTC
+Updated on 01/03/2026 05:16:45 UTC
 ```
 <!-- /updated-txt -->
 
