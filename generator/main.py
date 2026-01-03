@@ -21,9 +21,12 @@ from converter import (
 from dumper import update_attribution, update_markdown
 from fetcher import (
     get_anime_offline_database,
+    get_anime_offline_database_2025_52,
     get_anitrakt,
     get_arm,
     get_fribb_animelists,
+    get_notify_rensetsu,
+    merge_notify_with_aod,
     simplify_aod_data,
     simplify_silveryasha_data,
 )
@@ -41,6 +44,19 @@ def main() -> None:
         pprint.print(Platform.SYSTEM, Status.READY, "Generator ready to use")
         aod = get_anime_offline_database()
         aod_arr = simplify_aod_data(aod)
+        
+        # Get old AOD snapshot and notify data for merging
+        pprint.print(
+            Platform.SYSTEM,
+            Status.INFO,
+            "Fetching 2025-52 snapshot and notify.moe data for merging",
+        )
+        aod_2025_52 = get_anime_offline_database_2025_52()
+        notify_rensetsu = get_notify_rensetsu()
+        
+        # Merge notify.moe data
+        aod_arr = merge_notify_with_aod(aod_arr, aod_2025_52, notify_rensetsu)
+        
         sy_ = simplify_silveryasha_data()
         arm = get_arm()
         anitrakt = get_anitrakt()
