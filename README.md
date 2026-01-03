@@ -216,7 +216,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 03 January 2026 05:16:45 UTC
+Last updated: 03 January 2026 10:12:23 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -234,8 +234,8 @@ Last updated: 03 January 2026 05:16:45 UTC
 | Letterboxd         |      1313 |
 | LiveChart          |     12030 |
 | MyAnimeList        |     30008 |
-| Nautiljon          |      9026 |
-| Notify.moe         |         0 |
+| Nautiljon          |      9025 |
+| Notify.moe         |     16989 |
 | Otak Otaku         |      3066 |
 | Shikimori          |     30008 |
 | Shoboi/Syobocal    |      5906 |
@@ -317,8 +317,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1767417405,
-    "iso": "2026-01-03T05:16:45.647859+00:00"
+    "timestamp": 1767435143,
+    "iso": "2026-01-03T10:12:23.929543+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -350,8 +350,8 @@ GET /status
     "letterboxd": 1313,
     "livechart": 12030,
     "myanimelist": 30008,
-    "nautiljon": 9026,
-    "notify": 0,
+    "nautiljon": 9025,
+    "notify": 16989,
     "otakotaku": 3066,
     "shikimori": 30008,
     "shoboi": 5906,
@@ -440,7 +440,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 01/03/2026 05:16:45 UTC
+Updated on 01/03/2026 10:12:23 UTC
 ```
 <!-- /updated-txt -->
 
@@ -563,7 +563,7 @@ GET https://animeapi.my.id/myanimelist/1
   "myanimelist": 1,
   "nautiljon": null,
   "nautiljon_id": null,
-  "notify": null,
+  "notify": "Tk3ccKimg",
   "otakotaku": 1149,
   "shikimori": 1,
   "shoboi": 538,
@@ -575,7 +575,7 @@ GET https://animeapi.my.id/myanimelist/1
   "thetvdb": 76885,
   "thetvdb_season_id": 11636,
   "trakt": 30857,
-  "trakt_may_invalid": 0,
+  "trakt_may_invalid": false,
   "trakt_season": 1,
   "trakt_season_id": 43328,
   "trakt_slug": "cowboy-bebop",
@@ -756,7 +756,7 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
   "myanimelist": 49784,
   "nautiljon": null,
   "nautiljon_id": null,
-  "notify": null,
+  "notify": "Okl9YtInR",
   "otakotaku": 2305,
   "shikimori": 49784,
   "shoboi": 6489,
@@ -768,7 +768,7 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
   "thetvdb": 369144,
   "thetvdb_season_id": 1955315,
   "trakt": 152334,
-  "trakt_may_invalid": 0,
+  "trakt_may_invalid": false,
   "trakt_season": 3,
   "trakt_season_id": 303584,
   "trakt_slug": "welcome-to-demon-school-iruma-kun",
