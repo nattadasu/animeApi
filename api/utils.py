@@ -42,7 +42,7 @@ PLATFORM_SYNONYMS = {
     "silveryasha": ["sy", "dbti", "db.silveryasha.id", "db.silveryasha.web.id"],
     "simkl": ["sm", "smk", "simkl.com", "animecountdown", "animecountdown.com"],
     "themoviedb": ["tm", "tmdb", "tmdb.org", "themoviedb.org"],
-    "thetvdb": ["tv", "thetvdb.com", "thetvdb", "tvtime", "tt", "tvtime.com"],
+    "thetvdb": ["tv", "tvdb", "thetvdb.com", "thetvdb", "tvtime", "tt", "tvtime.com"],
     "trakt": ["tr", "trk", "trakt.tv"],
 }
 

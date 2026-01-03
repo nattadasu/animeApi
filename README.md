@@ -206,7 +206,7 @@ alias cheatsheet as well.
 |      `silveryasha` | `sy` | `dbti`, `db.silveryasha.id`, `db.silveryasha.web.id`                                            |
 |            `simkl` | `sm` | `smk`, `simkl.com`, `animecountdown`, `animecountdown.com`                                      |
 |       `themoviedb` | `tm` | `tmdb`, `themoviedb.org`                                                                        |
-|          `thetvdb` | `tv` | `thetvdb.com`, `thetvdb`, `tvtime`, `tt`, `tvtime.com`                                          |
+|          `thetvdb` | `tv` | `tvdb`, `thetvdb.com`, `thetvdb`, `tvtime`, `tt`, `tvtime.com`                                  |
 |            `trakt` | `tr` | `trk`, `trakt.tv`                                                                               |
 
 <!-- markdownlint-enable MD034 MD013 -->
