@@ -160,6 +160,5 @@ cython_debug/
 #.idea/
 
 .vercel
-**/aod.json
 **/aod_2025_52.json
 **/db.notify.rensetsu-mirai.json
