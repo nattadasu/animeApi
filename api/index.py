@@ -56,16 +56,21 @@ try:
 except FileNotFoundError:
     # Fallback to git if .server_updated doesn't exist (local development)
     import subprocess
+
     try:
         result = subprocess.run(
             ["git", "log", "-1", "--format=%ct", "--", "api/"],
             capture_output=True,
             text=True,
             check=True,
-            timeout=5
+            timeout=5,
         )
         API_SERVER_UPDATED = result.stdout.strip()
-    except (subprocess.CalledProcessError, subprocess.TimeoutExpired, FileNotFoundError):
+    except (
+        subprocess.CalledProcessError,
+        subprocess.TimeoutExpired,
+        FileNotFoundError,
+    ):
         # If git is not available or fails, use current timestamp
         API_SERVER_UPDATED = str(int(time()))
 

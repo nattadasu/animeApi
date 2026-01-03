@@ -63,9 +63,9 @@ def row_to_entry(row: pd.Series) -> AnimeEntry:
         """Safely convert value, returning None for NaN/empty"""
         if pd.isna(val) or val == "":
             return None
-        if target_type == bool:
+        if target_type is bool:
             return bool(val)
-        if target_type == int:
+        if target_type is int:
             try:
                 return int(val)
             except (ValueError, TypeError):

@@ -44,7 +44,7 @@ def main() -> None:
         pprint.print(Platform.SYSTEM, Status.READY, "Generator ready to use")
         aod = get_anime_offline_database()
         aod_arr = simplify_aod_data(aod)
-        
+
         # Get old AOD snapshot and notify data for merging
         pprint.print(
             Platform.SYSTEM,
@@ -53,10 +53,10 @@ def main() -> None:
         )
         aod_2025_52 = get_anime_offline_database_2025_52()
         notify_rensetsu = get_notify_rensetsu()
-        
+
         # Merge notify.moe data
         aod_arr = merge_notify_with_aod(aod_arr, aod_2025_52, notify_rensetsu)
-        
+
         sy_ = simplify_silveryasha_data()
         arm = get_arm()
         anitrakt = get_anitrakt()

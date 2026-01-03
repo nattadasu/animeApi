@@ -124,7 +124,9 @@ class Downloader:
                 )
                 dctx = zstd.ZstdDecompressor()
                 # Use stream_reader for files without determinable content size
-                decompressed = dctx.decompress(response._content, max_output_size=2**31-1)
+                decompressed = dctx.decompress(
+                    response._content, max_output_size=2**31 - 1
+                )
                 response._content = decompressed
                 pprint.print(
                     self.platform,
@@ -153,7 +155,7 @@ class Downloader:
             else:
                 content = response.json() if self.file_type == "json" else response.text
                 file_extension = self.file_type
-            
+
             if file_extension == "json":
                 with open(
                     f"database/raw/{self.file_name}.json", "w", encoding="utf-8"

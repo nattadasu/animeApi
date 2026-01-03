@@ -104,7 +104,7 @@ def lookup_by_platform_id(
     # Handle special cases for composite IDs
     if platform in ["trakt", "themoviedb", "thetvdb"]:
         return lookup_composite_platform(platform, platform_id, df)
-    
+
     # Handle letterboxd with priority: letterboxd_slug -> letterboxd_lid -> letterboxd_uid
     if platform == "letterboxd":
         return lookup_letterboxd(platform_id, df)
@@ -150,14 +150,14 @@ def lookup_letterboxd(
     :return: AnimeEntry or None
     """
     lookup_id = str(platform_id)
-    
+
     # Priority order: letterboxd_slug -> letterboxd_lid -> letterboxd_uid
     for field in ["letterboxd_slug", "letterboxd_lid", "letterboxd_uid"]:
         if field in _tsv_indices and lookup_id in _tsv_indices[field]:
             row_idx = _tsv_indices[field][lookup_id]
             row = df.iloc[row_idx]
             return row_to_entry(row)
-    
+
     return None
 
 
@@ -198,11 +198,16 @@ def lookup_composite_platform(
                     return row_to_entry(matches.iloc[0])
             except ValueError:
                 # Not a numeric ID, try slug lookup
-                if "trakt_slug" in _tsv_indices and media_id_or_slug in _tsv_indices["trakt_slug"]:
+                if (
+                    "trakt_slug" in _tsv_indices
+                    and media_id_or_slug in _tsv_indices["trakt_slug"]
+                ):
                     row_idx = _tsv_indices["trakt_slug"][media_id_or_slug]
                     row = df.iloc[row_idx]
                     # Verify media_type and season match
-                    if row.get("trakt_type") == media_type and (season_num is None or row.get("trakt_season") == season_num):
+                    if row.get("trakt_type") == media_type and (
+                        season_num is None or row.get("trakt_season") == season_num
+                    ):
                         return row_to_entry(row)
 
     elif platform == "themoviedb":

@@ -293,13 +293,13 @@ def merge_notify_with_aod(
 ) -> list[dict[str, Any]]:
     """
     Merge notify.moe data with latest AOD data.
-    
+
     Process:
     1. Parse 2025-52 AOD snapshot to extract notify.moe IDs
     2. Create mapping of (other IDs) -> notify ID from 2025-52
     3. Apply notify IDs to latest AOD entries based on matching IDs
     4. Use notify.moe Rensetsu data to fill any remaining gaps
-    
+
     :param aod_latest: Latest AOD data (simplified)
     :type aod_latest: list[dict[str, Any]]
     :param aod_2025_52: AOD 2025-52 snapshot (raw)
@@ -314,20 +314,20 @@ def merge_notify_with_aod(
         Status.NOTICE,
         "Starting notify.moe merge process",
     )
-    
+
     # Step 1: Extract notify IDs from 2025-52 snapshot
     pprint.print(
         Platform.SYSTEM,
         Status.NOTICE,
         "Extracting notify.moe IDs from 2025-52 snapshot",
     )
-    
+
     old_aod_simplified = simplify_aod_data(aod_2025_52)
-    
+
     # Create lookup maps for 2025-52 data
     # Map structure: {(id_type, id_value): notify_id}
     notify_lookup_from_old: dict[tuple[str, Any], str] = {}
-    
+
     with alive_bar(
         len(old_aod_simplified),
         title="Building notify.moe lookup from 2025-52",
@@ -352,22 +352,22 @@ def merge_notify_with_aod(
                     if id_value:
                         notify_lookup_from_old[(id_type, id_value)] = notify_id
             bar()
-    
+
     pprint.print(
         Platform.SYSTEM,
         Status.PASS,
         f"Built lookup with {len(notify_lookup_from_old)} ID mappings",
     )
-    
+
     # Step 2: Create lookup from notify Rensetsu data
     pprint.print(
         Platform.SYSTEM,
         Status.NOTICE,
         "Building notify.moe lookup from Rensetsu data",
     )
-    
+
     notify_lookup_from_rensetsu: dict[tuple[str, Any], str] = {}
-    
+
     with alive_bar(
         len(notify_data),
         title="Processing Rensetsu notify.moe data",
@@ -376,37 +376,43 @@ def merge_notify_with_aod(
         for entry in notify_data:
             mappings = entry.get("mappings", {})
             notify_id = mappings.get("notify")
-            
+
             if notify_id:
                 # Extract IDs from mappings
                 if "anidb" in mappings:
-                    notify_lookup_from_rensetsu[("anidb", mappings["anidb"])] = notify_id
+                    notify_lookup_from_rensetsu[("anidb", mappings["anidb"])] = (
+                        notify_id
+                    )
                 if "anilist" in mappings:
-                    notify_lookup_from_rensetsu[("anilist", mappings["anilist"])] = notify_id
+                    notify_lookup_from_rensetsu[("anilist", mappings["anilist"])] = (
+                        notify_id
+                    )
                 if "kitsu" in mappings and isinstance(mappings["kitsu"], dict):
                     kitsu_id = mappings["kitsu"].get("id")
                     if kitsu_id:
                         notify_lookup_from_rensetsu[("kitsu", kitsu_id)] = notify_id
                 if "myanimelist" in mappings:
-                    notify_lookup_from_rensetsu[("myanimelist", mappings["myanimelist"])] = notify_id
+                    notify_lookup_from_rensetsu[
+                        ("myanimelist", mappings["myanimelist"])
+                    ] = notify_id
             bar()
-    
+
     pprint.print(
         Platform.SYSTEM,
         Status.PASS,
         f"Built Rensetsu lookup with {len(notify_lookup_from_rensetsu)} ID mappings",
     )
-    
+
     # Step 3: Apply notify IDs to latest AOD entries
     pprint.print(
         Platform.SYSTEM,
         Status.NOTICE,
         "Merging notify.moe IDs into latest AOD data",
     )
-    
+
     matches_from_old = 0
     matches_from_rensetsu = 0
-    
+
     with alive_bar(
         len(aod_latest),
         title="Applying notify.moe IDs to latest AOD",
@@ -415,7 +421,7 @@ def merge_notify_with_aod(
         for entry in aod_latest:
             # Try to find notify ID from 2025-52 snapshot first
             notify_id = None
-            
+
             for id_type in [
                 "anidb",
                 "anilist",
@@ -434,7 +440,7 @@ def merge_notify_with_aod(
                         notify_id = notify_lookup_from_old[lookup_key]
                         matches_from_old += 1
                         break
-            
+
             # If not found in old snapshot, try Rensetsu data
             if not notify_id:
                 for id_type in ["anidb", "anilist", "kitsu", "myanimelist"]:
@@ -445,17 +451,17 @@ def merge_notify_with_aod(
                             notify_id = notify_lookup_from_rensetsu[lookup_key]
                             matches_from_rensetsu += 1
                             break
-            
+
             # Add notify ID if found
             if notify_id:
                 entry["notify"] = notify_id
-            
+
             bar()
-    
+
     pprint.print(
         Platform.SYSTEM,
         Status.PASS,
         f"Merge complete: {matches_from_old} from 2025-52, {matches_from_rensetsu} from Rensetsu",
     )
-    
+
     return aod_latest
