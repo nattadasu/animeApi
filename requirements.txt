@@ -10,3 +10,4 @@ python-dotenv
 python-Levenshtein
 python-slugify
 requests
+zstandard

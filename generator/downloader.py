@@ -4,6 +4,7 @@ import json
 from typing import Any, Literal, Union
 
 import cloudscraper  # type: ignore
+import zstandard as zstd
 from alive_progress import alive_bar
 from prettyprint import Platform, PrettyPrint, Status
 from requests import Response
@@ -18,7 +19,7 @@ class Downloader:
         self,
         url: str,
         file_name: str,
-        file_type: Literal["json", "txt"] = "json",
+        file_type: Literal["json", "txt", "zst"] = "json",
         platform: Platform = Platform.SYSTEM,
     ) -> None:
         """
@@ -29,7 +30,7 @@ class Downloader:
         :param file_name: The name of the file
         :type file_name: str
         :param file_type: The type of the file, defaults to "json"
-        :type file_type: Literal["json", "txt"], optional
+        :type file_type: Literal["json", "txt", "zst"], optional
         :param platform: The platform to print the message, defaults to Platform.SYSTEM
         :type platform: Platform, optional
         """
@@ -114,6 +115,22 @@ class Downloader:
                 # No content-length header, download without progress
                 response._content = response.content
 
+            # If zst file, decompress it
+            if self.file_type == "zst":
+                pprint.print(
+                    self.platform,
+                    Status.NOTICE,
+                    f"Decompressing {self.file_name}.zst",
+                )
+                dctx = zstd.ZstdDecompressor()
+                decompressed = dctx.decompress(response._content)
+                response._content = decompressed
+                pprint.print(
+                    self.platform,
+                    Status.PASS,
+                    f"Successfully decompressed {self.file_name}.zst",
+                )
+
             return response
         except ConnectionError as err:
             pprint.print(self.platform, Status.ERR, f"Error: {err}")
@@ -128,8 +145,15 @@ class Downloader:
         """
         response = self._get()
         if response:
-            content = response.json() if self.file_type == "json" else response.text
-            if self.file_type == "json":
+            # For zst files, treat decompressed content as JSON
+            if self.file_type == "zst":
+                content = json.loads(response.content.decode("utf-8"))
+                file_extension = "json"
+            else:
+                content = response.json() if self.file_type == "json" else response.text
+                file_extension = self.file_type
+            
+            if file_extension == "json":
                 with open(
                     f"database/raw/{self.file_name}.json", "w", encoding="utf-8"
                 ) as file:

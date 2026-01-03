@@ -18,9 +18,9 @@ def get_anime_offline_database() -> dict[str, Any]:
     :rtype: dict[str, Any]
     """
     ddump = Downloader(
-        url="https://github.com/manami-project/anime-offline-database/releases/download/latest/anime-offline-database-minified.json",
+        url="https://github.com/manami-project/anime-offline-database/releases/download/latest/anime-offline-database-minified.json.zst",
         file_name="aod",
-        file_type="json",
+        file_type="zst",
         platform=Platform.ANIMEOFFLINEDATABASE,
     )
     content: dict[str, Any] = ddump.dumper()
