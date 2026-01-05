@@ -216,36 +216,36 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 04 January 2026 05:20:58 UTC
+Last updated: 05 January 2026 05:26:08 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
-| aniDB              |     14203 |
-| AniList            |     22000 |
-| Anime News Network |     12114 |
-| Anime-Planet       |     26470 |
-| aniSearch          |     20461 |
+| aniDB              |     14211 |
+| AniList            |     22016 |
+| Anime News Network |     12117 |
+| Anime-Planet       |     26503 |
+| aniSearch          |     20471 |
 | Annict             |     12488 |
 | IMDb               |      5788 |
 | Kaize              |     24733 |
-| Kitsu              |     21687 |
+| Kitsu              |     21714 |
 | Letterboxd         |      1313 |
-| LiveChart          |     12030 |
-| MyAnimeList        |     30008 |
-| Nautiljon          |      9025 |
+| LiveChart          |     12037 |
+| MyAnimeList        |     30031 |
+| Nautiljon          |      9028 |
 | Notify.moe         |     16989 |
-| Otak Otaku         |      3067 |
-| Shikimori          |     30008 |
+| Otak Otaku         |      3070 |
+| Shikimori          |     30031 |
 | Shoboi/Syobocal    |      5906 |
 | Silver Yasha       |      5105 |
-| SIMKL              |     14193 |
+| SIMKL              |     14199 |
 | The Movie Database |      5422 |
 | The TVDB           |      3762 |
 | Trakt              |      5111 |
 |                    |           |
-| **Total**          | **39499** |
+| **Total**          | **39551** |
 <!-- /counters -->
 
 ## Usage
@@ -317,8 +317,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1767504058,
-    "iso": "2026-01-04T05:20:58.767951+00:00"
+    "timestamp": 1767590768,
+    "iso": "2026-01-05T05:26:08.868215+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -338,29 +338,29 @@ GET /status
   "license": "AGPL-3.0-only AND MIT AND CC0-1.0+",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 14203,
-    "anilist": 22000,
-    "animenewsnetwork": 12114,
-    "animeplanet": 26470,
-    "anisearch": 20461,
+    "anidb": 14211,
+    "anilist": 22016,
+    "animenewsnetwork": 12117,
+    "animeplanet": 26503,
+    "anisearch": 20471,
     "annict": 12488,
     "imdb": 5788,
     "kaize": 24733,
-    "kitsu": 21687,
+    "kitsu": 21714,
     "letterboxd": 1313,
-    "livechart": 12030,
-    "myanimelist": 30008,
-    "nautiljon": 9025,
+    "livechart": 12037,
+    "myanimelist": 30031,
+    "nautiljon": 9028,
     "notify": 16989,
-    "otakotaku": 3067,
-    "shikimori": 30008,
+    "otakotaku": 3070,
+    "shikimori": 30031,
     "shoboi": 5906,
     "silveryasha": 5105,
-    "simkl": 14193,
+    "simkl": 14199,
     "themoviedb": 5422,
     "thetvdb": 3762,
     "trakt": 5111,
-    "total": 39499
+    "total": 39551
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format. Platform aliases supported for direct lookup for platform specific endpoints (see ?P<alias> in regex).",
@@ -440,7 +440,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 01/04/2026 05:20:58 UTC
+Updated on 01/05/2026 05:26:08 UTC
 ```
 <!-- /updated-txt -->
 
@@ -741,7 +741,7 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
   "title": "Mairimashita! Iruma-kun 3rd Season",
   "anidb": 16627,
   "anilist": 139092,
-  "animenewsnetwork": null,
+  "animenewsnetwork": 24018,
   "animeplanet": "welcome-to-demon-school-iruma-kun-3",
   "anisearch": 16582,
   "annict": 8883,
