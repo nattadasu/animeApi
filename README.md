@@ -479,15 +479,17 @@ or
 GET /aa.tsv
 ```
 
-### Get All ID in Object/Dictionary format of each provider
+### ~~Get All ID in Object/Dictionary format of each provider~~
 
 > [!CAUTION]
 >
-> This endpoint is deprecated since October 22, 2025. Dataset might not be
-> updated regularly. Please use the TSV/master array endpoint and convert it to
+> **This endpoint has been removed as of January 19, 2026.**
+>
+> This endpoint was deprecated since October 22, 2025 and now returns
+> **HTTP 410 Gone**. Please use the TSV/master array endpoint and convert it to
 > your desired format locally.
 
-HTTP Status Code: `302` (redirect to GitHub raw file URL)\
+HTTP Status Code: `410` (Gone)\
 MIME Type: `application/json`
 
 ```http
@@ -497,15 +499,31 @@ GET /:platform.json
 `:platform` can be one of the following listed in
 [Supported Platforms and Aliases](#supported-platforms-and-aliases).
 
-### Get All ID in Array/List format of each provider
+**Response:**
+
+```json
+{
+  "error": "Endpoint deprecated",
+  "code": 410,
+  "message": "Platform-specific object dumps have been deprecated since October 22, 2025. Please use /animeapi.json or /animeapi.tsv and filter locally.",
+  "alternatives": {
+    "master_json": "/animeapi.json",
+    "master_tsv": "/animeapi.tsv"
+  }
+}
+```
+
+### ~~Get All ID in Array/List format of each provider~~
 
 > [!CAUTION]
 >
-> This endpoint is deprecated since October 22, 2025. Dataset might not be
-> updated regularly. Please use the TSV/master array endpoint and convert it to
+> **This endpoint has been removed as of January 19, 2026.**
+>
+> This endpoint was deprecated since October 22, 2025 and now returns
+> **HTTP 410 Gone**. Please use the TSV/master array endpoint and convert it to
 > your desired format locally.
 
-HTTP Status Code: `302` (redirect to GitHub raw file URL)\
+HTTP Status Code: `410` (Gone)\
 MIME Type: `application/json`
 
 ```http
@@ -519,6 +537,20 @@ GET /:platform().json
 >
 > The `()` in the endpoint is not a typo, it's part of the endpoint.
 > If you can't access the endpoint, try to encode the `()` to `%28%29`.
+
+**Response:**
+
+```json
+{
+  "error": "Endpoint deprecated",
+  "code": 410,
+  "message": "Platform-specific array dumps have been deprecated since October 22, 2025. Please use /animeapi.json or /animeapi.tsv and filter locally.",
+  "alternatives": {
+    "master_json": "/animeapi.json",
+    "master_tsv": "/animeapi.tsv"
+  }
+}
+```
 
 ### Get anime relation mapping data
 
@@ -649,8 +681,21 @@ For The Movie DB (TMDB), the ID is in the format of `:provider/:mediatype/:media
 where `:mediatype` is either `movie` or `tv` and `:mediaid` is the ID of the title
 in the provider instead of typical `:provider/:mediaid` format. For TV shows, you
 can also specify a season by using the format of
-`:provider/:mediatype/:mediaid/season/:seasonid` where `:season_id` can be season
+`:provider/:mediatype/:mediaid/seasons/:seasonid` where `:season_id` can be season
 index defined by Trakt's season number, or TMDB internal season ID.
+
+**Supported formats:**
+
+```http
+GET https://animeapi.my.id/themoviedb/tv/30991                # TV show
+GET https://animeapi.my.id/themoviedb/movie/60669             # Movie
+GET https://animeapi.my.id/themoviedb/tv/30991/seasons/1      # TV show with season
+```
+
+> [!NOTE]
+>
+> The media type (`movie` or `tv`) is required in the URL path and must match
+> the stored `themoviedb_type` value in the database.
 
 ##### The TVDB
 
