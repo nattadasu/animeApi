@@ -1,0 +1,382 @@
+openapi: 3.0.0
+info:
+  title: AnimeAPI
+  description: |
+    A RESTful API that provides anime relation mapping across multiple anime databases.
+    It focuses on providing relations between anime titles from different databases.
+  version: "3.0.0"
+  license:
+    name: AGPL-3.0-only
+    url: "https://github.com/nattadasu/animeApi/blob/v3/LICENSE"
+servers:
+  - url: https://animeapi.my.id
+    description: Production server
+  - url: http://localhost:3000
+    description: Local development server
+paths:
+  /:
+    get:
+      summary: Redirect to repository
+      description: Redirects to the official GitHub repository for the project.
+      responses:
+        "302":
+          description: Redirect to GitHub repository.
+          headers:
+            Location:
+              schema:
+                type: string
+                example: https://github.com/nattadasu/animeApi
+  /status:
+    get:
+      summary: Get API status and statistics
+      description: Returns the current status of the API, including database update times, contributors, data sources, and statistics on indexed entries.
+      responses:
+        "200":
+          description: A JSON object with API status and statistics.
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  mainrepo: "https://github.com/nattadasu/animeApi/tree/v3"
+                  updated:
+                    timestamp: 1768800273
+                    iso: "2026-01-19T05:24:33.280336+00:00"
+                  # ... (rest of status.json)
+  /heartbeat:
+    get:
+      summary: Get latency report
+      description: Provides a real-time latency report and checks the health of the API.
+      responses:
+        "200":
+          description: A JSON object with latency information.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "OK"
+                  code:
+                    type: integer
+                    example: 200
+                  response_time:
+                    type: string
+                    example: "0.000s"
+                  request_time:
+                    type: string
+                    example: "0.000s"
+                  request_epoch:
+                    type: number
+                    example: 1626682566.0
+  /updated:
+    get:
+      summary: Get last update timestamp
+      description: Returns the date and time the database was last updated.
+      responses:
+        "200":
+          description: A plain text response with the last update timestamp.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "Updated on 01/19/2026 05:24:33 UTC"
+  /animeapi.json:
+    get:
+      summary: Get all items (master array)
+      description: Redirects to the master JSON file containing all anime mappings.
+      responses:
+        "302":
+          description: Redirect to the master JSON file on GitHub.
+          headers:
+            Location:
+              schema:
+                type: string
+                example: "https://raw.githubusercontent.com/nattadasu/animeApi/v3/database/animeapi.json"
+  /animeapi.tsv:
+    get:
+      summary: Fetch all items as TSV
+      description: Returns all anime mappings in a tab-separated values (TSV) file.
+      responses:
+        "200":
+          description: A TSV file with all anime data.
+          content:
+            text/tab-separated-values:
+              schema:
+                type: string
+  /schema.json:
+    get:
+      summary: Get JSON schema
+      description: Returns the JSON schema for the anime data objects.
+      responses:
+        "200":
+          description: The JSON schema.
+          content:
+            application/json:
+              schema:
+                type: object # The actual JSON schema definition
+  /{platform}/{id}:
+    get:
+      summary: Get anime relation mapping data
+      description: |
+        Fetches the relation mapping data for a specific anime given a platform and its ID.
+        Special path formats are required for `themoviedb`, `thetvdb`, and `trakt`.
+      parameters:
+        - name: platform
+          in: path
+          required: true
+          description: The platform to query (e.g., `myanimelist`, `anilist`). See the full list of supported platforms in the main README.
+          schema:
+            type: string
+            example: myanimelist
+        - name: id
+          in: path
+          required: true
+          description: |
+            The ID of the anime on the specified platform. This can be a simple ID or a more complex path for certain providers.
+            - **themoviedb**: `movie/{id}` or `tv/{id}` or `tv/{id}/seasons/{season_id}`
+            - **thetvdb**: `series/{id}` or `series/{id}/seasons/{season_id}`
+            - **trakt**: `shows/{id}` or `movies/{id}` or `shows/{id}/seasons/{season_id}`
+          schema:
+            type: string
+            example: "1"
+      responses:
+        "200":
+          description: Successful response with the anime mapping data.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Anime"
+        "400":
+          description: Invalid request (e.g., season 0 requested).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: The requested anime or platform was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /redirect:
+    get:
+      summary: Redirect to a provider's page
+      description: Redirects a user from a source platform to a target platform's page for a specific anime.
+      parameters:
+        - name: from
+          in: query
+          required: true
+          description: The source platform (can also use `platform` or `f`).
+          schema:
+            type: string
+            example: myanimelist
+        - name: id
+          in: query
+          required: true
+          description: The ID of the anime on the source platform (can also use `mediaid` or `i`).
+          schema:
+            type: string
+            example: "1"
+        - name: to
+          in: query
+          description: The target platform to redirect to (can also use `target` or `t`). Defaults to the source platform.
+          schema:
+            type: string
+            example: anilist
+        - name: israw
+          in: query
+          description: If present, returns the raw URL as text instead of a 302 redirect (can also use `raw` or `r`).
+          schema:
+            type: boolean
+      responses:
+        "302":
+          description: Successfully redirected to the target URL.
+          headers:
+            Location:
+              schema:
+                type: string
+                example: "https://anilist.co/anime/1"
+        "200":
+          description: Successfully returned the raw URL.
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "https://anilist.co/anime/1"
+        "400":
+          description: Invalid request parameters.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: The requested mapping was not found.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  schemas:
+    Anime:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Title of the anime in English or Romaji.
+        anidb:
+          type: integer
+          nullable: true
+        anilist:
+          type: integer
+          nullable: true
+        animenewsnetwork:
+          type: integer
+          nullable: true
+        animeplanet:
+          type: string
+          nullable: true
+        anisearch:
+          type: integer
+          nullable: true
+        annict:
+          type: integer
+          nullable: true
+        imdb:
+          type: string
+          nullable: true
+        kaize:
+          type: string
+          nullable: true
+        kaize_id:
+          type: integer
+          nullable: true
+        kitsu:
+          type: integer
+          nullable: true
+        letterboxd_lid:
+          type: string
+          nullable: true
+        letterboxd_slug:
+          type: string
+          nullable: true
+        letterboxd_uid:
+          type: integer
+          nullable: true
+        livechart:
+          type: integer
+          nullable: true
+        myanimelist:
+          type: integer
+          nullable: true
+        nautiljon:
+          type: string
+          nullable: true
+        nautiljon_id:
+          type: integer
+          nullable: true
+        notify:
+          type: string
+          nullable: true
+        otakotaku:
+          type: integer
+          nullable: true
+        shikimori:
+          type: integer
+          nullable: true
+        shoboi:
+          type: integer
+          nullable: true
+        silveryasha:
+          type: integer
+          nullable: true
+        simkl:
+          type: integer
+          nullable: true
+        themoviedb:
+          type: integer
+          nullable: true
+        themoviedb_season_id:
+          type: integer
+          nullable: true
+        themoviedb_type:
+          type: string
+          enum: [movie, tv]
+          nullable: true
+        thetvdb:
+          type: integer
+          nullable: true
+        thetvdb_season_id:
+          type: integer
+          nullable: true
+        trakt:
+          type: integer
+          nullable: true
+        trakt_may_invalid:
+          type: boolean
+          nullable: true
+        trakt_season:
+          type: integer
+          nullable: true
+        trakt_season_id:
+          type: integer
+          nullable: true
+        trakt_slug:
+          type: string
+          nullable: true
+        trakt_type:
+          type: string
+          enum: [shows, movies]
+          nullable: true
+      example:
+        title: "Cowboy Bebop"
+        anidb": 23
+        anilist: 1
+        animenewsnetwork: 13
+        animeplanet: "cowboy-bebop"
+        anisearch: 1572
+        annict: 360
+        imdb: "tt0213338"
+        kaize: "cowboy-bebop"
+        kaize_id: 265
+        kitsu: 1
+        letterboxd_lid": null
+        letterboxd_slug": null
+        letterboxd_uid": null
+        livechart: 3418
+        myanimelist: 1
+        nautiljon: null
+        nautiljon_id": null
+        notify: "Tk3ccKimg"
+        otakotaku: 1149
+        shikimori: 1
+        shoboi": 538
+        silveryasha": 2652
+        simkl": 37089
+        themoviedb": 30991
+        themoviedb_season_id": 42587
+        themoviedb_type": "tv"
+        thetvdb": 76885
+        thetvdb_season_id": 11636
+        trakt": 30857
+        trakt_may_invalid": false
+        trakt_season": 1
+        trakt_season_id": 43328
+        trakt_slug": "cowboy-bebop"
+        trakt_type": "shows"
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: integer
+        message:
+          type: string
+      example:
+        error: "Not found"
+        code: 404
+        message: "Platform myanimelist with ID 9999999 not found"
+

@@ -184,6 +184,13 @@ def schema_json():
         return jsonify(json.loads(file_.read()))
 
 
+@app.route("/openapi.yaml", methods=["GET"])
+@app.route("/openapi", methods=["GET"])
+def openapi_yaml():
+    """OpenAPI Specification route"""
+    return send_from_directory("api", "openapi.yaml", mimetype="text/yaml")
+
+
 @app.route("/updated", methods=["GET"])
 def updated():
     """Updated route"""
