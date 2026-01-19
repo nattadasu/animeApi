@@ -202,60 +202,62 @@ def robots():
         return Response(file_.read(), mimetype="text/plain", status=200)
 
 
+@app.route("/animeapi.json", methods=["GET"])
+@app.route("/aa.json", methods=["GET"])
+@app.route("/animeApi.json", methods=["GET"])
+@app.route("/animeApi", methods=["GET"])
+@app.route("/animeapi", methods=["GET"])
+@app.route("/aa", methods=["GET"])
+def animeapi_dump():
+    """Redirect to AnimeAPI master array JSON file on GitHub"""
+    return redirect_to_github("animeapi")
+
+
 @app.route("/<platform>", methods=["GET"])
 @app.route("/<platform>%28%29", methods=["GET"])
 def platform_array(platform: str = "animeapi"):
     """
-    Platform array route, redirects to the raw JSON file on GitHub
-
+    Platform array route - DEPRECATED for platform-specific dumps
+    
     :param platform: Platform name, defaults to "animeapi"
     :type platform: str, optional
-    :return: Redirect response
+    :return: Redirect response or error
     :rtype: Response
     """
     route = request.path
-    goto = get_goto(route, platform)
-
+    
+    # Handle TSV endpoints (not deprecated)
     if route in ["/animeapi.tsv", "/aa.tsv"]:
         return serve_tsv_response()
-
-    if is_valid_target(goto.replace("_object", "")) or platform in ["animeapi", "aa"]:
-        return redirect_to_github(goto)
+    
+    # Check if this is a platform-specific request (deprecated)
+    raw_platform = unquote(platform)
+    if raw_platform.endswith(".json"):
+        raw_platform = raw_platform[:-5]
+    
+    is_array = raw_platform.endswith("()")
+    raw_platform = raw_platform.rstrip("()")
+    resolved_platform = resolve_platform(raw_platform)
+    
+    # If it's a valid platform (not animeapi/aa), return deprecation error
+    if is_valid_target(resolved_platform) and resolved_platform not in ["animeapi", "aa"]:
+        format_type = "array" if is_array else "object"
+        return jsonify({
+            "error": "Endpoint deprecated",
+            "code": 410,
+            "message": f"Platform-specific {format_type} dumps have been deprecated since October 22, 2025. "
+                      f"Please use /animeapi.json or /animeapi.tsv and filter locally.",
+            "alternatives": {
+                "master_json": "/animeapi.json",
+                "master_tsv": "/animeapi.tsv"
+            }
+        }), 410
+    
     return error_response(
         "Invalid platform",
         400,
         f"Platform {platform} not found, please check if it is a valid platform",
     )
-
-
-def get_goto(route: str, raw_platform: str) -> str:
-    """
-    Redirect to the raw JSON file on GitHub
-
-    :param route: Route
-    :type route: str
-    :param raw_platform: Raw platform
-    :type raw_platform: str
-    :return: Redirect URL
-    :rtype: str
-    """
-    goto = unquote(route.strip("/"))
-    raw_platform = unquote(raw_platform)
-
-    if goto.endswith(".json"):
-        goto = goto[:-5]
-        raw_platform = raw_platform[:-5]
-    is_array = raw_platform.endswith("()")
-
-    raw_platform = raw_platform.rstrip("()")
-    goto = resolve_platform(raw_platform)
-    goto = goto.replace("aa", "animeapi")
-
-    if not is_array and "animeapi" not in goto:
-        goto = f"{goto}_object"
-
-    return goto
-
 
 def serve_tsv_response() -> Response:
     """
