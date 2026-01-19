@@ -225,46 +225,52 @@ def animeapi_dump():
 def platform_array(platform: str = "animeapi"):
     """
     Platform array route - DEPRECATED for platform-specific dumps
-    
+
     :param platform: Platform name, defaults to "animeapi"
     :type platform: str, optional
     :return: Redirect response or error
     :rtype: Response
     """
     route = request.path
-    
+
     # Handle TSV endpoints (not deprecated)
     if route in ["/animeapi.tsv", "/aa.tsv"]:
         return serve_tsv_response()
-    
+
     # Check if this is a platform-specific request (deprecated)
     raw_platform = unquote(platform)
     if raw_platform.endswith(".json"):
         raw_platform = raw_platform[:-5]
-    
+
     is_array = raw_platform.endswith("()")
     raw_platform = raw_platform.rstrip("()")
     resolved_platform = resolve_platform(raw_platform)
-    
+
     # If it's a valid platform (not animeapi/aa), return deprecation error
-    if is_valid_target(resolved_platform) and resolved_platform not in ["animeapi", "aa"]:
+    if is_valid_target(resolved_platform) and resolved_platform not in [
+        "animeapi",
+        "aa",
+    ]:
         format_type = "array" if is_array else "object"
-        return jsonify({
-            "error": "Endpoint deprecated",
-            "code": 410,
-            "message": f"Platform-specific {format_type} dumps have been deprecated since October 22, 2025. "
-                      f"Please use /animeapi.json or /animeapi.tsv and filter locally.",
-            "alternatives": {
-                "master_json": "/animeapi.json",
-                "master_tsv": "/animeapi.tsv"
+        return jsonify(
+            {
+                "error": "Endpoint deprecated",
+                "code": 410,
+                "message": f"Platform-specific {format_type} dumps have been deprecated since October 22, 2025. "
+                f"Please use /animeapi.json or /animeapi.tsv and filter locally.",
+                "alternatives": {
+                    "master_json": "/animeapi.json",
+                    "master_tsv": "/animeapi.tsv",
+                },
             }
-        }), 410
-    
+        ), 410
+
     return error_response(
         "Invalid platform",
         400,
         f"Platform {platform} not found, please check if it is a valid platform",
     )
+
 
 def serve_tsv_response() -> Response:
     """
