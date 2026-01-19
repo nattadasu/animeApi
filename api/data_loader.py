@@ -188,7 +188,7 @@ def lookup_composite_platform(
             media_type = parts[0]
             media_id_or_slug = parts[1]
             season_num = None
-            if len(parts) >= 4 and parts[2] == "seasons":
+            if len(parts) >= 4 and (parts[2] == "season" or parts[2] == "seasons"):
                 try:
                     season_num = int(parts[3])
                 except ValueError:
@@ -226,7 +226,7 @@ def lookup_composite_platform(
             try:
                 media_id = int(parts[1])
                 season_num = None
-                if len(parts) >= 4 and parts[2] == "season":
+                if len(parts) >= 4 and (parts[2] == "season" or parts[2] == "seasons"):
                     season_num = int(parts[3])
 
                 mask = (df["themoviedb"] == media_id) & (
@@ -248,7 +248,7 @@ def lookup_composite_platform(
             try:
                 series_id = int(parts[1])
                 season_num = None
-                if len(parts) >= 4 and parts[2] == "seasons":
+                if len(parts) >= 4 and (parts[2] == "season" or parts[2] == "seasons"):
                     season_num = int(parts[3])
 
                 mask = df["thetvdb"] == series_id
