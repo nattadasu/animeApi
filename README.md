@@ -216,7 +216,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 19 January 2026 05:24:33 UTC
+Last updated: 20 January 2026 05:21:44 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -236,7 +236,7 @@ Last updated: 19 January 2026 05:24:33 UTC
 | MyAnimeList        |     30089 |
 | Nautiljon          |      9030 |
 | Notify.moe         |     16991 |
-| Otak Otaku         |      3090 |
+| Otak Otaku         |      3091 |
 | Shikimori          |     30089 |
 | Shoboi/Syobocal    |      5914 |
 | Silver Yasha       |      5206 |
@@ -317,8 +317,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1768800273,
-    "iso": "2026-01-19T05:24:33.280336+00:00"
+    "timestamp": 1768886504,
+    "iso": "2026-01-20T05:21:44.460159+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -352,7 +352,7 @@ GET /status
     "myanimelist": 30089,
     "nautiljon": 9030,
     "notify": 16991,
-    "otakotaku": 3090,
+    "otakotaku": 3091,
     "shikimori": 30089,
     "shoboi": 5914,
     "silveryasha": 5206,
@@ -382,7 +382,6 @@ GET /status
     "nautiljon": "/(?P<alias>nautiljon)/(?P<media_id>[\\w\\+!\\-_\\(\\)\\[\\]]+)",
     "notify": "/(?P<alias>notify)/(?P<media_id>[\\w\\-_]+)",
     "otakotaku": "/(?P<alias>otakotaku)/(?P<media_id>\\d+)",
-    "platform_dump": "/(?P<alias>[\\w\\-]+)(?:\\\\\\.json)?",
     "redirect": "/(redirect|rd)",
     "repo": "/",
     "schema": "/schema(?:\\\\\\.json)?",
@@ -392,9 +391,9 @@ GET /status
     "simkl": "/(?P<alias>simkl)/(?P<media_id>\\d+)",
     "status": "/status",
     "syobocal": "/(?P<alias>syobocal)/(?P<media_id>\\d+)",
-    "themoviedb": "/(?P<alias>themoviedb)/movie/(?P<media_id>\\d+)",
-    "thetvdb": "/(?P<alias>thetvdb)/series/(?P<media_id>\\d+)(?:/seasons/(?P<season_id>\\d+))?",
-    "trakt": "/(?P<alias>trakt)/(?P<media_type>show|movie)(s)?/(?P<media_id>\\w\\-+)(?:/season(s)?/(?P<season_id>\\d+))?",
+    "themoviedb": "/(?P<alias>themoviedb)/(?P<media_type>movie|tv)/(?P<media_id>\\d+)(?:/seasons?/(?P<season_id>\\d+))?",
+    "thetvdb": "/(?P<alias>thetvdb)/series/(?P<media_id>\\d+)(?:/seasons?/(?P<season_id>\\d+))?",
+    "trakt": "/(?P<alias>trakt)/(?P<media_type>show|movie)(s)?/(?P<media_id>\\w\\-+)(?:/seasons?/(?P<season_id>\\d+))?",
     "updated": "/updated"
   }
 }
@@ -440,7 +439,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 01/19/2026 05:24:33 UTC
+Updated on 01/20/2026 05:21:44 UTC
 ```
 <!-- /updated-txt -->
 
