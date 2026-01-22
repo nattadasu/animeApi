@@ -216,29 +216,29 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 21 January 2026 05:21:38 UTC
+Last updated: 22 January 2026 05:22:45 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
 | aniDB              |     14236 |
-| AniList            |     22115 |
+| AniList            |     22130 |
 | Anime News Network |     12134 |
 | Anime-Planet       |     26515 |
 | aniSearch          |     20484 |
-| Annict             |     12526 |
+| Annict             |     12537 |
 | IMDb               |      5790 |
 | Kaize              |     24755 |
 | Kitsu              |     21738 |
 | Letterboxd         |      1313 |
 | LiveChart          |     12052 |
-| MyAnimeList        |     30089 |
+| MyAnimeList        |     30096 |
 | Nautiljon          |      9030 |
 | Notify.moe         |     16991 |
-| Otak Otaku         |      3093 |
-| Shikimori          |     30089 |
-| Shoboi/Syobocal    |      5914 |
+| Otak Otaku         |      3095 |
+| Shikimori          |     30096 |
+| Shoboi/Syobocal    |      5915 |
 | Silver Yasha       |      5206 |
 | SIMKL              |     14225 |
 | The Movie Database |      8181 |
@@ -317,8 +317,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1768972898,
-    "iso": "2026-01-21T05:21:38.187395+00:00"
+    "timestamp": 1769059365,
+    "iso": "2026-01-22T05:22:45.023344+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -339,22 +339,22 @@ GET /status
   "website": "https://animeapi.my.id",
   "counts": {
     "anidb": 14236,
-    "anilist": 22115,
+    "anilist": 22130,
     "animenewsnetwork": 12134,
     "animeplanet": 26515,
     "anisearch": 20484,
-    "annict": 12526,
+    "annict": 12537,
     "imdb": 5790,
     "kaize": 24755,
     "kitsu": 21738,
     "letterboxd": 1313,
     "livechart": 12052,
-    "myanimelist": 30089,
+    "myanimelist": 30096,
     "nautiljon": 9030,
     "notify": 16991,
-    "otakotaku": 3093,
-    "shikimori": 30089,
-    "shoboi": 5914,
+    "otakotaku": 3095,
+    "shikimori": 30096,
+    "shoboi": 5915,
     "silveryasha": 5206,
     "simkl": 14225,
     "themoviedb": 8181,
@@ -439,7 +439,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 01/21/2026 05:21:38 UTC
+Updated on 01/22/2026 05:22:45 UTC
 ```
 <!-- /updated-txt -->
 
