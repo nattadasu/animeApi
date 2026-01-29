@@ -216,28 +216,28 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 28 January 2026 05:21:25 UTC
+Last updated: 29 January 2026 05:32:23 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
 | aniDB              |     14236 |
-| AniList            |     22130 |
+| AniList            |     22167 |
 | Anime News Network |     12134 |
 | Anime-Planet       |     26515 |
 | aniSearch          |     20484 |
-| Annict             |     12537 |
+| Annict             |     12545 |
 | IMDb               |      5790 |
 | Kaize              |     24755 |
 | Kitsu              |     21738 |
 | Letterboxd         |      1313 |
 | LiveChart          |     12052 |
-| MyAnimeList        |     30096 |
+| MyAnimeList        |     30097 |
 | Nautiljon          |      9030 |
 | Notify.moe         |     16992 |
-| Otak Otaku         |      3103 |
-| Shikimori          |     30096 |
+| Otak Otaku         |      3104 |
+| Shikimori          |     30097 |
 | Shoboi/Syobocal    |      5915 |
 | Silver Yasha       |      5206 |
 | SIMKL              |     14225 |
@@ -317,8 +317,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1769577685,
-    "iso": "2026-01-28T05:21:25.668633+00:00"
+    "timestamp": 1769664743,
+    "iso": "2026-01-29T05:32:23.601973+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -339,21 +339,21 @@ GET /status
   "website": "https://animeapi.my.id",
   "counts": {
     "anidb": 14236,
-    "anilist": 22130,
+    "anilist": 22167,
     "animenewsnetwork": 12134,
     "animeplanet": 26515,
     "anisearch": 20484,
-    "annict": 12537,
+    "annict": 12545,
     "imdb": 5790,
     "kaize": 24755,
     "kitsu": 21738,
     "letterboxd": 1313,
     "livechart": 12052,
-    "myanimelist": 30096,
+    "myanimelist": 30097,
     "nautiljon": 9030,
     "notify": 16992,
-    "otakotaku": 3103,
-    "shikimori": 30096,
+    "otakotaku": 3104,
+    "shikimori": 30097,
     "shoboi": 5915,
     "silveryasha": 5206,
     "simkl": 14225,
@@ -439,7 +439,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 01/28/2026 05:21:25 UTC
+Updated on 01/29/2026 05:32:23 UTC
 ```
 <!-- /updated-txt -->
 
