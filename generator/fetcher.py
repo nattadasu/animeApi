@@ -107,7 +107,7 @@ def get_anitrakt() -> list[dict[str, Any]]:
     :rtype: list[dict[str, Any]]
     """
     base_url = (
-        "https://raw.githubusercontent.com/rensetsu/db.trakt.extended-anitrakt/main/"
+        "https://raw.githubusercontent.com/rensetsu/db.trakt.extended-anitrakt/main/json/output/"
     )
     ddump_tv = Downloader(
         url=f"{base_url}tv_ex.json",
