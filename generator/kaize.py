@@ -403,11 +403,11 @@ class Kaize:
                 "expected pages:",
                 str(pages),
             )
-        except ConnectionError:
+        except (ConnectionError, ValueError):
             pprint.print(
                 Platform.KAIZE,
                 Status.WARN,
-                "Unable to connect to kaize.io, loading from local file",
+                "Unable to get data, loading from local file",
             )
             with open(file_path, "r", encoding="utf-8") as file:
                 anime_data = json.load(file)
