@@ -27,6 +27,7 @@ from fetcher import (
     get_fribb_animelists,
     get_notify_rensetsu,
     merge_notify_with_aod,
+    restore_notify_safe,
     simplify_aod_data,
     simplify_silveryasha_data,
 )
@@ -54,7 +55,7 @@ def main() -> None:
         aod_2025_52 = get_anime_offline_database_2025_52()
         notify_rensetsu = get_notify_rensetsu()
 
-        # Merge notify.moe data
+        # Merge notify.moe data (snapshot optional, Rensetsu is fallback)
         aod_arr = merge_notify_with_aod(aod_arr, aod_2025_52, notify_rensetsu)
 
         sy_ = simplify_silveryasha_data()
@@ -149,6 +150,10 @@ def main() -> None:
                 }
                 final_arr.append(data)
                 bar()
+
+        # Restore notify.moe mappings from previous database with confidence scoring
+        final_arr = restore_notify_safe(final_arr)
+
         with open("database/animeapi.json", "w", encoding="utf-8") as file:
             json.dump(final_arr, file)
 

@@ -32,13 +32,16 @@ def get_anime_offline_database() -> dict[str, Any]:
     return content
 
 
-def get_anime_offline_database_2025_52() -> dict[str, Any]:
+def get_anime_offline_database_2025_52() -> dict[str, Any] | None:
     """
     Get info from manami-project/anime-offline-database 2025-52 snapshot
     (last version with notify.moe support)
 
-    :return: AOD 2025-52 data
-    :rtype: dict[str, Any]
+    Attempts to download; falls back to locally cached version if available.
+    Returns None if neither is available (graceful degradation).
+
+    :return: AOD 2025-52 data or None if unavailable
+    :rtype: dict[str, Any] | None
     """
     ddump = Downloader(
         url="https://github.com/manami-project/anime-offline-database/releases/download/2025-52/anime-offline-database-minified.json.zst",
@@ -46,13 +49,36 @@ def get_anime_offline_database_2025_52() -> dict[str, Any]:
         file_type="zst",
         platform=Platform.ANIMEOFFLINEDATABASE,
     )
-    content: dict[str, Any] = ddump.dumper()
-    pprint.print(
-        Platform.ANIMEOFFLINEDATABASE,
-        Status.PASS,
-        "anime-offline-database 2025-52 snapshot retrieved successfully",
-    )
-    return content
+    try:
+        content: dict[str, Any] = ddump.dumper()
+        pprint.print(
+            Platform.ANIMEOFFLINEDATABASE,
+            Status.PASS,
+            "anime-offline-database 2025-52 snapshot retrieved successfully",
+        )
+        return content
+    except SystemExit:
+        pprint.print(
+            Platform.ANIMEOFFLINEDATABASE,
+            Status.ERR,
+            "2025-52 snapshot unavailable, attempting to use cached version",
+        )
+        try:
+            with open("database/raw/aod_2025_52.json", "r", encoding="utf-8") as file:
+                content = json.load(file)
+                pprint.print(
+                    Platform.ANIMEOFFLINEDATABASE,
+                    Status.PASS,
+                    "Loaded cached 2025-52 snapshot for notify.moe enrichment",
+                )
+                return content
+        except FileNotFoundError:
+            pprint.print(
+                Platform.ANIMEOFFLINEDATABASE,
+                Status.ERR,
+                "No cached snapshot available, notify.moe enrichment will be skipped",
+            )
+            return None
 
 
 def get_notify_rensetsu() -> list[dict[str, Any]]:
@@ -106,9 +132,7 @@ def get_anitrakt() -> list[dict[str, Any]]:
     :return: Extended AniTrakt data; merged TV and movie data
     :rtype: list[dict[str, Any]]
     """
-    base_url = (
-        "https://raw.githubusercontent.com/rensetsu/db.trakt.extended-anitrakt/main/json/output/"
-    )
+    base_url = "https://raw.githubusercontent.com/rensetsu/db.trakt.extended-anitrakt/main/json/output/"
     ddump_tv = Downloader(
         url=f"{base_url}tv_ex.json",
         file_name="anitrakt_tv",
@@ -288,22 +312,22 @@ def simplify_silveryasha_data() -> list[dict[str, Any]]:
 
 def merge_notify_with_aod(
     aod_latest: list[dict[str, Any]],
-    aod_2025_52: dict[str, Any],
+    aod_2025_52: dict[str, Any] | None,
     notify_data: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:
     """
     Merge notify.moe data with latest AOD data.
 
     Process:
-    1. Parse 2025-52 AOD snapshot to extract notify.moe IDs
+    1. Parse 2025-52 AOD snapshot to extract notify.moe IDs (if available)
     2. Create mapping of (other IDs) -> notify ID from 2025-52
     3. Apply notify IDs to latest AOD entries based on matching IDs
     4. Use notify.moe Rensetsu data to fill any remaining gaps
 
     :param aod_latest: Latest AOD data (simplified)
     :type aod_latest: list[dict[str, Any]]
-    :param aod_2025_52: AOD 2025-52 snapshot (raw)
-    :type aod_2025_52: dict[str, Any]
+    :param aod_2025_52: AOD 2025-52 snapshot (raw) or None if unavailable
+    :type aod_2025_52: dict[str, Any] | None
     :param notify_data: Notify.moe data from Rensetsu
     :type notify_data: list[dict[str, Any]]
     :return: AOD data with notify.moe IDs merged
@@ -315,49 +339,57 @@ def merge_notify_with_aod(
         "Starting notify.moe merge process",
     )
 
-    # Step 1: Extract notify IDs from 2025-52 snapshot
-    pprint.print(
-        Platform.SYSTEM,
-        Status.NOTICE,
-        "Extracting notify.moe IDs from 2025-52 snapshot",
-    )
-
-    old_aod_simplified = simplify_aod_data(aod_2025_52)
-
-    # Create lookup maps for 2025-52 data
-    # Map structure: {(id_type, id_value): notify_id}
+    # Step 1: Extract notify IDs from 2025-52 snapshot (if available)
     notify_lookup_from_old: dict[tuple[str, Any], str] = {}
 
-    with alive_bar(
-        len(old_aod_simplified),
-        title="Building notify.moe lookup from 2025-52",
-        spinner=None,
-    ) as bar:  # type: ignore
-        for entry in old_aod_simplified:
-            notify_id = entry.get("notify")
-            if notify_id:
-                # Create lookups for all available IDs
-                for id_type in [
-                    "anidb",
-                    "anilist",
-                    "animenewsnetwork",
-                    "animeplanet",
-                    "anisearch",
-                    "kitsu",
-                    "livechart",
-                    "myanimelist",
-                    "simkl",
-                ]:
-                    id_value = entry.get(id_type)
-                    if id_value:
-                        notify_lookup_from_old[(id_type, id_value)] = notify_id
-            bar()
+    if aod_2025_52:
+        pprint.print(
+            Platform.SYSTEM,
+            Status.NOTICE,
+            "Extracting notify.moe IDs from 2025-52 snapshot",
+        )
 
-    pprint.print(
-        Platform.SYSTEM,
-        Status.PASS,
-        f"Built lookup with {len(notify_lookup_from_old)} ID mappings",
-    )
+        old_aod_simplified = simplify_aod_data(aod_2025_52)
+
+        # Create lookup maps for 2025-52 data
+        # Map structure: {(id_type, id_value): notify_id}
+
+        with alive_bar(
+            len(old_aod_simplified),
+            title="Building notify.moe lookup from 2025-52",
+            spinner=None,
+        ) as bar:  # type: ignore
+            for entry in old_aod_simplified:
+                notify_id = entry.get("notify")
+                if notify_id:
+                    # Create lookups for all available IDs
+                    for id_type in [
+                        "anidb",
+                        "anilist",
+                        "animenewsnetwork",
+                        "animeplanet",
+                        "anisearch",
+                        "kitsu",
+                        "livechart",
+                        "myanimelist",
+                        "simkl",
+                    ]:
+                        id_value = entry.get(id_type)
+                        if id_value:
+                            notify_lookup_from_old[(id_type, id_value)] = notify_id
+                bar()
+
+        pprint.print(
+            Platform.SYSTEM,
+            Status.PASS,
+            f"Built lookup with {len(notify_lookup_from_old)} ID mappings",
+        )
+    else:
+        pprint.print(
+            Platform.SYSTEM,
+            Status.NOTICE,
+            "2025-52 snapshot unavailable, will use Rensetsu data only",
+        )
 
     # Step 2: Create lookup from notify Rensetsu data
     pprint.print(
@@ -465,3 +497,111 @@ def merge_notify_with_aod(
     )
 
     return aod_latest
+
+
+def restore_notify_safe(
+    new_data: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """
+    Restore notify.moe IDs from previous database with confidence scoring.
+
+    For each title in the new data, check if the previous database had a notify.moe ID.
+    Use confidence scoring based on overlapping critical IDs (MAL, AniDB, AniList, Kitsu)
+    to ensure the entries are truly the same anime before restoring the notify ID.
+
+    :param new_data: Newly generated database entries
+    :type new_data: list[dict[str, Any]]
+    :return: Database with restored notify.moe mappings
+    :rtype: list[dict[str, Any]]
+    """
+    pprint.print(
+        Platform.SYSTEM,
+        Status.NOTICE,
+        "Restoring notify.moe mappings with ID confidence scoring",
+    )
+
+    try:
+        with open("database/animeapi.json", "r", encoding="utf-8") as file:
+            previous_data = json.load(file)
+    except FileNotFoundError:
+        pprint.print(
+            Platform.SYSTEM,
+            Status.NOTICE,
+            "No previous database found, skipping notify.moe restoration",
+        )
+        return new_data
+
+    if not isinstance(previous_data, list):
+        pprint.print(
+            Platform.SYSTEM,
+            Status.ERR,
+            "Previous database has invalid format, skipping restoration",
+        )
+        return new_data
+
+    # Confidence scoring IDs
+    confidence_ids = ["myanimelist", "anidb", "anilist", "kitsu"]
+
+    # Create lookup by title for previous database
+    prev_by_title: dict[str, dict[str, Any]] = {}
+
+    for entry in previous_data:
+        title = entry.get("title")
+        if title:
+            if title not in prev_by_title:
+                prev_by_title[title] = entry
+
+    # Track results
+    restored_count = 0
+    high_confidence_count = 0
+    low_confidence_count = 0
+
+    # Restore notify.moe mappings with confidence checking
+    with alive_bar(
+        len(new_data),
+        title="Restoring notify.moe with confidence scoring",
+        spinner=None,
+    ) as bar:  # type: ignore
+        for entry in new_data:
+            title = entry.get("title")
+
+            # Only restore if new entry doesn't have notify.moe ID
+            if title and not entry.get("notify") and title in prev_by_title:
+                prev_entry = prev_by_title[title]
+                prev_notify = prev_entry.get("notify")
+
+                if prev_notify:
+                    # Calculate confidence score based on matching IDs
+                    matching_ids = 0
+                    total_ids = 0
+
+                    for id_type in confidence_ids:
+                        new_id = entry.get(id_type)
+                        prev_id = prev_entry.get(id_type)
+
+                        if prev_id is not None:
+                            total_ids += 1
+                            # Perfect match or both missing is good confidence
+                            if new_id == prev_id:
+                                matching_ids += 1
+
+                    # Restore if high confidence (majority match) or have any matching ID
+                    if total_ids > 0:
+                        confidence_ratio = matching_ids / total_ids
+                        if matching_ids > 0:  # Optimistic: restore if any ID matches
+                            entry["notify"] = prev_notify
+                            restored_count += 1
+                            if confidence_ratio >= 0.5:
+                                high_confidence_count += 1
+                            else:
+                                low_confidence_count += 1
+
+            bar()
+
+    pprint.print(
+        Platform.SYSTEM,
+        Status.PASS,
+        f"Restored {restored_count} notify.moe mappings ({high_confidence_count} high confidence, {low_confidence_count} low confidence)",
+    )
+
+    return new_data
