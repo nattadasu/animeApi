@@ -16,6 +16,17 @@ ID_COUNT_MULTIPLIER_THRESHOLD = 2
 SCORE_DIFFERENCE_THRESHOLD = 5
 
 
+def normalize_title(title: str) -> str:
+    """
+    Normalize title by removing all whitespace and converting to lowercase
+    for accurate fuzzy matching.
+
+    :param title: Title to normalize
+    :return: Normalized title without whitespace, in lowercase
+    """
+    return "".join(title.split()).lower()
+
+
 def fuzzy_match_with_id_check(
     unlinked_title: str,
     aod_list: list[dict[str, Any]],
@@ -44,7 +55,8 @@ def fuzzy_match_with_id_check(
 
     for aod_item in aod_list:
         title = aod_item["title"]
-        score = fuzz.ratio(unlinked_title, title)  # type: ignore
+        # Normalize both titles by removing whitespace for accurate matching
+        score = fuzz.ratio(normalize_title(unlinked_title), normalize_title(title))  # type: ignore
 
         if score < threshold:
             continue
