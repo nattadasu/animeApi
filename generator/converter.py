@@ -30,10 +30,12 @@ def normalize_title(title: str) -> str:
 def fuzzy_match_with_id_check(
     unlinked_title: str,
     aod_list: list[dict[str, Any]],
+    aod_normalized_cache: dict[int, str] | None = None,
     threshold: int = 85,
 ) -> tuple[dict[str, Any] | None, int]:
     """
     Perform fuzzy matching but prefer entries with more IDs mapped.
+    Uses cached normalized titles for O(n) performance.
     Returns the best match that has the most IDs.
 
     When multiple matches are above the threshold, prefer the one with
@@ -44,19 +46,25 @@ def fuzzy_match_with_id_check(
 
     :param unlinked_title: Title to match
     :param aod_list: List of AOD entries to match against
+    :param aod_normalized_cache: Pre-computed normalized titles indexed by list position
     :param threshold: Minimum fuzzy match score
     :return: Tuple of (matched entry or None, number of IDs in matched entry)
     """
-    # Get all potential matches above threshold
-    # We need to match against items directly since titles may be duplicated
+    normalized_unlinked = normalize_title(unlinked_title)
     best_match = None
     best_id_count = 0
     best_score = 0
 
-    for aod_item in aod_list:
-        title = aod_item["title"]
-        # Normalize both titles by removing whitespace for accurate matching
-        score = fuzz.ratio(normalize_title(unlinked_title), normalize_title(title))  # type: ignore
+    for idx, aod_item in enumerate(aod_list):
+        # Use cached normalized title if available, otherwise normalize on-the-fly
+        if aod_normalized_cache is not None:
+            normalized_title = aod_normalized_cache.get(
+                idx, normalize_title(aod_item["title"])
+            )
+        else:
+            normalized_title = normalize_title(aod_item["title"])
+
+        score = fuzz.ratio(normalized_unlinked, normalized_title)  # type: ignore
 
         if score < threshold:
             continue
@@ -183,13 +191,19 @@ def link_kaize_to_mal(
                 unlinked.append(kz_item)
             bar()
     # on unlinked, fuzzy search the title name
+    # Build normalized title cache for all AOD entries (done once)
+    aod_normalized_cache = {
+        idx: normalize_title(item["title"]) for idx, item in enumerate(aod)
+    }
     with alive_bar(
         len(unlinked), title="Fuzzy match title from both databases", spinner=None
     ) as bar:  # type: ignore
         for item in unlinked:
             title = item["title"]
             # Use fuzzy_match_with_id_check to prefer entries with more IDs
-            aod_item, id_count = fuzzy_match_with_id_check(title, aod, threshold=85)
+            aod_item, id_count = fuzzy_match_with_id_check(
+                title, aod, aod_normalized_cache, threshold=85
+            )
 
             if aod_item:
                 kz_dat = {
@@ -374,13 +388,19 @@ def link_nautiljon_to_mal(
                 unlinked.append(nautiljon_item)
             bar()
     # fuzzy search the rest of unlinked data
+    # Build normalized title cache for all AOD entries (done once)
+    aod_normalized_cache = {
+        idx: normalize_title(item["title"]) for idx, item in enumerate(aod)
+    }
     with alive_bar(
         len(unlinked), title="Fuzzy match title from both databases", spinner=None
     ) as bar:  # type: ignore
         for item in unlinked:
             title = item["title"]
             # Use fuzzy_match_with_id_check to prefer entries with more IDs
-            aod_item, id_count = fuzzy_match_with_id_check(title, aod, threshold=90)
+            aod_item, id_count = fuzzy_match_with_id_check(
+                title, aod, aod_normalized_cache, threshold=90
+            )
 
             if aod_item:
                 item.update(
@@ -498,6 +518,10 @@ def link_otakotaku_to_mal(
                 unlinked.append(ot_item)
             bar()
     # on unlinked, fuzzy search the title name
+    # Build normalized title cache for all AOD entries (done once)
+    aod_normalized_cache = {
+        idx: normalize_title(item["title"]) for idx, item in enumerate(aod)
+    }
     with alive_bar(
         len(unlinked), title="Fuzzy match title from both databases", spinner=None
     ) as bar:  # type: ignore
@@ -525,7 +549,9 @@ def link_otakotaku_to_mal(
                 title = title.replace(key, value)
 
             # Use fuzzy_match_with_id_check to prefer entries with more IDs
-            aod_item, id_count = fuzzy_match_with_id_check(title, aod, threshold=90)
+            aod_item, id_count = fuzzy_match_with_id_check(
+                title, aod, aod_normalized_cache, threshold=90
+            )
 
             if aod_item:
                 ot_dat = {
@@ -683,13 +709,19 @@ def link_silveryasha_to_mal(
                 unlinked.append(sy_item)
             bar()
     # on unlinked, fuzzy search the title name
+    # Build normalized title cache for all AOD entries (done once)
+    aod_normalized_cache = {
+        idx: normalize_title(item["title"]) for idx, item in enumerate(aod)
+    }
     with alive_bar(
         len(unlinked), title="Fuzzy match title from both databases", spinner=None
     ) as bar:  # type: ignore
         for item in unlinked:
             title = item["title"]
             # Use fuzzy_match_with_id_check to prefer entries with more IDs
-            aod_item, id_count = fuzzy_match_with_id_check(title, aod, threshold=95)
+            aod_item, id_count = fuzzy_match_with_id_check(
+                title, aod, aod_normalized_cache, threshold=95
+            )
 
             if aod_item:
                 sy_dat = {
