@@ -36,201 +36,6 @@ def populate_contributors(attr: dict[str, Any]) -> dict[str, Any]:
     return attr
 
 
-def save_to_file(
-    data: list[dict[str, Any]], platform: str, attr: dict[str, Any]
-) -> None:
-    """
-    Save data to file
-
-    :param data: data to save
-    :type data: list[dict[str, Any]]
-    :param platform: platform name
-    :type platform: str
-    :param attr: attribution dict
-    :type attr: dict[str, Any]
-    :return: None
-    :rtype: None
-    """
-    items: list[dict[str, Any]] = []
-    with alive_bar(len(data), title="Removing None values", spinner=None) as bar:  # type: ignore
-        for item in data:
-            # Special handling for letterboxd and thetvdb
-            if platform == "letterboxd":
-                pkey = item.get("letterboxd_slug", None)
-            else:
-                pkey = item.get(f"{platform}", None)
-
-            if pkey is not None:
-                items.append(item)
-            bar()
-    # with open(f"database/{platform}.json", "w", encoding="utf-8") as file:
-    #     json.dump(items, file)
-    # save object-formatted data to file
-    obj_data: dict[str, dict[str, Any]] = {}
-    with alive_bar(
-        len(items), title="Converting data to object format", spinner=None
-    ) as bar:  # type: ignore
-        for item in items:
-            if platform not in ["trakt", "themoviedb", "thetvdb", "letterboxd"]:
-                obj_data[item[f"{platform}"]] = item
-            elif platform == "letterboxd":
-                # Use letterboxd_slug for lookup
-                if item.get("letterboxd_slug"):
-                    obj_data[item["letterboxd_slug"]] = item
-            elif platform == "thetvdb":
-                # Use thetvdb for lookup
-                thetvdb_id = item.get("thetvdb")
-                trakt_season = item.get("trakt_season")
-                tvdb_sid = item.get("thetvdb_season_id")
-                if thetvdb_id:
-                    # Base entry: series/entry_id
-                    base_key = f"series/{thetvdb_id}"
-                    if trakt_season is None or trakt_season == 1:
-                        obj_data[base_key] = item
-                    # Season entry: series/entry_id/seasons/season_number
-                    if trakt_season is not None:
-                        season_key = f"{base_key}/seasons"
-                        obj_data[f"{season_key}/{trakt_season}"] = item
-                        obj_data[f"{season_key}/{tvdb_sid}"] = item
-            elif platform == "trakt":
-                if item["trakt_type"] in ["movie", "movies"]:
-                    obj_data[f"{item['trakt_type']}/{item['trakt']}"] = item
-                else:
-                    trakt_season = item["trakt_season"]
-                    if trakt_season:
-                        obj_data[
-                            f"{item['trakt_type']}/{item['trakt']}/seasons/{trakt_season}"
-                        ] = item
-                        if trakt_season == 1:
-                            obj_data[f"{item['trakt_type']}/{item['trakt']}"] = item
-
-            elif platform == "themoviedb":
-                themoviedb_type = item.get("themoviedb_type", "movie")
-                themoviedb_id = item.get("themoviedb")
-                trakt_season = item.get("trakt_season")
-                if themoviedb_id:
-                    # Base entry: type/entry_id
-                    base_key = f"{themoviedb_type}/{themoviedb_id}"
-                    if trakt_season is None or trakt_season == 1:
-                        obj_data[base_key] = item
-                    # Season entry for TV: type/entry_id/season/season_number
-                    if themoviedb_type == "tv":
-                        season_key = f"{base_key}/season"
-                        if trakt_season:
-                            obj_data[f"{season_key}/{trakt_season}"] = item
-                        if item["themoviedb_season_id"]:
-                            obj_data[
-                                f"{season_key}/{item['themoviedb_season_id']}"
-                            ]: item
-            bar()
-    # with open(f"database/{platform}_object.json", "w", encoding="utf-8") as file:
-    #     json.dump(obj_data, file)
-    # update attr
-    attr["counts"][f"{platform}"] = len(items)  # type: ignore
-    return None
-
-
-def save_platform_loop(
-    data: list[dict[str, Any]], attr: dict[str, Any]
-) -> dict[str, Any]:
-    """
-    Loop through platforms and save data to file
-
-    :param data: data to save
-    :type data: list[dict[str, Any]]
-    :param attr: attribution dict
-    :type attr: dict[str, Any]
-    :return: attribution dict that has been updated
-    :rtype: dict[str, Any]
-    """
-    platforms = [
-        "anidb",
-        "anilist",
-        "animenewsnetwork",
-        "animeplanet",
-        "anisearch",
-        "annict",
-        "imdb",
-        "kaize",
-        "kitsu",
-        "letterboxd",
-        "livechart",
-        "myanimelist",
-        "nautiljon",
-        "notify",
-        "otakotaku",
-        "shikimori",
-        "shoboi",
-        "silveryasha",
-        "simkl",
-        "themoviedb",
-        "thetvdb",
-        "trakt",
-    ]
-    # sort key in data
-    pprint.print(
-        Platform.SYSTEM,
-        Status.INFO,
-        "Sorting data by title",
-    )
-    data = sorted(data, key=lambda k: k["title"])
-    for plat in platforms:
-        match plat:
-            case "anidb":
-                name = Platform.ANIDB
-            case "anilist":
-                name = Platform.ANILIST
-            case "animenewsnetwork":
-                name = Platform.ANIMENEWSNETWORK
-            case "animeplanet":
-                name = Platform.ANIMEPLANET
-            case "anisearch":
-                name = Platform.ANISEARCH
-            case "annict":
-                name = Platform.ANNICT
-            case "imdb":
-                name = Platform.IMDB
-            case "kaize":
-                name = Platform.KAIZE
-            case "kitsu":
-                name = Platform.KITSU
-            case "letterboxd":
-                name = Platform.LETTERBOXD
-            case "livechart":
-                name = Platform.LIVECHART
-            case "myanimelist":
-                name = Platform.MYANIMELIST
-            case "nautiljon":
-                name = Platform.NAUTILJON
-            case "notify":
-                name = Platform.NOTIFY
-            case "otakotaku":
-                name = Platform.OTAKOTAKU
-            case "shikimori":
-                name = Platform.SHIKIMORI
-            case "shoboi":
-                name = Platform.SHOBOI
-            case "silveryasha":
-                name = Platform.SILVERYASHA
-            case "simkl":
-                name = Platform.SIMKL
-            case "themoviedb":
-                name = Platform.TMDB
-            case "thetvdb":
-                name = Platform.TVDB
-            case "trakt":
-                name = Platform.ANITRAKT
-            case _:
-                name = Platform.SYSTEM
-        pprint.print(
-            name,
-            Status.INFO,
-            f"Saving data to {plat}.json",
-        )
-        save_to_file(data, plat, attr)
-    return attr
-
-
 def save_list_to_tsv(data: list[dict[str, Any]], file_path: str) -> None:
     """
     Save list to TSV
@@ -290,7 +95,8 @@ def update_attribution(
     attr = populate_contributors(attr)
 
     total_data = len(data)
-    attr = save_platform_loop(data, attr)
+    # NOTE: Platform-specific dumper removed (deprecated since Oct 22, 2025)
+    # Users should use /animeapi.json or /animeapi.tsv instead
 
     attr["counts"]["total"] = total_data  # type: ignore
     with open("api/status.json", "w", encoding="utf-8") as file:
@@ -320,16 +126,17 @@ def add_spaces(data: int, spaces_max: int = 9) -> str:
 
 def count_non_null_entries(df: pd.DataFrame, column: str) -> int:
     """
-    Count non-null entries in a DataFrame column
+    Count non-empty entries in a DataFrame column.
+    Since all columns are read as strings, count non-empty strings.
 
     :param df: DataFrame to count from
     :type df: pd.DataFrame
     :param column: Column name to count
     :type column: str
-    :return: Count of non-null entries
+    :return: Count of non-empty entries
     :rtype: int
     """
-    return int(df[column].notna().sum())
+    return int((df[column] != "").sum())
 
 
 def load_tsv_for_counting() -> pd.DataFrame:
@@ -339,48 +146,14 @@ def load_tsv_for_counting() -> pd.DataFrame:
     :return: DataFrame with TSV data
     :rtype: pd.DataFrame
     """
+    # Read all columns as strings to avoid pandas type inference errors
+    # (some columns may have mixed types or special characters)
     df = pd.read_csv(
         "database/animeapi.tsv",
         sep="\t",
-        dtype={
-            "title": str,
-            "anidb": "Int64",
-            "anilist": "Int64",
-            "animenewsnetwork": "Int64",
-            "animeplanet": str,
-            "anisearch": "Int64",
-            "annict": "Int64",
-            "imdb": str,
-            "kaize": str,
-            "kaize_id": "Int64",
-            "kitsu": "Int64",
-            "letterboxd_lid": str,
-            "letterboxd_slug": str,
-            "letterboxd_uid": "Int64",
-            "livechart": "Int64",
-            "myanimelist": "Int64",
-            "nautiljon": str,
-            "nautiljon_id": "Int64",
-            "notify": str,
-            "otakotaku": "Int64",
-            "shikimori": "Int64",
-            "shoboi": "Int64",
-            "silveryasha": "Int64",
-            "simkl": "Int64",
-            "themoviedb": "Int64",
-            "themoviedb_season_id": "Int64",
-            "themoviedb_type": str,
-            "thetvdb": "Int64",
-            "thetvdb_season_id": "Int64",
-            "trakt": "Int64",
-            "trakt_may_invalid": str,
-            "trakt_season": "Int64",
-            "trakt_season_id": "Int64",
-            "trakt_slug": str,
-            "trakt_type": str,
-        },
-        keep_default_na=False,
-        na_values=[""],
+        dtype=str,  # All columns as strings
+        keep_default_na=False,  # Don't convert empty strings to NaN
+        na_values=[],  # Empty list means no values are treated as null
     )
     df["trakt_may_invalid"] = df["trakt_may_invalid"].replace(
         {"True": True, "False": False, "": None}
