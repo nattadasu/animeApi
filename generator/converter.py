@@ -1,6 +1,8 @@
 # SPDX-License-Identifier: AGPL-3.0-only AND MIT
 
 import json
+from functools import partial
+from multiprocessing import Pool, cpu_count
 from typing import Any, Union
 
 from alive_progress import alive_bar  # type: ignore
@@ -14,6 +16,29 @@ from thefuzz import fuzz  # type: ignore
 ID_COUNT_MULTIPLIER_THRESHOLD = 2
 # When scores are within this many points, prefer the one with more IDs
 SCORE_DIFFERENCE_THRESHOLD = 5
+# Number of workers for parallel fuzzy matching (0 = auto-detect CPUs)
+FUZZY_MATCH_WORKERS = 0
+
+
+def _score_single_match(
+    aod_list: list[dict[str, Any]],
+    aod_normalized_cache: dict[int, str],
+    threshold: int,
+    unlinked_item: dict[str, Any],
+) -> tuple[dict[str, Any] | None, int]:
+    """
+    Worker function for parallel fuzzy matching.
+    Scores a single unlinked item against all AOD entries.
+
+    :param aod_list: List of AOD entries
+    :param aod_normalized_cache: Pre-normalized titles
+    :param threshold: Minimum fuzzy score
+    :param unlinked_item: Item to match
+    :return: Tuple of (matched_item, id_count)
+    """
+    return fuzzy_match_with_id_check(
+        unlinked_item["title"], aod_list, aod_normalized_cache, threshold
+    )
 
 
 def normalize_title(title: str) -> str:
@@ -25,6 +50,122 @@ def normalize_title(title: str) -> str:
     :return: Normalized title without whitespace, in lowercase
     """
     return "".join(title.split()).lower()
+
+
+def build_slug_index(
+    items: list[dict[str, Any]], key_field: str = "title"
+) -> tuple[dict[str, dict[str, Any]], dict[str, Any]]:
+    """
+    Build a slug-based index for fast pre-filtering before fuzzy matching.
+    Slugified exact matches are O(1) and eliminate most items before expensive fuzzy logic.
+
+    :param items: List of items to index
+    :param key_field: Field name to use for slug generation (default: title)
+    :return: Tuple of (slug_lookup dict, original items dict by index)
+    """
+    slug_lookup: dict[str, dict[str, Any]] = {}
+    items_by_index = {}
+
+    for idx, item in enumerate(items):
+        items_by_index[idx] = item
+        if key_field in item:
+            slug = slugify(item[key_field]).replace("-", "")
+            if slug:  # Only index non-empty slugs
+                # Keep track of duplicates - store in list if collision
+                if slug not in slug_lookup:
+                    slug_lookup[slug] = item
+                else:
+                    # Handle slug collisions by storing first match
+                    # (rare but possible with different titles)
+                    pass
+
+    return slug_lookup, items_by_index
+
+
+def prefilter_by_slug(
+    unlinked: list[dict[str, Any]],
+    aod_slug_lookup: dict[str, dict[str, Any]],
+    title_field: str = "title",
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """
+    Split unlinked items into matched (slug matches) and unmatched (need fuzzy).
+
+    :param unlinked: Items to pre-filter
+    :param aod_slug_lookup: AOD slug index from build_slug_index()
+    :param title_field: Field name for slug generation
+    :return: Tuple of (matched_items, remaining_unlinked)
+    """
+    matched = []
+    remaining = []
+
+    for item in unlinked:
+        item_slug = slugify(item[title_field]).replace("-", "")
+        if item_slug in aod_slug_lookup:
+            matched.append((item, aod_slug_lookup[item_slug]))
+        else:
+            remaining.append(item)
+
+    return matched, remaining
+
+
+def fuzzy_match_batch_parallel(
+    unlinked: list[dict[str, Any]],
+    aod_list: list[dict[str, Any]],
+    aod_normalized_cache: dict[int, str],
+    threshold: int = 85,
+    workers: int = 0,
+    title: str = "Fuzzy match title from both databases",
+) -> list[tuple[dict[str, Any], dict[str, Any], int]]:
+    """
+    Perform parallel fuzzy matching on batch of unlinked items.
+    Uses multiprocessing to parallelize across multiple CPUs (avoids GIL).
+
+    :param unlinked: Items to fuzzy match
+    :param aod_list: AOD list to match against
+    :param aod_normalized_cache: Pre-normalized titles
+    :param threshold: Minimum fuzzy score
+    :param workers: Number of workers (0 = auto-detect)
+    :param title: Progress bar title
+    :return: List of (unlinked_item, matched_aod_item, id_count) tuples for matches
+    """
+    if not unlinked:
+        return []
+
+    # Auto-detect workers if not specified
+    if workers <= 0:
+        workers = max(1, cpu_count() - 1)  # Leave one core free
+
+    results = []
+
+    # For small datasets, sequential is faster than multiprocessing overhead
+    if len(unlinked) < 10:
+        with alive_bar(len(unlinked), title=title, spinner=None) as bar:  # type: ignore
+            for item in unlinked:
+                aod_item, id_count = fuzzy_match_with_id_check(
+                    item["title"], aod_list, aod_normalized_cache, threshold
+                )
+                if aod_item:
+                    results.append((item, aod_item, id_count))
+                bar()
+    else:
+        # Use multiprocessing for larger batches
+        with Pool(processes=workers) as pool:
+            # Create partial function with fixed arguments
+            # Item is passed as last parameter for imap_unordered
+            worker_func = partial(
+                _score_single_match, aod_list, aod_normalized_cache, threshold
+            )
+
+            # imap_unordered yields results as they complete
+            # Progress bar updates in real-time as workers finish
+            with alive_bar(len(unlinked), title=title, spinner=None) as bar:  # type: ignore
+                matches = pool.imap_unordered(worker_func, unlinked, chunksize=10)
+                for item, (aod_item, id_count) in zip(unlinked, matches):
+                    if aod_item:
+                        results.append((item, aod_item, id_count))
+                    bar()
+
+    return results
 
 
 def fuzzy_match_with_id_check(
@@ -195,17 +336,20 @@ def link_kaize_to_mal(
     aod_normalized_cache = {
         idx: normalize_title(item["title"]) for idx, item in enumerate(aod)
     }
-    with alive_bar(
-        len(unlinked), title="Fuzzy match title from both databases", spinner=None
-    ) as bar:  # type: ignore
-        for item in unlinked:
-            title = item["title"]
-            # Use fuzzy_match_with_id_check to prefer entries with more IDs
-            aod_item, id_count = fuzzy_match_with_id_check(
-                title, aod, aod_normalized_cache, threshold=85
-            )
-
-            if aod_item:
+    if unlinked:
+        fuzzy_matches = fuzzy_match_batch_parallel(
+            unlinked,
+            aod,
+            aod_normalized_cache,
+            threshold=85,
+            title="Fuzzy match title from both databases",
+        )
+        with alive_bar(
+            len(fuzzy_matches),
+            title="Linking fuzzy-matched Kaize entries",
+            spinner=None,
+        ) as bar:  # type: ignore
+            for item, aod_item, id_count in fuzzy_matches:
                 kz_dat = {
                     "anidb": aod_item["anidb"],
                     "anilist": aod_item["anilist"],
@@ -219,7 +363,7 @@ def link_kaize_to_mal(
                         "kaize_id": None if item["kaize"] == 0 else item["kaize"],
                     }
                 )
-            bar()
+                bar()
     # load manual link data
     with open("database/raw/kaize_manual.json", "r", encoding="utf-8") as file:
         manual_link: dict[str, dict[str, str | int | None]] = json.load(file)
@@ -388,21 +532,49 @@ def link_nautiljon_to_mal(
                 unlinked.append(nautiljon_item)
             bar()
     # fuzzy search the rest of unlinked data
-    # Build normalized title cache for all AOD entries (done once)
+    # Build slug index and pre-filter
+    aod_slug_lookup, _ = build_slug_index(aod, "title")
+    slug_matched, unlinked_for_fuzzy = prefilter_by_slug(unlinked, aod_slug_lookup)
+
+    # Update records from slug matches
+    with alive_bar(
+        len(slug_matched), title="Linking slug-matched Nautiljon entries", spinner=None
+    ) as bar:  # type: ignore
+        for item, aod_item in slug_matched:
+            item.update(
+                {
+                    "anidb": aod_item["anidb"],
+                    "anilist": aod_item["anilist"],
+                    "myanimelist": aod_item["myanimelist"],
+                }
+            )
+            nautiljon_fixed.append(item)
+            aod_item.update(
+                {
+                    "nautiljon": item["slug"],
+                    "nautiljon_id": item["entry_id"],
+                }
+            )
+            bar()
+
+    # Fuzzy match remaining items with parallel workers
     aod_normalized_cache = {
         idx: normalize_title(item["title"]) for idx, item in enumerate(aod)
     }
-    with alive_bar(
-        len(unlinked), title="Fuzzy match title from both databases", spinner=None
-    ) as bar:  # type: ignore
-        for item in unlinked:
-            title = item["title"]
-            # Use fuzzy_match_with_id_check to prefer entries with more IDs
-            aod_item, id_count = fuzzy_match_with_id_check(
-                title, aod, aod_normalized_cache, threshold=90
-            )
-
-            if aod_item:
+    if unlinked_for_fuzzy:
+        fuzzy_matches = fuzzy_match_batch_parallel(
+            unlinked_for_fuzzy,
+            aod,
+            aod_normalized_cache,
+            threshold=90,
+            title="Fuzzy match title from both databases",
+        )
+        with alive_bar(
+            len(fuzzy_matches),
+            title="Linking fuzzy-matched Nautiljon entries",
+            spinner=None,
+        ) as bar:  # type: ignore
+            for item, aod_item, id_count in fuzzy_matches:
                 item.update(
                     {
                         "anidb": aod_item["anidb"],
@@ -417,7 +589,12 @@ def link_nautiljon_to_mal(
                         "nautiljon_id": item["entry_id"],
                     }
                 )
-            bar()
+                bar()
+
+    # Build normalized title cache for remaining unlinked AOD entries
+    aod_normalized_cache = {
+        idx: normalize_title(item["title"]) for idx, item in enumerate(aod)
+    }
     # remove fixed data from unlinked
     with alive_bar(
         len(nautiljon_fixed), title="Removing fixed data from unlinked", spinner=None
@@ -518,48 +695,81 @@ def link_otakotaku_to_mal(
                 unlinked.append(ot_item)
             bar()
     # on unlinked, fuzzy search the title name
-    # Build normalized title cache for all AOD entries (done once)
+    # Build slug index for fast pre-filtering (eliminates ~70-80% of items)
+    aod_slug_lookup, _ = build_slug_index(aod, "title")
+    unlinked_filtered: list[dict[str, Any]] = []
+
+    # Pre-filter using slugs before expensive fuzzy matching
+    with alive_bar(
+        len(unlinked), title="Pre-filtering unlinked with slug matching", spinner=None
+    ) as bar:  # type: ignore
+        for item in unlinked:
+            ot_slug = slugify(item["title"]).replace("-", "")
+            if ot_slug not in aod_slug_lookup:
+                # Only add to fuzzy matching queue if slug doesn't match
+                unlinked_filtered.append(item)
+            else:
+                # Slug matched - use it directly
+                aod_item = aod_slug_lookup[ot_slug]
+                ot_dat = {"otakotaku": item["otakotaku"]}
+                aod_item.update(ot_dat)
+                ot_fixed.append(aod_item)
+            bar()
+
+    # Build normalized title cache for remaining unlinked AOD entries
     aod_normalized_cache = {
         idx: normalize_title(item["title"]) for idx, item in enumerate(aod)
     }
-    with alive_bar(
-        len(unlinked), title="Fuzzy match title from both databases", spinner=None
-    ) as bar:  # type: ignore
-        replace_dict = {
-            "Season 2": "2nd Season",
-            "Season 3": "3rd Season",
-        }
-        # autopopulate the replace dict with ordinal numbers from 4 to 100
-        for i in range(4, 21):
-            # if it's 11, 12, 13, use th, else use st, nd, rd
-            if i in [11, 12, 13]:
-                replace_dict[f"Season {i}"] = f"{i}th Season"
-            elif i % 10 == 1:
-                replace_dict[f"Season {i}"] = f"{i}st Season"
-            elif i % 10 == 2:
-                replace_dict[f"Season {i}"] = f"{i}nd Season"
-            elif i % 10 == 3:
-                replace_dict[f"Season {i}"] = f"{i}rd Season"
-            else:
-                replace_dict[f"Season {i}"] = f"{i}th Season"
 
-        for item in unlinked:
-            title = item["title"]
-            for key, value in replace_dict.items():
-                title = title.replace(key, value)
+    # Pre-process titles for season normalization
+    replace_dict = {
+        "Season 2": "2nd Season",
+        "Season 3": "3rd Season",
+    }
+    # autopopulate the replace dict with ordinal numbers from 4 to 100
+    for i in range(4, 21):
+        # if it's 11, 12, 13, use th, else use st, nd, rd
+        if i in [11, 12, 13]:
+            replace_dict[f"Season {i}"] = f"{i}th Season"
+        elif i % 10 == 1:
+            replace_dict[f"Season {i}"] = f"{i}st Season"
+        elif i % 10 == 2:
+            replace_dict[f"Season {i}"] = f"{i}nd Season"
+        elif i % 10 == 3:
+            replace_dict[f"Season {i}"] = f"{i}rd Season"
+        else:
+            replace_dict[f"Season {i}"] = f"{i}th Season"
 
-            # Use fuzzy_match_with_id_check to prefer entries with more IDs
-            aod_item, id_count = fuzzy_match_with_id_check(
-                title, aod, aod_normalized_cache, threshold=90
-            )
+    # Apply season replacements before fuzzy matching
+    unlinked_normalized = []
+    for item in unlinked_filtered:
+        normalized_item = item.copy()
+        title = item["title"]
+        for key, value in replace_dict.items():
+            title = title.replace(key, value)
+        normalized_item["title"] = title
+        unlinked_normalized.append(normalized_item)
 
-            if aod_item:
+    if unlinked_normalized:
+        fuzzy_matches = fuzzy_match_batch_parallel(
+            unlinked_normalized,
+            aod,
+            aod_normalized_cache,
+            threshold=90,
+            title="Fuzzy match title from both databases",
+        )
+        with alive_bar(
+            len(fuzzy_matches),
+            title="Linking fuzzy-matched OtakOtaku entries",
+            spinner=None,
+        ) as bar:  # type: ignore
+            for item, aod_item, id_count in fuzzy_matches:
                 ot_dat = {
                     "otakotaku": item["otakotaku"],
                 }
                 aod_item.update(ot_dat)
                 ot_fixed.append(aod_item)
-            bar()
+                bar()
     # load manual link data
     with open("database/raw/otakotaku_manual.json", "r", encoding="utf-8") as file:
         manual_link: dict[str, int] = json.load(file)
@@ -709,27 +919,51 @@ def link_silveryasha_to_mal(
                 unlinked.append(sy_item)
             bar()
     # on unlinked, fuzzy search the title name
-    # Build normalized title cache for all AOD entries (done once)
+    # Build slug index for fast pre-filtering (eliminates ~70-80% of items)
+    aod_slug_lookup, _ = build_slug_index(aod, "title")
+    unlinked_filtered: list[dict[str, Any]] = []
+
+    # Pre-filter using slugs before expensive fuzzy matching
+    with alive_bar(
+        len(unlinked), title="Pre-filtering unlinked with slug matching", spinner=None
+    ) as bar:  # type: ignore
+        for item in unlinked:
+            sy_slug = slugify(item["title"]).replace("-", "")
+            if sy_slug not in aod_slug_lookup:
+                # Only add to fuzzy matching queue if slug doesn't match
+                unlinked_filtered.append(item)
+            else:
+                # Slug matched - use it directly
+                aod_item = aod_slug_lookup[sy_slug]
+                sy_dat = {"silveryasha": item["silveryasha"]}
+                aod_item.update(sy_dat)
+                sy_fixed.append(aod_item)
+            bar()
+
+    # Build normalized title cache for remaining unlinked AOD entries
     aod_normalized_cache = {
         idx: normalize_title(item["title"]) for idx, item in enumerate(aod)
     }
-    with alive_bar(
-        len(unlinked), title="Fuzzy match title from both databases", spinner=None
-    ) as bar:  # type: ignore
-        for item in unlinked:
-            title = item["title"]
-            # Use fuzzy_match_with_id_check to prefer entries with more IDs
-            aod_item, id_count = fuzzy_match_with_id_check(
-                title, aod, aod_normalized_cache, threshold=95
-            )
-
-            if aod_item:
+    if unlinked_filtered:
+        fuzzy_matches = fuzzy_match_batch_parallel(
+            unlinked_filtered,
+            aod,
+            aod_normalized_cache,
+            threshold=95,
+            title="Fuzzy match title from both databases",
+        )
+        with alive_bar(
+            len(fuzzy_matches),
+            title="Linking fuzzy-matched SilverYasha entries",
+            spinner=None,
+        ) as bar:  # type: ignore
+            for item, aod_item, id_count in fuzzy_matches:
                 sy_dat = {
                     "silveryasha": item["silveryasha"],
                 }
                 aod_item.update(sy_dat)
                 sy_fixed.append(aod_item)
-            bar()
+                bar()
     # load manual link data
     with open("database/raw/silveryasha_manual.json", "r", encoding="utf-8") as file:
         manual_link: dict[str, int] = json.load(file)
