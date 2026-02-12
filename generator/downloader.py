@@ -103,9 +103,10 @@ class Downloader:
             rows = {}
             try:
                 with open("database/raw/.downloader.tsv", "r") as f:
+                    next(f)  # Skip header
                     for line in f:
                         parts = line.strip().split("\t")
-                        if parts:
+                        if parts and parts[0] != "filename":  # Skip if header
                             rows[parts[0]] = parts
             except FileNotFoundError:
                 pass
