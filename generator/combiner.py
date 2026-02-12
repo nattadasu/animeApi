@@ -356,3 +356,68 @@ def combine_fribb(
         f"{len(fribb)}",
     )
     return aod
+
+
+def combine_hikka(
+    hikka: list[dict[str, Any]], aod: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
+    """
+    Combine Hikka data with AOD data using MAL ID as primary lookup.
+    Hikka has direct MAL ID support and slug for URL reference.
+
+    :param hikka: Hikka anime data
+    :type hikka: list[dict[str, Any]]
+    :param aod: AOD data
+    :type aod: list[dict[str, Any]]
+    :return: AOD data with Hikka fields
+    :rtype: list[dict[str, Any]]
+    """
+    linked = 0
+
+    # Build lookup dictionary for O(1) lookups by MAL ID
+    hikka_by_mal: dict[int, dict[str, Any]] = {}
+    for hikka_item in hikka:
+        mal_id = hikka_item.get("mal_id")
+        if mal_id is not None:
+            hikka_by_mal[mal_id] = hikka_item
+
+    with alive_bar(
+        len(aod), title="Combining Hikka data with AOD data", spinner=None
+    ) as bar:  # type: ignore
+        for item in aod:
+            matched = False
+            myanimelist = item["myanimelist"]
+
+            # Skip if myanimelist is null
+            if myanimelist is None:
+                item.update({"hikka": None})
+                bar()
+                continue
+
+            # Check if mal_id exists in hikka_data
+            hikka_item = (
+                hikka_by_mal.get(myanimelist) if myanimelist is not None else None
+            )
+            if hikka_item is not None:
+                slug = hikka_item.get("slug")
+
+                item.update({"hikka": slug})
+                linked += 1
+                matched = True
+
+            if not matched:
+                item.update({"hikka": None})
+            bar()
+
+    pprint.print(
+        Platform.HIKKA,
+        Status.PASS,
+        "Hikka data combined with AOD data.",
+        "Total linked data:",
+        f"{linked},",
+        "AOD data:",
+        f"{len(aod)}",
+        "Hikka data:",
+        f"{len(hikka)}",
+    )
+    return aod

@@ -256,6 +256,7 @@ def update_markdown(
         ("animeplanet", "Anime-Planet"),
         ("anisearch", "aniSearch"),
         ("annict", "Annict"),
+        ("hikka", "Hikka"),
         ("imdb", "IMDb"),
         ("kaize", "Kaize"),
         ("kitsu", "Kitsu"),

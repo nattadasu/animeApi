@@ -6,7 +6,7 @@ from time import time
 from typing import Any
 
 from alive_progress import alive_bar  # type: ignore
-from combiner import combine_anitrakt, combine_arm, combine_fribb
+from combiner import combine_anitrakt, combine_arm, combine_fribb, combine_hikka
 from const import (
     KAIZE_EMAIL,
     KAIZE_PASSWORD,
@@ -32,6 +32,7 @@ from fetcher import (
     simplify_aod_data,
     simplify_silveryasha_data,
 )
+from hikka import Hikka
 from kaize import Kaize
 from nautiljon import Nautiljon
 from otakotaku import OtakOtaku
@@ -84,6 +85,7 @@ def main() -> None:
             password=KAIZE_PASSWORD,
         ).get_anime()
         nau = Nautiljon().get_animes()
+        hka = Hikka().get_animes()
         validate_json_files()
         git_changes = check_git_any_changes()
         if git_changes is False:
@@ -128,6 +130,8 @@ def main() -> None:
             Platform.ANITRAKT, Status.BUILD, "Combining AniTrakt data with AOD data"
         )
         aod_arr = combine_anitrakt(anitrakt, aod_arr)
+        pprint.print(Platform.HIKKA, Status.BUILD, "Combining Hikka data with AOD data")
+        aod_arr = combine_hikka(hka, aod_arr)
         run_metrics["stages"]["combine_external"] = time() - stage_start
 
         stage_start = time()
@@ -143,6 +147,7 @@ def main() -> None:
                     "animeplanet": item.get("animeplanet", None),
                     "anisearch": item.get("anisearch", None),
                     "annict": item.get("annict", None),
+                    "hikka": item.get("hikka", None),
                     "imdb": item.get("imdb", None),
                     "kaize": item.get("kaize", None),
                     "kaize_id": item.get("kaize_id", None),

@@ -244,6 +244,9 @@ components:
         annict:
           type: integer
           nullable: true
+        hikka:
+          type: string
+          nullable: true
         imdb:
           type: string
           nullable: true
@@ -338,6 +341,7 @@ components:
         animeplanet: "cowboy-bebop"
         anisearch: 1572
         annict: 360
+        hikka: "cowboy-bebop-d572ee"
         imdb: "tt0213338"
         kaize: "cowboy-bebop"
         kaize_id: 265

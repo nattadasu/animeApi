@@ -35,6 +35,7 @@ def load_tsv_data() -> pd.DataFrame:
             "animeplanet": str,
             "anisearch": "Int64",
             "annict": "Int64",
+            "hikka": str,
             "imdb": str,
             "kaize": str,
             "kaize_id": "Int64",
@@ -122,15 +123,16 @@ def lookup_by_platform_id(
         # Try to find exact match
         try:
             if platform in [
-                "imdb",
                 "animeplanet",
+                "hikka",
+                "imdb",
                 "kaize",
                 "letterboxd_lid",
                 "letterboxd_slug",
                 "nautiljon",
                 "notify",
-                "trakt_slug",
                 "themoviedb_type",
+                "trakt_slug",
                 "trakt_type",
             ]:
                 lookup_id = str(platform_id)

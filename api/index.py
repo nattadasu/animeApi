@@ -473,6 +473,7 @@ route_path = {
     "animeplanet": "https://www.anime-planet.com/anime/",
     "anisearch": "https://www.anisearch.com/anime/",
     "annict": "https://annict.com/works/",
+    "hikka": "https://hikka.io/anime/",
     "imdb": "https://www.imdb.com/title/",
     "kaize": "https://kaize.io/anime/",
     "kitsu": "https://kitsu.app/anime/",

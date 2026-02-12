@@ -17,6 +17,7 @@ class AnimeEntry:
     animeplanet: Optional[str] = None
     anisearch: Optional[int] = None
     annict: Optional[int] = None
+    hikka: Optional[str] = None
     imdb: Optional[str] = None
     kaize: Optional[str] = None
     kaize_id: Optional[int] = None
@@ -80,6 +81,7 @@ def row_to_entry(row: pd.Series) -> AnimeEntry:
         animeplanet=safe_convert(row.get("animeplanet"), str),
         anisearch=safe_convert(row.get("anisearch"), int),
         annict=safe_convert(row.get("annict"), int),
+        hikka=safe_convert(row.get("hikka"), str),
         imdb=safe_convert(row.get("imdb"), str),
         kaize=safe_convert(row.get("kaize"), str),
         kaize_id=safe_convert(row.get("kaize_id"), int),

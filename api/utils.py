@@ -19,6 +19,7 @@ PLATFORM_SYNONYMS = {
         "anisearch.com",
     ],
     "annict": ["ac", "act", "anc", "annict.com", "annict.jp", "en.annict.com"],
+    "hikka": ["hk", "hka", "hikka.io"],
     "imdb": ["im", "imdb.com"],
     "kaize": ["kz", "kaize.io"],
     "kitsu": ["kt", "kts", "kitsu.app", "kitsu.io"],
