@@ -78,6 +78,44 @@ def translate_hex_to_rgb(hex_: int) -> tuple[int, int, int]:
     return ((hex_ >> 16) & 0xFF, (hex_ >> 8) & 0xFF, hex_ & 0xFF)
 
 
+def calculate_contrast_ratio(r: int, g: int, b: int) -> float:
+    """
+    Calculate WCAG contrast ratio between RGB color and white text.
+    Uses relative luminance formula.
+
+    :param r: Red component (0-255)
+    :param g: Green component (0-255)
+    :param b: Blue component (0-255)
+    :return: Contrast ratio (higher = more contrast)
+    """
+    # Normalize to 0-1
+    r_norm = r / 255.0
+    g_norm = g / 255.0
+    b_norm = b / 255.0
+
+    # Calculate relative luminance
+    def adjust_channel(c: float) -> float:
+        if c <= 0.03928:
+            return c / 12.92
+        return ((c + 0.055) / 1.055) ** 2.4
+
+    r_lum = adjust_channel(r_norm)
+    g_lum = adjust_channel(g_norm)
+    b_lum = adjust_channel(b_norm)
+
+    luminance = 0.2126 * r_lum + 0.7152 * g_lum + 0.0722 * b_lum
+
+    # White has luminance of 1.0, black has 0.0
+    white_luminance = 1.0
+    black_luminance = 0.0
+
+    # Contrast ratio = (L1 + 0.05) / (L2 + 0.05), where L1 > L2
+    contrast_white = (white_luminance + 0.05) / (luminance + 0.05)
+    contrast_black = (luminance + 0.05) / (black_luminance + 0.05)
+
+    return contrast_white if contrast_white > contrast_black else contrast_black
+
+
 class PrettyPrint:
     """Pretty print for the proccess"""
 
@@ -118,18 +156,32 @@ class PrettyPrint:
 
     def _format_date(self) -> str:
         """
-        Format the data
+        Format the date and time with contrast-aware text color.
 
         :return: The formatted date
         :rtype: str
         """
-        date = f"\033[104m {self._get_date()} \033[0m " if self.show_date else ""
-        time = f"\033[104m {self._get_time()} \033[0m " if self.show_time else ""
+        # Use RGB color for date/time background (blue: 52, 152, 219)
+        # Same as Status.INFO color for consistency
+        bg_color = "48;2;52;152;219"  # INFO blue
+        text_color = "38;2;255;255;255"  # White text (good contrast)
+
+        date = (
+            f"\033[{bg_color};{text_color}m {self._get_date()} \033[0m "
+            if self.show_date
+            else ""
+        )
+        time = (
+            f"\033[{bg_color};{text_color}m {self._get_time()} \033[0m "
+            if self.show_time
+            else ""
+        )
         return f"{date}{time}"
 
     def _format_to_hex(self, enums: Platform | Status) -> str:
         """
-        Format the text block to hex
+        Format the text block to hex with contrast-aware text color.
+        Uses white text by default, switches to black if contrast is poor.
 
         :param enums: The enum to be formatted
         :type enums: Platform | Status
@@ -140,7 +192,13 @@ class PrettyPrint:
         sp = "  "
         if isinstance(enums, Platform):
             sp = " "
-        return f"\033[48;2;{col[0]};{col[1]};{col[2]}m{sp}{enums.name}{sp}\033[0m"
+
+        # Calculate contrast and choose text color
+        contrast = calculate_contrast_ratio(col[0], col[1], col[2])
+        # Use white (255,255,255) if contrast is good (>4.5), otherwise black (0,0,0)
+        text_color = "38;2;255;255;255" if contrast > 4.5 else "38;2;0;0;0"
+
+        return f"\033[48;2;{col[0]};{col[1]};{col[2]};{text_color}m{sp}{enums.name}{sp}\033[0m"
 
     def print(
         self,
