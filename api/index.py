@@ -39,8 +39,6 @@ except ImportError:
     )
 
 app = Flask(__name__)
-app.json.compact = True
-app.json.sort_keys = False
 
 runtime = time()
 
@@ -51,29 +49,32 @@ with open("api/status.json", "r", encoding="utf-8") as _status_file:
     API_UPDATED = str(_status_data["updated"]["timestamp"])
 
 # Load server updated timestamp (for Vercel compatibility)
-try:
-    with open("api/.server_updated", "r", encoding="utf-8") as _server_file:
-        API_SERVER_UPDATED = _server_file.read().strip()
-except FileNotFoundError:
-    # Fallback to git if .server_updated doesn't exist (local development)
-    import subprocess
-
+def _get_server_updated() -> str:
     try:
-        result = subprocess.run(
-            ["git", "log", "-1", "--format=%ct", "--", "api/"],
-            capture_output=True,
-            text=True,
-            check=True,
-            timeout=5,
-        )
-        API_SERVER_UPDATED = result.stdout.strip()
-    except (
-        subprocess.CalledProcessError,
-        subprocess.TimeoutExpired,
-        FileNotFoundError,
-    ):
-        # If git is not available or fails, use current timestamp
-        API_SERVER_UPDATED = str(int(time()))
+        with open("api/.server_updated", "r", encoding="utf-8") as _server_file:
+            return _server_file.read().strip()
+    except FileNotFoundError:
+        # Fallback to git if .server_updated doesn't exist (local development)
+        import subprocess
+
+        try:
+            result = subprocess.run(
+                ["git", "log", "-1", "--format=%ct", "--", "api/"],
+                capture_output=True,
+                text=True,
+                check=True,
+                timeout=5,
+            )
+            return result.stdout.strip()
+        except (
+            subprocess.CalledProcessError,
+            subprocess.TimeoutExpired,
+            FileNotFoundError,
+        ):
+            # If git is not available or fails, use current timestamp
+            return str(int(time()))
+
+API_SERVER_UPDATED = _get_server_updated()
 
 
 class CorruptedResp(TypedDict):
@@ -92,7 +93,7 @@ def platform_id_content(platform: str, platform_id: Union[int, str]) -> Dict[str
     :return: Platform ID content
     :rtype: Dict[str, Any]
     """
-    platform_id = clean_platform_id(platform_id)
+    platform_id = clean_platform_id(str(platform_id))
 
     # Use TSV lookup
     entry = lookup_by_platform_id(platform, platform_id)
@@ -115,7 +116,7 @@ def before_request():
 
 
 @app.after_request
-def after_request(response):
+def after_request(response: Response) -> Response:
     """Add custom headers to all responses"""
     response.headers["X-ANIMEAPI-VERSION"] = API_VERSION
     response.headers["X-ANIMEAPI-UPDATED"] = API_UPDATED

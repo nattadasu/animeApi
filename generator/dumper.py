@@ -148,20 +148,20 @@ def load_tsv_for_counting() -> pd.DataFrame:
     """
     # Read all columns as strings to avoid pandas type inference errors
     # (some columns may have mixed types or special characters)
-    df = pd.read_csv(
+    df = pd.read_csv(  # type: ignore
         "database/animeapi.tsv",
         sep="\t",
         dtype=str,  # All columns as strings
         keep_default_na=False,  # Don't convert empty strings to NaN
         na_values=[],  # Empty list means no values are treated as null
     )
-    df["trakt_may_invalid"] = df["trakt_may_invalid"].replace(
+    df["trakt_may_invalid"] = df["trakt_may_invalid"].replace(  # type: ignore
         {"True": True, "False": False, "": None}
     )
     return df
 
 
-def get_sample_data_from_tsv(df: pd.DataFrame, platform: str, platform_id: Any) -> dict:
+def get_sample_data_from_tsv(df: pd.DataFrame, platform: str, platform_id: Any) -> dict[str, Any]:
     """
     Get sample data from TSV for a specific platform and ID
 
@@ -172,29 +172,29 @@ def get_sample_data_from_tsv(df: pd.DataFrame, platform: str, platform_id: Any) 
     :param platform_id: Platform ID to lookup
     :type platform_id: Any
     :return: Dictionary representation of the row
-    :rtype: dict
+    :rtype: dict[str, Any]
     """
     mask = df[platform] == platform_id
     if not mask.any():
         return {}
 
-    row = df[mask].iloc[0]
+    row = df[mask].iloc[0]  # type: ignore
     # Convert row to dict and handle NaN values
-    result = row.to_dict()
+    result: dict[str, Any] = row.to_dict()  # type: ignore
     # Replace NaN with None for JSON serialization
-    for key, value in result.items():
-        if pd.isna(value):
+    for key, value in result.items():  # type: ignore
+        if pd.isna(value):  # type: ignore
             result[key] = None
         elif isinstance(value, bool):
             # Keep booleans as-is (must check before int since bool is subclass of int)
             result[key] = value
-        elif isinstance(value, (pd.Int64Dtype, int)) and not pd.isna(value):
+        elif isinstance(value, int):
             result[key] = int(value)
 
-    return result
+    return result  # type: ignore
 
 
-def get_trakt_sample_from_tsv(df: pd.DataFrame, trakt_id: int, season: int) -> dict:
+def get_trakt_sample_from_tsv(df: pd.DataFrame, trakt_id: int, season: int) -> dict[str, Any]:
     """
     Get sample data from TSV for a specific Trakt show and season
 
@@ -205,14 +205,14 @@ def get_trakt_sample_from_tsv(df: pd.DataFrame, trakt_id: int, season: int) -> d
     :param season: Season number
     :type season: int
     :return: Dictionary representation of the row
-    :rtype: dict
+    :rtype: dict[str, Any]
     """
     mask = (df["trakt"] == trakt_id) & (df["trakt_season"] == season)
     if not mask.any():
         return {}
 
-    row = df[mask].iloc[0]
-    result = row.to_dict()
+    row = df[mask].iloc[0]  # type: ignore
+    result: dict[str, Any] = row.to_dict()  # type: ignore
     # Replace NaN with None for JSON serialization
     for key, value in result.items():
         if pd.isna(value):
@@ -220,7 +220,7 @@ def get_trakt_sample_from_tsv(df: pd.DataFrame, trakt_id: int, season: int) -> d
         elif isinstance(value, bool):
             # Keep booleans as-is (must check before int since bool is subclass of int)
             result[key] = value
-        elif isinstance(value, (pd.Int64Dtype, int)) and not pd.isna(value):
+        elif isinstance(value, int):
             result[key] = int(value)
 
     return result
@@ -276,7 +276,7 @@ def update_markdown(
     ]
 
     # Build counts dictionary dynamically
-    counts = {}
+    counts: dict[str, int] = {}
     for column, display_name in platform_mapping:
         # Convert display name to count key format
         # Remove special chars and convert to lowercase for key
@@ -298,7 +298,7 @@ def update_markdown(
     table_header = """| Platform           |     Count |
 | :----------------- | --------: |
 """
-    table_rows = []
+    table_rows: list[str] = []
     for column, display_name in platform_mapping:
         # Get the count key
         if column == "letterboxd_slug":

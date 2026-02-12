@@ -24,7 +24,7 @@ def load_tsv_data() -> pd.DataFrame:
         return _tsv_cache
 
     # Read TSV with pandas - much faster than JSON
-    df = pd.read_csv(
+    df = pd.read_csv(  # type: ignore
         "database/animeapi.tsv",
         sep="\t",
         dtype={
@@ -70,7 +70,7 @@ def load_tsv_data() -> pd.DataFrame:
     )
 
     # Convert trakt_may_invalid to boolean
-    df["trakt_may_invalid"] = df["trakt_may_invalid"].replace(
+    df["trakt_may_invalid"] = df["trakt_may_invalid"].replace(  # type: ignore
         {
             "True": True,
             "False": False,
@@ -172,7 +172,7 @@ def lookup_letterboxd(
 
 
 def lookup_composite_platform(
-    platform: str, platform_id: str, df: pd.DataFrame
+    platform: str, platform_id: Union[int, str], df: pd.DataFrame
 ) -> Optional[AnimeEntry]:
     """
     Handle composite platform IDs (trakt, themoviedb, thetvdb)

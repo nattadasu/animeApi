@@ -218,18 +218,18 @@ def _log_run_metrics(metrics: dict[str, Any]) -> None:
     """Append run metrics to runs.json for historical tracking."""
     try:
         runs_file = "database/runs.json"
-        runs = []
+        runs: list[dict[str, Any]] = []
 
         # Load existing runs
         try:
             with open(runs_file, "r", encoding="utf-8") as f:
                 runs = json.load(f)
         except FileNotFoundError:
-            runs = []
+            runs: list[dict[str, Any]] = []
 
         # Add total duration
         metrics["duration_seconds"] = sum(
-            v for k, v in metrics["stages"].items() if isinstance(v, (int, float))
+            v for _, v in metrics["stages"].items() if isinstance(v, (int, float))
         )
 
         # Append new run
