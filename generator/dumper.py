@@ -416,6 +416,15 @@ def update_markdown(
     with open("README.md", "w", encoding="utf-8") as file:
         file.write(readme)
 
+    # Update status.json with correct counts
+    pprint.print(
+        Platform.SYSTEM,
+        Status.INFO,
+        "Updating status.json with platform counts",
+    )
+    with open("api/status.json", "w", encoding="utf-8") as file:
+        json.dump(attr, file)
+
     pprint.print(
         Platform.SYSTEM,
         Status.PASS,
