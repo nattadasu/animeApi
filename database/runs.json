@@ -1,0 +1,42 @@
+[
+  {
+    "timestamp": "2026-02-13T07:19:57.364821",
+    "status": "success",
+    "duration_seconds": 135.30423760414124,
+    "stages": {
+      "fetch_aod": 3.3656163215637207,
+      "fetch_notify": 2.098435640335083,
+      "merge_notify": 0.1469411849975586,
+      "link_platforms": 127.97506046295166,
+      "combine_external": 0.3487858772277832,
+      "finalize": 0.4847993850708008,
+      "write_output": 0.8845987319946289
+    },
+    "final_counts": {
+      "anidb": 14263,
+      "anilist": 22197,
+      "animenewsnetwork": 12159,
+      "animeplanet": 26553,
+      "anisearch": 20527,
+      "annict": 12550,
+      "hikka": 28231,
+      "imdb": 5789,
+      "kaize": 24370,
+      "kitsu": 21764,
+      "letterboxd": 1320,
+      "livechart": 12066,
+      "myanimelist": 30139,
+      "nautiljon": 9113,
+      "notify": 16968,
+      "otakotaku": 2972,
+      "shikimori": 30139,
+      "shoboi": 5914,
+      "silveryasha": 4958,
+      "simkl": 14261,
+      "themoviedb": 8183,
+      "thetvdb": 3752,
+      "trakt": 5110,
+      "total": 39714
+    }
+  }
+]

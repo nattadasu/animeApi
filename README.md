@@ -216,36 +216,37 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 12 February 2026 22:29:23 UTC
+Last updated: 13 February 2026 08:18:18 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
-| aniDB              |     14236 |
-| AniList            |     22167 |
-| Anime News Network |     12134 |
-| Anime-Planet       |     26515 |
-| aniSearch          |     20484 |
-| Annict             |     12545 |
-| IMDb               |      5790 |
-| Kaize              |     24755 |
-| Kitsu              |     21738 |
-| Letterboxd         |      1313 |
-| LiveChart          |     12052 |
-| MyAnimeList        |     30097 |
-| Nautiljon          |      9030 |
-| Notify.moe         |     16992 |
-| Otak Otaku         |      3105 |
-| Shikimori          |     30097 |
-| Shoboi/Syobocal    |      5915 |
-| Silver Yasha       |      5206 |
-| SIMKL              |     14225 |
+| aniDB              |     14263 |
+| AniList            |     22197 |
+| Anime News Network |     12159 |
+| Anime-Planet       |     26553 |
+| aniSearch          |     20527 |
+| Annict             |     12550 |
+| Hikka              |     28231 |
+| IMDb               |      5789 |
+| Kaize              |     24370 |
+| Kitsu              |     21764 |
+| Letterboxd         |      1320 |
+| LiveChart          |     12066 |
+| MyAnimeList        |     30139 |
+| Nautiljon          |      9113 |
+| Notify.moe         |     16968 |
+| Otak Otaku         |      2972 |
+| Shikimori          |     30139 |
+| Shoboi/Syobocal    |      5914 |
+| Silver Yasha       |      4958 |
+| SIMKL              |     14261 |
 | The Movie Database |      8183 |
-| The TVDB           |      3762 |
-| Trakt              |      5111 |
+| The TVDB           |      3752 |
+| Trakt              |      5110 |
 |                    |           |
-| **Total**          | **39665** |
+| **Total**          | **39714** |
 <!-- /counters -->
 
 ## Usage
@@ -317,8 +318,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1769751204,
-    "iso": "2026-01-30T05:33:24.700654+00:00"
+    "timestamp": 1770970698,
+    "iso": "2026-02-13T08:18:18.284601+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -338,29 +339,30 @@ GET /status
   "license": "AGPL-3.0-only AND MIT AND CC0-1.0+",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 14236,
-    "anilist": 22167,
-    "animenewsnetwork": 12134,
-    "animeplanet": 26515,
-    "anisearch": 20484,
-    "annict": 12545,
-    "imdb": 5790,
-    "kaize": 24755,
-    "kitsu": 21738,
-    "letterboxd": 1313,
-    "livechart": 12052,
-    "myanimelist": 30097,
-    "nautiljon": 9030,
-    "notify": 16992,
-    "otakotaku": 3105,
-    "shikimori": 30097,
-    "shoboi": 5915,
-    "silveryasha": 5206,
-    "simkl": 14225,
+    "anidb": 14263,
+    "anilist": 22197,
+    "animenewsnetwork": 12159,
+    "animeplanet": 26553,
+    "anisearch": 20527,
+    "annict": 12550,
+    "hikka": 28231,
+    "imdb": 5789,
+    "kaize": 24370,
+    "kitsu": 21764,
+    "letterboxd": 1320,
+    "livechart": 12066,
+    "myanimelist": 30139,
+    "nautiljon": 9113,
+    "notify": 16968,
+    "otakotaku": 2972,
+    "shikimori": 30139,
+    "shoboi": 5914,
+    "silveryasha": 4958,
+    "simkl": 14261,
     "themoviedb": 8183,
-    "thetvdb": 3762,
-    "trakt": 5111,
-    "total": 39665
+    "thetvdb": 3752,
+    "trakt": 5110,
+    "total": 39714
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format. Platform aliases supported for direct lookup for platform specific endpoints (see ?P<alias> in regex).",
@@ -373,6 +375,7 @@ GET /status
     "anisearch": "/(?P<alias>anisearch)/(?P<media_id>\\d+)",
     "annict": "/(?P<alias>annict)/(?P<media_id>\\d+)",
     "heartbeat": "/(heartbeat|ping)",
+    "hikka": "/(?P<alias>hikka)/(?P<media_id>\\d+)",
     "imdb": "/(?P<alias>imdb)/(?P<media_id>tt[\\d]+)",
     "kaize": "/(?P<alias>kaize)/(?P<media_id>[\\w\\-]+)",
     "kitsu": "/(?P<alias>kitsu)/(?P<media_id>\\d+)",
@@ -439,7 +442,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 01/30/2026 05:33:24 UTC
+Updated on 02/13/2026 08:18:18 UTC
 ```
 <!-- /updated-txt -->
 
@@ -583,6 +586,7 @@ GET https://animeapi.my.id/myanimelist/1
   "animeplanet": "cowboy-bebop",
   "anisearch": 1572,
   "annict": 360,
+  "hikka": "cowboy-bebop-d572ee",
   "imdb": "tt0213338",
   "kaize": "cowboy-bebop",
   "kaize_id": 265,
@@ -595,10 +599,10 @@ GET https://animeapi.my.id/myanimelist/1
   "nautiljon": null,
   "nautiljon_id": null,
   "notify": "Tk3ccKimg",
-  "otakotaku": 1149,
+  "otakotaku": "Cowboy Bebop",
   "shikimori": 1,
   "shoboi": 538,
-  "silveryasha": 2652,
+  "silveryasha": "Cowboy Bebop",
   "simkl": 37089,
   "themoviedb": 30991,
   "themoviedb_season_id": 42587,
@@ -785,10 +789,11 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
   "title": "Mairimashita! Iruma-kun 3rd Season",
   "anidb": 16627,
   "anilist": 139092,
-  "animenewsnetwork": null,
+  "animenewsnetwork": 24018,
   "animeplanet": "welcome-to-demon-school-iruma-kun-3",
   "anisearch": 16582,
   "annict": 8883,
+  "hikka": "mairimashita-iruma-kun-3rd-season-bad2d0",
   "imdb": "tt11034066",
   "kaize": "mairimashita-iruma-kun-3rd-season",
   "kaize_id": 4989,
@@ -801,10 +806,10 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
   "nautiljon": null,
   "nautiljon_id": null,
   "notify": "Okl9YtInR",
-  "otakotaku": 2305,
+  "otakotaku": null,
   "shikimori": 49784,
   "shoboi": 6489,
-  "silveryasha": 3702,
+  "silveryasha": "Mairimashita! Iruma-kun 3rd Season",
   "simkl": 1728821,
   "themoviedb": 91801,
   "themoviedb_season_id": 306624,
@@ -996,6 +1001,11 @@ Add the following schema URI to your JSON file.
           "description": "Annict ID, website: https://annict.com/, https://en.annict.com/, https://annict.jp/",
           "title": "Annict"
         },
+        "hikka": {
+          "$ref": "#/definitions/stringnull",
+          "description": "Hikka slug, website: https://hikka.io/",
+          "title": "Hikka"
+        },
         "imdb": {
           "$ref": "#/definitions/stringnull",
           "description": "IMDb ID, website: https://www.imdb.com/",
@@ -1069,7 +1079,7 @@ Add the following schema URI to your JSON file.
         },
         "shikimori": {
           "$ref": "#/definitions/numbernull",
-          "description": "Shikimori ID, website: https://shikimori.one/",
+          "description": "Shikimori ID, website: https://shiki.one/",
           "title": "Shikimori"
         },
         "shoboi": {
