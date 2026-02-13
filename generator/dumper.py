@@ -2,8 +2,10 @@
 
 import csv
 import json
+import pickle
 import re
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any
 
 import pandas as pd
@@ -57,6 +59,40 @@ def save_list_to_tsv(data: list[dict[str, Any]], file_path: str) -> None:
     return None
 
 
+def save_dataframe_to_pickle(df: pd.DataFrame, file_path: str) -> None:
+    """
+    Save DataFrame to pickle for fast loading
+
+    :param df: DataFrame to save
+    :type df: pd.DataFrame
+    :param file_path: file path (without extension)
+    :type file_path: str
+    :return: None
+    :rtype: None
+    """
+    pprint.print(
+        Platform.SYSTEM,
+        Status.INFO,
+        "Save data to pickle for fast API loading",
+    )
+    try:
+        with open(f"{file_path}.pkl", "wb") as file_:
+            pickle.dump(df, file_, protocol=pickle.HIGHEST_PROTOCOL)
+        file_size = Path(f"{file_path}.pkl").stat().st_size / 1024 / 1024
+        pprint.print(
+            Platform.SYSTEM,
+            Status.PASS,
+            f"Pickle saved: {file_size:.1f}MB",
+        )
+    except (OSError, pickle.PicklingError) as e:
+        pprint.print(
+            Platform.SYSTEM,
+            Status.FAIL,
+            f"Failed to save pickle: {e}",
+        )
+    return None
+
+
 def update_attribution(
     data: list[dict[str, Any]], attr: dict[str, Any]
 ) -> dict[str, Any]:
@@ -83,6 +119,10 @@ def update_attribution(
         "Save data to TSV",
     )
     save_list_to_tsv(data, "database/animeapi")
+
+    # Load TSV and convert to DataFrame for pickle
+    df = load_tsv_for_counting()
+    save_dataframe_to_pickle(df, "database/animeapi")
 
     pprint.print(
         Platform.SYSTEM,

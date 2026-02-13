@@ -1,9 +1,13 @@
 """Data loading and caching module for TSV data"""
 
+import os
+import pickle
 from functools import lru_cache
+from pathlib import Path
 from typing import Any, Dict, Optional, Union
 
-import pandas as pd
+# Lazy import pandas - only when needed
+pd = None
 
 try:
     from .models import AnimeEntry, row_to_entry
@@ -11,17 +15,40 @@ except ImportError:
     from models import AnimeEntry, row_to_entry
 
 # Global cache for TSV data
-_tsv_cache: Optional[pd.DataFrame] = None
+_tsv_cache: Optional[Any] = None
 _tsv_indices: Dict[str, Dict[Any, int]] = {}
 
 
 @lru_cache(maxsize=1)
-def load_tsv_data() -> pd.DataFrame:
+def load_tsv_data() -> Any:
     """Load and cache TSV data with pandas for fast lookups"""
-    global _tsv_cache, _tsv_indices
+    global _tsv_cache, _tsv_indices, pd
 
     if _tsv_cache is not None:
         return _tsv_cache
+
+    # Try to load from pickle cache first (pre-built by generator for fast cold starts)
+    pickle_path = Path("database/animeapi.pkl")
+    if pickle_path.exists():
+        try:
+            with open(pickle_path, "rb") as f:
+                _tsv_cache = pickle.load(f)
+            # Still need to build indices even from pickle
+            df = _tsv_cache
+            for col in df.columns:
+                if col != "title":
+                    mask = df[col].notna()
+                    _tsv_indices[col] = {
+                        val: idx for idx, val in zip(df[mask].index, df[mask][col])
+                    }
+            return _tsv_cache
+        except (pickle.UnpicklingError, EOFError, OSError):
+            # Pickle cache corrupted, fall through to TSV parsing
+            pass
+
+    # Lazy import pandas only when needed
+    import pandas as pd_module
+    pd = pd_module
 
     # Read TSV with pandas - much faster than JSON
     df = pd.read_csv(  # type: ignore
@@ -144,7 +171,7 @@ def lookup_by_platform_id(
 
 
 def lookup_letterboxd(
-    platform_id: Union[int, str], df: pd.DataFrame
+    platform_id: Union[int, str], df: Any
 ) -> Optional[AnimeEntry]:
     """
     Handle letterboxd lookups with priority: letterboxd_slug -> letterboxd_lid -> letterboxd_uid
@@ -166,7 +193,7 @@ def lookup_letterboxd(
 
 
 def lookup_composite_platform(
-    platform: str, platform_id: Union[int, str], df: pd.DataFrame
+    platform: str, platform_id: Union[int, str], df: Any
 ) -> Optional[AnimeEntry]:
     """
     Handle composite platform IDs (trakt, themoviedb, thetvdb)
