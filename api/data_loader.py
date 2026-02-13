@@ -150,6 +150,7 @@ def lookup_by_platform_id(
                 "kaize",
                 "letterboxd_lid",
                 "letterboxd_slug",
+                "myanimelist",
                 "nautiljon",
                 "notify",
                 "themoviedb_type",
