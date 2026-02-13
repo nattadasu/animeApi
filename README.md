@@ -201,7 +201,7 @@ alias cheatsheet as well.
 |        `nautiljon` | `nj`  | `ntj`, `nautiljon.com`                                                                          |
 |           `notify` | `nf`  | `ntf`, `ntm`, `notifymoe`, `notify.moe`                                                         |
 |        `otakotaku` | `oo`  | `otakotaku.com`                                                                                 |
-|        `shikimori` | `sh`  | `shiki`, `shk`, `shikimori.me`, `shikimori.one`, `shikimori.org`                                |
+|        `shikimori` | `sh`  | `shiki`, `shk`, `shiki.one`, `shikimori.me`, `shikimori.one`, `shikimori.org`                   |
 |           `shoboi` | `sb`  | `shb`, `syb`, `shobocal`, `syoboi`, `syobocal`, `cal.syoboi.jp`                                 |
 |      `silveryasha` | `sy`  | `dbti`, `db.silveryasha.id`, `db.silveryasha.web.id`                                            |
 |            `simkl` | `sm`  | `smk`, `simkl.com`, `animecountdown`, `animecountdown.com`                                      |
@@ -1352,7 +1352,7 @@ This project uses multiple sources to compile the data, including:
 [ntj]: https://nautiljon.com
 [oo]: https://otakotaku.com
 [shb]: https://cal.syoboi.jp
-[shk]: https://shikimori.me
+[shk]: https://shiki.one
 [smk]: https://simkl.com
 [sy]: https://db.silveryasha.id
 [tmdb]: https://themoviedb.org
@@ -1376,7 +1376,7 @@ This project uses multiple sources to compile the data, including:
 [f:ntj]: https://www.google.com/s2/favicons?domain=nautiljon.com&sz=16
 [f:oo]: https://www.google.com/s2/favicons?domain=otakotaku.com&sz=16
 [f:shb]: https://www.google.com/s2/favicons?domain=cal.syoboi.jp&sz=16
-[f:shk]: https://favicone.com/shikimori.me
+[f:shk]: https://favicone.com/shiki.one
 [f:smk]: https://www.google.com/s2/favicons?domain=simkl.com&sz=16
 [f:sy]: https://www.google.com/s2/favicons?domain=db.silveryasha.id&sz=16
 [f:tmdb]: https://www.google.com/s2/favicons?domain=themoviedb.org&sz=16

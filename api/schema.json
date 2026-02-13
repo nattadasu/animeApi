@@ -59,6 +59,11 @@
           "description": "Annict ID, website: https://annict.com/, https://en.annict.com/, https://annict.jp/",
           "title": "Annict"
         },
+        "hikka": {
+          "$ref": "#/definitions/stringnull",
+          "description": "Hikka slug, website: https://hikka.io/",
+          "title": "Hikka"
+        },
         "imdb": {
           "$ref": "#/definitions/stringnull",
           "description": "IMDb ID, website: https://www.imdb.com/",
@@ -132,7 +137,7 @@
         },
         "shikimori": {
           "$ref": "#/definitions/numbernull",
-          "description": "Shikimori ID, website: https://shikimori.one/",
+          "description": "Shikimori ID, website: https://shiki.one/",
           "title": "Shikimori"
         },
         "shoboi": {
