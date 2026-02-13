@@ -174,21 +174,30 @@ def get_sample_data_from_tsv(df: pd.DataFrame, platform: str, platform_id: Any) 
     :return: Dictionary representation of the row
     :rtype: dict[str, Any]
     """
-    mask = df[platform] == platform_id
+    # Convert platform_id to string since all columns are loaded as strings
+    mask = df[platform] == str(platform_id)
     if not mask.any():
         return {}
 
     row = df[mask].iloc[0]  # type: ignore
-    # Convert row to dict and handle NaN values
+    # Convert row to dict and handle type conversions
     result: dict[str, Any] = row.to_dict()  # type: ignore
-    # Replace NaN with None for JSON serialization
+    # Convert string values to appropriate types
     for key, value in result.items():  # type: ignore
-        if pd.isna(value):  # type: ignore
+        if pd.isna(value) or value == "":  # type: ignore
             result[key] = None
+        elif value == "True":
+            result[key] = True
+        elif value == "False":
+            result[key] = False
         elif isinstance(value, bool):
-            # Keep booleans as-is (must check before int since bool is subclass of int)
+            # Keep booleans as-is
             result[key] = value
-        elif isinstance(value, int):
+        elif isinstance(value, str) and value.isdigit():
+            # Convert numeric strings to integers
+            result[key] = int(value)
+        elif isinstance(value, str) and value.lstrip('-').isdigit():
+            # Handle negative numbers
             result[key] = int(value)
 
     return result  # type: ignore
@@ -207,20 +216,29 @@ def get_trakt_sample_from_tsv(df: pd.DataFrame, trakt_id: int, season: int) -> d
     :return: Dictionary representation of the row
     :rtype: dict[str, Any]
     """
-    mask = (df["trakt"] == trakt_id) & (df["trakt_season"] == season)
+    # Convert IDs to strings since all columns are loaded as strings
+    mask = (df["trakt"] == str(trakt_id)) & (df["trakt_season"] == str(season))
     if not mask.any():
         return {}
 
     row = df[mask].iloc[0]  # type: ignore
     result: dict[str, Any] = row.to_dict()  # type: ignore
-    # Replace NaN with None for JSON serialization
+    # Convert string values to appropriate types
     for key, value in result.items():
-        if pd.isna(value):
+        if pd.isna(value) or value == "":  # type: ignore
             result[key] = None
+        elif value == "True":
+            result[key] = True
+        elif value == "False":
+            result[key] = False
         elif isinstance(value, bool):
-            # Keep booleans as-is (must check before int since bool is subclass of int)
+            # Keep booleans as-is
             result[key] = value
-        elif isinstance(value, int):
+        elif isinstance(value, str) and value.isdigit():
+            # Convert numeric strings to integers
+            result[key] = int(value)
+        elif isinstance(value, str) and value.lstrip('-').isdigit():
+            # Handle negative numbers
             result[key] = int(value)
 
     return result
