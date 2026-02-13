@@ -161,7 +161,9 @@ def load_tsv_for_counting() -> pd.DataFrame:
     return df
 
 
-def get_sample_data_from_tsv(df: pd.DataFrame, platform: str, platform_id: Any) -> dict[str, Any]:
+def get_sample_data_from_tsv(
+    df: pd.DataFrame, platform: str, platform_id: Any
+) -> dict[str, Any]:
     """
     Get sample data from TSV for a specific platform and ID
 
@@ -196,14 +198,16 @@ def get_sample_data_from_tsv(df: pd.DataFrame, platform: str, platform_id: Any) 
         elif isinstance(value, str) and value.isdigit():
             # Convert numeric strings to integers
             result[key] = int(value)
-        elif isinstance(value, str) and value.lstrip('-').isdigit():
+        elif isinstance(value, str) and value.lstrip("-").isdigit():
             # Handle negative numbers
             result[key] = int(value)
 
     return result  # type: ignore
 
 
-def get_trakt_sample_from_tsv(df: pd.DataFrame, trakt_id: int, season: int) -> dict[str, Any]:
+def get_trakt_sample_from_tsv(
+    df: pd.DataFrame, trakt_id: int, season: int
+) -> dict[str, Any]:
     """
     Get sample data from TSV for a specific Trakt show and season
 
@@ -237,7 +241,7 @@ def get_trakt_sample_from_tsv(df: pd.DataFrame, trakt_id: int, season: int) -> d
         elif isinstance(value, str) and value.isdigit():
             # Convert numeric strings to integers
             result[key] = int(value)
-        elif isinstance(value, str) and value.lstrip('-').isdigit():
+        elif isinstance(value, str) and value.lstrip("-").isdigit():
             # Handle negative numbers
             result[key] = int(value)
 

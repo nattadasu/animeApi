@@ -48,6 +48,7 @@ with open("api/status.json", "r", encoding="utf-8") as _status_file:
     API_VERSION = "v3"
     API_UPDATED = str(_status_data["updated"]["timestamp"])
 
+
 # Load server updated timestamp (for Vercel compatibility)
 def _get_server_updated() -> str:
     try:
@@ -73,6 +74,7 @@ def _get_server_updated() -> str:
         ):
             # If git is not available or fails, use current timestamp
             return str(int(time()))
+
 
 API_SERVER_UPDATED = _get_server_updated()
 
