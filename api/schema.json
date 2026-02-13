@@ -93,12 +93,12 @@
           "title": "Letterboxd Slug"
         },
         "letterboxd_lid": {
-          "$ref": "#/definitions/numbernull",
+          "$ref": "#/definitions/stringnull",
           "description": "Letterboxd Letter ID, only being used on 1st party API requests",
           "title": "Letterboxd ID"
         },
         "letterboxd_uid": {
-          "$ref": "#/definitions/stringnull",
+          "$ref": "#/definitions/numbernull",
           "description": "Letterboxd General ID, internally used",
           "title": "Letterboxd General ID"
         },
@@ -176,7 +176,7 @@
           "title": "The Movie Database type"
         },
         "thetvdb": {
-          "$ref": "#/definitions/stringnull",
+          "$ref": "#/definitions/numbernull",
           "description": "The TVDB ID, website: https://thetvdb.com/, only to be prefixed with series/ to deep link",
           "title": "The TVDB"
         },
