@@ -664,8 +664,14 @@ def handle_error(err: Exception):
     """
     err_split = str(err).split(":")
     get_code = err_split[0].split(" ")
+
+    try:
+        code = int(get_code[0])
+    except (ValueError, IndexError):
+        code = 500
+
     data: dict[str, Union[str, int]] = {
         "error": " ".join(err_split[-1:]).strip(),
-        "code": int(get_code[0]),
+        "code": code,
     }
-    return jsonify(data), int(get_code[0])
+    return jsonify(data), code
