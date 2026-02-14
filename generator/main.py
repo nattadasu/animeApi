@@ -235,9 +235,9 @@ def _log_run_metrics(metrics: dict[str, Any]) -> None:
         # Append new run
         runs.append(metrics)
 
-        # Write back (keep only last 100 runs to avoid huge file)
+        # Write back (keep only last 10 runs to avoid huge file)
         with open(runs_file, "w", encoding="utf-8") as f:
-            json.dump(runs[-100:], f, indent=2)
+            json.dump(runs[-10:], f)
     except Exception as e:
         # Don't crash if logging fails
         pprint.print(Platform.SYSTEM, Status.WARN, f"Failed to log metrics: {e}")
