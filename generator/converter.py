@@ -23,6 +23,12 @@ def link_kaize_to_mal(
         id_field="kaize",
         slug_or_title_field="slug",
         has_slug=True,
+        update_func=lambda aod_item, ext_item: aod_item.update(
+            {
+                "kaize": ext_item.get("slug"),
+                "kaize_id": ext_item.get("kaize"),
+            }
+        ),
     )
     return (
         matcher.link_by_title("slug")  # Kaize uses "slug" field instead of "title"
@@ -49,6 +55,12 @@ def link_nautiljon_to_mal(
         id_field="entry_id",
         slug_or_title_field="slug",
         has_slug=True,
+        update_func=lambda aod_item, ext_item: aod_item.update(
+            {
+                "nautiljon": ext_item.get("slug"),
+                "nautiljon_id": ext_item.get("entry_id"),
+            }
+        ),
     )
     return (
         matcher.link_by_title()
@@ -98,6 +110,11 @@ def link_otakotaku_to_mal(
         aod,
         id_field="otakotaku",
         slug_or_title_field="title",
+        update_func=lambda aod_item, ext_item: aod_item.update(
+            {
+                "otakotaku": ext_item.get("otakotaku"),
+            }
+        ),
     )
     return (
         matcher.link_by_title()
@@ -124,6 +141,11 @@ def link_silveryasha_to_mal(
         aod,
         id_field="silveryasha",
         slug_or_title_field="title",
+        update_func=lambda aod_item, ext_item: aod_item.update(
+            {
+                "silveryasha": ext_item.get("silveryasha"),
+            }
+        ),
     )
     return (
         matcher.link_by_mal_id(mal_id_field="mal_id")

@@ -9,7 +9,7 @@ Reduces code duplication across Kaize, Nautiljon, SilverYasha, OtakOtaku platfor
 import json
 from functools import partial
 from multiprocessing import Pool, cpu_count
-from typing import Any
+from typing import Any, Callable, Optional
 
 from alive_progress import alive_bar  # type: ignore
 from const import pprint
@@ -279,6 +279,9 @@ class DataMatcher:
         id_field: str,
         slug_or_title_field: str = "title",
         has_slug: bool = False,
+        update_func: Optional[
+            Callable[[dict[str, Any], dict[str, Any]], None]
+        ] = None,
     ):
         """
         Initialize matcher for a platform.
@@ -290,6 +293,7 @@ class DataMatcher:
         :param id_field: Field name storing platform ID (e.g., "kaize_id", "entry_id")
         :param slug_or_title_field: Field to use for slug generation
         :param has_slug: Whether this platform has a slug field (True for kaize/nautiljon)
+        :param update_func: Custom function to update AOD item with external data
         """
         self.platform_name = platform_name
         self.platform = platform
@@ -298,6 +302,7 @@ class DataMatcher:
         self.id_field = id_field
         self.slug_or_title_field = slug_or_title_field
         self.has_slug = has_slug
+        self.update_func = update_func
         self.matched_items: list[dict[str, Any]] = []
         self.unmatched_items: list[dict[str, Any]] = []
 
@@ -311,6 +316,10 @@ class DataMatcher:
         :param aod_item: AOD item to update
         :param external_item: External platform item with data
         """
+        if self.update_func:
+            self.update_func(aod_item, external_item)
+            return
+
         update_dict = {self.platform_name: external_item.get(self.id_field)}
         if self.has_slug:
             update_dict[f"{self.platform_name}_id"] = external_item.get(
