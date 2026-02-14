@@ -216,30 +216,30 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 13 February 2026 08:18:18 UTC
+Last updated: 14 February 2026 01:30:50 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
 | aniDB              |     14263 |
-| AniList            |     22197 |
+| AniList            |     22211 |
 | Anime News Network |     12159 |
 | Anime-Planet       |     26553 |
 | aniSearch          |     20527 |
-| Annict             |     12550 |
-| Hikka              |     28231 |
+| Annict             |     12564 |
+| Hikka              |     28236 |
 | IMDb               |      5789 |
 | Kaize              |     24370 |
 | Kitsu              |     21764 |
 | Letterboxd         |      1320 |
 | LiveChart          |     12066 |
-| MyAnimeList        |     30139 |
+| MyAnimeList        |     30144 |
 | Nautiljon          |      9113 |
 | Notify.moe         |     16968 |
-| Otak Otaku         |      2972 |
-| Shikimori          |     30139 |
-| Shoboi/Syobocal    |      5914 |
+| Otak Otaku         |      2973 |
+| Shikimori          |     30144 |
+| Shoboi/Syobocal    |      5913 |
 | Silver Yasha       |      4958 |
 | SIMKL              |     14261 |
 | The Movie Database |      8183 |
@@ -318,8 +318,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1770970698,
-    "iso": "2026-02-13T08:18:18.284601+00:00"
+    "timestamp": 1771032650,
+    "iso": "2026-02-14T01:30:50.739636+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -340,23 +340,23 @@ GET /status
   "website": "https://animeapi.my.id",
   "counts": {
     "anidb": 14263,
-    "anilist": 22197,
+    "anilist": 22211,
     "animenewsnetwork": 12159,
     "animeplanet": 26553,
     "anisearch": 20527,
-    "annict": 12550,
-    "hikka": 28231,
+    "annict": 12564,
+    "hikka": 28236,
     "imdb": 5789,
     "kaize": 24370,
     "kitsu": 21764,
     "letterboxd": 1320,
     "livechart": 12066,
-    "myanimelist": 30139,
+    "myanimelist": 30144,
     "nautiljon": 9113,
     "notify": 16968,
-    "otakotaku": 2972,
-    "shikimori": 30139,
-    "shoboi": 5914,
+    "otakotaku": 2973,
+    "shikimori": 30144,
+    "shoboi": 5913,
     "silveryasha": 4958,
     "simkl": 14261,
     "themoviedb": 8183,
@@ -442,7 +442,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 02/13/2026 08:18:18 UTC
+Updated on 02/14/2026 01:30:50 UTC
 ```
 <!-- /updated-txt -->
 
@@ -578,44 +578,7 @@ GET https://animeapi.my.id/myanimelist/1
 
 <!-- sample -->
 ```json
-{
-  "title": "Cowboy Bebop",
-  "anidb": 23,
-  "anilist": 1,
-  "animenewsnetwork": 13,
-  "animeplanet": "cowboy-bebop",
-  "anisearch": 1572,
-  "annict": 360,
-  "hikka": "cowboy-bebop-d572ee",
-  "imdb": "tt0213338",
-  "kaize": "cowboy-bebop",
-  "kaize_id": 265,
-  "kitsu": 1,
-  "letterboxd_lid": null,
-  "letterboxd_slug": null,
-  "letterboxd_uid": null,
-  "livechart": 3418,
-  "myanimelist": 1,
-  "nautiljon": null,
-  "nautiljon_id": null,
-  "notify": "Tk3ccKimg",
-  "otakotaku": "Cowboy Bebop",
-  "shikimori": 1,
-  "shoboi": 538,
-  "silveryasha": "Cowboy Bebop",
-  "simkl": 37089,
-  "themoviedb": 30991,
-  "themoviedb_season_id": 42587,
-  "themoviedb_type": "tv",
-  "thetvdb": 76885,
-  "thetvdb_season_id": 11636,
-  "trakt": 30857,
-  "trakt_may_invalid": false,
-  "trakt_season": 1,
-  "trakt_season_id": 43328,
-  "trakt_slug": "cowboy-bebop",
-  "trakt_type": "shows"
-}
+{}
 ```
 <!-- /sample -->
 
@@ -785,44 +748,7 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
 
 <!-- trakt152334 -->
 ```json
-{
-  "title": "Mairimashita! Iruma-kun 3rd Season",
-  "anidb": 16627,
-  "anilist": 139092,
-  "animenewsnetwork": 24018,
-  "animeplanet": "welcome-to-demon-school-iruma-kun-3",
-  "anisearch": 16582,
-  "annict": 8883,
-  "hikka": "mairimashita-iruma-kun-3rd-season-bad2d0",
-  "imdb": "tt11034066",
-  "kaize": "mairimashita-iruma-kun-3rd-season",
-  "kaize_id": 4989,
-  "kitsu": 45154,
-  "letterboxd_lid": null,
-  "letterboxd_slug": null,
-  "letterboxd_uid": null,
-  "livechart": 10780,
-  "myanimelist": 49784,
-  "nautiljon": null,
-  "nautiljon_id": null,
-  "notify": "Okl9YtInR",
-  "otakotaku": null,
-  "shikimori": 49784,
-  "shoboi": 6489,
-  "silveryasha": "Mairimashita! Iruma-kun 3rd Season",
-  "simkl": 1728821,
-  "themoviedb": 91801,
-  "themoviedb_season_id": 306624,
-  "themoviedb_type": "tv",
-  "thetvdb": 369144,
-  "thetvdb_season_id": 1955315,
-  "trakt": 152334,
-  "trakt_may_invalid": false,
-  "trakt_season": 3,
-  "trakt_season_id": 303584,
-  "trakt_slug": "welcome-to-demon-school-iruma-kun",
-  "trakt_type": "shows"
-}
+{}
 ```
 <!-- /trakt152334 -->
 
@@ -1003,7 +929,7 @@ Add the following schema URI to your JSON file.
         },
         "hikka": {
           "$ref": "#/definitions/stringnull",
-          "description": "Hikka slug, website: https://hikka.io/",
+          "description": "Hikka slug + hash, website: https://hikka.io/",
           "title": "Hikka"
         },
         "imdb": {
@@ -1035,12 +961,12 @@ Add the following schema URI to your JSON file.
           "title": "Letterboxd Slug"
         },
         "letterboxd_lid": {
-          "$ref": "#/definitions/numbernull",
+          "$ref": "#/definitions/stringnull",
           "description": "Letterboxd Letter ID, only being used on 1st party API requests",
           "title": "Letterboxd ID"
         },
         "letterboxd_uid": {
-          "$ref": "#/definitions/stringnull",
+          "$ref": "#/definitions/numbernull",
           "description": "Letterboxd General ID, internally used",
           "title": "Letterboxd General ID"
         },
@@ -1072,9 +998,8 @@ Add the following schema URI to your JSON file.
           "title": "Notify.moe"
         },
         "otakotaku": {
-          "$ref": "#/definitions/stringnull",
-          "description": "Otak Otaku slug, website: https://otakotaku.com/",
-          "pattern": "^[a-z0-9\\-]+$",
+          "$ref": "#/definitions/numbernull",
+          "description": "Otak Otaku ID, website: https://otakotaku.com/",
           "title": "Otak Otaku"
         },
         "shikimori": {
@@ -1088,9 +1013,8 @@ Add the following schema URI to your JSON file.
           "title": "Shoboi/Syobocal"
         },
         "silveryasha": {
-          "$ref": "#/definitions/stringnull",
-          "description": "Silver Yasha slug, website: https://silveryasha.com/",
-          "pattern": "^[a-z0-9\\-]+$",
+          "$ref": "#/definitions/numbernull",
+          "description": "Silver Yasha ID, website: https://db.silveryasha.id/",
           "title": "Silver Yasha"
         },
         "simkl": {
@@ -1118,7 +1042,7 @@ Add the following schema URI to your JSON file.
           "title": "The Movie Database type"
         },
         "thetvdb": {
-          "$ref": "#/definitions/stringnull",
+          "$ref": "#/definitions/numbernull",
           "description": "The TVDB ID, website: https://thetvdb.com/, only to be prefixed with series/ to deep link",
           "title": "The TVDB"
         },
