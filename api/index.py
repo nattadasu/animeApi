@@ -149,11 +149,12 @@ def heartbeat():
     corrupted_msg: CorruptedResp = {
         "error": "Internal server error",
         "code": 500,
-        "message": "myanimelist_object.json is corrupted",
+        "message": "Data lookup failed (possible TSV corruption)",
     }
     platform = "myanimelist"
     mid = 1
     try:
+        # Benchmark using current implementation
         test_mal = platform_id_content(platform, mid)
         if test_mal["myanimelist"] != mid:
             raise KeyError
@@ -167,9 +168,7 @@ def heartbeat():
                 "request_epoch": g.start,
             }
         )
-    except FileNotFoundError:
-        return jsonify(corrupted_msg), 500
-    except KeyError:
+    except (FileNotFoundError, KeyError, ValueError):
         return jsonify(corrupted_msg), 500
 
 
