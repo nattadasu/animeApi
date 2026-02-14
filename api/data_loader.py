@@ -1,6 +1,5 @@
 """Data loading and caching module for TSV data"""
 
-import os
 import pickle
 from functools import lru_cache
 from pathlib import Path
@@ -48,6 +47,7 @@ def load_tsv_data() -> Any:
 
     # Lazy import pandas only when needed
     import pandas as pd_module
+
     pd = pd_module
 
     # Read TSV with pandas - much faster than JSON
@@ -171,9 +171,7 @@ def lookup_by_platform_id(
     return None
 
 
-def lookup_letterboxd(
-    platform_id: Union[int, str], df: Any
-) -> Optional[AnimeEntry]:
+def lookup_letterboxd(platform_id: Union[int, str], df: Any) -> Optional[AnimeEntry]:
     """
     Handle letterboxd lookups with priority: letterboxd_slug -> letterboxd_lid -> letterboxd_uid
 

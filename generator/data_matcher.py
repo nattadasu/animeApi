@@ -278,6 +278,7 @@ class DataMatcher:
         aod_data: list[dict[str, Any]],
         id_field: str,
         slug_or_title_field: str = "title",
+        has_slug: bool = False,
     ):
         """
         Initialize matcher for a platform.
@@ -288,6 +289,7 @@ class DataMatcher:
         :param aod_data: Anime-offline-database reference data
         :param id_field: Field name storing platform ID (e.g., "kaize_id", "entry_id")
         :param slug_or_title_field: Field to use for slug generation
+        :param has_slug: Whether this platform has a slug field (True for kaize/nautiljon)
         """
         self.platform_name = platform_name
         self.platform = platform
@@ -295,8 +297,78 @@ class DataMatcher:
         self.aod_data = aod_data
         self.id_field = id_field
         self.slug_or_title_field = slug_or_title_field
+        self.has_slug = has_slug
         self.matched_items: list[dict[str, Any]] = []
         self.unmatched_items: list[dict[str, Any]] = []
+
+    def _update_aod_item(
+        self, aod_item: dict[str, Any], external_item: dict[str, Any]
+    ) -> None:
+        """
+        Update AOD item with platform ID and optionally slug/title.
+        Only sets {platform}_id field if has_slug is True.
+
+        :param aod_item: AOD item to update
+        :param external_item: External platform item with data
+        """
+        update_dict = {self.platform_name: external_item.get(self.id_field)}
+        if self.has_slug:
+            update_dict[f"{self.platform_name}_id"] = external_item.get(
+                self.slug_or_title_field
+            )
+        aod_item.update(update_dict)
+
+    def link_by_mal_id(self, mal_id_field: str = "mal_id") -> "DataMatcher":
+        """
+        Link external data to AOD by direct MyAnimeList ID match.
+        Only processes entries with non-null mal_id field; others remain unmatched.
+        This is the fastest linking method (O(1) direct lookup).
+
+        :param mal_id_field: Field name in external data containing MAL ID
+        :return: self for chaining
+        """
+        if not self.unmatched_items:
+            return self
+
+        # Build MAL ID lookup in AOD for fast O(1) matching
+        aod_by_mal_id = {
+            item.get("myanimelist"): item
+            for item in self.aod_data
+            if item.get("myanimelist") is not None
+        }
+
+        matched = []
+        remaining = []
+
+        with alive_bar(
+            len(self.unmatched_items),
+            title=f"Linking {self.platform_name} by direct MAL ID",
+            spinner=None,
+        ) as bar:  # type: ignore
+            for external_item in self.unmatched_items:
+                mal_id = external_item.get(mal_id_field)
+
+                if mal_id is not None and mal_id in aod_by_mal_id:
+                    # Direct MAL ID match found
+                    aod_item = aod_by_mal_id[mal_id]
+                    external_item.update(
+                        {
+                            "anidb": aod_item["anidb"],
+                            "anilist": aod_item["anilist"],
+                            "myanimelist": aod_item["myanimelist"],
+                        }
+                    )
+                    self._update_aod_item(aod_item, external_item)
+                    matched.append(external_item)
+                else:
+                    # No MAL ID or not in AOD, try other methods
+                    remaining.append(external_item)
+
+                bar()
+
+        self.matched_items.extend(matched)
+        self.unmatched_items = remaining
+        return self
 
     def link_by_title(self, title_field: str = "title") -> "DataMatcher":
         """
@@ -336,16 +408,7 @@ class DataMatcher:
             for title, external_item in external_dict.items():
                 if title in aod_dict:
                     aod_item = aod_dict[title]
-                    aod_item.update(
-                        {
-                            self.platform_name: external_item.get(
-                                self.slug_or_title_field
-                            ),
-                            f"{self.platform_name}_id": external_item.get(
-                                self.id_field
-                            ),
-                        }
-                    )
+                    self._update_aod_item(aod_item, external_item)
                     external_item.update(
                         {
                             "anidb": aod_item["anidb"],
@@ -389,12 +452,7 @@ class DataMatcher:
                     }
                 )
                 self.matched_items.append(external_item)
-                aod_item.update(
-                    {
-                        self.platform_name: external_item.get(self.slug_or_title_field),
-                        f"{self.platform_name}_id": external_item.get(self.id_field),
-                    }
-                )
+                self._update_aod_item(aod_item, external_item)
                 bar()
 
         self.unmatched_items = remaining
@@ -438,12 +496,7 @@ class DataMatcher:
                     }
                 )
                 self.matched_items.append(external_item)
-                aod_item.update(
-                    {
-                        self.platform_name: external_item.get(self.slug_or_title_field),
-                        f"{self.platform_name}_id": external_item.get(self.id_field),
-                    }
-                )
+                self._update_aod_item(aod_item, external_item)
                 bar()
 
         # Update unmatched (those that failed fuzzy matching)
@@ -513,7 +566,7 @@ class DataMatcher:
         for item in self.aod_data:
             if self.platform_name not in item:
                 item[self.platform_name] = None
-            if f"{self.platform_name}_id" not in item:
+            if self.has_slug and f"{self.platform_name}_id" not in item:
                 item[f"{self.platform_name}_id"] = None
 
         # Log results

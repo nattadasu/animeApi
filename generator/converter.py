@@ -22,6 +22,7 @@ def link_kaize_to_mal(
         aod,
         id_field="kaize",
         slug_or_title_field="slug",
+        has_slug=True,
     )
     return (
         matcher.link_by_title("slug")  # Kaize uses "slug" field instead of "title"
@@ -47,6 +48,7 @@ def link_nautiljon_to_mal(
         aod,
         id_field="entry_id",
         slug_or_title_field="slug",
+        has_slug=True,
     )
     return (
         matcher.link_by_title()
@@ -124,7 +126,8 @@ def link_silveryasha_to_mal(
         slug_or_title_field="title",
     )
     return (
-        matcher.link_by_title()
+        matcher.link_by_mal_id(mal_id_field="mal_id")
+        .link_by_title()
         .link_by_slug()
         .link_by_fuzzy(threshold=95)
         .apply_manual_mappings("database/raw/silveryasha_manual.json")
