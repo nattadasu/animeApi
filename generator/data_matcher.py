@@ -279,9 +279,7 @@ class DataMatcher:
         id_field: str,
         slug_or_title_field: str = "title",
         has_slug: bool = False,
-        update_func: Optional[
-            Callable[[dict[str, Any], dict[str, Any]], None]
-        ] = None,
+        update_func: Optional[Callable[[dict[str, Any], dict[str, Any]], None]] = None,
     ):
         """
         Initialize matcher for a platform.

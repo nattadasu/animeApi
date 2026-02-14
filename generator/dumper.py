@@ -266,7 +266,7 @@ def load_tsv_for_counting() -> pd.DataFrame:
                             pprint.print(
                                 Platform.SYSTEM,
                                 Status.FAIL,
-                                f"Type Mismatch in Row {idx} (Line ~{idx+2}):",
+                                f"Type Mismatch in Row {idx} (Line ~{idx + 2}):",
                                 f"Column '{col}' expected Int64 but got '{row[col]}'",
                             )
                             pprint.print(
