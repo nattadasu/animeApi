@@ -49,12 +49,18 @@ def save_list_to_tsv(data: list[dict[str, Any]], file_path: str) -> None:
     :return: None
     :rtype: None
     """
+    if not data:
+        return
+
+    header = list(data[0].keys())
     with open(f"{file_path}.tsv", "w", encoding="utf-8", newline="") as file_:
         writer = csv.writer(file_, delimiter="\t", lineterminator="\n")
-        writer.writerow(data[0].keys())
+        writer.writerow(header)
         with alive_bar(len(data), title="Saving data to TSV", spinner=None) as bar:  # type: ignore
             for item in data:
-                writer.writerow(item.values())
+                # Ensure values are written in the same order as header
+                row = [item.get(key) for key in header]
+                writer.writerow(row)
                 bar()
     return None
 
@@ -186,15 +192,95 @@ def load_tsv_for_counting() -> pd.DataFrame:
     :return: DataFrame with TSV data
     :rtype: pd.DataFrame
     """
-    # Read all columns as strings to avoid pandas type inference errors
-    # (some columns may have mixed types or special characters)
-    df = pd.read_csv(  # type: ignore
-        "database/animeapi.tsv",
-        sep="\t",
-        dtype=str,  # All columns as strings
-        keep_default_na=False,  # Don't convert empty strings to NaN
-        na_values=[],  # Empty list means no values are treated as null
-    )
+    tsv_dtypes = {
+        "title": str,
+        "anidb": "Int64",
+        "anilist": "Int64",
+        "animenewsnetwork": "Int64",
+        "animeplanet": str,
+        "anisearch": "Int64",
+        "annict": "Int64",
+        "hikka": str,
+        "imdb": str,
+        "kaize": str,
+        "kaize_id": "Int64",
+        "kitsu": "Int64",
+        "letterboxd_lid": str,
+        "letterboxd_slug": str,
+        "letterboxd_uid": "Int64",
+        "livechart": "Int64",
+        "myanimelist": "Int64",
+        "nautiljon": str,
+        "nautiljon_id": "Int64",
+        "notify": str,
+        "otakotaku": "Int64",
+        "shikimori": "Int64",
+        "shoboi": "Int64",
+        "silveryasha": "Int64",
+        "simkl": "Int64",
+        "themoviedb": "Int64",
+        "themoviedb_season_id": "Int64",
+        "themoviedb_type": str,
+        "thetvdb": "Int64",
+        "thetvdb_season_id": "Int64",
+        "trakt": "Int64",
+        "trakt_may_invalid": str,  # Read as string then convert
+        "trakt_season": "Int64",
+        "trakt_season_id": "Int64",
+        "trakt_slug": str,
+        "trakt_type": str,
+    }
+
+    try:
+        # Read TSV with specific data types
+        df = pd.read_csv(  # type: ignore
+            "database/animeapi.tsv",
+            sep="\t",
+            dtype=tsv_dtypes,
+            keep_default_na=True,
+        )
+    except ValueError as e:
+        pprint.print(Platform.SYSTEM, Status.ERR, f"TSV Load Error: {e}")
+        pprint.print(Platform.SYSTEM, Status.INFO, "Diagnosing invalid values...")
+
+        # Diagnostic: Read as string to find the culprit
+        try:
+            debug_df = pd.read_csv(  # type: ignore
+                "database/animeapi.tsv",
+                sep="\t",
+                dtype=str,
+                keep_default_na=False,
+            )
+
+            for col, dtype in tsv_dtypes.items():
+                if dtype == "Int64":
+                    # Try converting to numeric
+                    numeric_series = pd.to_numeric(debug_df[col], errors="coerce")
+                    # Find where original was not empty but numeric is NaN
+                    mask = (debug_df[col] != "") & (numeric_series.isna())
+                    if mask.any():
+                        bad_rows = debug_df[mask]
+                        for idx, row in bad_rows.iterrows():
+                            pprint.print(
+                                Platform.SYSTEM,
+                                Status.FAIL,
+                                f"Type Mismatch in Row {idx} (Line ~{idx+2}):",
+                                f"Column '{col}' expected Int64 but got '{row[col]}'",
+                            )
+                            pprint.print(
+                                Platform.SYSTEM,
+                                Status.FAIL,
+                                f"Entry Context (Title): {row.get('title', 'Unknown')}",
+                            )
+                            # Print full row for debug
+                            print(f"Full Row Data: {row.to_dict()}")
+                            raise e
+        except Exception as diag_err:
+            print(f"Diagnostic failed: {diag_err}")
+
+        # Re-raise original error
+        raise e
+
     df["trakt_may_invalid"] = df["trakt_may_invalid"].replace(  # type: ignore
         {"True": True, "False": False, "": None}
     )
