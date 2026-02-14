@@ -147,31 +147,29 @@ def lookup_by_platform_id(
 
     # Convert platform_id to appropriate type
     if platform in _tsv_indices:
-        # Try to find exact match
-        try:
-            if platform in [
-                "animeplanet",
-                "hikka",
-                "imdb",
-                "kaize",
-                "letterboxd_lid",
-                "letterboxd_slug",
-                "myanimelist",
-                "nautiljon",
-                "notify",
-                "themoviedb_type",
-                "trakt_slug",
-                "trakt_type",
-            ]:
-                lookup_id = str(platform_id)
-            else:
-                lookup_id = int(platform_id)
+        index = _tsv_indices[platform]
 
-            if lookup_id in _tsv_indices[platform]:
-                row_idx = _tsv_indices[platform][lookup_id]
+        # Skip if index is empty (cannot determine type or lookup)
+        if not index:
+            return None
+
+        # Dynamically determine expected type from the index itself
+        # This avoids hardcoding lists of string/int platforms
+        sample_key = next(iter(index))
+
+        try:
+            # If the key is NOT a string, assume it's an integer ID
+            # This handles int, numpy.int64, etc. without needing extra imports
+            if not isinstance(sample_key, str):
+                lookup_id = int(platform_id)
+            else:
+                lookup_id = str(platform_id)
+
+            if lookup_id in index:
+                row_idx = index[lookup_id]
                 row = df.iloc[row_idx]
                 return row_to_entry(row)
-        except (ValueError, KeyError):
+        except (ValueError, TypeError):
             pass
 
     return None
