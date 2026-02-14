@@ -61,7 +61,7 @@
         },
         "hikka": {
           "$ref": "#/definitions/stringnull",
-          "description": "Hikka slug, website: https://hikka.io/",
+          "description": "Hikka slug + hash, website: https://hikka.io/",
           "title": "Hikka"
         },
         "imdb": {
@@ -130,9 +130,8 @@
           "title": "Notify.moe"
         },
         "otakotaku": {
-          "$ref": "#/definitions/stringnull",
-          "description": "Otak Otaku slug, website: https://otakotaku.com/",
-          "pattern": "^[a-z0-9\\-]+$",
+          "$ref": "#/definitions/numbernull",
+          "description": "Otak Otaku ID, website: https://otakotaku.com/",
           "title": "Otak Otaku"
         },
         "shikimori": {
@@ -146,9 +145,8 @@
           "title": "Shoboi/Syobocal"
         },
         "silveryasha": {
-          "$ref": "#/definitions/stringnull",
-          "description": "Silver Yasha slug, website: https://silveryasha.com/",
-          "pattern": "^[a-z0-9\\-]+$",
+          "$ref": "#/definitions/numbernull",
+          "description": "Silver Yasha ID, website: https://db.silveryasha.id/",
           "title": "Silver Yasha"
         },
         "simkl": {

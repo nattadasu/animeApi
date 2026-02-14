@@ -191,8 +191,8 @@ alias cheatsheet as well.
 |      `animeplanet` | `ap`  | `anime-planet.com`, `anime-planet`, `animeplanet.com`                                           |
 |        `anisearch` | `as`  | `anisearch.com`, `anisearch.de`, `anisearch.it`, `anisearch.es`, `anisearch.fr`, `anisearch.jp` |
 |           `annict` | `ac`  | `anc`, `act`, `annict.com`, `annict.jp`, `en.annict.com`                                        |
-|             `imdb` | `im`  | `imdb.com`                                                                                      |
 |            `hikka` | `hk`  | `hka`, `hikka.io`                                                                               |
+|             `imdb` | `im`  | `imdb.com`                                                                                      |
 |            `kaize` | `kz`  | `kaize.io`                                                                                      |
 |            `kitsu` | `kt`  | `kts`, `kitsu.io`, `kitsu.app`                                                                  |
 |       `letterboxd` | `lb`  | `lx`, `letterboxd.com`                                                                          |

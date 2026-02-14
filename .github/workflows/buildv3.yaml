@@ -100,7 +100,6 @@ jobs:
               echo "| $platform | $before | $after | $change |" >> $GITHUB_STEP_SUMMARY
             done
 
-            echo "" >> $GITHUB_STEP_SUMMARY
             before_total=$(jq -r '.counts.total // 0' /tmp/status_before.json)
             after_total=$(jq -r '.counts.total // 0' api/status.json)
             diff_total=$((after_total - before_total))
