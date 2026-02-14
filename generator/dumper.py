@@ -173,7 +173,7 @@ def add_spaces(data: int, spaces_max: int = 9) -> str:
 def count_non_null_entries(df: pd.DataFrame, column: str) -> int:
     """
     Count non-empty entries in a DataFrame column.
-    Since all columns are read as strings, count non-empty strings.
+    Handles both NaN/None (from keep_default_na=True) and empty strings.
 
     :param df: DataFrame to count from
     :type df: pd.DataFrame
@@ -182,7 +182,9 @@ def count_non_null_entries(df: pd.DataFrame, column: str) -> int:
     :return: Count of non-empty entries
     :rtype: int
     """
-    return int((df[column] != "").sum())
+    # Check for both Not NaN and Not Empty String
+    # (Just .notna() covers NaN/None, but explicit empty strings might exist)
+    return int((df[column].notna() & (df[column] != "")).sum())
 
 
 def load_tsv_for_counting() -> pd.DataFrame:
