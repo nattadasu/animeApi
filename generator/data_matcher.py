@@ -548,11 +548,13 @@ class DataMatcher:
                             aod_item.update(platform_id)
                         else:
                             aod_item.update({self.platform_name: platform_id})
-                        
+
                         self.matched_items.append(
                             {
                                 "title": title,
-                                self.platform_name: platform_id if not isinstance(platform_id, dict) else platform_id.get(self.platform_name),
+                                self.platform_name: platform_id
+                                if not isinstance(platform_id, dict)
+                                else platform_id.get(self.platform_name),
                                 "anidb": aod_item["anidb"],
                                 "anilist": aod_item["anilist"],
                                 "myanimelist": aod_item["myanimelist"],
