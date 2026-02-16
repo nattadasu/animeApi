@@ -541,11 +541,18 @@ class DataMatcher:
 
                 for aod_item in self.aod_data:
                     if aod_item["title"] == title:
-                        aod_item.update({self.platform_name: platform_id})
+                        # If platform_id is a dict (e.g., for kaize/kaize_id), directly update
+                        # Note: Manual mappings use {platform: slug, platform_id: id} format,
+                        # which directly corresponds to aod_item fields
+                        if isinstance(platform_id, dict):
+                            aod_item.update(platform_id)
+                        else:
+                            aod_item.update({self.platform_name: platform_id})
+                        
                         self.matched_items.append(
                             {
                                 "title": title,
-                                self.platform_name: platform_id,
+                                self.platform_name: platform_id if not isinstance(platform_id, dict) else platform_id.get(self.platform_name),
                                 "anidb": aod_item["anidb"],
                                 "anilist": aod_item["anilist"],
                                 "myanimelist": aod_item["myanimelist"],
