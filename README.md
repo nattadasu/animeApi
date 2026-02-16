@@ -216,7 +216,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 14 February 2026 01:30:50 UTC
+Last updated: 16 February 2026 06:02:33 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -235,9 +235,9 @@ Last updated: 14 February 2026 01:30:50 UTC
 | Letterboxd         |      1320 |
 | LiveChart          |     12066 |
 | MyAnimeList        |     30144 |
-| Nautiljon          |      9113 |
+| Nautiljon          |      9110 |
 | Notify.moe         |     16968 |
-| Otak Otaku         |      2973 |
+| Otak Otaku         |      2975 |
 | Shikimori          |     30144 |
 | Shoboi/Syobocal    |      5913 |
 | Silver Yasha       |      4958 |
@@ -318,8 +318,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1771032650,
-    "iso": "2026-02-14T01:30:50.739636+00:00"
+    "timestamp": 1771221753,
+    "iso": "2026-02-16T06:02:33.163810+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -352,9 +352,9 @@ GET /status
     "letterboxd": 1320,
     "livechart": 12066,
     "myanimelist": 30144,
-    "nautiljon": 9113,
+    "nautiljon": 9110,
     "notify": 16968,
-    "otakotaku": 2973,
+    "otakotaku": 2975,
     "shikimori": 30144,
     "shoboi": 5913,
     "silveryasha": 4958,
@@ -442,7 +442,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 02/14/2026 01:30:50 UTC
+Updated on 02/16/2026 06:02:33 UTC
 ```
 <!-- /updated-txt -->
 
