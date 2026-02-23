@@ -386,7 +386,7 @@
 | **Required**   | No                       |
 | **Defined in** | #/definitions/numbernull |
 
-**Description:** Shikimori ID, website: https://shikimori.one/
+**Description:** Shikimori ID, website: https://shikimori.io/
 
 #### <a name="data_items_shoboi"></a>1.1.21. Property `anime-api > data > Anime > shoboi`
 

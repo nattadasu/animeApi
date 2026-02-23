@@ -487,7 +487,7 @@ route_path = {
     "nautiljon": "https://www.nautiljon.com/animes/",
     "notify": "https://notify.moe/anime/",
     "otakotaku": "https://otakotaku.com/anime/view/",
-    "shikimori": "https://shiki.one/animes/",
+    "shikimori": "https://shikimori.io/animes/",
     "shoboi": "https://cal.syoboi.jp/tid/",
     "silveryasha": "https://db.silveryasha.id/anime/",
     "simkl": "https://simkl.com/anime/",

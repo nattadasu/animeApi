@@ -36,6 +36,7 @@ PLATFORM_SYNONYMS = {
         "shk",
         "shiki",
         "shiki.one",
+        "shikimori.io",
         "shikimori.me",
         "shikimori.one",
         "shikimori.org",

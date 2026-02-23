@@ -136,7 +136,7 @@
         },
         "shikimori": {
           "$ref": "#/definitions/numbernull",
-          "description": "Shikimori ID, website: https://shiki.one/",
+          "description": "Shikimori ID, website: https://shikimori.io/",
           "title": "Shikimori"
         },
         "shoboi": {
