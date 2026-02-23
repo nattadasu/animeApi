@@ -216,7 +216,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 23 February 2026 05:40:15 UTC
+Last updated: 23 February 2026 16:57:41 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -318,8 +318,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1771825215,
-    "iso": "2026-02-23T05:40:15.862493+00:00"
+    "timestamp": 1771865861,
+    "iso": "2026-02-23T16:57:41.095799+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -442,7 +442,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 02/23/2026 05:40:15 UTC
+Updated on 02/23/2026 16:57:41 UTC
 ```
 <!-- /updated-txt -->
 
@@ -1004,7 +1004,7 @@ Add the following schema URI to your JSON file.
         },
         "shikimori": {
           "$ref": "#/definitions/numbernull",
-          "description": "Shikimori ID, website: https://shiki.one/",
+          "description": "Shikimori ID, website: https://shikimori.io/",
           "title": "Shikimori"
         },
         "shoboi": {
