@@ -216,7 +216,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 12 March 2026 05:34:18 UTC
+Last updated: 14 March 2026 05:30:54 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -230,7 +230,7 @@ Last updated: 12 March 2026 05:34:18 UTC
 | Annict             |     12584 |
 | Hikka              |     28246 |
 | IMDb               |      5820 |
-| Kaize              |     24417 |
+| Kaize              |     24422 |
 | Kitsu              |     21764 |
 | Letterboxd         |         0 |
 | LiveChart          |     12066 |
@@ -244,7 +244,7 @@ Last updated: 12 March 2026 05:34:18 UTC
 | SIMKL              |     14261 |
 | The Movie Database |      8227 |
 | The TVDB           |      3760 |
-| Trakt              |      5108 |
+| Trakt              |      5110 |
 |                    |           |
 | **Total**          | **39714** |
 <!-- /counters -->
@@ -318,8 +318,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1773293658,
-    "iso": "2026-03-12T05:34:18.097781+00:00"
+    "timestamp": 1773466254,
+    "iso": "2026-03-14T05:30:54.208037+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -347,7 +347,7 @@ GET /status
     "annict": 12584,
     "hikka": 28246,
     "imdb": 5820,
-    "kaize": 24417,
+    "kaize": 24422,
     "kitsu": 21764,
     "letterboxd": 0,
     "livechart": 12066,
@@ -361,7 +361,7 @@ GET /status
     "simkl": 14261,
     "themoviedb": 8227,
     "thetvdb": 3760,
-    "trakt": 5108,
+    "trakt": 5110,
     "total": 39714
   },
   "endpoints": {
@@ -442,7 +442,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 03/12/2026 05:34:18 UTC
+Updated on 03/14/2026 05:30:54 UTC
 ```
 <!-- /updated-txt -->
 
