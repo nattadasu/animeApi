@@ -216,7 +216,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 28 March 2026 05:37:15 UTC
+Last updated: 29 March 2026 05:43:01 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -230,14 +230,14 @@ Last updated: 28 March 2026 05:37:15 UTC
 | Annict             |     12653 |
 | Hikka              |     28418 |
 | IMDb               |      5820 |
-| Kaize              |     24429 |
+| Kaize              |     24430 |
 | Kitsu              |     21867 |
 | Letterboxd         |         0 |
 | LiveChart          |     12125 |
 | MyAnimeList        |     30377 |
 | Nautiljon          |      9149 |
 | Notify.moe         |     16968 |
-| Otak Otaku         |      2997 |
+| Otak Otaku         |      2999 |
 | Shikimori          |     30377 |
 | Shoboi/Syobocal    |      5975 |
 | Silver Yasha       |      4954 |
@@ -318,8 +318,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1774676235,
-    "iso": "2026-03-28T05:37:15.834476+00:00"
+    "timestamp": 1774762981,
+    "iso": "2026-03-29T05:43:01.373996+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -347,14 +347,14 @@ GET /status
     "annict": 12653,
     "hikka": 28418,
     "imdb": 5820,
-    "kaize": 24429,
+    "kaize": 24430,
     "kitsu": 21867,
     "letterboxd": 0,
     "livechart": 12125,
     "myanimelist": 30377,
     "nautiljon": 9149,
     "notify": 16968,
-    "otakotaku": 2997,
+    "otakotaku": 2999,
     "shikimori": 30377,
     "shoboi": 5975,
     "silveryasha": 4954,
@@ -442,7 +442,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 03/28/2026 05:37:15 UTC
+Updated on 03/29/2026 05:43:01 UTC
 ```
 <!-- /updated-txt -->
 
