@@ -176,13 +176,13 @@ class Downloader:
             stored = self._get_stored_metadata()
 
             # Check ETag (preferred, most reliable)
-            if metadata["etag"] and stored and stored.get("etag") == metadata["etag"]:
-                pprint.print(
-                    self.platform,
-                    Status.NOTICE,
-                    f"Remote file unchanged (ETag match), using cached {self.file_name}.{self.file_type}",
-                )
-                return True
+            # if metadata["etag"] and stored and stored.get("etag") == metadata["etag"]:
+            #     pprint.print(
+            #         self.platform,
+            #         Status.NOTICE,
+            #         f"Remote file unchanged (ETag match), using cached {self.file_name}.{self.file_type}",
+            #     )
+            #     return True
 
             # Check Last-Modified if no ETag
             if (
