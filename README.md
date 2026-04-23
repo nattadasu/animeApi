@@ -216,7 +216,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 22 April 2026 05:50:27 UTC
+Last updated: 23 April 2026 05:52:17 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -237,7 +237,7 @@ Last updated: 22 April 2026 05:50:27 UTC
 | MyAnimeList        |     30444 |
 | Nautiljon          |      9199 |
 | Notify.moe         |     16965 |
-| Otak Otaku         |      3029 |
+| Otak Otaku         |      3030 |
 | Shikimori          |     30444 |
 | Shoboi/Syobocal    |      5992 |
 | Silver Yasha       |      5107 |
@@ -318,8 +318,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1776837027,
-    "iso": "2026-04-22T05:50:27.481859+00:00"
+    "timestamp": 1776923537,
+    "iso": "2026-04-23T05:52:17.995842+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -354,7 +354,7 @@ GET /status
     "myanimelist": 30444,
     "nautiljon": 9199,
     "notify": 16965,
-    "otakotaku": 3029,
+    "otakotaku": 3030,
     "shikimori": 30444,
     "shoboi": 5992,
     "silveryasha": 5107,
@@ -442,7 +442,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 04/22/2026 05:50:27 UTC
+Updated on 04/23/2026 05:52:17 UTC
 ```
 <!-- /updated-txt -->
 
