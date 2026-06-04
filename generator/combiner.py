@@ -333,10 +333,13 @@ def combine_fribb(
 
                 if isinstance(tmdb, dict):
                     # Handle new dict format: {"tv": 123} or {"movie": 456}
-                    for t_type, t_id in tmdb.items():
-                        tmdb = t_id
-                        tmdb_type = t_type
-                        break
+                    if not tmdb:
+                        tmdb = None
+                    else:
+                        for t_type, t_id in tmdb.items():
+                            tmdb = t_id
+                            tmdb_type = t_type
+                            break
                 elif isinstance(tmdb, str):
                     tmdbl = tmdb.split(",")
                     tmdb = int(tmdbl[0])
