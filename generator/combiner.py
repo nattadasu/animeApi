@@ -324,14 +324,25 @@ def combine_fribb(
             fbi = fribb_by_anidb.get(anidb) if anidb is not None else None
             if fbi is not None:
                 imdb = fbi.get("imdb_id", None)
-                tmdb: str | int | None = fbi.get("themoviedb_id", None)
+                tmdb: dict[str, int] | str | int | None = fbi.get("themoviedb_id", None)
+                tmdb_type: str | None = None
+
                 # Combine the data from fribb_item with the item in aod_data
                 data_fbi: dict[str, Any] = {}
                 data_fbi["imdb"] = imdb
-                if isinstance(tmdb, str):
+
+                if isinstance(tmdb, dict):
+                    # Handle new dict format: {"tv": 123} or {"movie": 456}
+                    for t_type, t_id in tmdb.items():
+                        tmdb = t_id
+                        tmdb_type = t_type
+                        break
+                elif isinstance(tmdb, str):
                     tmdbl = tmdb.split(",")
                     tmdb = int(tmdbl[0])
+
                 data_fbi["themoviedb"] = tmdb
+                data_fbi["themoviedb_type"] = tmdb_type
                 item.update(data_fbi)
                 linked += 1
                 matched = True
@@ -341,6 +352,7 @@ def combine_fribb(
                     {
                         "imdb": None,
                         "themoviedb": None,
+                        "themoviedb_type": None,
                     }
                 )
             bar()
