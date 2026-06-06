@@ -216,7 +216,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 05 June 2026 06:37:02 UTC
+Last updated: 06 June 2026 06:18:04 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -229,10 +229,10 @@ Last updated: 05 June 2026 06:37:02 UTC
 | aniSearch          |     20676 |
 | Annict             |     12791 |
 | Hikka              |     28518 |
-| IMDb               |      5820 |
-| Kaize              |     24561 |
+| IMDb               |      5819 |
+| Kaize              |     24562 |
 | Kitsu              |     21893 |
-| Letterboxd         |      1236 |
+| Letterboxd         |         0 |
 | LiveChart          |     12150 |
 | MyAnimeList        |     30444 |
 | Nautiljon          |      9206 |
@@ -242,9 +242,9 @@ Last updated: 05 June 2026 06:37:02 UTC
 | Shoboi/Syobocal    |      5992 |
 | Silver Yasha       |      5107 |
 | SIMKL              |     14348 |
-| The Movie Database |      8339 |
+| The Movie Database |      8335 |
 | The TVDB           |      3762 |
-| Trakt              |      5051 |
+| Trakt              |      5047 |
 |                    |           |
 | **Total**          | **40037** |
 <!-- /counters -->
@@ -318,8 +318,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1780641422,
-    "iso": "2026-06-05T06:37:02.962186+00:00"
+    "timestamp": 1780726684,
+    "iso": "2026-06-06T06:18:04.169820+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -346,10 +346,10 @@ GET /status
     "anisearch": 20676,
     "annict": 12791,
     "hikka": 28518,
-    "imdb": 5820,
-    "kaize": 24561,
+    "imdb": 5819,
+    "kaize": 24562,
     "kitsu": 21893,
-    "letterboxd": 1236,
+    "letterboxd": 0,
     "livechart": 12150,
     "myanimelist": 30444,
     "nautiljon": 9206,
@@ -359,9 +359,9 @@ GET /status
     "shoboi": 5992,
     "silveryasha": 5107,
     "simkl": 14348,
-    "themoviedb": 8339,
+    "themoviedb": 8335,
     "thetvdb": 3762,
-    "trakt": 5051,
+    "trakt": 5047,
     "total": 40037
   },
   "endpoints": {
@@ -442,7 +442,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 06/05/2026 06:37:02 UTC
+Updated on 06/06/2026 06:18:04 UTC
 ```
 <!-- /updated-txt -->
 
