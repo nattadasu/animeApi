@@ -211,37 +211,37 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 09 June 2026 06:30:59 UTC
+Last updated: 09 June 2026 21:37:32 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
-| aniDB              |     14353 |
-| AniList            |     22356 |
-| Anime News Network |     12237 |
+| aniDB              |     14380 |
+| AniList            |     22370 |
+| Anime News Network |     12260 |
 | Anime-Planet       |     26635 |
-| aniSearch          |     20676 |
-| Annict             |     12791 |
-| Hikka              |     28518 |
-| IMDb               |      5819 |
-| Kaize              |     24563 |
-| Kitsu              |     21893 |
-| Letterboxd         |         0 |
-| LiveChart          |     12150 |
-| MyAnimeList        |     30444 |
-| Nautiljon          |      9206 |
+| aniSearch          |     20684 |
+| Annict             |     12799 |
+| Hikka              |     28563 |
+| IMDb               |      7559 |
+| Kaize              |     24575 |
+| Kitsu              |     21896 |
+| Letterboxd         |      1874 |
+| LiveChart          |     12199 |
+| MyAnimeList        |     30514 |
+| Nautiljon          |      9231 |
 | Notify.moe         |     16965 |
-| Otak Otaku         |      3038 |
-| Shikimori          |     30444 |
+| Otak Otaku         |      3043 |
+| Shikimori          |     30514 |
 | Shoboi/Syobocal    |      5992 |
-| Silver Yasha       |      5107 |
+| Silver Yasha       |      5288 |
 | SIMKL              |     14348 |
-| The Movie Database |      8335 |
-| The TVDB           |      3762 |
-| Trakt              |      5047 |
+| The Movie Database |      8822 |
+| The TVDB           |      5345 |
+| Trakt              |      7253 |
 |                    |           |
-| **Total**          | **40037** |
+| **Total**          | **40123** |
 <!-- /counters -->
 
 ## Usage
@@ -313,8 +313,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1780986659,
-    "iso": "2026-06-09T06:30:59.957287+00:00"
+    "timestamp": 1781041052,
+    "iso": "2026-06-09T21:37:32.081247+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -329,35 +329,37 @@ GET /status
     "gh:Fribb/anime-lists",
     "https://kaize.io",
     "https://nautiljon.com",
-    "https://otakotaku.com"
+    "https://otakotaku.com",
+    "https://livechart.me",
+    "https://shikimori.one"
   ],
   "license": "MIT AND ODbL-1.0 AND DbCL-1.0 AND CC0-1.0",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 14353,
-    "anilist": 22356,
-    "animenewsnetwork": 12237,
+    "anidb": 14380,
+    "anilist": 22370,
+    "animenewsnetwork": 12260,
     "animeplanet": 26635,
-    "anisearch": 20676,
-    "annict": 12791,
-    "hikka": 28518,
-    "imdb": 5819,
-    "kaize": 24563,
-    "kitsu": 21893,
-    "letterboxd": 0,
-    "livechart": 12150,
-    "myanimelist": 30444,
-    "nautiljon": 9206,
+    "anisearch": 20684,
+    "annict": 12799,
+    "hikka": 28563,
+    "imdb": 7559,
+    "kaize": 24575,
+    "kitsu": 21896,
+    "letterboxd": 1874,
+    "livechart": 12199,
+    "myanimelist": 30514,
+    "nautiljon": 9231,
     "notify": 16965,
-    "otakotaku": 3038,
-    "shikimori": 30444,
+    "otakotaku": 3043,
+    "shikimori": 30514,
     "shoboi": 5992,
-    "silveryasha": 5107,
+    "silveryasha": 5288,
     "simkl": 14348,
-    "themoviedb": 8335,
-    "thetvdb": 3762,
-    "trakt": 5047,
-    "total": 40037
+    "themoviedb": 8822,
+    "thetvdb": 5345,
+    "trakt": 7253,
+    "total": 40123
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format. Platform aliases supported for direct lookup for platform specific endpoints (see ?P<alias> in regex).",
@@ -437,7 +439,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 06/09/2026 06:30:59 UTC
+Updated on 06/09/2026 21:37:32 UTC
 ```
 <!-- /updated-txt -->
 
@@ -652,44 +654,7 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
 
 <!-- trakt152334 -->
 ```json
-{
-  "anidb": 16627,
-  "anilist": 139092,
-  "animenewsnetwork": 24018,
-  "animeplanet": "welcome-to-demon-school-iruma-kun-3",
-  "anisearch": 16582,
-  "annict": 8883,
-  "hikka": "mairimashita-iruma-kun-3rd-season-bad2d0",
-  "imdb": "tt11034066",
-  "kaize": "mairimashita-iruma-kun-3rd-season",
-  "kaize_id": 4989,
-  "kitsu": 45154,
-  "letterboxd_lid": null,
-  "letterboxd_slug": null,
-  "letterboxd_uid": null,
-  "livechart": 10780,
-  "myanimelist": 49784,
-  "nautiljon": null,
-  "nautiljon_id": null,
-  "notify": "Okl9YtInR",
-  "otakotaku": null,
-  "shikimori": 49784,
-  "shoboi": 6489,
-  "silveryasha": 3702,
-  "simkl": 1728821,
-  "themoviedb": 91801,
-  "themoviedb_season_id": 306624,
-  "themoviedb_type": "tv",
-  "thetvdb": 369144,
-  "thetvdb_season_id": 1955315,
-  "title": "Mairimashita! Iruma-kun 3rd Season",
-  "trakt": 152334,
-  "trakt_may_invalid": false,
-  "trakt_season": 3,
-  "trakt_season_id": 303584,
-  "trakt_slug": "welcome-to-demon-school-iruma-kun",
-  "trakt_type": "shows"
-}
+{}
 ```
 <!-- /trakt152334 -->
 
