@@ -69,6 +69,10 @@ This makes it easier and faster to get the data you want since the machine
 doesn't need to iterate through the array/list to get the data you want,
 although with the cost of larger repository size.
 
+### Future Titles Sideloading
+
+Since the upstream [Anime Offline Database (AOD)][aod] no longer publishes scheduled, regular data releases, AnimeAPI actively crawls upcoming and announced seasons directly from [LiveChart][lc] and [Shikimori][shk] (covering from winter of the previous year up to fall of the next year, plus TBA). This crawled mapping data is dynamically merged and sideloaded into the AOD dataset during the database compilation process, ensuring that AnimeAPI always includes the most up-to-date future and announced titles.
+
 Below is the comparison between AnimeAPI and other relation mapping API.
 
 <!-- markdownlint-disable MD013 MD060 -->
@@ -1252,10 +1256,12 @@ This project uses multiple sources to compile the data, including:
   [AniTrakt][atrk] index page.
 * [gh:Fribb/anime-lists][fal]
 * [Hikka][hka]
+* [LiveChart][lc]
 * [Nautiljon][ntj]
 * [Notify.moe][ntf] through Rensetsu's data dump
 * [Kaize][kz]
 * [Otak Otaku][oo]
+* [Shikimori][shk]
 * [Silver-Yasha][sy]
 
 <!-- Reference -->

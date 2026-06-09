@@ -56,6 +56,69 @@ def main() -> None:
 
         stage_start = time()
         aod = get_anime_offline_database()
+
+        # Sideload future seasonal mapping data
+        sideload_path = "database/raw/sideload_future.json"
+        try:
+            with open(sideload_path, "r", encoding="utf-8") as sf:
+                sideload_data = json.load(sf)
+                if "data" in aod:
+                    from aod_entry import AodEntry
+
+                    # Index existing AOD entries by their extracted IDs
+                    id_to_aod_entry = {}
+                    for item in aod["data"]:
+                        entry = AodEntry.from_aod_dict(item)
+                        for id_str in entry.id_set:
+                            id_to_aod_entry[id_str] = item
+
+                    merged_count = 0
+                    added_count = 0
+
+                    for sideloaded_item in sideload_data:
+                        sideload_entry = AodEntry.from_aod_dict(sideloaded_item)
+
+                        # Check if any ID overlap exists
+                        matched_item = None
+                        for id_str in sideload_entry.id_set:
+                            if id_str in id_to_aod_entry:
+                                matched_item = id_to_aod_entry[id_str]
+                                break
+
+                        if matched_item:
+                            # Merge sources and synonyms instead of appending a duplicate
+                            merged_sources = set(
+                                matched_item.get("sources", [])
+                                + sideloaded_item.get("sources", [])
+                            )
+                            matched_item["sources"] = list(merged_sources)
+
+                            merged_synonyms = set(
+                                matched_item.get("synonyms", [])
+                                + sideloaded_item.get("synonyms", [])
+                            )
+                            matched_item["synonyms"] = list(merged_synonyms)
+
+                            merged_count += 1
+                        else:
+                            # Truly new entry - add it and index its IDs
+                            aod["data"].append(sideloaded_item)
+                            for id_str in sideload_entry.id_set:
+                                id_to_aod_entry[id_str] = sideloaded_item
+                            added_count += 1
+
+                    pprint.print(
+                        Platform.SYSTEM,
+                        Status.PASS,
+                        f"Processed {len(sideload_data)} future season entries: added {added_count}, merged {merged_count} with existing entries",
+                    )
+        except FileNotFoundError:
+            pprint.print(
+                Platform.SYSTEM,
+                Status.WARN,
+                f"Sideload file {sideload_path} not found, skipping future seasons",
+            )
+
         aod_arr = simplify_aod_data(aod)
         run_metrics["stages"]["fetch_aod"] = time() - stage_start
 

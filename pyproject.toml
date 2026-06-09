@@ -1,0 +1,24 @@
+[project]
+name = "animeapi"
+version = "0.1.0"
+description = "Anime relation mapping API"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "alive-progress>=3.1.5",
+    "beautifulsoup4>=4.12.3",
+    "cloudscraper>=1.2.71",
+    "fake-useragent>=1.5.1",
+    "flask>=3.0.3",
+    "thefuzz>=0.22.1",
+    "jsonschema>=4.22.0",
+    "pandas>=2.2.2",
+    "python-dotenv>=1.0.1",
+    "python-levenshtein>=0.25.1",
+    "python-slugify>=8.0.4",
+    "requests>=2.32.3",
+    "zstandard>=0.22.0",
+]
+
+[tool.uv]
+dev-dependencies = []
