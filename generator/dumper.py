@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: AGPL-3.0-only AND MIT
+# SPDX-License-Identifier: MIT
 
 import csv
 import json

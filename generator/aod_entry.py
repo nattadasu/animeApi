@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: AGPL-3.0-only AND MIT
+# SPDX-License-Identifier: MIT
 
 from dataclasses import dataclass, field
 from typing import Any, Optional, Set

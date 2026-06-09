@@ -35,7 +35,7 @@ attribution: dict[str, Any] = {
         "https://livechart.me",
         "https://shikimori.one",
     ],
-    "license": "AGPL-3.0-only AND MIT AND CC0-1.0+",
+    "license": "MIT AND ODbL-1.0 AND DbCL-1.0 AND CC0-1.0",
     "website": "https://animeapi.my.id",
     "counts": {
         "anidb": 0,

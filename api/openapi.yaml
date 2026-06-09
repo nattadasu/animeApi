@@ -6,7 +6,7 @@ info:
     It focuses on providing relations between anime titles from different databases.
   version: "3.0.0"
   license:
-    name: AGPL-3.0-only
+    name: MIT
     url: "https://github.com/nattadasu/animeApi/blob/v3/LICENSE"
 servers:
   - url: https://animeapi.my.id
