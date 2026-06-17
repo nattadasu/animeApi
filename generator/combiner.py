@@ -324,6 +324,9 @@ def combine_fribb(
             fbi = fribb_by_anidb.get(anidb) if anidb is not None else None
             if fbi is not None:
                 imdb = fbi.get("imdb_id", None)
+                if isinstance(imdb, list):
+                    imdb = imdb[0] if imdb else None
+
                 tmdb: dict[str, int] | str | int | None = fbi.get("themoviedb_id", None)
                 tmdb_type: str | None = None
 
@@ -340,7 +343,14 @@ def combine_fribb(
                             tmdb = t_id
                             tmdb_type = t_type
                             break
-                elif isinstance(tmdb, str):
+
+                if isinstance(tmdb, list):
+                    if not tmdb:
+                        tmdb = None
+                    else:
+                        tmdb = tmdb[0]
+
+                if isinstance(tmdb, str):
                     tmdbl = tmdb.split(",")
                     tmdb = int(tmdbl[0])
 
