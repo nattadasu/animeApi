@@ -211,7 +211,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 19 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 23 June 2026 06:30:33 UTC
+Last updated: 25 June 2026 06:30:24 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -313,13 +313,11 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1782196233,
-    "iso": "2026-06-23T06:30:33.317511+00:00"
+    "timestamp": 1782369024,
+    "iso": "2026-06-25T06:30:24.898081+00:00"
   },
   "contributors": [
-    "nattadasu",
-    "Copilot",
-    "github-actions[bot]"
+    ""
   ],
   "sources": [
     "gh:kawaiioverflow/arm",
@@ -439,7 +437,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 06/23/2026 06:30:33 UTC
+Updated on 06/25/2026 06:30:24 UTC
 ```
 <!-- /updated-txt -->
 
