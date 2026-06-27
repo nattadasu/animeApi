@@ -20,5 +20,6 @@ dependencies = [
     "zstandard>=0.22.0",
 ]
 
-[tool.uv]
-dev-dependencies = []
+[dependency-groups]
+dev = []
+
