@@ -16,6 +16,29 @@ KAIZE_PASSWORD = os.getenv("KAIZE_PASSWORD")
 GITHUB_DISPATCH = os.getenv("GITHUB_EVENT_NAME") == "workflow_dispatch"
 """Whether the script is running from GitHub Actions workflow_dispatch event"""
 
+FORCE_FETCH_HIKKA = os.getenv("FORCE_FETCH_HIKKA", "").lower() in ("true", "1", "yes")
+"""Force a live Hikka API fetch regardless of the scheduled day gate"""
+
+FORCE_FETCH_NAUTILJON = os.getenv("FORCE_FETCH_NAUTILJON", "").lower() in (
+    "true",
+    "1",
+    "yes",
+)
+"""Force a live Nautiljon scrape regardless of the scheduled day gate"""
+
+FORCE_FETCH_KAIZE = os.getenv("FORCE_FETCH_KAIZE", "").lower() in ("true", "1", "yes")
+"""Force a live Kaize scrape instead of falling back to the cached local file"""
+
+FORCE_FETCH_OTAKOTAKU = os.getenv("FORCE_FETCH_OTAKOTAKU", "").lower() in (
+    "true",
+    "1",
+    "yes",
+)
+"""Force a full OtakOtaku re-fetch from ID 1 regardless of the scheduled day gate"""
+
+FORCE_DUMP = os.getenv("FORCE_DUMP", "").lower() in ("true", "1", "yes")
+"""Force regeneration and commit of the database even when git reports no changes"""
+
 pprint = PrettyPrint()
 """PrettyPrint class instance"""
 

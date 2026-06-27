@@ -10,7 +10,7 @@ from time import sleep
 import cloudscraper  # type: ignore
 from alive_progress import alive_bar  # type: ignore
 from bs4 import BeautifulSoup, Tag
-from const import GITHUB_DISPATCH
+from const import FORCE_FETCH_NAUTILJON, GITHUB_DISPATCH
 from prettyprint import Platform, PrettyPrint, Status
 from requests import HTTPError, Response
 
@@ -133,7 +133,11 @@ class Nautiljon:
         file_path = "database/raw/nautiljon.json"
         try:
             # raise ConnectionError("Force use local file")
-            if datetime.now().day not in [2, 16] and not GITHUB_DISPATCH:
+            if (
+                datetime.now().day not in [2, 16]
+                and not GITHUB_DISPATCH
+                and not FORCE_FETCH_NAUTILJON
+            ):
                 raise ConnectionError("Scraper is not allowed to run today")
             pprint.print(
                 Platform.NAUTILJON, Status.INFO, "Getting animes from Nautiljon"

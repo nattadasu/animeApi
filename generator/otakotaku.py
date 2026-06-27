@@ -8,7 +8,7 @@ from typing import Any, Union
 import requests as req
 from alive_progress import alive_bar  # type: ignore
 from bs4 import BeautifulSoup, Tag
-from const import GITHUB_DISPATCH
+from const import FORCE_FETCH_OTAKOTAKU, GITHUB_DISPATCH
 from fake_useragent import FakeUserAgent  # type: ignore
 from prettyprint import Platform, PrettyPrint, Status
 
@@ -157,6 +157,7 @@ class OtakOtaku:
                 datetime.now().day not in [1, 15]
                 and len(anime_list) > 0
                 and not GITHUB_DISPATCH
+                and not FORCE_FETCH_OTAKOTAKU
             ):
                 with open(latest_file_path, "r", encoding="utf-8") as file:
                     latest = int(file.read().strip())

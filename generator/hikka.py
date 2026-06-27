@@ -7,7 +7,7 @@ from typing import Any
 
 import requests
 from alive_progress import alive_bar  # type: ignore
-from const import GITHUB_DISPATCH
+from const import FORCE_FETCH_HIKKA, GITHUB_DISPATCH
 from prettyprint import Platform, PrettyPrint, Status
 from requests import HTTPError, Response
 
@@ -67,7 +67,11 @@ class Hikka:
         file_path = "database/raw/hikka.json"
 
         try:
-            if datetime.now().day not in [3, 17] and not GITHUB_DISPATCH:
+            if (
+                datetime.now().day not in [3, 17]
+                and not GITHUB_DISPATCH
+                and not FORCE_FETCH_HIKKA
+            ):
                 raise ConnectionError("Fetcher is not allowed to run today")
 
             pprint.print(

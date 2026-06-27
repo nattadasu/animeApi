@@ -2,6 +2,27 @@ name: "[v3] Generate Database"
 
 on:
   workflow_dispatch:
+    inputs:
+      force_fetch_hikka:
+        description: "Force live fetch from Hikka API (ignores day gate)"
+        type: boolean
+        default: false
+      force_fetch_nautiljon:
+        description: "Force live scrape from Nautiljon (ignores day gate)"
+        type: boolean
+        default: false
+      force_fetch_kaize:
+        description: "Force live scrape from Kaize (no local cache fallback)"
+        type: boolean
+        default: false
+      force_fetch_otakotaku:
+        description: "Force full OtakOtaku re-fetch from ID 1 (ignores day gate)"
+        type: boolean
+        default: false
+      force_dump:
+        description: "Force database regeneration and commit even with no git changes"
+        type: boolean
+        default: false
   schedule:
     - cron: "0 5 * * *"
   push:
@@ -31,6 +52,11 @@ env:
   GIT_COMMITTER_NAME: Natsu Tadama
   GIT_COMMITTER_EMAIL: nattadasu@nattadasu.my.id
   UV_FROZEN: "1"
+  FORCE_FETCH_HIKKA: ${{ github.event.inputs.force_fetch_hikka || 'false' }}
+  FORCE_FETCH_NAUTILJON: ${{ github.event.inputs.force_fetch_nautiljon || 'false' }}
+  FORCE_FETCH_KAIZE: ${{ github.event.inputs.force_fetch_kaize || 'false' }}
+  FORCE_FETCH_OTAKOTAKU: ${{ github.event.inputs.force_fetch_otakotaku || 'false' }}
+  FORCE_DUMP: ${{ github.event.inputs.force_dump || 'false' }}
 
 jobs:
   build:

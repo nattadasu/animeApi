@@ -8,7 +8,7 @@ from time import time
 
 from alive_progress import alive_it
 from clock import convert_float_to_time as seconds_to_time_context
-from const import GITHUB_DISPATCH, pprint
+from const import FORCE_DUMP, GITHUB_DISPATCH, pprint
 from prettyprint import Platform, Status
 
 
@@ -24,6 +24,13 @@ def check_git_any_changes() -> bool:
             Platform.SYSTEM,
             Status.INFO,
             "Repository was forced to update, updating data",
+        )
+        return True
+    if FORCE_DUMP:
+        pprint.print(
+            Platform.SYSTEM,
+            Status.INFO,
+            "FORCE_DUMP is set — regenerating database regardless of git state",
         )
         return True
     try:

@@ -10,6 +10,7 @@ from typing import Any, Literal, Optional, Union
 import requests as req
 from alive_progress import alive_bar  # type: ignore
 from bs4 import BeautifulSoup, Tag
+from const import FORCE_FETCH_KAIZE
 from fake_useragent import FakeUserAgent  # type: ignore
 from prettyprint import Platform, PrettyPrint, Status
 
@@ -404,6 +405,13 @@ class Kaize:
                 str(pages),
             )
         except (ConnectionError, ValueError):
+            if FORCE_FETCH_KAIZE:
+                pprint.print(
+                    Platform.KAIZE,
+                    Status.ERR,
+                    "FORCE_FETCH_KAIZE is set — refusing to fall back to local cache",
+                )
+                raise
             pprint.print(
                 Platform.KAIZE,
                 Status.WARN,
