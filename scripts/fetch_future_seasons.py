@@ -19,6 +19,9 @@ import requests
 from bs4 import BeautifulSoup
 from thefuzz import fuzz
 
+USER_AGENT = "AnimeAPI/3.0 (github.com/nattadasu/animeApi)"
+
+
 # Map month to season
 MONTH_TO_SEASON = {
     1: "winter",
@@ -209,7 +212,7 @@ def fetch_shikimori_seasonal(season_slug):
     """Query Shikimori GraphQL API for seasonal anime"""
     url = "https://shikimori.io/api/graphql"
     headers = {
-        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:151.0) Gecko/20100101 Firefox/151.0",
+        "User-Agent": USER_AGENT,
         "Content-Type": "application/json",
         "Accept": "application/json",
     }
@@ -267,7 +270,7 @@ def fetch_shikimori_anons():
     """Query Shikimori GraphQL API for all announced shows (handles TBA / unknown season)"""
     url = "https://shikimori.io/api/graphql"
     headers = {
-        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:151.0) Gecko/20100101 Firefox/151.0",
+        "User-Agent": USER_AGENT,
         "Content-Type": "application/json",
         "Accept": "application/json",
     }
@@ -1265,6 +1268,7 @@ def fetch_anilist_upcoming() -> list[dict[str, Any]]:
     years = [this_year - 1, this_year, this_year + 1]
 
     headers = {
+        "User-Agent": USER_AGENT,
         "Content-Type": "application/json",
         "Accept": "application/json",
     }
@@ -1387,7 +1391,7 @@ def fetch_kitsu_upcoming_graphql() -> list[dict[str, Any]]:
     """
     url = "https://kitsu.app/api/graphql"
     headers = {
-        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:152.0) Gecko/20100101 Firefox/152.0",
+        "User-Agent": USER_AGENT,
         "Accept": "application/json",
         "Content-Type": "application/json",
     }
@@ -1468,6 +1472,7 @@ def fetch_kitsu_upcoming() -> list[dict[str, Any]]:
     """
     url = "https://kitsu.io/api/edge/anime"
     headers = {
+        "User-Agent": USER_AGENT,
         "Accept": "application/vnd.api+json",
         "Content-Type": "application/vnd.api+json",
     }
@@ -1620,6 +1625,7 @@ def fetch_annict_upcoming() -> list[dict[str, Any]]:
 
     url = "https://api.annict.com/graphql"
     headers = {
+        "User-Agent": USER_AGENT,
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json",
     }
