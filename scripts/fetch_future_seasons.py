@@ -9,6 +9,7 @@ sanitize and normalize all source URLs, and format them as AOD-like entries.
 
 import datetime
 import json
+import os
 import re
 import time
 from pathlib import Path
@@ -1052,6 +1053,127 @@ def main():
         f"Kitsu shows merged: added {kt_added}, merged {kt_merged}, skipped (already in AOD) {kt_skipped}"
     )
 
+    # Step 8: Fetch and merge Annict shows
+    # Load previous database generation to skip existing mappings
+    mapped_mal_ids = set()
+    mal_to_annict = {}
+    import pandas as pd
+
+    try:
+        if Path("database/animeapi.tsv").exists():
+            print(
+                "Loading previous database generation (animeapi.tsv) to detect missing mappings..."
+            )
+            existing_df = pd.read_csv("database/animeapi.tsv", sep="\t", dtype=str)
+            if "myanimelist" in existing_df.columns:
+                mapped_mal_ids = set(existing_df["myanimelist"].dropna())
+                if "annict" in existing_df.columns:
+                    temp_df = existing_df.dropna(subset=["myanimelist", "annict"])
+                    for _, row in temp_df.iterrows():
+                        mal_to_annict[row["myanimelist"]] = row["annict"]
+    except Exception as e:
+        print(f"  Note: Could not load previous animeapi.tsv: {e}")
+
+    annict_shows = fetch_annict_upcoming()
+    print("Processing Annict shows...")
+    an_added = 0
+    an_merged = 0
+    an_skipped = 0
+    for show in annict_shows:
+        annict_id = show.get("annictId")
+        mal_id = show.get("malAnimeId")
+        shobocal_tid = show.get("syobocalTid")
+
+        # Skip if this MAL -> Annict mapping is already recorded in the database
+        if mal_id and str(mal_id) in mapped_mal_ids:
+            if mal_to_annict.get(str(mal_id)) == str(annict_id):
+                an_skipped += 1
+                continue
+
+        an_sources = [f"https://annict.com/works/{annict_id}"]
+        if mal_id:
+            an_sources.append(f"https://myanimelist.net/anime/{mal_id}")
+        if shobocal_tid:
+            an_sources.append(f"https://cal.syoboi.jp/tid/{shobocal_tid}")
+
+        title = show.get("title")
+        if not title:
+            continue
+
+        synonyms = []
+        for t_field in ["titleEn", "titleRo"]:
+            val = show.get(t_field)
+            if val and val != title:
+                synonyms.append(val)
+        synonyms = list(set(synonyms))
+
+        media_map = {
+            "TV": "TV",
+            "MOVIE": "MOVIE",
+            "OVA": "OVA",
+            "ONA": "ONA",
+            "WEB": "ONA",
+            "OTHER": "SPECIAL",
+        }
+        media_type = media_map.get(show.get("media"), "TV")
+
+        # Map Annict seasons: WINTER, SPRING, SUMMER, AUTUMN
+        season_map = {
+            "WINTER": "WINTER",
+            "SPRING": "SPRING",
+            "SUMMER": "SUMMER",
+            "AUTUMN": "FALL",
+        }
+        s_name = season_map.get(show.get("seasonName"), "TBA")
+        s_year = show.get("seasonYear")
+
+        new_entry = {
+            "title": title,
+            "sources": sanitize_source_urls(an_sources),
+            "type": media_type,
+            "status": "UPCOMING",
+            "animeSeason": {"season": s_name, "year": s_year},
+            "synonyms": synonyms,
+        }
+
+        new_ids = get_entry_id_strings(new_entry["sources"])
+        if new_ids & aod_id_strings:
+            an_skipped += 1
+            continue
+
+        matched_entry = None
+        for id_str in new_ids:
+            if id_str in id_to_sideload_entry:
+                matched_entry = id_to_sideload_entry[id_str]
+                break
+
+        if not matched_entry:
+            for entry in filtered_sideload_entries:
+                if titles_match_fuzzy(
+                    new_entry["title"],
+                    new_entry.get("synonyms", []),
+                    entry["title"],
+                    entry.get("synonyms", []),
+                ):
+                    if dates_or_seasons_match(new_entry, entry):
+                        matched_entry = entry
+                        break
+
+        if matched_entry:
+            merge_entries(matched_entry, new_entry)
+            for id_str in get_entry_id_strings(matched_entry["sources"]):
+                id_to_sideload_entry[id_str] = matched_entry
+            an_merged += 1
+        else:
+            filtered_sideload_entries.append(new_entry)
+            for id_str in new_ids:
+                id_to_sideload_entry[id_str] = new_entry
+            an_added += 1
+
+    print(
+        f"Annict shows merged: added {an_added}, merged {an_merged}, skipped (already in AOD) {an_skipped}"
+    )
+
     # Format and sort entries to be git-diff friendly
     sorted_entries = []
     for entry in filtered_sideload_entries:
@@ -1488,6 +1610,99 @@ def fetch_kitsu_upcoming() -> list[dict[str, Any]]:
             deduped_kitsu_data.append(item)
 
     return deduped_kitsu_data
+
+
+def fetch_annict_upcoming() -> list[dict[str, Any]]:
+    """
+    Query Annict GraphQL API for upcoming and current seasonal works.
+    """
+    token = os.environ.get("ANNICT_TOKEN")
+    if not token:
+        print(
+            "  Annict token not found in environment, skipping Annict sideload crawl."
+        )
+        return []
+
+    url = "https://api.annict.com/graphql"
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json",
+    }
+
+    # Annict seasons format is YYYY-season (winter, spring, summer, autumn)
+    this_year = datetime.datetime.now().year
+    season_names_map = {
+        "winter": "winter",
+        "spring": "spring",
+        "summer": "summer",
+        "fall": "autumn",
+    }
+
+    seasons_to_query = []
+    for y in [this_year - 1, this_year, this_year + 1]:
+        for s in ["winter", "spring", "summer", "fall"]:
+            seasons_to_query.append(f"{y}-{season_names_map[s]}")
+
+    print(f"Querying Annict GraphQL for seasons: {seasons_to_query}...")
+
+    query = """
+    query GetSeasonal($seasons: [String!], $first: Int!, $after: String) {
+      searchWorks(seasons: $seasons, first: $first, after: $after) {
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+        nodes {
+          id
+          annictId
+          malAnimeId
+          syobocalTid
+          title
+          titleEn
+          titleRo
+          media
+          seasonName
+          seasonYear
+          officialSiteUrl
+          wikipediaUrl
+        }
+      }
+    }
+    """
+
+    annict_data: list[dict[str, Any]] = []
+    after = None
+    while True:
+        variables = {"seasons": seasons_to_query, "first": 50, "after": after}
+        try:
+            resp = requests.post(
+                url,
+                headers=headers,
+                json={"query": query, "variables": variables},
+                timeout=15,
+            )
+            if resp.status_code == 200:
+                data = resp.json().get("data", {}).get("searchWorks", {})
+                nodes = data.get("nodes", [])
+                if not nodes:
+                    break
+                annict_data.extend(nodes)
+                print(f"  Fetched {len(nodes)} Annict items...")
+
+                page_info = data.get("pageInfo", {})
+                if not page_info.get("hasNextPage"):
+                    break
+                after = page_info.get("endCursor")
+                time.sleep(1)
+            elif resp.status_code == 429:
+                print("  Rate limited, retrying in 5 seconds...")
+                time.sleep(5)
+            else:
+                print(f"  Annict query failed with status {resp.status_code}")
+                break
+        except Exception as e:
+            print(f"  Error querying Annict: {e}")
+    return annict_data
 
 
 if __name__ == "__main__":

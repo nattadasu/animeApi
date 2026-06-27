@@ -22,6 +22,8 @@ class AodEntry:
     myanimelist: Optional[int] = None
     notify: Optional[str] = None
     simkl: Optional[int] = None
+    annict: Optional[int] = None
+    shoboi: Optional[int] = None
 
     # Track all extracted IDs for comparison
     id_set: Set[str] = field(default_factory=set, init=False)
@@ -57,6 +59,10 @@ class AodEntry:
                 self.notify = source.split("/")[-1]
             elif "simkl.com/anime/" in source:
                 self.simkl = int(source.split("/")[-1])
+            elif "annict.com/works/" in source:
+                self.annict = int(source.split("/")[-1])
+            elif "cal.syoboi.jp/tid/" in source:
+                self.shoboi = int(source.split("/")[-1])
             elif "animenewsnetwork.com/" in source and "id=" in source:
                 self.animenewsnetwork = int(source.split("id=")[-1])
 
@@ -89,6 +95,10 @@ class AodEntry:
             self.id_set.add(f"notify:{self.notify}")
         if self.simkl:
             self.id_set.add(f"simkl:{self.simkl}")
+        if self.annict:
+            self.id_set.add(f"annict:{self.annict}")
+        if self.shoboi:
+            self.id_set.add(f"shoboi:{self.shoboi}")
 
     def has_overlapping_ids(self, other: "AodEntry") -> bool:
         """
@@ -132,6 +142,8 @@ class AodEntry:
             "notify": self.notify,
             "shikimori": self.myanimelist,  # Shikimori uses same ID as MAL
             "simkl": self.simkl,
+            "annict": self.annict,
+            "shoboi": self.shoboi,
         }
 
 
@@ -175,6 +187,8 @@ def merge_aod_entries_if_compatible(
     merged.myanimelist = entry1.myanimelist or entry2.myanimelist
     merged.notify = entry1.notify or entry2.notify
     merged.simkl = entry1.simkl or entry2.simkl
+    merged.annict = entry1.annict or entry2.annict
+    merged.shoboi = entry1.shoboi or entry2.shoboi
 
     # Rebuild id_set with the new IDs
     merged.populate_id_set()
