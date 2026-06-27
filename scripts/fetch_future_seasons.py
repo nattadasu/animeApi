@@ -1300,7 +1300,9 @@ def fetch_anilist_upcoming() -> list[dict[str, Any]]:
                         time.sleep(1)
                     elif resp.status_code == 429:
                         retry_after = int(resp.headers.get("Retry-After", 5))
-                        print(f"  Rate limited. Retrying after {retry_after} seconds...")
+                        print(
+                            f"  Rate limited. Retrying after {retry_after} seconds..."
+                        )
                         time.sleep(retry_after)
                     else:
                         print(f"  AniList query failed with status {resp.status_code}")
@@ -1488,9 +1490,7 @@ def fetch_kitsu_upcoming() -> list[dict[str, Any]]:
                     "page[offset]": offset,
                 }
                 try:
-                    resp = requests.get(
-                        url, headers=headers, params=params, timeout=15
-                    )
+                    resp = requests.get(url, headers=headers, params=params, timeout=15)
                     if resp.status_code == 200:
                         res_json = resp.json()
                         data = res_json.get("data", [])
@@ -1503,12 +1503,12 @@ def fetch_kitsu_upcoming() -> list[dict[str, Any]]:
                         for inc in included:
                             if inc.get("type") == "mappings":
                                 mappings_map[inc.get("id")] = {
-                                    "externalSite": inc.get(
-                                        "attributes", {}
-                                    ).get("externalSite"),
-                                    "externalId": inc.get(
-                                        "attributes", {}
-                                    ).get("externalId"),
+                                    "externalSite": inc.get("attributes", {}).get(
+                                        "externalSite"
+                                    ),
+                                    "externalId": inc.get("attributes", {}).get(
+                                        "externalId"
+                                    ),
                                 }
 
                         for item in data:
@@ -1557,21 +1557,18 @@ def fetch_kitsu_upcoming() -> list[dict[str, Any]]:
                                     "startDate": attributes.get("startDate"),
                                     "subtype": attributes.get("subtype"),
                                     "titles": {
-                                        "canonical": attributes.get(
-                                            "canonicalTitle"
+                                        "canonical": attributes.get("canonicalTitle"),
+                                        "romanized": attributes.get("titles", {}).get(
+                                            "en_jp"
                                         ),
-                                        "romanized": attributes.get(
-                                            "titles", {}
-                                        ).get("en_jp"),
-                                        "original": attributes.get(
-                                            "titles", {}
-                                        ).get("ja_jp"),
+                                        "original": attributes.get("titles", {}).get(
+                                            "ja_jp"
+                                        ),
                                         "alternatives": attributes.get(
                                             "abbreviatedTitles"
                                         )
                                         or [],
-                                        "localized": attributes.get("titles")
-                                        or {},
+                                        "localized": attributes.get("titles") or {},
                                     },
                                     "mappings": {"nodes": item_mappings},
                                 }
@@ -1586,9 +1583,7 @@ def fetch_kitsu_upcoming() -> list[dict[str, Any]]:
                         print("  Rate limited, waiting 5 seconds...")
                         time.sleep(5)
                     else:
-                        print(
-                            f"  Kitsu REST API failed with status {resp.status_code}"
-                        )
+                        print(f"  Kitsu REST API failed with status {resp.status_code}")
                         break
                 except Exception as e:
                     print(f"  Error querying Kitsu REST for {year} {season}: {e}")
