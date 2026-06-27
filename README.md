@@ -73,7 +73,7 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 
 | Project | License | Access & Rate Limits | Formats | Title | Supported Platforms |
 | :--- | :--- | :--- | :--- | :---: | :---: |
-| **AnimeAPI** | MIT, ODbL, DbCL, CC0 | Public / No limits | REST, JSON, TSV | ✔ | ![f:adb] ![f:al] ![f:an] ![f:ap] ![f:as] ![f:ac] ![f:hka] ![f:imdb] ![f:kz] ![f:kts] ![f:lbx] ![f:lc] ![f:mal] ![f:ntj] ![f:ntf] ![f:oo] ![f:shk] ![f:shb] ![f:sy] ![f:smk] ![f:tmdb] ![f:trk] ![f:tvdb] ![f:tvtm] <br> *(All 24+ platforms)* |
+| **AnimeAPI** | MIT, ODbL, DbCL, CC0 | Public / No limits | REST, JSON, TSV | ✔ | ![f:adb] ![f:al] ![f:an] ![f:ap] ![f:as] ![f:ac] ![f:hka] ![f:imdb] ![f:kz] ![f:kts] ![f:lbx] ![f:lc] ![f:mal] ![f:ntj] ![f:ntf] ![f:oo] ![f:shk] ![f:shb] ![f:sy] ![f:smk] ![f:tmdb] ![f:trk] ![f:tvdb] ![f:tvtm] <br> *(All 22+ platforms)* |
 | **[manami-project/anime-offline-database][aod]** | ODbL, DbCL | Public Dump | JSON | ✔ | ![f:mal] ![f:al] ![f:adb] ![f:kts] ![f:lc] ![f:as] ![f:ap] ![f:smk] ![f:an] |
 | **[kawaiioverflow/arm][arm]** | MIT | Public / No limits | Node Package, REST, JSON | ❌ | ![f:mal] ![f:al] ![f:ac] ![f:shb] |
 | **[Fribb/anime-lists][fal]** | Unknown | Public Dump | JSON | ❌ | ![f:mal] ![f:al] ![f:adb] ![f:kts] ![f:lc] ![f:as] ![f:ap] ![f:smk] ![f:an] ![f:ntf] ![f:shk] ![f:tmdb] ![f:tvdb] ![f:imdb] |
@@ -208,7 +208,7 @@ alias cheatsheet as well.
 
 ## Statistic
 
-So far, AnimeAPI has indexed data from 19 databases, with details as follows:
+So far, AnimeAPI has indexed data from 22 databases, with details as follows:
 
 <!-- updated -->
 Last updated: 27 June 2026 07:58:17 UTC
