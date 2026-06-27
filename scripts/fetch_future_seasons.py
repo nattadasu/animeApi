@@ -1104,17 +1104,17 @@ def main():
 
 def fetch_anilist_upcoming() -> list[dict[str, Any]]:
     """
-    Query AniList GraphQL API for upcoming and releasing anime
-    with rich metadata.
+    Query AniList GraphQL API for seasonal anime in the 3-year window
+    (last year, this year, next year).
     """
     url = "https://graphql.anilist.co"
     query = """
-    query ($page: Int, $perPage: Int) {
+    query ($season: MediaSeason, $seasonYear: Int, $page: Int, $perPage: Int) {
       Page (page: $page, perPage: $perPage) {
         pageInfo {
           hasNextPage
         }
-        media (type: ANIME, status_in: [NOT_YET_RELEASED, RELEASING]) {
+        media (type: ANIME, season: $season, seasonYear: $seasonYear) {
           id
           idMal
           title {
@@ -1136,21 +1136,95 @@ def fetch_anilist_upcoming() -> list[dict[str, Any]]:
       }
     }
     """
-    print("Querying AniList GraphQL for upcoming/releasing anime...")
+
     anilist_data: list[dict[str, Any]] = []
-    page = 1
+    this_year = datetime.datetime.now().year
+    seasons = ["WINTER", "SPRING", "SUMMER", "FALL"]
+    years = [this_year - 1, this_year, this_year + 1]
+
     headers = {
         "Content-Type": "application/json",
         "Accept": "application/json",
     }
 
+    for year in years:
+        for season in seasons:
+            print(f"Querying AniList GraphQL for {year} {season}...")
+            page = 1
+            while True:
+                variables = {
+                    "season": season,
+                    "seasonYear": year,
+                    "page": page,
+                    "perPage": 50,
+                }
+                try:
+                    resp = requests.post(
+                        url,
+                        headers=headers,
+                        json={"query": query, "variables": variables},
+                        timeout=15,
+                    )
+                    if resp.status_code == 200:
+                        page_data = resp.json().get("data", {}).get("Page", {})
+                        media = page_data.get("media", [])
+                        if not media:
+                            break
+                        anilist_data.extend(media)
+                        print(f"  Page {page}: fetched {len(media)} items")
+                        if not page_data.get("pageInfo", {}).get("hasNextPage"):
+                            break
+                        page += 1
+                        time.sleep(1)
+                    elif resp.status_code == 429:
+                        retry_after = int(resp.headers.get("Retry-After", 5))
+                        print(f"  Rate limited. Retrying after {retry_after} seconds...")
+                        time.sleep(retry_after)
+                    else:
+                        print(f"  AniList query failed with status {resp.status_code}")
+                        break
+                except Exception as e:
+                    print(f"  Error querying AniList {year} {season} page {page}: {e}")
+                    break
+
+    # Also fetch upcoming/announced with status to make sure we don't miss anything that doesn't have a season set yet
+    print("Querying AniList GraphQL for remaining upcoming anime (no season/TBA)...")
+    tba_query = """
+    query ($page: Int, $perPage: Int) {
+      Page (page: $page, perPage: $perPage) {
+        pageInfo {
+          hasNextPage
+        }
+        media (type: ANIME, status: NOT_YET_RELEASED, season: null) {
+          id
+          idMal
+          title {
+            romaji
+            english
+            native
+          }
+          format
+          status
+          season
+          seasonYear
+          synonyms
+          startDate {
+            year
+            month
+            day
+          }
+        }
+      }
+    }
+    """
+    page = 1
     while True:
         variables = {"page": page, "perPage": 50}
         try:
             resp = requests.post(
                 url,
                 headers=headers,
-                json={"query": query, "variables": variables},
+                json={"query": tba_query, "variables": variables},
                 timeout=15,
             )
             if resp.status_code == 200:
@@ -1159,26 +1233,31 @@ def fetch_anilist_upcoming() -> list[dict[str, Any]]:
                 if not media:
                     break
                 anilist_data.extend(media)
-                print(f"  Page {page}: fetched {len(media)} items")
+                print(f"  Page {page} (TBA): fetched {len(media)} items")
                 if not page_data.get("pageInfo", {}).get("hasNextPage"):
                     break
                 page += 1
-                time.sleep(1)  # rate limiting protection
+                time.sleep(1)
             elif resp.status_code == 429:
                 retry_after = int(resp.headers.get("Retry-After", 5))
-                print(f"  Rate limited. Retrying after {retry_after} seconds...")
                 time.sleep(retry_after)
             else:
-                print(f"  AniList query failed with status {resp.status_code}")
                 break
-        except Exception as e:
-            print(f"  Error querying AniList page {page}: {e}")
+        except Exception:
             break
 
-    return anilist_data
+    # Deduplicate AniList data by media ID
+    seen_ids = set()
+    deduped_anilist_data = []
+    for item in anilist_data:
+        if item.get("id") not in seen_ids:
+            seen_ids.add(item.get("id"))
+            deduped_anilist_data.append(item)
+
+    return deduped_anilist_data
 
 
-def fetch_kitsu_upcoming() -> list[dict[str, Any]]:
+def fetch_kitsu_upcoming_graphql() -> list[dict[str, Any]]:
     """
     Query Kitsu GraphQL API for upcoming and releasing anime with mapping data.
     """
@@ -1256,6 +1335,159 @@ def fetch_kitsu_upcoming() -> list[dict[str, Any]]:
                 print(f"  Error querying Kitsu: {e}")
                 break
     return kitsu_data
+
+
+def fetch_kitsu_upcoming() -> list[dict[str, Any]]:
+    """
+    Query Kitsu JSON:API (REST) for seasonal anime in the 3-year window
+    (last year, this year, next year).
+    """
+    url = "https://kitsu.io/api/edge/anime"
+    headers = {
+        "Accept": "application/vnd.api+json",
+        "Content-Type": "application/vnd.api+json",
+    }
+
+    kitsu_data = []
+    this_year = datetime.datetime.now().year
+    seasons = ["winter", "spring", "summer", "fall"]
+    years = [this_year - 1, this_year, this_year + 1]
+
+    for year in years:
+        for season in seasons:
+            print(f"Querying Kitsu REST API for {year} {season}...")
+            offset = 0
+            while True:
+                params = {
+                    "filter[season]": season,
+                    "filter[seasonYear]": str(year),
+                    "include": "mappings",
+                    "page[limit]": 20,
+                    "page[offset]": offset,
+                }
+                try:
+                    resp = requests.get(
+                        url, headers=headers, params=params, timeout=15
+                    )
+                    if resp.status_code == 200:
+                        res_json = resp.json()
+                        data = res_json.get("data", [])
+                        if not data:
+                            break
+
+                        # Process mappings included in the response
+                        included = res_json.get("included", [])
+                        mappings_map = {}
+                        for inc in included:
+                            if inc.get("type") == "mappings":
+                                mappings_map[inc.get("id")] = {
+                                    "externalSite": inc.get(
+                                        "attributes", {}
+                                    ).get("externalSite"),
+                                    "externalId": inc.get(
+                                        "attributes", {}
+                                    ).get("externalId"),
+                                }
+
+                        for item in data:
+                            attributes = item.get("attributes", {})
+
+                            item_mappings = []
+                            rel_mappings = (
+                                item.get("relationships", {})
+                                .get("mappings", {})
+                                .get("data", [])
+                            )
+                            for rm in rel_mappings:
+                                m_id = rm.get("id")
+                                if m_id in mappings_map:
+                                    site = mappings_map[m_id]["externalSite"]
+                                    if site == "myanimelist/anime":
+                                        site_gq = "MYANIMELIST_ANIME"
+                                    elif site == "anilist/anime":
+                                        site_gq = "ANILIST_ANIME"
+                                    elif site == "anidb":
+                                        site_gq = "ANIDB"
+                                    elif site == "thetvdb/series":
+                                        site_gq = "THETVDB_SERIES"
+                                    elif site == "thetvdb/season":
+                                        site_gq = "THETVDB"
+                                    elif site == "trakt":
+                                        site_gq = "TRAKT"
+                                    else:
+                                        site_gq = site.upper()
+
+                                    item_mappings.append(
+                                        {
+                                            "externalSite": site_gq,
+                                            "externalId": mappings_map[m_id][
+                                                "externalId"
+                                            ],
+                                        }
+                                    )
+
+                            kitsu_data.append(
+                                {
+                                    "id": item.get("id"),
+                                    "slug": attributes.get("slug"),
+                                    "status": attributes.get("status"),
+                                    "season": attributes.get("season"),
+                                    "startDate": attributes.get("startDate"),
+                                    "subtype": attributes.get("subtype"),
+                                    "titles": {
+                                        "canonical": attributes.get(
+                                            "canonicalTitle"
+                                        ),
+                                        "romanized": attributes.get(
+                                            "titles", {}
+                                        ).get("en_jp"),
+                                        "original": attributes.get(
+                                            "titles", {}
+                                        ).get("ja_jp"),
+                                        "alternatives": attributes.get(
+                                            "abbreviatedTitles"
+                                        )
+                                        or [],
+                                        "localized": attributes.get("titles")
+                                        or {},
+                                    },
+                                    "mappings": {"nodes": item_mappings},
+                                }
+                            )
+
+                        print(f"  Offset {offset}: fetched {len(data)} items")
+                        if len(data) < 20:
+                            break
+                        offset += 20
+                        time.sleep(1)
+                    elif resp.status_code == 429:
+                        print("  Rate limited, waiting 5 seconds...")
+                        time.sleep(5)
+                    else:
+                        print(
+                            f"  Kitsu REST API failed with status {resp.status_code}"
+                        )
+                        break
+                except Exception as e:
+                    print(f"  Error querying Kitsu REST for {year} {season}: {e}")
+                    break
+
+    # Also fetch current and upcoming via GraphQL status to ensure we catch TBA and unseasoned works
+    print(
+        "Querying Kitsu GraphQL for remaining current and upcoming anime (unseasoned)..."
+    )
+    gql_shows = fetch_kitsu_upcoming_graphql()
+    kitsu_data.extend(gql_shows)
+
+    # Deduplicate Kitsu data by ID
+    seen_ids = set()
+    deduped_kitsu_data = []
+    for item in kitsu_data:
+        if item.get("id") not in seen_ids:
+            seen_ids.add(item.get("id"))
+            deduped_kitsu_data.append(item)
+
+    return deduped_kitsu_data
 
 
 if __name__ == "__main__":
