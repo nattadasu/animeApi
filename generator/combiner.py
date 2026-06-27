@@ -446,3 +446,97 @@ def combine_hikka(
         f"{len(hikka)}",
     )
     return aod
+
+
+def combine_geckyzz(
+    geckyzz: list[dict[str, Any]], aod: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
+    """
+    Combine Geckyzz data with AOD data, merging missing keys and adding new ones.
+
+    :param geckyzz: Geckyzz mappings data
+    :type geckyzz: list[dict[str, Any]]
+    :param aod: AOD data
+    :type aod: list[dict[str, Any]]
+    :return: Combined AOD/Geckyzz data
+    :rtype: list[dict[str, Any]]
+    """
+    linked = 0
+    added = 0
+
+    # Build lookup dictionaries for existing entries
+    aod_by_mal = {}
+    aod_by_anilist = {}
+    aod_by_anidb = {}
+    aod_by_kitsu = {}
+    aod_by_title = {}
+
+    for item in aod:
+        if item.get("myanimelist"):
+            aod_by_mal[item["myanimelist"]] = item
+        if item.get("anilist"):
+            aod_by_anilist[item["anilist"]] = item
+        if item.get("anidb"):
+            aod_by_anidb[item["anidb"]] = item
+        if item.get("kitsu"):
+            aod_by_kitsu[item["kitsu"]] = item
+        if item.get("title"):
+            aod_by_title[item["title"].lower().strip()] = item
+
+    with alive_bar(
+        len(geckyzz), title="Combining Geckyzz data with AOD data", spinner=None
+    ) as bar:  # type: ignore
+        for g_item in geckyzz:
+            matched_item = None
+
+            # Try matching by ID first
+            if g_item.get("myanimelist") and g_item["myanimelist"] in aod_by_mal:
+                matched_item = aod_by_mal[g_item["myanimelist"]]
+            elif g_item.get("anilist") and g_item["anilist"] in aod_by_anilist:
+                matched_item = aod_by_anilist[g_item["anilist"]]
+            elif g_item.get("anidb") and g_item["anidb"] in aod_by_anidb:
+                matched_item = aod_by_anidb[g_item["anidb"]]
+            elif g_item.get("kitsu") and g_item["kitsu"] in aod_by_kitsu:
+                matched_item = aod_by_kitsu[g_item["kitsu"]]
+            elif g_item.get("title"):
+                title_key = g_item["title"].lower().strip()
+                if title_key in aod_by_title:
+                    matched_item = aod_by_title[title_key]
+
+            if matched_item:
+                # Merge missing metadata keys
+                for key, val in g_item.items():
+                    if val is not None and matched_item.get(key) is None:
+                        matched_item[key] = val
+                linked += 1
+            else:
+                # Add as a new entry
+                new_entry = {}
+                for key in g_item.keys():
+                    new_entry[key] = g_item.get(key)
+                aod.append(new_entry)
+
+                # Index the new entry
+                if new_entry.get("myanimelist"):
+                    aod_by_mal[new_entry["myanimelist"]] = new_entry
+                if new_entry.get("anilist"):
+                    aod_by_anilist[new_entry["anilist"]] = new_entry
+                if new_entry.get("anidb"):
+                    aod_by_anidb[new_entry["anidb"]] = new_entry
+                if new_entry.get("kitsu"):
+                    aod_by_kitsu[new_entry["kitsu"]] = new_entry
+                if new_entry.get("title"):
+                    aod_by_title[new_entry["title"].lower().strip()] = new_entry
+                added += 1
+            bar()
+
+    pprint.print(
+        Platform.GECKYZZ,
+        Status.PASS,
+        "Geckyzz data combined with AOD data.",
+        "Total linked data:",
+        f"{linked},",
+        "Total added data:",
+        f"{added}",
+    )
+    return aod

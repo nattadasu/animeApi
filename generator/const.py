@@ -34,6 +34,7 @@ attribution: dict[str, Any] = {
         "https://otakotaku.com",
         "https://livechart.me",
         "https://shikimori.one",
+        "https://geckyzz.my.id",
         "https://anilist.co",
         "https://kitsu.app",
     ],

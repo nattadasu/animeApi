@@ -6,7 +6,13 @@ from time import time
 from typing import Any
 
 from alive_progress import alive_bar  # type: ignore
-from combiner import combine_anitrakt, combine_arm, combine_fribb, combine_hikka
+from combiner import (
+    combine_anitrakt,
+    combine_arm,
+    combine_fribb,
+    combine_geckyzz,
+    combine_hikka,
+)
 from const import (
     KAIZE_EMAIL,
     KAIZE_PASSWORD,
@@ -26,6 +32,7 @@ from fetcher import (
     get_anitrakt,
     get_arm,
     get_fribb_animelists,
+    get_geckyzz_mappings,
     get_notify_rensetsu,
     merge_notify_with_aod,
     restore_notify_safe,
@@ -149,6 +156,7 @@ def main() -> None:
         ).get_anime()
         nau = Nautiljon().get_animes()
         hka = Hikka().get_animes()
+        geckyzz = get_geckyzz_mappings()
         validate_json_files()
         git_changes = check_git_any_changes()
         if git_changes is False:
@@ -195,6 +203,10 @@ def main() -> None:
         aod_arr = combine_anitrakt(anitrakt, aod_arr)
         pprint.print(Platform.HIKKA, Status.BUILD, "Combining Hikka data with AOD data")
         aod_arr = combine_hikka(hka, aod_arr)
+        pprint.print(
+            Platform.GECKYZZ, Status.BUILD, "Combining Geckyzz data with AOD data"
+        )
+        aod_arr = combine_geckyzz(geckyzz, aod_arr)
         run_metrics["stages"]["combine_external"] = time() - stage_start
 
         stage_start = time()

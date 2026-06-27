@@ -1053,6 +1053,7 @@ This project uses multiple sources to compile the data, including:
 * [gh:Fribb/anime-lists][fal]
 * [AniList][al]
 * [Kitsu][kts]
+* [geckyzz][gkz]'s AnimeAPI data extension
 * [Hikka][hka]
 * [LiveChart][lc]
 * [Nautiljon][ntj]
@@ -1076,6 +1077,7 @@ This project uses multiple sources to compile the data, including:
 [atrk]: https://anitrakt.huere.net/
 [bq]: https://github.com/BeeeQueue/arm-server
 [fal]: https://github.com/Fribb/anime-lists
+[gkz]: https://geckyzz.my.id
 [hato]: https://github.com/Atelier-Shiori/Hato
 [hka]: https://hikka.io
 [imdb]: https://imdb.com

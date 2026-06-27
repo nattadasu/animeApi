@@ -1,5 +1,7 @@
 # SPDX-License-Identifier: MIT
 
+import csv
+import io
 import json
 from typing import Any
 
@@ -204,6 +206,76 @@ def get_fribb_animelists() -> list[dict[str, Any]]:
         Platform.FRIBB,
         Status.PASS,
         "Fribb's Animelists data retrieved successfully",
+    )
+    return data
+
+
+def get_geckyzz_mappings() -> list[dict[str, Any]]:
+    """
+    Get info from Geckyzz's mapping extension (geckyzz-map.tsv)
+
+    :return: Geckyzz mapping data
+    :rtype: list[dict[str, Any]]
+    """
+    ddump = Downloader(
+        url="https://geckyzz.my.id/api/mappings/animeapi.tsv",
+        file_name="geckyzz-map",
+        file_type="tsv",
+        platform=Platform.GECKYZZ,
+    )
+    tsv_content: str = ddump.dumper()
+    reader = csv.DictReader(io.StringIO(tsv_content), delimiter="\t")
+    rows = list(reader)
+    data: list[dict[str, Any]] = []
+
+    int_fields = {
+        "myanimelist",
+        "anidb",
+        "anilist",
+        "animenewsnetwork",
+        "anisearch",
+        "annict",
+        "kaize_id",
+        "kitsu",
+        "letterboxd_uid",
+        "livechart",
+        "nautiljon_id",
+        "otakotaku",
+        "shikimori",
+        "shoboi",
+        "silveryasha",
+        "simkl",
+        "themoviedb",
+        "themoviedb_season_id",
+        "thetvdb",
+        "thetvdb_season_id",
+        "trakt",
+        "trakt_season",
+        "trakt_season_id",
+    }
+
+    with alive_bar(len(rows), title="Parsing Geckyzz mappings", spinner=None) as bar:  # type: ignore
+        for row in rows:
+            item = {}
+            for key, val in row.items():
+                if val == "" or val is None:
+                    item[key] = None
+                elif key in int_fields:
+                    try:
+                        item[key] = int(val)
+                    except ValueError:
+                        item[key] = val
+                elif key == "trakt_may_invalid":
+                    item[key] = val.lower() == "true" or val == "1"
+                else:
+                    item[key] = val
+            data.append(item)
+            bar()
+
+    pprint.print(
+        Platform.GECKYZZ,
+        Status.PASS,
+        "Geckyzz mappings data retrieved and parsed successfully",
     )
     return data
 

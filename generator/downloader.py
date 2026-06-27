@@ -20,7 +20,7 @@ class Downloader:
         self,
         url: str,
         file_name: str,
-        file_type: Literal["json", "txt", "zst"] = "json",
+        file_type: Literal["json", "txt", "zst", "tsv"] = "json",
         platform: Platform = Platform.SYSTEM,
     ) -> None:
         """
@@ -31,7 +31,7 @@ class Downloader:
         :param file_name: The name of the file
         :type file_name: str
         :param file_type: The type of the file, defaults to "json"
-        :type file_type: Literal["json", "txt", "zst"], optional
+        :type file_type: Literal["json", "txt", "zst", "tsv"], optional
         :param platform: The platform to print the message, defaults to Platform.SYSTEM
         :type platform: Platform, optional
         """
@@ -352,7 +352,9 @@ class Downloader:
                         return json.load(f)
                 else:
                     with open(
-                        f"database/raw/{self.file_name}.txt", "r", encoding="utf-8"
+                        f"database/raw/{self.file_name}.{self.file_type}",
+                        "r",
+                        encoding="utf-8",
                     ) as f:
                         return f.read()
             except FileNotFoundError:
@@ -438,7 +440,9 @@ class Downloader:
                     json.dump(content, file)
             else:
                 with open(
-                    f"database/raw/{self.file_name}.txt", "w", encoding="utf-8"
+                    f"database/raw/{self.file_name}.{file_extension}",
+                    "w",
+                    encoding="utf-8",
                 ) as file:
                     file.write(content)
 
@@ -479,7 +483,9 @@ class Downloader:
                     return json.load(file)
             else:
                 with open(
-                    f"database/raw/{self.file_name}.txt", "r", encoding="utf-8"
+                    f"database/raw/{self.file_name}.{self.file_type}",
+                    "r",
+                    encoding="utf-8",
                 ) as file:
                     return file.read()
         # file not found

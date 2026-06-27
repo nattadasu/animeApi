@@ -41,6 +41,7 @@ class Platform(Enum):
     ARM = 0x222222
     ANIMEOFFLINEDATABASE = 0x101010
     ANITRAKT = 0xED1C24
+    GECKYZZ = 0x4CAF50
 
 
 class Status(Enum):
