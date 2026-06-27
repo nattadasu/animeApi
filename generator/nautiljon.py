@@ -132,7 +132,6 @@ class Nautiljon:
         anime_data: list[dict[str, str | int | None]] = []
         file_path = "database/raw/nautiljon.json"
         try:
-            # raise ConnectionError("Force use local file")
             if (
                 datetime.now().day not in [2, 16]
                 and not GITHUB_DISPATCH
@@ -192,18 +191,31 @@ class Nautiljon:
                 f"Expected pages: {last_page}",
             )
         except ConnectionError as err:
-            pprint.print(Platform.NAUTILJON, Status.ERR, f"Error: {err}")
-            pprint.print(
-                Platform.NAUTILJON, Status.ERR, "Connection error, using local file"
-            )
+            pprint.print(Platform.NAUTILJON, Status.ERR, f"Connection error: {err}")
+            if FORCE_FETCH_NAUTILJON:
+                pprint.print(
+                    Platform.NAUTILJON,
+                    Status.ERR,
+                    "FORCE_FETCH_NAUTILJON is set — refusing to fall back to local cache",
+                )
+                raise
+            pprint.print(Platform.NAUTILJON, Status.ERR, "Using local file")
             with open(file_path, "r", encoding="utf-8") as f:
                 anime_data = json.load(f)
         except HTTPError as http:
             pprint.print(
                 Platform.NAUTILJON,
                 Status.ERR,
-                f"Connection error, using local file.HTTPError: {http.response}",
+                f"HTTP {http.response.status_code} from Nautiljon",
             )
+            if FORCE_FETCH_NAUTILJON:
+                pprint.print(
+                    Platform.NAUTILJON,
+                    Status.ERR,
+                    "FORCE_FETCH_NAUTILJON is set — refusing to fall back to local cache",
+                )
+                raise
+            pprint.print(Platform.NAUTILJON, Status.ERR, "Using local file")
             with open(file_path, "r", encoding="utf-8") as f:
                 anime_data = json.load(f)
         anime_data.sort(key=lambda x: x["title"])  # type: ignore

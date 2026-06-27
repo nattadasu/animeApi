@@ -386,7 +386,6 @@ class Kaize:
         anime_data: list[dict[str, Any]] = []
         file_path = "database/raw/kaize.json"
         try:
-            # raise ConnectionError("Force use local file")
             self._session_set()
             pages = self.pages()
             with alive_bar(pages, title="Getting data", spinner=None) as bar:  # type: ignore

@@ -149,7 +149,6 @@ class OtakOtaku:
             with open(file_path, "r", encoding="utf-8") as file:
                 anime_list = json.load(file)
         try:
-            # raise ConnectionError("Failed to connect to otakotaku.com")
             latest_id = self.get_latest_anime()
             if not latest_id:
                 raise ConnectionError("Failed to connect to otakotaku.com")
@@ -196,11 +195,23 @@ class OtakOtaku:
             pprint.print(
                 Platform.OTAKOTAKU, Status.PASS, f"Total anime data: {len(anime_list)}"
             )
-        except ConnectionError:
+        except ConnectionError as err:
+            pprint.print(
+                Platform.OTAKOTAKU,
+                Status.ERR,
+                f"Connection error: {err}",
+            )
+            if FORCE_FETCH_OTAKOTAKU:
+                pprint.print(
+                    Platform.OTAKOTAKU,
+                    Status.ERR,
+                    "FORCE_FETCH_OTAKOTAKU is set — refusing to fall back to local cache",
+                )
+                raise
             pprint.print(
                 Platform.OTAKOTAKU,
                 Status.WARN,
-                "Failed to get data, loading from local file",
+                "Using local file",
             )
             with open(file_path, "r", encoding="utf-8") as file:
                 anime_list = json.load(file)

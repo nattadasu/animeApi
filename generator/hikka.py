@@ -165,10 +165,15 @@ class Hikka:
             )
 
         except ConnectionError as err:
-            pprint.print(Platform.HIKKA, Status.ERR, f"Error: {err}")
-            pprint.print(
-                Platform.HIKKA, Status.ERR, "Connection error, using local file"
-            )
+            pprint.print(Platform.HIKKA, Status.ERR, f"Connection error: {err}")
+            if FORCE_FETCH_HIKKA:
+                pprint.print(
+                    Platform.HIKKA,
+                    Status.ERR,
+                    "FORCE_FETCH_HIKKA is set — refusing to fall back to local cache",
+                )
+                raise
+            pprint.print(Platform.HIKKA, Status.ERR, "Using local file")
             try:
                 with open(file_path, "r", encoding="utf-8") as f:
                     anime_data = json.load(f)
@@ -181,8 +186,16 @@ class Hikka:
             pprint.print(
                 Platform.HIKKA,
                 Status.ERR,
-                f"HTTP Error: {http.response.status_code}, using local file",
+                f"HTTP {http.response.status_code} from Hikka API",
             )
+            if FORCE_FETCH_HIKKA:
+                pprint.print(
+                    Platform.HIKKA,
+                    Status.ERR,
+                    "FORCE_FETCH_HIKKA is set — refusing to fall back to local cache",
+                )
+                raise
+            pprint.print(Platform.HIKKA, Status.ERR, "Using local file")
             try:
                 with open(file_path, "r", encoding="utf-8") as f:
                     anime_data = json.load(f)
