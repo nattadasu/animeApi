@@ -636,6 +636,25 @@ def main():
         try:
             with open(output_path, "r", encoding="utf-8") as f:
                 existing_sideload_entries = json.load(f)
+
+            # Sanitize Kitsu sources in loaded entries
+            for entry in existing_sideload_entries:
+                cleaned_sources = []
+                for src in entry.get("sources", []):
+                    if "kitsu.app/anime/" in src or "kitsu.io/anime/" in src:
+                        parts = src.rstrip("/").split("/")
+                        if parts:
+                            last_part = parts[-1]
+                            if not last_part.isdigit():
+                                pprint.print(
+                                    Platform.KITSU,
+                                    Status.WARN,
+                                    f"Removing slug-based Kitsu source from existing entries: {src}",
+                                )
+                                continue
+                    cleaned_sources.append(src)
+                entry["sources"] = cleaned_sources
+
             pprint.print(
                 Platform.SYSTEM,
                 Status.INFO,
@@ -1049,9 +1068,9 @@ def main():
     kt_merged = 0
     kt_skipped = 0
     for show in kitsu_shows:
-        slug = show.get("slug")
+        k_id = show.get("id")
 
-        kt_sources = [f"https://kitsu.app/anime/{slug}"]
+        kt_sources = [f"https://kitsu.app/anime/{k_id}"]
         mappings = show.get("mappings", {}).get("nodes", []) or []
         for mapping in mappings:
             site = mapping.get("externalSite")
