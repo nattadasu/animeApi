@@ -58,8 +58,18 @@ def save_list_to_tsv(data: list[dict[str, Any]], file_path: str) -> None:
         writer.writerow(header)
         with alive_bar(len(data), title="Saving data to TSV", spinner=None) as bar:  # type: ignore
             for item in data:
-                # Ensure values are written in the same order as header
-                row = [item.get(key) for key in header]
+                # Ensure values are written in the same order as header and format consistently
+                row = []
+                for key in header:
+                    val = item.get(key)
+                    if val is True:
+                        row.append("True")
+                    elif val is False:
+                        row.append("False")
+                    elif val is None:
+                        row.append("")
+                    else:
+                        row.append(val)
                 writer.writerow(row)
                 bar()
     return None
@@ -226,7 +236,7 @@ def load_tsv_for_counting() -> pd.DataFrame:
         "thetvdb": "Int64",
         "thetvdb_season_id": "Int64",
         "trakt": "Int64",
-        "trakt_may_invalid": str,  # Read as string then convert
+        "trakt_may_invalid": "boolean",
         "trakt_season": "Int64",
         "trakt_season_id": "Int64",
         "trakt_slug": str,
@@ -283,9 +293,6 @@ def load_tsv_for_counting() -> pd.DataFrame:
         # Re-raise original error
         raise e
 
-    df["trakt_may_invalid"] = df["trakt_may_invalid"].replace(  # type: ignore
-        {"True": True, "False": False, "": None}
-    )
     return df
 
 

@@ -86,7 +86,7 @@ def load_tsv_data() -> Any:
             "thetvdb": "Int64",
             "thetvdb_season_id": "Int64",
             "trakt": "Int64",
-            "trakt_may_invalid": str,  # Read as string then convert
+            "trakt_may_invalid": "boolean",
             "trakt_season": "Int64",
             "trakt_season_id": "Int64",
             "trakt_slug": str,
@@ -94,19 +94,6 @@ def load_tsv_data() -> Any:
         },
         keep_default_na=True,
         low_memory=False,
-    )
-
-    # Convert trakt_may_invalid to boolean
-    df["trakt_may_invalid"] = df["trakt_may_invalid"].replace(  # type: ignore
-        {
-            "True": True,
-            "False": False,
-            "1": True,
-            "0": False,
-            1: True,
-            0: False,
-            "": None,
-        }
     )
 
     # Build indices for fast lookup by platform ID
