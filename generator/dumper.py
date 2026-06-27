@@ -361,9 +361,8 @@ def get_trakt_sample_from_tsv(
     :rtype: dict[str, Any]
     """
     # Support both numeric types (since some columns are Int64) and string values
-    mask = (
-        ((df["trakt"] == int(trakt_id)) | (df["trakt"] == str(trakt_id)))
-        & ((df["trakt_season"] == int(season)) | (df["trakt_season"] == str(season)))
+    mask = ((df["trakt"] == int(trakt_id)) | (df["trakt"] == str(trakt_id))) & (
+        (df["trakt_season"] == int(season)) | (df["trakt_season"] == str(season))
     )
     if not mask.any():
         return {}
