@@ -1099,12 +1099,13 @@ def main():
         if shobocal_tid:
             an_sources.append(f"https://cal.syoboi.jp/tid/{shobocal_tid}")
 
-        title = show.get("title")
+        # Prefer Romanized or English titles as the main title for standard schema consistency
+        title = show.get("titleRo") or show.get("titleEn") or show.get("title")
         if not title:
             continue
 
         synonyms = []
-        for t_field in ["titleEn", "titleRo"]:
+        for t_field in ["title", "titleEn", "titleRo"]:
             val = show.get(t_field)
             if val and val != title:
                 synonyms.append(val)
