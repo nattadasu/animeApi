@@ -87,21 +87,24 @@ class Hikka:
                 "sort": ["score:desc"],
             }
 
+            page_size = 100  # Maximum allowed by Hikka API
             response = self._post(f"{self.base_url}/anime?page=1&size=1", payload)
             data = response.json()
             pagination = data.get("pagination", {})
 
             total_anime = pagination.get("total", 0)
-            total_pages = pagination.get("pages", 1)
+            # Do NOT use pagination["pages"] here — that value was computed
+            # with size=1, so it equals total_anime (one page per entry).
+            # Re-derive the correct page count from the actual fetch size.
+            total_pages = (total_anime + page_size - 1) // page_size
 
             pprint.print(
                 Platform.HIKKA,
                 Status.INFO,
-                f"Found {total_anime} anime across {total_pages} pages",
+                f"Found {total_anime} anime across {total_pages} pages (page size: {page_size})",
             )
 
             page = 1
-            page_size = 100  # Maximum allowed by Hikka API
 
             with alive_bar(
                 total_anime, title="Getting anime from Hikka API", spinner=None
