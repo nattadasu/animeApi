@@ -12,6 +12,7 @@ import json
 import re
 import time
 from pathlib import Path
+from typing import Any
 
 import requests
 from bs4 import BeautifulSoup
@@ -44,6 +45,13 @@ def get_seasons_range():
         for s in ["winter", "spring", "summer", "fall"]:
             seasons.append((s, year))
     return seasons
+
+
+def sanitize_synonym(syn):
+    """Remove language tags like [en], [ja-jp] from the beginning of the synonym"""
+    if not syn:
+        return ""
+    return re.sub(r"^\[[a-zA-Z]{2,4}(-[a-zA-Z]{2,4})?\]\s*", "", syn).strip()
 
 
 def normalize_url(url):
@@ -816,22 +824,274 @@ def main():
         f"Shikimori shows merged: added {shiki_added}, merged {shiki_merged}, skipped (already in AOD) {shiki_skipped}"
     )
 
+    # Step 6: Fetch and merge AniList shows
+    anilist_shows = fetch_anilist_upcoming()
+    print("Processing AniList shows...")
+    al_added = 0
+    al_merged = 0
+    al_skipped = 0
+    for show in anilist_shows:
+        al_id = show.get("id")
+        mal_id = show.get("idMal")
+
+        al_sources = [f"https://anilist.co/anime/{al_id}"]
+        if mal_id:
+            al_sources.append(f"https://myanimelist.net/anime/{mal_id}")
+
+        title = (
+            show.get("title", {}).get("romaji")
+            or show.get("title", {}).get("english")
+            or show.get("title", {}).get("native")
+        )
+        if not title:
+            continue
+
+        synonyms = show.get("synonyms") or []
+        for t_type in ["english", "native"]:
+            val = show.get("title", {}).get(t_type)
+            if val and val != title:
+                synonyms.append(val)
+        synonyms = list(set(synonyms))
+
+        # Map format to type
+        format_map = {
+            "TV": "TV",
+            "TV_SHORT": "TV",
+            "MOVIE": "MOVIE",
+            "SPECIAL": "SPECIAL",
+            "OVA": "OVA",
+            "ONA": "ONA",
+            "MUSIC": "MUSIC",
+        }
+        media_type = format_map.get(show.get("format"), "TV")
+
+        status_map = {
+            "FINISHED": "FINISHED",
+            "RELEASING": "ONGOING",
+            "NOT_YET_RELEASED": "UPCOMING",
+        }
+        status = status_map.get(show.get("status"), "UPCOMING")
+
+        # Season/year
+        s_name = show.get("season") or "TBA"
+        s_year = show.get("seasonYear")
+
+        # Release date
+        release_date = None
+        sd = show.get("startDate", {})
+        if sd.get("year") and sd.get("month") and sd.get("day"):
+            release_date = f"{sd['year']:04d}-{sd['month']:02d}-{sd['day']:02d}"
+
+        new_entry = {
+            "title": title,
+            "sources": sanitize_source_urls(al_sources),
+            "type": media_type,
+            "status": status,
+            "animeSeason": {"season": s_name.upper(), "year": s_year},
+            "synonyms": synonyms,
+            "releaseDate": release_date,
+        }
+
+        # Check if any ID overlaps with upstream AOD
+        new_ids = get_entry_id_strings(new_entry["sources"])
+        if new_ids & aod_id_strings:
+            al_skipped += 1
+            continue
+
+        # Check if matches any existing sideload entry by ID
+        matched_entry = None
+        for id_str in new_ids:
+            if id_str in id_to_sideload_entry:
+                matched_entry = id_to_sideload_entry[id_str]
+                break
+
+        # If no ID match, try fuzzy matching by title + date/season
+        if not matched_entry:
+            for entry in filtered_sideload_entries:
+                if titles_match_fuzzy(
+                    new_entry["title"],
+                    new_entry.get("synonyms", []),
+                    entry["title"],
+                    entry.get("synonyms", []),
+                ):
+                    if dates_or_seasons_match(new_entry, entry):
+                        matched_entry = entry
+                        break
+
+        if matched_entry:
+            merge_entries(matched_entry, new_entry)
+            for id_str in get_entry_id_strings(matched_entry["sources"]):
+                id_to_sideload_entry[id_str] = matched_entry
+            al_merged += 1
+        else:
+            filtered_sideload_entries.append(new_entry)
+            for id_str in new_ids:
+                id_to_sideload_entry[id_str] = new_entry
+            al_added += 1
+
+    print(
+        f"AniList shows merged: added {al_added}, merged {al_merged}, skipped (already in AOD) {al_skipped}"
+    )
+
+    # Step 7: Fetch and merge Kitsu shows
+    kitsu_shows = fetch_kitsu_upcoming()
+    print("Processing Kitsu shows...")
+    kt_added = 0
+    kt_merged = 0
+    kt_skipped = 0
+    for show in kitsu_shows:
+        slug = show.get("slug")
+
+        kt_sources = [f"https://kitsu.app/anime/{slug}"]
+        mappings = show.get("mappings", {}).get("nodes", []) or []
+        for mapping in mappings:
+            site = mapping.get("externalSite")
+            ext_id = mapping.get("externalId")
+            if not ext_id:
+                continue
+
+            if site == "MYANIMELIST_ANIME":
+                kt_sources.append(f"https://myanimelist.net/anime/{ext_id}")
+            elif site == "ANILIST_ANIME":
+                kt_sources.append(f"https://anilist.co/anime/{ext_id}")
+            elif site == "ANIDB":
+                kt_sources.append(f"https://anidb.net/anime/{ext_id}")
+            elif site == "THETVDB_SERIES":
+                kt_sources.append(f"https://www.thetvdb.com/series/{ext_id}")
+            elif site == "TRAKT":
+                kt_sources.append(f"https://trakt.tv/shows/{ext_id}")
+
+        title = show.get("titles", {}).get("canonical")
+        if not title:
+            continue
+
+        synonyms = show.get("titles", {}).get("alternatives") or []
+        for t_field in ["romanized", "original"]:
+            val = show.get("titles", {}).get(t_field)
+            if val and val != title:
+                synonyms.append(val)
+        localized = show.get("titles", {}).get("localized") or {}
+        for lang, val in localized.items():
+            if val and val != title:
+                synonyms.append(val)
+        synonyms = list(set(synonyms))
+
+        subtype_map = {
+            "TV": "TV",
+            "MOVIE": "MOVIE",
+            "OVA": "OVA",
+            "ONA": "ONA",
+            "SPECIAL": "SPECIAL",
+            "MUSIC": "MUSIC",
+        }
+        media_type = subtype_map.get(show.get("subtype"), "TV")
+
+        status_map = {
+            "FINISHED": "FINISHED",
+            "CURRENT": "ONGOING",
+            "UPCOMING": "UPCOMING",
+            "UNRELEASED": "UPCOMING",
+            "TBA": "UPCOMING",
+        }
+        status = status_map.get(show.get("status"), "UPCOMING")
+
+        season = show.get("season") or "TBA"
+        start_date = show.get("startDate")
+        year = None
+        if start_date:
+            try:
+                year = int(start_date.split("-")[0])
+            except (ValueError, IndexError):
+                pass
+
+        new_entry = {
+            "title": title,
+            "sources": sanitize_source_urls(kt_sources),
+            "type": media_type,
+            "status": status,
+            "animeSeason": {"season": season.upper(), "year": year},
+            "synonyms": synonyms,
+            "releaseDate": start_date,
+        }
+
+        new_ids = get_entry_id_strings(new_entry["sources"])
+        if new_ids & aod_id_strings:
+            kt_skipped += 1
+            continue
+
+        matched_entry = None
+        for id_str in new_ids:
+            if id_str in id_to_sideload_entry:
+                matched_entry = id_to_sideload_entry[id_str]
+                break
+
+        if not matched_entry:
+            for entry in filtered_sideload_entries:
+                if titles_match_fuzzy(
+                    new_entry["title"],
+                    new_entry.get("synonyms", []),
+                    entry["title"],
+                    entry.get("synonyms", []),
+                ):
+                    if dates_or_seasons_match(new_entry, entry):
+                        matched_entry = entry
+                        break
+
+        if matched_entry:
+            merge_entries(matched_entry, new_entry)
+            for id_str in get_entry_id_strings(matched_entry["sources"]):
+                id_to_sideload_entry[id_str] = matched_entry
+            kt_merged += 1
+        else:
+            filtered_sideload_entries.append(new_entry)
+            for id_str in new_ids:
+                id_to_sideload_entry[id_str] = new_entry
+            kt_added += 1
+
+    print(
+        f"Kitsu shows merged: added {kt_added}, merged {kt_merged}, skipped (already in AOD) {kt_skipped}"
+    )
+
     # Format and sort entries to be git-diff friendly
     sorted_entries = []
     for entry in filtered_sideload_entries:
+        title = sanitize_synonym(entry.get("title", ""))
+        synonyms = [sanitize_synonym(s) for s in entry.get("synonyms", []) if s]
+        # De-duplicate synonyms and remove if it equals the title
+        synonyms = list(set(synonyms))
+        if title in synonyms:
+            synonyms.remove(title)
+
         sorted_entry = {
             "sources": sorted(entry.get("sources", [])),
-            "title": entry.get("title", ""),
+            "title": title,
             "type": entry.get("type", "TV"),
             "status": entry.get("status", "UPCOMING"),
             "animeSeason": entry.get("animeSeason", {"season": "TBA", "year": None}),
-            "synonyms": sorted(entry.get("synonyms", [])),
+            "synonyms": sorted(synonyms),
         }
         if "releaseDate" in entry and entry["releaseDate"]:
             sorted_entry["releaseDate"] = entry["releaseDate"]
         sorted_entries.append(sorted_entry)
 
-    sorted_entries.sort(key=lambda x: x.get("title", "").lower())
+    # Sort key: year (ascending, nulls/TBA at the end) -> season -> title
+    def get_sort_key(entry):
+        anime_season = entry.get("animeSeason", {})
+        year = anime_season.get("year")
+        if year is None:
+            year = 9999
+
+        season = (anime_season.get("season") or "TBA").lower()
+        season_order = ["winter", "spring", "summer", "fall"]
+        if season in season_order:
+            season_idx = season_order.index(season)
+        else:
+            season_idx = 4
+
+        title = entry.get("title", "").lower()
+        return (year, season_idx, title)
+
+    sorted_entries.sort(key=get_sort_key)
 
     print(
         f"Writing {len(sorted_entries)} de-duplicated, persistent sideload entries to {output_path}..."
@@ -840,6 +1100,162 @@ def main():
         json.dump(sorted_entries, f, indent=2)
 
     print("Success! Persistent, duplicate-free sideload database written successfully.")
+
+
+def fetch_anilist_upcoming() -> list[dict[str, Any]]:
+    """
+    Query AniList GraphQL API for upcoming and releasing anime
+    with rich metadata.
+    """
+    url = "https://graphql.anilist.co"
+    query = """
+    query ($page: Int, $perPage: Int) {
+      Page (page: $page, perPage: $perPage) {
+        pageInfo {
+          hasNextPage
+        }
+        media (type: ANIME, status_in: [NOT_YET_RELEASED, RELEASING]) {
+          id
+          idMal
+          title {
+            romaji
+            english
+            native
+          }
+          format
+          status
+          season
+          seasonYear
+          synonyms
+          startDate {
+            year
+            month
+            day
+          }
+        }
+      }
+    }
+    """
+    print("Querying AniList GraphQL for upcoming/releasing anime...")
+    anilist_data: list[dict[str, Any]] = []
+    page = 1
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+    }
+
+    while True:
+        variables = {"page": page, "perPage": 50}
+        try:
+            resp = requests.post(
+                url,
+                headers=headers,
+                json={"query": query, "variables": variables},
+                timeout=15,
+            )
+            if resp.status_code == 200:
+                page_data = resp.json().get("data", {}).get("Page", {})
+                media = page_data.get("media", [])
+                if not media:
+                    break
+                anilist_data.extend(media)
+                print(f"  Page {page}: fetched {len(media)} items")
+                if not page_data.get("pageInfo", {}).get("hasNextPage"):
+                    break
+                page += 1
+                time.sleep(1)  # rate limiting protection
+            elif resp.status_code == 429:
+                retry_after = int(resp.headers.get("Retry-After", 5))
+                print(f"  Rate limited. Retrying after {retry_after} seconds...")
+                time.sleep(retry_after)
+            else:
+                print(f"  AniList query failed with status {resp.status_code}")
+                break
+        except Exception as e:
+            print(f"  Error querying AniList page {page}: {e}")
+            break
+
+    return anilist_data
+
+
+def fetch_kitsu_upcoming() -> list[dict[str, Any]]:
+    """
+    Query Kitsu GraphQL API for upcoming and releasing anime with mapping data.
+    """
+    url = "https://kitsu.app/api/graphql"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:152.0) Gecko/20100101 Firefox/152.0",
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+    }
+    query = """
+    query GetSeasonal($status: ReleaseStatusEnum!, $first: Int!, $after: String) {
+      animeByStatus(status: $status, first: $first, after: $after) {
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+        nodes {
+          id
+          slug
+          status
+          season
+          startDate
+          subtype
+          titles {
+            canonical
+            romanized
+            original
+            alternatives
+            localized
+          }
+          mappings(first: 50) {
+            nodes {
+              externalSite
+              externalId
+            }
+          }
+        }
+      }
+    }
+    """
+
+    kitsu_data: list[dict[str, Any]] = []
+    for status in ["CURRENT", "UPCOMING"]:
+        print(f"Querying Kitsu GraphQL for status {status}...")
+        after = None
+        while True:
+            variables = {"status": status, "first": 50, "after": after}
+            try:
+                resp = requests.post(
+                    url,
+                    headers=headers,
+                    json={"query": query, "variables": variables},
+                    timeout=15,
+                )
+                if resp.status_code == 200:
+                    data = resp.json().get("data", {}).get("animeByStatus", {})
+                    nodes = data.get("nodes", [])
+                    if not nodes:
+                        break
+                    kitsu_data.extend(nodes)
+                    print(f"  Fetched {len(nodes)} Kitsu items ({status})...")
+
+                    page_info = data.get("pageInfo", {})
+                    if not page_info.get("hasNextPage"):
+                        break
+                    after = page_info.get("endCursor")
+                    time.sleep(1)
+                elif resp.status_code == 429:
+                    print("  Rate limited, retrying in 5 seconds...")
+                    time.sleep(5)
+                else:
+                    print(f"  Kitsu query failed with status {resp.status_code}")
+                    break
+            except Exception as e:
+                print(f"  Error querying Kitsu: {e}")
+                break
+    return kitsu_data
 
 
 if __name__ == "__main__":

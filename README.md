@@ -1051,6 +1051,8 @@ This project uses multiple sources to compile the data, including:
 * [gh:rensetsu/db.trakt.extended-anitrakt][atip], which an automatic parser of
   [AniTrakt][atrk] index page.
 * [gh:Fribb/anime-lists][fal]
+* [AniList][al]
+* [Kitsu][kts]
 * [Hikka][hka]
 * [LiveChart][lc]
 * [Nautiljon][ntj]
