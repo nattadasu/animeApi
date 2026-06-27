@@ -1206,9 +1206,15 @@ def main():
                 an_skipped += 1
                 continue
 
-        an_sources = [f"https://annict.com/works/{annict_id}"]
-        if mal_id:
-            an_sources.append(f"https://myanimelist.net/anime/{mal_id}")
+        # Skip if there is no MyAnimeList mapping ID
+        if not mal_id:
+            an_skipped += 1
+            continue
+
+        an_sources = [
+            f"https://annict.com/works/{annict_id}",
+            f"https://myanimelist.net/anime/{mal_id}",
+        ]
         if shobocal_tid:
             an_sources.append(f"https://cal.syoboi.jp/tid/{shobocal_tid}")
 
