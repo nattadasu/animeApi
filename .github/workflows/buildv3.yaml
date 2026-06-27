@@ -10,6 +10,8 @@ on:
     paths:
       - "generator/**"
       - "requirements.txt"
+      - "pyproject.toml"
+      - "uv.lock"
       - "api/index.py"
       - "api/robots.txt"
       - "api/favicon.ico"
@@ -22,6 +24,13 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: true
+
+env:
+  GIT_AUTHOR_NAME: Natsu Tadama
+  GIT_AUTHOR_EMAIL: nattadasu@nattadasu.my.id
+  GIT_COMMITTER_NAME: Natsu Tadama
+  GIT_COMMITTER_EMAIL: nattadasu@nattadasu.my.id
+  UV_FROZEN: "1"
 
 jobs:
   build:
@@ -39,34 +48,44 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          while true; do
-            status=$(gh run list --workflow=update-server-timestamp.yaml --branch=v3 --limit 1 --json status --jq '.[0].status // "completed"')
+          for i in $(seq 1 18); do
+            status=$(gh run list \
+              --workflow=update-server-timestamp.yaml \
+              --branch=v3 \
+              --limit 1 \
+              --json status \
+              --jq '.[0].status // "completed"')
             if [[ "$status" == "completed" ]] || [[ -z "$status" ]]; then
-              echo "Timestamp workflow is not running or completed"
+              echo "Timestamp workflow completed or not running"
               break
             fi
-            echo "Timestamp workflow is still running (status: $status), waiting 10 seconds..."
+            echo "Attempt $i/18 — status: $status, waiting 10 s..."
             sleep 10
           done
 
       - name: Pull latest changes
-        run: git pull origin v3
+        run: git pull --rebase origin v3
 
-      - name: Setup Python
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-          cache: 'pip'
+          python-version-file: ".python-version"
+
+      - name: Install dependencies
+        run: uv sync --frozen
 
       - name: Load secrets to environment
         uses: oNaiPs/secrets-to-env-action@v1
         with:
           secrets: ${{ toJSON(secrets) }}
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Save status before generation
+      - name: Snapshot status before generation
         run: |
           if [ -f api/status.json ]; then
             cp api/status.json /tmp/status_before.json
@@ -75,49 +94,44 @@ jobs:
           fi
 
       - name: Generate database
-        run: python3 generator
+        run: uv run python3 generator
 
-      - name: Generate summary
+      - name: Generate step summary
         if: always()
         run: |
-          if [ -f api/status.json ]; then
-            echo "## Database Generation Summary" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "### Count Changes" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "| Platform | Before | After | Change |" >> $GITHUB_STEP_SUMMARY
-            echo "|----------|--------|-------|--------|" >> $GITHUB_STEP_SUMMARY
+          if [ ! -f api/status.json ]; then
+            echo "No status.json found — skipping summary" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
 
-            for platform in $(jq -r '.counts | keys[]' api/status.json | grep -v "^total$"); do
-              before=$(jq -r ".counts.$platform // 0" /tmp/status_before.json)
-              after=$(jq -r ".counts.$platform // 0" api/status.json)
+          {
+            echo "## Database Generation Summary"
+            echo ""
+            echo "### Count Changes"
+            echo ""
+            echo "| Platform | Before | After | Change |"
+            echo "|----------|--------|-------|--------|"
+
+            for platform in $(jq -r '.counts | keys[]' api/status.json | grep -v '^total$'); do
+              before=$(jq -r ".counts.${platform} // 0" /tmp/status_before.json)
+              after=$(jq -r ".counts.${platform} // 0" api/status.json)
               diff=$((after - before))
-              if [ $diff -gt 0 ]; then
-                change="+$diff"
-              else
-                change="$diff"
-              fi
-              echo "| $platform | $before | $after | $change |" >> $GITHUB_STEP_SUMMARY
+              change=$([ "$diff" -ge 0 ] && echo "+$diff" || echo "$diff")
+              echo "| $platform | $before | $after | $change |"
             done
 
             before_total=$(jq -r '.counts.total // 0' /tmp/status_before.json)
             after_total=$(jq -r '.counts.total // 0' api/status.json)
             diff_total=$((after_total - before_total))
-            if [ $diff_total -gt 0 ]; then
-              change_total="+$diff_total"
-            else
-              change_total="$diff_total"
-            fi
-            echo "| **Total** | **$before_total** | **$after_total** | **$change_total** |" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "**Updated:** $(jq -r '.updated.iso' api/status.json)" >> $GITHUB_STEP_SUMMARY
-          fi
+            change_total=$([ "$diff_total" -ge 0 ] && echo "+$diff_total" || echo "$diff_total")
+            echo "| **Total** | **$before_total** | **$after_total** | **$change_total** |"
+            echo ""
+            echo "**Updated:** $(jq -r '.updated.iso' api/status.json)"
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Commit and push changes
         run: |
           if [[ -n $(git status --porcelain) ]]; then
-            git config --local user.email "nattadasu@nattadasu.my.id"
-            git config --local user.name "Natsu Tadama"
             git add .
             git commit -m "Update JSON for v3 at $(date -u +%Y-%m-%d) $(date -u +%H:%M:%S)"
             git push

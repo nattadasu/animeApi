@@ -3,10 +3,17 @@ name: "Fetch Future Seasons"
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * 0" # Runs every Sunday at 00:00 UTC (weekly)
+    - cron: "0 0 * * 0" # Every Sunday at 00:00 UTC
 
 permissions:
   contents: write
+
+env:
+  GIT_AUTHOR_NAME: Natsu Tadama
+  GIT_AUTHOR_EMAIL: nattadasu@nattadasu.my.id
+  GIT_COMMITTER_NAME: Natsu Tadama
+  GIT_COMMITTER_EMAIL: nattadasu@nattadasu.my.id
+  UV_FROZEN: "1"
 
 jobs:
   fetch:
@@ -18,24 +25,28 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: v3
+          fetch-depth: 1
 
-      - name: Setup Python
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-          cache: 'pip'
+          python-version-file: ".python-version"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: uv sync --frozen
 
       - name: Fetch future seasonal data
-        run: python3 scripts/fetch_future_seasons.py
+        run: uv run python3 scripts/fetch_future_seasons.py
 
       - name: Commit and push changes
         run: |
           if [[ -n $(git status --porcelain database/raw/sideload_future.json) ]]; then
-            git config --local user.email "nattadasu@nattadasu.my.id"
-            git config --local user.name "Natsu Tadama"
             git add database/raw/sideload_future.json
             git commit -m "Automated fetch of future seasonal data"
             git push
