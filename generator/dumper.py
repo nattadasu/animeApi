@@ -304,8 +304,13 @@ def get_sample_data_from_tsv(
     :return: Dictionary representation of the row
     :rtype: dict[str, Any]
     """
-    # Convert platform_id to string since all columns are loaded as strings
-    mask = df[platform] == str(platform_id)
+    # Support both numeric types (since some columns are Int64) and string values
+    try:
+        val_as_int = int(platform_id)
+        mask = (df[platform] == val_as_int) | (df[platform] == str(platform_id))
+    except ValueError:
+        mask = df[platform] == str(platform_id)
+
     if not mask.any():
         return {}
 
@@ -348,8 +353,11 @@ def get_trakt_sample_from_tsv(
     :return: Dictionary representation of the row
     :rtype: dict[str, Any]
     """
-    # Convert IDs to strings since all columns are loaded as strings
-    mask = (df["trakt"] == str(trakt_id)) & (df["trakt_season"] == str(season))
+    # Support both numeric types (since some columns are Int64) and string values
+    mask = (
+        ((df["trakt"] == int(trakt_id)) | (df["trakt"] == str(trakt_id)))
+        & ((df["trakt_season"] == int(season)) | (df["trakt_season"] == str(season)))
+    )
     if not mask.any():
         return {}
 
