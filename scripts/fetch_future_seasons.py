@@ -11,6 +11,7 @@ import datetime
 import json
 import os
 import re
+import sys
 import time
 from pathlib import Path
 from typing import Any
@@ -19,7 +20,11 @@ import requests
 from bs4 import BeautifulSoup
 from thefuzz import fuzz
 
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+from generator.prettyprint import Platform, PrettyPrint, Status
+
 USER_AGENT = "AnimeAPI/3.0 (github.com/nattadasu/animeApi)"
+pprint = PrettyPrint()
 
 
 # Map month to season
@@ -124,11 +129,15 @@ def fetch_livechart_season_ids(season, year=None):
         "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:151.0) Gecko/20100101 Firefox/151.0"
     }
 
-    print(f"Scraping LiveChart page: {url}")
+    pprint.print(Platform.LIVECHART, Status.INFO, f"Scraping LiveChart page: {url}")
     try:
         resp = requests.get(url, headers=headers, timeout=15)
         if resp.status_code != 200:
-            print(f"  LiveChart {slug} returned status: {resp.status_code}")
+            pprint.print(
+                Platform.LIVECHART,
+                Status.INFO,
+                f"  LiveChart {slug} returned status: {resp.status_code}",
+            )
             return []
 
         soup = BeautifulSoup(resp.text, "html.parser")
@@ -138,10 +147,16 @@ def fetch_livechart_season_ids(season, year=None):
             anime_id = a.get("data-anime-id")
             if anime_id:
                 ids.append(anime_id)
-        print(f"  Found {len(ids)} shows in LiveChart {slug}")
+        pprint.print(
+            Platform.LIVECHART,
+            Status.INFO,
+            f"  Found {len(ids)} shows in LiveChart {slug}",
+        )
         return ids
     except Exception as e:
-        print(f"  Error scraping LiveChart {slug}: {e}")
+        pprint.print(
+            Platform.LIVECHART, Status.FAIL, f"  Error scraping LiveChart {slug}: {e}"
+        )
         return []
 
 
@@ -156,7 +171,11 @@ def fetch_livechart_details(ids):
 
     results = {}
     batch_size = 50
-    print(f"Querying LiveChart GraphQL details for {len(ids)} shows...")
+    pprint.print(
+        Platform.LIVECHART,
+        Status.INFO,
+        f"Querying LiveChart GraphQL details for {len(ids)} shows...",
+    )
 
     for i in range(0, len(ids), batch_size):
         batch = ids[i : i + batch_size]
@@ -195,16 +214,26 @@ def fetch_livechart_details(ids):
                         real_id = key.split("_")[1]
                         results[real_id] = val
             else:
-                print(
-                    f"  Batch {i // batch_size + 1} GraphQL failed (status {resp.status_code})"
+                pprint.print(
+                    Platform.LIVECHART,
+                    Status.FAIL,
+                    f"  Batch {i // batch_size + 1} GraphQL failed (status {resp.status_code})",
                 )
         except Exception as e:
-            print(f"  Error fetching batch {i // batch_size + 1}: {e}")
+            pprint.print(
+                Platform.LIVECHART,
+                Status.FAIL,
+                f"  Error fetching batch {i // batch_size + 1}: {e}",
+            )
 
         # Add rate limit delay between batches to avoid jumpscaring them
         time.sleep(2)
 
-    print(f"  Successfully fetched details for {len(results)} LiveChart shows.")
+    pprint.print(
+        Platform.LIVECHART,
+        Status.PASS,
+        f"  Successfully fetched details for {len(results)} LiveChart shows.",
+    )
     return results
 
 
@@ -239,7 +268,11 @@ def fetch_shikimori_seasonal(season_slug):
     }
     """
 
-    print(f"Querying Shikimori seasonal GraphQL: {season_slug}")
+    pprint.print(
+        Platform.SHIKIMORI,
+        Status.INFO,
+        f"Querying Shikimori seasonal GraphQL: {season_slug}",
+    )
     animes = []
     page = 1
     while True:
@@ -251,18 +284,34 @@ def fetch_shikimori_seasonal(season_slug):
                 if not data:
                     break
                 animes.extend(data)
-                print(f"  Page {page}: fetched {len(data)} items")
+                pprint.print(
+                    Platform.SHIKIMORI,
+                    Status.INFO,
+                    f"  Page {page}: fetched {len(data)} items",
+                )
                 if len(data) < 50:
                     break
                 page += 1
             else:
-                print(f"  Shikimori query failed with status {resp.status_code}")
+                pprint.print(
+                    Platform.SHIKIMORI,
+                    Status.FAIL,
+                    f"  Shikimori query failed with status {resp.status_code}",
+                )
                 break
         except Exception as e:
-            print(f"  Error querying Shikimori page {page}: {e}")
+            pprint.print(
+                Platform.SHIKIMORI,
+                Status.FAIL,
+                f"  Error querying Shikimori page {page}: {e}",
+            )
             break
 
-    print(f"  Total found: {len(animes)} shows in Shikimori season {season_slug}")
+    pprint.print(
+        Platform.SHIKIMORI,
+        Status.INFO,
+        f"  Total found: {len(animes)} shows in Shikimori season {season_slug}",
+    )
     return animes
 
 
@@ -298,7 +347,11 @@ def fetch_shikimori_anons():
     }
     """
 
-    print("Querying Shikimori upcoming/announced (status: anons)...")
+    pprint.print(
+        Platform.SHIKIMORI,
+        Status.INFO,
+        "Querying Shikimori upcoming/announced (status: anons)...",
+    )
     animes = []
     page = 1
     while True:
@@ -310,18 +363,34 @@ def fetch_shikimori_anons():
                 if not data:
                     break
                 animes.extend(data)
-                print(f"  Page {page}: fetched {len(data)} items")
+                pprint.print(
+                    Platform.SHIKIMORI,
+                    Status.INFO,
+                    f"  Page {page}: fetched {len(data)} items",
+                )
                 if len(data) < 50:
                     break
                 page += 1
             else:
-                print(f"  Shikimori query failed with status {resp.status_code}")
+                pprint.print(
+                    Platform.SHIKIMORI,
+                    Status.FAIL,
+                    f"  Shikimori query failed with status {resp.status_code}",
+                )
                 break
         except Exception as e:
-            print(f"  Error querying Shikimori page {page}: {e}")
+            pprint.print(
+                Platform.SHIKIMORI,
+                Status.FAIL,
+                f"  Error querying Shikimori page {page}: {e}",
+            )
             break
 
-    print(f"  Total found: {len(animes)} announced shows in Shikimori")
+    pprint.print(
+        Platform.SHIKIMORI,
+        Status.INFO,
+        f"  Total found: {len(animes)} announced shows in Shikimori",
+    )
     return animes
 
 
@@ -524,34 +593,60 @@ def main():
 
     # Get seasons range: winter {this.year - 1} to fall {this.year + 1}
     seasons = get_seasons_range()
-    print("Seasons range to crawl:")
+    pprint.print(Platform.SYSTEM, Status.INFO, "Seasons range to crawl:")
     for s_name, s_year in seasons:
-        print(f"  - {s_name.capitalize()} {s_year}")
-    print("  - TBA (Unknown season)")
+        pprint.print(
+            Platform.SYSTEM, Status.INFO, f"  - {s_name.capitalize()} {s_year}"
+        )
+    pprint.print(Platform.SYSTEM, Status.INFO, "  - TBA (Unknown season)")
 
     # Scan AOD database for existing IDs to prevent duplicates/conflicts
     aod_id_strings = set()
     if aod_path.exists():
-        print("Scanning AOD database for existing IDs...")
+        pprint.print(
+            Platform.ANIMEOFFLINEDATABASE,
+            Status.INFO,
+            "Scanning AOD database for existing IDs...",
+        )
         try:
             with open(aod_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
                 for item in data.get("data", []):
                     aod_id_strings.update(get_entry_id_strings(item.get("sources", [])))
-            print(f"  Found {len(aod_id_strings)} unique ID strings in AOD.")
+            pprint.print(
+                Platform.ANIMEOFFLINEDATABASE,
+                Status.INFO,
+                f"  Found {len(aod_id_strings)} unique ID strings in AOD.",
+            )
         except Exception as e:
-            print(f"  Error reading AOD IDs: {e}")
+            pprint.print(
+                Platform.ANIMEOFFLINEDATABASE,
+                Status.FAIL,
+                f"  Error reading AOD IDs: {e}",
+            )
 
     # Load existing sideloaded data (persistence)
     existing_sideload_entries = []
     if output_path.exists():
-        print(f"Loading existing sideload data from {output_path}...")
+        pprint.print(
+            Platform.SYSTEM,
+            Status.INFO,
+            f"Loading existing sideload data from {output_path}...",
+        )
         try:
             with open(output_path, "r", encoding="utf-8") as f:
                 existing_sideload_entries = json.load(f)
-            print(f"  Loaded {len(existing_sideload_entries)} existing entries.")
+            pprint.print(
+                Platform.SYSTEM,
+                Status.INFO,
+                f"  Loaded {len(existing_sideload_entries)} existing entries.",
+            )
         except Exception as e:
-            print(f"  Failed to load existing sideload data: {e}")
+            pprint.print(
+                Platform.SYSTEM,
+                Status.FAIL,
+                f"  Failed to load existing sideload data: {e}",
+            )
 
     # De-duplicate / merge existing sideload entries first
     deduplicated_sideload_entries = []
@@ -581,8 +676,10 @@ def main():
         else:
             deduplicated_sideload_entries.append(entry)
 
-    print(
-        f"  De-duplicated sideload entries: reduced from {len(existing_sideload_entries)} to {len(deduplicated_sideload_entries)}"
+    pprint.print(
+        Platform.SYSTEM,
+        Status.INFO,
+        f"  De-duplicated sideload entries: reduced from {len(existing_sideload_entries)} to {len(deduplicated_sideload_entries)}",
     )
 
     # Filter out any sideload entries already officially present in AOD
@@ -596,8 +693,10 @@ def main():
         filtered_sideload_entries.append(entry)
         for id_str in entry_ids:
             id_to_sideload_entry[id_str] = entry
-    print(
-        f"  Retained {len(filtered_sideload_entries)} existing sideload entries after purging upstream AOD matches."
+    pprint.print(
+        Platform.ANIMEOFFLINEDATABASE,
+        Status.INFO,
+        f"  Retained {len(filtered_sideload_entries)} existing sideload entries after purging upstream AOD matches.",
     )
 
     # Step 1: Collect all LiveChart IDs
@@ -635,7 +734,7 @@ def main():
     shiki_shows.extend(anons_shows)
 
     # Step 4: Merge LiveChart shows into filtered sideload entries
-    print("Processing LiveChart shows...")
+    pprint.print(Platform.LIVECHART, Status.INFO, "Processing LiveChart shows...")
     lc_added = 0
     lc_merged = 0
     lc_skipped = 0
@@ -729,12 +828,14 @@ def main():
                 id_to_sideload_entry[id_str] = new_entry
             lc_added += 1
 
-    print(
-        f"LiveChart shows merged: added {lc_added}, merged {lc_merged}, skipped (already in AOD) {lc_skipped}"
+    pprint.print(
+        Platform.LIVECHART,
+        Status.INFO,
+        f"LiveChart shows merged: added {lc_added}, merged {lc_merged}, skipped (already in AOD) {lc_skipped}",
     )
 
     # Step 5: Merge Shikimori shows into filtered sideload entries
-    print("Processing Shikimori shows...")
+    pprint.print(Platform.SHIKIMORI, Status.INFO, "Processing Shikimori shows...")
     shiki_added = 0
     shiki_merged = 0
     shiki_skipped = 0
@@ -824,13 +925,15 @@ def main():
                 id_to_sideload_entry[id_str] = new_entry
             shiki_added += 1
 
-    print(
-        f"Shikimori shows merged: added {shiki_added}, merged {shiki_merged}, skipped (already in AOD) {shiki_skipped}"
+    pprint.print(
+        Platform.SHIKIMORI,
+        Status.INFO,
+        f"Shikimori shows merged: added {shiki_added}, merged {shiki_merged}, skipped (already in AOD) {shiki_skipped}",
     )
 
     # Step 6: Fetch and merge AniList shows
     anilist_shows = fetch_anilist_upcoming()
-    print("Processing AniList shows...")
+    pprint.print(Platform.ANILIST, Status.INFO, "Processing AniList shows...")
     al_added = 0
     al_merged = 0
     al_skipped = 0
@@ -933,13 +1036,15 @@ def main():
                 id_to_sideload_entry[id_str] = new_entry
             al_added += 1
 
-    print(
-        f"AniList shows merged: added {al_added}, merged {al_merged}, skipped (already in AOD) {al_skipped}"
+    pprint.print(
+        Platform.ANILIST,
+        Status.INFO,
+        f"AniList shows merged: added {al_added}, merged {al_merged}, skipped (already in AOD) {al_skipped}",
     )
 
     # Step 7: Fetch and merge Kitsu shows
     kitsu_shows = fetch_kitsu_upcoming()
-    print("Processing Kitsu shows...")
+    pprint.print(Platform.KITSU, Status.INFO, "Processing Kitsu shows...")
     kt_added = 0
     kt_merged = 0
     kt_skipped = 0
@@ -1052,8 +1157,10 @@ def main():
                 id_to_sideload_entry[id_str] = new_entry
             kt_added += 1
 
-    print(
-        f"Kitsu shows merged: added {kt_added}, merged {kt_merged}, skipped (already in AOD) {kt_skipped}"
+    pprint.print(
+        Platform.KITSU,
+        Status.INFO,
+        f"Kitsu shows merged: added {kt_added}, merged {kt_merged}, skipped (already in AOD) {kt_skipped}",
     )
 
     # Step 8: Fetch and merge Annict shows
@@ -1064,8 +1171,10 @@ def main():
 
     try:
         if Path("database/animeapi.tsv").exists():
-            print(
-                "Loading previous database generation (animeapi.tsv) to detect missing mappings..."
+            pprint.print(
+                Platform.ANNICT,
+                Status.INFO,
+                "Loading previous database generation (animeapi.tsv) to detect missing mappings...",
             )
             existing_df = pd.read_csv("database/animeapi.tsv", sep="\t", dtype=str)
             if "myanimelist" in existing_df.columns:
@@ -1075,10 +1184,14 @@ def main():
                     for _, row in temp_df.iterrows():
                         mal_to_annict[row["myanimelist"]] = row["annict"]
     except Exception as e:
-        print(f"  Note: Could not load previous animeapi.tsv: {e}")
+        pprint.print(
+            Platform.ANNICT,
+            Status.NOTICE,
+            f"  Note: Could not load previous animeapi.tsv: {e}",
+        )
 
     annict_shows = fetch_annict_upcoming()
-    print("Processing Annict shows...")
+    pprint.print(Platform.ANNICT, Status.INFO, "Processing Annict shows...")
     an_added = 0
     an_merged = 0
     an_skipped = 0
@@ -1174,8 +1287,10 @@ def main():
                 id_to_sideload_entry[id_str] = new_entry
             an_added += 1
 
-    print(
-        f"Annict shows merged: added {an_added}, merged {an_merged}, skipped (already in AOD) {an_skipped}"
+    pprint.print(
+        Platform.ANNICT,
+        Status.INFO,
+        f"Annict shows merged: added {an_added}, merged {an_merged}, skipped (already in AOD) {an_skipped}",
     )
 
     # Format and sort entries to be git-diff friendly
@@ -1219,13 +1334,19 @@ def main():
 
     sorted_entries.sort(key=get_sort_key)
 
-    print(
-        f"Writing {len(sorted_entries)} de-duplicated, persistent sideload entries to {output_path}..."
+    pprint.print(
+        Platform.SYSTEM,
+        Status.INFO,
+        f"Writing {len(sorted_entries)} de-duplicated, persistent sideload entries to {output_path}...",
     )
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(sorted_entries, f, indent=2)
 
-    print("Success! Persistent, duplicate-free sideload database written successfully.")
+    pprint.print(
+        Platform.SYSTEM,
+        Status.PASS,
+        "Success! Persistent, duplicate-free sideload database written successfully.",
+    )
 
 
 def fetch_anilist_upcoming() -> list[dict[str, Any]]:
@@ -1276,7 +1397,11 @@ def fetch_anilist_upcoming() -> list[dict[str, Any]]:
 
     for year in years:
         for season in seasons:
-            print(f"Querying AniList GraphQL for {year} {season}...")
+            pprint.print(
+                Platform.ANILIST,
+                Status.INFO,
+                f"Querying AniList GraphQL for {year} {season}...",
+            )
             page = 1
             while True:
                 variables = {
@@ -1298,26 +1423,44 @@ def fetch_anilist_upcoming() -> list[dict[str, Any]]:
                         if not media:
                             break
                         anilist_data.extend(media)
-                        print(f"  Page {page}: fetched {len(media)} items")
+                        pprint.print(
+                            Platform.ANILIST,
+                            Status.INFO,
+                            f"  Page {page}: fetched {len(media)} items",
+                        )
                         if not page_data.get("pageInfo", {}).get("hasNextPage"):
                             break
                         page += 1
                         time.sleep(1)
                     elif resp.status_code == 429:
                         retry_after = int(resp.headers.get("Retry-After", 5))
-                        print(
-                            f"  Rate limited. Retrying after {retry_after} seconds..."
+                        pprint.print(
+                            Platform.ANILIST,
+                            Status.WARN,
+                            f"  Rate limited. Retrying after {retry_after} seconds...",
                         )
                         time.sleep(retry_after)
                     else:
-                        print(f"  AniList query failed with status {resp.status_code}")
+                        pprint.print(
+                            Platform.ANILIST,
+                            Status.FAIL,
+                            f"  AniList query failed with status {resp.status_code}",
+                        )
                         break
                 except Exception as e:
-                    print(f"  Error querying AniList {year} {season} page {page}: {e}")
+                    pprint.print(
+                        Platform.ANILIST,
+                        Status.FAIL,
+                        f"  Error querying AniList {year} {season} page {page}: {e}",
+                    )
                     break
 
     # Also fetch upcoming/announced with status to make sure we don't miss anything that doesn't have a season set yet
-    print("Querying AniList GraphQL for remaining upcoming anime (no season/TBA)...")
+    pprint.print(
+        Platform.ANILIST,
+        Status.INFO,
+        "Querying AniList GraphQL for remaining upcoming anime (no season/TBA)...",
+    )
     tba_query = """
     query ($page: Int, $perPage: Int) {
       Page (page: $page, perPage: $perPage) {
@@ -1362,7 +1505,11 @@ def fetch_anilist_upcoming() -> list[dict[str, Any]]:
                 if not media:
                     break
                 anilist_data.extend(media)
-                print(f"  Page {page} (TBA): fetched {len(media)} items")
+                pprint.print(
+                    Platform.ANILIST,
+                    Status.INFO,
+                    f"  Page {page} (TBA): fetched {len(media)} items",
+                )
                 if not page_data.get("pageInfo", {}).get("hasNextPage"):
                     break
                 page += 1
@@ -1430,7 +1577,11 @@ def fetch_kitsu_upcoming_graphql() -> list[dict[str, Any]]:
 
     kitsu_data: list[dict[str, Any]] = []
     for status in ["CURRENT", "UPCOMING"]:
-        print(f"Querying Kitsu GraphQL for status {status}...")
+        pprint.print(
+            Platform.KITSU,
+            Status.INFO,
+            f"Querying Kitsu GraphQL for status {status}...",
+        )
         after = None
         while True:
             variables = {"status": status, "first": 50, "after": after}
@@ -1447,7 +1598,11 @@ def fetch_kitsu_upcoming_graphql() -> list[dict[str, Any]]:
                     if not nodes:
                         break
                     kitsu_data.extend(nodes)
-                    print(f"  Fetched {len(nodes)} Kitsu items ({status})...")
+                    pprint.print(
+                        Platform.KITSU,
+                        Status.INFO,
+                        f"  Fetched {len(nodes)} Kitsu items ({status})...",
+                    )
 
                     page_info = data.get("pageInfo", {})
                     if not page_info.get("hasNextPage"):
@@ -1455,13 +1610,23 @@ def fetch_kitsu_upcoming_graphql() -> list[dict[str, Any]]:
                     after = page_info.get("endCursor")
                     time.sleep(1)
                 elif resp.status_code == 429:
-                    print("  Rate limited, retrying in 5 seconds...")
+                    pprint.print(
+                        Platform.KITSU,
+                        Status.WARN,
+                        "  Rate limited, retrying in 5 seconds...",
+                    )
                     time.sleep(5)
                 else:
-                    print(f"  Kitsu query failed with status {resp.status_code}")
+                    pprint.print(
+                        Platform.KITSU,
+                        Status.FAIL,
+                        f"  Kitsu query failed with status {resp.status_code}",
+                    )
                     break
             except Exception as e:
-                print(f"  Error querying Kitsu: {e}")
+                pprint.print(
+                    Platform.KITSU, Status.FAIL, f"  Error querying Kitsu: {e}"
+                )
                 break
     return kitsu_data
 
@@ -1485,7 +1650,11 @@ def fetch_kitsu_upcoming() -> list[dict[str, Any]]:
 
     for year in years:
         for season in seasons:
-            print(f"Querying Kitsu REST API for {year} {season}...")
+            pprint.print(
+                Platform.KITSU,
+                Status.INFO,
+                f"Querying Kitsu REST API for {year} {season}...",
+            )
             offset = 0
             while True:
                 params = {
@@ -1580,24 +1749,42 @@ def fetch_kitsu_upcoming() -> list[dict[str, Any]]:
                                 }
                             )
 
-                        print(f"  Offset {offset}: fetched {len(data)} items")
+                        pprint.print(
+                            Platform.KITSU,
+                            Status.INFO,
+                            f"  Offset {offset}: fetched {len(data)} items",
+                        )
                         if len(data) < 20:
                             break
                         offset += 20
                         time.sleep(1)
                     elif resp.status_code == 429:
-                        print("  Rate limited, waiting 5 seconds...")
+                        pprint.print(
+                            Platform.KITSU,
+                            Status.WARN,
+                            "  Rate limited, waiting 5 seconds...",
+                        )
                         time.sleep(5)
                     else:
-                        print(f"  Kitsu REST API failed with status {resp.status_code}")
+                        pprint.print(
+                            Platform.KITSU,
+                            Status.FAIL,
+                            f"  Kitsu REST API failed with status {resp.status_code}",
+                        )
                         break
                 except Exception as e:
-                    print(f"  Error querying Kitsu REST for {year} {season}: {e}")
+                    pprint.print(
+                        Platform.KITSU,
+                        Status.FAIL,
+                        f"  Error querying Kitsu REST for {year} {season}: {e}",
+                    )
                     break
 
     # Also fetch current and upcoming via GraphQL status to ensure we catch TBA and unseasoned works
-    print(
-        "Querying Kitsu GraphQL for remaining current and upcoming anime (unseasoned)..."
+    pprint.print(
+        Platform.KITSU,
+        Status.INFO,
+        "Querying Kitsu GraphQL for remaining current and upcoming anime (unseasoned)...",
     )
     gql_shows = fetch_kitsu_upcoming_graphql()
     kitsu_data.extend(gql_shows)
@@ -1619,8 +1806,10 @@ def fetch_annict_upcoming() -> list[dict[str, Any]]:
     """
     token = os.environ.get("ANNICT_TOKEN")
     if not token:
-        print(
-            "  Annict token not found in environment, skipping Annict sideload crawl."
+        pprint.print(
+            Platform.ANNICT,
+            Status.INFO,
+            "  Annict token not found in environment, skipping Annict sideload crawl.",
         )
         return []
 
@@ -1645,7 +1834,11 @@ def fetch_annict_upcoming() -> list[dict[str, Any]]:
         for s in ["winter", "spring", "summer", "fall"]:
             seasons_to_query.append(f"{y}-{season_names_map[s]}")
 
-    print(f"Querying Annict GraphQL for seasons: {seasons_to_query}...")
+    pprint.print(
+        Platform.ANNICT,
+        Status.INFO,
+        f"Querying Annict GraphQL for seasons: {seasons_to_query}...",
+    )
 
     query = """
     query GetSeasonal($seasons: [String!], $first: Int!, $after: String) {
@@ -1689,7 +1882,11 @@ def fetch_annict_upcoming() -> list[dict[str, Any]]:
                 if not nodes:
                     break
                 annict_data.extend(nodes)
-                print(f"  Fetched {len(nodes)} Annict items...")
+                pprint.print(
+                    Platform.ANNICT,
+                    Status.INFO,
+                    f"  Fetched {len(nodes)} Annict items...",
+                )
 
                 page_info = data.get("pageInfo", {})
                 if not page_info.get("hasNextPage"):
@@ -1697,13 +1894,21 @@ def fetch_annict_upcoming() -> list[dict[str, Any]]:
                 after = page_info.get("endCursor")
                 time.sleep(1)
             elif resp.status_code == 429:
-                print("  Rate limited, retrying in 5 seconds...")
+                pprint.print(
+                    Platform.ANNICT,
+                    Status.WARN,
+                    "  Rate limited, retrying in 5 seconds...",
+                )
                 time.sleep(5)
             else:
-                print(f"  Annict query failed with status {resp.status_code}")
+                pprint.print(
+                    Platform.ANNICT,
+                    Status.FAIL,
+                    f"  Annict query failed with status {resp.status_code}",
+                )
                 break
         except Exception as e:
-            print(f"  Error querying Annict: {e}")
+            pprint.print(Platform.ANNICT, Status.FAIL, f"  Error querying Annict: {e}")
     return annict_data
 
 
