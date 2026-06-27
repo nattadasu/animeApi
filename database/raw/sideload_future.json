@@ -1,85 +1,7 @@
 [
   {
     "sources": [
-      "https://kitsu.app/anime/purina-felix"
-    ],
-    "title": "Purina Felix",
-    "type": "SPECIAL",
-    "status": "ONGOING",
-    "animeSeason": {
-      "season": "SPRING",
-      "year": 2015
-    },
-    "synonyms": [
-      "\u30d4\u30e5\u30ea\u30ca \u30d5\u30a3\u30ea\u30c3\u30af\u30b9"
-    ],
-    "releaseDate": "2015-03-04"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/shiguang-guiyu-juchang-ban",
-      "https://myanimelist.net/anime/33804"
-    ],
-    "title": "Shiguang Guiyu: Juchang Ban",
-    "type": "MOVIE",
-    "status": "ONGOING",
-    "animeSeason": {
-      "season": "SPRING",
-      "year": 2016
-    },
-    "synonyms": [
-      "\u65f6\u5149\u8be1\u57df\u5267\u573a\u7248"
-    ],
-    "releaseDate": "2016-03-23"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/puzzle-dragon"
-    ],
-    "title": "Puzzle & Dragon",
-    "type": "TV",
-    "status": "ONGOING",
-    "animeSeason": {
-      "season": "SPRING",
-      "year": 2018
-    },
-    "synonyms": [
-      "PazuDora",
-      "\u30d1\u30ba\u30c9\u30e9"
-    ],
-    "releaseDate": "2018-04-02"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/suponjibobu-anime"
-    ],
-    "title": "Suponjibobu Anime",
-    "type": "ONA",
-    "status": "ONGOING",
-    "animeSeason": {
-      "season": "SUMMER",
-      "year": 2020
-    },
-    "synonyms": [],
-    "releaseDate": "2020-07-23"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/hello-kitty-and-friends-supercute-adventures"
-    ],
-    "title": "Hello Kitty and Friends Supercute Adventures",
-    "type": "ONA",
-    "status": "ONGOING",
-    "animeSeason": {
-      "season": "FALL",
-      "year": 2020
-    },
-    "synonyms": [],
-    "releaseDate": "2020-10-20"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/little-bell-and-ami-s-love-story"
+      "https://kitsu.app/anime/45308"
     ],
     "title": "Little Bell and Ami\u2019s Love Story",
     "type": "ONA",
@@ -93,70 +15,9 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/otachan-season-2"
-    ],
-    "title": "Otachan Season 2",
-    "type": "ONA",
-    "status": "ONGOING",
-    "animeSeason": {
-      "season": "WINTER",
-      "year": 2022
-    },
-    "synonyms": [],
-    "releaseDate": "2022-01-29"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/demon-rush"
-    ],
-    "title": "Demon Rush",
-    "type": "ONA",
-    "status": "ONGOING",
-    "animeSeason": {
-      "season": "SPRING",
-      "year": 2022
-    },
-    "synonyms": [],
-    "releaseDate": "2022-03-26"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/holoen3drepeat"
-    ],
-    "title": "#holoEN3DRepeat",
-    "type": "ONA",
-    "status": "ONGOING",
-    "animeSeason": {
-      "season": "SPRING",
-      "year": 2023
-    },
-    "synonyms": [
-      "holoen 3D Repeat"
-    ],
-    "releaseDate": "2023-04-07"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/jump-mvs"
-    ],
-    "title": "Jump MVs",
-    "type": "MUSIC",
-    "status": "ONGOING",
-    "animeSeason": {
-      "season": "SPRING",
-      "year": 2023
-    },
-    "synonyms": [
-      "Jump MV's",
-      "Jump Music Videos."
-    ],
-    "releaseDate": "2023-03-26"
-  },
-  {
-    "sources": [
       "https://anidb.net/anime/18588",
       "https://anilist.co/anime/176907",
-      "https://kitsu.app/anime/ito-wo-yoru"
+      "https://kitsu.app/anime/49254"
     ],
     "title": "Ito wo Yoru",
     "type": "OVA",
@@ -174,7 +35,7 @@
     "sources": [
       "https://anidb.net/anime/18647",
       "https://anilist.co/anime/177707",
-      "https://kitsu.app/anime/rignetta-san-no-bouken"
+      "https://kitsu.app/anime/49256"
     ],
     "title": "Rignetta-san no Bouken",
     "type": "OVA",
@@ -190,96 +51,6 @@
       "\u30ea\u30b8\u30cd\u30c3\u30bf\u3055\u3093\u306e\u5192\u967a"
     ],
     "releaseDate": "2024-08-30"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/history"
-    ],
-    "title": "HISTORY",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2024
-    },
-    "synonyms": [
-      "HISTORY feat. RUSTAGE"
-    ],
-    "releaseDate": "2024-12-04"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/it-s-not-a-phase"
-    ],
-    "title": "It's Not a Phase",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2024
-    },
-    "synonyms": [],
-    "releaseDate": "2024-12-20"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/jentry-chau-vs-the-underworld"
-    ],
-    "title": "Jentry Chau vs. The Underworld",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2024
-    },
-    "synonyms": [],
-    "releaseDate": "2024-12-05"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/tenkaidokyuu-oshigoto-road"
-    ],
-    "title": "TENKAIDOKYUU OSHIGOTO ROAD",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2024
-    },
-    "synonyms": [
-      "\u5929\u754c\u5f29\u7d1a\u30aa\u30b7\u30b4\u30c8\u30ed\u30fc\u30c9"
-    ],
-    "releaseDate": "2024-12-22"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/the-dragon-prince-season-7"
-    ],
-    "title": "The Dragon Prince Season 7",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2024
-    },
-    "synonyms": [],
-    "releaseDate": "2024-12-19"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/yumekuzu-cake"
-    ],
-    "title": "Yumekuzu Cake",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2024
-    },
-    "synonyms": [
-      "\u5922\u5c51\u30b1\u30fc\u30ad"
-    ],
-    "releaseDate": "2024-12-25"
   },
   {
     "sources": [
@@ -301,7 +72,7 @@
     "sources": [
       "https://anidb.net/anime/19556",
       "https://anilist.co/anime/188928",
-      "https://kitsu.app/anime/natsu-to-hako"
+      "https://kitsu.app/anime/50302"
     ],
     "title": "Natsu to Hako",
     "type": "OVA",
@@ -319,7 +90,7 @@
     "sources": [
       "https://anidb.net/anime/19644",
       "https://anilist.co/anime/198511",
-      "https://kitsu.app/anime/seifuku-wa-kita-mama-de"
+      "https://kitsu.app/anime/50298"
     ],
     "title": "Seifuku wa Kita mama de",
     "type": "OVA",
@@ -337,7 +108,7 @@
     "sources": [
       "https://anidb.net/anime/19036",
       "https://anilist.co/anime/184810",
-      "https://kitsu.app/anime/immoral-routine-the-animation"
+      "https://kitsu.app/anime/50313"
     ],
     "title": "Immoral Routine The Animation",
     "type": "OVA",
@@ -371,7 +142,7 @@
     "sources": [
       "https://anidb.net/anime/19329",
       "https://anilist.co/anime/192452",
-      "https://kitsu.app/anime/koushoku-no-chuugi-kunoichi-botan"
+      "https://kitsu.app/anime/49968"
     ],
     "title": "Koushoku no Chuugi Kunoichi Botan",
     "type": "OVA",
@@ -389,7 +160,7 @@
     "sources": [
       "https://anidb.net/anime/19314",
       "https://anilist.co/anime/191451",
-      "https://kitsu.app/anime/kyou-wa-yubiwa-wo-hazusu-kara"
+      "https://kitsu.app/anime/50304"
     ],
     "title": "Kyou wa Yubiwa wo Hazusu kara......",
     "type": "OVA",
@@ -408,7 +179,7 @@
     "sources": [
       "https://anidb.net/anime/19240",
       "https://anilist.co/anime/188933",
-      "https://kitsu.app/anime/princess-burst"
+      "https://kitsu.app/anime/49761"
     ],
     "title": "Princess Burst!",
     "type": "OVA",
@@ -426,7 +197,7 @@
     "sources": [
       "https://anidb.net/anime/19351",
       "https://anilist.co/anime/193347",
-      "https://kitsu.app/anime/shachiku-cinderella"
+      "https://kitsu.app/anime/49969"
     ],
     "title": "Shachiku Cinderella",
     "type": "OVA",
@@ -458,7 +229,7 @@
     "sources": [
       "https://anidb.net/anime/19489",
       "https://anilist.co/anime/194353",
-      "https://kitsu.app/anime/choro-mesu-days"
+      "https://kitsu.app/anime/50296"
     ],
     "title": "Choro Mesu Days",
     "type": "OVA",
@@ -494,7 +265,7 @@
     "sources": [
       "https://anidb.net/anime/19499",
       "https://anilist.co/anime/196547",
-      "https://kitsu.app/anime/h-na-gishi-series-the-animation"
+      "https://kitsu.app/anime/50301"
     ],
     "title": "H na Gishi Series The Animation",
     "type": "OVA",
@@ -512,7 +283,7 @@
     "sources": [
       "https://anidb.net/anime/19458",
       "https://anilist.co/anime/195360",
-      "https://kitsu.app/anime/honey-blonde-2"
+      "https://kitsu.app/anime/50306"
     ],
     "title": "Honey Blonde 2",
     "type": "OVA",
@@ -548,7 +319,7 @@
     "sources": [
       "https://anidb.net/anime/19413",
       "https://anilist.co/anime/195033",
-      "https://kitsu.app/anime/kiken-na-mori-onigokko"
+      "https://kitsu.app/anime/50295"
     ],
     "title": "Kiken na Mori Onigokko",
     "type": "OVA",
@@ -566,7 +337,7 @@
     "sources": [
       "https://anidb.net/anime/19412",
       "https://anilist.co/anime/195034",
-      "https://kitsu.app/anime/korette-naani"
+      "https://kitsu.app/anime/50305"
     ],
     "title": "Korette Naani?",
     "type": "OVA",
@@ -584,7 +355,7 @@
     "sources": [
       "https://anidb.net/anime/19547",
       "https://anilist.co/anime/198048",
-      "https://kitsu.app/anime/natsuzuma"
+      "https://kitsu.app/anime/50309"
     ],
     "title": "Natsuzuma",
     "type": "OVA",
@@ -603,7 +374,7 @@
     "sources": [
       "https://anidb.net/anime/19643",
       "https://anilist.co/anime/200228",
-      "https://kitsu.app/anime/oshikake-bakunyuu-gal-harem-seikatsu"
+      "https://kitsu.app/anime/50307"
     ],
     "title": "Oshikake! Bakunyuu Gal Harem Seikatsu",
     "type": "OVA",
@@ -623,7 +394,7 @@
     "sources": [
       "https://anidb.net/anime/19510",
       "https://anilist.co/anime/196722",
-      "https://kitsu.app/anime/reika-wa-karei-na-boku-no-joou-the-animation"
+      "https://kitsu.app/anime/50299"
     ],
     "title": "Reika wa Karei na Boku no Joou THE ANIMATION",
     "type": "OVA",
@@ -641,7 +412,7 @@
     "sources": [
       "https://anidb.net/anime/19515",
       "https://anilist.co/anime/196540",
-      "https://kitsu.app/anime/seikon-no-aria"
+      "https://kitsu.app/anime/50300"
     ],
     "title": "Seikon no Aria",
     "type": "OVA",
@@ -660,7 +431,7 @@
     "sources": [
       "https://anidb.net/anime/19514",
       "https://anilist.co/anime/196750",
-      "https://kitsu.app/anime/sister-breeder"
+      "https://kitsu.app/anime/50297"
     ],
     "title": "Sister Breeder",
     "type": "OVA",
@@ -695,436 +466,8 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/advsjus-motion-comic"
-    ],
-    "title": "#AdVSJus Motion Comic",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "hololive EN Advent vs Justice Motion Comic"
-    ],
-    "releaseDate": "2025-09-14"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/adventure-time-fionna-cake-season-2"
-    ],
-    "title": "Adventure Time: Fionna & Cake Season 2",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-10-23"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/aizome-summer-time"
-    ],
-    "title": "Aizome Summer Time!!",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-07-26"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/ash-again"
-    ],
-    "title": "Ash Again",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-04-19"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/banzai"
-    ],
-    "title": "BANZAI",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-06-07"
-  },
-  {
-    "sources": [
-      "https://anilist.co/anime/60735",
-      "https://kitsu.app/anime/benghuai-xing-qiong-tiedao-the-herta-de-mofa-chufang"
-    ],
-    "title": "Benghuai: Xing Qiong Tiedao - The Herta De Mofa Chufang",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "Honkai: Star Rail - The Herta's Magic Kitchen",
-      "\u300a\u5d29\u574f\uff1a \u661f\u7a79\u94c1\u9053\u300b\u52a8\u753b\u77ed\uff1a \u300c\u5927\u9ed1\u5854\u7684\u9b54\u6cd5\u53a8\u623f\u300d"
-    ],
-    "releaseDate": "2025-01-10"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/blood-of-zeus-season-3"
-    ],
-    "title": "Blood of Zeus Season 3",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-05-08"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/break-it-down"
-    ],
-    "title": "Break It Down",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "\u3010Break It Down\u3011"
-    ],
-    "releaseDate": "2025-03-22"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/bright-tonight"
-    ],
-    "title": "Bright Tonight",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-12-21"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/castlevania-nocturne-season-2"
-    ],
-    "title": "Castlevania: Nocturne Season 2",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "Akumajou Dracula Castlevania: Tsukiyo no Nokut\u0101n 2",
-      "\u60aa\u9b54\u57ce\u30c9\u30e9\u30ad\u30e5\u30e9 \uff0d\u30ad\u30e3\u30c3\u30b9\u30eb\u30f4\u30a1\u30cb\u30a2\uff0d: \u6708\u591c\u306e\u30ce\u30af\u30bf\u30fc\u30f3 2"
-    ],
-    "releaseDate": "2025-01-16"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/countach"
-    ],
-    "title": "Countach",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "\u8f5f\u306f\u3058\u3081"
-    ],
-    "releaseDate": "2025-01-11"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/devil-may-cry-ona"
-    ],
-    "title": "Devil May Cry",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "\u30c7\u30d3\u30eb \u30e1\u30a4 \u30af\u30e9\u30a4"
-    ],
-    "releaseDate": "2025-04-03"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/diamond-girlfriend"
-    ],
-    "title": "DIAMOND GIRLFRIEND",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "DIAMOND GIRLFRIEND feat.MOTSU"
-    ],
-    "releaseDate": "2025-03-16"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/enigmatic-recollection-chapter-2"
-    ],
-    "title": "ENigmatic Recollection Chapter 2",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-05-05"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/fei-ren-zai-xian-shi-wan-jia"
-    ],
-    "title": "Fei Ren Zai: Xian Shi Wan Jia",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "FAIRIZEST: RALLY FOR PALLY"
-    ],
-    "releaseDate": "2025-08-18"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/figure-it-out"
-    ],
-    "title": "Figure It Out",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-09-09"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/fortune-spinner"
-    ],
-    "title": "Fortune Spinner",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-09-20"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/get-lucky"
-    ],
-    "title": "get lucky",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-10-28"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/gu-wei-nan-ting"
-    ],
-    "title": "Gu Wei Nan Ting",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "The Chosen One",
-      "The Last Dynasty",
-      "\u8c37\u56f4\u5357\u4ead"
-    ],
-    "releaseDate": "2025-09-30"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/heroes-of-the-game"
-    ],
-    "title": "Heroes of the Game",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "MLB Anime"
-    ],
-    "releaseDate": "2025-03-26"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/i-ll-still-be-here"
-    ],
-    "title": "I'll still be here",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-10-19"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/k-pop-demon-hunters"
-    ],
-    "title": "K-POP DEMON HUNTERS",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "KPop Demon Hunters",
-      "\ucf00\uc774\ud31d \ub370\ubaac \ud5cc\ud130\uc2a4"
-    ],
-    "releaseDate": "2025-06-20"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/lifetime-showtime"
-    ],
-    "title": "Lifetime Showtime",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-07-30"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/link-click-memories"
-    ],
-    "title": "Link Click Memories",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-12-13"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/link-click-waypoint"
-    ],
-    "title": "Link Click: Waypoint",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-11-21"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/los-angeles-lakers-x-one-piece"
-    ],
-    "title": "LOS ANGELES LAKERS x ONE PIECE",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "LOS ANGELES LAKERS x ONE PIECE Collab Anime"
-    ],
-    "releaseDate": "2025-02-28"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/love-jushin-hikutsu-hasshin"
-    ],
-    "title": "Love Jushin, Hikutsu Hasshin",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "LOVE\u53d7\u4fe1\u3001\u30d2\u30af\u30c4\u767a\u4fe1"
-    ],
-    "releaseDate": "2025-03-02"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/love-death-robots-volume-4"
-    ],
-    "title": "Love, Death + Robots Volume 4",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "Love, Death & Robots Volume 4",
-      "Love, Death and Robots Volume 4",
-      "\u2764\ufe0f\u2620\ufe0f\ud83e\udd16 Volume 4"
-    ],
-    "releaseDate": "2025-05-15"
-  },
-  {
-    "sources": [
       "https://anilist.co/anime/212568",
-      "https://kitsu.app/anime/mamiko-no-unko"
+      "https://kitsu.app/anime/50734"
     ],
     "title": "Mamiko no Unko",
     "type": "TV",
@@ -1141,7 +484,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/menschen-kartos"
+      "https://kitsu.app/anime/50710"
     ],
     "title": "MENSCHEN KARTOS",
     "type": "ONA",
@@ -1155,321 +498,6 @@
       "\u5361\u6258\u65af\u4e4b\u773e"
     ],
     "releaseDate": "2025-03-17"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/mikkorone-showtime"
-    ],
-    "title": "Mikkorone Showtime!!",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "\u307f\u3063\u3053\u308d\u306d\u00d7\u3057\u3087\u3046\u305f\u3044\u3080!!"
-    ],
-    "releaseDate": "2025-01-01"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/miraculous-world-tokyo"
-    ],
-    "title": "Miraculous World: Tokyo, Stellar Force",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-11-01"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/miraculous-tales-of-ladybug-cat-noir-sixth-season"
-    ],
-    "title": "Miraculous: Tales of Ladybug & Cat Noir Sixth Season",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-01-25"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/moonlantern"
-    ],
-    "title": "MoonLantern",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-08-17"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/oideyo-mahou-shoujo-mura-fuhou-senkyo"
-    ],
-    "title": "Oideyo Mahou Shoujo-mura (Fuhou Senkyo)",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "Welcome to Magical Girl Village (illegally occupied)",
-      "\u304a\u3044\u3067\u3088\u9b54\u6cd5\u5c11\u5973\u6751\uff08\u4e0d\u6cd5\u5360\u62e0\uff09"
-    ],
-    "releaseDate": "2025-04-04"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/music-274696aa-94ce-49d2-97a2-70d871653e2a"
-    ],
-    "title": "PERFUME",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-04-20"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/pokemon-ga-ippiki"
-    ],
-    "title": "Pokemon ga Ippiki",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "Counting Pok\u00e9mon",
-      "\u30dd\u30b1\u30e2\u30f3\u304c\u3044\u3063\u3074\u304d"
-    ],
-    "releaseDate": "2025-04-09"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/prisoner"
-    ],
-    "title": "Prisoner",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-08-29"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/sea-doctor"
-    ],
-    "title": "Sea Doctor",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-11-01"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/sepia"
-    ],
-    "title": "Sepia",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "Sepia feat. TOOBOE"
-    ],
-    "releaseDate": "2025-04-05"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/shenmi-xue-ketang"
-    ],
-    "title": "Shenmi Xue Ketang",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "Old Neil's Mysticism Class",
-      "\u795e\u79d8\u5b66\u8bfe\u5802"
-    ],
-    "releaseDate": "2025-07-28"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/starlight"
-    ],
-    "title": "Starlight",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "hoshiakari",
-      "\u30b9\u30bf\u30fc\u30e9\u30a4\u30c8"
-    ],
-    "releaseDate": "2025-04-26"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/tasty"
-    ],
-    "title": "TASTY",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-07-06"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/The-Mighty-Nein"
-    ],
-    "title": "The Mighty Nein",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-11-19"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/the-witcher-sirens-of-the-deep"
-    ],
-    "title": "The Witcher: Sirens of the Deep",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-02-11"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/to-be-continued"
-    ],
-    "title": "To Be Continued . . . .",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-07-02"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/tomb-raider-the-legend-of-lara-croft"
-    ],
-    "title": "Tomb Raider: The Legend of Lara Croft",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-12-11"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/wataame-pop"
-    ],
-    "title": "WataAme Pop",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "\u89d2\u5dfb\u308f\u305f\u3081"
-    ],
-    "releaseDate": "2025-02-01"
-  },
-  {
-    "sources": [
-      "https://anilist.co/anime/193107",
-      "https://kitsu.app/anime/Watch-me"
-    ],
-    "title": "Watch me!",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-05-18"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/wind-up"
-    ],
-    "title": "Wind-Up",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [],
-    "releaseDate": "2025-08-08"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/yummy-yum-yummy"
-    ],
-    "title": "Yummy Yum Yummy",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2025
-    },
-    "synonyms": [
-      "\u30e4\u30df\u30e4\u30e0\u30e4\u30df"
-    ],
-    "releaseDate": "2025-03-29"
   },
   {
     "sources": [
@@ -1493,7 +521,7 @@
     "sources": [
       "https://anidb.net/anime/19673",
       "https://anilist.co/anime/201153",
-      "https://kitsu.app/anime/seikou-senki-pony-celes"
+      "https://kitsu.app/anime/50294"
     ],
     "title": "Seikou Senki Pony Celes",
     "type": "OVA",
@@ -1566,7 +594,7 @@
   {
     "sources": [
       "https://annict.com/works/17662",
-      "https://kitsu.app/anime/garou-densetsu-cotw-mr-karate",
+      "https://kitsu.app/anime/50791",
       "https://myanimelist.net/anime/64289",
       "https://shikimori.one/animes/64289",
       "https://twitter.com/GAROU_PR",
@@ -1589,7 +617,7 @@
   {
     "sources": [
       "https://annict.com/works/17517",
-      "https://kitsu.app/anime/garou-densetsu-cotw-wolfgang-krauser",
+      "https://kitsu.app/anime/50680",
       "https://myanimelist.net/anime/64011",
       "https://shikimori.one/animes/64011",
       "https://twitter.com/GAROU_PR",
@@ -1664,7 +692,7 @@
     "sources": [
       "https://anilist.co/anime/212557",
       "https://annict.com/works/17535",
-      "https://kitsu.app/anime/looney-tunes-gokko",
+      "https://kitsu.app/anime/50716",
       "https://myanimelist.net/anime/64079",
       "https://shikimori.one/animes/64079",
       "https://twitter.com/looneytunes_jp",
@@ -1689,7 +717,7 @@
     "sources": [
       "https://anilist.co/anime/213343",
       "https://annict.com/works/17791",
-      "https://kitsu.app/anime/mappa-15th-anniversary-movie",
+      "https://kitsu.app/anime/50776",
       "https://myanimelist.net/anime/64429"
     ],
     "title": "MAPPA 15th Anniversary Movie",
@@ -1730,8 +758,7 @@
       "https://annict.com/works/17588",
       "https://myanimelist.net/anime/64217",
       "https://shikimori.one/animes/64217",
-      "https://twitter.com/NIKKE_en",
-      "https://twitter.com/NIKKE_japan"
+      "https://twitter.com/NIKKE_en"
     ],
     "title": "Nikenichi! Non Non Zenshou Kichi",
     "type": "TV",
@@ -1768,20 +795,6 @@
   },
   {
     "sources": [
-      "https://www.livechart.me/anime/13650"
-    ],
-    "title": "Sakuyama Chocojiro",
-    "type": "TV",
-    "status": "ONGOING",
-    "animeSeason": {
-      "season": "SPRING",
-      "year": 2026
-    },
-    "synonyms": [],
-    "releaseDate": "2026-05-29T05:49:00.000000000Z"
-  },
-  {
-    "sources": [
       "https://www.livechart.me/anime/13634"
     ],
     "title": "Seungri-ui Yeosin: NIKKE Jeonchogiji, Oneureun Swimnida",
@@ -1801,7 +814,7 @@
     "sources": [
       "https://anilist.co/anime/212323",
       "https://en.gundam-official.com/news/q0fmgjylgoj3w5p90yiiqqze",
-      "https://kitsu.app/anime/a-boy-with-gundam",
+      "https://kitsu.app/anime/50717",
       "https://myanimelist.net/anime/64205",
       "https://shikimori.io/animes/64205-shounen-to-gundam/watch",
       "https://shikimori.one/animes/64205"
@@ -1866,7 +879,7 @@
       "https://anilist.co/anime/213506",
       "https://annict.com/works/17333",
       "https://cal.syoboi.jp/tid/7911",
-      "https://kitsu.app/anime/hokuto-no-ken-kenou-gun-zako-tachi-no-banka-2",
+      "https://kitsu.app/anime/50803",
       "https://myanimelist.net/anime/64378",
       "https://shikimori.one/animes/64378",
       "https://twitter.com/hokuto_zakoban",
@@ -1898,7 +911,7 @@
       "https://anilist.co/anime/211711",
       "https://annict.com/works/17543",
       "https://en.wikipedia.org/wiki/My_Hero_Academia",
-      "https://kitsu.app/anime/Boku-no-Hero-Academia-I-am-a-hero-too",
+      "https://kitsu.app/anime/50701",
       "https://myanimelist.net/anime/64107",
       "https://shikimori.one/animes/64107",
       "https://twitter.com/heroaca_anime",
@@ -2029,7 +1042,7 @@
   {
     "sources": [
       "https://anilist.co/anime/212652",
-      "https://kitsu.app/anime/patlabor-ezy-2"
+      "https://kitsu.app/anime/50738"
     ],
     "title": "Kidou Keisatsu Patlabor EZY File 2",
     "type": "OVA",
@@ -2060,7 +1073,7 @@
     "synonyms": [
       "Lass mich dich flicken"
     ],
-    "releaseDate": "2026-06-01T00:00:00.000000000Z"
+    "releaseDate": "2026-06-21T11:00:00.000000000Z"
   },
   {
     "sources": [
@@ -2105,7 +1118,7 @@
   {
     "sources": [
       "https://anilist.co/anime/212994",
-      "https://kitsu.app/anime/meitantei-conan-hanamaru-na-answer",
+      "https://kitsu.app/anime/50796",
       "https://myanimelist.net/anime/64359",
       "https://shikimori.one/animes/64359",
       "https://www.livechart.me/anime/13661"
@@ -2179,7 +1192,7 @@
       "https://anilist.co/anime/212308",
       "https://annict.com/works/17562",
       "https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%B3%E3%81%AE%E8%B5%A4%E3%81%A1%E3%82%83%E3%82%93",
-      "https://kitsu.app/anime/pan-no-akachan-tv",
+      "https://kitsu.app/anime/50799",
       "https://myanimelist.net/anime/64210",
       "https://shikimori.one/animes/64210",
       "https://twitter.com/pan_baby_anime",
@@ -2208,9 +1221,10 @@
       "https://annict.com/works/17626",
       "https://myanimelist.net/anime/64325",
       "https://shikimori.one/animes/64325",
+      "https://www.livechart.me/anime/13652",
       "https://www.lotte.co.jp/products/brand/painomi/pienomioshinomori"
     ],
-    "title": "Pie no Mi",
+    "title": "Pie no Mi: Oshi no Mori e Yokoso!",
     "type": "TV",
     "status": "ONGOING",
     "animeSeason": {
@@ -2220,20 +1234,6 @@
     "synonyms": [
       "\u30d1\u30a4\u306e\u5b9f \u304a\u3057\u306e\u68ee\u3078\u3088\u3046\u3053\u305d\uff01"
     ],
-    "releaseDate": "2026-06-22"
-  },
-  {
-    "sources": [
-      "https://www.livechart.me/anime/13652"
-    ],
-    "title": "Pie no Mi: Oshi no Mori e Yokoso!",
-    "type": "TV",
-    "status": "ONGOING",
-    "animeSeason": {
-      "season": "SUMMER",
-      "year": 2026
-    },
-    "synonyms": [],
     "releaseDate": "2026-06-03T15:00:00.000000000Z"
   },
   {
@@ -2268,6 +1268,20 @@
     "synonyms": [
       "\u6700\u7d42\u697d\u7ae0 \u97ff\u3051\uff01\u30e6\u30fc\u30d5\u30a9\u30cb\u30a2\u30e0 \u5f8c\u7de8"
     ]
+  },
+  {
+    "sources": [
+      "https://www.livechart.me/anime/13650"
+    ],
+    "title": "Sakuyama Chocojiro",
+    "type": "TV",
+    "status": "ONGOING",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-05-29T05:49:00.000000000Z"
   },
   {
     "sources": [
@@ -2307,7 +1321,7 @@
       "https://anidb.net/anime/20023",
       "https://anilist.co/anime/211308",
       "https://annict.com/works/17514",
-      "https://kitsu.app/anime/the-ribbon-hero",
+      "https://kitsu.app/anime/50765",
       "https://myanimelist.net/anime/64012",
       "https://www.anime-planet.com/anime/the-ribbon-hero",
       "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=39225",
@@ -2332,7 +1346,7 @@
     "sources": [
       "https://anilist.co/anime/213097",
       "https://annict.com/works/17642",
-      "https://kitsu.app/anime/tomica-tom-season-2",
+      "https://kitsu.app/anime/50802",
       "https://myanimelist.net/anime/64357",
       "https://shikimori.one/animes/64357",
       "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=39856",
@@ -2356,7 +1370,7 @@
   {
     "sources": [
       "https://anilist.co/anime/207674",
-      "https://kitsu.app/anime/ushiro-no-shoumen-kamui-san"
+      "https://kitsu.app/anime/50798"
     ],
     "title": "Ushiro no Shoumen Kamui-san",
     "type": "TV",
@@ -2377,7 +1391,7 @@
     "sources": [
       "https://anilist.co/anime/213359",
       "https://annict.com/works/17812",
-      "https://kitsu.app/anime/yami-shibai-17",
+      "https://kitsu.app/anime/50773",
       "https://myanimelist.net/anime/64435",
       "https://shikimori.one/animes/64435",
       "https://twitter.com/yamishibai_TX",
@@ -2459,7 +1473,7 @@
       "https://en.wikipedia.org/wiki/The_Iceblade_Sorcerer_Shall_Rule_the_World#Anime",
       "https://hyouken-anime.com",
       "https://ja.wikipedia.org/wiki/%E5%86%B0%E5%89%A3%E3%81%AE%E9%AD%94%E8%A1%93%E5%B8%AB%E3%81%8C%E4%B8%96%E7%95%8C%E3%82%92%E7%B5%B1%E3%81%B9%E3%82%8B#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
-      "https://kitsu.app/anime/hyouken-no-majutsushi-ga-sekai-wo-suberu-ii",
+      "https://kitsu.app/anime/50723",
       "https://myanimelist.net/anime/64254",
       "https://shikimori.one/animes/64254",
       "https://twitter.com/hyouken_pr",
@@ -2518,7 +1532,7 @@
       "https://anidb.net/anime/20040",
       "https://anilist.co/anime/211877",
       "https://annict.com/works/17547",
-      "https://kitsu.app/anime/kanojo-no-tomodachi",
+      "https://kitsu.app/anime/50752",
       "https://myanimelist.net/anime/64131",
       "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=39391",
       "https://www.anisearch.com/anime/21562",
@@ -2536,7 +1550,7 @@
       "\u30ab\u30ce\u30c8\u30e2",
       "\u5f7c\u5973\u306e\u53cb\u9054"
     ],
-    "releaseDate": "2026-01-01T00:00:00.000000000Z"
+    "releaseDate": "2026-10-01T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -2545,7 +1559,6 @@
       "https://annict.com/works/17556",
       "https://en.wikipedia.org/wiki/With_Vengeance,_Sincerely,_Your_Broken_Saintess#Anime",
       "https://kitsu.app/anime/50715",
-      "https://kitsu.app/anime/kizu-darake-seijo-yori-houfuku-wo-komete-season2",
       "https://myanimelist.net/anime/64180",
       "https://shikimori.one/animes/64180",
       "https://twitter.com/animekizudarake",
@@ -2563,7 +1576,7 @@
       "The Holy Wound Became a Villain Vengeance from a Saint Full of Wounds Season 2",
       "\u50b7\u3060\u3089\u3051\u8056\u5973\u3088\u308a\u5831\u5fa9\u3092\u3053\u3081\u3066 Season2"
     ],
-    "releaseDate": "2026-10-01T00:00:00.000000000Z"
+    "releaseDate": "2026-10-01T15:00:00.000000000Z"
   },
   {
     "sources": [
@@ -2619,7 +1632,6 @@
       "https://annict.com/works/17539",
       "https://en.wikipedia.org/wiki/The_World%27s_Strongest_Witch",
       "https://kitsu.app/anime/50697",
-      "https://kitsu.app/anime/sekai-saikyou-no-majo-hajimemashita",
       "https://myanimelist.net/anime/64084",
       "https://sekamajo-anime.com",
       "https://shikimori.one/animes/64084",
@@ -2665,7 +1677,7 @@
       "https://anidb.net/anime/20077",
       "https://anilist.co/anime/212888",
       "https://annict.com/works/17635",
-      "https://kitsu.app/anime/temppal-item-no-chikara",
+      "https://kitsu.app/anime/50743",
       "https://myanimelist.net/anime/64340",
       "https://shikimori.one/animes/64340",
       "https://tempal-anime.net",
@@ -2742,7 +1754,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/airman-ga-taosenai-team-nekokan-neko-premium-version",
+      "https://kitsu.app/anime/50737",
       "https://myanimelist.net/anime/64279",
       "https://shikimori.one/animes/64279"
     ],
@@ -2760,53 +1772,12 @@
   },
   {
     "sources": [
-      "https://anilist.co/anime/192867",
-      "https://kitsu.app/anime/android-wa-keiken-ninzuu-ni-hairimasu-ka"
-    ],
-    "title": "Android wa Keiken Ninzuu ni Hairimasu ka??",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2026
-    },
-    "synonyms": [
-      "Does it Count if You Lose Your Innocence to an Android?",
-      "Does it Count if You Lose Your Virginity to an Android?",
-      "\u30a2\u30f3\u30c9\u30ed\u30a4\u30c9\u306f\u7d4c\u9a13\u4eba\u6570\u306b\u5165\u308a\u307e\u3059\u304b\uff1f\uff1f"
-    ],
-    "releaseDate": "2026-01-10"
-  },
-  {
-    "sources": [
-      "https://anilist.co/anime/208517",
-      "https://kitsu.app/anime/android-wa-keiken-ninzuu-ni-hairimasu-ka-5-kakan-tsuzukete"
-    ],
-    "title": "Android wa Keiken Ninzuu ni Hairimasu ka??: 5-kakan Tsuzukete......?",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2026
-    },
-    "synonyms": [
-      "Android wa Keiken Ninzuu ni Hairimasu ka?? Episode 9",
-      "Android wa Keiken Ninzuu ni Hairimasu ka?? Special",
-      "Does It Count If You Lose Your Innocence to an Android? ONA",
-      "Does it Count if You Lose Your Innocence to an Android? Episode 9",
-      "\u30a2\u30f3\u30c9\u30ed\u30a4\u30c9\u306f\u7d4c\u9a13\u4eba\u6570\u306b\u5165\u308a\u307e\u3059\u304b\uff1f\uff1f 5\u65e5\u9593\u7d9a\u3051\u3066\u2026\u2026\uff1f",
-      "\u30a2\u30f3\u30c9\u30ed\u30a4\u30c9\u306f\u7d4c\u9a13\u4eba\u6570\u306b\u5165\u308a\u307e\u3059\u304b\uff1f\uff1f\u7b2c9\u8a71"
-    ],
-    "releaseDate": "2026-03-07"
-  },
-  {
-    "sources": [
       "https://anidb.net/anime/20020",
       "https://anilist.co/anime/211258",
       "https://arafo-kenja.com",
       "https://en.wikipedia.org/wiki/The_Diary_of_a_Middle-Aged_Sage%27s_Carefree_Life_in_Another_World#Anime",
       "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%A9%E3%83%95%E3%82%A9%E3%83%BC%E8%B3%A2%E8%80%85%E3%81%AE%E7%95%B0%E4%B8%96%E7%95%8C%E7%94%9F%E6%B4%BB%E6%97%A5%E8%A8%98",
-      "https://kitsu.app/anime/arafou-kenja-no-isekai-seikatsu-nikki",
+      "https://kitsu.app/anime/50682",
       "https://myanimelist.net/anime/63998",
       "https://shikimori.one/animes/63998",
       "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=39176",
@@ -2831,7 +1802,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/avatar-aang-the-last-airbender"
+      "https://kitsu.app/anime/50666"
     ],
     "title": "Avatar Aang: The Last Airbender",
     "type": "TV",
@@ -2848,7 +1819,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/blast-diver",
+      "https://kitsu.app/anime/50683",
       "https://myanimelist.net/anime/64020"
     ],
     "title": "Bakumei Diver!!!!",
@@ -2866,7 +1837,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/beep-beep"
+      "https://kitsu.app/anime/50668"
     ],
     "title": "BEEP BEEP",
     "type": "TV",
@@ -2880,21 +1851,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/blue-gold"
-    ],
-    "title": "Blue & Gold",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2026
-    },
-    "synonyms": [],
-    "releaseDate": "2026-03-30"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/ccgg-madness"
+      "https://kitsu.app/anime/50718"
     ],
     "title": "CCGG MADNESS",
     "type": "TV",
@@ -2910,7 +1867,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/chiikawa-ningyo-no-shima-no-himitsu",
+      "https://kitsu.app/anime/50806",
       "https://myanimelist.net/anime/202717"
     ],
     "title": "Chiikawa: Ningyo no Shima no Himitsu",
@@ -2931,37 +1888,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/devil-may-cry-season-2"
-    ],
-    "title": "Devil May Cry Season 2",
-    "type": "ONA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2026
-    },
-    "synonyms": [
-      "\u30c7\u30d3\u30eb \u30e1\u30a4 \u30af\u30e9\u30a4 2"
-    ],
-    "releaseDate": "2026-05-12"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/distortion"
-    ],
-    "title": "Distortion",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2026
-    },
-    "synonyms": [],
-    "releaseDate": "2026-02-15"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/doll"
+      "https://kitsu.app/anime/50667"
     ],
     "title": "Doll",
     "type": "TV",
@@ -2978,7 +1905,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/draw"
+      "https://kitsu.app/anime/50731"
     ],
     "title": "Draw.",
     "type": "TV",
@@ -2992,7 +1919,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/flying-ben",
+      "https://kitsu.app/anime/50747",
       "https://myanimelist.net/anime/64335"
     ],
     "title": "Flying Ben",
@@ -3014,7 +1941,7 @@
       "https://anilist.co/anime/213457",
       "https://en.wikipedia.org/wiki/Fool_Night#Anime",
       "https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%BC%E3%83%AB%E3%83%8A%E3%82%A4%E3%83%88",
-      "https://kitsu.app/anime/fool-night",
+      "https://kitsu.app/anime/50792",
       "https://myanimelist.net/anime/64459",
       "https://shikimori.one/animes/64459",
       "https://twitter.com/foolnight_anime",
@@ -3035,7 +1962,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/gokuu-no-chosakken-nyuumon",
+      "https://kitsu.app/anime/50748",
       "https://myanimelist.net/anime/64337"
     ],
     "title": "Gokuu no Chosakken Nyuumon",
@@ -3052,7 +1979,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/gum-gum-punch",
+      "https://kitsu.app/anime/50749",
       "https://myanimelist.net/anime/64336"
     ],
     "title": "Gum Gum Punch",
@@ -3070,7 +1997,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/ingoku-danchi"
+      "https://kitsu.app/anime/50651"
     ],
     "title": "Ingoku Danchi",
     "type": "TV",
@@ -3088,7 +2015,7 @@
   {
     "sources": [
       "https://anilist.co/anime/211607",
-      "https://kitsu.app/anime/Jujutsu-Kaisen-Modulo-PV"
+      "https://kitsu.app/anime/50696"
     ],
     "title": "Jujutsu Kaisen Modulo PV",
     "type": "TV",
@@ -3105,7 +2032,7 @@
   {
     "sources": [
       "https://anilist.co/anime/211301",
-      "https://kitsu.app/anime/kaze-no-anthem"
+      "https://kitsu.app/anime/50687"
     ],
     "title": "Kaze no Anthem",
     "type": "TV",
@@ -3122,56 +2049,8 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/patlabor-ezy"
-    ],
-    "title": "Kidou Keisatsu Patlabor EZY File 1",
-    "type": "OVA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2026
-    },
-    "synonyms": [
-      "Patlabor EZY File 1",
-      "\u6a5f\u52d5\u8b66\u5bdf\u30d1\u30c8\u30ec\u30a4\u30d0\u30fc EZY File 1"
-    ],
-    "releaseDate": "2026-05-22"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/killtube"
-    ],
-    "title": "KILLTUBE",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2026
-    },
-    "synonyms": [],
-    "releaseDate": "2026-12-01"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/kore-kaite-shine"
-    ],
-    "title": "Kore Kaite Shine",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2026
-    },
-    "synonyms": [
-      "Draw this, then die!",
-      "\u3053\u308c\u63cf\u3044\u3066\u6b7b\u306d"
-    ],
-    "releaseDate": "2026-07-08"
-  },
-  {
-    "sources": [
       "https://anilist.co/anime/211331",
-      "https://kitsu.app/anime/kujira-wo-yumemu",
+      "https://kitsu.app/anime/50698",
       "https://myanimelist.net/anime/64102",
       "https://shikimori.io/animes/64102-kujira-wo-yumemu/watch",
       "https://shikimori.one/animes/64102"
@@ -3191,21 +2070,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/kureiji-for-you"
-    ],
-    "title": "Kureiji for you",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2026
-    },
-    "synonyms": [],
-    "releaseDate": "2026-02-14"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/lego-one-piece"
+      "https://kitsu.app/anime/50656"
     ],
     "title": "LEGO ONE PIECE",
     "type": "ONA",
@@ -3225,7 +2090,7 @@
       "https://anilist.co/anime/211304",
       "https://en.wikipedia.org/wiki/Glasses_with_a_Chance_of_Delinquent#Anime",
       "https://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%AC%E3%83%8D%E3%80%81%E6%99%82%E3%80%85%E3%80%81%E3%83%A4%E3%83%B3%E3%82%AD%E3%83%BC%E3%81%8F%E3%82%93",
-      "https://kitsu.app/anime/megane-tokidoki-yankee-kun",
+      "https://kitsu.app/anime/50681",
       "https://myanimelist.net/anime/64006",
       "https://otasukebu.com",
       "https://shikimori.one/animes/64006",
@@ -3251,21 +2116,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/monsters-and-men"
-    ],
-    "title": "Monsters and Men",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2026
-    },
-    "synonyms": [],
-    "releaseDate": "2026-02-15"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/my-adventures-with-superman-season-3"
+      "https://kitsu.app/anime/50695"
     ],
     "title": "My Adventures with Superman Season 3",
     "type": "TV",
@@ -3281,25 +2132,8 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/oyome-holic"
-    ],
-    "title": "OYOME\u2661HOLIC",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2026
-    },
-    "synonyms": [
-      "OTOME\u2661HOLIC",
-      "\u304a\u5ac1\u2661HOLIC"
-    ],
-    "releaseDate": "2026-01-23"
-  },
-  {
-    "sources": [
       "https://anidb.net/anime/20041",
-      "https://kitsu.app/anime/panlong",
+      "https://kitsu.app/anime/50675",
       "https://myanimelist.net/anime/63967",
       "https://shikimori.one/animes/63967",
       "https://v.qq.com/x/cover/mzc00200ot2jctt.html"
@@ -3319,26 +2153,8 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/saikyou-degarashi-ouji-no-anyaku-teii-arasoi-munou-wo-enjiru-ss-rank-ouji-wa-koui-keishou-sen-wo-kage-kara-shihai-suru"
-    ],
-    "title": "Saikyou Degarashi Ouji no Anyaku Teii Arasoi: Munou wo Enjiru SS Rank Ouji wa Koui Keishou-sen wo Kage kara Shihai suru",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2026
-    },
-    "synonyms": [
-      "The Insipid Prince's Furtive Grab for The Throne",
-      "The Strongest Dull Prince Secret Battle for the Throne. ~I Don\u2019t Care About the Throne but Since I Don\u2019t Want to Die, I Think I Will Make My Little Brother the Emperor~",
-      "\u6700\u5f37\u51fa\u6db8\u3089\u3057\u7687\u5b50\u306e\u6697\u8e8d\u5e1d\u4f4d\u4e89\u3044 \u7121\u80fd\u3092\u6f14\u3058\u308bSS\u30e9\u30f3\u30af\u7687\u5b50\u306f\u7687\u4f4d\u7d99\u627f\u6226\u3092\u5f71\u304b\u3089\u652f\u914d\u3059\u308b"
-    ],
-    "releaseDate": "2026-07-06"
-  },
-  {
-    "sources": [
       "https://anilist.co/anime/210932",
-      "https://kitsu.app/anime/shiguang-xiao-juchang",
+      "https://kitsu.app/anime/50691",
       "https://myanimelist.net/anime/63957",
       "https://shikimori.one/animes/63957",
       "https://twitter.com/sgdlr_offical",
@@ -3363,26 +2179,7 @@
   },
   {
     "sources": [
-      "https://anilist.co/anime/Keroro-Gunsou-Shin-Anime",
-      "https://kitsu.app/anime/Shin-Keroro-Gunsou-Movie-Fukkatsushite-Sokkou-Chikyuu-Metsubou-no-Kiki-de-Arimasu"
-    ],
-    "title": "Shin Keroro Gunsou Movie: Fukkatsushite Sokkou Chikyuu Metsubou no Kiki de Arimasu!",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2026
-    },
-    "synonyms": [
-      "Sgt. Frog Movie",
-      "\u5287\u5834\u7248 \u30b1\u30ed\u30ed\u8ecd\u66f9",
-      "\u65b0\u5287\u5834\u7248 \u30b1\u30ed\u30ed\u8ecd\u66f9 \u5fa9\u6d3b\u3057\u3066\u901f\u653b\u5730\u7403\u6ec5\u4ea1\u306e\u5371\u6a5f\u3067\u3042\u308a\u307e\u3059\uff01"
-    ],
-    "releaseDate": "2026-06-26"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/shixiong-a-shixiong-zuizhong-ji",
+      "https://kitsu.app/anime/50790",
       "https://myanimelist.net/anime/64394",
       "https://shikimori.one/animes/64394",
       "https://v.youku.com/v_show/id_XNjQ4MTAzMjU0OA==.html"
@@ -3403,7 +2200,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/shunpatsu-teki-ni-koi-shiyou",
+      "https://kitsu.app/anime/50741",
       "https://myanimelist.net/anime/63915"
     ],
     "title": "Shunpatsu-teki ni Koi Shiyou",
@@ -3423,49 +2220,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/snake-eyes"
-    ],
-    "title": "SNAKE EYES",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2026
-    },
-    "synonyms": [],
-    "releaseDate": "2026-02-27"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/stay-focused"
-    ],
-    "title": "Stay Focused",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2026
-    },
-    "synonyms": [],
-    "releaseDate": "2026-03-22"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/tako-takover"
-    ],
-    "title": "TAKO\u221eTAKOVER",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2026
-    },
-    "synonyms": [],
-    "releaseDate": "2026-01-06"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/the-bloody-mary",
+      "https://kitsu.app/anime/50663",
       "https://myanimelist.net/anime/63939",
       "https://shikimori.one/animes/63939"
     ],
@@ -3483,7 +2238,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/the-legend-of-vox-machina-season-4"
+      "https://kitsu.app/anime/50688"
     ],
     "title": "The Legend of Vox Machina Season 4",
     "type": "ONA",
@@ -3497,23 +2252,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/tomei-na-yoru-ni-kakeru-kun-to-menimienai-koi-wo-shita"
-    ],
-    "title": "Tomei na Yoru ni Kakeru-kun to, Menimienai Koi wo Shita",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2026
-    },
-    "synonyms": [
-      "\u900f\u660e\u306a\u591c\u306b\u99c6\u3051\u308b\u541b\u3068\u3001\u76ee\u306b\u898b\u3048\u306a\u3044\u604b\u3092\u3057\u305f\u3002"
-    ],
-    "releaseDate": "2026-07-06"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/way-2-u"
+      "https://kitsu.app/anime/50736"
     ],
     "title": "Way 2 U",
     "type": "TV",
@@ -3527,7 +2266,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/x-men-97-season-2"
+      "https://kitsu.app/anime/50758"
     ],
     "title": "X-Men '97 Season 2",
     "type": "ONA",
@@ -3541,7 +2280,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/you-aizu"
+      "https://kitsu.app/anime/50669"
     ],
     "title": "You & Aizu",
     "type": "TV",
@@ -3563,7 +2302,7 @@
       "https://annict.com/works/17799",
       "https://en.wikipedia.org/wiki/Akane-banashi#Anime",
       "https://ja.wikipedia.org/wiki/%E3%81%82%E3%81%8B%E3%81%AD%E5%99%BA#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
-      "https://kitsu.app/anime/akane-banashi-2nd-season",
+      "https://kitsu.app/anime/50772",
       "https://myanimelist.net/anime/64439",
       "https://shikimori.one/animes/64439",
       "https://twitter.com/akanebanashi_PR",
@@ -3588,7 +2327,7 @@
   {
     "sources": [
       "https://anilist.co/anime/212653",
-      "https://kitsu.app/anime/patlabor-ezy-3"
+      "https://kitsu.app/anime/50739"
     ],
     "title": "Kidou Keisatsu Patlabor EZY File 3",
     "type": "OVA",
@@ -3635,7 +2374,7 @@
       "https://annict.com/works/17526",
       "https://en.wikipedia.org/wiki/Kagurabachi",
       "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%82%B0%E3%83%A9%E3%83%90%E3%83%81",
-      "https://kitsu.app/anime/kagurabachi",
+      "https://kitsu.app/anime/50686",
       "https://myanimelist.net/anime/64058",
       "https://shikimori.one/animes/64058",
       "https://twitter.com/kb_anime_jp",
@@ -3660,25 +2399,7 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/spider-man-beyond-the-spider-verse"
-    ],
-    "title": "Spider-Man: Beyond the Spider-Verse",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2027
-    },
-    "synonyms": [
-      "Spider-Man: Across the Spider-Verse Part 2",
-      "Spider-Man: Into the Spider-Verse 3"
-    ],
-    "releaseDate": "2027-06-18"
-  },
-  {
-    "sources": [
       "https://anilist.co/anime/211709",
-      "https://anilist.co/anime/211710",
       "https://en.wikipedia.org/wiki/The_Quintessential_Quintuplets#Anime",
       "https://ja.wikipedia.org/wiki/%E4%BA%94%E7%AD%89%E5%88%86%E3%81%AE%E8%8A%B1%E5%AB%81#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
       "https://ja.wikipedia.org/wiki/\u4e94\u7b49\u5206\u306e\u82b1\u5ac1#\u30a2\u30cb\u30e1",
@@ -3691,7 +2412,7 @@
       "https://www.livechart.me/anime/13627",
       "https://www.tbs.co.jp/anime/5hanayome"
     ],
-    "title": "5-toubun no Hanayome OVA",
+    "title": "5-toubun no Hanayome\u3010Shunkashuutou\u3011",
     "type": "TV",
     "status": "UPCOMING",
     "animeSeason": {
@@ -3712,11 +2433,10 @@
       "The Quintessential Quintuplets: The Four Seasons",
       "The Quintessential Quintuplets: [Spring",
       "Winter]",
-      "\u4e94\u7b49\u5206\u306e\u82b1\u5ac1 \u65b0\u4f5cOVA",
       "\u4e94\u7b49\u5206\u306e\u82b1\u5ac1\u3010\u6625\u590f\u79cb\u51ac\u3011",
       "\uadf9\uc7a5\ud310 5\ub4f1\ubd84\uc758"
     ],
-    "releaseDate": "2026-05-02T15:59:38.663776000Z"
+    "releaseDate": "2026-05-02T15:52:25.301424000Z"
   },
   {
     "sources": [
@@ -4039,7 +2759,7 @@
       "https://www.anisearch.com/anime/21587",
       "https://www.livechart.me/anime/13654"
     ],
-    "title": "E, Shanai System Subete One Operation shiteiru Watashi wo Kaiko desu ka?",
+    "title": "E, Shanai System Subete Wanope Shiteiru Watashi wo Kaiko desu ka?",
     "type": "TV",
     "status": "UPCOMING",
     "animeSeason": {
@@ -4145,6 +2865,22 @@
       "\u30ae\u30ac\u30f3\u30c8"
     ],
     "releaseDate": "2026-05-17T22:30:52.536444000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/211710",
+      "https://myanimelist.net/anime/64105"
+    ],
+    "title": "Go-toubun no Hanayome (Shinsaku OVA)",
+    "type": "OVA",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "\u4e94\u7b49\u5206\u306e\u82b1\u5ac1 \u65b0\u4f5cOVA"
+    ]
   },
   {
     "sources": [
@@ -4780,7 +3516,7 @@
       "https://twitter.com/precure_movie",
       "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=38940"
     ],
-    "title": "Meitantei Precure! Movie",
+    "title": "Meitantei Precure! Movie: Fushigi na Niwa to 2-ri no Himitsu",
     "type": "TV",
     "status": "UPCOMING",
     "animeSeason": {
