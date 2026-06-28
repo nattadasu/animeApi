@@ -22,6 +22,7 @@ class Downloader:
         file_name: str,
         file_type: Literal["json", "txt", "zst", "tsv"] = "json",
         platform: Platform = Platform.SYSTEM,
+        ignore_headers: bool = False,
     ) -> None:
         """
         Initialize the Downloader class
@@ -34,11 +35,14 @@ class Downloader:
         :type file_type: Literal["json", "txt", "zst", "tsv"], optional
         :param platform: The platform to print the message, defaults to Platform.SYSTEM
         :type platform: Platform, optional
+        :param ignore_headers: Whether to ignore remote headers and force download if available, defaults to False
+        :type ignore_headers: bool, optional
         """
         self.url = url
         self.file_name = file_name
         self.file_type = file_type
         self.platform = platform
+        self.ignore_headers = ignore_headers
         self.scrape: cloudscraper.CloudScraper = cloudscraper.create_scraper(  # type: ignore
             browser={
                 "browser": "chrome",
@@ -160,6 +164,8 @@ class Downloader:
 
         :return: True if unchanged (should use cache), False if changed
         """
+        if self.ignore_headers:
+            return False
         try:
             # Use HEAD request to avoid downloading
             head_response = self.scrape.head(self.url, timeout=10)
@@ -343,7 +349,7 @@ class Downloader:
         :rtype: Any
         """
         # First, check if remote file is unchanged (cheap HEAD request)
-        if self._check_remote_unchanged():
+        if not self.ignore_headers and self._check_remote_unchanged():
             try:
                 if self.file_type == "json":
                     with open(

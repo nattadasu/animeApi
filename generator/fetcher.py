@@ -222,6 +222,7 @@ def get_geckyzz_mappings() -> list[dict[str, Any]]:
         file_name="geckyzz-map",
         file_type="tsv",
         platform=Platform.GECKYZZ,
+        ignore_headers=True,
     )
     tsv_content: str = ddump.dumper()
     reader = csv.DictReader(io.StringIO(tsv_content), delimiter="\t")
