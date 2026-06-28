@@ -211,35 +211,35 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 22 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 28 June 2026 07:50:10 UTC
+Last updated: 28 June 2026 07:59:27 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
-| aniDB              |     14430 |
-| AniList            |     22464 |
+| aniDB              |     14431 |
+| AniList            |     22465 |
 | Anime News Network |     12284 |
-| Anime-Planet       |     26642 |
-| aniSearch          |     20699 |
+| Anime-Planet       |     26643 |
+| aniSearch          |     20700 |
 | Annict             |     12801 |
 | Hikka              |     28647 |
-| IMDb               |      7591 |
+| IMDb               |      7594 |
 | Kaize              |     24597 |
 | Kitsu              |     21970 |
 | Letterboxd         |      1879 |
-| LiveChart          |     12227 |
+| LiveChart          |     12228 |
 | MyAnimeList        |     30589 |
-| Nautiljon          |      9237 |
+| Nautiljon          |      9239 |
 | Notify.moe         |     16965 |
 | Otak Otaku         |      3045 |
 | Shikimori          |     30589 |
 | Shoboi/Syobocal    |      5993 |
 | Silver Yasha       |      5312 |
-| SIMKL              |     14356 |
-| The Movie Database |      8925 |
-| The TVDB           |      5421 |
-| Trakt              |      7346 |
+| SIMKL              |     14357 |
+| The Movie Database |      8928 |
+| The TVDB           |      5424 |
+| Trakt              |      7349 |
 |                    |           |
 | **Total**          | **40226** |
 <!-- /counters -->
@@ -313,8 +313,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1782633010,
-    "iso": "2026-06-28T07:50:10.548414+00:00"
+    "timestamp": 1782633567,
+    "iso": "2026-06-28T07:59:27.187574+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -339,29 +339,29 @@ GET /status
   "license": "MIT AND ODbL-1.0 AND DbCL-1.0 AND CC0-1.0",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 14430,
-    "anilist": 22464,
+    "anidb": 14431,
+    "anilist": 22465,
     "animenewsnetwork": 12284,
-    "animeplanet": 26642,
-    "anisearch": 20699,
+    "animeplanet": 26643,
+    "anisearch": 20700,
     "annict": 12801,
     "hikka": 28647,
-    "imdb": 7591,
+    "imdb": 7594,
     "kaize": 24597,
     "kitsu": 21970,
     "letterboxd": 1879,
-    "livechart": 12227,
+    "livechart": 12228,
     "myanimelist": 30589,
-    "nautiljon": 9237,
+    "nautiljon": 9239,
     "notify": 16965,
     "otakotaku": 3045,
     "shikimori": 30589,
     "shoboi": 5993,
     "silveryasha": 5312,
-    "simkl": 14356,
-    "themoviedb": 8925,
-    "thetvdb": 5421,
-    "trakt": 7346,
+    "simkl": 14357,
+    "themoviedb": 8928,
+    "thetvdb": 5424,
+    "trakt": 7349,
     "total": 40226
   },
   "endpoints": {
@@ -442,7 +442,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 06/28/2026 07:50:10 UTC
+Updated on 06/28/2026 07:59:27 UTC
 ```
 <!-- /updated-txt -->
 
