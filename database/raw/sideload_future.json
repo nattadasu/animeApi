@@ -593,9 +593,13 @@
   },
   {
     "sources": [
+      "https://annict.com/works/17517",
       "https://annict.com/works/17662",
+      "https://kitsu.app/anime/50680",
       "https://kitsu.app/anime/50791",
+      "https://myanimelist.net/anime/64011",
       "https://myanimelist.net/anime/64289",
+      "https://shikimori.one/animes/64011",
       "https://shikimori.one/animes/64289",
       "https://twitter.com/GAROU_PR",
       "https://www.snk-corp.co.jp/official/fatalfury-cotw"
@@ -610,32 +614,12 @@
     "synonyms": [
       "Fatal Fury: City of the Wolves - Mr. KARATE Trailer",
       "Fatal Fury: City of the Wolves - Mr. Karate - Long Animation Trailer",
-      "\u9913\u72fc\u4f1d\u8aac CotW\uff5cMr.KARATE\uff5c\u30ed\u30f3\u30b0\u30a2\u30cb\u30e1\u30fc\u30b7\u30e7\u30f3\u30c8\u30ec\u30fc\u30e9\u30fc"
-    ],
-    "releaseDate": "2026-05-27"
-  },
-  {
-    "sources": [
-      "https://annict.com/works/17517",
-      "https://kitsu.app/anime/50680",
-      "https://myanimelist.net/anime/64011",
-      "https://shikimori.one/animes/64011",
-      "https://twitter.com/GAROU_PR",
-      "https://www.snk-corp.co.jp/official/fatalfury-cotw"
-    ],
-    "title": "Garou Densetsu: CotW - Wolfgang Krauser",
-    "type": "TV",
-    "status": "FINISHED",
-    "animeSeason": {
-      "season": "SPRING",
-      "year": 2026
-    },
-    "synonyms": [
       "Fatal Fury: City of the Wolves - Wolfgang Krauser Trailer",
       "Garou Densetsu: CotW - Wolfgang Krauser - Long Animation Trailer",
+      "\u9913\u72fc\u4f1d\u8aac CotW\uff5cMr.KARATE\uff5c\u30ed\u30f3\u30b0\u30a2\u30cb\u30e1\u30fc\u30b7\u30e7\u30f3\u30c8\u30ec\u30fc\u30e9\u30fc",
       "\u9913\u72fc\u4f1d\u8aac CotW\uff5c\u30f4\u30a9\u30eb\u30d5\u30ac\u30f3\u30b0\u30fb\u30af\u30e9\u30a6\u30b6\u30fc\uff5c\u30ed\u30f3\u30b0\u30a2\u30cb\u30e1\u30fc\u30b7\u30e7\u30f3\u30c8\u30ec\u30fc\u30e9\u30fc"
     ],
-    "releaseDate": "2026-04-24"
+    "releaseDate": "2026-05-27"
   },
   {
     "sources": [
@@ -2296,6 +2280,20 @@
   },
   {
     "sources": [
+      "https://kitsu.app/anime/50807"
+    ],
+    "title": "Zombie Stage",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-06-26"
+  },
+  {
+    "sources": [
       "https://akane-banashi.com",
       "https://anidb.net/anime/20117",
       "https://anilist.co/anime/213360",
@@ -2400,6 +2398,7 @@
   {
     "sources": [
       "https://anilist.co/anime/211709",
+      "https://anilist.co/anime/211710",
       "https://en.wikipedia.org/wiki/The_Quintessential_Quintuplets#Anime",
       "https://ja.wikipedia.org/wiki/%E4%BA%94%E7%AD%89%E5%88%86%E3%81%AE%E8%8A%B1%E5%AB%81#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
       "https://ja.wikipedia.org/wiki/\u4e94\u7b49\u5206\u306e\u82b1\u5ac1#\u30a2\u30cb\u30e1",
@@ -2433,6 +2432,7 @@
       "The Quintessential Quintuplets: The Four Seasons",
       "The Quintessential Quintuplets: [Spring",
       "Winter]",
+      "\u4e94\u7b49\u5206\u306e\u82b1\u5ac1 \u65b0\u4f5cOVA",
       "\u4e94\u7b49\u5206\u306e\u82b1\u5ac1\u3010\u6625\u590f\u79cb\u51ac\u3011",
       "\uadf9\uc7a5\ud310 5\ub4f1\ubd84\uc758"
     ],
@@ -2868,22 +2868,6 @@
   },
   {
     "sources": [
-      "https://anilist.co/anime/211710",
-      "https://myanimelist.net/anime/64105"
-    ],
-    "title": "Go-toubun no Hanayome (Shinsaku OVA)",
-    "type": "OVA",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": null
-    },
-    "synonyms": [
-      "\u4e94\u7b49\u5206\u306e\u82b1\u5ac1 \u65b0\u4f5cOVA"
-    ]
-  },
-  {
-    "sources": [
       "https://anilist.co/anime/213507",
       "https://en.wikipedia.org/wiki/Gokigeny%C5%8D,_Ikkyoku_Ika_ga%3F",
       "https://ja.wikipedia.org/wiki/%E3%81%94%E3%81%8D%E3%81%92%E3%82%93%E3%82%88%E3%81%86%E3%80%81%E4%B8%80%E5%B1%80%E3%81%84%E3%81%8B%E3%81%8C%3F",
@@ -3067,6 +3051,8 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/213627",
+      "https://myanimelist.net/anime/64487",
       "https://www.livechart.me/anime/13691"
     ],
     "title": "Hokuto no Ken -Fist of the North Star- Cour 2",
@@ -3078,7 +3064,8 @@
     },
     "synonyms": [
       "HNK",
-      "Seikimatsu Kyuseishu Densetsu: Hokuto no Ken"
+      "Seikimatsu Kyuseishu Densetsu: Hokuto no Ken",
+      "\u5317\u6597\u306e\u62f3 -FIST OF THE NORTH STAR- \u7b2c2\u30af\u30fc\u30eb"
     ],
     "releaseDate": "2026-06-26T16:59:53.651067000Z"
   },
@@ -3347,6 +3334,30 @@
     "synonyms": [
       "Kawaisouni! Gekijo"
     ]
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/213628",
+      "https://en.wikipedia.org/wiki/Kill_Blue#Anime",
+      "https://ja.wikipedia.org/wiki/\u30ad\u30eb\u30a2\u30aa#\u30c6\u30ec\u30d3\u30a2\u30cb\u30e1",
+      "https://kill-blue.jp",
+      "https://myanimelist.net/anime/64495",
+      "https://shikimori.one/animes/64495",
+      "https://twitter.com/KillBlue_en",
+      "https://www.livechart.me/anime/13695"
+    ],
+    "title": "Kill Ao 2nd Season",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "KILL BLUE Season 2",
+      "\u30ad\u30eb\u30a2\u30aa \u7b2c2\u671f"
+    ],
+    "releaseDate": "2026-06-27T16:45:43.804366000Z"
   },
   {
     "sources": [
@@ -4161,6 +4172,37 @@
     },
     "synonyms": [
       "My House of Horrors"
+    ]
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/213638"
+    ],
+    "title": "Xi Yangyang Yu Hui Tailang: Po Jie Shanhai Jue",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "\u559c\u7f8a\u7f8a\u4e0e\u7070\u592a\u72fc\u4e4b\u7834\u754c\u5c71\u6d77\u8bc0"
+    ],
+    "releaseDate": "2026-07-10"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/213639"
+    ],
+    "title": "Xi Yangyang Yu Hui Tailang: Qi Xia da Yingjiu Zhi Feng Juan Weicheng",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "\u559c\u7f8a\u7f8a\u4e0e\u7070\u592a\u72fc\u4e4b\u5947\u4fa0\u5927\u8425\u6551\u4e4b\u98ce\u5377\u56f4\u57ce"
     ]
   },
   {
