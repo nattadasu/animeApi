@@ -10,7 +10,7 @@ from time import sleep
 import cloudscraper  # type: ignore
 from alive_progress import alive_bar  # type: ignore
 from bs4 import BeautifulSoup, Tag
-from const import FORCE_FETCH_NAUTILJON, GITHUB_DISPATCH
+from const import FORCE_FETCH_NAUTILJON, GITHUB_DISPATCH, NO_FETCH
 from prettyprint import Platform, PrettyPrint, Status
 from requests import HTTPError, Response
 
@@ -131,6 +131,16 @@ class Nautiljon:
         """
         anime_data: list[dict[str, str | int | None]] = []
         file_path = "database/raw/nautiljon.json"
+        if NO_FETCH:
+            pprint.print(
+                Platform.NAUTILJON,
+                Status.NOTICE,
+                "NO_FETCH is set, loading local Nautiljon cache",
+            )
+            with open(file_path, "r", encoding="utf-8") as f:
+                anime_data = json.load(f)
+            anime_data.sort(key=lambda x: x["title"])  # type: ignore
+            return anime_data
         try:
             if (
                 datetime.now().day not in [2, 16]

@@ -7,7 +7,7 @@ from typing import Any
 
 import requests
 from alive_progress import alive_bar  # type: ignore
-from const import FORCE_FETCH_HIKKA, GITHUB_DISPATCH
+from const import FORCE_FETCH_HIKKA, GITHUB_DISPATCH, NO_FETCH
 from prettyprint import Platform, PrettyPrint, Status
 from requests import HTTPError, Response
 
@@ -65,6 +65,23 @@ class Hikka:
         """
         anime_data: list[dict[str, Any]] = []
         file_path = "database/raw/hikka.json"
+
+        if NO_FETCH:
+            pprint.print(
+                Platform.HIKKA,
+                Status.NOTICE,
+                "NO_FETCH is set, loading local Hikka cache",
+            )
+            try:
+                with open(file_path, "r", encoding="utf-8") as f:
+                    anime_data = json.load(f)
+                anime_data.sort(key=lambda x: x.get("title_en", "") or "")
+                return anime_data
+            except FileNotFoundError:
+                pprint.print(
+                    Platform.HIKKA, Status.ERR, "Local file not found, skipping Hikka"
+                )
+                return []
 
         try:
             if (

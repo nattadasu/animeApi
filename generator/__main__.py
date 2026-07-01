@@ -19,6 +19,7 @@ Each flag can also be set via the corresponding environment variable
   FORCE_FETCH_NAUTILJON   --force-fetch-nautiljon
   FORCE_FETCH_KAIZE       --force-fetch-kaize
   FORCE_FETCH_OTAKOTAKU   --force-fetch-otakotaku
+  NO_FETCH                --no-fetch
   FORCE_DUMP              --force-dump
 
 CLI flags take precedence: if either the flag or the env var is set,
@@ -56,6 +57,12 @@ Examples:
         default=False,
         help="Bypass the day-1/15 gate and do a full OtakOtaku re-fetch from ID 1",
     )
+    fetch_group.add_argument(
+        "--no-fetch",
+        action="store_true",
+        default=False,
+        help="Skip all network fetches and load only from local cache files",
+    )
 
     dump_group = parser.add_argument_group("dump options")
     dump_group.add_argument(
@@ -78,6 +85,7 @@ def _apply_args_to_env(args: argparse.Namespace) -> None:
         "force_fetch_nautiljon": "FORCE_FETCH_NAUTILJON",
         "force_fetch_kaize": "FORCE_FETCH_KAIZE",
         "force_fetch_otakotaku": "FORCE_FETCH_OTAKOTAKU",
+        "no_fetch": "NO_FETCH",
         "force_dump": "FORCE_DUMP",
     }
     for attr, env_key in flag_map.items():

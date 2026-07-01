@@ -7,6 +7,7 @@ from typing import Any, Literal, Union
 import cloudscraper  # type: ignore
 import zstandard as zstd
 from alive_progress import alive_bar
+from const import NO_FETCH
 from prettyprint import Platform, PrettyPrint, Status
 from requests import Response
 
@@ -348,6 +349,14 @@ class Downloader:
         :return: The data to process
         :rtype: Any
         """
+        if NO_FETCH:
+            pprint.print(
+                self.platform,
+                Status.NOTICE,
+                f"NO_FETCH is set, loading cached {self.file_name}.{self.file_type}",
+            )
+            return self.loader()
+
         # First, check if remote file is unchanged (cheap HEAD request)
         if not self.ignore_headers and self._check_remote_unchanged():
             try:
@@ -482,7 +491,7 @@ class Downloader:
         :rtype: Any
         """
         try:
-            if self.file_type == "json":
+            if self.file_type in ("json", "zst"):
                 with open(
                     f"database/raw/{self.file_name}.json", "r", encoding="utf-8"
                 ) as file:

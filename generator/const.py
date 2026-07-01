@@ -36,6 +36,9 @@ FORCE_FETCH_OTAKOTAKU = os.getenv("FORCE_FETCH_OTAKOTAKU", "").lower() in (
 )
 """Force a full OtakOtaku re-fetch from ID 1 regardless of the scheduled day gate"""
 
+NO_FETCH = os.getenv("NO_FETCH", "").lower() in ("true", "1", "yes")
+"""Skip all network fetching and load only from local cache files"""
+
 FORCE_DUMP = os.getenv("FORCE_DUMP", "").lower() in ("true", "1", "yes")
 """Force regeneration and commit of the database even when git reports no changes"""
 

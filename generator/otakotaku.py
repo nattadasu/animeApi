@@ -8,7 +8,7 @@ from typing import Any, Union
 import requests as req
 from alive_progress import alive_bar  # type: ignore
 from bs4 import BeautifulSoup, Tag
-from const import FORCE_FETCH_OTAKOTAKU, GITHUB_DISPATCH
+from const import FORCE_FETCH_OTAKOTAKU, GITHUB_DISPATCH, NO_FETCH
 from fake_useragent import FakeUserAgent  # type: ignore
 from prettyprint import Platform, PrettyPrint, Status
 
@@ -148,6 +148,14 @@ class OtakOtaku:
         if os.path.exists(file_path):
             with open(file_path, "r", encoding="utf-8") as file:
                 anime_list = json.load(file)
+        if NO_FETCH:
+            pprint.print(
+                Platform.OTAKOTAKU,
+                Status.NOTICE,
+                "NO_FETCH is set, loading local OtakOtaku cache",
+            )
+            anime_list.sort(key=lambda x: x["title"])  # type: ignore
+            return anime_list
         try:
             latest_id = self.get_latest_anime()
             if not latest_id:

@@ -10,7 +10,7 @@ from typing import Any, Literal, Optional, Union
 import requests as req
 from alive_progress import alive_bar  # type: ignore
 from bs4 import BeautifulSoup, Tag
-from const import FORCE_FETCH_KAIZE
+from const import FORCE_FETCH_KAIZE, NO_FETCH
 from fake_useragent import FakeUserAgent  # type: ignore
 from prettyprint import Platform, PrettyPrint, Status
 
@@ -385,6 +385,16 @@ class Kaize:
         """
         anime_data: list[dict[str, Any]] = []
         file_path = "database/raw/kaize.json"
+        if NO_FETCH:
+            pprint.print(
+                Platform.KAIZE,
+                Status.NOTICE,
+                "NO_FETCH is set, loading local Kaize cache",
+            )
+            with open(file_path, "r", encoding="utf-8") as file:
+                anime_data = json.load(file)
+            anime_data.sort(key=lambda x: x["title"])  # type: ignore
+            return anime_data
         try:
             self._session_set()
             pages = self.pages()
