@@ -538,6 +538,40 @@
   },
   {
     "sources": [
+      "https://annict.com/works/17133",
+      "https://myanimelist.net/anime/63976",
+      "https://shikimori.one/animes/63976",
+      "https://www.tv-tokyo.co.jp/anime/shibuya-hachi"
+    ],
+    "title": "Shibuya\u2661Hachi Part 4: Hachi to Shibuya wo Arukou!",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "WINTER",
+      "year": 2026
+    },
+    "synonyms": [
+      "Shibuya\u2661Hachi Part 4 Special",
+      "Shibuya\u2661Hachi Special Episode: Take a walk with Hachi in Shibuya!"
+    ]
+  },
+  {
+    "sources": [
+      "https://annict.com/works/17386",
+      "https://myanimelist.net/anime/63896",
+      "https://shikimori.one/animes/63896"
+    ],
+    "title": "Tokusou Gattai Robo Jobraver: Gyakushuu no Joker!",
+    "type": "TV",
+    "status": "ONGOING",
+    "animeSeason": {
+      "season": "WINTER",
+      "year": 2026
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
       "https://annict.com/works/17142",
       "https://myanimelist.net/anime/64008",
       "https://shikimori.one/animes/64008",
@@ -824,6 +858,25 @@
   },
   {
     "sources": [
+      "https://annict.com/works/17253",
+      "https://kitsu.app/anime/50663",
+      "https://myanimelist.net/anime/63939",
+      "https://shikimori.one/animes/63939"
+    ],
+    "title": "The Bloody Mary",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "SPRING",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u30d6\u30e9\u30c3\u30c7\u30a3\u30fb\u30e1\u30a2\u30ea\u30fc"
+    ],
+    "releaseDate": "2026-04-11"
+  },
+  {
+    "sources": [
       "https://www.livechart.me/anime/13594"
     ],
     "title": "THE LENTICULARS a/b COMPLETE VERSION",
@@ -892,6 +945,28 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/213750",
+      "https://bananya.jp",
+      "https://kitsu.app/anime/50811",
+      "https://myanimelist.net/anime/64519",
+      "https://shikimori.one/animes/64519",
+      "https://twitter.com/bananya_anime",
+      "https://www.livechart.me/anime/13705"
+    ],
+    "title": "Bananya At-Home Party",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u3070\u306a\u306b\u3083 \u3042\u3063\u3068\u307b\u30fc\u3080\u3071\u30fc\u3066\u3043\u30fc"
+    ],
+    "releaseDate": "2026-07-10T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/211711",
       "https://annict.com/works/17543",
       "https://en.wikipedia.org/wiki/My_Hero_Academia",
@@ -943,14 +1018,16 @@
     ],
     "title": "Chikyuu Daisuki! Kikkun",
     "type": "TV",
-    "status": "UPCOMING",
+    "status": "ONGOING",
     "animeSeason": {
       "season": "SUMMER",
       "year": 2026
     },
     "synonyms": [
+      "Earth Loving Kikkun!",
       "\u5730\u7403\u5927\u597d\u304d\uff01\u304d\u3063\u304f\u3093"
-    ]
+    ],
+    "releaseDate": "2026-07-01"
   },
   {
     "sources": [
@@ -1022,6 +1099,22 @@
       "\u8e42\u8e99\u738b\u56fd \u30a8\u30eb\u30d5\u738b\u56fd\u306f\u5de8\u5927\u82d7\u5e8a\u306b"
     ],
     "releaseDate": "2026-07-03"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/213733"
+    ],
+    "title": "Kanojo Saimin",
+    "type": "OVA",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u5f7c\u5973\u50ac\u7720"
+    ],
+    "releaseDate": "2026-08-28"
   },
   {
     "sources": [
@@ -1122,6 +1215,41 @@
   },
   {
     "sources": [
+      "https://2026.precure-movie.com",
+      "https://annict.com/works/17379",
+      "https://en.wikipedia.org/wiki/Star_Detective_Precure!",
+      "https://myanimelist.net/anime/63903",
+      "https://shikimori.one/animes/63903",
+      "https://twitter.com/precure_movie",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=38940"
+    ],
+    "title": "Meitantei Precure! Movie: Fushigi na Niwa to 2-ri no Himitsu",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2026
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/213732"
+    ],
+    "title": "Mujikaku na Osananajimi to Kyoumi Honi de Yatte Mitara THE ANIMATION",
+    "type": "OVA",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u7121\u81ea\u899a\u306a\u5e7c\u99b4\u67d3\u3068\u8208\u5473\u672c\u4f4d\u3067\u30e4\u3063\u3066\u307f\u305f\u3089 THE ANIMATION"
+    ],
+    "releaseDate": "2026-09-25"
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/213066",
       "https://myanimelist.net/anime/64404"
     ],
@@ -1156,6 +1284,24 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/213686"
+    ],
+    "title": "NTR Kishi",
+    "type": "OVA",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2026
+    },
+    "synonyms": [
+      "NTR\u9a0e\u58eb",
+      "the fallen knight"
+    ],
+    "releaseDate": "2026-09-25"
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64381",
       "https://www.livechart.me/anime/13666"
     ],
     "title": "Osomatsu-san 4th Season Episode 13",
@@ -1375,6 +1521,7 @@
     "sources": [
       "https://anilist.co/anime/213359",
       "https://annict.com/works/17812",
+      "https://cal.syoboi.jp/tid/7948",
       "https://kitsu.app/anime/50773",
       "https://myanimelist.net/anime/64435",
       "https://shikimori.one/animes/64435",
@@ -1427,6 +1574,7 @@
     "sources": [
       "https://anidb.net/anime/20002",
       "https://anime.cf-vanguard.com/vgd",
+      "https://annict.com/works/17433",
       "https://myanimelist.net/anime/63938",
       "https://shikimori.one/animes/63938",
       "https://www.livechart.me/anime/13599",
@@ -1444,10 +1592,46 @@
       "CARDFIGHT!! VANGUARD Divinez DELUXE Finals",
       "CARDFIGHT!! VANGUARD Divinez Parallactic Clash Arc",
       "CARDFIGHT!! VANGUARD overDress",
+      "\u30ab\u30fc\u30c9\u30d5\u30a1\u30a4\u30c8!! \u30f4\u30a1\u30f3\u30ac\u30fc\u30c9 Divinez \u904b\u547d\u661f\u6226\u7de8",
       "\u30ab\u30fc\u30c9\u30d5\u30a1\u30a4\u30c8!! \u30f4\u30a1\u30f3\u30ac\u30fc\u30c9 D\u30b7\u30ea\u30fc\u30ba \u7b2c10\u671f",
       "\u30ab\u30fc\u30c9\u30d5\u30a1\u30a4\u30c8!! \u30f4\u30a1\u30f3\u30ac\u30fc\u30c9 overDress"
     ],
     "releaseDate": "2026-10-01T15:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://aceofthediamond.com",
+      "https://anidb.net/anime/20143",
+      "https://anilist.co/anime/213658",
+      "https://annict.com/works/17853",
+      "https://en.wikipedia.org/wiki/Ace_of_Diamond#Anime",
+      "https://ja.wikipedia.org/wiki/%E3%83%80%E3%82%A4%E3%83%A4%E3%81%AEA#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
+      "https://kitsu.app/anime/50822",
+      "https://myanimelist.net/anime/64505",
+      "https://shikimori.one/animes/64505",
+      "https://twitter.com/diaace_anime",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40188",
+      "https://www.livechart.me/anime/13701",
+      "https://www.world-art.ru/animation/animation.php?id=12936"
+    ],
+    "title": "Diamond no Ace act II -Second Season- Cour 2",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2026
+    },
+    "synonyms": [
+      "Ace of Diamond Act II Season 2 Part 2",
+      "Ace of Diamond: Act II",
+      "Ace of diamond actII-Second Season-",
+      "Ace of the Diamond act II Season 2",
+      "Ace of the Diamond act II Sequel",
+      "Daiya no Ace",
+      "Diamond no Ace: Act II Sequel",
+      "\u30c0\u30a4\u30e4\u306eA act\u2161 -Second Season- \u7b2c2\u30af\u30fc\u30eb"
+    ],
+    "releaseDate": "2026-06-28T09:07:30.506262000Z"
   },
   {
     "sources": [
@@ -1643,6 +1827,7 @@
   },
   {
     "sources": [
+      "https://annict.com/works/17329",
       "https://myanimelist.net/anime/63901",
       "https://shikimori.one/animes/63901",
       "https://www.tv-asahi.co.jp/sirotan"
@@ -1703,6 +1888,35 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/213657",
+      "https://annict.com/works/17850",
+      "https://en.wikipedia.org/wiki/Mission:_Yozakura_Family#Anime",
+      "https://ja.wikipedia.org/wiki/%E5%A4%9C%E6%A1%9C%E3%81%95%E3%82%93%E3%81%A1%E3%81%AE%E5%A4%A7%E4%BD%9C%E6%88%A6#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
+      "https://kitsu.app/anime/50823",
+      "https://mission-yozakura-family.com",
+      "https://myanimelist.net/anime/64503",
+      "https://shikimori.one/animes/64503",
+      "https://twitter.com/OfficialHitsuji",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40187",
+      "https://www.livechart.me/anime/13700",
+      "https://www.world-art.ru/animation/animation.php?id=12935"
+    ],
+    "title": "Yozakura-san Chi no Daisakusen 2nd Season Cour 2",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2026
+    },
+    "synonyms": [
+      "Mission of Yozakura family",
+      "Mission: Yozakura Family Season 2 Part 2",
+      "\u591c\u685c\u3055\u3093\u3061\u306e\u5927\u4f5c\u6226 \u7b2c2\u671f \u7b2c2\u30af\u30fc\u30eb"
+    ],
+    "releaseDate": "2026-10-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/213298",
       "https://annict.com/works/17803",
       "https://myanimelist.net/anime/64430",
@@ -1735,6 +1949,20 @@
       "year": 2026
     },
     "synonyms": []
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50809"
+    ],
+    "title": "Adventure Time: Side Quests",
+    "type": "ONA",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-06-29"
   },
   {
     "sources": [
@@ -1851,6 +2079,24 @@
   },
   {
     "sources": [
+      "https://kitsu.app/anime/50818",
+      "https://myanimelist.net/anime/64502"
+    ],
+    "title": "Chibi Godzilla no Gyakushuu 4th Season",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "Chibi Godzilla Raids Again Season 4",
+      "\u3061\u3073\u30b4\u30b8\u30e9\u306e\u9006\u8972"
+    ],
+    "releaseDate": "2026-04-01"
+  },
+  {
+    "sources": [
       "https://kitsu.app/anime/50806",
       "https://myanimelist.net/anime/202717"
     ],
@@ -1929,8 +2175,12 @@
       "https://myanimelist.net/anime/64459",
       "https://shikimori.one/animes/64459",
       "https://twitter.com/foolnight_anime",
+      "https://www.anime-planet.com/anime/fool-night",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40109",
+      "https://www.anisearch.com/anime/21751",
       "https://www.foolnight.com",
-      "https://www.livechart.me/anime/13682"
+      "https://www.livechart.me/anime/13682",
+      "https://www.world-art.ru/animation/animation.php?id=12917"
     ],
     "title": "FOOL NIGHT",
     "type": "TV",
@@ -2204,21 +2454,17 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/50663",
-      "https://myanimelist.net/anime/63939",
-      "https://shikimori.one/animes/63939"
+      "https://kitsu.app/anime/50810"
     ],
-    "title": "The Bloody Mary",
+    "title": "SUPERNOVA SUPER GIRL",
     "type": "TV",
-    "status": "FINISHED",
+    "status": "UPCOMING",
     "animeSeason": {
       "season": "TBA",
       "year": 2026
     },
-    "synonyms": [
-      "\u30d6\u30e9\u30c3\u30c7\u30a3\u30fb\u30e1\u30a2\u30ea\u30fc"
-    ],
-    "releaseDate": "2026-04-11"
+    "synonyms": [],
+    "releaseDate": "2026-06-27"
   },
   {
     "sources": [
@@ -2280,7 +2526,30 @@
   },
   {
     "sources": [
-      "https://kitsu.app/anime/50807"
+      "https://anilist.co/anime/213486",
+      "https://baike.baidu.com/item/\u6709\u517d\u7109 \u7b2c\u516d\u5b63",
+      "https://kitsu.app/anime/50815",
+      "https://myanimelist.net/anime/64461",
+      "https://shikimori.one/animes/64461",
+      "https://www.bilibili.com/bangumi/media/md28235647"
+    ],
+    "title": "You Shou Yan 6th Season",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "Fabulous Beasts 6",
+      "\u6709\u517d\u7109 \u7b2c\u516d\u5b63"
+    ],
+    "releaseDate": "2026-08-05"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50807",
+      "https://myanimelist.net/anime/64483"
     ],
     "title": "Zombie Stage",
     "type": "TV",
@@ -2289,7 +2558,10 @@
       "season": "TBA",
       "year": 2026
     },
-    "synonyms": [],
+    "synonyms": [
+      "Alien Stage AU: Zombie Stage",
+      "ZOMST"
+    ],
     "releaseDate": "2026-06-26"
   },
   {
@@ -2304,7 +2576,9 @@
       "https://myanimelist.net/anime/64439",
       "https://shikimori.one/animes/64439",
       "https://twitter.com/akanebanashi_PR",
+      "https://www.anime-planet.com/anime/akane-banashi-season-2",
       "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40070",
+      "https://www.anisearch.com/anime/21743",
       "https://www.livechart.me/anime/13675",
       "https://www.world-art.ru/animation/animation.php?id=12915"
     ],
@@ -2343,13 +2617,44 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/213752",
+      "https://annict.com/works/17856",
+      "https://en.wikipedia.org/wiki/Marriagetoxin#Anime",
+      "https://ja.wikipedia.org/wiki/\u30de\u30ea\u30c3\u30b8\u30c8\u30ad\u30b7\u30f3#\u30c6\u30ec\u30d3\u30a2\u30cb\u30e1",
+      "https://kitsu.app/anime/50825",
+      "https://myanimelist.net/anime/64524",
+      "https://shikimori.one/animes/64524",
+      "https://twitter.com/marritoxi_PR",
+      "https://www.livechart.me/anime/13707",
+      "https://www.marriagetoxin-anime.com"
+    ],
+    "title": "MARRIAGETOXIN Season 2",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "WINTER",
+      "year": 2027
+    },
+    "synonyms": [
+      "Marriage Toxin",
+      "\u30de\u30ea\u30c3\u30b8\u30c8\u30ad\u30b7\u30f3 \u7b2c2\u671f"
+    ],
+    "releaseDate": "2027-01-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20126",
       "https://anilist.co/anime/213497",
       "https://annict.com/works/17823",
       "https://myanimelist.net/anime/64467",
       "https://shikimori.one/animes/64467",
       "https://twitter.com/sudachi_anime",
+      "https://www.anime-planet.com/anime/the-fledgling-demon-lords-starter-shop",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40134",
+      "https://www.anisearch.com/anime/21746",
       "https://www.livechart.me/anime/13686",
-      "https://www.sudachi-anime.com"
+      "https://www.sudachi-anime.com",
+      "https://www.world-art.ru/animation/animation.php?id=12923"
     ],
     "title": "Sudachi no Maoujou",
     "type": "TV",
@@ -2392,6 +2697,34 @@
     "synonyms": [
       "KGB",
       "\u30ab\u30b0\u30e9\u30d0\u30c1"
+    ],
+    "releaseDate": "2027-04-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20140",
+      "https://anilist.co/anime/213655",
+      "https://annict.com/works/17848",
+      "https://en.wikipedia.org/wiki/LONA_(TV_series)",
+      "https://lona-animation.com",
+      "https://myanimelist.net/anime/64501",
+      "https://shikimori.one/animes/64501",
+      "https://twitter.com/LONA_animation",
+      "https://www.anime-planet.com/anime/lona",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40186",
+      "https://www.livechart.me/anime/13698",
+      "https://www.world-art.ru/animation/animation.php?id=12933"
+    ],
+    "title": "LONA",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "SPRING",
+      "year": 2027
+    },
+    "synonyms": [
+      "LONA Laboratory of Optics and Neural Analysis",
+      "Laboratory of Optics and Neural Analysis"
     ],
     "releaseDate": "2027-04-01T00:00:00.000000000Z"
   },
@@ -2688,6 +3021,7 @@
       "https://myanimelist.net/anime/64374",
       "https://shikimori.one/animes/64374",
       "https://twitter.com/daisy_anime_pr",
+      "https://www.anime-planet.com/anime/dengeki-daisy",
       "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=39890",
       "https://www.anisearch.com/anime/21730",
       "https://www.livechart.me/anime/13662",
@@ -2868,12 +3202,16 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20128",
       "https://anilist.co/anime/213507",
       "https://en.wikipedia.org/wiki/Gokigeny%C5%8D,_Ikkyoku_Ika_ga%3F",
       "https://ja.wikipedia.org/wiki/%E3%81%94%E3%81%8D%E3%81%92%E3%82%93%E3%82%88%E3%81%86%E3%80%81%E4%B8%80%E5%B1%80%E3%81%84%E3%81%8B%E3%81%8C%3F",
       "https://myanimelist.net/anime/64468",
       "https://shikimori.one/animes/64468",
-      "https://www.livechart.me/anime/13688"
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40148",
+      "https://www.anisearch.com/anime/21750",
+      "https://www.livechart.me/anime/13688",
+      "https://www.world-art.ru/animation/animation.php?id=12925"
     ],
     "title": "Gokigen You, Ikkyoku Ikaga?",
     "type": "TV",
@@ -2975,14 +3313,19 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20119",
       "https://anilist.co/anime/213396",
       "https://en.wikipedia.org/wiki/Higurashi_no_Naku_Koro_ni",
       "https://higurashianime.com",
       "https://ja.wikipedia.org/wiki/%E3%81%B2%E3%81%90%E3%82%89%E3%81%97%E3%81%AE%E3%81%AA%E3%81%8F%E9%A0%83%E3%81%AB",
+      "https://kitsu.app/anime/50777",
       "https://myanimelist.net/anime/64449",
       "https://shikimori.one/animes/64449",
       "https://twitter.com/higu_anime",
-      "https://www.livechart.me/anime/13677"
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40080",
+      "https://www.anisearch.com/anime/21744",
+      "https://www.livechart.me/anime/13677",
+      "https://www.world-art.ru/animation/animation.php?id=12916"
     ],
     "title": "Higurashi no Naku Koro ni",
     "type": "TV",
@@ -3068,6 +3411,23 @@
       "\u5317\u6597\u306e\u62f3 -FIST OF THE NORTH STAR- \u7b2c2\u30af\u30fc\u30eb"
     ],
     "releaseDate": "2026-06-26T16:59:53.651067000Z"
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64512",
+      "https://shikimori.one/animes/64512",
+      "https://www.dw-f.jp/index.html?target=445"
+    ],
+    "title": "Imamura Shoken CMs",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Seichou no Soba ni"
+    ]
   },
   {
     "sources": [
@@ -3280,6 +3640,7 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20136",
       "https://anilist.co/anime/213581",
       "https://en.wikipedia.org/wiki/Rent-A-Girlfriend#Anime",
       "https://ja.wikipedia.org/wiki/%E5%BD%BC%E5%A5%B3%E3%80%81%E3%81%8A%E5%80%9F%E3%82%8A%E3%81%97%E3%81%BE%E3%81%99",
@@ -3287,7 +3648,9 @@
       "https://myanimelist.net/anime/64484",
       "https://shikimori.one/animes/64484",
       "https://twitter.com/kanokari_anime",
-      "https://www.livechart.me/anime/13692"
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40169",
+      "https://www.livechart.me/anime/13692",
+      "https://www.world-art.ru/animation/animation.php?id=12930"
     ],
     "title": "Kanojo, Okarishimasu 6th Season",
     "type": "TV",
@@ -3337,6 +3700,7 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20139",
       "https://anilist.co/anime/213628",
       "https://en.wikipedia.org/wiki/Kill_Blue#Anime",
       "https://ja.wikipedia.org/wiki/\u30ad\u30eb\u30a2\u30aa#\u30c6\u30ec\u30d3\u30a2\u30cb\u30e1",
@@ -3344,7 +3708,11 @@
       "https://myanimelist.net/anime/64495",
       "https://shikimori.one/animes/64495",
       "https://twitter.com/KillBlue_en",
-      "https://www.livechart.me/anime/13695"
+      "https://www.anime-planet.com/anime/kill-blue-season-2",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40185",
+      "https://www.anisearch.com/anime/21756",
+      "https://www.livechart.me/anime/13695",
+      "https://www.world-art.ru/animation/animation.php?id=12931"
     ],
     "title": "Kill Ao 2nd Season",
     "type": "TV",
@@ -3361,6 +3729,21 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/213660",
+      "https://www.livechart.me/anime/13702"
+    ],
+    "title": "KING OF PRISM-Tri-Star-Act",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [],
+    "releaseDate": "2026-06-28T18:23:09.560551000Z"
+  },
+  {
+    "sources": [
       "https://anidb.net/anime/20091",
       "https://anilist.co/anime/213131",
       "https://en.wikipedia.org/wiki/Fall_in_Love,_You_False_Angels#Anime",
@@ -3369,6 +3752,7 @@
       "https://myanimelist.net/anime/64380",
       "https://shikimori.one/animes/64380",
       "https://twitter.com/koidomo_anime",
+      "https://www.anime-planet.com/anime/fall-in-love-you-false-angels",
       "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=39929",
       "https://www.anisearch.com/anime/21731",
       "https://www.livechart.me/anime/13665",
@@ -3394,6 +3778,7 @@
     "sources": [
       "https://anilist.co/anime/213422",
       "https://myanimelist.net/anime/64452",
+      "https://www.anime-planet.com/anime/i-think-i-turned-my-childhood-friend-into-a-girl",
       "https://www.livechart.me/anime/13679"
     ],
     "title": "Koisuru (Otome) no Tsukurikata",
@@ -3520,24 +3905,6 @@
   },
   {
     "sources": [
-      "https://2026.precure-movie.com",
-      "https://en.wikipedia.org/wiki/Star_Detective_Precure!",
-      "https://myanimelist.net/anime/63903",
-      "https://shikimori.one/animes/63903",
-      "https://twitter.com/precure_movie",
-      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=38940"
-    ],
-    "title": "Meitantei Precure! Movie: Fushigi na Niwa to 2-ri no Himitsu",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": null
-    },
-    "synonyms": []
-  },
-  {
-    "sources": [
       "https://anidb.net/anime/20109",
       "https://www.livechart.me/anime/13671"
     ],
@@ -3645,7 +4012,9 @@
       "https://myanimelist.net/anime/64466",
       "https://shikimori.one/animes/64466",
       "https://twitter.com/nabenitama",
-      "https://www.livechart.me/anime/13687"
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40135",
+      "https://www.livechart.me/anime/13687",
+      "https://www.world-art.ru/animation/animation.php?id=12924"
     ],
     "title": "Nabe ni Dangan wo Ukenagara",
     "type": "TV",
@@ -3797,12 +4166,17 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20122",
       "https://anilist.co/anime/213469",
       "https://myanimelist.net/anime/64462",
       "https://rebelrobotica-anime.com",
       "https://shikimori.one/animes/64462",
       "https://twitter.com/robotica_anime",
-      "https://www.livechart.me/anime/13683"
+      "https://www.anime-planet.com/anime/rebel-robotica",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40115",
+      "https://www.anisearch.com/anime/21748",
+      "https://www.livechart.me/anime/13683",
+      "https://www.world-art.ru/animation/animation.php?id=12920"
     ],
     "title": "RE:BEL ROBOTICA",
     "type": "TV",
@@ -3819,6 +4193,24 @@
   },
   {
     "sources": [
+      "https://myanimelist.net/anime/64510",
+      "https://shikimori.one/animes/64510",
+      "https://www.bilibili.com/bangumi/media/md416667340"
+    ],
+    "title": "Ruguo Lishi Shi Yiqun Miao: Daming Huangchao Pian",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Ruguo Lishi Shi Yiqun Mia 13th Season",
+      "\u5982\u679c\u5386\u53f2\u662f\u4e00\u7fa4\u55b5 \u7b2c\u5341\u4e09\u5b63"
+    ]
+  },
+  {
+    "sources": [
       "https://anidb.net/anime/20089",
       "https://anilist.co/anime/213106",
       "https://en.wikipedia.org/wiki/The_Greatest_Magicmaster%27s_Retirement_Plan",
@@ -3826,6 +4218,7 @@
       "https://saikyo-mahoushi.com",
       "https://shikimori.one/animes/64379",
       "https://twitter.com/saikyo_mahoushi",
+      "https://www.anime-planet.com/anime/the-greatest-magicmasters-retirement-plan",
       "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=39910",
       "https://www.anisearch.com/anime/21735",
       "https://www.livechart.me/anime/13664",
@@ -3841,6 +4234,29 @@
     "synonyms": [
       "The Greatest Magicmaster's Retirement Plan",
       "\u6700\u5f37\u9b54\u6cd5\u5e2b\u306e\u96a0\u9041\u8a08\u753b"
+    ],
+    "releaseDate": "2027-01-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/213740",
+      "https://myanimelist.net/anime/64520",
+      "https://shikimori.one/animes/64520",
+      "https://thebuglecall-anime.com",
+      "https://twitter.com/BugleCall_anime",
+      "https://www.livechart.me/anime/13706"
+    ],
+    "title": "Sensou Kyoushitsu",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "The Bugle Call",
+      "The Bugle Call: Song of War",
+      "\u6226\u594f\u6559\u5ba4"
     ],
     "releaseDate": "2027-01-01T00:00:00.000000000Z"
   },
@@ -3912,26 +4328,26 @@
   },
   {
     "sources": [
-      "https://myanimelist.net/anime/63976",
-      "https://shikimori.one/animes/63976",
-      "https://www.tv-tokyo.co.jp/anime/shibuya-hachi"
+      "https://myanimelist.net/anime/64509",
+      "https://shikimori.one/animes/64509"
     ],
-    "title": "Shibuya\u2661Hachi Part 4: Hachi to Shibuya wo Arukou!",
+    "title": "Shi Wangzhe A? 6th Season",
     "type": "TV",
-    "status": "FINISHED",
+    "status": "UPCOMING",
     "animeSeason": {
       "season": "TBA",
       "year": null
     },
     "synonyms": [
-      "Shibuya\u2661Hachi Part 4 Special",
-      "Shibuya\u2661Hachi Special Episode: Take a walk with Hachi in Shibuya!"
+      "Shi Wangzhe A? 6th Season: Xuezhang Jiadao Qing Zhijiao",
+      "\u662f\u738b\u8005\u554a\uff1f\u7b2c\u516d\u5b63 \u5b66\u957f\u9a7e\u5230\u8bf7\u6307\u6559"
     ]
   },
   {
     "sources": [
       "https://anilist.co/anime/213580",
       "https://myanimelist.net/anime/64481",
+      "https://www.anime-planet.com/anime/record-of-ragnarok-iv",
       "https://www.livechart.me/anime/13693"
     ],
     "title": "Shuumatsu no Walk\u00fcre IV",
@@ -3962,13 +4378,18 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20131",
       "https://anilist.co/anime/213579",
       "https://en.wikipedia.org/wiki/Snowball_Earth_(manga)#Anime",
       "https://myanimelist.net/anime/64482",
       "https://shikimori.one/animes/64482",
       "https://snowballearth.net",
       "https://twitter.com/snowballearth_o",
-      "https://www.livechart.me/anime/13690"
+      "https://www.anime-planet.com/anime/snowball-earth-season-2",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40165",
+      "https://www.anisearch.com/anime/21753",
+      "https://www.livechart.me/anime/13690",
+      "https://www.world-art.ru/animation/animation.php?id=12928"
     ],
     "title": "SNOWBALL EARTH Season 2",
     "type": "TV",
@@ -4043,17 +4464,31 @@
   },
   {
     "sources": [
-      "https://myanimelist.net/anime/63896",
-      "https://shikimori.one/animes/63896"
+      "https://anidb.net/anime/20145",
+      "https://anilist.co/anime/213702",
+      "https://en.wikipedia.org/wiki/Witch_Hat_Atelier#Anime",
+      "https://ja.wikipedia.org/wiki/%E3%81%A8%E3%82%93%E3%81%8C%E3%82%8A%E5%B8%BD%E5%AD%90%E3%81%AE%E3%82%A2%E3%83%88%E3%83%AA%E3%82%A8_(%E3%82%A2%E3%83%8B%E3%83%A1)",
+      "https://myanimelist.net/anime/64516",
+      "https://shikimori.one/animes/64516",
+      "https://tongari-anime.com",
+      "https://twitter.com/tongari_anime",
+      "https://www.livechart.me/anime/13704"
     ],
-    "title": "Tokusou Gattai Robo Jobraver: Gyakushuu no Joker!",
+    "title": "Tongari Boushi no Atelier 2nd Season",
     "type": "TV",
-    "status": "ONGOING",
+    "status": "UPCOMING",
     "animeSeason": {
       "season": "TBA",
       "year": null
     },
-    "synonyms": []
+    "synonyms": [
+      "Atelier of Witch Hat",
+      "L'Atelier des Sorciers",
+      "Witch Hat Atelier Season 2",
+      "\u0394\u5e3d\u5b50",
+      "\u3068\u3093\u304c\u308a\u5e3d\u5b50\u306e\u30a2\u30c8\u30ea\u30a8 \u7b2c2\u671f"
+    ],
+    "releaseDate": "2026-06-29T16:01:48.355296000Z"
   },
   {
     "sources": [
@@ -4071,6 +4506,42 @@
     "synonyms": [
       "Take Back What Matters"
     ]
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20141",
+      "https://anilist.co/anime/213656",
+      "https://en.wikipedia.org/wiki/Wistoria:_Wand_and_Sword#Anime",
+      "https://ja.wikipedia.org/wiki/\u6756\u3068\u5263\u306e\u30a6\u30a3\u30b9\u30c8\u30ea\u30a2#\u30c6\u30ec\u30d3\u30a2\u30cb\u30e1",
+      "https://myanimelist.net/anime/64500",
+      "https://shikimori.one/animes/64500",
+      "https://twitter.com/Wistoria_PR",
+      "https://wistoria-anime.com",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40189",
+      "https://www.livechart.me/anime/13699",
+      "https://www.world-art.ru/animation/animation.php?id=12934"
+    ],
+    "title": "Tsue to Tsurugi no Wistoria Season3",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Tongkat Sihir dan Pedang Wistoria",
+      "Tsue to Tsurugi no Wistoria 3rd Season",
+      "Wistoria's Wand and Sword",
+      "Wistoria's Wand and Sword Season 3",
+      "Wistoria: Tr\u01b0\u1ee3ng v\u00e0 Ki\u1ebfm",
+      "Wistoria: Wand and Sword Season 3",
+      "\u0412\u0438\u0441\u0442\u043e\u0440\u0438\u044f: \u041c\u0435\u0447 \u0438 \u0436\u0435\u0437\u043b 3",
+      "\u0e15\u0e33\u0e19\u0e32\u0e19\u0e14\u0e32\u0e1a\u0e41\u0e25\u0e30\u0e04\u0e17\u0e32\u0e41\u0e2b\u0e48\u0e07\u0e27\u0e34\u0e2a\u0e15\u0e2d\u0e40\u0e23\u0e35\u0e22",
+      "\u6756\u3068\u5263\u306e\u30a6\u30a3\u30b9\u30c8\u30ea\u30a2 Season3",
+      "\u6756\u3068\u5263\u306e\u30a6\u30a3\u30b9\u30c8\u30ea\u30a2 \u7b2c3\u671f",
+      "\u6756\u8207\u528d\u7684\u9b54\u528d\u8b5a"
+    ],
+    "releaseDate": "2026-06-28T08:10:03.428148000Z"
   },
   {
     "sources": [
@@ -4335,33 +4806,18 @@
   },
   {
     "sources": [
-      "https://anilist.co/anime/213486",
-      "https://myanimelist.net/anime/64461",
-      "https://shikimori.one/animes/64461",
-      "https://www.bilibili.com/bangumi/media/md28235647"
-    ],
-    "title": "You Shou Yan 6th Season",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": null
-    },
-    "synonyms": [
-      "Fabulous Beasts 6",
-      "\u6709\u517d\u7109 \u7b2c\u516d\u5b63"
-    ],
-    "releaseDate": "2026-08-05"
-  },
-  {
-    "sources": [
+      "https://anidb.net/anime/20123",
       "https://anilist.co/anime/213477",
       "https://en.wikipedia.org/wiki/Classroom_of_the_Elite_season_4",
       "https://ja.wikipedia.org/wiki/\u3088\u3046\u3053\u305d\u5b9f\u529b\u81f3\u4e0a\u4e3b\u7fa9\u306e\u6559\u5ba4\u3078_(\u30c6\u30ec\u30d3\u30a2\u30cb\u30e1)",
+      "https://kitsu.app/anime/50794",
       "https://myanimelist.net/anime/64463",
       "https://shikimori.one/animes/64463",
       "https://twitter.com/youkosozitsu",
+      "https://www.anime-planet.com/anime/classroom-of-the-elite-5th-season",
+      "https://www.anisearch.com/anime/21745",
       "https://www.livechart.me/anime/13685",
+      "https://www.world-art.ru/animation/animation.php?id=12921",
       "https://you-zitsu.com"
     ],
     "title": "Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e 5th Season",
