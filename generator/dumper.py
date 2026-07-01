@@ -92,6 +92,7 @@ def normalize_data_for_output(data: list[dict[str, Any]]) -> list[dict[str, Any]
         normalized.append(
             {key: _normalize_typed_value(key, value) for key, value in item.items()}
         )
+    normalized.sort(key=lambda item: str(item.get("title") or "").casefold())
     return normalized
 
 
