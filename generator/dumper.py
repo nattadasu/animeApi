@@ -53,6 +53,13 @@ TSV_DTYPES: dict[str, str | type[str]] = {
     "trakt_type": str,
 }
 
+ZERO_INT_WHITELIST: set[str] = {
+    "trakt_season",
+    # keep future naming variants for season fields
+    "themoviedb_season",
+    "thetvdb_season",
+}
+
 
 def _normalize_typed_value(key: str, value: Any) -> Any:
     """
@@ -79,6 +86,8 @@ def _normalize_typed_value(key: str, value: Any) -> Any:
         return value
 
     if dtype == "Int64":
+        if key in ZERO_INT_WHITELIST and (value == 0 or value == "0"):
+            return 0
         if value == 0 or value == "0":
             return None
 
