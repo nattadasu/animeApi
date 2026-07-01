@@ -14,6 +14,86 @@ from alive_progress import alive_bar  # type: ignore
 from const import pprint
 from prettyprint import Platform, Status
 
+TSV_DTYPES: dict[str, str | type[str]] = {
+    "title": str,
+    "anidb": "Int64",
+    "anilist": "Int64",
+    "animenewsnetwork": "Int64",
+    "animeplanet": str,
+    "anisearch": "Int64",
+    "annict": "Int64",
+    "hikka": str,
+    "imdb": str,
+    "kaize": str,
+    "kaize_id": "Int64",
+    "kitsu": "Int64",
+    "letterboxd_lid": str,
+    "letterboxd_slug": str,
+    "letterboxd_uid": "Int64",
+    "livechart": "Int64",
+    "myanimelist": "Int64",
+    "nautiljon": str,
+    "nautiljon_id": "Int64",
+    "notify": str,
+    "otakotaku": "Int64",
+    "shikimori": "Int64",
+    "shoboi": "Int64",
+    "silveryasha": "Int64",
+    "simkl": "Int64",
+    "themoviedb": "Int64",
+    "themoviedb_season_id": "Int64",
+    "themoviedb_type": str,
+    "thetvdb": "Int64",
+    "thetvdb_season_id": "Int64",
+    "trakt": "Int64",
+    "trakt_may_invalid": "boolean",
+    "trakt_season": "Int64",
+    "trakt_season_id": "Int64",
+    "trakt_slug": str,
+    "trakt_type": str,
+}
+
+
+def _normalize_typed_value(key: str, value: Any) -> Any:
+    """
+    Normalize values based on expected schema/TSV types.
+    - Numeric IDs treat 0 as missing value (None)
+    - Boolean fields coerce 0/1 and "0"/"1" to False/True
+    """
+    if value is None:
+        return None
+
+    dtype = TSV_DTYPES.get(key)
+
+    if dtype == "boolean":
+        if isinstance(value, bool):
+            return value
+        if isinstance(value, int):
+            return bool(value)
+        if isinstance(value, str):
+            lowered = value.strip().lower()
+            if lowered in {"true", "1"}:
+                return True
+            if lowered in {"false", "0", ""}:
+                return False if lowered != "" else None
+        return value
+
+    if dtype == "Int64":
+        if value == 0 or value == "0":
+            return None
+
+    return value
+
+
+def normalize_data_for_output(data: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Normalize output data before JSON/TSV serialization."""
+    normalized: list[dict[str, Any]] = []
+    for item in data:
+        normalized.append(
+            {key: _normalize_typed_value(key, value) for key, value in item.items()}
+        )
+    return normalized
+
 
 def populate_contributors(attr: dict[str, Any]) -> dict[str, Any]:
     """
@@ -61,7 +141,7 @@ def save_list_to_tsv(data: list[dict[str, Any]], file_path: str) -> None:
                 # Ensure values are written in the same order as header and format consistently
                 row = []
                 for key in header:
-                    val = item.get(key)
+                    val = _normalize_typed_value(key, item.get(key))
                     if val is True:
                         row.append("True")
                     elif val is False:
@@ -127,14 +207,15 @@ def update_attribution(
         Status.INFO,
         "Save data to JSON",
     )
+    normalized_data = normalize_data_for_output(data)
     with open("database/animeapi.json", "w", encoding="utf-8") as file_:
-        json.dump(data, file_)
+        json.dump(normalized_data, file_)
     pprint.print(
         Platform.SYSTEM,
         Status.INFO,
         "Save data to TSV",
     )
-    save_list_to_tsv(data, "database/animeapi")
+    save_list_to_tsv(normalized_data, "database/animeapi")
 
     # Load TSV and convert to DataFrame for pickle
     df = load_tsv_for_counting()
@@ -150,7 +231,7 @@ def update_attribution(
     attr["updated"]["timestamp"] = int(now.timestamp())  # type: ignore
     attr = populate_contributors(attr)
 
-    total_data = len(data)
+    total_data = len(normalized_data)
     # NOTE: Platform-specific dumper removed (deprecated since Oct 22, 2025)
     # Users should use /animeapi.json or /animeapi.tsv instead
 
@@ -204,51 +285,12 @@ def load_tsv_for_counting() -> pd.DataFrame:
     :return: DataFrame with TSV data
     :rtype: pd.DataFrame
     """
-    tsv_dtypes = {
-        "title": str,
-        "anidb": "Int64",
-        "anilist": "Int64",
-        "animenewsnetwork": "Int64",
-        "animeplanet": str,
-        "anisearch": "Int64",
-        "annict": "Int64",
-        "hikka": str,
-        "imdb": str,
-        "kaize": str,
-        "kaize_id": "Int64",
-        "kitsu": "Int64",
-        "letterboxd_lid": str,
-        "letterboxd_slug": str,
-        "letterboxd_uid": "Int64",
-        "livechart": "Int64",
-        "myanimelist": "Int64",
-        "nautiljon": str,
-        "nautiljon_id": "Int64",
-        "notify": str,
-        "otakotaku": "Int64",
-        "shikimori": "Int64",
-        "shoboi": "Int64",
-        "silveryasha": "Int64",
-        "simkl": "Int64",
-        "themoviedb": "Int64",
-        "themoviedb_season_id": "Int64",
-        "themoviedb_type": str,
-        "thetvdb": "Int64",
-        "thetvdb_season_id": "Int64",
-        "trakt": "Int64",
-        "trakt_may_invalid": "boolean",
-        "trakt_season": "Int64",
-        "trakt_season_id": "Int64",
-        "trakt_slug": str,
-        "trakt_type": str,
-    }
-
     try:
         # Read TSV with specific data types
         df = pd.read_csv(  # type: ignore
             "database/animeapi.tsv",
             sep="\t",
-            dtype=tsv_dtypes,
+            dtype=TSV_DTYPES,
             keep_default_na=True,
         )
     except ValueError as e:
@@ -264,7 +306,7 @@ def load_tsv_for_counting() -> pd.DataFrame:
                 keep_default_na=False,
             )
 
-            for col, dtype in tsv_dtypes.items():
+            for col, dtype in TSV_DTYPES.items():
                 if dtype == "Int64":
                     # Try converting to numeric
                     numeric_series = pd.to_numeric(debug_df[col], errors="coerce")

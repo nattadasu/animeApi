@@ -65,10 +65,23 @@ def row_to_entry(row: pd.Series) -> AnimeEntry:
         if pd.isna(val) or val == "":
             return None
         if target_type is bool:
-            return bool(val)
+            if isinstance(val, bool):
+                return val
+            if isinstance(val, int):
+                return bool(val)
+            if isinstance(val, str):
+                lowered = val.strip().lower()
+                if lowered in {"true", "1"}:
+                    return True
+                if lowered in {"false", "0"}:
+                    return False
+            return None
         if target_type is int:
             try:
-                return int(val)
+                int_val = int(val)
+                if int_val == 0:
+                    return None
+                return int_val
             except (ValueError, TypeError):
                 return None
         return val
