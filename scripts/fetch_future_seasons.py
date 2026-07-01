@@ -438,6 +438,114 @@ def get_entry_id_strings(sources):
     return id_strings
 
 
+def _extract_platform_entry_id_and_source(
+    sources: list[str], platform: str
+) -> tuple[str | int | None, str | None]:
+    """Extract platform-specific entry ID and its source URL from sources."""
+    patterns = {
+        "livechart": r"livechart\.me/anime/(\d+)",
+        "shikimori": r"shikimori\.(?:one|io)/animes/(\d+)",
+        "anilist": r"anilist\.co/anime/(\d+)",
+        "kitsu": r"kitsu\.(?:app|io)/anime/(\d+)",
+        "annict": r"annict\.com/works/(\d+)",
+    }
+    pattern = patterns.get(platform)
+    if not pattern:
+        return None, None
+
+    for src in sources:
+        match = re.search(pattern, src)
+        if not match:
+            continue
+        val = match.group(1)
+        try:
+            return int(val), src
+        except ValueError:
+            return val, src
+    return None, None
+
+
+def _resolve_platform_external_conflicts(entries: list[dict[str, Any]]) -> dict[str, int]:
+    """
+    Resolve platform mapping conflicts by keeping the first occurrence per platform.
+
+    Rule:
+    - If two entries from the same platform have different platform entry IDs but share
+      any external IDs (e.g., mal/anilist/anidb/etc.), keep the earliest one and drop
+      the platform source URL from subsequent conflicting entries.
+    - Earliest is determined by smaller numeric platform ID; if non-numeric, preserve
+      original order.
+    """
+    dropped_counts = {
+        "livechart": 0,
+        "shikimori": 0,
+        "anilist": 0,
+        "kitsu": 0,
+        "annict": 0,
+    }
+    platforms = list(dropped_counts.keys())
+
+    for platform in platforms:
+        candidates = []
+        for index, entry in enumerate(entries):
+            sources = entry.get("sources", [])
+            platform_id, platform_source = _extract_platform_entry_id_and_source(
+                sources, platform
+            )
+            if platform_id is None or not platform_source:
+                continue
+
+            # External IDs used to validate whether this platform mapping conflicts.
+            # Do not include the platform's own entry ID string in conflict keys.
+            external_ids = get_entry_id_strings(sources)
+            platform_key = f"{platform}:{platform_id}"
+            if platform_key in external_ids:
+                external_ids.remove(platform_key)
+
+            candidates.append(
+                {
+                    "index": index,
+                    "entry": entry,
+                    "platform_id": platform_id,
+                    "platform_source": platform_source,
+                    "external_ids": external_ids,
+                }
+            )
+
+        # Prioritize by platform ID when numeric; otherwise fallback to first-seen order.
+        def sort_key(item: dict[str, Any]) -> tuple[int, int, int]:
+            pid = item["platform_id"]
+            if isinstance(pid, int):
+                return (0, pid, item["index"])
+            return (1, 0, item["index"])
+
+        candidates.sort(key=sort_key)
+        owner_by_external_id: dict[str, str] = {}
+
+        for item in candidates:
+            platform_id = str(item["platform_id"])
+            external_ids = item["external_ids"]
+            conflicts = [
+                ext_id
+                for ext_id in external_ids
+                if ext_id in owner_by_external_id
+                and owner_by_external_id[ext_id] != platform_id
+            ]
+
+            if conflicts:
+                # Drop this platform mapping from the conflicting later entry.
+                src_to_drop = item["platform_source"]
+                entry_sources = item["entry"].get("sources", [])
+                item["entry"]["sources"] = [s for s in entry_sources if s != src_to_drop]
+                dropped_counts[platform] += 1
+                continue
+
+            for ext_id in external_ids:
+                owner_by_external_id[ext_id] = platform_id
+
+    return dropped_counts
+
+
 def parse_date(date_str):
     """Parse various date formats into a datetime.date object. Returns (date, precision)"""
     if not date_str:
@@ -1316,6 +1424,21 @@ def main():
         Platform.ANNICT,
         Status.INFO,
         f"Annict shows merged: added {an_added}, merged {an_merged}, skipped (already in AOD) {an_skipped}",
+    )
+
+    # Resolve per-platform conflicts where different entry IDs share external IDs.
+    dropped = _resolve_platform_external_conflicts(filtered_sideload_entries)
+    total_dropped = sum(dropped.values())
+    pprint.print(
+        Platform.SYSTEM,
+        Status.INFO,
+        "Resolved conflicting platform mappings "
+        f"(dropped: {total_dropped}) "
+        f"[lc={dropped['livechart']}, "
+        f"shiki={dropped['shikimori']}, "
+        f"al={dropped['anilist']}, "
+        f"kitsu={dropped['kitsu']}, "
+        f"annict={dropped['annict']}]",
     )
 
     # Format and sort entries to be git-diff friendly
