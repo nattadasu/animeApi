@@ -60,6 +60,25 @@ ZERO_INT_WHITELIST: set[str] = {
     "thetvdb_season",
 }
 
+PLATFORM_COLUMNS: list[str] = [k for k in TSV_DTYPES if k != "title"]
+
+# These platforms use series-based entries rather than season-based,
+# so they are excluded from dedup comparison and never stripped.
+DEDUP_EXCLUDED_PLATFORMS: set[str] = {
+    "imdb",
+    "themoviedb",
+    "themoviedb_season_id",
+    "themoviedb_type",
+    "thetvdb",
+    "thetvdb_season_id",
+    "trakt",
+    "trakt_may_invalid",
+    "trakt_season",
+    "trakt_season_id",
+    "trakt_slug",
+    "trakt_type",
+}
+
 
 def _normalize_typed_value(key: str, value: Any) -> Any:
     """
@@ -103,6 +122,183 @@ def normalize_data_for_output(data: list[dict[str, Any]]) -> list[dict[str, Any]
         )
     normalized.sort(key=lambda item: str(item.get("title") or "").casefold())
     return normalized
+
+
+def _can_merge(a: dict[str, Any], b: dict[str, Any]) -> bool:
+    """Check if two entries can be merged.
+
+    Returns True if no dedup-eligible platform column has conflicting
+    (different non-null) values.
+    """
+    for col in PLATFORM_COLUMNS:
+        if col in DEDUP_EXCLUDED_PLATFORMS:
+            continue
+        va = a.get(col)
+        vb = b.get(col)
+        if va is None or va == "" or vb is None or vb == "":
+            continue
+        if va != vb:
+            return False
+    return True
+
+
+def _merge_entries(target: dict[str, Any], source: dict[str, Any]) -> list[str]:
+    """Fill None/empty values in *target* from *source* (in-place).
+
+    Returns list of column names that were filled from *source*.
+    """
+    filled: list[str] = []
+    for col in PLATFORM_COLUMNS:
+        if target.get(col) is None or target.get(col) == "":
+            val = source.get(col)
+            if val is not None and val != "":
+                target[col] = val
+                filled.append(col)
+    return filled
+
+
+def deduplicate_entries(data: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """
+    Deduplicate entries before dumping.
+
+    1. Merge: entries with the same title that share at least one ID and
+       have no clashing IDs are merged into one (first entry wins).
+    2. Each dedup-eligible mapping value must be unique across all entries.
+       If a value already appeared in a previous entry (same column),
+       null it on the current entry.
+    3. After nulling, if the entry has NO dedup-eligible mappings left,
+       drop it entirely.
+
+    trakt/thetvdb/themoviedb/imdb columns are excluded from comparison
+    because they use series-based entries unlike the season-based anime DBs.
+    """
+    # --- Pre-merge sorting ---
+    # Sort by MyAnimeList ID (ascending, nulls at the end) then title (case-insensitive)
+    def pre_sort_key(entry: dict[str, Any]) -> tuple[float | int, str]:
+        mal_id = entry.get("myanimelist")
+        if mal_id is None or mal_id == "":
+            mal_sort = float("inf")
+        else:
+            try:
+                mal_sort = int(mal_id)
+            except ValueError:
+                mal_sort = float("inf")
+        return (mal_sort, str(entry.get("title") or "").casefold())
+
+    data.sort(key=pre_sort_key)
+
+    # --- Phase 1: merge partial stubs by title ---
+    by_title: dict[str, list[dict[str, Any]]] = {}
+    for entry in data:
+        key = (entry.get("title") or "").casefold()
+        by_title.setdefault(key, []).append(entry)
+
+    merged_data: list[dict[str, Any]] = []
+    merge_log: list[str] = []
+    for title_key, group in by_title.items():
+        if len(group) == 1:
+            merged_data.append(group[0])
+            continue
+        # Greedy merge: first entry is the seed, absorb compatible followers
+        seed = group[0]
+        for other in group[1:]:
+            if _can_merge(seed, other):
+                filled = _merge_entries(seed, other)
+                src_title = other.get("title", "<unknown>")
+                if filled:
+                    merge_log.append(
+                        f"{seed.get('title', '<unknown>')}: merged ← {src_title}"
+                        f" (+{', '.join(filled)})"
+                    )
+                else:
+                    merge_log.append(
+                        f"{seed.get('title', '<unknown>')}: merged ← {src_title}"
+                        f" (no new fields)"
+                    )
+            else:
+                merged_data.append(other)
+
+        merged_data.append(seed)
+
+    if merge_log:
+        pprint.print(
+            Platform.SYSTEM,
+            Status.INFO,
+            f"Merged {len(merge_log)} partial stubs:",
+        )
+        for line in merge_log:
+            pprint.print(Platform.SYSTEM, Status.WARN, f"  - {line}")
+
+    # --- Phase 2: per-value dedup ---
+    result: list[dict[str, Any]] = []
+    seen_values: dict[str, set[Any]] = {}
+    dropped: list[str] = []
+    cleaned: list[str] = []
+
+    with alive_bar(  # type: ignore
+        len(merged_data), title="Deduplicating entries", spinner=None
+    ) as bar:
+        for entry in merged_data:
+            title = entry.get("title", "<unknown>")
+            remaining: dict[str, Any] = {}
+            nulled: list[str] = []
+
+            for col in PLATFORM_COLUMNS:
+                if col in DEDUP_EXCLUDED_PLATFORMS:
+                    continue
+                val = entry.get(col)
+                if val is None or val == "":
+                    continue
+                if col in seen_values and val in seen_values[col]:
+                    entry[col] = None
+                    nulled.append(f"{col}={val}")
+                else:
+                    remaining[col] = val
+
+            if not remaining:
+                reason = "no eligible mappings left" + (
+                    f" (nulled: {', '.join(nulled)})" if nulled else ""
+                )
+                dropped.append(f"{title}: {reason}")
+                bar()
+                continue
+
+            if nulled:
+                cleaned.append(f"{title}: nulled {', '.join(nulled)}")
+
+            for col, val in remaining.items():
+                s = seen_values.get(col)
+                if s is None:
+                    seen_values[col] = {val}
+                else:
+                    s.add(val)
+
+            result.append(entry)
+            bar()
+
+    if cleaned:
+        pprint.print(
+            Platform.SYSTEM,
+            Status.INFO,
+            f"Dedup cleaned {len(cleaned)} entries (removed duplicate mappings):",
+        )
+        for line in cleaned:
+            pprint.print(Platform.SYSTEM, Status.WARN, f"  - {line}")
+
+    if dropped:
+        pprint.print(
+            Platform.SYSTEM,
+            Status.INFO,
+            f"Dedup dropped {len(dropped)} entries:",
+        )
+        for line in dropped:
+            pprint.print(Platform.SYSTEM, Status.WARN, f"  - {line}")
+
+    # --- Post-merge sorting ---
+    # Sort by title (case-insensitive, ascending)
+    result.sort(key=lambda entry: str(entry.get("title") or "").casefold())
+
+    return result
 
 
 def populate_contributors(attr: dict[str, Any]) -> dict[str, Any]:
@@ -215,9 +411,20 @@ def update_attribution(
     pprint.print(
         Platform.SYSTEM,
         Status.INFO,
+        "Deduplicating entries",
+    )
+    deduped = deduplicate_entries(data)
+    pprint.print(
+        Platform.SYSTEM,
+        Status.PASS,
+        f"Dedup: {len(data)} → {len(deduped)} entries ({len(data) - len(deduped)} removed)",
+    )
+    pprint.print(
+        Platform.SYSTEM,
+        Status.INFO,
         "Save data to JSON",
     )
-    normalized_data = normalize_data_for_output(data)
+    normalized_data = normalize_data_for_output(deduped)
     with open("database/animeapi.json", "w", encoding="utf-8") as file_:
         json.dump(normalized_data, file_)
     pprint.print(
