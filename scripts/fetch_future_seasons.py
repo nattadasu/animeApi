@@ -465,7 +465,9 @@ def _extract_platform_entry_id_and_source(
     return None, None
 
 
-def _resolve_platform_external_conflicts(entries: list[dict[str, Any]]) -> dict[str, int]:
+def _resolve_platform_external_conflicts(
+    entries: list[dict[str, Any]],
+) -> dict[str, int]:
     """
     Resolve platform mapping conflicts by keeping the first occurrence per platform.
 
@@ -536,7 +538,9 @@ def _resolve_platform_external_conflicts(entries: list[dict[str, Any]]) -> dict[
                 # Drop this platform mapping from the conflicting later entry.
                 src_to_drop = item["platform_source"]
                 entry_sources = item["entry"].get("sources", [])
-                item["entry"]["sources"] = [s for s in entry_sources if s != src_to_drop]
+                item["entry"]["sources"] = [
+                    s for s in entry_sources if s != src_to_drop
+                ]
                 dropped_counts[platform] += 1
                 continue
 

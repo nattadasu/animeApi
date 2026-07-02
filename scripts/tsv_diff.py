@@ -43,10 +43,7 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--ignore-type-change",
         action="store_true",
-        help=(
-            "Ignore type-only differences (e.g. 1 vs 1.0, true vs True, "
-            "0 vs 000)."
-        ),
+        help=("Ignore type-only differences (e.g. 1 vs 1.0, true vs True, 0 vs 000)."),
     )
     parser.add_argument(
         "--more",
@@ -98,7 +95,9 @@ def _read_input(input_value: str) -> str:
     raise ValueError(f"Input not found: '{input_value}'")
 
 
-def _parse_tsv(content: str, key_column: str) -> tuple[list[str], dict[str, dict[str, str]]]:
+def _parse_tsv(
+    content: str, key_column: str
+) -> tuple[list[str], dict[str, dict[str, str]]]:
     reader = csv.DictReader(content.splitlines(), delimiter="\t")
     if not reader.fieldnames:
         raise ValueError("TSV has no header")
@@ -138,7 +137,9 @@ def _auto_resolve_inputs() -> tuple[str, str]:
 
     status_lines = [
         line.strip()
-        for line in (status_result.stdout + "\n" + staged_status_result.stdout).splitlines()
+        for line in (
+            status_result.stdout + "\n" + staged_status_result.stdout
+        ).splitlines()
         if line.strip()
     ]
     for line in status_lines:
@@ -213,7 +214,9 @@ def _truncate(text: str, max_len: int = 120) -> str:
     return f"{text[: max_len - 3]}..."
 
 
-def _print_table(headers: list[str], rows: list[list[str]], out_lines: list[str]) -> None:
+def _print_table(
+    headers: list[str], rows: list[list[str]], out_lines: list[str]
+) -> None:
     ansi_re = re.compile(r"\x1b\[[0-9;]*m")
 
     def visible_len(text: str) -> int:
@@ -251,7 +254,11 @@ def _print_table(headers: list[str], rows: list[list[str]], out_lines: list[str]
         return text + (" " * pad)
 
     def fmt(row: list[str]) -> str:
-        return "│ " + " │ ".join(pad_visible(cell, widths[i]) for i, cell in enumerate(row)) + " │"
+        return (
+            "│ "
+            + " │ ".join(pad_visible(cell, widths[i]) for i, cell in enumerate(row))
+            + " │"
+        )
 
     def wrap_cell(text: str, width: int) -> list[str]:
         if width <= 1:
@@ -281,7 +288,9 @@ def _print_table(headers: list[str], rows: list[list[str]], out_lines: list[str]
         height = max(len(c) for c in wrapped_cols)
         for line_idx in range(height):
             row_line = [
-                wrapped_cols[col_idx][line_idx] if line_idx < len(wrapped_cols[col_idx]) else ""
+                wrapped_cols[col_idx][line_idx]
+                if line_idx < len(wrapped_cols[col_idx])
+                else ""
                 for col_idx in range(len(row))
             ]
             out_lines.append(fmt(row_line))
@@ -365,7 +374,9 @@ def main() -> int:
     use_color = _supports_color(args.no_color)
 
     if (args.old and not args.new) or (args.new and not args.old):
-        print("Error: Provide both 'old' and 'new', or provide neither.", file=sys.stderr)
+        print(
+            "Error: Provide both 'old' and 'new', or provide neither.", file=sys.stderr
+        )
         return 1
 
     if args.old and args.new:
@@ -474,7 +485,9 @@ def main() -> int:
             out_lines,
         )
         if args.limit > 0 and len(changed_keys) > len(shown):
-            out_lines.append(f"\n... ({len(changed_keys) - len(shown)} more changed rows)")
+            out_lines.append(
+                f"\n... ({len(changed_keys) - len(shown)} more changed rows)"
+            )
 
     if not added and not removed and not changed_keys:
         out_lines.append(_colorize("\nNo differences found.", "cyan", use_color))
