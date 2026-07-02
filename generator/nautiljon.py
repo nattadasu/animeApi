@@ -13,8 +13,20 @@ from bs4 import BeautifulSoup, Tag
 from const import FORCE_FETCH_NAUTILJON, GITHUB_DISPATCH, NO_FETCH
 from prettyprint import Platform, PrettyPrint, Status
 from requests import HTTPError, Response
+from slugify import slugify
 
 pprint = PrettyPrint()
+
+
+def normalize_nautiljon_slug(raw_slug: str) -> str:
+    """Normalize Nautiljon URL slugs to standard slug format.
+
+    Nautiljon uses '+' for spaces and may have different casing/formatting.
+    This converts them to match the format produced by python-slugify on
+    AOD titles (e.g. '100-byou+de+wakaru' → '100-byou-de-wakaru').
+    """
+    # Replace URL-encoded '+' with space, then slugify
+    return slugify(raw_slug.replace("+", " "))
 
 
 def nautiljon_extract_table(html_content: str) -> list[dict[str, str | int | None]]:
@@ -57,6 +69,7 @@ def nautiljon_extract_table(html_content: str) -> list[dict[str, str | int | Non
                 # remove animes/ and .html
                 slug = slug.split("/")[-1]  # type: ignore
                 slug = re.sub(".html$", "", slug)
+                slug = normalize_nautiljon_slug(slug)
                 # img src="/imagesmin/anime/00/68/offside_tv_12086.webp?1692218537
                 # search for anime id in img src, before .webp and after last _
                 try:

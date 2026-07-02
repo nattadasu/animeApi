@@ -15,6 +15,7 @@ from alive_progress import alive_bar  # type: ignore
 from const import pprint
 from prettyprint import Platform, Status
 from slugify import slugify
+from text_unidecode import unidecode
 from thefuzz import fuzz  # type: ignore
 
 # Constants for fuzzy matching logic
@@ -26,13 +27,24 @@ SCORE_DIFFERENCE_THRESHOLD = 5
 
 def normalize_title(title: str) -> str:
     """
-    Normalize title by removing all whitespace and converting to lowercase
-    for accurate fuzzy matching.
+    Normalize title for accurate fuzzy matching.
+
+    Transliterates accented/special characters (French guillemets, macrons,
+    typographic apostrophes, etc.) to ASCII equivalents, then strips
+    non-alphanumeric characters and lowercases.
 
     :param title: Title to normalize
-    :return: Normalized title without whitespace, in lowercase
+    :return: Normalized ASCII lowercase title
     """
-    return "".join(title.split()).lower()
+    # Transliterate: é→e, ō→o, «→<<, '→', ★→*, etc.
+    result = unidecode(title)
+    # Lowercase
+    result = result.lower()
+    # Collapse whitespace
+    result = "".join(result.split())
+    # Strip non-alphanumeric (keeps only a-z and 0-9)
+    result = "".join(c for c in result if c.isalnum())
+    return result
 
 
 def build_slug_index(
