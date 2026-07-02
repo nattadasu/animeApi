@@ -478,21 +478,104 @@ def add_spaces(data: int, spaces_max: int = 9) -> str:
     return f"{' ' * spaces}{data}"
 
 
-def count_non_null_entries(df: pd.DataFrame, column: str) -> int:
+def count_unique_entries(df: pd.DataFrame, column: str) -> int:
     """
-    Count non-empty entries in a DataFrame column.
-    Handles both NaN/None (from keep_default_na=True) and empty strings.
+    Count unique non-empty entries in a DataFrame column.
+    Uses the column value itself as the immutable key.
 
     :param df: DataFrame to count from
     :type df: pd.DataFrame
     :param column: Column name to count
     :type column: str
-    :return: Count of non-empty entries
+    :return: Count of unique non-empty entries
     :rtype: int
     """
-    # Check for both Not NaN and Not Empty String
-    # (Just .notna() covers NaN/None, but explicit empty strings might exist)
-    return int((df[column].notna() & (df[column] != "")).sum())
+    mask = df[column].notna() & (df[column] != "")
+    return int(df.loc[mask, column].nunique())
+
+
+def _is_present(value: Any) -> bool:
+    """Check if a value is present (not NA, None, or empty string)."""
+    if value is None:
+        return False
+    if pd.isna(value):
+        return False
+    return str(value) != ""
+
+
+def _build_trakt_key(row: pd.Series) -> str | None:
+    """Build composite key for Trakt: type:id{:season:season_int}"""
+    trakt_id = row.get("trakt", None)
+    trakt_type = row.get("trakt_type", None)
+    if not _is_present(trakt_id) or not _is_present(trakt_type):
+        return None
+    key = f"{trakt_type}:{trakt_id}"
+    if trakt_type == "shows":
+        trakt_season = row.get("trakt_season", None)
+        if _is_present(trakt_season):
+            key += f":season:{trakt_season}"
+    return key
+
+
+def _build_tvdb_key(row: pd.Series) -> str | None:
+    """Build composite key for TVDB: series:id{:season_id}"""
+    tvdb_id = row.get("thetvdb", None)
+    if not _is_present(tvdb_id):
+        return None
+    key = f"series:{tvdb_id}"
+    tvdb_season_id = row.get("thetvdb_season_id", None)
+    if _is_present(tvdb_season_id):
+        key += f":season:{tvdb_season_id}"
+    return key
+
+
+def _build_tmdb_key(row: pd.Series) -> str | None:
+    """Build composite key for TMDB: type:id{:season_id}"""
+    tmdb_id = row.get("themoviedb", None)
+    if not _is_present(tmdb_id):
+        return None
+    tmdb_type = row.get("themoviedb_type", None)
+    if not _is_present(tmdb_type):
+        tmdb_type = "unknown"
+    key = f"{tmdb_type}:{tmdb_id}"
+    tmdb_season_id = row.get("themoviedb_season_id", None)
+    if _is_present(tmdb_season_id):
+        key += f":season:{tmdb_season_id}"
+    return key
+
+
+def count_unique_composite_keys(df: pd.DataFrame) -> dict[str, int]:
+    """
+    Count unique entries for trakt, tvdb, and tmdb using composite keys
+    to avoid inflated counts from multiple seasons sharing the same ID.
+
+    :param df: DataFrame to count from
+    :type df: pd.DataFrame
+    :return: Dict with keys 'trakt', 'thetvdb', 'themoviedb' and unique counts
+    :rtype: dict[str, int]
+    """
+    trakt_keys: set[str] = set()
+    tvdb_keys: set[str] = set()
+    tmdb_keys: set[str] = set()
+
+    for _, row in df.iterrows():
+        trakt_key = _build_trakt_key(row)
+        if trakt_key is not None:
+            trakt_keys.add(trakt_key)
+
+        tvdb_key = _build_tvdb_key(row)
+        if tvdb_key is not None:
+            tvdb_keys.add(tvdb_key)
+
+        tmdb_key = _build_tmdb_key(row)
+        if tmdb_key is not None:
+            tmdb_keys.add(tmdb_key)
+
+    return {
+        "trakt": len(trakt_keys),
+        "thetvdb": len(tvdb_keys),
+        "themoviedb": len(tmdb_keys),
+    }
 
 
 def load_tsv_for_counting() -> pd.DataFrame:
@@ -699,6 +782,9 @@ def update_markdown(
     ]
 
     # Build counts dictionary dynamically
+    # Use unique composite keys for trakt, tvdb, and tmdb to avoid
+    # inflated counts from multiple seasons sharing the same ID
+    unique_platform_counts = count_unique_composite_keys(df)
     counts: dict[str, int] = {}
     for column, display_name in platform_mapping:
         # Convert display name to count key format
@@ -707,7 +793,10 @@ def update_markdown(
             count_key = "letterboxd"
         else:
             count_key = column
-        counts[count_key] = count_non_null_entries(df, column)
+        if count_key in unique_platform_counts:
+            counts[count_key] = unique_platform_counts[count_key]
+        else:
+            counts[count_key] = count_unique_entries(df, column)
 
     counts["total"] = len(df)
 
