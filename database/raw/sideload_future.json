@@ -776,11 +776,13 @@
       "https://annict.com/works/17588",
       "https://myanimelist.net/anime/64217",
       "https://shikimori.one/animes/64217",
-      "https://twitter.com/NIKKE_en"
+      "https://twitter.com/NIKKE_en",
+      "https://www.anime-planet.com/anime/goddess-of-victory-nikke-outpost-off-duty-tales",
+      "https://www.livechart.me/anime/13634"
     ],
     "title": "Nikenichi! Non Non Zenshou Kichi",
     "type": "TV",
-    "status": "ONGOING",
+    "status": "FINISHED",
     "animeSeason": {
       "season": "SPRING",
       "year": 2026
@@ -789,8 +791,10 @@
       "NIKKE Outpost: Off-Duty Tales",
       "Nikke Nichi! Non Non Zenshou Kichi",
       "Nikke Nikki! Nonnon Forward Base",
+      "Shouri no Megami NIKKE - Nikenichi! Non Non Zenshou Kichi",
       "\u0410\u0432\u0430\u043d\u043f\u043e\u0441\u0442 \u041d\u0438\u043a\u043a\u0435: \u0418\u0441\u0442\u043e\u0440\u0438\u0438 \u0432\u043d\u0435 \u0441\u043b\u0443\u0436\u0431\u044b",
-      "\u306b\u3051\u306b\u3061\uff01\u306e\u3093\u306e\u3093\u524d\u54e8\u57fa\u5730"
+      "\u306b\u3051\u306b\u3061\uff01\u306e\u3093\u306e\u3093\u524d\u54e8\u57fa\u5730",
+      "\u52dd\u5229\u306e\u5973\u795e\uff1aNIKKE \u306b\u3051\u306b\u3061\uff01\u306e\u3093\u306e\u3093\u524d\u54e8\u57fa\u5730"
     ],
     "releaseDate": "2026-05-22"
   },
@@ -955,7 +959,7 @@
     ],
     "title": "Bananya At-Home Party",
     "type": "TV",
-    "status": "UPCOMING",
+    "status": "ONGOING",
     "animeSeason": {
       "season": "SUMMER",
       "year": 2026
@@ -1002,7 +1006,7 @@
     ],
     "title": "Cheat Item Kanrikyoku no Oshigoto EX Sanzan Yarareta Ato Dashi Douse Zenbu Wasureru kara Higaisha Tsumamigui Shitemo Ii yo ne",
     "type": "ONA",
-    "status": "UPCOMING",
+    "status": "ONGOING",
     "animeSeason": {
       "season": "SUMMER",
       "year": 2026
@@ -1090,7 +1094,7 @@
     ],
     "title": "Juurin Oukoku: Elf Oukoku wa Kyodai Naedoko ni",
     "type": "OVA",
-    "status": "UPCOMING",
+    "status": "ONGOING",
     "animeSeason": {
       "season": "SUMMER",
       "year": 2026
@@ -1102,7 +1106,8 @@
   },
   {
     "sources": [
-      "https://anilist.co/anime/213733"
+      "https://anilist.co/anime/213733",
+      "https://myanimelist.net/anime/64531"
     ],
     "title": "Kanojo Saimin",
     "type": "OVA",
@@ -1151,6 +1156,26 @@
       "Lass mich dich flicken"
     ],
     "releaseDate": "2026-06-21T11:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/213861",
+      "https://kitsu.app/anime/50833",
+      "https://myanimelist.net/anime/64537",
+      "https://shikimori.one/animes/64537",
+      "https://twitter.com/cinnamon_sanrio"
+    ],
+    "title": "Let's Roll, Cinnamoroll! 2nd Season",
+    "type": "TV",
+    "status": "ONGOING",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u30ec\u30c3\u30c4\u30ed\u30fc\u30eb\u30b7\u30ca\u30e2\u30ed\u30fc\u30eb"
+    ],
+    "releaseDate": "2026-07-02"
   },
   {
     "sources": [
@@ -1234,7 +1259,9 @@
   },
   {
     "sources": [
-      "https://anilist.co/anime/213732"
+      "https://anilist.co/anime/213732",
+      "https://kitsu.app/anime/50831",
+      "https://myanimelist.net/anime/64530"
     ],
     "title": "Mujikaku na Osananajimi to Kyoumi Honi de Yatte Mitara THE ANIMATION",
     "type": "OVA",
@@ -1284,7 +1311,8 @@
   },
   {
     "sources": [
-      "https://anilist.co/anime/213686"
+      "https://anilist.co/anime/213686",
+      "https://myanimelist.net/anime/64529"
     ],
     "title": "NTR Kishi",
     "type": "OVA",
@@ -1332,7 +1360,7 @@
     ],
     "title": "Pan no Akachan",
     "type": "TV",
-    "status": "UPCOMING",
+    "status": "ONGOING",
     "animeSeason": {
       "season": "SUMMER",
       "year": 2026
@@ -1484,7 +1512,7 @@
     ],
     "title": "Tomica to Tom (TV) Season 2",
     "type": "TV",
-    "status": "UPCOMING",
+    "status": "ONGOING",
     "animeSeason": {
       "season": "SUMMER",
       "year": 2026
@@ -1500,19 +1528,26 @@
   {
     "sources": [
       "https://anilist.co/anime/207674",
-      "https://kitsu.app/anime/50798"
+      "https://anilist.co/anime/213831",
+      "https://kitsu.app/anime/50798",
+      "https://www.livechart.me/anime/13716"
     ],
     "title": "Ushiro no Shoumen Kamui-san",
     "type": "TV",
-    "status": "UPCOMING",
+    "status": "ONGOING",
     "animeSeason": {
       "season": "SUMMER",
       "year": 2026
     },
     "synonyms": [
+      "KAMUI: He's Behind You",
       "Kamui-san Directly Behind You",
+      "Snack Hazama",
+      "Ushiro no Shoumen Kamui-san Mini Anime",
       "\u0e04\u0e38\u0e13\u0e04\u0e32\u0e21\u0e38\u0e22\u0e25\u0e38\u0e22\u0e2b\u0e25\u0e31\u0e07\u0e1c\u0e35",
       "\u3046\u3057\u308d\u306e\u6b63\u9762\u30ab\u30e0\u30a4\u3055\u3093",
+      "\u3046\u3057\u308d\u306e\u6b63\u9762\u30ab\u30e0\u30a4\u3055\u3093\u30df\u30cb\u30a2\u30cb\u30e1",
+      "\u30b9\u30ca\u30c3\u30af\u306f\u3056\u307e-HAZAMA-",
       "\u5f9e\u5f8c\u9762\u4f86\u7684\u795e\u5a01\u5148\u751f"
     ],
     "releaseDate": "2026-07-04"
@@ -1745,6 +1780,35 @@
       "\u50b7\u3060\u3089\u3051\u8056\u5973\u3088\u308a\u5831\u5fa9\u3092\u3053\u3081\u3066 Season2"
     ],
     "releaseDate": "2026-10-01T15:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/213805",
+      "https://en.wikipedia.org/wiki/The_Ramparts_of_Ice#Anime",
+      "https://ja.wikipedia.org/wiki/%E6%B0%B7%E3%81%AE%E5%9F%8E%E5%A3%81#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
+      "https://kitsu.app/anime/50827",
+      "https://korinojoheki-pr.com",
+      "https://myanimelist.net/anime/64534",
+      "https://shikimori.one/animes/64534",
+      "https://twitter.com/korinojoheki_pr",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40257",
+      "https://www.livechart.me/anime/13712"
+    ],
+    "title": "Koori no Jouheki 2nd Season",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2026
+    },
+    "synonyms": [
+      "Parede de Gelo",
+      "The Ramparts of Ice Season 2",
+      "[es-419] Rompiendo el hielo",
+      "\u0e1b\u0e23\u0e32\u0e01\u0e32\u0e23\u0e19\u0e49\u0e33\u0e41\u0e02\u0e47\u0e07\u0e41\u0e2b\u0e48\u0e07\u0e2b\u0e31\u0e27\u0e43\u0e08",
+      "\u6c37\u306e\u57ce\u58c1 \u7b2c2\u671f"
+    ],
+    "releaseDate": "2026-10-01T14:56:00.000000000Z"
   },
   {
     "sources": [
@@ -2079,12 +2143,18 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20149",
+      "https://chibigodzilla.jp",
+      "https://ja.wikipedia.org/wiki/%E3%81%A1%E3%81%B3%E3%82%B4%E3%82%B8%E3%83%A9",
       "https://kitsu.app/anime/50818",
-      "https://myanimelist.net/anime/64502"
+      "https://myanimelist.net/anime/64502",
+      "https://shikimori.one/animes/64502",
+      "https://twitter.com/chibigodzi",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40221"
     ],
     "title": "Chibi Godzilla no Gyakushuu 4th Season",
     "type": "TV",
-    "status": "UPCOMING",
+    "status": "ONGOING",
     "animeSeason": {
       "season": "TBA",
       "year": 2026
@@ -2132,6 +2202,20 @@
       "\u304a\u4eba\u5f62"
     ],
     "releaseDate": "2026-04-16"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50829"
+    ],
+    "title": "Dragon Striker",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-06-09"
   },
   {
     "sources": [
@@ -2370,7 +2454,8 @@
       "https://kitsu.app/anime/50675",
       "https://myanimelist.net/anime/63967",
       "https://shikimori.one/animes/63967",
-      "https://v.qq.com/x/cover/mzc00200ot2jctt.html"
+      "https://v.qq.com/x/cover/mzc00200ot2jctt.html",
+      "https://www.world-art.ru/cinema/cinema.php?id=130737"
     ],
     "title": "Panlong",
     "type": "TV",
@@ -2617,6 +2702,7 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20150",
       "https://anilist.co/anime/213752",
       "https://annict.com/works/17856",
       "https://en.wikipedia.org/wiki/Marriagetoxin#Anime",
@@ -2625,6 +2711,7 @@
       "https://myanimelist.net/anime/64524",
       "https://shikimori.one/animes/64524",
       "https://twitter.com/marritoxi_PR",
+      "https://www.anisearch.com/anime/21766",
       "https://www.livechart.me/anime/13707",
       "https://www.marriagetoxin-anime.com"
     ],
@@ -2668,6 +2755,23 @@
       "\u3059\u3060\u3061\u306e\u9b54\u738b\u57ce"
     ],
     "releaseDate": "2027-01-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/213814",
+      "https://www.livechart.me/anime/13715"
+    ],
+    "title": "Aikatsu Stars! ~Hoshiboshi no Progress~",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "SPRING",
+      "year": 2027
+    },
+    "synonyms": [
+      "\u30a2\u30a4\u30ab\u30c4\u30b9\u30bf\u30fc\u30ba\uff01 \uff5e\u661f\u3005\u306eProgress\uff5e"
+    ],
+    "releaseDate": "2027-04-01T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -2727,6 +2831,19 @@
       "Laboratory of Optics and Neural Analysis"
     ],
     "releaseDate": "2027-04-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/213878"
+    ],
+    "title": "4th Project (Provisional Title)",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
   },
   {
     "sources": [
@@ -2799,6 +2916,29 @@
     },
     "synonyms": [],
     "releaseDate": "2026-05-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64535",
+      "https://shikimori.one/animes/64535",
+      "https://www.bilibili.com/bangumi/media/md420613337",
+      "https://www.livechart.me/anime/13714"
+    ],
+    "title": "Aishang Ta de Liyou 2nd Season",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "The Girl Downstairs 2nd Season",
+      "\u041f\u0440\u0438\u0447\u0438\u043d\u0430 \u043f\u043e\u043b\u044e\u0431\u0438\u0442\u044c \u0435\u0451 2",
+      "\u041f\u0440\u0438\u0447\u0438\u043d\u044b \u043b\u044e\u0431\u0438\u0442\u044c \u0435\u0451 2",
+      "\u4e0b\u306e\u968e\u306b\u306f\u6faa\u304c\u3044\u308b",
+      "\ubbfc\uc1a1\uc544"
+    ],
+    "releaseDate": "2028-01-01T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -2997,6 +3137,22 @@
   },
   {
     "sources": [
+      "https://www.livechart.me/anime/13711"
+    ],
+    "title": "Cyber Detective Charlotte ~Dead Mans Hand Arc~",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Cyber Detective Charlotte: DeadManshand Arc"
+    ],
+    "releaseDate": "2026-07-02T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
       "https://myanimelist.net/anime/64383",
       "https://shikimori.one/animes/64383"
     ],
@@ -3109,6 +3265,20 @@
       "\u30ef\u30f3\u30aa\u30da\u89e3\u96c7"
     ],
     "releaseDate": "2026-06-02T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64522",
+      "https://shikimori.one/animes/64522"
+    ],
+    "title": "FBKingdom Story",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
   },
   {
     "sources": [
@@ -3299,6 +3469,23 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/213845",
+      "https://www.livechart.me/anime/13717"
+    ],
+    "title": "Here U Are",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Yuanlai Ni Zai Zheli"
+    ],
+    "releaseDate": "2026-07-03T21:44:18.570452000Z"
+  },
+  {
+    "sources": [
       "https://www.livechart.me/anime/13603"
     ],
     "title": "Hidan no Aria (Short Anime)",
@@ -3342,6 +3529,32 @@
       "\u3072\u3050\u3089\u3057\u306e\u306a\u304f\u9803\u306b (\u65b0\u30a2\u30cb\u30e1)"
     ],
     "releaseDate": "2026-06-21T16:09:08.678066000Z"
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20166",
+      "https://anilist.co/anime/213872",
+      "https://bocchi-kouryaku.com",
+      "https://en.wikipedia.org/wiki/Loner_Life_in_Another_World#Anime",
+      "https://ja.wikipedia.org/wiki/%E3%81%B2%E3%81%A8%E3%82%8A%E3%81%BC%E3%81%A3%E3%81%A1%E3%81%AE%E7%95%B0%E4%B8%96%E7%95%8C%E6%94%BB%E7%95%A5#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
+      "https://myanimelist.net/anime/64551",
+      "https://shikimori.one/animes/64551",
+      "https://twitter.com/bocchi_PR",
+      "https://www.livechart.me/anime/13720"
+    ],
+    "title": "Hitoribocchi no Isekai Kouryaku 2nd Season",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Lonely Attack on the Different World",
+      "Lonely Attack on the Different World Season 2",
+      "\u3072\u3068\u308a\u307c\u3063\u3061\u306e\u7570\u4e16\u754c\u653b\u7565 \u7b2c2\u671f"
+    ],
+    "releaseDate": "2026-07-04T15:54:09.299328000Z"
   },
   {
     "sources": [
@@ -3546,6 +3759,7 @@
     "sources": [
       "https://myanimelist.net/anime/64388",
       "https://shikimori.one/animes/64388",
+      "https://www.iq.com/album/super-heroic-spirit-season-2-2026-28xqcrco4oh",
       "https://www.iqiyi.com/a_28xqcrco4oh.html"
     ],
     "title": "Jueshi Zhan Hun 2nd Season",
@@ -3851,6 +4065,35 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20167",
+      "https://anilist.co/anime/213860",
+      "https://en.wikipedia.org/wiki/Chillin%27_in_Another_World_with_Level_2_Super_Cheat_Powers#Anime",
+      "https://ja.wikipedia.org/wiki/Lv2%E3%81%8B%E3%82%89%E3%83%81%E3%83%BC%E3%83%88%E3%81%A0%E3%81%A3%E3%81%9F%E5%85%83%E5%8B%87%E8%80%85%E5%80%99%E8%A3%9C%E3%81%AE%E3%81%BE%E3%81%A3%E3%81%9F%E3%82%8A%E7%95%B0%E4%B8%96%E7%95%8C%E3%83%A9%E3%82%A4%E3%83%95#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
+      "https://lv2-cheat.com",
+      "https://myanimelist.net/anime/64553",
+      "https://shikimori.one/animes/64553",
+      "https://twitter.com/Lv2cheat_anime",
+      "https://www.livechart.me/anime/13719"
+    ],
+    "title": "Lv2 kara Cheat datta Motoyuusha Kouho no Mattari Isekai Life 2nd Season",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Chillin Different World Life of the Ex-Brave Candidate was Cheat from Lv2",
+      "Chillin' in Another World with Level 2 Super Cheat Powers Season 2",
+      "Lv2\u304b\u3089\u30c1\u30fc\u30c8\u3060\u3063\u305f\u5143\u52c7\u8005\u5019\u88dc\u306e\u307e\u3063\u305f\u308a\u7570\u4e16\u754c\u30e9\u30a4\u30d5 \u7b2c2\u671f",
+      "Lv2\u30c1\u30fc\u30c8",
+      "Lv2\u30ea\u30d0\u30c0\u30a4",
+      "The Laid-back Life in Another World of the Ex-Hero Candidate Who Turned out to be a Cheat from Level 2"
+    ],
+    "releaseDate": "2026-07-04T15:33:52.867133000Z"
+  },
+  {
+    "sources": [
       "https://anidb.net/anime/20083",
       "https://anilist.co/anime/212955",
       "https://myanimelist.net/anime/64350",
@@ -3874,6 +4117,31 @@
       "\u9b54\u6cd5\u79d1\u9ad8\u6821\u306e\u52a3\u7b49\u751f \u7b2c3\u30b7\u30fc\u30ba\u30f3 \u53e4\u90fd\u5185\u4e71\u7de8"
     ],
     "releaseDate": "2026-06-04T23:18:07.483863000Z"
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20154",
+      "https://anilist.co/anime/213796",
+      "https://en.wikipedia.org/wiki/Witch_and_Hound#Anime",
+      "https://myanimelist.net/anime/64528",
+      "https://shikimori.one/animes/64528",
+      "https://twitter.com/wah_anime",
+      "https://witch-and-hound-anime.com",
+      "https://www.livechart.me/anime/13710",
+      "https://www.world-art.ru/animation/animation.php?id=12943"
+    ],
+    "title": "Majo to Ryouken",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Witch and Hound",
+      "\u9b54\u5973\u3068\u731f\u72ac"
+    ],
+    "releaseDate": "2026-07-02T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -3905,6 +4173,30 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/213815",
+      "https://en.wikipedia.org/wiki/Heir_to_a_Monstermancer",
+      "https://mamomusu.com",
+      "https://myanimelist.net/anime/64540",
+      "https://shikimori.one/animes/64540",
+      "https://twitter.com/mamomusu_pj",
+      "https://www.livechart.me/anime/12921"
+    ],
+    "title": "Mamonotsukai no Musume",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Heir to a Monstermancer",
+      "Monster Master Girl",
+      "\u9b54\u7269\u4f7f\u3044\u306e\u5a18"
+    ],
+    "releaseDate": "2026-07-03T14:36:38.400241000Z"
+  },
+  {
+    "sources": [
       "https://anidb.net/anime/20109",
       "https://www.livechart.me/anime/13671"
     ],
@@ -3917,6 +4209,28 @@
     },
     "synonyms": [],
     "releaseDate": "2026-06-17T05:39:35.437871000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/213867",
+      "https://myanimelist.net/anime/64554",
+      "https://www.livechart.me/anime/13722"
+    ],
+    "title": "MILKY\u2606BYWAY Spring Special \"TERROR ON CHELOVIN'S DAY\"",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Milky\u2606Byway Spring Special: Terror on Chelovin's Day",
+      "Milky\u2606Subway: The Galactic Limited Express",
+      "\u30df\u30eb\u30ad\u30fc\u2606\u30d0\u30a4\u30a6\u30a7\u30a4 \u30b9\u30d7\u30ea\u30f3\u30b0\u30b9\u30da\u30b7\u30e3\u30eb \u201c\u6050\u6016\u306e\u30c1\u30a7\u30ed\u30d3\u30f3\u30fb\u30d1\u30fc\u30c6\u30a3\u30fc\u201d",
+      "\u81e8\u6642\u5897\u767a \u30df\u30eb\u30ad\u30fc\u2606\u30b5\u30d6\u30a6\u30a7\u30a4 \u5404\u99c5\u505c\u8eca\u5287\u5834\u884c\u304d",
+      "\u9280\u6cb3\u7279\u6025 \u30df\u30eb\u30ad\u30fc\u2606\u30b5\u30d6\u30a6\u30a7\u30a4"
+    ],
+    "releaseDate": "2026-07-04T18:43:05.730583000Z"
   },
   {
     "sources": [
@@ -4002,6 +4316,26 @@
       "Alices",
       "Mou Hitori no Arisu"
     ]
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/213877",
+      "https://myanimelist.net/anime/64555",
+      "https://www.livechart.me/anime/13723"
+    ],
+    "title": "MURCI\u00c9LAGO",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Murcielago",
+      "Murci\u00e9lago",
+      "\u30e0\u30eb\u30b7\u30a8\u30e9\u30b4"
+    ],
+    "releaseDate": "2027-01-01T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -4096,6 +4430,37 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20162",
+      "https://anilist.co/anime/213846",
+      "https://en.wikipedia.org/wiki/Solo_Leveling",
+      "https://ja.wikipedia.org/wiki/\u4ffa\u3060\u3051\u30ec\u30d9\u30eb\u30a2\u30c3\u30d7\u306a\u4ef6",
+      "https://myanimelist.net/anime/64546",
+      "https://shikimori.one/animes/64546",
+      "https://sololeveling-anime.net",
+      "https://twitter.com/sololeveling_en",
+      "https://www.livechart.me/anime/13718"
+    ],
+    "title": "Ore dake Level Up na Ken -Beyond the System-",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "I Level Up Alone",
+      "Na Honjaman Level Up",
+      "Only I Level Up",
+      "Solo Leveling The Movie -Beyond the System-",
+      "Solo Leveling: Beyond the System",
+      "\u041f\u043e\u0434\u043d\u044f\u0442\u0438\u0435 \u0443\u0440\u043e\u0432\u043d\u044f \u0432 \u043e\u0434\u0438\u043d\u043e\u0447\u043a\u0443: \u0412\u043d\u0435 \u0441\u0438\u0441\u0442\u0435\u043c\u044b",
+      "\u4ffa\u3060\u3051\u30ec\u30d9\u30eb\u30a2\u30c3\u30d7\u306a\u4ef6 - Beyond the System -",
+      "\ub098 \ud63c\uc790\ub9cc \ub808\ubca8\uc5c5"
+    ],
+    "releaseDate": "2026-07-03T21:23:09.984937000Z"
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/212812",
       "https://en.wikipedia.org/wiki/Paradox_Live#Anime",
       "https://ja.wikipedia.org/wiki/Paradox_Live#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
@@ -4147,6 +4512,7 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/213874",
       "https://myanimelist.net/anime/64444",
       "https://shikimori.one/animes/64444",
       "https://v.qq.com/x/cover/mzc00200c6as9vu/r41011xhbqt.html"
@@ -4161,8 +4527,23 @@
     "synonyms": [
       "Beseech the Devil",
       "Pursuit of the Truth",
-      "\u0421\u0442\u0440\u0435\u043c\u043b\u0435\u043d\u0438\u0435 \u043a \u0438\u0441\u0442\u0438\u043d\u0435"
+      "\u0421\u0442\u0440\u0435\u043c\u043b\u0435\u043d\u0438\u0435 \u043a \u0438\u0441\u0442\u0438\u043d\u0435",
+      "\u6c42\u9b54"
     ]
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64536",
+      "https://shikimori.one/animes/64536"
+    ],
+    "title": "Qu Ni de Dao",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
   },
   {
     "sources": [
@@ -4211,6 +4592,49 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/213879",
+      "https://www.livechart.me/anime/13724"
+    ],
+    "title": "Ryugesho no Shinobi",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Jurassic Shadows",
+      "\u7adc\u5316\u7ca7\u306e\u5fcd"
+    ],
+    "releaseDate": "2026-07-04T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20165",
+      "https://anilist.co/anime/213873",
+      "https://en.wikipedia.org/wiki/S-Rank_B%C5%8Dken-sha_de_Aru_Ore_no_Musume-tachi_wa_J%C5%ABdo_no_Fathercon_deshita",
+      "https://myanimelist.net/anime/64552",
+      "https://sfather-anime.com",
+      "https://shikimori.one/animes/64552",
+      "https://twitter.com/Sfather_anime",
+      "https://www.livechart.me/anime/13721"
+    ],
+    "title": "S-Rank Boukensha de Aru Ore no Musume-tachi wa Juudo no Fathercon deshita",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "My Daughters, S-Rank Adventurers, Have a Severe Obsession with Their Father",
+      "My Daughters, S-Rank Adventurers, Were Severe Fatherons",
+      "S\u30e9\u30f3\u30af\u5192\u967a\u8005\u3067\u3042\u308b\u4ffa\u306e\u5a18\u305f\u3061\u306f\u91cd\u5ea6\u306e\u30d5\u30a1\u30b6\u30b3\u30f3\u3067\u3057\u305f"
+    ],
+    "releaseDate": "2026-07-05T00:09:49.389021000Z"
+  },
+  {
+    "sources": [
       "https://anidb.net/anime/20089",
       "https://anilist.co/anime/213106",
       "https://en.wikipedia.org/wiki/The_Greatest_Magicmaster%27s_Retirement_Plan",
@@ -4239,12 +4663,14 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20147",
       "https://anilist.co/anime/213740",
       "https://myanimelist.net/anime/64520",
       "https://shikimori.one/animes/64520",
       "https://thebuglecall-anime.com",
       "https://twitter.com/BugleCall_anime",
-      "https://www.livechart.me/anime/13706"
+      "https://www.livechart.me/anime/13706",
+      "https://www.world-art.ru/animation/animation.php?id=12938"
     ],
     "title": "Sensou Kyoushitsu",
     "type": "TV",
@@ -4404,6 +4830,52 @@
       "\u30b9\u30ce\u30a6\u30dc\u30fc\u30eb\u30a2\u30fc\u30b9 \u7b2c2\u671f"
     ],
     "releaseDate": "2026-06-26T16:57:21.185779000Z"
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20152",
+      "https://anilist.co/anime/213782",
+      "https://en.wikipedia.org/wiki/Soara_and_the_House_of_Monsters#Anime",
+      "https://myanimelist.net/anime/64527",
+      "https://shikimori.one/animes/64527",
+      "https://soara-anime.com",
+      "https://twitter.com/soara_anime",
+      "https://www.livechart.me/anime/13709",
+      "https://www.world-art.ru/animation/animation.php?id=12941"
+    ],
+    "title": "Soara to Mamono no Ie",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Soara and Monster's House",
+      "Soara and the House of Monsters",
+      "Soara and the Monster's House",
+      "\u30bd\u30a2\u30e9\u3068\u9b54\u7269\u306e\u5bb6"
+    ],
+    "releaseDate": "2027-01-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://ko.wikipedia.org/wiki/%EC%8A%88%ED%8D%BC%ED%8A%B8%EB%A1%A0",
+      "https://myanimelist.net/anime/64521",
+      "https://programs.sbs.co.kr/culture/supertrons/main",
+      "https://shikimori.one/animes/64521"
+    ],
+    "title": "Supertrons 2",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Syupeoteulon 2"
+    ],
+    "releaseDate": "2025-12-03"
   },
   {
     "sources": [
@@ -4605,6 +5077,22 @@
       "THE KAMENRIDER ANIMATED"
     ],
     "releaseDate": "2026-04-03T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64538",
+      "https://shikimori.one/animes/64538",
+      "https://www.sanrio.co.jp/news/movies/cn-3d-animation-20260306"
+    ],
+    "title": "Welcome to Sucre Town",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [],
+    "releaseDate": "2026-06-05"
   },
   {
     "sources": [
