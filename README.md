@@ -211,37 +211,37 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 22 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 04 July 2026 07:50:12 UTC
+Last updated: 05 July 2026 14:47:56 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
-| aniDB              |     14437 |
-| AniList            |     22243 |
-| Anime News Network |     12286 |
-| Anime-Planet       |     26655 |
-| aniSearch          |     20706 |
+| aniDB              |     14533 |
+| AniList            |     22369 |
+| Anime News Network |     12339 |
+| Anime-Planet       |     26652 |
+| aniSearch          |     21078 |
 | Annict             |     12704 |
-| Hikka              |     28434 |
-| IMDb               |      6279 |
-| Kaize              |     24606 |
-| Kitsu              |     21981 |
-| Letterboxd         |         8 |
-| LiveChart          |     12239 |
-| MyAnimeList        |     30367 |
-| Nautiljon          |      9243 |
+| Hikka              |     28552 |
+| IMDb               |      6278 |
+| Kaize              |     24572 |
+| Kitsu              |     22095 |
+| Letterboxd         |      1258 |
+| LiveChart          |     12277 |
+| MyAnimeList        |     30565 |
+| Nautiljon          |      9251 |
 | Notify.moe         |     16775 |
-| Otak Otaku         |      3047 |
-| Shikimori          |     30367 |
+| Otak Otaku         |      3052 |
+| Shikimori          |     30565 |
 | Shoboi/Syobocal    |      5914 |
-| Silver Yasha       |      5313 |
-| SIMKL              |     14357 |
+| Silver Yasha       |      5311 |
+| SIMKL              |     14471 |
 | The Movie Database |      8245 |
-| The TVDB           |      5235 |
-| Trakt              |      7210 |
+| The TVDB           |      5234 |
+| Trakt              |      7209 |
 |                    |           |
-| **Total**          | **40097** |
+| **Total**          | **40520** |
 <!-- /counters -->
 
 ## Usage
@@ -313,8 +313,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1783151412,
-    "iso": "2026-07-04T07:50:12.305297+00:00"
+    "timestamp": 1783262876,
+    "iso": "2026-07-05T14:47:56.511688+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -339,30 +339,30 @@ GET /status
   "license": "MIT AND ODbL-1.0 AND DbCL-1.0 AND CC0-1.0",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 14437,
-    "anilist": 22243,
-    "animenewsnetwork": 12286,
-    "animeplanet": 26655,
-    "anisearch": 20706,
+    "anidb": 14533,
+    "anilist": 22369,
+    "animenewsnetwork": 12339,
+    "animeplanet": 26652,
+    "anisearch": 21078,
     "annict": 12704,
-    "hikka": 28434,
-    "imdb": 6279,
-    "kaize": 24606,
-    "kitsu": 21981,
-    "letterboxd": 8,
-    "livechart": 12239,
-    "myanimelist": 30367,
-    "nautiljon": 9243,
+    "hikka": 28552,
+    "imdb": 6278,
+    "kaize": 24572,
+    "kitsu": 22095,
+    "letterboxd": 1258,
+    "livechart": 12277,
+    "myanimelist": 30565,
+    "nautiljon": 9251,
     "notify": 16775,
-    "otakotaku": 3047,
-    "shikimori": 30367,
+    "otakotaku": 3052,
+    "shikimori": 30565,
     "shoboi": 5914,
-    "silveryasha": 5313,
-    "simkl": 14357,
+    "silveryasha": 5311,
+    "simkl": 14471,
     "themoviedb": 8245,
-    "thetvdb": 5235,
-    "trakt": 7210,
-    "total": 40097
+    "thetvdb": 5234,
+    "trakt": 7209,
+    "total": 40520
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format. Platform aliases supported for direct lookup for platform specific endpoints (see ?P<alias> in regex).",
@@ -442,7 +442,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 07/04/2026 07:50:12 UTC
+Updated on 07/05/2026 14:47:56 UTC
 ```
 <!-- /updated-txt -->
 
@@ -698,7 +698,7 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
   "title": "Mairimashita! Iruma-kun 3rd Season",
   "anidb": 16627,
   "anilist": 139092,
-  "animenewsnetwork": 24018,
+  "animenewsnetwork": null,
   "animeplanet": "welcome-to-demon-school-iruma-kun-3",
   "anisearch": 16582,
   "annict": 8883,
