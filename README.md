@@ -1,4 +1,20 @@
 <!-- markdownlint-disable MD028 MD033 -->
+
+> [!WARNING]
+> As [manami-project/anime-offline-database][aod] suddenly decided to stop developing
+> and dumping the data in July 4th, 2026, in which AnimeAPI was heavily relied upon,
+> a major refactor on AnimeAPI is required, and doing it alone might be a little bit
+> too tiring.
+>
+> Some elements that AnimeAPI needed have been written specifically for collecting
+> missing entries from AOD, and it *might* be useful for the rewrite (at the time of
+> writing, it scrapes data from Shikimori for MAL, AniList, Kitsu and LiveChart),
+> however it is undoubtedly very limited compared what AOD does.
+>
+> If you want to volunteer in helping us to refactor the project, please contact us on
+> our [Discord channel](https://nttds.my.id/discord), create an issue on this repo,
+> or through e-mail listed on [nattadasu](https://github.com/nattadasu)'s profile.
+
 <!-- omit in toc -->
 # nattadasu's RESTful AnimeAPI
 
