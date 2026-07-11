@@ -72,6 +72,14 @@ class SlugIdPair(BaseModel):
     """Human readable identifier usually placed on URL"""
 
 
+class NautiljonSlugIdPair(BaseModel):
+    model_config = ConfigDict(use_attribute_docstrings=True)
+    id: PositiveInt | None
+    """Numerical int used by platform for API requests"""
+    slug: NautiljonSlugStr | None
+    """Human readable identifier usually placed on URL"""
+
+
 class AnimeComModel(BaseModel):
     model_config = ConfigDict(use_attribute_docstrings=True)
     uuid: UUID4
@@ -211,6 +219,8 @@ class MappingsModel(BaseModel):
     """LiveChart ID (https://www.livechart.me)"""
     myanimelist: PositiveInt | None = None
     """MyAnimeList ID (https://myanimelist.net)"""
+    nautiljon: NautiljonSlugIdPair | None = None
+    """Nautiljon Mappings (https://nautiljon.com/)"""
     notify: Annotated[
         Base64IshStr | None, Field(validation_alias=AliasChoices("notify", "notifymoe"))
     ] = None
@@ -293,6 +303,8 @@ class AnimeApiV4Data(BaseModel):
             letterboxd_uid=m.letterboxd.uid if m.letterboxd else None,
             livechart=m.livechart,
             myanimelist=m.myanimelist,
+            nautiljon=m.nautiljon.slug if m.nautiljon else None,
+            nautiljon_id=m.nautiljon.id if m.nautiljon else None,
             notify=m.notify,
             otakotaku=m.otakotaku,
             shikimori=m.shikimori,
