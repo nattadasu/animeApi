@@ -1,0 +1,18 @@
+[project]
+name = "animeapi"
+version = "4.0.0"
+description = "A RESTful API for anime relation mapping and auto redirect service across multiple anime databases"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "beautifulsoup4>=4.15.0",
+    "flask>=3.1.3",
+    "pandas>=3.0.3",
+    "python-dotenv>=1.2.2",
+    "python-levenshtein>=0.27.3",
+    "python-slugify>=8.0.4",
+    "requests>=2.34.2",
+    "thefuzz>=0.22.1",
+    "typer>=0.26.8",
+    "zstandard>=0.25.0",
+]
