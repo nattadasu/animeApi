@@ -188,6 +188,8 @@ class MappingsModel(BaseModel):
     """Kinopoisk model mappings (https://www.kinopoisk.ru)"""
     kitsu: SlugIdPair | None = None
     """Kitsu mappings (https://kitsu.io)"""
+    kurozora: SlugIdPair | None = None
+    """Kurozora mappings (https://kurozora.app)"""
     letterboxd: LetterboxdModel | None = None
     """Letterboxd model mappings (https://letterboxd.com)"""
     livechart: PositiveInt | None = None
@@ -200,6 +202,12 @@ class MappingsModel(BaseModel):
     """Notify.moe ID (https://notify.moe)"""
     otakotaku: PositiveInt | None = None
     """Otakotaku ID (https://otakotaku.com)"""
+    shikimori: PositiveInt | None = None
+    """Shikimori ID (https://shikimori.one)"""
+    silveryasha: PositiveInt | None = None
+    """SilverYasha ID (https://db.silveryasha.id)"""
+    simkl: PositiveInt | None = None
+    """Simkl ID (https://simkl.com)"""
     syoboi: Annotated[
         PositiveInt | None,
         Field(
@@ -272,7 +280,10 @@ class AnimeApiV4Data(BaseModel):
             myanimelist=m.myanimelist,
             notify=m.notify,
             otakotaku=m.otakotaku,
+            shikimori=m.shikimori,
             shoboi=m.syoboi,
+            silveryasha=m.silveryasha,
+            simkl=m.simkl,
             themoviedb=m.themoviedb.id if m.themoviedb else None,
             themoviedb_season=m.themoviedb.season.pos if m.themoviedb and m.themoviedb.season else None,
             themoviedb_season_id=m.themoviedb.season.id if m.themoviedb and m.themoviedb.season else None,
