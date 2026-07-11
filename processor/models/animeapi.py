@@ -1,11 +1,20 @@
 from datetime import date, datetime
 from enum import Enum
+from typing import Annotated, Any
 from warnings import deprecated
 
+from pydantic import (
+    UUID4,
+    AliasChoices,
+    BaseModel,
+    BeforeValidator,
+    ConfigDict,
+    Field,
+    NonNegativeInt,
+    PositiveInt,
+)
 from pydantic_extra_types.country import CountryAlpha2
 from pydantic_extra_types.ulid import ULID
-from pydantic import UUID4, AliasChoices, Base64UrlStr, BaseModel, BeforeValidator, ConfigDict, Field, NonNegativeInt, PositiveInt
-from typing import Annotated, Any
 
 
 def convert_date_to_str(v: Any) -> Any:
@@ -50,11 +59,16 @@ class MetaModel(BaseModel):
     """Country of origin of the media"""
 
 
+SlugStr = Annotated[str, Field(pattern=r"^[a-z0-9_:-]+$")]
+NautiljonSlugStr = Annotated[str, Field(pattern=r"^[^ \t\r\n]+$")]
+Base64IshStr = Annotated[str, Field(pattern=r"^[A-Za-z0-9_-]+$")]
+
+
 class SlugIdPair(BaseModel):
     model_config = ConfigDict(use_attribute_docstrings=True)
     id: PositiveInt | None
     """Numerical int used by platform for API requests"""
-    slug: str | None
+    slug: SlugStr | None
     """Human readable identifier usually placed on URL"""
 
 
@@ -62,7 +76,7 @@ class AnimeComModel(BaseModel):
     model_config = ConfigDict(use_attribute_docstrings=True)
     uuid: UUID4
     """Anime.com Unique Identifier"""
-    slug: str
+    slug: SlugStr
     """Anime.com human-readable slug"""
 
 
@@ -83,7 +97,7 @@ class LetterboxdModel(BaseModel):
     model_config = ConfigDict(use_attribute_docstrings=True)
     lid: str | None = None
     """Letterboxd Letter ID, used for interacting official API"""
-    slug: str | None = None
+    slug: SlugStr | None = None
     """Letterboxd Slug, used for navigating to the webpage"""
     uid: PositiveInt | None = None
     """Letterboxd Unique Int ID, unknown use"""
@@ -125,7 +139,7 @@ class TheTvdbModel(BaseModel):
     """TheTVDB ID"""
     type: TheTvdbType = TheTvdbType.SERIES
     """TheTVDB media type (series or movies)"""
-    slug: str | None = None
+    slug: SlugStr | None = None
     """TheTVDB slug identifier"""
     may_invalid: bool = False
     """Define if the season/cour is not split and compatible with anime-oriented database. If `true`, season mapping will be nulled"""
@@ -144,7 +158,7 @@ class TraktModel(BaseModel):
     """Trakt ID"""
     type: TraktType
     """Trakt media type (shows or movies)"""
-    slug: str | None = None
+    slug: SlugStr | None = None
     """Trakt slug identifier"""
     may_invalid: bool = False
     """Define if the season/cour is not split and compatible with anime-oriented database. If `true`, season mapping will be nulled"""
@@ -167,7 +181,8 @@ class MappingsModel(BaseModel):
     anisearch: PositiveInt | None = None
     """aniSearch ID (https://www.anisearch.com)"""
     animenewsnetwork: Annotated[
-        PositiveInt | None, Field(validation_alias=AliasChoices("animenewsnetwork", "ann"))
+        PositiveInt | None,
+        Field(validation_alias=AliasChoices("animenewsnetwork", "ann")),
     ] = None
     """Anime News Network ID (https://www.animenewsnetwork.com)"""
     annict: PositiveInt | None = None
@@ -197,7 +212,7 @@ class MappingsModel(BaseModel):
     myanimelist: PositiveInt | None = None
     """MyAnimeList ID (https://myanimelist.net)"""
     notify: Annotated[
-        Base64UrlStr | None, Field(validation_alias=AliasChoices("notify", "notifymoe"))
+        Base64IshStr | None, Field(validation_alias=AliasChoices("notify", "notifymoe"))
     ] = None
     """Notify.moe ID (https://notify.moe)"""
     otakotaku: PositiveInt | None = None
@@ -285,12 +300,20 @@ class AnimeApiV4Data(BaseModel):
             silveryasha=m.silveryasha,
             simkl=m.simkl,
             themoviedb=m.themoviedb.id if m.themoviedb else None,
-            themoviedb_season=m.themoviedb.season.pos if m.themoviedb and m.themoviedb.season else None,
-            themoviedb_season_id=m.themoviedb.season.id if m.themoviedb and m.themoviedb.season else None,
+            themoviedb_season=m.themoviedb.season.pos
+            if m.themoviedb and m.themoviedb.season
+            else None,
+            themoviedb_season_id=m.themoviedb.season.id
+            if m.themoviedb and m.themoviedb.season
+            else None,
             themoviedb_type=m.themoviedb.type if m.themoviedb else None,
             thetvdb=m.thetvdb.id if m.thetvdb else None,
-            thetvdb_season=m.thetvdb.season.pos if m.thetvdb and m.thetvdb.season else None,
-            thetvdb_season_id=m.thetvdb.season.id if m.thetvdb and m.thetvdb.season else None,
+            thetvdb_season=m.thetvdb.season.pos
+            if m.thetvdb and m.thetvdb.season
+            else None,
+            thetvdb_season_id=m.thetvdb.season.id
+            if m.thetvdb and m.thetvdb.season
+            else None,
             thetvdb_slug=m.thetvdb.slug if m.thetvdb else None,
             thetvdb_type=m.thetvdb.type if m.thetvdb else None,
             trakt=m.trakt.id if m.trakt else None,
@@ -311,19 +334,20 @@ class AnimeApiV3Data(BaseModel):
     """AniDB ID (https://anidb.net)"""
     anilist: PositiveInt | None = None
     """AniList ID (https://anilist.co)"""
-    animecom_slug: str | None = None
+    animecom_slug: SlugStr | None = None
     """Anime.com slug (https://anime.com)"""
     animecom_uuid: UUID4 | None = None
     """Anime.com UUID (https://anime.com)"""
     animenewsnetwork: Annotated[
-        PositiveInt | None, Field(validation_alias=AliasChoices("animenewsnetwork", "ann"))
+        PositiveInt | None,
+        Field(validation_alias=AliasChoices("animenewsnetwork", "ann")),
     ] = None
     """Anime News Network ID (https://www.animenewsnetwork.com)"""
-    animeoshi: str | None = None
+    animeoshi: SlugStr | None = None
     """AnimeOshi slug (https://animeoshi.com)"""
     animeoshi_id: PositiveInt | None = None
     """AnimeOshi ID (https://animeoshi.com)"""
-    animeplanet: str | None = None
+    animeplanet: SlugStr | None = None
     """Anime-Planet slug (https://www.anime-planet.com)"""
     animeplanet_id: PositiveInt | None = None
     """Anime-Planet ID (https://www.anime-planet.com)"""
@@ -337,11 +361,11 @@ class AnimeApiV3Data(BaseModel):
     """Bangumi ID (https://bgm.tv)"""
     douban: PositiveInt | None = None
     """Douban ID (https://movie.douban.com)"""
-    hikka: str | None = None
+    hikka: SlugStr | None = None
     """Hikka ID or slug (https://hikka.io)"""
     imdb: str | None = None
     """IMDb ID (https://www.imdb.com)"""
-    kaize: str | None = None
+    kaize: SlugStr | None = None
     """Kaize slug (https://kaize.io)"""
     kaize_id: PositiveInt | None = None
     """Kaize ID (https://kaize.io)"""
@@ -351,11 +375,11 @@ class AnimeApiV3Data(BaseModel):
     """Kinopoisk media type (https://www.kinopoisk.ru)"""
     kitsu: PositiveInt | None = None
     """Kitsu ID (https://kitsu.io)"""
-    kitsu_slug: str | None = None
+    kitsu_slug: SlugStr | None = None
     """Kitsu slug (https://kitsu.io)"""
     letterboxd_lid: str | None = None
     """Letterboxd Letter ID (https://letterboxd.com)"""
-    letterboxd_slug: str | None = None
+    letterboxd_slug: SlugStr | None = None
     """Letterboxd slug (https://letterboxd.com)"""
     letterboxd_uid: PositiveInt | None = None
     """Letterboxd unique integer ID (https://letterboxd.com)"""
@@ -363,12 +387,12 @@ class AnimeApiV3Data(BaseModel):
     """LiveChart ID (https://www.livechart.me)"""
     myanimelist: PositiveInt | None = None
     """MyAnimeList ID (https://myanimelist.net)"""
-    nautiljon: str | None = None
+    nautiljon: NautiljonSlugStr | None = None
     """Nautiljon slug (https://www.nautiljon.com)"""
     nautiljon_id: PositiveInt | None = None
     """Nautiljon ID (https://www.nautiljon.com)"""
     notify: Annotated[
-        Base64UrlStr | None, Field(validation_alias=AliasChoices("notify", "notifymoe"))
+        Base64IshStr | None, Field(validation_alias=AliasChoices("notify", "notifymoe"))
     ] = None
     """Notify.moe ID (https://notify.moe)"""
     otakotaku: PositiveInt | None = None
@@ -398,15 +422,18 @@ class AnimeApiV3Data(BaseModel):
     ] = None
     """TheMovieDB (TMDB) ID (https://www.themoviedb.org)"""
     themoviedb_season: Annotated[
-        NonNegativeInt | None, Field(validation_alias=AliasChoices("themoviedb_season", "tmdb_season"))
+        NonNegativeInt | None,
+        Field(validation_alias=AliasChoices("themoviedb_season", "tmdb_season")),
     ] = None
     """TheMovieDB season number (https://www.themoviedb.org)"""
     themoviedb_season_id: Annotated[
-        PositiveInt | None, Field(validation_alias=AliasChoices("themoviedb_season_id", "tmdb_season_id"))
+        PositiveInt | None,
+        Field(validation_alias=AliasChoices("themoviedb_season_id", "tmdb_season_id")),
     ] = None
     """TheMovieDB season ID (https://www.themoviedb.org)"""
     themoviedb_type: Annotated[
-        TheMovieDbType | None, Field(validation_alias=AliasChoices("themoviedb_type", "tmdb_type"))
+        TheMovieDbType | None,
+        Field(validation_alias=AliasChoices("themoviedb_type", "tmdb_type")),
     ] = None
     """TheMovieDB media type (tv/movie) (https://www.themoviedb.org)"""
     thetvdb: Annotated[
@@ -414,19 +441,23 @@ class AnimeApiV3Data(BaseModel):
     ] = None
     """TheTVDB ID (https://thetvdb.com)"""
     thetvdb_season: Annotated[
-        NonNegativeInt | None, Field(validation_alias=AliasChoices("thetvdb_season", "tvdb_season"))
+        NonNegativeInt | None,
+        Field(validation_alias=AliasChoices("thetvdb_season", "tvdb_season")),
     ] = None
     """TheTVDB season number (https://thetvdb.com)"""
     thetvdb_season_id: Annotated[
-        PositiveInt | None, Field(validation_alias=AliasChoices("thetvdb_season_id", "tvdb_season_id"))
+        PositiveInt | None,
+        Field(validation_alias=AliasChoices("thetvdb_season_id", "tvdb_season_id")),
     ] = None
     """TheTVDB season ID (https://thetvdb.com)"""
     thetvdb_slug: Annotated[
-        str | None, Field(validation_alias=AliasChoices("thetvdb_slug", "tvdb_slug"))
+        SlugStr | None,
+        Field(validation_alias=AliasChoices("thetvdb_slug", "tvdb_slug")),
     ] = None
     """TheTVDB slug (https://thetvdb.com)"""
     thetvdb_type: Annotated[
-        TheTvdbType | None, Field(validation_alias=AliasChoices("thetvdb_type", "tvdb_type"))
+        TheTvdbType | None,
+        Field(validation_alias=AliasChoices("thetvdb_type", "tvdb_type")),
     ] = None
     """TheTVDB media type (https://thetvdb.com)"""
     trakt: PositiveInt | None = None
@@ -437,7 +468,7 @@ class AnimeApiV3Data(BaseModel):
     """Trakt season number (https://trakt.tv)"""
     trakt_season_id: PositiveInt | None = None
     """Trakt season ID (https://trakt.tv)"""
-    trakt_slug: str | None = None
+    trakt_slug: SlugStr | None = None
     """Trakt slug (https://trakt.tv)"""
     trakt_type: TraktType | None = None
     """Trakt media type (https://trakt.tv)"""
