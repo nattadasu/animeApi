@@ -16,7 +16,9 @@ dependencies = [
     "python-slugify>=8.0.4",
     "python-ulid>=3.1.0",
     "requests>=2.34.2",
+    "sqlalchemy>=2.0.51",
     "thefuzz>=0.22.1",
     "typer>=0.26.8",
+    "yoyo-migrations>=9.0.0",
     "zstandard>=0.25.0",
 ]
