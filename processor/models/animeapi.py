@@ -108,6 +108,8 @@ class TheMovieDbModel(BaseModel):
     """TheMovieDB ID"""
     type: TheMovieDbType
     """TheMovieDB media type (tv or movie)"""
+    may_invalid: bool = False
+    """Define if the season/cour is not split and compatible with anime-oriented database. If `true`, season mapping will be nulled"""
     season: SeasonIdentifier | None = None
     """TheMovieDB season information"""
 
@@ -125,6 +127,8 @@ class TheTvdbModel(BaseModel):
     """TheTVDB media type (series or movies)"""
     slug: str | None = None
     """TheTVDB slug identifier"""
+    may_invalid: bool = False
+    """Define if the season/cour is not split and compatible with anime-oriented database. If `true`, season mapping will be nulled"""
     season: SeasonIdentifier | None = None
     """TheTVDB season information"""
 
@@ -142,6 +146,8 @@ class TraktModel(BaseModel):
     """Trakt media type (shows or movies)"""
     slug: str | None = None
     """Trakt slug identifier"""
+    may_invalid: bool = False
+    """Define if the season/cour is not split and compatible with anime-oriented database. If `true`, season mapping will be nulled"""
     season: SeasonIdentifier | None = None
     """Trakt season information"""
 
