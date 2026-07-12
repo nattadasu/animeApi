@@ -36,10 +36,11 @@ class TitleModel(BaseModel):
 class MediaTypeEnum(str, Enum):
     TV = "TV"
     OVA = "OVA"
+    ONA = "ONA"
     MOVIE = "MOVIE"
     SPECIAL = "SPECIAL"
     PV = "PV"
-    MUSIV = "MUSIC"
+    MUSIC = "MUSIC"
     OTHER = "OTHER"
 
 
