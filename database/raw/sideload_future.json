@@ -431,7 +431,25 @@
   },
   {
     "sources": [
-      "https://anilist.co/anime/213928"
+      "https://anilist.co/anime/214074"
+    ],
+    "title": "Zeztz Anime: Dream Arbeiter Baku",
+    "type": "ONA",
+    "status": "ONGOING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2025
+    },
+    "synonyms": [
+      "\u30bc\u30c3\u30c4\u3042\u306b\u3081\u3000\u30c9\u30ea\u30fc\u30e0\u30a2\u30eb\u30d0\u30a4\u30bf\u30fc\u3070\u304f"
+    ],
+    "releaseDate": "2025-12-28"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/213928",
+      "https://myanimelist.net/anime/64598",
+      "https://shikimori.one/animes/64598"
     ],
     "title": "Han ye Deng Zhu",
     "type": "MOVIE",
@@ -535,6 +553,28 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/214031",
+      "https://mobpsycho100.com",
+      "https://myanimelist.net/anime/64597",
+      "https://shikimori.io/animes/64597-mob-psycho-100-10-shuunen-kinen-tokubetsu-eizou/watch",
+      "https://shikimori.one/animes/64597",
+      "https://twitter.com/mobpsycho_anime"
+    ],
+    "title": "Mob Psycho 100: 10-shuunen Kinen Tokubetsu Eizou",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2026
+    },
+    "synonyms": [
+      "Mob Psycho 100 10th Anniversary Special Movie",
+      "\u30e2\u30d6\u30b5\u30a4\u30b3100 10\u5468\u5e74\u8a18\u5ff5\u7279\u5225\u6620\u50cf"
+    ],
+    "releaseDate": "2026-07-12"
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/213908"
     ],
     "title": "Rusuban",
@@ -548,6 +588,23 @@
       "\u308b\u3059\u3070\u3093"
     ],
     "releaseDate": "2026-08-01"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/214070"
+    ],
+    "title": "Sazin no Nakade",
+    "type": "MOVIE",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2026
+    },
+    "synonyms": [
+      "Dust of the Simulacrum",
+      "\u7802\u5875\u30ce\u4e2d\u30c7"
+    ],
+    "releaseDate": "2026-07-19"
   },
   {
     "sources": [
@@ -573,7 +630,9 @@
   },
   {
     "sources": [
-      "https://anilist.co/anime/213961"
+      "https://anilist.co/anime/213961",
+      "https://myanimelist.net/anime/64577",
+      "https://shikimori.one/animes/64577"
     ],
     "title": "Youjo Shenki 2",
     "type": "ONA",
@@ -583,6 +642,8 @@
       "year": 2026
     },
     "synonyms": [
+      "Saga of Tanya the Evil Shorts",
+      "Youjo Senki Specials",
       "\u3088\u3046\u3058\u3087\u3057\u3047\u3093\u304d2"
     ],
     "releaseDate": "2026-07-09"
@@ -622,6 +683,29 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20193",
+      "https://anilist.co/anime/214049",
+      "https://en.wikipedia.org/wiki/Kizuguchi_to_H%C5%8Dtai#Anime",
+      "https://houtaidoumei.com",
+      "https://myanimelist.net/anime/64600",
+      "https://shikimori.one/animes/64600",
+      "https://twitter.com/houtaidoumei",
+      "https://www.livechart.me/anime/13266"
+    ],
+    "title": "Kizuguchi to Houtai",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "WINTER",
+      "year": 2027
+    },
+    "synonyms": [
+      "\u50b7\u53e3\u3068\u5305\u5e2f"
+    ],
+    "releaseDate": "2027-01-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
       "https://www.livechart.me/anime/13715"
     ],
     "title": "Aikatsu Stars! ~Hoshiboshi no Progress~",
@@ -651,6 +735,20 @@
   },
   {
     "sources": [
+      "https://myanimelist.net/anime/64616",
+      "https://shikimori.one/animes/64616"
+    ],
+    "title": "5-56 Hokuto no Ken: Akanai Tobira-hen",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/213929"
     ],
     "title": "7-nin no Nemuri Hime",
@@ -675,7 +773,9 @@
       "https://shikimori.one/animes/64569",
       "https://twitter.com/seven_sleeping",
       "https://www.anime-planet.com/anime/7-nin-no-nemuri-hime",
-      "https://www.livechart.me/anime/13727"
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40307",
+      "https://www.livechart.me/anime/13727",
+      "https://www.world-art.ru/animation/animation.php?id=12957"
     ],
     "title": "7-nin no Nemurihime",
     "type": "TV",
@@ -708,6 +808,20 @@
   },
   {
     "sources": [
+      "https://myanimelist.net/anime/64595",
+      "https://shikimori.one/animes/64595"
+    ],
+    "title": "Chiikawa Eiga Manner Kouza",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
       "https://www.livechart.me/anime/13711"
     ],
     "title": "Cyber Detective Charlotte ~Dead Mans Hand Arc~",
@@ -721,6 +835,24 @@
       "Cyber Detective Charlotte: DeadManshand Arc"
     ],
     "releaseDate": "2026-07-02T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/214129",
+      "https://myanimelist.net/anime/64624",
+      "https://shikimori.one/animes/64624"
+    ],
+    "title": "Deng Xia Jiu Fa",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Apotheosis in Nine Acts: How I End Up Saving the World",
+      "\u767b\u971e\u4e5d\u6cd5"
+    ]
   },
   {
     "sources": [
@@ -761,6 +893,33 @@
       "\u3072\u3068\u308a\u307c\u3063\u3061\u306e\u7570\u4e16\u754c\u653b\u7565 \u7b2c2\u671f"
     ],
     "releaseDate": "2026-07-04T15:54:09.299328000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/214018"
+    ],
+    "title": "JUNK END",
+    "type": "MOVIE",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64603",
+      "https://shikimori.one/animes/64603"
+    ],
+    "title": "Kidou Butouden G Gundam: 30-shuunen Kinen Fighting Movie",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
   },
   {
     "sources": [
@@ -891,6 +1050,31 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20194",
+      "https://anilist.co/anime/214044",
+      "https://en.wikipedia.org/wiki/Noa-senpai_wa_Tomodachi",
+      "https://ja.wikipedia.org/wiki/%E3%81%AE%E3%81%82%E5%85%88%E8%BC%A9%E3%81%AF%E3%81%A8%E3%82%82%E3%81%A0%E3%81%A1%E3%80%82",
+      "https://myanimelist.net/anime/64599",
+      "https://noasenpai-anime.com",
+      "https://shikimori.one/animes/64599",
+      "https://twitter.com/noasenpai_anime",
+      "https://www.livechart.me/anime/13732"
+    ],
+    "title": "Noa-senpai wa Tomodachi.",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Noa Is My Senior, and My Friend.",
+      "\u306e\u3042\u5148\u8f29\u306f\u3068\u3082\u3060\u3061\u3002"
+    ],
+    "releaseDate": "2026-07-13T14:26:50.576627000Z"
+  },
+  {
+    "sources": [
       "https://www.livechart.me/anime/13730"
     ],
     "title": "Nontan",
@@ -902,6 +1086,36 @@
     },
     "synonyms": [],
     "releaseDate": "2026-07-11T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64611",
+      "https://shikimori.one/animes/64611"
+    ],
+    "title": "PetitCure: Gekijou Manner Movie",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64614",
+      "https://shikimori.one/animes/64614"
+    ],
+    "title": "PUBG Mobile x Naruto: Shippuuden Collab",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "\u300ePUBG MOBILE\u300f\u00d7\u300eNARUTO-\u30ca\u30eb\u30c8- \u75be\u98a8\u4f1d\u300f\u30b3\u30e9\u30dc"
+    ]
   },
   {
     "sources": [
@@ -1001,6 +1215,41 @@
     },
     "synonyms": [],
     "releaseDate": "2026-07-11T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20196",
+      "https://anilist.co/anime/214055",
+      "https://en.wikipedia.org/wiki/Tsugumi_Project#Anime",
+      "https://myanimelist.net/anime/64608",
+      "https://shikimori.one/animes/64608",
+      "https://toratsugumi.jp",
+      "https://twitter.com/toratsugumi_PJ"
+    ],
+    "title": "Toratsugumi: Tsugumi Project",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "\u864e\u9dab\u3000\uff0d\uff34\uff33\uff35\uff27\uff35\uff2d\uff29\u3000\uff30\uff32\uff2f\uff2a\uff25\uff23\uff34\uff0d"
+    ]
+  },
+  {
+    "sources": [
+      "https://www.livechart.me/anime/13734"
+    ],
+    "title": "Tsugumi Project",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [],
+    "releaseDate": "2026-07-14T00:00:00.000000000Z"
   },
   {
     "sources": [
