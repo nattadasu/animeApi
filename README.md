@@ -227,7 +227,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 22 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 21 July 2026 07:40:12 UTC
+Last updated: 22 July 2026 07:42:18 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -253,7 +253,7 @@ Last updated: 21 July 2026 07:40:12 UTC
 | Shoboi/Syobocal    |      5920 |
 | Silver Yasha       |      5311 |
 | SIMKL              |     14483 |
-| The Movie Database |      8278 |
+| The Movie Database |      8280 |
 | The TVDB           |      5261 |
 | Trakt              |      7238 |
 |                    |           |
@@ -329,8 +329,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1784619612,
-    "iso": "2026-07-21T07:40:12.506167+00:00"
+    "timestamp": 1784706138,
+    "iso": "2026-07-22T07:42:18.735165+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -375,7 +375,7 @@ GET /status
     "shoboi": 5920,
     "silveryasha": 5311,
     "simkl": 14483,
-    "themoviedb": 8278,
+    "themoviedb": 8280,
     "thetvdb": 5261,
     "trakt": 7238,
     "total": 40576
@@ -458,7 +458,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 07/21/2026 07:40:12 UTC
+Updated on 07/22/2026 07:42:18 UTC
 ```
 <!-- /updated-txt -->
 
