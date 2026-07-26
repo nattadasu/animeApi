@@ -631,7 +631,9 @@
   {
     "sources": [
       "https://anilist.co/anime/213961",
+      "https://kitsu.app/anime/50846",
       "https://myanimelist.net/anime/64577",
+      "https://shikimori.io/animes/64577-youjo-shenki-2/watch",
       "https://shikimori.one/animes/64577"
     ],
     "title": "Youjo Shenki 2",
@@ -647,6 +649,36 @@
       "\u3088\u3046\u3058\u3087\u3057\u3047\u3093\u304d2"
     ],
     "releaseDate": "2026-07-09"
+  },
+  {
+    "sources": [
+      "https://www.livechart.me/anime/13740"
+    ],
+    "title": "Ghost Meets Gal!",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-09-04T23:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/214443"
+    ],
+    "title": "Hitori Tsuma",
+    "type": "OVA",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u30d2\u30c8\u30ea\u59bb"
+    ],
+    "releaseDate": "2026-10-30"
   },
   {
     "sources": [
@@ -686,11 +718,14 @@
       "https://anidb.net/anime/20193",
       "https://anilist.co/anime/214049",
       "https://en.wikipedia.org/wiki/Kizuguchi_to_H%C5%8Dtai#Anime",
+      "https://en.wikipedia.org/wiki/Wound_&_Bandage#Anime",
       "https://houtaidoumei.com",
       "https://myanimelist.net/anime/64600",
       "https://shikimori.one/animes/64600",
       "https://twitter.com/houtaidoumei",
-      "https://www.livechart.me/anime/13266"
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40337",
+      "https://www.livechart.me/anime/13266",
+      "https://www.world-art.ru/animation/animation.php?id=12962"
     ],
     "title": "Kizuguchi to Houtai",
     "type": "TV",
@@ -717,6 +752,39 @@
     },
     "synonyms": [],
     "releaseDate": "2027-04-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://www.livechart.me/anime/13743"
+    ],
+    "title": "Doraemon Movie 46: Shin Nobita no Kaitei Kiganjou",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "SPRING",
+      "year": 2027
+    },
+    "synonyms": [
+      "Doraemon the Movie: New Nobita and the Castle of the Undersea Devil",
+      "Doraemon the Movie: Nobita and the New Castle of the Undersea Devil",
+      "Doraemon: Nobita's Monstrous Underwater Castle",
+      "Doraemon: Nobita's Undersea Fortress",
+      "Eiga Doraemon Shin Nobita no Kaitei Kiganjou"
+    ],
+    "releaseDate": "2027-04-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/214435"
+    ],
+    "title": "(Title to be Announced)",
+    "type": "MOVIE",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
   },
   {
     "sources": [
@@ -808,6 +876,36 @@
   },
   {
     "sources": [
+      "https://myanimelist.net/anime/64653",
+      "https://shikimori.one/animes/64653"
+    ],
+    "title": "Baise Shandian 2nd Season",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "White Lightning 2nd Season"
+    ]
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64641",
+      "https://shikimori.one/animes/64641"
+    ],
+    "title": "Box Party",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
       "https://myanimelist.net/anime/64595",
       "https://shikimori.one/animes/64595"
     ],
@@ -840,7 +938,8 @@
     "sources": [
       "https://anilist.co/anime/214129",
       "https://myanimelist.net/anime/64624",
-      "https://shikimori.one/animes/64624"
+      "https://shikimori.one/animes/64624",
+      "https://www.bilibili.com/bangumi/media/md423312529"
     ],
     "title": "Deng Xia Jiu Fa",
     "type": "TV",
@@ -852,6 +951,40 @@
     "synonyms": [
       "Apotheosis in Nine Acts: How I End Up Saving the World",
       "\u767b\u971e\u4e5d\u6cd5"
+    ]
+  },
+  {
+    "sources": [
+      "https://www.livechart.me/anime/13744"
+    ],
+    "title": "Ginga Tetsudou 999",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "GE999",
+      "Galaxy Express 999",
+      "Ginga Tetsudo 999"
+    ],
+    "releaseDate": "2026-07-25T09:04:15.770799000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/214442"
+    ],
+    "title": "Ginga Tetsudou 999 Movie (Provisional Title)",
+    "type": "MOVIE",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "New Galaxy Express 999 Movie",
+      "\u9280\u6cb3\u9244\u9053999 \u65b0\u4f5c\u5287\u5834\u30a2\u30cb\u30e1\u30fc\u30b7\u30e7\u30f3"
     ]
   },
   {
@@ -938,6 +1071,52 @@
   },
   {
     "sources": [
+      "https://en.wikipedia.org/wiki/Kabaneri_of_the_Iron_Fortress",
+      "https://ja.wikipedia.org/wiki/%E7%94%B2%E9%89%84%E5%9F%8E%E3%81%AE%E3%82%AB%E3%83%90%E3%83%8D%E3%83%AA",
+      "https://myanimelist.net/anime/64672",
+      "https://shikimori.one/animes/64672",
+      "https://twitter.com/anime_kabaneri",
+      "https://www.kabaneri.com"
+    ],
+    "title": "Koutetsujou no Kabaneri: Mumei Ranman",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20208",
+      "https://anilist.co/anime/214368",
+      "https://en.wikipedia.org/wiki/Kusunoki%27s_Flunking_Her_High_School_Glow-Up#Anime",
+      "https://ja.wikipedia.org/wiki/%E6%A5%A0%E6%9C%A8%E3%81%95%E3%82%93%E3%81%AF%E9%AB%98%E6%A0%A1%E3%83%87%E3%83%93%E3%83%A5%E3%83%BC%E3%81%AB%E5%A4%B1%E6%95%97%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B",
+      "https://kusunokisan-debut.com",
+      "https://myanimelist.net/anime/64664",
+      "https://shikimori.one/animes/64664",
+      "https://twitter.com/kusunokisan_off",
+      "https://www.livechart.me/anime/13741"
+    ],
+    "title": "Kusunoki-san wa Koukou Debut ni Shippaishiteiru",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Kusunoki-san Failed to Debut in High School",
+      "Kusunoki-san Failed to Debut in High School, She Is (Not) a Cool Girl (in High School)",
+      "Kusunoki\u2019s Flunking Her High School Glow-Up",
+      "She Is (Not) a Cool Girl (in High School)",
+      "\u6960\u6728\u3055\u3093\u306f\u9ad8\u6821\u30c7\u30d3\u30e5\u30fc\u306b\u5931\u6557\u3057\u3066\u3044\u308b"
+    ],
+    "releaseDate": "2026-07-23T13:16:45.057414000Z"
+  },
+  {
+    "sources": [
       "https://myanimelist.net/anime/64553",
       "https://www.livechart.me/anime/13719"
     ],
@@ -971,6 +1150,25 @@
       "Monster Master Girl"
     ],
     "releaseDate": "2026-07-03T14:36:38.400241000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/214451",
+      "https://myanimelist.net/anime/64685",
+      "https://www.livechart.me/anime/13745"
+    ],
+    "title": "Mii-chan to Yamada-san",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Mii-chan and Yamada-san",
+      "\u307f\u3044\u3061\u3083\u3093\u3068\u5c71\u7530\u3055\u3093"
+    ],
+    "releaseDate": "2027-01-01T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -1058,7 +1256,9 @@
       "https://noasenpai-anime.com",
       "https://shikimori.one/animes/64599",
       "https://twitter.com/noasenpai_anime",
-      "https://www.livechart.me/anime/13732"
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40338",
+      "https://www.livechart.me/anime/13732",
+      "https://www.world-art.ru/animation/animation.php?id=12963"
     ],
     "title": "Noa-senpai wa Tomodachi.",
     "type": "TV",
@@ -1119,6 +1319,45 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20202",
+      "https://anilist.co/anime/214215",
+      "https://myanimelist.net/anime/64640",
+      "https://www.anisearch.com/anime/21858",
+      "https://www.livechart.me/anime/13736"
+    ],
+    "title": "Real mo Tama ni wa Uso wo Tsuku",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Game-zuki no Tomodachi to Iroiro suru Hanashi",
+      "Genjitsu mo Tama ni wa Uso wo Tsuku",
+      "Hanging Out with a Gamer Girl",
+      "Sometimes Even Reality Is a Lie!",
+      "Sometimes Reality Lies, Too.",
+      "\u73fe\u5b9f\u3082\u305f\u307e\u306b\u306f\u5618\u3092\u3064\u304f"
+    ],
+    "releaseDate": "2027-01-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64673",
+      "https://shikimori.one/animes/64673"
+    ],
+    "title": "Rexue Zuqiu Shaonian: Yingxiong Chusheng",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
       "https://myanimelist.net/anime/64580",
       "https://shikimori.one/animes/64580",
       "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40245"
@@ -1170,6 +1409,20 @@
   },
   {
     "sources": [
+      "https://myanimelist.net/anime/64675",
+      "https://shikimori.one/animes/64675"
+    ],
+    "title": "Sanguo Di Yi Bu: Zheng Luoyang",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/213958"
     ],
     "title": "Sarangui Heartsping: Goraeboseok-ui Jeonseol",
@@ -1201,6 +1454,54 @@
     "synonyms": [
       "\u0422\u044e\u043b\u0435\u043d\u044c\u043a\u0438 2"
     ]
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20209",
+      "https://en.wikipedia.org/wiki/Because_I,_the_True_Saint,_was_Banished,_that_Country_is_Done_For!#Anime",
+      "https://myanimelist.net/anime/64665",
+      "https://shikimori.one/animes/64665",
+      "https://twitter.com/shinnoseijo",
+      "https://www.livechart.me/anime/13742",
+      "https://www.shinnoseijo-anime.com"
+    ],
+    "title": "Shin no Seijo de Aru Watashi wa Tsuihou saremashita. Dakara Kono Kuni wa Mou Owari desu",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Even Though I was the Real Saint",
+      "Even Though I was the Real Saint, I was Exiled\u2014Which Means my Country is Over",
+      "I was Exiled\u2014Which Means my Country is Over"
+    ],
+    "releaseDate": "2027-01-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20206",
+      "https://anilist.co/anime/214332",
+      "https://myanimelist.net/anime/64658",
+      "https://shikimori.one/animes/64658",
+      "https://studio-cabana.com",
+      "https://twitter.com/studiocabana_pr",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40361",
+      "https://www.anisearch.com/anime/21861",
+      "https://www.livechart.me/anime/13738"
+    ],
+    "title": "Studio Cabana",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "\u30b9\u30bf\u30b8\u30aa\u30ab\u30d0\u30ca"
+    ],
+    "releaseDate": "2027-01-01T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -1239,6 +1540,13 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20196",
+      "https://en.wikipedia.org/wiki/Tsugumi_Project#Anime",
+      "https://myanimelist.net/anime/64608",
+      "https://shikimori.one/animes/64608",
+      "https://toratsugumi.jp",
+      "https://twitter.com/toratsugumi_PJ",
+      "https://www.anisearch.com/anime/21855",
       "https://www.livechart.me/anime/13734"
     ],
     "title": "Tsugumi Project",
@@ -1250,6 +1558,21 @@
     },
     "synonyms": [],
     "releaseDate": "2026-07-14T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64652",
+      "https://shikimori.one/animes/64652",
+      "https://studio-placebo.jp/works/00335"
+    ],
+    "title": "Tsunaide",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
   },
   {
     "sources": [
@@ -1267,6 +1590,9 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20210",
+      "https://anilist.co/anime/214380",
+      "https://myanimelist.net/anime/64667",
       "https://www.livechart.me/anime/13729"
     ],
     "title": "Untitled New Gundam Series",
@@ -1276,8 +1602,31 @@
       "season": "TBA",
       "year": null
     },
-    "synonyms": [],
+    "synonyms": [
+      "Mobile Suit Gundam RG ALEX-ZERO",
+      "Mobile Suit Gundam RG Alex Zero",
+      "RG XARX-ZERO",
+      "XARX-ZERO",
+      "\u6a5f\u52d5\u6226\u58eb\u30ac\u30f3\u30c0\u30e0RG XARX-ZERO",
+      "\u6a5f\u52d5\u6226\u58eb\u30ac\u30f3\u30c0\u30e0RG \u30a2\u30ec\u30c3\u30af\u30b9\u30bc\u30ed"
+    ],
     "releaseDate": "2026-07-08T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/214261"
+    ],
+    "title": "Wakareru Tame ni Irojikake Shitemita",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Trying to Break up With Sex",
+      "\u5225\u308c\u308b\u305f\u3081\u306b\u8272\u4ed5\u639b\u3051\u3057\u3066\u307f\u305f"
+    ]
   },
   {
     "sources": [
@@ -1326,6 +1675,34 @@
   },
   {
     "sources": [
+      "https://myanimelist.net/anime/64674",
+      "https://shikimori.one/animes/64674"
+    ],
+    "title": "Wukong Da Sheng",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64677",
+      "https://shikimori.one/animes/64677"
+    ],
+    "title": "Xiao Zhu Pei Qi: Wanmei Jiaqi",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/204462"
     ],
     "title": "Yogoreta Shirosa wo Nanto Yobu?",
@@ -1338,5 +1715,30 @@
     "synonyms": [
       "\u6c5a\u308c\u305f\u767d\u3055\u3092\u4f55\u3068\u547c\u3076\uff1f"
     ]
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20203",
+      "https://anilist.co/anime/214246",
+      "https://myanimelist.net/anime/64643",
+      "https://shikimori.one/animes/64643",
+      "https://twitter.com/yurayuraQ_anime",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40355",
+      "https://www.anisearch.com/anime/21859",
+      "https://www.livechart.me/anime/13737",
+      "https://www.yurayura-queen.com"
+    ],
+    "title": "Yurayura Q",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Yura Yura Queen",
+      "\u3086\u3089\u3086\u3089\uff31"
+    ],
+    "releaseDate": "2026-07-20T00:00:00.000000000Z"
   }
 ]
