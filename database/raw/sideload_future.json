@@ -450,7 +450,8 @@
       "https://anilist.co/anime/213928",
       "https://kitsu.app/anime/50864",
       "https://myanimelist.net/anime/64598",
-      "https://shikimori.one/animes/64598"
+      "https://shikimori.one/animes/64598",
+      "https://www.world-art.ru/cinema/cinema.php?id=131369"
     ],
     "title": "Han ye Deng Zhu",
     "type": "MOVIE",
@@ -554,6 +555,47 @@
   },
   {
     "sources": [
+      "https://www.livechart.me/anime/13753"
+    ],
+    "title": "Fate/Grand Order 11th Anniversary Movie -Cosmos in the Lostbelt-",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-08-02T07:23:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/214855",
+      "https://anime.fate-go.jp/nazomaru",
+      "https://myanimelist.net/anime/64725",
+      "https://shikimori.one/animes/64725",
+      "https://twitter.com/fgoproject",
+      "https://www.livechart.me/anime/13752"
+    ],
+    "title": "Fate/Grand Order Fujimaru Ritsuka wa Wakaranai Season 4",
+    "type": "TV",
+    "status": "ONGOING",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2026
+    },
+    "synonyms": [
+      "FGO",
+      "Fate/Grand Order \u85e4\u4e38\u7acb\u9999\u306f\u308f\u304b\u3089\u306a\u3044 Season4",
+      "Fate/Grand Order: Fujimaru Ritsuka Doesn't Get It Season 4",
+      "Fate/Grand Order: Fujimaru Ritsuka Doesn't Get it",
+      "Fate/Grand Order: You've Lost Ritsuka Fujimaru Season 4",
+      "NazoMaru",
+      "\u8b0e\u4e38"
+    ],
+    "releaseDate": "2026-08-07T12:00:00.000000000Z"
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/214031",
       "https://mobpsycho100.com",
       "https://myanimelist.net/anime/64597",
@@ -577,7 +619,9 @@
   {
     "sources": [
       "https://anilist.co/anime/213908",
-      "https://myanimelist.net/anime/64580"
+      "https://myanimelist.net/anime/64580",
+      "https://shikimori.one/animes/64580",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40245"
     ],
     "title": "Rusuban",
     "type": "MOVIE",
@@ -607,6 +651,23 @@
       "\u7802\u5875\u30ce\u4e2d\u30c7"
     ],
     "releaseDate": "2026-07-19"
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20190",
+      "https://www.livechart.me/anime/13731"
+    ],
+    "title": "TINY METAL: ZERO LINE",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2026
+    },
+    "synonyms": [
+      "Tiny Metal: Zerosen Sen"
+    ],
+    "releaseDate": "2026-07-11T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -654,6 +715,11 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/214703",
+      "https://anilist.co/anime/64718",
+      "https://kitsu.app/anime/50866",
+      "https://myanimelist.net/anime/64718",
+      "https://shikimori.one/animes/64718",
       "https://www.livechart.me/anime/13740"
     ],
     "title": "Ghost Meets Gal!",
@@ -663,7 +729,10 @@
       "season": "FALL",
       "year": 2026
     },
-    "synonyms": [],
+    "synonyms": [
+      "Ghost Meets Gyaru!",
+      "\u3054\u30fc\u3059\u3068\u30fb\u307f\u30fc\u3064\u30fb\u304e\u3083\u308b\uff01"
+    ],
     "releaseDate": "2026-09-04T23:00:00.000000000Z"
   },
   {
@@ -684,9 +753,34 @@
   },
   {
     "sources": [
+      "https://www.livechart.me/anime/13755"
+    ],
+    "title": "Oni mo Momo mo 2nd season",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2026
+    },
+    "synonyms": [
+      "Oni and Momo Too",
+      "Onimomomomo",
+      "TOUGEN ANKI Mini Anime",
+      "TOUGEN ANKI: Legend of the Cursed Blood",
+      "Tougen Anki: Dark Demon of Paradise",
+      "\u304a\u306b\u3082\u3082\u3082\u3082",
+      "\u6843\u6e90\u6697\u9b3c \u30df\u30cb\u30a2\u30cb\u30e1"
+    ],
+    "releaseDate": "2026-10-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/214593",
       "https://myanimelist.net/anime/64717",
+      "https://shikimori.one/animes/64717",
       "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40393",
-      "https://www.livechart.me/anime/13749"
+      "https://www.livechart.me/anime/13749",
+      "https://yusanchi-anime.jp"
     ],
     "title": "Yusanchi! from Yu-hachi",
     "type": "TV",
@@ -699,6 +793,7 @@
       "Yu-san Chi! from Yu-hachi",
       "Yuusanchi! from Yuu-hachi",
       "\u3067\u304b\u3044\u306f\u3061",
+      "\u3086\u3046\u3055\u3093\u3061\uff01from \u904a\u30cf\u3061",
       "\u55da\u547c\u3001\u305f\u306c\u304d\u306f\u3082\u3046\u3060\u3081\u3067\u3059",
       "\u5e97\u756a\u306e\u30b9\u30d4\u30b9"
     ],
@@ -707,7 +802,8 @@
   {
     "sources": [
       "https://anilist.co/anime/214559",
-      "https://kitsu.app/anime/50865"
+      "https://kitsu.app/anime/50865",
+      "https://myanimelist.net/anime/64711"
     ],
     "title": "BooooM!!!",
     "type": "TV",
@@ -718,6 +814,42 @@
     },
     "synonyms": [],
     "releaseDate": "2026-07-30"
+  },
+  {
+    "sources": [
+      "https://anikids.ebs.co.kr/anikids/program/show/10024441",
+      "https://kitsu.app/anime/50868",
+      "https://myanimelist.net/anime/64679",
+      "https://shikimori.one/animes/64679"
+    ],
+    "title": "Gangcheolsobangdae Fire Robo Z",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "\uac15\ucca0\uc18c\ubc29\ub300 \ud30c\uc774\uc5b4\ub85c\ubcf4Z"
+    ],
+    "releaseDate": "2026-06-23"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50871",
+      "https://myanimelist.net/anime/64688"
+    ],
+    "title": "I-Bull",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "I-BULL (\u3044\u3076\u308b)"
+    ],
+    "releaseDate": "2026-07-25"
   },
   {
     "sources": [
@@ -780,6 +912,38 @@
   },
   {
     "sources": [
+      "https://kitsu.app/anime/50870",
+      "https://myanimelist.net/anime/64721"
+    ],
+    "title": "Rasen",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u87ba\u65cb"
+    ],
+    "releaseDate": "2026-08-01"
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64744",
+      "https://www.livechart.me/anime/13757"
+    ],
+    "title": "Josemaru",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "WINTER",
+      "year": 2027
+    },
+    "synonyms": [],
+    "releaseDate": "2027-01-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
       "https://anidb.net/anime/20193",
       "https://anilist.co/anime/214049",
       "https://en.wikipedia.org/wiki/Kizuguchi_to_H%C5%8Dtai#Anime",
@@ -801,6 +965,26 @@
     },
     "synonyms": [
       "\u50b7\u53e3\u3068\u5305\u5e2f"
+    ],
+    "releaseDate": "2027-01-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://mofmofparade.bn-ent.net",
+      "https://myanimelist.net/anime/64746",
+      "https://shikimori.one/animes/64746",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=38273",
+      "https://www.livechart.me/anime/13758"
+    ],
+    "title": "Komadori Mofmof Parade",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "WINTER",
+      "year": 2027
+    },
+    "synonyms": [
+      "Mofmof Parade"
     ],
     "releaseDate": "2027-01-01T00:00:00.000000000Z"
   },
@@ -846,6 +1030,22 @@
     "title": "(Title to be Announced)",
     "type": "MOVIE",
     "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
+      "https://en.wikipedia.org/wiki/Reverse:_1999#Anime",
+      "https://myanimelist.net/anime/64724",
+      "https://shikimori.io/animes/64724-1999-shenmi-xue-duice-bu/watch",
+      "https://shikimori.one/animes/64724"
+    ],
+    "title": "1999! Shenmi Xue Duice Bu",
+    "type": "TV",
+    "status": "ONGOING",
     "animeSeason": {
       "season": "TBA",
       "year": null
@@ -942,6 +1142,24 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/214863"
+    ],
+    "title": "Akuyaku no Ending wa Shi nomi",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Agyeogui Ending Jugeumppun",
+      "Villains Are Destined to Die",
+      "\u60aa\u5f79\u306e\u30a8\u30f3\u30c7\u30a3\u30f3\u30b0\u306f\u6b7b\u306e\u307f",
+      "\uc545\uc5ed\uc758 \uc5d4\ub529\uc740 \uc8fd\uc74c\ubfd0"
+    ]
+  },
+  {
+    "sources": [
       "https://myanimelist.net/anime/64653",
       "https://shikimori.one/animes/64653"
     ],
@@ -968,7 +1186,9 @@
       "season": "TBA",
       "year": null
     },
-    "synonyms": []
+    "synonyms": [
+      "Pokemon Fun Video"
+    ]
   },
   {
     "sources": [
@@ -1065,6 +1285,62 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/214854",
+      "https://en.wikipedia.org/wiki/Destiny_Unchain_Online#Anime",
+      "https://myanimelist.net/anime/64751",
+      "https://shikimori.one/animes/64751",
+      "https://twitter.com/DUO_animePR"
+    ],
+    "title": "Destiny Unchain Online",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "DUO",
+      "Destiny Unchain Online: How I Became the Crimson Devil",
+      "Destiny Unchain Online: Kyuuketsuki Shoujo to Natte",
+      "Yagate \"Aka no Maou\" to Yobareru you ni Narimashita"
+    ]
+  },
+  {
+    "sources": [
+      "https://www.livechart.me/anime/13759"
+    ],
+    "title": "Destiny Unchain Online: Kyuuketsuki Shoujo to Natte, Yagate \"Aka no Maou\" to Yobareru you ni Narimashita",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [],
+    "releaseDate": "2026-08-06T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20257",
+      "https://myanimelist.net/anime/64754",
+      "https://shikimori.one/animes/64754",
+      "https://v.youku.com/v_show/id_XNjU0NTk5Njg2NA==.html"
+    ],
+    "title": "Di Ling Ai: Shui Xin Chan",
+    "type": "TV",
+    "status": "ONGOING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Di Ling Ai 2nd Season",
+      "\u7f14\u7075\u7231\u4e4b\u9ed8\u6c34\u73b2\u73d12",
+      "\u7f14\u7075\u7231\u4e4b\u9ed8\u6c34\u73b2\u73d1\u7b2c\u4e8c\u5b63"
+    ]
+  },
+  {
+    "sources": [
       "https://www.livechart.me/anime/13750"
     ],
     "title": "DIGIMON (2027)",
@@ -1079,19 +1355,49 @@
   },
   {
     "sources": [
-      "https://anikids.ebs.co.kr/anikids/program/show/10024441",
-      "https://myanimelist.net/anime/64679",
-      "https://shikimori.one/animes/64679"
+      "https://anilist.co/anime/214725",
+      "https://myanimelist.net/anime/64731"
     ],
-    "title": "Gangcheolsobangdae Fire Robo Z",
+    "title": "Digimon (Shinsaku Anime)",
     "type": "TV",
-    "status": "FINISHED",
+    "status": "UPCOMING",
     "animeSeason": {
       "season": "TBA",
       "year": null
     },
-    "synonyms": [],
-    "releaseDate": "2026-06-23"
+    "synonyms": [
+      "New Digimon Anime",
+      "\u30c7\u30b8\u30e2\u30f3 (\u65b0\u4f5c\u30a2\u30cb\u30e1)"
+    ]
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20246",
+      "https://anilist.co/anime/214749",
+      "https://en.wikipedia.org/wiki/Dokagui_Daisuki!_Mochizuki-san#Anime",
+      "https://ja.wikipedia.org/wiki/%E3%83%89%E3%82%AB%E9%A3%9F%E3%81%84%E3%83%80%E3%82%A4%E3%82%B9%E3%82%AD!_%E3%82%82%E3%81%A1%E3%81%A5%E3%81%8D%E3%81%95%E3%82%93",
+      "https://mochizuki-san.jp",
+      "https://myanimelist.net/anime/64737",
+      "https://shikimori.one/animes/64737",
+      "https://twitter.com/dokagui_anime",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40407",
+      "https://www.anisearch.com/anime/21883",
+      "https://www.livechart.me/anime/13756"
+    ],
+    "title": "Dokagui Daisuki! Mochizuki-san",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "I Love Binge Eating! Mochizuki-san",
+      "I Love Dokagui! Mochizuki-san",
+      "I Love Eating a Lot! Mochizuki-san",
+      "\u30c9\u30ab\u98df\u3044\u30c0\u30a4\u30b9\u30ad! \u3082\u3061\u3065\u304d\u3055\u3093"
+    ],
+    "releaseDate": "2026-08-04T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -1112,6 +1418,7 @@
   {
     "sources": [
       "https://anidb.net/anime/20214",
+      "https://anilist.co/anime/214442",
       "https://en.wikipedia.org/wiki/Galaxy_Express_999",
       "https://myanimelist.net/anime/64693",
       "https://shikimori.one/animes/64693",
@@ -1128,36 +1435,22 @@
     "synonyms": [
       "GE999",
       "Galaxy Express 999",
-      "Ginga Tetsudo 999"
+      "Ginga Tetsudo 999",
+      "New Galaxy Express 999 Movie",
+      "\u9280\u6cb3\u9244\u9053999 \u65b0\u4f5c\u5287\u5834\u30a2\u30cb\u30e1\u30fc\u30b7\u30e7\u30f3"
     ],
     "releaseDate": "2026-07-25T09:04:15.770799000Z"
   },
   {
     "sources": [
-      "https://anilist.co/anime/214442",
-      "https://myanimelist.net/anime/64693"
-    ],
-    "title": "Ginga Tetsudou 999 Movie (Provisional Title)",
-    "type": "MOVIE",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": null
-    },
-    "synonyms": [
-      "New Galaxy Express 999 Movie",
-      "\u9280\u6cb3\u9244\u9053999 \u65b0\u4f5c\u5287\u5834\u30a2\u30cb\u30e1\u30fc\u30b7\u30e7\u30f3"
-    ]
-  },
-  {
-    "sources": [
       "https://myanimelist.net/anime/64713",
       "https://shikimori.one/animes/64713",
-      "https://v.qq.com/x/cover/mzc002006u77lmr.html"
+      "https://v.qq.com/x/cover/mzc002006u77lmr.html",
+      "https://www.world-art.ru/cinema/cinema.php?id=131602"
     ],
     "title": "Guyu Jie Hou Xiang",
     "type": "TV",
-    "status": "UPCOMING",
+    "status": "ONGOING",
     "animeSeason": {
       "season": "TBA",
       "year": null
@@ -1211,7 +1504,8 @@
     "sources": [
       "https://myanimelist.net/anime/64684",
       "https://shikimori.one/animes/64684",
-      "https://tooniverse.cjenm.com/ko/program/\uc774\uc138\uacc4-\uad6d\ubc25-\ub9c8\uc2a4\ud130"
+      "https://tooniverse.cjenm.com/ko/program/\uc774\uc138\uacc4-\uad6d\ubc25-\ub9c8\uc2a4\ud130",
+      "https://www.world-art.ru/cinema/cinema.php?id=131509"
     ],
     "title": "Isekai Gukbap Master",
     "type": "TV",
@@ -1296,6 +1590,54 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/214872"
+    ],
+    "title": "Liang Yao",
+    "type": "ONA",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Wonder Drug",
+      "\u826f\u836f"
+    ]
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/214871"
+    ],
+    "title": "Ling Long Movie",
+    "type": "MOVIE",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Ling Cage Movie",
+      "\u7075\u7b3c\u5927\u7535\u5f71"
+    ]
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64734",
+      "https://shikimori.one/animes/64734",
+      "https://www.mgtv.com/h/777800.html"
+    ],
+    "title": "Linglong Tou",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [],
+    "releaseDate": "2025-10-12"
+  },
+  {
+    "sources": [
       "https://myanimelist.net/anime/64553",
       "https://www.livechart.me/anime/13719"
     ],
@@ -1329,6 +1671,43 @@
       "Monster Master Girl"
     ],
     "releaseDate": "2026-07-03T14:36:38.400241000Z"
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20238",
+      "https://anilist.co/anime/214650",
+      "https://en.wikipedia.org/wiki/Chained_Soldier#Anime",
+      "https://ja.wikipedia.org/wiki/\u9b54\u90fd\u7cbe\u5175\u306e\u30b9\u30ec\u30a4\u30d6#\u30c6\u30ec\u30d3\u30a2\u30cb\u30e1",
+      "https://mabotai.jp",
+      "https://myanimelist.net/anime/64726",
+      "https://shikimori.one/animes/64726",
+      "https://twitter.com/mabotai_kohobu",
+      "https://www.livechart.me/anime/13754"
+    ],
+    "title": "Mato Seihei no Slave 3",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Budak Korps Elite Kota Sihir - Musim Kedua",
+      "Demon Slave Saison 3",
+      "Demon Slave Staffel 3",
+      "Mabotai",
+      "Mato Seihei no Slave 3rd Season",
+      "MatoSla",
+      "N\u00f4 l\u1ec7 c\u1ee7a ma \u0111\u00f4 tinh binh - Ph\u1ea7n 3",
+      "Slave of the Magic Capital's Elite Troops",
+      "mabotai_kohobu",
+      "\u0e17\u0e32\u0e2a\u0e2a\u0e38\u0e14\u0e41\u0e01\u0e23\u0e48\u0e07\u0e41\u0e2b\u0e48\u0e07\u0e2b\u0e19\u0e48\u0e27\u0e22\u0e1b\u0e49\u0e2d\u0e07\u0e01\u0e31\u0e19\u0e2d\u0e2a\u0e39\u0e23 \u0e0b\u0e35\u0e0b\u0e31\u0e48\u0e19 3",
+      "\u307e\u3068\u30b9\u30ec",
+      "\u9b54\u90fd\u7cbe\u5175\u306e\u30b9\u30ec\u30a4\u30d6",
+      "\u9b54\u90fd\u7cbe\u5175\u306e\u30b9\u30ec\u30a4\u30d6 \u7b2c3\u671f",
+      "\u9b54\u90fd\u7cbe\u5175\u7684\u5974\u96b8 \u7b2c\u4e8c\u5b63"
+    ],
+    "releaseDate": "2026-08-02T08:23:26.107534000Z"
   },
   {
     "sources": [
@@ -1541,6 +1920,22 @@
   },
   {
     "sources": [
+      "https://myanimelist.net/anime/64735",
+      "https://shikimori.one/animes/64735",
+      "https://v.youku.com/v_show/id_XNjQ4NzM2MDk0NA==.html"
+    ],
+    "title": "Quanzhi Gaoshou: Rongyao Xiao Juchang 2nd Season",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [],
+    "releaseDate": "2025-07-18"
+  },
+  {
+    "sources": [
       "https://anidb.net/anime/20202",
       "https://anilist.co/anime/214215",
       "https://myanimelist.net/anime/64640",
@@ -1570,21 +1965,6 @@
       "https://shikimori.one/animes/64673"
     ],
     "title": "Rexue Zuqiu Shaonian: Yingxiong Chusheng",
-    "type": "TV",
-    "status": "FINISHED",
-    "animeSeason": {
-      "season": "TBA",
-      "year": null
-    },
-    "synonyms": []
-  },
-  {
-    "sources": [
-      "https://myanimelist.net/anime/64580",
-      "https://shikimori.one/animes/64580",
-      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40245"
-    ],
-    "title": "Rusuban (2026)",
     "type": "TV",
     "status": "FINISHED",
     "animeSeason": {
@@ -1636,7 +2016,7 @@
     ],
     "title": "Salangui Hachyuping: Golaeboseogui Jeonseol",
     "type": "TV",
-    "status": "UPCOMING",
+    "status": "FINISHED",
     "animeSeason": {
       "season": "TBA",
       "year": null
@@ -1698,6 +2078,7 @@
       "https://ja.wikipedia.org/wiki/%E5%8D%83%E6%81%8B*%E4%B8%87%E8%8A%B1#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
       "https://myanimelist.net/anime/64694",
       "https://shikimori.one/animes/64694",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40378",
       "https://www.livechart.me/anime/13746"
     ],
     "title": "Senren\uff0aBanka",
@@ -1771,7 +2152,8 @@
   {
     "sources": [
       "https://myanimelist.net/anime/64678",
-      "https://shikimori.one/animes/64678"
+      "https://shikimori.one/animes/64678",
+      "https://www.world-art.ru/cinema/cinema.php?id=131508"
     ],
     "title": "Sunlyejadeuleun Wae Dolaoji Anhneunga",
     "type": "TV",
@@ -1789,7 +2171,8 @@
       "https://anidb.net/anime/20233",
       "https://myanimelist.net/anime/64710",
       "https://shikimori.one/animes/64710",
-      "https://www.iq.com/album/primeval-overlord-2026-1bo3wrlpnxt"
+      "https://www.iq.com/album/primeval-overlord-2026-1bo3wrlpnxt",
+      "https://www.world-art.ru/cinema/cinema.php?id=131540"
     ],
     "title": "Taigu Shen Zun",
     "type": "TV",
@@ -1801,20 +2184,6 @@
     "synonyms": [
       "Primordial God"
     ]
-  },
-  {
-    "sources": [
-      "https://www.livechart.me/anime/13731"
-    ],
-    "title": "TINY METAL: ZERO LINE",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": null
-    },
-    "synonyms": [],
-    "releaseDate": "2026-07-11T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -1981,7 +2350,8 @@
   {
     "sources": [
       "https://myanimelist.net/anime/64674",
-      "https://shikimori.one/animes/64674"
+      "https://shikimori.one/animes/64674",
+      "https://www.world-art.ru/cinema/cinema.php?id=131492"
     ],
     "title": "Wukong Da Sheng",
     "type": "TV",
