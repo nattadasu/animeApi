@@ -227,7 +227,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 22 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 10 August 2026 06:18:00 UTC
+Last updated: 11 August 2026 05:59:53 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -240,7 +240,7 @@ Last updated: 10 August 2026 06:18:00 UTC
 | aniSearch          |     21088 |
 | Annict             |     12949 |
 | Hikka              |     28628 |
-| IMDb               |      6293 |
+| IMDb               |      6294 |
 | Kaize              |     24580 |
 | Kitsu              |     22108 |
 | Letterboxd         |      1261 |
@@ -253,11 +253,11 @@ Last updated: 10 August 2026 06:18:00 UTC
 | Shoboi/Syobocal    |      5991 |
 | Silver Yasha       |      5311 |
 | SIMKL              |     14486 |
-| The Movie Database |      8290 |
-| The TVDB           |      5267 |
-| Trakt              |      7247 |
+| The Movie Database |      8292 |
+| The TVDB           |      5269 |
+| Trakt              |      7249 |
 |                    |           |
-| **Total**          | **40610** |
+| **Total**          | **40609** |
 <!-- /counters -->
 
 ## Usage
@@ -329,8 +329,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1786342680,
-    "iso": "2026-08-10T06:18:00.129475+00:00"
+    "timestamp": 1786427993,
+    "iso": "2026-08-11T05:59:53.947598+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -362,7 +362,7 @@ GET /status
     "anisearch": 21088,
     "annict": 12949,
     "hikka": 28628,
-    "imdb": 6293,
+    "imdb": 6294,
     "kaize": 24580,
     "kitsu": 22108,
     "letterboxd": 1261,
@@ -375,10 +375,10 @@ GET /status
     "shoboi": 5991,
     "silveryasha": 5311,
     "simkl": 14486,
-    "themoviedb": 8290,
-    "thetvdb": 5267,
-    "trakt": 7247,
-    "total": 40610
+    "themoviedb": 8292,
+    "thetvdb": 5269,
+    "trakt": 7249,
+    "total": 40609
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format. Platform aliases supported for direct lookup for platform specific endpoints (see ?P<alias> in regex).",
@@ -458,7 +458,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 08/10/2026 06:18:00 UTC
+Updated on 08/11/2026 05:59:53 UTC
 ```
 <!-- /updated-txt -->
 
