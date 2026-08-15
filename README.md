@@ -227,7 +227,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 22 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 13 August 2026 06:22:19 UTC
+Last updated: 15 August 2026 06:12:08 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -239,23 +239,23 @@ Last updated: 13 August 2026 06:22:19 UTC
 | Anime-Planet       |     26644 |
 | aniSearch          |     21088 |
 | Annict             |     12951 |
-| Hikka              |     28629 |
-| IMDb               |      6294 |
-| Kaize              |     24580 |
+| Hikka              |     28655 |
+| IMDb               |      6295 |
+| Kaize              |     24581 |
 | Kitsu              |     22108 |
-| Letterboxd         |      1261 |
+| Letterboxd         |      1262 |
 | LiveChart          |     12304 |
 | MyAnimeList        |     30630 |
-| Nautiljon          |      9260 |
+| Nautiljon          |      9261 |
 | Notify.moe         |     16774 |
 | Otak Otaku         |      3080 |
 | Shikimori          |     30630 |
 | Shoboi/Syobocal    |      5989 |
 | Silver Yasha       |      5311 |
 | SIMKL              |     14487 |
-| The Movie Database |      8294 |
-| The TVDB           |      5270 |
-| Trakt              |      7250 |
+| The Movie Database |      8297 |
+| The TVDB           |      5272 |
+| Trakt              |      7252 |
 |                    |           |
 | **Total**          | **40608** |
 <!-- /counters -->
@@ -329,8 +329,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1786602139,
-    "iso": "2026-08-13T06:22:19.387001+00:00"
+    "timestamp": 1786774328,
+    "iso": "2026-08-15T06:12:08.190934+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -361,23 +361,23 @@ GET /status
     "animeplanet": 26644,
     "anisearch": 21088,
     "annict": 12951,
-    "hikka": 28629,
-    "imdb": 6294,
-    "kaize": 24580,
+    "hikka": 28655,
+    "imdb": 6295,
+    "kaize": 24581,
     "kitsu": 22108,
-    "letterboxd": 1261,
+    "letterboxd": 1262,
     "livechart": 12304,
     "myanimelist": 30630,
-    "nautiljon": 9260,
+    "nautiljon": 9261,
     "notify": 16774,
     "otakotaku": 3080,
     "shikimori": 30630,
     "shoboi": 5989,
     "silveryasha": 5311,
     "simkl": 14487,
-    "themoviedb": 8294,
-    "thetvdb": 5270,
-    "trakt": 7250,
+    "themoviedb": 8297,
+    "thetvdb": 5272,
+    "trakt": 7252,
     "total": 40608
   },
   "endpoints": {
@@ -458,7 +458,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 08/13/2026 06:22:19 UTC
+Updated on 08/15/2026 06:12:08 UTC
 ```
 <!-- /updated-txt -->
 
