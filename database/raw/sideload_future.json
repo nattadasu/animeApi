@@ -618,6 +618,23 @@
   },
   {
     "sources": [
+      "https://myanimelist.net/anime/64797",
+      "https://www.livechart.me/anime/13769"
+    ],
+    "title": "Poketoon (2026)",
+    "type": "TV",
+    "status": "ONGOING",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u30ab\u30e1\u30fc\u30eb\u3068\u3001\u590f\u306e\u3064\u3065\u304d"
+    ],
+    "releaseDate": "2026-08-12T12:59:00.000000000Z"
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/213908",
       "https://myanimelist.net/anime/64580",
       "https://shikimori.one/animes/64580",
@@ -753,6 +770,33 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/214968",
+      "https://ja.wikipedia.org/wiki/%E3%81%AD%E3%81%9A%E3%81%BF%E3%81%8F%E3%82%93#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
+      "https://myanimelist.net/anime/64789",
+      "https://shikimori.one/animes/64789",
+      "https://twitter.com/nezumikun_anime",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40424",
+      "https://www.livechart.me/anime/13764",
+      "https://www.poplar.co.jp/pr/anime-nezumikun"
+    ],
+    "title": "Nezumi-kun no Chokki 2nd Season",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2026
+    },
+    "synonyms": [
+      "Little Mouse's Red Vest 2",
+      "Nezumi-kun Little Mouse series",
+      "The Little Mouse's Vest",
+      "The Mouse's Vest",
+      "\u306d\u305a\u307f\u304f\u3093\u306e\u30c1\u30e7\u30c3\u30ad (TV) \u7b2c2\u671f"
+    ],
+    "releaseDate": "2026-10-03T00:30:00.000000000Z"
+  },
+  {
+    "sources": [
       "https://www.livechart.me/anime/13755"
     ],
     "title": "Oni mo Momo mo 2nd season",
@@ -798,6 +842,21 @@
       "\u5e97\u756a\u306e\u30b9\u30d4\u30b9"
     ],
     "releaseDate": "2026-10-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50883",
+      "https://myanimelist.net/anime/64757"
+    ],
+    "title": "2002",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-08-05"
   },
   {
     "sources": [
@@ -853,6 +912,24 @@
   },
   {
     "sources": [
+      "https://kitsu.app/anime/50881",
+      "https://myanimelist.net/anime/64753"
+    ],
+    "title": "Jaken GALDVAZAAG",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "The Evil Sword GALDVAZAAG",
+      "\u90aa\u5263\u30fb\u30ac\u30eb\u30c9\u30f4\u30a1\u30b6\u30fc\u30b0"
+    ],
+    "releaseDate": "2026-08-07"
+  },
+  {
+    "sources": [
       "https://10th.kabaneri.com",
       "https://anilist.co/anime/214426",
       "https://en.wikipedia.org/wiki/Kabaneri_of_the_Iron_Fortress",
@@ -876,6 +953,38 @@
       "\u7532\u9244\u57ce\u306e\u30ab\u30d0\u30cd\u30ea \u7121\u540d\u721b\u6f2b"
     ],
     "releaseDate": "2026-07-24"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50889",
+      "https://myanimelist.net/anime/64786"
+    ],
+    "title": "Kyapi",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u304d\u3083\u3074"
+    ],
+    "releaseDate": "2026-08-11"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50882",
+      "https://myanimelist.net/anime/64761"
+    ],
+    "title": "Lovin'\u2661Rabbit",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-08-06"
   },
   {
     "sources": [
@@ -926,6 +1035,21 @@
       "\u87ba\u65cb"
     ],
     "releaseDate": "2026-08-01"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50891",
+      "https://myanimelist.net/anime/64769"
+    ],
+    "title": "We Will Rise Again",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-08-09"
   },
   {
     "sources": [
@@ -1050,7 +1174,9 @@
       "season": "TBA",
       "year": null
     },
-    "synonyms": []
+    "synonyms": [
+      "1999! \u041e\u0442\u0434\u0435\u043b \u043c\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u043f\u0440\u043e\u0438\u0441\u0448\u0435\u0441\u0442\u0432\u0438\u0439"
+    ]
   },
   {
     "sources": [
@@ -1142,7 +1268,44 @@
   },
   {
     "sources": [
-      "https://anilist.co/anime/214863"
+      "https://akazukin-anime.com",
+      "https://anidb.net/anime/20263",
+      "https://anilist.co/anime/214969",
+      "https://en.wikipedia.org/wiki/Red_Riding_Hood:_A_Detective_Story#Anime",
+      "https://ja.wikipedia.org/wiki/%E8%B5%A4%E3%81%9A%E3%81%8D%E3%82%93%E3%80%81%E6%97%85%E3%81%AE%E9%80%94%E4%B8%AD%E3%81%A7%E6%AD%BB%E4%BD%93%E3%81%A8%E5%87%BA%E4%BC%9A%E3%81%86%E3%80%82#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
+      "https://myanimelist.net/anime/64782",
+      "https://shikimori.one/animes/64782",
+      "https://twitter.com/akazukin_anime",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40427",
+      "https://www.livechart.me/anime/13765"
+    ],
+    "title": "Akazukin, Tabi no Tochuu de Shitai to Deau.",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Little Red Riding Hood Encounters a Corpse on Her Journey",
+      "Little Red Riding Hood...",
+      "Once Upon a Crime",
+      "Red Riding Hood: A Detective Story",
+      "\u041a\u0440\u0430\u0441\u043d\u0430\u044f \u0448\u0430\u043f\u043e\u0447\u043a\u0430 \u0432\u0441\u0442\u0440\u0435\u0447\u0430\u0435\u0442 \u0442\u0440\u0443\u043f \u043d\u0430 \u043f\u0443\u0442\u0438",
+      "\u0421\u043b\u0435\u0434\u0441\u0442\u0432\u0438\u0435 \u0432\u0435\u0434\u0451\u0442 \u041a\u0440\u0430\u0441\u043d\u0430\u044f \u0428\u0430\u043f\u043e\u0447\u043a\u0430",
+      "\u8d64\u305a\u304d\u3093\u3001\u65c5\u306e\u9014\u4e2d\u3067\u6b7b\u4f53\u3068\u51fa\u4f1a\u3046\u3002"
+    ],
+    "releaseDate": "2027-01-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20259",
+      "https://anilist.co/anime/214863",
+      "https://en.wikipedia.org/wiki/Villains_Are_Destined_to_Die",
+      "https://ko.wikipedia.org/wiki/%EC%95%85%EC%97%AD%EC%9D%98_%EC%97%94%EB%94%A9%EC%9D%80_%EC%A3%BD%EC%9D%8C%EB%BF%90",
+      "https://myanimelist.net/anime/64768",
+      "https://shikimori.one/animes/64768",
+      "https://www.livechart.me/anime/13763"
     ],
     "title": "Akuyaku no Ending wa Shi nomi",
     "type": "TV",
@@ -1153,9 +1316,29 @@
     },
     "synonyms": [
       "Agyeogui Ending Jugeumppun",
+      "Agyeok-ui Ending Jugeum-ppun",
+      "Death Is the Only Ending for the Villainess",
       "Villains Are Destined to Die",
       "\u60aa\u5f79\u306e\u30a8\u30f3\u30c7\u30a3\u30f3\u30b0\u306f\u6b7b\u306e\u307f",
       "\uc545\uc5ed\uc758 \uc5d4\ub529\uc740 \uc8fd\uc74c\ubfd0"
+    ],
+    "releaseDate": "2026-08-09T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/215298"
+    ],
+    "title": "Aofeng",
+    "type": "ONA",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Allure The Warring Goddess",
+      "\u50b2\u98ce",
+      "\u50b2\u98ce: \u5317\u5883\u653e\u9010\u4e4b\u5730"
     ]
   },
   {
@@ -1236,6 +1419,22 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/215297"
+    ],
+    "title": "Chuan Jin Sai Bo Youxi Hou Gandiao Boss Chenggong Shangwei",
+    "type": "ONA",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "After Transmigrating into the Cyberpunk Game, I Defeated the BOSS and Successfully Rose to the Top",
+      "\u7a7f\u8fdb\u8d5b\u535a\u6e38\u620f\u540e\u5e72\u6389Boss\u6210\u529f\u4e0a\u4f4d"
+    ]
+  },
+  {
+    "sources": [
       "https://www.livechart.me/anime/13711"
     ],
     "title": "Cyber Detective Charlotte ~Dead Mans Hand Arc~",
@@ -1285,11 +1484,13 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20254",
       "https://anilist.co/anime/214854",
       "https://en.wikipedia.org/wiki/Destiny_Unchain_Online#Anime",
       "https://myanimelist.net/anime/64751",
       "https://shikimori.one/animes/64751",
-      "https://twitter.com/DUO_animePR"
+      "https://twitter.com/DUO_animePR",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40413"
     ],
     "title": "Destiny Unchain Online",
     "type": "TV",
@@ -1443,6 +1644,8 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20255",
+      "https://baike.baidu.com/item/\u8c37\u96e8\u8857\u540e\u5df7",
       "https://myanimelist.net/anime/64713",
       "https://shikimori.one/animes/64713",
       "https://v.qq.com/x/cover/mzc002006u77lmr.html",
@@ -1450,7 +1653,7 @@
     ],
     "title": "Guyu Jie Hou Xiang",
     "type": "TV",
-    "status": "ONGOING",
+    "status": "FINISHED",
     "animeSeason": {
       "season": "TBA",
       "year": null
@@ -1458,7 +1661,8 @@
     "synonyms": [
       "Back Alley of Guyu Street",
       "\u041f\u0435\u0440\u0435\u0443\u043b\u043e\u043a \u0443\u043b\u0438\u0446\u044b \u0425\u043b\u0435\u0431\u043d\u044b\u0445 \u0434\u043e\u0436\u0434\u0435\u0439"
-    ]
+    ],
+    "releaseDate": "2026-08-10"
   },
   {
     "sources": [
@@ -1518,6 +1722,22 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/214890"
+    ],
+    "title": "Jing Bian 77 Tian",
+    "type": "ONA",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "77 Days",
+      "\u60ca\u53d877\u5929"
+    ]
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/214018"
     ],
     "title": "JUNK END",
@@ -1542,6 +1762,22 @@
       "year": null
     },
     "synonyms": []
+  },
+  {
+    "sources": [
+      "https://www.livechart.me/anime/13770"
+    ],
+    "title": "Kingdom Hearts (Working Title)",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Kingdom Hearts: The Series"
+    ],
+    "releaseDate": "2026-08-15T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -1807,6 +2043,22 @@
   },
   {
     "sources": [
+      "https://myanimelist.net/anime/64772",
+      "https://namu.wiki/w/\ub098\ub178\ub9ac\uc2a4\ud2b8/\uc560\ub2c8\uba54\uc774\uc158",
+      "https://shikimori.one/animes/64772",
+      "https://www.tving.com/contents/P001790170"
+    ],
+    "title": "Nano List",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
       "https://anidb.net/anime/20194",
       "https://anilist.co/anime/214044",
       "https://en.wikipedia.org/wiki/Noa-senpai_wa_Tomodachi",
@@ -1917,6 +2169,24 @@
     "synonyms": [
       "\u300ePUBG MOBILE\u300f\u00d7\u300eNARUTO-\u30ca\u30eb\u30c8- \u75be\u98a8\u4f1d\u300f\u30b3\u30e9\u30dc"
     ]
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/214973",
+      "https://www.livechart.me/anime/13766"
+    ],
+    "title": "Pui Pui Molcar Special",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "PUI PUI \u30e2\u30eb\u30ab\u30fc\u30b9\u30da\u30b7\u30e3\u30eb\u30a8\u30d4\u30bd\u30fc\u30c9",
+      "PUI PUI \u5929\u7afa\u9f20\u8eca\u8eca"
+    ],
+    "releaseDate": "2026-08-10T16:37:41.040937000Z"
   },
   {
     "sources": [
@@ -2415,5 +2685,23 @@
       "\u3086\u3089\u3086\u3089\uff31"
     ],
     "releaseDate": "2026-07-20T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64799",
+      "https://shikimori.one/animes/64799",
+      "https://v.qq.com/x/cover/mzc00200gcewzg3/t41029vmpse.html"
+    ],
+    "title": "Zi Chuan 3rd Season",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Purple River 3rd Season",
+      "Zichuan 3rd Season"
+    ]
   }
 ]
