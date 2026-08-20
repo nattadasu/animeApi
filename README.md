@@ -227,13 +227,13 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 22 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 19 August 2026 05:32:56 UTC
+Last updated: 20 August 2026 05:34:04 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
-| aniDB              |     14566 |
+| aniDB              |     14568 |
 | AniList            |     22452 |
 | Anime News Network |     12357 |
 | Anime-Planet       |     26645 |
@@ -329,8 +329,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1787117576,
-    "iso": "2026-08-19T05:32:56.918579+00:00"
+    "timestamp": 1787204044,
+    "iso": "2026-08-20T05:34:04.103848+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -355,7 +355,7 @@ GET /status
   "license": "MIT AND ODbL-1.0 AND DbCL-1.0 AND CC0-1.0",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 14566,
+    "anidb": 14568,
     "anilist": 22452,
     "animenewsnetwork": 12357,
     "animeplanet": 26645,
@@ -458,7 +458,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 08/19/2026 05:32:56 UTC
+Updated on 08/20/2026 05:34:04 UTC
 ```
 <!-- /updated-txt -->
 
