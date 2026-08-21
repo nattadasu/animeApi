@@ -227,7 +227,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 22 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 20 August 2026 05:34:04 UTC
+Last updated: 21 August 2026 05:37:36 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -240,7 +240,7 @@ Last updated: 20 August 2026 05:34:04 UTC
 | aniSearch          |     21089 |
 | Annict             |     12963 |
 | Hikka              |     28663 |
-| IMDb               |      6295 |
+| IMDb               |      6296 |
 | Kaize              |     24581 |
 | Kitsu              |     22113 |
 | Letterboxd         |      1262 |
@@ -248,16 +248,16 @@ Last updated: 20 August 2026 05:34:04 UTC
 | MyAnimeList        |     30639 |
 | Nautiljon          |      9261 |
 | Notify.moe         |     16774 |
-| Otak Otaku         |      3082 |
+| Otak Otaku         |      3083 |
 | Shikimori          |     30639 |
 | Shoboi/Syobocal    |      6196 |
 | Silver Yasha       |      5311 |
 | SIMKL              |     14487 |
-| The Movie Database |      8298 |
-| The TVDB           |      5273 |
-| Trakt              |      7253 |
+| The Movie Database |      8299 |
+| The TVDB           |      5274 |
+| Trakt              |      7254 |
 |                    |           |
-| **Total**          | **40621** |
+| **Total**          | **40620** |
 <!-- /counters -->
 
 ## Usage
@@ -329,8 +329,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1787204044,
-    "iso": "2026-08-20T05:34:04.103848+00:00"
+    "timestamp": 1787290656,
+    "iso": "2026-08-21T05:37:36.143196+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -362,7 +362,7 @@ GET /status
     "anisearch": 21089,
     "annict": 12963,
     "hikka": 28663,
-    "imdb": 6295,
+    "imdb": 6296,
     "kaize": 24581,
     "kitsu": 22113,
     "letterboxd": 1262,
@@ -370,15 +370,15 @@ GET /status
     "myanimelist": 30639,
     "nautiljon": 9261,
     "notify": 16774,
-    "otakotaku": 3082,
+    "otakotaku": 3083,
     "shikimori": 30639,
     "shoboi": 6196,
     "silveryasha": 5311,
     "simkl": 14487,
-    "themoviedb": 8298,
-    "thetvdb": 5273,
-    "trakt": 7253,
-    "total": 40621
+    "themoviedb": 8299,
+    "thetvdb": 5274,
+    "trakt": 7254,
+    "total": 40620
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format. Platform aliases supported for direct lookup for platform specific endpoints (see ?P<alias> in regex).",
@@ -458,7 +458,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 08/20/2026 05:34:04 UTC
+Updated on 08/21/2026 05:37:36 UTC
 ```
 <!-- /updated-txt -->
 
