@@ -447,6 +447,25 @@
   },
   {
     "sources": [
+      "https://kitsu.app/anime/50908",
+      "https://myanimelist.net/anime/64735",
+      "https://shikimori.one/animes/64735",
+      "https://v.youku.com/v_show/id_XNjQ4NzM2MDk0NA==.html"
+    ],
+    "title": "Quanzhi Gaoshou: Rongyao Xiao Juchang 2nd Season",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2025
+    },
+    "synonyms": [
+      "\u5168\u804c\u9ad8\u624b\u8363\u8000\u5c0f\u5267\u573a \u7b2c\u4e8c\u5b63"
+    ],
+    "releaseDate": "2025-07-18"
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/213928",
       "https://kitsu.app/anime/50864",
       "https://myanimelist.net/anime/64598",
@@ -569,11 +588,13 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20278",
       "https://anilist.co/anime/214855",
       "https://anime.fate-go.jp/nazomaru",
       "https://myanimelist.net/anime/64725",
       "https://shikimori.one/animes/64725",
       "https://twitter.com/fgoproject",
+      "https://www.anisearch.com/anime/21884",
       "https://www.livechart.me/anime/13752"
     ],
     "title": "Fate/Grand Order Fujimaru Ritsuka wa Wakaranai Season 4",
@@ -593,6 +614,20 @@
       "\u8b0e\u4e38"
     ],
     "releaseDate": "2026-08-07T12:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://www.livechart.me/anime/13774"
+    ],
+    "title": "Kaette Kita Duel Masters LOST Mini",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-08-29T03:00:00.000000000Z"
   },
   {
     "sources": [
@@ -618,20 +653,39 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/215761",
       "https://myanimelist.net/anime/64797",
       "https://www.livechart.me/anime/13769"
     ],
     "title": "Poketoon (2026)",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2026
+    },
+    "synonyms": [
+      "Itazura Elfuun to Saseruka Mafitiff",
+      "Kameil to, Natsu no Tsuzuki",
+      "Mischievous Whimsicott? Not on Mabosstiff's Watch!",
+      "\u3044\u305f\u305a\u3089\u30a8\u30eb\u30d5\u30fc\u30f3\u3068\u3055\u305b\u308b\u304b\u30de\u30d5\u30a3\u30c6\u30a3\u30d5",
+      "\u30ab\u30e1\u30fc\u30eb\u3068\u3001\u590f\u306e\u3064\u3065\u304d"
+    ],
+    "releaseDate": "2026-08-12T12:59:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://www.livechart.me/anime/13772"
+    ],
+    "title": "Puella Magi Yotsugi\u2606Peace",
     "type": "TV",
     "status": "ONGOING",
     "animeSeason": {
       "season": "SUMMER",
       "year": 2026
     },
-    "synonyms": [
-      "\u30ab\u30e1\u30fc\u30eb\u3068\u3001\u590f\u306e\u3064\u3065\u304d"
-    ],
-    "releaseDate": "2026-08-12T12:59:00.000000000Z"
+    "synonyms": [],
+    "releaseDate": "2026-08-20T10:00:00.000000000Z"
   },
   {
     "sources": [
@@ -819,6 +873,26 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/215835",
+      "https://www.livechart.me/anime/13776"
+    ],
+    "title": "Umayuru Full Gate!",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2026
+    },
+    "synonyms": [
+      "Uma Musume",
+      "\u3046\u307e\u3086\u308b\u3075\u308b\u3052\u301c\u3068!",
+      "\u8cfd\u99ac\u5a18\u56db\u683c",
+      "\u8d5b\u9a6c\u5a18\u56db\u683c"
+    ],
+    "releaseDate": "2026-09-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/214593",
       "https://myanimelist.net/anime/64717",
       "https://shikimori.one/animes/64717",
@@ -857,6 +931,22 @@
     },
     "synonyms": [],
     "releaseDate": "2026-08-05"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50919",
+      "https://myanimelist.net/anime/64840",
+      "https://shikimori.one/animes/64840"
+    ],
+    "title": "Angry Rabbit",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-08-21"
   },
   {
     "sources": [
@@ -927,6 +1017,23 @@
       "\u90aa\u5263\u30fb\u30ac\u30eb\u30c9\u30f4\u30a1\u30b6\u30fc\u30b0"
     ],
     "releaseDate": "2026-08-07"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50910",
+      "https://myanimelist.net/anime/64803"
+    ],
+    "title": "Kagami yo Kagami",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u30ab\u30ac\u30df\u30e8\u30ab\u30ac\u30df"
+    ],
+    "releaseDate": "2026-08-15"
   },
   {
     "sources": [
@@ -1038,6 +1145,74 @@
   },
   {
     "sources": [
+      "https://kitsu.app/anime/50911",
+      "https://myanimelist.net/anime/64806"
+    ],
+    "title": "Sanzen Nenshou",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u71e6\u7136\u71c3\u713c"
+    ],
+    "releaseDate": "2026-08-16"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50902",
+      "https://myanimelist.net/anime/64793"
+    ],
+    "title": "Tekken! Yurutto Cartoon",
+    "type": "ONA",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "Tekken! Cartoon",
+      "\u3066\u3063\u3051\u3093\uff01\u3086\u308b\u3063\u3068\u30ab\u30fc\u30c8\u30a5\u30fc\u30f3"
+    ],
+    "releaseDate": "2026-07-10"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50920",
+      "https://myanimelist.net/anime/64805"
+    ],
+    "title": "Umm",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "Minna no Uta"
+    ],
+    "releaseDate": "2026-08-01"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50909"
+    ],
+    "title": "Under Water",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u7a92\u6f70"
+    ],
+    "releaseDate": "2026-04-25"
+  },
+  {
+    "sources": [
       "https://kitsu.app/anime/50891",
       "https://myanimelist.net/anime/64769"
     ],
@@ -1094,6 +1269,7 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/215695",
       "https://mofmofparade.bn-ent.net",
       "https://myanimelist.net/anime/64746",
       "https://shikimori.one/animes/64746",
@@ -1108,7 +1284,34 @@
       "year": 2027
     },
     "synonyms": [
-      "Mofmof Parade"
+      "Idolish7: Komadori Mofmof Parade",
+      "KomaMof",
+      "KomaMofu",
+      "Komadori Mofu Mofu Parade",
+      "Komadori Mofumofu Parade",
+      "Mofmof Parade",
+      "\u3053\u307e\u3069\u308a \u30e2\u30d5\u30e2\u30d5\u30d1\u30ec\u30fc\u30c9",
+      "\u3053\u307e\u30e2\u30d5"
+    ],
+    "releaseDate": "2027-01-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/213877",
+      "https://myanimelist.net/anime/64555",
+      "https://www.livechart.me/anime/13723"
+    ],
+    "title": "MURCI\u00c9LAGO",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "WINTER",
+      "year": 2027
+    },
+    "synonyms": [
+      "Murcielago",
+      "Murci\u00e9lago",
+      "\u30e0\u30eb\u30b7\u30a8\u30e9\u30b4"
     ],
     "releaseDate": "2027-01-01T00:00:00.000000000Z"
   },
@@ -1277,7 +1480,9 @@
       "https://shikimori.one/animes/64782",
       "https://twitter.com/akazukin_anime",
       "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40427",
-      "https://www.livechart.me/anime/13765"
+      "https://www.anisearch.com/anime/21892",
+      "https://www.livechart.me/anime/13765",
+      "https://www.world-art.ru/animation/animation.php?id=12983"
     ],
     "title": "Akazukin, Tabi no Tochuu de Shitai to Deau.",
     "type": "TV",
@@ -1573,6 +1778,21 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/215617"
+    ],
+    "title": "DNF",
+    "type": "ONA",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "DNF\u65b0\u52a8\u753b"
+    ]
+  },
+  {
+    "sources": [
       "https://anidb.net/anime/20246",
       "https://anilist.co/anime/214749",
       "https://en.wikipedia.org/wiki/Dokagui_Daisuki!_Mochizuki-san#Anime",
@@ -1596,9 +1816,46 @@
       "I Love Binge Eating! Mochizuki-san",
       "I Love Dokagui! Mochizuki-san",
       "I Love Eating a Lot! Mochizuki-san",
+      "\u041c\u043e\u0442\u0438\u0434\u0437\u0443\u043a\u0438 \u043e\u0431\u043e\u0436\u0430\u0435\u0442 \u0436\u0440\u0430\u0442\u044c \u0434\u043e \u043e\u0442\u0432\u0430\u043b\u0430!",
+      "\u042f \u043e\u0431\u043e\u0436\u0430\u044e \u043e\u0431\u044a\u0435\u0434\u0430\u0442\u044c\u0441\u044f! \u041c\u043e\u0442\u0438\u0434\u0437\u0443\u043a\u0438",
       "\u30c9\u30ab\u98df\u3044\u30c0\u30a4\u30b9\u30ad! \u3082\u3061\u3065\u304d\u3055\u3093"
     ],
     "releaseDate": "2026-08-04T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://en.wikipedia.org/wiki/Duel_Masters#Anime",
+      "https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%A5%E3%82%A8%E3%83%AB%E3%83%BB%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC%E3%82%BA_(%E3%82%A2%E3%83%8B%E3%83%A1)#Duel_Masters_LOST",
+      "https://myanimelist.net/anime/64848",
+      "https://shikimori.one/animes/64848",
+      "https://twitter.com/duema_anime",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40437",
+      "https://www.shopro.co.jp/anime/duelmasters_lost"
+    ],
+    "title": "Duel Masters LOST: Danzai no Shounen",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64810",
+      "https://shikimori.one/animes/64810",
+      "https://twitter.com/GAROU_PR",
+      "https://www.snk-corp.co.jp/official/fatalfury-cotw"
+    ],
+    "title": "Garou Densetsu: CotW - Monogatari wa, Ji no Shou e",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
   },
   {
     "sources": [
@@ -1751,6 +2008,22 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/215527",
+      "https://myanimelist.net/anime/64823"
+    ],
+    "title": "Kajitsu",
+    "type": "OVA",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "\u590f\u65e5"
+    ]
+  },
+  {
+    "sources": [
       "https://myanimelist.net/anime/64603",
       "https://shikimori.one/animes/64603"
     ],
@@ -1894,6 +2167,33 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20284",
+      "https://anilist.co/anime/215791",
+      "https://en.wikipedia.org/wiki/Maiden_Blood",
+      "https://kitsu.app/anime/50918",
+      "https://maiden-blood.com",
+      "https://myanimelist.net/anime/64844",
+      "https://shikimori.one/animes/64844",
+      "https://twitter.com/maidenblood_x",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40455",
+      "https://www.livechart.me/anime/13773",
+      "https://www.world-art.ru/animation/animation.php?id=12986"
+    ],
+    "title": "Maiden Blood",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Maiden Blood\uff08\u30e1\u30a4\u30c7\u30f3\u30d6\u30e9\u30c3\u30c9\uff09",
+      "\u30e1\u30a4\u30c7\u30f3\u30d6\u30e9\u30c3\u30c9"
+    ],
+    "releaseDate": "2027-01-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
       "https://www.livechart.me/anime/12921"
     ],
     "title": "Mamonotsukai no Musume",
@@ -2023,34 +2323,15 @@
   },
   {
     "sources": [
-      "https://anilist.co/anime/213877",
-      "https://myanimelist.net/anime/64555",
-      "https://www.livechart.me/anime/13723"
-    ],
-    "title": "MURCI\u00c9LAGO",
-    "type": "TV",
-    "status": "UPCOMING",
-    "animeSeason": {
-      "season": "TBA",
-      "year": null
-    },
-    "synonyms": [
-      "Murcielago",
-      "Murci\u00e9lago",
-      "\u30e0\u30eb\u30b7\u30a8\u30e9\u30b4"
-    ],
-    "releaseDate": "2027-01-01T00:00:00.000000000Z"
-  },
-  {
-    "sources": [
       "https://myanimelist.net/anime/64772",
       "https://namu.wiki/w/\ub098\ub178\ub9ac\uc2a4\ud2b8/\uc560\ub2c8\uba54\uc774\uc158",
+      "https://shikimori.io/animes/64772-nano-list/watch",
       "https://shikimori.one/animes/64772",
       "https://www.tving.com/contents/P001790170"
     ],
     "title": "Nano List",
     "type": "TV",
-    "status": "UPCOMING",
+    "status": "FINISHED",
     "animeSeason": {
       "season": "TBA",
       "year": null
@@ -2187,22 +2468,6 @@
       "PUI PUI \u5929\u7afa\u9f20\u8eca\u8eca"
     ],
     "releaseDate": "2026-08-10T16:37:41.040937000Z"
-  },
-  {
-    "sources": [
-      "https://myanimelist.net/anime/64735",
-      "https://shikimori.one/animes/64735",
-      "https://v.youku.com/v_show/id_XNjQ4NzM2MDk0NA==.html"
-    ],
-    "title": "Quanzhi Gaoshou: Rongyao Xiao Juchang 2nd Season",
-    "type": "TV",
-    "status": "FINISHED",
-    "animeSeason": {
-      "season": "TBA",
-      "year": null
-    },
-    "synonyms": [],
-    "releaseDate": "2025-07-18"
   },
   {
     "sources": [
@@ -2393,6 +2658,21 @@
       "\u771f\u306e\u8056\u5973\u3067\u3042\u308b\u79c1\u306f\u8ffd\u653e\u3055\u308c\u307e\u3057\u305f\u3002\u3060\u304b\u3089\u3053\u306e\u56fd\u306f\u3082\u3046\u7d42\u308f\u308a\u3067\u3059"
     ],
     "releaseDate": "2027-01-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64839",
+      "https://shikimori.one/animes/64839",
+      "https://www.kyotoanimation.co.jp/books/sougennokagayaki/special/animation-cm"
+    ],
+    "title": "Sougen no Kagayaki CM",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
   },
   {
     "sources": [
