@@ -227,29 +227,29 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 22 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 22 August 2026 05:30:45 UTC
+Last updated: 24 August 2026 05:40:22 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
-| aniDB              |     14568 |
-| AniList            |     22452 |
-| Anime News Network |     12357 |
+| aniDB              |     14570 |
+| AniList            |     22458 |
+| Anime News Network |     12359 |
 | Anime-Planet       |     26645 |
-| aniSearch          |     21089 |
-| Annict             |     12963 |
-| Hikka              |     28663 |
+| aniSearch          |     21090 |
+| Annict             |     12964 |
+| Hikka              |     28664 |
 | IMDb               |      6296 |
 | Kaize              |     24582 |
-| Kitsu              |     22113 |
+| Kitsu              |     22121 |
 | Letterboxd         |      1262 |
-| LiveChart          |     12310 |
-| MyAnimeList        |     30639 |
+| LiveChart          |     12314 |
+| MyAnimeList        |     30649 |
 | Nautiljon          |      9261 |
 | Notify.moe         |     16774 |
-| Otak Otaku         |      3084 |
-| Shikimori          |     30639 |
+| Otak Otaku         |      3087 |
+| Shikimori          |     30649 |
 | Shoboi/Syobocal    |      6196 |
 | Silver Yasha       |      5311 |
 | SIMKL              |     14487 |
@@ -257,7 +257,7 @@ Last updated: 22 August 2026 05:30:45 UTC
 | The TVDB           |      5274 |
 | Trakt              |      7254 |
 |                    |           |
-| **Total**          | **40620** |
+| **Total**          | **40634** |
 <!-- /counters -->
 
 ## Usage
@@ -329,8 +329,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1787376645,
-    "iso": "2026-08-22T05:30:45.733446+00:00"
+    "timestamp": 1787550022,
+    "iso": "2026-08-24T05:40:22.969814+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -355,30 +355,30 @@ GET /status
   "license": "MIT AND ODbL-1.0 AND DbCL-1.0 AND CC0-1.0",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 14568,
-    "anilist": 22452,
-    "animenewsnetwork": 12357,
+    "anidb": 14570,
+    "anilist": 22458,
+    "animenewsnetwork": 12359,
     "animeplanet": 26645,
-    "anisearch": 21089,
-    "annict": 12963,
-    "hikka": 28663,
+    "anisearch": 21090,
+    "annict": 12964,
+    "hikka": 28664,
     "imdb": 6296,
     "kaize": 24582,
-    "kitsu": 22113,
+    "kitsu": 22121,
     "letterboxd": 1262,
-    "livechart": 12310,
-    "myanimelist": 30639,
+    "livechart": 12314,
+    "myanimelist": 30649,
     "nautiljon": 9261,
     "notify": 16774,
-    "otakotaku": 3084,
-    "shikimori": 30639,
+    "otakotaku": 3087,
+    "shikimori": 30649,
     "shoboi": 6196,
     "silveryasha": 5311,
     "simkl": 14487,
     "themoviedb": 8299,
     "thetvdb": 5274,
     "trakt": 7254,
-    "total": 40620
+    "total": 40634
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format. Platform aliases supported for direct lookup for platform specific endpoints (see ?P<alias> in regex).",
@@ -458,7 +458,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 08/22/2026 05:30:45 UTC
+Updated on 08/24/2026 05:40:22 UTC
 ```
 <!-- /updated-txt -->
 
