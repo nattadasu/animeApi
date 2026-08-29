@@ -227,7 +227,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 22 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 28 August 2026 17:16:29 UTC
+Last updated: 29 August 2026 11:37:51 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -248,16 +248,16 @@ Last updated: 28 August 2026 17:16:29 UTC
 | MyAnimeList        |     30649 |
 | Nautiljon          |      9262 |
 | Notify.moe         |     16774 |
-| Otak Otaku         |      3092 |
+| Otak Otaku         |      3093 |
 | Shikimori          |     30649 |
 | Shoboi/Syobocal    |      6196 |
 | Silver Yasha       |      5311 |
 | SIMKL              |     14487 |
-| The Movie Database |      8311 |
-| The TVDB           |      5276 |
-| Trakt              |      7257 |
+| The Movie Database |      8312 |
+| The TVDB           |      5277 |
+| Trakt              |      7258 |
 |                    |           |
-| **Total**          | **40633** |
+| **Total**          | **40632** |
 <!-- /counters -->
 
 ## Usage
@@ -329,8 +329,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1787937389,
-    "iso": "2026-08-28T17:16:29.614190+00:00"
+    "timestamp": 1788003471,
+    "iso": "2026-08-29T11:37:51.827249+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -370,15 +370,15 @@ GET /status
     "myanimelist": 30649,
     "nautiljon": 9262,
     "notify": 16774,
-    "otakotaku": 3092,
+    "otakotaku": 3093,
     "shikimori": 30649,
     "shoboi": 6196,
     "silveryasha": 5311,
     "simkl": 14487,
-    "themoviedb": 8311,
-    "thetvdb": 5276,
-    "trakt": 7257,
-    "total": 40633
+    "themoviedb": 8312,
+    "thetvdb": 5277,
+    "trakt": 7258,
+    "total": 40632
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format. Platform aliases supported for direct lookup for platform specific endpoints (see ?P<alias> in regex).",
@@ -458,7 +458,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 08/28/2026 17:16:29 UTC
+Updated on 08/29/2026 11:37:51 UTC
 ```
 <!-- /updated-txt -->
 
