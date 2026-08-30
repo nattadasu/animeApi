@@ -617,11 +617,32 @@
   },
   {
     "sources": [
+      "https://hetalia-ws.com",
+      "https://myanimelist.net/anime/64861",
+      "https://shikimori.one/animes/64861",
+      "https://twitter.com/animehetalia_ws",
+      "https://www.livechart.me/anime/13782"
+    ],
+    "title": "Hetalia: World\u2605Stars Specials (2026)",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2026
+    },
+    "synonyms": [
+      "Hetalia World\u2605Stars Episodes 16-19",
+      "\u7fa9\u5446\u5229World\u2605Stars"
+    ],
+    "releaseDate": "2026-08-16T09:00:00.000000000Z"
+  },
+  {
+    "sources": [
       "https://www.livechart.me/anime/13774"
     ],
     "title": "Kaette Kita Duel Masters LOST Mini",
     "type": "TV",
-    "status": "UPCOMING",
+    "status": "ONGOING",
     "animeSeason": {
       "season": "SUMMER",
       "year": 2026
@@ -679,7 +700,7 @@
     ],
     "title": "Puella Magi Yotsugi\u2606Peace",
     "type": "TV",
-    "status": "ONGOING",
+    "status": "FINISHED",
     "animeSeason": {
       "season": "SUMMER",
       "year": 2026
@@ -722,6 +743,20 @@
       "\u7802\u5875\u30ce\u4e2d\u30c7"
     ],
     "releaseDate": "2026-07-19"
+  },
+  {
+    "sources": [
+      "https://www.livechart.me/anime/13780"
+    ],
+    "title": "THE LENTICULARS /b",
+    "type": "TV",
+    "status": "ONGOING",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-08-21T05:39:00.000000000Z"
   },
   {
     "sources": [
@@ -851,6 +886,23 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/215989"
+    ],
+    "title": "Ochiru Part Tsuma - Toshishita Otoko to no Jouji ni Oboreta Hate ni...",
+    "type": "OVA",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2026
+    },
+    "synonyms": [
+      "Fallen Part-Time Wife: Succumbing to an Affair with a Younger Man",
+      "\u5815\u3061\u308b\u30d1\u30fc\u30c8\u59bb \u5e74\u4e0b\u7537\u3068\u306e\u60c5\u4e8b\u306b\u6eba\u308c\u305f\u679c\u3066\u306b\u2026"
+    ],
+    "releaseDate": "2026-11-27"
+  },
+  {
+    "sources": [
       "https://www.livechart.me/anime/13755"
     ],
     "title": "Oni mo Momo mo 2nd season",
@@ -874,6 +926,8 @@
   {
     "sources": [
       "https://anilist.co/anime/215835",
+      "https://myanimelist.net/anime/64867",
+      "https://shikimori.one/animes/64867",
       "https://www.livechart.me/anime/13776"
     ],
     "title": "Umayuru Full Gate!",
@@ -950,6 +1004,36 @@
   },
   {
     "sources": [
+      "https://kitsu.app/anime/50938"
+    ],
+    "title": "BANZAI\u2606MANKAI",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u4e07\u6b73\u2606\u6e80\u958b"
+    ],
+    "releaseDate": "2026-08-20"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50935"
+    ],
+    "title": "Boom! Boom! Tropica Vacation",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-07-28"
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/214559",
       "https://kitsu.app/anime/50865",
       "https://myanimelist.net/anime/64711"
@@ -982,6 +1066,35 @@
       "\uac15\ucca0\uc18c\ubc29\ub300 \ud30c\uc774\uc5b4\ub85c\ubcf4Z"
     ],
     "releaseDate": "2026-06-23"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50933"
+    ],
+    "title": "Gimmick Gimmick Entertainment",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-07-24"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50928",
+      "https://myanimelist.net/anime/64862"
+    ],
+    "title": "I Found Me",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-08-23"
   },
   {
     "sources": [
@@ -1111,6 +1224,20 @@
   },
   {
     "sources": [
+      "https://kitsu.app/anime/50937"
+    ],
+    "title": "NIGHTBREAK",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-08-18"
+  },
+  {
+    "sources": [
       "https://kitsu.app/anime/50839",
       "https://myanimelist.net/anime/64558"
     ],
@@ -1125,6 +1252,20 @@
       "\u30aa\u30ea\u30aa\u30f3"
     ],
     "releaseDate": "2026-07-04"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50929"
+    ],
+    "title": "Oshi Mode ON",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-08-22"
   },
   {
     "sources": [
@@ -1159,6 +1300,38 @@
       "\u71e6\u7136\u71c3\u713c"
     ],
     "releaseDate": "2026-08-16"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50939"
+    ],
+    "title": "Stardust Capsule",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u661f\u5c51\u30ab\u30d7\u30bb\u30eb"
+    ],
+    "releaseDate": "2026-08-26"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50940"
+    ],
+    "title": "Takoyaki Gazing",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u5929\u305f\u3053\u89b3\u6e2c"
+    ],
+    "releaseDate": "2026-08-24"
   },
   {
     "sources": [
@@ -1225,6 +1398,22 @@
     },
     "synonyms": [],
     "releaseDate": "2026-08-09"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50930"
+    ],
+    "title": "yumeiro wonder",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u5922\u8272\u30ef\u30f3\u30c0"
+    ],
+    "releaseDate": "2026-07-23"
   },
   {
     "sources": [
@@ -1352,6 +1541,30 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/215855",
+      "https://kitsu.app/anime/50922",
+      "https://myanimelist.net/anime/64858",
+      "https://shikimori.one/animes/64858",
+      "https://twitter.com/Eiichiro_Staff",
+      "https://www.livechart.me/anime/13777",
+      "https://www.onepiece-film.jp"
+    ],
+    "title": "ONE PIECE FILM GOD VALLEY",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2027
+    },
+    "synonyms": [
+      "One Piece Film 16",
+      "One Piece Film: God Valley",
+      "One Piece Movie 16"
+    ],
+    "releaseDate": "2027-07-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/214435"
     ],
     "title": "(Title to be Announced)",
@@ -1432,6 +1645,7 @@
       "https://anidb.net/anime/20179",
       "https://en.wikipedia.org/wiki/7-nin_no_Nemuri_Hime#Anime",
       "https://ja.wikipedia.org/wiki/7%E4%BA%BA%E3%81%AE%E7%9C%A0%E3%82%8A%E5%A7%AB#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
+      "https://ja.wikipedia.org/wiki/7\u4eba\u306e\u7720\u308a\u59eb#\u30c6\u30ec\u30d3\u30a2\u30cb\u30e1",
       "https://myanimelist.net/anime/64569",
       "https://shikimori.one/animes/64569",
       "https://twitter.com/seven_sleeping",
@@ -1564,6 +1778,25 @@
   },
   {
     "sources": [
+      "https://en.wikipedia.org/wiki/My_Crush%27s_Crush#Anime",
+      "https://myanimelist.net/anime/64877",
+      "https://shikimori.one/animes/64877",
+      "https://www.livechart.me/anime/13781"
+    ],
+    "title": "Boku no Suki na Hito ga Suki na Hito",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "My Crush's Crush"
+    ],
+    "releaseDate": "2026-08-27T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
       "https://myanimelist.net/anime/64641",
       "https://shikimori.one/animes/64641"
     ],
@@ -1607,6 +1840,23 @@
       "year": null
     },
     "synonyms": []
+  },
+  {
+    "sources": [
+      "https://laftel.net/item/45040",
+      "https://myanimelist.net/anime/64866",
+      "https://shikimori.one/animes/64866"
+    ],
+    "title": "Chinhage Jinaeja",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Let's Get Along"
+    ]
   },
   {
     "sources": [
@@ -1830,7 +2080,8 @@
       "https://shikimori.one/animes/64848",
       "https://twitter.com/duema_anime",
       "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40437",
-      "https://www.shopro.co.jp/anime/duelmasters_lost"
+      "https://www.shopro.co.jp/anime/duelmasters_lost",
+      "https://www.world-art.ru/animation/animation.php?id=12989"
     ],
     "title": "Duel Masters LOST: Danzai no Shounen",
     "type": "TV",
@@ -1849,6 +2100,22 @@
       "https://www.snk-corp.co.jp/official/fatalfury-cotw"
     ],
     "title": "Garou Densetsu: CotW - Monogatari wa, Ji no Shou e",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64876",
+      "https://shikimori.one/animes/64876",
+      "https://twitter.com/GAROU_PR",
+      "https://www.snk-corp.co.jp/official/fatalfury-cotw"
+    ],
+    "title": "Garou Densetsu: CotW - Rick Strowd & Duck King",
     "type": "TV",
     "status": "FINISHED",
     "animeSeason": {
@@ -1971,6 +2238,20 @@
     "title": "Isekai Gukbap Master",
     "type": "TV",
     "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64865",
+      "https://shikimori.one/animes/64865"
+    ],
+    "title": "Jeonjaolagsuhodae",
+    "type": "TV",
+    "status": "UPCOMING",
     "animeSeason": {
       "season": "TBA",
       "year": null
@@ -2323,6 +2604,21 @@
   },
   {
     "sources": [
+      "https://myanimelist.net/anime/64854",
+      "https://shikimori.one/animes/64854",
+      "https://vcrworks.kr/NALSUM"
+    ],
+    "title": "Nalsum",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
       "https://myanimelist.net/anime/64772",
       "https://namu.wiki/w/\ub098\ub178\ub9ac\uc2a4\ud2b8/\uc560\ub2c8\uba54\uc774\uc158",
       "https://shikimori.io/animes/64772-nano-list/watch",
@@ -2337,6 +2633,26 @@
       "year": null
     },
     "synonyms": []
+  },
+  {
+    "sources": [
+      "https://en.wikipedia.org/wiki/Niu_Lai",
+      "https://myanimelist.net/anime/64875",
+      "https://shikimori.one/animes/64875",
+      "https://www.world-art.ru/cinema/cinema.php?id=131786",
+      "https://zh.wikipedia.org/wiki/\u725b\u6765"
+    ],
+    "title": "Niu Lai",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Here Comes the Cow",
+      "The Cow is Coming"
+    ]
   },
   {
     "sources": [
@@ -2407,6 +2723,28 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/215856",
+      "https://myanimelist.net/anime/64859",
+      "https://shikimori.one/animes/64859",
+      "https://twitter.com/Eiichiro_Staff",
+      "https://www.livechart.me/anime/13778",
+      "https://www.onepiece-film.jp"
+    ],
+    "title": "ONE PIECE FILM BAAD",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "One Piece Film 17",
+      "One Piece Movie 17"
+    ],
+    "releaseDate": "2029-07-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/214551"
     ],
     "title": "Oushun Jogakuen no Danyuu",
@@ -2420,6 +2758,20 @@
       "Backstage at Oushun Academy",
       "\u685c\u6625\u5973\u5b66\u9662\u306e\u7537\u512a"
     ]
+  },
+  {
+    "sources": [
+      "https://www.livechart.me/anime/13779"
+    ],
+    "title": "Peropero Sparkles",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [],
+    "releaseDate": "2026-08-26T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -2790,6 +3142,20 @@
       "https://studio-placebo.jp/works/00335"
     ],
     "title": "Tsunaide",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64863",
+      "https://shikimori.one/animes/64863"
+    ],
+    "title": "Tudou Xia: Wo Yao Dang Da Xia",
     "type": "TV",
     "status": "FINISHED",
     "animeSeason": {
