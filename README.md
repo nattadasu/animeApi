@@ -227,13 +227,13 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 22 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 30 August 2026 10:24:07 UTC
+Last updated: 31 August 2026 11:26:44 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
-| aniDB              |     14570 |
+| aniDB              |     14572 |
 | AniList            |     22466 |
 | Anime News Network |     12359 |
 | Anime-Planet       |     26645 |
@@ -241,7 +241,7 @@ Last updated: 30 August 2026 10:24:07 UTC
 | Annict             |     12974 |
 | Hikka              |     28664 |
 | IMDb               |      6299 |
-| Kaize              |     24583 |
+| Kaize              |     24605 |
 | Kitsu              |     22131 |
 | Letterboxd         |      1262 |
 | LiveChart          |     12320 |
@@ -252,7 +252,7 @@ Last updated: 30 August 2026 10:24:07 UTC
 | Shikimori          |     30661 |
 | Shoboi/Syobocal    |      6196 |
 | Silver Yasha       |      5311 |
-| SIMKL              |     14487 |
+| SIMKL              |     14489 |
 | The Movie Database |      8313 |
 | The TVDB           |      5277 |
 | Trakt              |      7259 |
@@ -329,8 +329,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1788085447,
-    "iso": "2026-08-30T10:24:07.996436+00:00"
+    "timestamp": 1788175604,
+    "iso": "2026-08-31T11:26:44.677928+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -355,7 +355,7 @@ GET /status
   "license": "MIT AND ODbL-1.0 AND DbCL-1.0 AND CC0-1.0",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 14570,
+    "anidb": 14572,
     "anilist": 22466,
     "animenewsnetwork": 12359,
     "animeplanet": 26645,
@@ -363,7 +363,7 @@ GET /status
     "annict": 12974,
     "hikka": 28664,
     "imdb": 6299,
-    "kaize": 24583,
+    "kaize": 24605,
     "kitsu": 22131,
     "letterboxd": 1262,
     "livechart": 12320,
@@ -374,7 +374,7 @@ GET /status
     "shikimori": 30661,
     "shoboi": 6196,
     "silveryasha": 5311,
-    "simkl": 14487,
+    "simkl": 14489,
     "themoviedb": 8313,
     "thetvdb": 5277,
     "trakt": 7259,
@@ -458,7 +458,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 08/30/2026 10:24:07 UTC
+Updated on 08/31/2026 11:26:44 UTC
 ```
 <!-- /updated-txt -->
 
