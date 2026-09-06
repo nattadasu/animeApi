@@ -621,6 +621,7 @@
       "https://myanimelist.net/anime/64861",
       "https://shikimori.one/animes/64861",
       "https://twitter.com/animehetalia_ws",
+      "https://www.anisearch.com/anime/21920",
       "https://www.livechart.me/anime/13782"
     ],
     "title": "Hetalia: World\u2605Stars Specials (2026)",
@@ -821,16 +822,33 @@
   },
   {
     "sources": [
+      "https://www.livechart.me/anime/13789"
+    ],
+    "title": "Dark Summoner to Dekiteiru Mini Anime",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-10-04T16:20:00.000000000Z"
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/214703",
       "https://anilist.co/anime/64718",
+      "https://cf-vanguard.com/anime-ghost_meets_gal",
       "https://kitsu.app/anime/50866",
       "https://myanimelist.net/anime/64718",
       "https://shikimori.one/animes/64718",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40470",
+      "https://www.anisearch.com/anime/21895",
       "https://www.livechart.me/anime/13740"
     ],
     "title": "Ghost Meets Gal!",
     "type": "TV",
-    "status": "UPCOMING",
+    "status": "ONGOING",
     "animeSeason": {
       "season": "FALL",
       "year": 2026
@@ -856,6 +874,76 @@
       "\u30d2\u30c8\u30ea\u59bb"
     ],
     "releaseDate": "2026-10-30"
+  },
+  {
+    "sources": [
+      "https://www.livechart.me/anime/13791"
+    ],
+    "title": "Jie Men Zhi Xia",
+    "type": "TV",
+    "status": "ONGOING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-07-29T01:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://www.livechart.me/anime/13790"
+    ],
+    "title": "Kanojo no Tomodachi Mini Anime",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u30ab\u30ce\u30c8\u30e2"
+    ],
+    "releaseDate": "2026-10-04T16:05:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/216171",
+      "https://myanimelist.net/anime/64899"
+    ],
+    "title": "Majime na Kimi ni Hamaru Karada THE ANIMATION",
+    "type": "OVA",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2026
+    },
+    "synonyms": [
+      "Loosen Up",
+      "\u771f\u9762\u76ee\u306a\u30ad\u30df\u306b\u30cf\u30de\u308b\u30ab\u30e9\u30c0 THE ANIMATION"
+    ],
+    "releaseDate": "2026-11-27"
+  },
+  {
+    "sources": [
+      "https://en.wikipedia.org/wiki/Case_Closed#Anime",
+      "https://ja.wikipedia.org/wiki/%E5%90%8D%E6%8E%A2%E5%81%B5%E3%82%B3%E3%83%8A%E3%83%B3_(%E3%82%A2%E3%83%8B%E3%83%A1)",
+      "https://myanimelist.net/anime/64913",
+      "https://shikimori.one/animes/64913",
+      "https://twitter.com/conan_anime1000",
+      "https://www.livechart.me/anime/13792",
+      "https://www.ytv.co.jp/conan/30go"
+    ],
+    "title": "Meitantei Conan: 30-Gou Satsujin Jiken",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2026
+    },
+    "synonyms": [
+      "Detective Conan: The Counterfeit Case of Ultra 30"
+    ],
+    "releaseDate": "2026-09-25T12:00:00.000000000Z"
   },
   {
     "sources": [
@@ -886,7 +974,9 @@
   },
   {
     "sources": [
-      "https://anilist.co/anime/215989"
+      "https://anilist.co/anime/215989",
+      "https://kitsu.app/anime/50943",
+      "https://myanimelist.net/anime/64884"
     ],
     "title": "Ochiru Part Tsuma - Toshishita Otoko to no Jouji ni Oboreta Hate ni...",
     "type": "OVA",
@@ -900,6 +990,23 @@
       "\u5815\u3061\u308b\u30d1\u30fc\u30c8\u59bb \u5e74\u4e0b\u7537\u3068\u306e\u60c5\u4e8b\u306b\u6eba\u308c\u305f\u679c\u3066\u306b\u2026"
     ],
     "releaseDate": "2026-11-27"
+  },
+  {
+    "sources": [
+      "https://www.livechart.me/anime/13786"
+    ],
+    "title": "Oha Suta V Gakuen",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2026
+    },
+    "synonyms": [
+      "Oha Suta Identity V Academy",
+      "Oha Suta Identity V Gakuen"
+    ],
+    "releaseDate": "2026-11-01T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -1050,6 +1157,23 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/214536",
+      "https://kitsu.app/anime/50965"
+    ],
+    "title": "CARDFIGHT!! VANGUARD Divinez: Parallactic Fate",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u30ab\u30fc\u30c9\u30d5\u30a1\u30a4\u30c8!! \u30f4\u30a1\u30f3\u30ac\u30fc\u30c9 Divinez \u904b\u547d\u661f\u6226\u7de8"
+    ],
+    "releaseDate": "2026-11-07"
+  },
+  {
+    "sources": [
       "https://anikids.ebs.co.kr/anikids/program/show/10024441",
       "https://kitsu.app/anime/50868",
       "https://myanimelist.net/anime/64679",
@@ -1080,6 +1204,25 @@
     },
     "synonyms": [],
     "releaseDate": "2026-07-24"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/50947",
+      "https://myanimelist.net/anime/64834"
+    ],
+    "title": "Godly Love: On Air",
+    "type": "ONA",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "Kamikoi: On Air",
+      "Shen Ming Fang Song Zhong",
+      "\u795e\u660e\u6200\u611b\u653e\u9001\u4e2d"
+    ],
+    "releaseDate": "2026-08-18"
   },
   {
     "sources": [
@@ -1463,7 +1606,8 @@
       "https://myanimelist.net/anime/64746",
       "https://shikimori.one/animes/64746",
       "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=38273",
-      "https://www.livechart.me/anime/13758"
+      "https://www.livechart.me/anime/13758",
+      "https://x.com/mofmof_parade"
     ],
     "title": "Komadori Mofmof Parade",
     "type": "TV",
@@ -1541,6 +1685,7 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20290",
       "https://anilist.co/anime/215855",
       "https://kitsu.app/anime/50922",
       "https://myanimelist.net/anime/64858",
@@ -1593,6 +1738,22 @@
     "synonyms": [
       "1999! \u041e\u0442\u0434\u0435\u043b \u043c\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u043f\u0440\u043e\u0438\u0441\u0448\u0435\u0441\u0442\u0432\u0438\u0439"
     ]
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/64902",
+      "https://shikimori.one/animes/64902",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40322",
+      "https://www.nippon-animation.co.jp/work/20126"
+    ],
+    "title": "20001-nen Chikyuu no Tabi",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
   },
   {
     "sources": [
@@ -1651,6 +1812,7 @@
       "https://twitter.com/seven_sleeping",
       "https://www.anime-planet.com/anime/7-nin-no-nemuri-hime",
       "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40307",
+      "https://www.anisearch.com/anime/21841",
       "https://www.livechart.me/anime/13727",
       "https://www.world-art.ru/animation/animation.php?id=12957"
     ],
@@ -1665,6 +1827,32 @@
       "Shichinin no Nemurihime"
     ],
     "releaseDate": "2027-01-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20330",
+      "https://anilist.co/anime/216170",
+      "https://kitsu.app/anime/50946",
+      "https://myanimelist.net/anime/64892",
+      "https://shikimori.one/animes/64892",
+      "https://www.livechart.me/anime/13784"
+    ],
+    "title": "8-gatsu 31-nichi no Long Summer",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "8\u670831\u65e5\u306e\u30ed\u30f3\u30b0\u30b5\u30de\u30fc",
+      "August 31st Long Summer",
+      "Hachigatsu Sanjuuichi no Rongusama",
+      "The Long Summer of August 31",
+      "The Long Summer of August 31st",
+      "The Long Summer on August 31"
+    ],
+    "releaseDate": "2026-08-31T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -1724,6 +1912,8 @@
       "https://ko.wikipedia.org/wiki/%EC%95%85%EC%97%AD%EC%9D%98_%EC%97%94%EB%94%A9%EC%9D%80_%EC%A3%BD%EC%9D%8C%EB%BF%90",
       "https://myanimelist.net/anime/64768",
       "https://shikimori.one/animes/64768",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40423",
+      "https://www.anisearch.com/anime/21891",
       "https://www.livechart.me/anime/13763"
     ],
     "title": "Akuyaku no Ending wa Shi nomi",
@@ -1762,6 +1952,25 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/216404",
+      "https://myanimelist.net/anime/64906",
+      "https://www.livechart.me/anime/13788"
+    ],
+    "title": "Aoharu Once More",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "\u30a2\u30aa\u30cf\u30eb\u30fb\u30ef\u30f3\u30b9\u30e2\u30a2"
+    ],
+    "releaseDate": "2026-09-03T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/216175",
       "https://myanimelist.net/anime/64653",
       "https://shikimori.one/animes/64653"
     ],
@@ -1773,14 +1982,47 @@
       "year": null
     },
     "synonyms": [
-      "White Lightning 2nd Season"
+      "White Lightning 2nd Season",
+      "\u767d\u8272\u95ea\u7535 \u7b2c\u4e8c\u5b63"
     ]
   },
   {
     "sources": [
+      "https://anidb.net/anime/20331",
+      "https://anilist.co/anime/216117",
+      "https://baki-anime.jp",
+      "https://ja.wikipedia.org/wiki/%E3%83%90%E3%82%AD%E5%A4%96%E4%BC%9D_%E7%83%88%E6%B5%B7%E7%8E%8B%E3%81%AF%E7%95%B0%E4%B8%96%E7%95%8C%E8%BB%A2%E7%94%9F%E3%81%97%E3%81%A6%E3%82%82%E4%B8%80%E5%90%91%E3%81%AB%E3%81%8B%E3%81%BE%E3%82%8F%E3%82%93%E3%83%83%E3%83%83",
+      "https://myanimelist.net/anime/64893",
+      "https://shikimori.one/animes/64893",
+      "https://twitter.com/baki_anime",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40485",
+      "https://www.livechart.me/anime/13783"
+    ],
+    "title": "Baki Gaiden: Retsu Kaiou wa Isekai Tensei shitemo Ikkou ni Kamawan!",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "BAKI GAIDEN: KAIOH RETSU Doesn't Mind Getting Isekai'd",
+      "Baki Side Story: Retsu Kaioh Doesn't Mind Even If It's in Another World",
+      "\u0411\u043e\u0435\u0446 \u0411\u0430\u043a\u0438: \u0420\u044d\u0446\u0443 \u041a\u0430\u0439\u043e \u043d\u0435 \u0432\u043e\u0437\u0440\u0430\u0436\u0430\u0435\u0442, \u0434\u0430\u0436\u0435 \u0435\u0441\u043b\u0438 \u043e\u043d \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0441\u044f \u0432 \u0434\u0440\u0443\u0433\u043e\u043c \u043c\u0438\u0440\u0435",
+      "\u0411\u043e\u0435\u0446 \u0411\u0430\u043a\u0438: \u0420\u044d\u0446\u0443 \u041a\u0430\u0439\u043e \u043d\u0435 \u0432\u043e\u043b\u043d\u0443\u0435\u0442 \u0435\u0433\u043e \u043f\u0435\u0440\u0435\u0440\u043e\u0436\u0434\u0435\u043d\u0438\u0435 \u0432 \u043d\u043e\u0432\u043e\u043c \u043c\u0438\u0440\u0435",
+      "\u30d0\u30ad\u5916\u4f1d \u70c8\u6d77\u738b\u306f\u7570\u4e16\u754c\u8ee2\u751f\u3057\u3066\u3082\u4e00\u5411\u306b\u304b\u307e\u308f\u3093\u30c3\u30c3"
+    ],
+    "releaseDate": "2026-08-30T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20322",
+      "https://anilist.co/anime/216312",
       "https://en.wikipedia.org/wiki/My_Crush%27s_Crush#Anime",
       "https://myanimelist.net/anime/64877",
       "https://shikimori.one/animes/64877",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40476",
+      "https://www.anisearch.com/anime/21921",
       "https://www.livechart.me/anime/13781"
     ],
     "title": "Boku no Suki na Hito ga Suki na Hito",
@@ -1791,7 +2033,9 @@
       "year": null
     },
     "synonyms": [
-      "My Crush's Crush"
+      "My Crush's Crush",
+      "My Crush\u2019s Crush",
+      "\u307c\u304f\u306e\u597d\u304d\u306a\u4eba\u304c\u597d\u304d\u306a\u4eba"
     ],
     "releaseDate": "2026-08-27T00:00:00.000000000Z"
   },
@@ -1945,7 +2189,9 @@
       "https://myanimelist.net/anime/64751",
       "https://shikimori.one/animes/64751",
       "https://twitter.com/DUO_animePR",
-      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40413"
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40413",
+      "https://www.anisearch.com/anime/21893",
+      "https://www.livechart.me/anime/13759"
     ],
     "title": "Destiny Unchain Online",
     "type": "TV",
@@ -1959,7 +2205,8 @@
       "Destiny Unchain Online: How I Became the Crimson Devil",
       "Destiny Unchain Online: Kyuuketsuki Shoujo to Natte",
       "Yagate \"Aka no Maou\" to Yobareru you ni Narimashita"
-    ]
+    ],
+    "releaseDate": "2026-08-06T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -2012,7 +2259,8 @@
   {
     "sources": [
       "https://anilist.co/anime/214725",
-      "https://myanimelist.net/anime/64731"
+      "https://myanimelist.net/anime/64731",
+      "https://www.livechart.me/anime/13750"
     ],
     "title": "Digimon (Shinsaku Anime)",
     "type": "TV",
@@ -2024,7 +2272,8 @@
     "synonyms": [
       "New Digimon Anime",
       "\u30c7\u30b8\u30e2\u30f3 (\u65b0\u4f5c\u30a2\u30cb\u30e1)"
-    ]
+    ],
+    "releaseDate": "2027-01-01T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -2499,6 +2748,7 @@
       "https://myanimelist.net/anime/64726",
       "https://shikimori.one/animes/64726",
       "https://twitter.com/mabotai_kohobu",
+      "https://www.anisearch.com/anime/21882",
       "https://www.livechart.me/anime/13754"
     ],
     "title": "Mato Seihei no Slave 3",
@@ -2587,6 +2837,7 @@
   {
     "sources": [
       "https://anilist.co/anime/213891",
+      "https://kitsu.app/anime/50836",
       "https://myanimelist.net/anime/64562",
       "https://www.livechart.me/anime/13726"
     ],
@@ -2633,6 +2884,45 @@
       "year": null
     },
     "synonyms": []
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/216346",
+      "https://myanimelist.net/anime/64905",
+      "https://www.livechart.me/anime/13681"
+    ],
+    "title": "NIPPON SANGOKU Sequel",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Les Nations du Soleil sanglant",
+      "NIPPON SANGOKU 2nd Season",
+      "NIPPON SANGOKU:  I Tre Regni Del Giappone",
+      "NIPPON SANGOKU: A Guerra das Tr\u00eas Na\u00e7\u00f5es",
+      "NIPPON SANGOKU: Cele trei na\u021biuni ale Soarelui Purpuriu",
+      "NIPPON SANGOKU: Die drei Nationen der roten Sonne",
+      "NIPPON SANGOKU: K\u0131z\u0131l G\u00fcne\u015fin \u00dc\u00e7 Ulusu",
+      "NIPPON SANGOKU: Las tres naciones del sol carmes\u00ed",
+      "NIPPON SANGOKU: The Three Nations of the Crimson Sun (Sequel)",
+      "NIPPON SANGOKU: The Three Nations of the Crimson Sun Season 2",
+      "NIPPON SANGOKU: Trzy narody Wschodz\u0105cego S\u0142o\u0144ca",
+      "NIPPON SANGOKU: T\u0159i n\u00e1rody rud\u00e9ho slunce",
+      "NIPPON SANGOKU: \u03a4\u03b1 \u03a4\u03c1\u03af\u03b1 \u0392\u03b1\u03c3\u03af\u03bb\u03b5\u03b9\u03b1 \u03c4\u03bf\u03c5 \u0391\u03bd\u03b1\u03c4\u03ad\u03bb\u03bb\u03bf\u03bd\u03c4\u03bf\u03c2 \u0397\u03bb\u03af\u03bf\u03c5",
+      "NIPPON SANGOKU: \u0e2a\u0e32\u0e21\u0e01\u0e4a\u0e01\u0e0d\u0e35\u0e48\u0e1b\u0e38\u0e48\u0e19",
+      "\u05e0\u05d9\u05e4\u05d5\u05df \u05e1\u05e0\u05d2\u05d5\u05e7\u05d5: \u05e9\u05dc\u05d5\u05e9 \u05d4\u05d0\u05d5\u05de\u05d5\u05ea \u05e9\u05dc \u05e9\u05de\u05e9 \u05d4\u05d0\u05e8\u05d2\u05de\u05df",
+      "\u0646\u064a\u0628\u0648\u0646 \u0633\u0627\u0646\u063a\u0648\u0643\u0648: \u0627\u0644\u0623\u0645\u0645 \u0627\u0644\u062b\u0644\u0627\u062b \u0644\u0644\u0634\u0645\u0633 \u0627\u0644\u0642\u0631\u0645\u0632\u064a\u0629",
+      "\u0928\u093f\u092a\u094d\u092a\u0949\u0928 \u0938\u093e\u0902\u0917\u094b\u0915\u0942: \u0926 \u0925\u094d\u0930\u0940 \u0928\u0947\u0936\u0902\u0938 \u0911\u095e \u0926 \u0915\u094d\u0930\u093f\u092e\u095b\u0928 \u0938\u0928",
+      "\u65e5\u672c\u4e09\u56fd",
+      "\u65e5\u672c\u4e09\u570b",
+      "\u65e5\u672c\u4e09\u570b (\u7d9a\u7de8)",
+      "\u65e5\u672c\u4e09\u570b \u7b2c2\u671f",
+      "\uc77c\ubcf8\uc0bc\uad6d"
+    ],
+    "releaseDate": "2026-06-22T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -2723,6 +3013,7 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20291",
       "https://anilist.co/anime/215856",
       "https://myanimelist.net/anime/64859",
       "https://shikimori.one/animes/64859",
@@ -2786,6 +3077,30 @@
       "year": null
     },
     "synonyms": []
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20329",
+      "https://anilist.co/anime/216167",
+      "https://myanimelist.net/anime/64895",
+      "https://shikimori.one/animes/64895",
+      "https://twitter.com/pokemoncard_mov",
+      "https://www.livechart.me/anime/13785",
+      "https://www.pokemon.co.jp/ex/wildcard"
+    ],
+    "title": "Pok\u00e9mon: Wild Card",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Pok\u00e9ca Eiga",
+      "\u30dd\u30b1\u30ab\u6620\u753b",
+      "\u30dd\u30b1\u30e2\u30f3\uff1a\u30ef\u30a4\u30eb\u30c9\u30ab\u30fc\u30c9"
+    ],
+    "releaseDate": "2027-01-01T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -2862,8 +3177,11 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20171",
       "https://anilist.co/anime/213879",
       "https://myanimelist.net/anime/64556",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40275",
+      "https://www.anisearch.com/anime/21843",
       "https://www.livechart.me/anime/13724"
     ],
     "title": "Ryugesho no Shinobi",
@@ -2966,6 +3284,7 @@
       "https://myanimelist.net/anime/64694",
       "https://shikimori.one/animes/64694",
       "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40378",
+      "https://www.anisearch.com/anime/21863",
       "https://www.livechart.me/anime/13746"
     ],
     "title": "Senren\uff0aBanka",
@@ -3089,6 +3408,32 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/216272",
+      "https://en.wikipedia.org/wiki/Victoria_of_Many_Faces#Anime",
+      "https://ja.wikipedia.org/wiki/%E6%89%8B%E6%9C%AD%E3%81%8C%E5%A4%9A%E3%82%81%E3%81%AE%E3%83%93%E3%82%AF%E3%83%88%E3%83%AA%E3%82%A2#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
+      "https://myanimelist.net/anime/64898",
+      "https://shikimori.one/animes/64898",
+      "https://twitter.com/tefudavictoria",
+      "https://victoria-anime.com",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40492",
+      "https://www.livechart.me/anime/13787"
+    ],
+    "title": "Tefuda ga Oome no Victoria 2nd Season",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Resourceful Victoria: Former Operative Rebuilds Her Life",
+      "Victoria of Many Faces 2",
+      "\u624b\u672d\u304c\u591a\u3081\u306e\u30d3\u30af\u30c8\u30ea\u30a2\u7b2c\uff12\u671f"
+    ],
+    "releaseDate": "2026-09-01T19:29:14.270713000Z"
+  },
+  {
+    "sources": [
       "https://anidb.net/anime/20196",
       "https://anilist.co/anime/214055",
       "https://en.wikipedia.org/wiki/Tsugumi_Project#Anime",
@@ -3142,6 +3487,21 @@
       "https://studio-placebo.jp/works/00335"
     ],
     "title": "Tsunaide",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
+      "https://liberty-anime.co.jp/\u3010mv\u3011canva\uff08\u30ad\u30e3\u30f3\u30d0\uff09\u300c\u4f1d\u3048\u305f\u3044\u60f3\u3044\u306e\u305d\u3070\u306b-\u78a7\u3044",
+      "https://myanimelist.net/anime/64885",
+      "https://shikimori.one/animes/64885"
+    ],
+    "title": "Tsutaetai Omoi no Soba ni: Aoi Umi Shoutengai",
     "type": "TV",
     "status": "FINISHED",
     "animeSeason": {
@@ -3220,11 +3580,13 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20186",
       "https://anilist.co/anime/213952",
       "https://en.wikipedia.org/wiki/Promise_Me_the_Spotlight#Anime",
       "https://myanimelist.net/anime/64573",
       "https://shikimori.one/animes/64573",
       "https://twitter.com/watacen_anime",
+      "https://www.anisearch.com/anime/21842",
       "https://www.livechart.me/anime/13728",
       "https://www.watacen-anime.com"
     ],
