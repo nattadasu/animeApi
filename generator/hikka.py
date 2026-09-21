@@ -112,7 +112,7 @@ class Hikka:
                 "genres": [],
                 "studios": [],
                 "only_translated": False,
-                "sort": ["score:desc"],
+                "sort": ["created:desc"],
             }
 
             page_size = 100  # Maximum allowed by Hikka API
