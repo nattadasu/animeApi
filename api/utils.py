@@ -1,6 +1,6 @@
 """Utility functions for the API"""
 
-from typing import Any, Dict
+from typing import Any
 from urllib.parse import unquote
 
 # Platform synonyms mapping
@@ -83,7 +83,7 @@ def is_valid_target(target: str) -> bool:
     return target in valid_targets
 
 
-def alias_get(data: Dict[str, Any], known_aliases: list[str]) -> str:
+def alias_get(data: dict[str, Any], known_aliases: list[str]) -> str:
     """
     Get data from alias
 

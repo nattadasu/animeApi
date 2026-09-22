@@ -48,7 +48,7 @@ SEASONS_ORDER = ["winter", "spring", "summer", "fall"]
 
 def get_seasons_range():
     """Generate list of seasons from winter {this.year - 1} to fall {this.year + 1}"""
-    this_year = datetime.datetime.now().year
+    this_year = datetime.datetime.now(tz=datetime.UTC).year
     seasons = []
     for year in [this_year - 1, this_year, this_year + 1]:
         for s in ["winter", "spring", "summer", "fall"]:
@@ -153,7 +153,7 @@ def fetch_livechart_season_ids(season, year=None):
             f"  Found {len(ids)} shows in LiveChart {slug}",
         )
         return ids
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         pprint.print(
             Platform.LIVECHART, Status.FAIL, f"  Error scraping LiveChart {slug}: {e}"
         )
@@ -219,7 +219,7 @@ def fetch_livechart_details(ids):
                     Status.FAIL,
                     f"  Batch {i // batch_size + 1} GraphQL failed (status {resp.status_code})",
                 )
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             pprint.print(
                 Platform.LIVECHART,
                 Status.FAIL,
@@ -299,7 +299,7 @@ def fetch_shikimori_seasonal(season_slug):
                     f"  Shikimori query failed with status {resp.status_code}",
                 )
                 break
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             pprint.print(
                 Platform.SHIKIMORI,
                 Status.FAIL,
@@ -378,7 +378,7 @@ def fetch_shikimori_anons():
                     f"  Shikimori query failed with status {resp.status_code}",
                 )
                 break
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             pprint.print(
                 Platform.SHIKIMORI,
                 Status.FAIL,
@@ -628,10 +628,13 @@ def dates_or_seasons_match(entry1, entry2):
     if not (has_date1 or has_season1) or not (has_date2 or has_season2):
         return True
 
-    # If both have seasons, check if they match
-    if has_season1 and has_season2:
-        if s1_name.upper() == s2_name.upper() and s1_year == s2_year:
-            return True
+    if (
+        has_season1
+        and has_season2
+        and s1_name.upper() == s2_name.upper()
+        and s1_year == s2_year
+    ):
+        return True
 
     # If both have dates, check if they match
     if has_date1 and has_date2:
@@ -682,9 +685,12 @@ def merge_entries(existing, new_data):
     # Prefer non-TBA season/year if available
     curr_season = existing.get("animeSeason", {})
     new_season = new_data.get("animeSeason", {})
-    if curr_season.get("season") == "TBA" and new_season.get("season") != "TBA":
-        existing["animeSeason"] = new_season
-    elif curr_season.get("year") is None and new_season.get("year") is not None:
+    if (
+        curr_season.get("season") == "TBA"
+        and new_season.get("season") != "TBA"
+        or curr_season.get("year") is None
+        and new_season.get("year") is not None
+    ):
         existing["animeSeason"] = new_season
 
     # Update status if new status is more specific/advanced
@@ -730,7 +736,7 @@ def main():
                 Status.INFO,
                 f"  Found {len(aod_id_strings)} unique ID strings in AOD.",
             )
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             pprint.print(
                 Platform.ANIMEOFFLINEDATABASE,
                 Status.FAIL,
@@ -772,7 +778,7 @@ def main():
                 Status.INFO,
                 f"  Loaded {len(existing_sideload_entries)} existing entries.",
             )
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             pprint.print(
                 Platform.SYSTEM,
                 Status.FAIL,
@@ -798,10 +804,9 @@ def main():
                 entry.get("synonyms", []),
                 existing["title"],
                 existing.get("synonyms", []),
-            ):
-                if dates_or_seasons_match(entry, existing):
-                    matched = existing
-                    break
+            ) and dates_or_seasons_match(entry, existing):
+                matched = existing
+                break
         if matched:
             merge_entries(matched, entry)
         else:
@@ -869,7 +874,7 @@ def main():
     lc_added = 0
     lc_merged = 0
     lc_skipped = 0
-    for lc_id, show in lc_shows.items():
+    for show in lc_shows.values():
         database_id = show.get("databaseId")
 
         title = (
@@ -943,10 +948,9 @@ def main():
                     new_entry.get("synonyms", []),
                     entry["title"],
                     entry.get("synonyms", []),
-                ):
-                    if dates_or_seasons_match(new_entry, entry):
-                        matched_entry = entry
-                        break
+                ) and dates_or_seasons_match(new_entry, entry):
+                    matched_entry = entry
+                    break
 
         if matched_entry:
             merge_entries(matched_entry, new_entry)
@@ -1040,10 +1044,9 @@ def main():
                     new_entry.get("synonyms", []),
                     entry["title"],
                     entry.get("synonyms", []),
-                ):
-                    if dates_or_seasons_match(new_entry, entry):
-                        matched_entry = entry
-                        break
+                ) and dates_or_seasons_match(new_entry, entry):
+                    matched_entry = entry
+                    break
 
         if matched_entry:
             merge_entries(matched_entry, new_entry)
@@ -1151,10 +1154,9 @@ def main():
                     new_entry.get("synonyms", []),
                     entry["title"],
                     entry.get("synonyms", []),
-                ):
-                    if dates_or_seasons_match(new_entry, entry):
-                        matched_entry = entry
-                        break
+                ) and dates_or_seasons_match(new_entry, entry):
+                    matched_entry = entry
+                    break
 
         if matched_entry:
             merge_entries(matched_entry, new_entry)
@@ -1211,7 +1213,7 @@ def main():
             if val and val != title:
                 synonyms.append(val)
         localized = show.get("titles", {}).get("localized") or {}
-        for lang, val in localized.items():
+        for val in localized.values():
             if val and val != title:
                 synonyms.append(val)
         synonyms = list(set(synonyms))
@@ -1272,10 +1274,9 @@ def main():
                     new_entry.get("synonyms", []),
                     entry["title"],
                     entry.get("synonyms", []),
-                ):
-                    if dates_or_seasons_match(new_entry, entry):
-                        matched_entry = entry
-                        break
+                ) and dates_or_seasons_match(new_entry, entry):
+                    matched_entry = entry
+                    break
 
         if matched_entry:
             merge_entries(matched_entry, new_entry)
@@ -1314,7 +1315,7 @@ def main():
                     temp_df = existing_df.dropna(subset=["myanimelist", "annict"])
                     for _, row in temp_df.iterrows():
                         mal_to_annict[row["myanimelist"]] = row["annict"]
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         pprint.print(
             Platform.ANNICT,
             Status.NOTICE,
@@ -1331,11 +1332,13 @@ def main():
         mal_id = show.get("malAnimeId")
         shobocal_tid = show.get("syobocalTid")
 
-        # Skip if this MAL -> Annict mapping is already recorded in the database
-        if mal_id and str(mal_id) in mapped_mal_ids:
-            if mal_to_annict.get(str(mal_id)) == str(annict_id):
-                an_skipped += 1
-                continue
+        if (
+            mal_id
+            and str(mal_id) in mapped_mal_ids
+            and mal_to_annict.get(str(mal_id)) == str(annict_id)
+        ):
+            an_skipped += 1
+            continue
 
         # Skip if there is no MyAnimeList mapping ID
         if not mal_id:
@@ -1408,10 +1411,9 @@ def main():
                     new_entry.get("synonyms", []),
                     entry["title"],
                     entry.get("synonyms", []),
-                ):
-                    if dates_or_seasons_match(new_entry, entry):
-                        matched_entry = entry
-                        break
+                ) and dates_or_seasons_match(new_entry, entry):
+                    matched_entry = entry
+                    break
 
         if matched_entry:
             merge_entries(matched_entry, new_entry)
@@ -1463,7 +1465,7 @@ def main():
             "animeSeason": entry.get("animeSeason", {"season": "TBA", "year": None}),
             "synonyms": sorted(synonyms),
         }
-        if "releaseDate" in entry and entry["releaseDate"]:
+        if entry.get("releaseDate"):
             sorted_entry["releaseDate"] = entry["releaseDate"]
         sorted_entries.append(sorted_entry)
 
@@ -1537,7 +1539,7 @@ def fetch_anilist_upcoming() -> list[dict[str, Any]]:
     """
 
     anilist_data: list[dict[str, Any]] = []
-    this_year = datetime.datetime.now().year
+    this_year = datetime.datetime.now(tz=datetime.UTC).year
     seasons = ["WINTER", "SPRING", "SUMMER", "FALL"]
     years = [this_year - 1, this_year, this_year + 1]
 
@@ -1599,7 +1601,7 @@ def fetch_anilist_upcoming() -> list[dict[str, Any]]:
                             f"  AniList query failed with status {resp.status_code}",
                         )
                         break
-                except Exception as e:
+                except Exception as e:  # noqa: BLE001
                     pprint.print(
                         Platform.ANILIST,
                         Status.FAIL,
@@ -1671,7 +1673,7 @@ def fetch_anilist_upcoming() -> list[dict[str, Any]]:
                 time.sleep(retry_after)
             else:
                 break
-        except Exception:
+        except Exception:  # noqa: BLE001
             break
 
     # Deduplicate AniList data by media ID
@@ -1775,7 +1777,7 @@ def fetch_kitsu_upcoming_graphql() -> list[dict[str, Any]]:
                         f"  Kitsu query failed with status {resp.status_code}",
                     )
                     break
-            except Exception as e:
+            except Exception as e:  # noqa: BLE001
                 pprint.print(
                     Platform.KITSU, Status.FAIL, f"  Error querying Kitsu: {e}"
                 )
@@ -1796,7 +1798,7 @@ def fetch_kitsu_upcoming() -> list[dict[str, Any]]:
     }
 
     kitsu_data = []
-    this_year = datetime.datetime.now().year
+    this_year = datetime.datetime.now(tz=datetime.UTC).year
     seasons = ["winter", "spring", "summer", "fall"]
     years = [this_year - 1, this_year, this_year + 1]
 
@@ -1924,7 +1926,7 @@ def fetch_kitsu_upcoming() -> list[dict[str, Any]]:
                             f"  Kitsu REST API failed with status {resp.status_code}",
                         )
                         break
-                except Exception as e:
+                except Exception as e:  # noqa: BLE001
                     pprint.print(
                         Platform.KITSU,
                         Status.FAIL,
@@ -1973,7 +1975,7 @@ def fetch_annict_upcoming() -> list[dict[str, Any]]:
     }
 
     # Annict seasons format is YYYY-season (winter, spring, summer, autumn)
-    this_year = datetime.datetime.now().year
+    this_year = datetime.datetime.now(tz=datetime.UTC).year
     season_names_map = {
         "winter": "winter",
         "spring": "spring",
@@ -2059,7 +2061,7 @@ def fetch_annict_upcoming() -> list[dict[str, Any]]:
                     f"  Annict query failed with status {resp.status_code}",
                 )
                 break
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             pprint.print(Platform.ANNICT, Status.FAIL, f"  Error querying Annict: {e}")
     return annict_data
 

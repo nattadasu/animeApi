@@ -363,10 +363,7 @@ def _values_equal(old_val: str, new_val: str, ignore_type_change: bool) -> bool:
 
     # Treat null-like and zero-like as equal in type-ignoring mode.
     # This suppresses churn such as "0" -> "" from normalization changes.
-    if {old_coerced, new_coerced} in ({None, 0}, {None, False}):
-        return True
-
-    return False
+    return {old_coerced, new_coerced} in ({None, 0}, {None, False})
 
 
 def main() -> int:

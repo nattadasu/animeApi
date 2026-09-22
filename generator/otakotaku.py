@@ -2,7 +2,7 @@
 
 import json
 import os
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Any
 
 import requests as req
@@ -165,7 +165,7 @@ class OtakOtaku:
             if not latest_id:
                 raise ConnectionError("Failed to connect to otakotaku.com")
             if (
-                datetime.now().day not in [1, 15]
+                datetime.now(tz=UTC).day not in [1, 15]
                 and len(anime_list) > 0
                 and not FORCE_FETCH_OTAKOTAKU
             ):

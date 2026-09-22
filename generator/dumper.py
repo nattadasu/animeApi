@@ -4,7 +4,7 @@ import csv
 import json
 import pickle
 import re
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -172,6 +172,7 @@ def deduplicate_entries(data: list[dict[str, Any]]) -> list[dict[str, Any]]:
     trakt/thetvdb/themoviedb/imdb columns are excluded from comparison
     because they use series-based entries unlike the season-based anime DBs.
     """
+
     # --- Pre-merge sorting ---
     # Sort by MyAnimeList ID (ascending, nulls at the end) then title (case-insensitive)
     def pre_sort_key(entry: dict[str, Any]) -> tuple[float | int, str]:
@@ -195,7 +196,7 @@ def deduplicate_entries(data: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
     merged_data: list[dict[str, Any]] = []
     merge_log: list[str] = []
-    for title_key, group in by_title.items():
+    for group in by_title.values():
         if len(group) == 1:
             merged_data.append(group[0])
             continue
@@ -358,7 +359,7 @@ def save_list_to_tsv(data: list[dict[str, Any]], file_path: str) -> None:
                         row.append(val)
                 writer.writerow(row)
                 bar()
-    return None
+    return
 
 
 def save_dataframe_to_pickle(df: pd.DataFrame, file_path: str) -> None:
@@ -392,7 +393,6 @@ def save_dataframe_to_pickle(df: pd.DataFrame, file_path: str) -> None:
             Status.FAIL,
             f"Failed to save pickle: {e}",
         )
-    return None
 
 
 def update_attribution(
@@ -443,7 +443,7 @@ def update_attribution(
         Status.INFO,
         "Updating attr",
     )
-    now = datetime.now(tz=timezone.utc)
+    now = datetime.now(tz=UTC)
     attr["updated"]["iso"] = now.isoformat()  # type: ignore
     attr["updated"]["timestamp"] = int(now.timestamp())  # type: ignore
     attr = populate_contributors(attr)
@@ -628,12 +628,12 @@ def load_tsv_for_counting() -> pd.DataFrame:
                             )
                             # Print full row for debug
                             print(f"Full Row Data: {row.to_dict()}")
-                            raise e
-        except Exception as diag_err:
+                            raise
+        except Exception as diag_err:  # noqa: BLE001
             print(f"Diagnostic failed: {diag_err}")
 
         # Re-raise original error
-        raise e
+        raise
 
     return df
 
@@ -851,7 +851,7 @@ def update_markdown(
         Status.INFO,
         "Updating updated timestamp in README.md",
     )
-    now: datetime = datetime.fromtimestamp(attr["updated"]["timestamp"], timezone.utc)  # type: ignore
+    now: datetime = datetime.fromtimestamp(attr["updated"]["timestamp"], UTC)  # type: ignore
     readme = re.sub(
         r"<!-- updated -->(.|\n)*<!-- \/updated -->",
         f"<!-- updated -->\nLast updated: {now.strftime('%d %B %Y %H:%M:%S UTC')}\n<!-- /updated -->",

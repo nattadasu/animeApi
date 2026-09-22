@@ -512,7 +512,7 @@ def combine_geckyzz(
             else:
                 # Add as a new entry
                 new_entry = {}
-                for key in g_item.keys():
+                for key in g_item:
                     new_entry[key] = g_item.get(key)
                 aod.append(new_entry)
 

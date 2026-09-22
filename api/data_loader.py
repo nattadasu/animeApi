@@ -3,7 +3,7 @@
 import pickle
 from functools import lru_cache
 from pathlib import Path
-from typing import Any, Dict, Optional, Union
+from typing import Any
 
 # Lazy import pandas - only when needed
 pd = None
@@ -14,14 +14,14 @@ except ImportError:
     from models import AnimeEntry, row_to_entry
 
 # Global cache for TSV data
-_tsv_cache: Optional[Any] = None
-_tsv_indices: Dict[str, Dict[Any, int]] = {}
+_tsv_cache: Any | None = None
+_tsv_indices: dict[str, dict[Any, int]] = {}
 
 
 @lru_cache(maxsize=1)
 def load_tsv_data() -> Any:
     """Load and cache TSV data with pandas for fast lookups"""
-    global _tsv_cache, _tsv_indices, pd
+    global _tsv_cache, pd
 
     if _tsv_cache is not None:
         return _tsv_cache
@@ -109,9 +109,7 @@ def load_tsv_data() -> Any:
     return df
 
 
-def lookup_by_platform_id(
-    platform: str, platform_id: Union[int, str]
-) -> Optional[AnimeEntry]:
+def lookup_by_platform_id(platform: str, platform_id: int | str) -> AnimeEntry | None:
     """
     Fast lookup of anime entry by platform and ID using TSV data
 
@@ -162,7 +160,7 @@ def lookup_by_platform_id(
     return None
 
 
-def lookup_letterboxd(platform_id: Union[int, str], df: Any) -> Optional[AnimeEntry]:
+def lookup_letterboxd(platform_id: int | str, df: Any) -> AnimeEntry | None:
     """
     Handle letterboxd lookups with priority: letterboxd_slug -> letterboxd_lid -> letterboxd_uid
 
@@ -183,8 +181,8 @@ def lookup_letterboxd(platform_id: Union[int, str], df: Any) -> Optional[AnimeEn
 
 
 def lookup_composite_platform(
-    platform: str, platform_id: Union[int, str], df: Any
-) -> Optional[AnimeEntry]:
+    platform: str, platform_id: int | str, df: Any
+) -> AnimeEntry | None:
     """
     Handle composite platform IDs (trakt, themoviedb, thetvdb)
 

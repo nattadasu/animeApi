@@ -1,7 +1,7 @@
 """Data models for anime entries"""
 
 from dataclasses import asdict, dataclass
-from typing import Any, Dict, Optional
+from typing import Any
 
 import pandas as pd
 
@@ -10,44 +10,44 @@ import pandas as pd
 class AnimeEntry:
     """Dataclass for anime entry from TSV"""
 
-    title: Optional[str] = None
-    anidb: Optional[int] = None
-    anilist: Optional[int] = None
-    animenewsnetwork: Optional[int] = None
-    animeplanet: Optional[str] = None
-    anisearch: Optional[int] = None
-    annict: Optional[int] = None
-    hikka: Optional[str] = None
-    imdb: Optional[str] = None
-    kaize: Optional[str] = None
-    kaize_id: Optional[int] = None
-    kitsu: Optional[int] = None
-    letterboxd_lid: Optional[str] = None
-    letterboxd_slug: Optional[str] = None
-    letterboxd_uid: Optional[int] = None
-    livechart: Optional[int] = None
-    myanimelist: Optional[int] = None
-    nautiljon: Optional[str] = None
-    nautiljon_id: Optional[int] = None
-    notify: Optional[str] = None
-    otakotaku: Optional[int] = None
-    shikimori: Optional[int] = None
-    shoboi: Optional[int] = None
-    silveryasha: Optional[int] = None
-    simkl: Optional[int] = None
-    themoviedb: Optional[int] = None
-    themoviedb_season_id: Optional[int] = None
-    themoviedb_type: Optional[str] = None
-    thetvdb: Optional[int] = None
-    thetvdb_season_id: Optional[int] = None
-    trakt: Optional[int] = None
-    trakt_may_invalid: Optional[bool] = None
-    trakt_season: Optional[int] = None
-    trakt_season_id: Optional[int] = None
-    trakt_slug: Optional[str] = None
-    trakt_type: Optional[str] = None
+    title: str | None = None
+    anidb: int | None = None
+    anilist: int | None = None
+    animenewsnetwork: int | None = None
+    animeplanet: str | None = None
+    anisearch: int | None = None
+    annict: int | None = None
+    hikka: str | None = None
+    imdb: str | None = None
+    kaize: str | None = None
+    kaize_id: int | None = None
+    kitsu: int | None = None
+    letterboxd_lid: str | None = None
+    letterboxd_slug: str | None = None
+    letterboxd_uid: int | None = None
+    livechart: int | None = None
+    myanimelist: int | None = None
+    nautiljon: str | None = None
+    nautiljon_id: int | None = None
+    notify: str | None = None
+    otakotaku: int | None = None
+    shikimori: int | None = None
+    shoboi: int | None = None
+    silveryasha: int | None = None
+    simkl: int | None = None
+    themoviedb: int | None = None
+    themoviedb_season_id: int | None = None
+    themoviedb_type: str | None = None
+    thetvdb: int | None = None
+    thetvdb_season_id: int | None = None
+    trakt: int | None = None
+    trakt_may_invalid: bool | None = None
+    trakt_season: int | None = None
+    trakt_season_id: int | None = None
+    trakt_slug: str | None = None
+    trakt_type: str | None = None
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         """Convert to dictionary"""
         return asdict(self)
 

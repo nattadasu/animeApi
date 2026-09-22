@@ -52,7 +52,7 @@ def main() -> None:
 
     start_time = time()
     run_metrics: dict[str, Any] = {
-        "timestamp": datetime.datetime.now().isoformat(),
+        "timestamp": datetime.datetime.now(tz=datetime.UTC).isoformat(),
         "status": "failed",
         "duration_seconds": 0,
         "stages": {},
@@ -282,7 +282,7 @@ def main() -> None:
         run_metrics["status"] = "interrupted"
         _log_run_metrics(run_metrics)
         proc_stop(start_time, Status.ERR, "Stopped by user", 1)
-    except Exception as err:
+    except Exception as err:  # noqa: BLE001
         run_metrics["status"] = "error"
         run_metrics["error"] = str(err)
         _log_run_metrics(run_metrics)
@@ -313,6 +313,6 @@ def _log_run_metrics(metrics: dict[str, Any]) -> None:
         # Write back (keep only last 10 runs to avoid huge file)
         with open(runs_file, "w", encoding="utf-8") as f:
             json.dump(runs[-10:], f)
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         # Don't crash if logging fails
         pprint.print(Platform.SYSTEM, Status.WARN, f"Failed to log metrics: {e}")

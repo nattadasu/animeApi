@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 
 import json
-from datetime import datetime
+from datetime import UTC, datetime
 from time import sleep
 from typing import Any
 
@@ -85,7 +85,7 @@ class Hikka:
 
         try:
             if (
-                datetime.now().day not in [3, 17] or GITHUB_DISPATCH
+                datetime.now(tz=UTC).day not in [3, 17] or GITHUB_DISPATCH
             ) and not FORCE_FETCH_HIKKA:
                 raise ConnectionError("Fetcher is not allowed to run today")
 

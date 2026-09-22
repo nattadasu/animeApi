@@ -4,10 +4,10 @@
 
 import json
 import re
+from datetime import UTC
 from datetime import datetime as dtime
-from datetime import timezone as tz
 from time import time
-from typing import Any, Dict, Tuple, TypedDict, Union
+from typing import Any, TypedDict
 from urllib.parse import unquote
 
 from flask import (
@@ -85,7 +85,7 @@ class CorruptedResp(TypedDict):
     message: str
 
 
-def platform_id_content(platform: str, platform_id: Union[int, str]) -> Dict[str, Any]:
+def platform_id_content(platform: str, platform_id: int | str) -> dict[str, Any]:
     """Get content of platform ID using TSV data
 
     :param platform: Platform name
@@ -198,7 +198,7 @@ def updated():
     """Updated route"""
     with open("api/status.json", "r", encoding="utf-8") as file_:
         updated_time = json.loads(file_.read())["updated"]["timestamp"]
-    formatted_time = dtime.fromtimestamp(updated_time, tz=tz.utc).strftime(
+    formatted_time = dtime.fromtimestamp(updated_time, tz=UTC).strftime(
         "%m/%d/%Y %H:%M:%S UTC"
     )
     return Response(f"Updated on {formatted_time}", mimetype="text/plain")
@@ -241,8 +241,7 @@ def platform_array(platform: str = "animeapi"):
 
     # Check if this is a platform-specific request (deprecated)
     raw_platform = unquote(platform)
-    if raw_platform.endswith(".json"):
-        raw_platform = raw_platform[:-5]
+    raw_platform = raw_platform.removesuffix(".json")
 
     is_array = raw_platform.endswith("()")
     raw_platform = raw_platform.rstrip("()")
@@ -305,9 +304,7 @@ def redirect_to_github(goto: str) -> wzResponse:
 
 
 @app.route("/<platform>/<path:platform_id>", methods=["GET"])
-def platform_lookup(
-    platform: str, platform_id: Union[int, str]
-) -> Tuple[Response, int]:
+def platform_lookup(platform: str, platform_id: int | str) -> tuple[Response, int]:
     """
     Platform lookup route
 
@@ -366,7 +363,7 @@ def redirect_route():
     """
     args = request.args
     platform, platform_id, target, israw = extract_params(args)
-    israw = True if israw else False
+    israw = bool(israw)
 
     if not platform:
         return error_response(
@@ -423,7 +420,7 @@ def redirect_route():
     return generate_response(uri, israw)
 
 
-def extract_params(args: Dict[str, Any]) -> Tuple[str, Union[int, str], str, bool]:
+def extract_params(args: dict[str, Any]) -> tuple[str, int | str, str, bool]:
     """
     Extract parameters
 
@@ -452,7 +449,7 @@ def extract_params(args: Dict[str, Any]) -> Tuple[str, Union[int, str], str, boo
     return platform, platform_id, target, israw
 
 
-def error_response(error: str, code: int, message: str) -> Tuple[Response, int]:
+def error_response(error: str, code: int, message: str) -> tuple[Response, int]:
     """
     Error response
 
@@ -497,7 +494,7 @@ route_path = {
 }
 
 
-def build_uri(platform: str, platform_id: Union[int, str]) -> str:
+def build_uri(platform: str, platform_id: int | str) -> str:
     """
     Build URI
 
@@ -511,7 +508,7 @@ def build_uri(platform: str, platform_id: Union[int, str]) -> str:
     return route_path.get(platform, "") + str(platform_id)
 
 
-def generate_response(uri: str, israw: bool) -> Union[Response, wzResponse]:
+def generate_response(uri: str, israw: bool) -> Response | wzResponse:
     """
     Generate response
 
@@ -527,7 +524,7 @@ def generate_response(uri: str, israw: bool) -> Union[Response, wzResponse]:
     return redirect(uri)
 
 
-def handle_trakt_case(platform_id: str) -> Union[Tuple[Response, int], None]:
+def handle_trakt_case(platform_id: str) -> tuple[Response, int] | None:
     """
     Handle Trakt case
 
@@ -549,7 +546,7 @@ def handle_trakt_case(platform_id: str) -> Union[Tuple[Response, int], None]:
 # def build_target_uri(target, maps, platform, platform_id):
 def build_target_uri(
     target: str, maps: dict[str, Any], platform: str, platform_id: str
-) -> Union[str, Tuple[Response, int]]:
+) -> str | tuple[Response, int]:
     """
     Build target URI
 
@@ -671,7 +668,7 @@ def handle_error(err: Exception):
     except (ValueError, IndexError):
         code = 500
 
-    data: dict[str, Union[str, int]] = {
+    data: dict[str, str | int] = {
         "error": " ".join(err_split[-1:]).strip(),
         "code": code,
     }

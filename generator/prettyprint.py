@@ -4,7 +4,7 @@ SPDX-License-Identifier: MIT
 Pretty print for the proccess
 """
 
-from datetime import datetime
+from datetime import UTC, datetime
 from enum import Enum
 
 
@@ -30,7 +30,6 @@ class Platform(Enum):
     NOTIFY = 0xDEA99E
     OTAKOTAKU = 0xBE2222
     SHIKIMORI = 0x2E2E2E
-    SHOBOI = 0xE3F0FD
     SILVERYASHA = 0x0172BB
     SIMKL = 0x0B0F10
     SYOBOI = 0xE3F0FD
@@ -115,7 +114,7 @@ def calculate_contrast_ratio(r: int, g: int, b: int) -> float:
     contrast_white = (white_luminance + 0.05) / (luminance + 0.05)
     contrast_black = (luminance + 0.05) / (black_luminance + 0.05)
 
-    return contrast_white if contrast_white > contrast_black else contrast_black
+    return max(contrast_black, contrast_white)
 
 
 class PrettyPrint:
@@ -143,7 +142,7 @@ class PrettyPrint:
         :rtype: str
         """
         # example: Jun 31
-        return datetime.now().strftime("%b %d")
+        return datetime.now(tz=UTC).strftime("%b %d")
 
     @staticmethod
     def _get_time() -> str:
@@ -154,7 +153,7 @@ class PrettyPrint:
         :rtype: str
         """
         # example: 12:00:00 AM
-        return datetime.now().strftime("%I:%M:%S %p")
+        return datetime.now(tz=UTC).strftime("%I:%M:%S %p")
 
     def _format_date(self) -> str:
         """
@@ -245,4 +244,4 @@ class PrettyPrint:
         )
 
 
-__all__ = ["PrettyPrint", "Platform", "Status"]
+__all__ = ["Platform", "PrettyPrint", "Status"]

@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 
 from dataclasses import dataclass, field
-from typing import Any, Optional, Set
+from typing import Any
 
 
 @dataclass
@@ -12,21 +12,21 @@ class AodEntry:
 
     title: str
     sources: list[str]
-    anidb: Optional[int] = None
-    anilist: Optional[int] = None
-    animenewsnetwork: Optional[int] = None
-    animeplanet: Optional[str] = None
-    anisearch: Optional[int] = None
-    kitsu: Optional[int] = None
-    livechart: Optional[int] = None
-    myanimelist: Optional[int] = None
-    notify: Optional[str] = None
-    simkl: Optional[int] = None
-    annict: Optional[int] = None
-    shoboi: Optional[int] = None
+    anidb: int | None = None
+    anilist: int | None = None
+    animenewsnetwork: int | None = None
+    animeplanet: str | None = None
+    anisearch: int | None = None
+    kitsu: int | None = None
+    livechart: int | None = None
+    myanimelist: int | None = None
+    notify: str | None = None
+    simkl: int | None = None
+    annict: int | None = None
+    shoboi: int | None = None
 
     # Track all extracted IDs for comparison
-    id_set: Set[str] = field(default_factory=set, init=False)
+    id_set: set[str] = field(default_factory=set, init=False)
 
     def __post_init__(self):
         """Extract IDs from sources and populate id_set"""
@@ -149,7 +149,7 @@ class AodEntry:
 
 def merge_aod_entries_if_compatible(
     entry1: AodEntry, entry2: AodEntry
-) -> Optional[AodEntry]:
+) -> AodEntry | None:
     """
     Merge two AOD entries if they represent different anime (no overlapping IDs).
 

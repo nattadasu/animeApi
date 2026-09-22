@@ -7,9 +7,10 @@ Reduces code duplication across Kaize, Nautiljon, SilverYasha, OtakOtaku platfor
 """
 
 import json
+from collections.abc import Callable
 from functools import partial
 from multiprocessing import Pool, cpu_count
-from typing import Any, Callable, Optional
+from typing import Any
 
 from alive_progress import alive_bar  # type: ignore
 from const import pprint
@@ -291,7 +292,7 @@ class DataMatcher:
         id_field: str,
         slug_or_title_field: str = "title",
         has_slug: bool = False,
-        update_func: Optional[Callable[[dict[str, Any], dict[str, Any]], None]] = None,
+        update_func: Callable[[dict[str, Any], dict[str, Any]], None] | None = None,
     ):
         """
         Initialize matcher for a platform.
@@ -614,7 +615,7 @@ class DataMatcher:
                 encoding="utf-8",
             ) as f:
                 json.dump(self.unmatched_items, f)
-        except Exception as e:
+        except OSError as e:
             pprint.print(
                 self.platform,
                 Status.WARN,

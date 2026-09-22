@@ -2,7 +2,6 @@
 
 import argparse
 import os
-import sys
 
 
 def _parse_args() -> argparse.Namespace:
@@ -106,6 +105,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    if sys.version_info < (3, 10):
-        raise RuntimeError("Python version >= 3.10 is required.")
     main()

@@ -119,7 +119,7 @@ class Kaize:
                     username = text_content.replace("", "").strip()
                     return username if username else None
             return None
-        except Exception:
+        except (AttributeError, TypeError):
             return None
 
     def login(self, email: str, password: str) -> bool:
@@ -304,9 +304,7 @@ class Kaize:
                     if self.is_valid_page(response):
                         if test_page > max_valid_page:
                             max_valid_page = test_page
-                            total_anime: int | None = self.get_total_entries(
-                                response
-                            )
+                            total_anime: int | None = self.get_total_entries(response)
                             if total_anime:
                                 self.total_anime_count = total_anime
                         bar.text(f"Page {test_page} valid")  # type: ignore

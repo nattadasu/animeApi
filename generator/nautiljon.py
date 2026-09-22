@@ -4,7 +4,7 @@ import json
 import math
 import random
 import re
-from datetime import datetime
+from datetime import UTC, datetime
 from time import sleep
 
 import cloudscraper  # type: ignore
@@ -63,7 +63,7 @@ def nautiljon_extract_table(html_content: str) -> list[dict[str, str | int | Non
                         francais = francais.removeprefix("(").removesuffix(")")
                     else:
                         francais = title
-                except Exception:
+                except AttributeError:
                     francais = title
                 slug = columns[0].find("a")["href"]  # type: ignore
                 # remove animes/ and .html
@@ -156,7 +156,7 @@ class Nautiljon:
             return anime_data
         try:
             if (
-                datetime.now().day not in [2, 16] or GITHUB_DISPATCH
+                datetime.now(tz=UTC).day not in [2, 16] or GITHUB_DISPATCH
             ) and not FORCE_FETCH_NAUTILJON:
                 raise ConnectionError("Scraper is not allowed to run today")
             pprint.print(

@@ -2,7 +2,7 @@
 
 import hashlib
 import json
-from typing import Any, Literal, Union
+from typing import Any, Literal
 
 import cloudscraper  # type: ignore
 import zstandard as zstd
@@ -128,9 +128,8 @@ class Downloader:
             # Write back all rows
             with open("database/raw/.downloader.tsv", "w") as f:
                 f.write("filename\tetag\tlast-modified\tcontent-length\thash\n")
-                for row in rows.values():
-                    f.write("\t".join(row) + "\n")
-        except Exception:
+                f.writelines("\t".join(row) + "\n" for row in rows.values())
+        except OSError:
             pass  # Non-critical, silently ignore
 
     def _get_stored_etag(self) -> str | None:
@@ -154,7 +153,7 @@ class Downloader:
         try:
             with open(f"database/raw/{self.file_name}.etag", "w") as f:
                 f.write(etag)
-        except Exception:
+        except OSError:
             pass  # Non-critical, silently ignore
 
     def _check_remote_unchanged(self) -> bool:
@@ -223,11 +222,11 @@ class Downloader:
             # Store new metadata for next time
             self._save_metadata(metadata)
             return False
-        except Exception:
+        except Exception:  # noqa: BLE001
             # On any error, attempt download (fallback to hash check after)
             return False
 
-    def _get(self) -> Union[Response, None]:
+    def _get(self) -> Response | None:
         """
         Get the response from the url with progress bar
 
@@ -337,7 +336,7 @@ class Downloader:
         try:
             with open(f"database/raw/{self.file_name}.hash", "w") as f:
                 f.write(data_hash)
-        except Exception:
+        except OSError:
             pass  # Non-critical, silently ignore
 
     def dumper(self) -> Any:

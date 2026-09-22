@@ -24,7 +24,7 @@ def pluralize(count: int, word: str) -> str:
 
 
 def convert_float_to_time(
-    total_seconds: float | int,
+    total_seconds: float,
     show_weeks: bool = False,
     show_milliseconds: bool = True,
 ) -> str:

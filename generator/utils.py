@@ -69,7 +69,7 @@ def validate_schema() -> None:
     """
     pprint.print(Platform.SYSTEM, Status.INFO, "Validating JSON schema")
     try:
-        from jsonschema import validate
+        from jsonschema import ValidationError, validate
     except ImportError:
         pprint.print(
             Platform.SYSTEM,
@@ -86,7 +86,7 @@ def validate_schema() -> None:
 
     try:
         validate(instance={"data": data}, schema=schema)
-    except Exception as e:
+    except ValidationError as e:
         pprint.print(Platform.SYSTEM, Status.ERR, "JSON schema validation failed")
         pprint.print(Platform.SYSTEM, Status.ERR, f"Error: {e}")
         sys.exit(1)

@@ -620,9 +620,8 @@ def restore_notify_safe(
 
     for entry in previous_data:
         title = entry.get("title")
-        if title:
-            if title not in prev_by_title:
-                prev_by_title[title] = entry
+        if title and title not in prev_by_title:
+            prev_by_title[title] = entry
 
     # Track results
     restored_count = 0
