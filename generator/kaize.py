@@ -5,12 +5,12 @@ import math
 import re
 import time
 from dataclasses import dataclass
-from typing import Any, Literal, Optional, Union
+from typing import Any, Literal
 
 import requests as req
 from alive_progress import alive_bar  # type: ignore
 from bs4 import BeautifulSoup, Tag
-from const import FORCE_FETCH_KAIZE, NO_FETCH
+from const import FORCE_FETCH_KAIZE, GITHUB_DISPATCH, NO_FETCH
 from fake_useragent import FakeUserAgent  # type: ignore
 from prettyprint import Platform, PrettyPrint, Status
 
@@ -33,9 +33,9 @@ class Kaize:
 
     def __init__(
         self,
-        user_agent: Optional[str] = None,
-        email: Optional[str] = None,
-        password: Optional[str] = None,
+        user_agent: str | None = None,
+        email: str | None = None,
+        password: str | None = None,
     ) -> None:
         """
         Initialize the Kaize class
@@ -53,14 +53,14 @@ class Kaize:
         """
         self.base_url = "https://kaize.io"
         self.session = req.Session()
-        self.xsrf_token: Optional[str] = None
-        self.csrf_token: Optional[str] = None
+        self.xsrf_token: str | None = None
+        self.csrf_token: str | None = None
         self.user_agent = user_agent or rand_fua
         self.email = email
         self.password = password
         self.cookie_jar: dict[str, str] = {}
-        self.total_anime_count: Optional[int] = None
-        self.max_pages: Optional[int] = None
+        self.total_anime_count: int | None = None
+        self.max_pages: int | None = None
         self.session.headers.update(
             {
                 "User-Agent": self.user_agent,
@@ -82,7 +82,7 @@ class Kaize:
             self.xsrf_token = response.cookies["XSRF-TOKEN"]
             self.cookie_jar["XSRF-TOKEN"] = self.xsrf_token
         soup: BeautifulSoup = BeautifulSoup(response.text, "html.parser")
-        csrf_meta: Optional[Tag] = soup.find("meta", {"name": "csrf-token"})
+        csrf_meta: Tag | None = soup.find("meta", {"name": "csrf-token"})
         if csrf_meta:
             self.csrf_token = csrf_meta.get("content")
 
@@ -97,7 +97,7 @@ class Kaize:
             if cookie_name in response.cookies:
                 self.cookie_jar[cookie_name] = response.cookies[cookie_name]
 
-    def get_logged_in_username(self) -> Optional[str]:
+    def get_logged_in_username(self) -> str | None:
         """
         Extract the logged-in username from the page
 
@@ -180,7 +180,7 @@ class Kaize:
         if not self.login(self.email, self.password):
             raise ConnectionError("Unable to login to kaize.io")
 
-    def _get(self, url: str) -> Union[req.Response, None]:
+    def _get(self, url: str) -> req.Response | None:
         """
         Get the response from the url
 
@@ -195,16 +195,16 @@ class Kaize:
                 self.update_cookies(response)
                 return response
             return None
-        except Exception as err:
+        except req.exceptions.RequestException as err:
             pprint.print(Platform.KAIZE, Status.ERR, f"Error: {err}")
             return None
 
     def _post(
         self,
         url: str,
-        data: Union[dict[str, Any], str],
-        header: Union[dict[str, Any], None] = None,
-    ) -> Union[req.Response, None]:
+        data: dict[str, Any] | str,
+        header: dict[str, Any] | None = None,
+    ) -> req.Response | None:
         """
         Do POST request to the url
 
@@ -224,7 +224,7 @@ class Kaize:
                 self.update_cookies(response)
                 return response
             return None
-        except Exception as err:
+        except req.exceptions.RequestException as err:
             pprint.print(Platform.KAIZE, Status.ERR, f"Error: {err}")
             return None
 
@@ -243,7 +243,7 @@ class Kaize:
         anime_elements = soup.find_all("div", {"class": "anime-list-element"})
         return len(anime_elements) > 0
 
-    def get_total_entries(self, response: req.Response) -> Optional[int]:
+    def get_total_entries(self, response: req.Response) -> int | None:
         """
         Extract total anime count from the last item on a page.
 
@@ -261,7 +261,7 @@ class Kaize:
         if anime_elements:
             # Get the last element's rank
             last_element: Tag = anime_elements[-1]
-            rank_elem: Optional[Tag] = last_element.find("div", class_="rank")
+            rank_elem: Tag | None = last_element.find("div", class_="rank")
             if rank_elem:
                 try:
                     return int(rank_elem.text.strip().replace("#", ""))
@@ -304,7 +304,7 @@ class Kaize:
                     if self.is_valid_page(response):
                         if test_page > max_valid_page:
                             max_valid_page = test_page
-                            total_anime: Optional[int] = self.get_total_entries(
+                            total_anime: int | None = self.get_total_entries(
                                 response
                             )
                             if total_anime:
@@ -396,6 +396,10 @@ class Kaize:
             anime_data.sort(key=lambda x: x["title"])  # type: ignore
             return anime_data
         try:
+            if GITHUB_DISPATCH and not FORCE_FETCH_KAIZE:
+                raise ConnectionError(
+                    "Manual workflow dispatch is configured to use local cache"
+                )
             self._session_set()
             pages = self.pages()
             with alive_bar(pages, title="Getting data", spinner=None) as bar:  # type: ignore
@@ -409,11 +413,11 @@ class Kaize:
                 Platform.KAIZE,
                 Status.PASS,
                 f"Done getting data, total data: {len(anime_data)},",
-                f"or around {str(math.ceil(len(anime_data) / 50))} pages,",
+                f"or around {math.ceil(len(anime_data) / 50)!s} pages,",
                 "expected pages:",
                 str(pages),
             )
-        except (ConnectionError, ValueError):
+        except (ConnectionError, req.exceptions.RequestException, ValueError):
             if FORCE_FETCH_KAIZE:
                 pprint.print(
                     Platform.KAIZE,

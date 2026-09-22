@@ -12,7 +12,7 @@ from alive_progress import alive_bar  # type: ignore
 from bs4 import BeautifulSoup, Tag
 from const import FORCE_FETCH_NAUTILJON, GITHUB_DISPATCH, NO_FETCH
 from prettyprint import Platform, PrettyPrint, Status
-from requests import HTTPError, Response
+from requests import HTTPError, RequestException, Response
 from slugify import slugify
 
 pprint = PrettyPrint()
@@ -156,10 +156,8 @@ class Nautiljon:
             return anime_data
         try:
             if (
-                datetime.now().day not in [2, 16]
-                and not GITHUB_DISPATCH
-                and not FORCE_FETCH_NAUTILJON
-            ):
+                datetime.now().day not in [2, 16] or GITHUB_DISPATCH
+            ) and not FORCE_FETCH_NAUTILJON:
                 raise ConnectionError("Scraper is not allowed to run today")
             pprint.print(
                 Platform.NAUTILJON, Status.INFO, "Getting animes from Nautiljon"
@@ -213,24 +211,12 @@ class Nautiljon:
                 f"or around {math.ceil(len(anime_data) / 15)} pages.",
                 f"Expected pages: {last_page}",
             )
-        except ConnectionError as err:
-            pprint.print(Platform.NAUTILJON, Status.ERR, f"Connection error: {err}")
-            if FORCE_FETCH_NAUTILJON:
-                pprint.print(
-                    Platform.NAUTILJON,
-                    Status.ERR,
-                    "FORCE_FETCH_NAUTILJON is set — refusing to fall back to local cache",
-                )
-                raise
-            pprint.print(Platform.NAUTILJON, Status.ERR, "Using local file")
-            with open(file_path, "r", encoding="utf-8") as f:
-                anime_data = json.load(f)
-        except HTTPError as http:
-            pprint.print(
-                Platform.NAUTILJON,
-                Status.ERR,
-                f"HTTP {http.response.status_code} from Nautiljon",
-            )
+        except (ConnectionError, RequestException) as err:
+            if isinstance(err, HTTPError):
+                message = f"HTTP {err.response.status_code} from Nautiljon"
+            else:
+                message = f"Connection error: {err}"
+            pprint.print(Platform.NAUTILJON, Status.ERR, message)
             if FORCE_FETCH_NAUTILJON:
                 pprint.print(
                     Platform.NAUTILJON,

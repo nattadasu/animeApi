@@ -9,7 +9,7 @@ import requests
 from alive_progress import alive_bar  # type: ignore
 from const import FORCE_FETCH_HIKKA, GITHUB_DISPATCH, NO_FETCH
 from prettyprint import Platform, PrettyPrint, Status
-from requests import HTTPError, Response
+from requests import HTTPError, RequestException, Response
 
 pprint = PrettyPrint()
 
@@ -85,10 +85,8 @@ class Hikka:
 
         try:
             if (
-                datetime.now().day not in [3, 17]
-                and not GITHUB_DISPATCH
-                and not FORCE_FETCH_HIKKA
-            ):
+                datetime.now().day not in [3, 17] or GITHUB_DISPATCH
+            ) and not FORCE_FETCH_HIKKA:
                 raise ConnectionError("Fetcher is not allowed to run today")
 
             pprint.print(
@@ -188,30 +186,12 @@ class Hikka:
                 f"API total: {total_anime}",
             )
 
-        except ConnectionError as err:
-            pprint.print(Platform.HIKKA, Status.ERR, f"Connection error: {err}")
-            if FORCE_FETCH_HIKKA:
-                pprint.print(
-                    Platform.HIKKA,
-                    Status.ERR,
-                    "FORCE_FETCH_HIKKA is set — refusing to fall back to local cache",
-                )
-                raise
-            pprint.print(Platform.HIKKA, Status.ERR, "Using local file")
-            try:
-                with open(file_path, "r", encoding="utf-8") as f:
-                    anime_data = json.load(f)
-            except FileNotFoundError:
-                pprint.print(
-                    Platform.HIKKA, Status.ERR, "Local file not found, skipping Hikka"
-                )
-
-        except HTTPError as http:
-            pprint.print(
-                Platform.HIKKA,
-                Status.ERR,
-                f"HTTP {http.response.status_code} from Hikka API",
-            )
+        except (ConnectionError, RequestException) as err:
+            if isinstance(err, HTTPError):
+                message = f"HTTP {err.response.status_code} from Hikka API"
+            else:
+                message = f"Connection error: {err}"
+            pprint.print(Platform.HIKKA, Status.ERR, message)
             if FORCE_FETCH_HIKKA:
                 pprint.print(
                     Platform.HIKKA,

@@ -3,7 +3,7 @@
 import json
 import os
 from datetime import datetime
-from typing import Any, Union
+from typing import Any
 
 import requests as req
 from alive_progress import alive_bar  # type: ignore
@@ -46,7 +46,7 @@ class OtakOtaku:
             "OtakOtaku anime data scraper ready to use",
         )
 
-    def _get(self, url: str) -> Union[req.Response, None]:
+    def _get(self, url: str) -> req.Response | None:
         """
         Get the response from the url
 
@@ -55,11 +55,11 @@ class OtakOtaku:
         :return: The response from the url
         :rtype: Union[req.Response, None]
         """
-        response = req.get(url, headers=self.headers, timeout=15)
         try:
+            response = req.get(url, headers=self.headers, timeout=15)
             response.raise_for_status()
             return response
-        except Exception as err:
+        except req.exceptions.RequestException as err:
             pprint.print(Platform.OTAKOTAKU, Status.ERR, f"Error: {err}")
             return None
 
@@ -93,7 +93,7 @@ class OtakOtaku:
         pprint.print(Platform.OTAKOTAKU, Status.PASS, f"Latest anime id: {anime_id}")
         return int(anime_id)
 
-    def _get_data(self, anime_id: int) -> Union[dict[str, Any], None]:
+    def _get_data(self, anime_id: int) -> dict[str, Any] | None:
         """
         Get anime data
 
@@ -111,7 +111,7 @@ class OtakOtaku:
         if not json_:
             return None
         data: dict[str, Any] = json_["data"]
-        mal: Union[str, int, None] = data.get("`mal_id_anime", None)
+        mal: str | int | None = data.get("`mal_id_anime", None)
         if mal:
             mal = int(mal)
         apla = data.get("ap_id_anime", None)
@@ -125,7 +125,7 @@ class OtakOtaku:
             ann = int(ann)
         title = data["judul_anime"]
         title = title.replace("&quot;", '"')
-        result: dict[str, Union[str, int, None]] = {
+        result: dict[str, str | int | None] = {
             "otakotaku": int(data["id_anime"]),
             "title": title,
             "myanimelist": mal,
@@ -157,13 +157,16 @@ class OtakOtaku:
             anime_list.sort(key=lambda x: x["title"])  # type: ignore
             return anime_list
         try:
+            if GITHUB_DISPATCH and not FORCE_FETCH_OTAKOTAKU:
+                raise ConnectionError(
+                    "Manual workflow dispatch is configured to use local cache"
+                )
             latest_id = self.get_latest_anime()
             if not latest_id:
                 raise ConnectionError("Failed to connect to otakotaku.com")
             if (
                 datetime.now().day not in [1, 15]
                 and len(anime_list) > 0
-                and not GITHUB_DISPATCH
                 and not FORCE_FETCH_OTAKOTAKU
             ):
                 with open(latest_file_path, "r", encoding="utf-8") as file:
