@@ -288,7 +288,12 @@ bans if requests from certain clients exceed reasonable limits.
 Due to this, we **strongly recommend** that you fork and deploy your own Vercel
 instance to avoid service disruption. Additionally, you can utilize
 the [Pull](https://wei.github.io/pull/) GitHub App to automatically update
-your fork.
+your fork. You may also download and cache our [TSV][tsvdb]/[JSON][jsondb]
+datasets daily instead, as they contain all the mappings served by our API
+and will be much faster.
+
+[tsvdb]: #fetch-all-item-as-tsv-tab-separated-values-file
+[jsondb]: #get-all-items-in-array-master-array
 
 Once you have forked the repository, visit
 the [Vercel Project Import](https://vercel.com/import/project) page to get started.
