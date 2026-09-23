@@ -15,6 +15,11 @@
 > our [Discord channel](https://nttds.my.id/discord), create an issue on this repo,
 > or through e-mail listed on [nattadasu](https://github.com/nattadasu)'s profile.
 
+> [!NOTE]
+> For project/service with more than 100 daily users, please read
+> [additional guide](#for-projectsservices-with-more-than-100-daily-users)
+> to avoid service distruption.
+
 <!-- omit in toc -->
 # nattadasu's RESTful AnimeAPI
 
@@ -271,6 +276,22 @@ To use this API, you can access the following base URLs:
   ```
 
 All requests must be `GET`, and response always will be in JSON format.
+
+### For Projects/Services with More Than 100 Daily Users
+
+As the public instance of AnimeAPI is hosted on Vercel under the Hobby plan,
+several restrictions have been applied to avoid credit exhaustion.
+These include, but are not limited to, a limit of 30 requests per 10 minutes
+(1 request every 20 seconds), as well as User-Agent, ISP, ASN, or country-wide
+bans if requests from certain clients exceed reasonable limits.
+
+Due to this, we **strongly recommend** that you fork and deploy your own Vercel
+instance to avoid service disruption. Additionally, you can utilize
+the [Pull](https://wei.github.io/pull/) GitHub App to automatically update
+your fork.
+
+Once you have forked the repository, visit
+the [Vercel Project Import](https://vercel.com/import/project) page to get started.
 
 ### Response Headers
 
