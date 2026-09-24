@@ -232,7 +232,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 22 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 23 September 2026 09:51:55 UTC
+Last updated: 24 September 2026 09:51:33 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -245,7 +245,7 @@ Last updated: 23 September 2026 09:51:55 UTC
 | aniSearch          |     21104 |
 | Annict             |     12997 |
 | Hikka              |     29918 |
-| IMDb               |      6323 |
+| IMDb               |      6324 |
 | Kaize              |     24651 |
 | Kitsu              |     22173 |
 | Letterboxd         |      1262 |
@@ -258,9 +258,9 @@ Last updated: 23 September 2026 09:51:55 UTC
 | Shoboi/Syobocal    |      6262 |
 | Silver Yasha       |      5311 |
 | SIMKL              |     14493 |
-| The Movie Database |      8390 |
-| The TVDB           |      5289 |
-| Trakt              |      7270 |
+| The Movie Database |      8391 |
+| The TVDB           |      5290 |
+| Trakt              |      7271 |
 |                    |           |
 | **Total**          | **40706** |
 <!-- /counters -->
@@ -355,8 +355,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1790157115,
-    "iso": "2026-09-23T09:51:55.182070+00:00"
+    "timestamp": 1790243493,
+    "iso": "2026-09-24T09:51:33.398057+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -388,7 +388,7 @@ GET /status
     "anisearch": 21104,
     "annict": 12997,
     "hikka": 29918,
-    "imdb": 6323,
+    "imdb": 6324,
     "kaize": 24651,
     "kitsu": 22173,
     "letterboxd": 1262,
@@ -401,9 +401,9 @@ GET /status
     "shoboi": 6262,
     "silveryasha": 5311,
     "simkl": 14493,
-    "themoviedb": 8390,
-    "thetvdb": 5289,
-    "trakt": 7270,
+    "themoviedb": 8391,
+    "thetvdb": 5290,
+    "trakt": 7271,
     "total": 40706
   },
   "endpoints": {
@@ -484,7 +484,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 09/23/2026 09:51:55 UTC
+Updated on 09/24/2026 09:51:33 UTC
 ```
 <!-- /updated-txt -->
 
