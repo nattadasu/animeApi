@@ -668,6 +668,7 @@
     "sources": [
       "https://anilist.co/anime/216645",
       "https://hetalia-ws.com",
+      "https://kitsu.app/anime/51075",
       "https://myanimelist.net/anime/64861",
       "https://shikimori.one/animes/64861",
       "https://twitter.com/animehetalia_ws",
@@ -750,7 +751,7 @@
     ],
     "title": "Oushun Jogakuen no Danyuu",
     "type": "ONA",
-    "status": "UPCOMING",
+    "status": "ONGOING",
     "animeSeason": {
       "season": "SUMMER",
       "year": 2026
@@ -758,7 +759,8 @@
     "synonyms": [
       "Backstage at Oushun Academy",
       "\u685c\u6625\u5973\u5b66\u9662\u306e\u7537\u512a"
-    ]
+    ],
+    "releaseDate": "2026-09-25"
   },
   {
     "sources": [
@@ -805,6 +807,9 @@
   {
     "sources": [
       "https://anidb.net/anime/20390",
+      "https://myanimelist.net/anime/65026",
+      "https://shikimori.one/animes/65026",
+      "https://twitter.com/TOEIANIME_PRO",
       "https://www.livechart.me/anime/13806"
     ],
     "title": "Pro, Pro, Pro!!",
@@ -933,7 +938,7 @@
     ],
     "title": "Youjo Shenki 2",
     "type": "ONA",
-    "status": "ONGOING",
+    "status": "FINISHED",
     "animeSeason": {
       "season": "SUMMER",
       "year": 2026
@@ -949,6 +954,7 @@
     "sources": [
       "https://anidb.net/anime/20379",
       "https://anilist.co/anime/216895",
+      "https://en.wikipedia.org/wiki/Welsh_&_Shedar",
       "https://kitsu.app/anime/51064",
       "https://myanimelist.net/anime/65009",
       "https://shikimori.one/animes/65009",
@@ -1030,7 +1036,8 @@
   },
   {
     "sources": [
-      "https://anilist.co/anime/216617"
+      "https://anilist.co/anime/216617",
+      "https://myanimelist.net/anime/65020"
     ],
     "title": "Futanari Jinja wa Otome Ochinpo Soudansho",
     "type": "OVA",
@@ -1046,7 +1053,8 @@
   },
   {
     "sources": [
-      "https://anilist.co/anime/217009"
+      "https://anilist.co/anime/217009",
+      "https://myanimelist.net/anime/65035"
     ],
     "title": "Gals Fiction THE ANIMATION",
     "type": "OVA",
@@ -1059,6 +1067,22 @@
       "\u30ae\u30e3\u30eb\u30ba\u30d5\u30a3\u30af\u30b7\u30e7\u30f3 THE ANIMATION"
     ],
     "releaseDate": "2026-12-18"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/217282"
+    ],
+    "title": "GelPiyo 2",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u30b2\u30eb\u3074\u3088 2"
+    ],
+    "releaseDate": "2026-10-21"
   },
   {
     "sources": [
@@ -1193,6 +1217,7 @@
       "https://ja.wikipedia.org/wiki/%E5%90%8D%E6%8E%A2%E5%81%B5%E3%82%B3%E3%83%8A%E3%83%B3_(%E3%82%A2%E3%83%8B%E3%83%A1)",
       "https://kitsu.app/anime/50999",
       "https://myanimelist.net/anime/64913",
+      "https://shikimori.io/animes/64913-meitantei-conan-30-gou-satsujin-jiken/watch",
       "https://shikimori.one/animes/64913",
       "https://twitter.com/conan_anime1000",
       "https://www.livechart.me/anime/13792",
@@ -1200,7 +1225,7 @@
     ],
     "title": "Meitantei Conan: 30-Gou Satsujin Jiken",
     "type": "TV",
-    "status": "UPCOMING",
+    "status": "FINISHED",
     "animeSeason": {
       "season": "FALL",
       "year": 2026
@@ -1300,7 +1325,8 @@
   },
   {
     "sources": [
-      "https://anilist.co/anime/216926"
+      "https://anilist.co/anime/216926",
+      "https://myanimelist.net/anime/65038"
     ],
     "title": "Otonari no Nie",
     "type": "OVA",
@@ -1417,6 +1443,20 @@
     },
     "synonyms": [],
     "releaseDate": "2026-08-05"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/51091"
+    ],
+    "title": "64.",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-09-24"
   },
   {
     "sources": [
@@ -1571,6 +1611,34 @@
   },
   {
     "sources": [
+      "https://kitsu.app/anime/51089"
+    ],
+    "title": "Glitch Through",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-09-20"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/51074"
+    ],
+    "title": "Go Wild",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-09-10"
+  },
+  {
+    "sources": [
       "https://kitsu.app/anime/50947",
       "https://myanimelist.net/anime/64834"
     ],
@@ -1587,6 +1655,20 @@
       "\u795e\u660e\u6200\u611b\u653e\u9001\u4e2d"
     ],
     "releaseDate": "2026-08-18"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/51088"
+    ],
+    "title": "Grave of Halo",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-09-18"
   },
   {
     "sources": [
@@ -1785,6 +1867,22 @@
   },
   {
     "sources": [
+      "https://kitsu.app/anime/51090"
+    ],
+    "title": "Lethal Dose Paranoid",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u30ea\u30fc\u30b5\u30eb\u30c9\u30fc\u30ba\u30fb\u30d1\u30e9\u30ce\u30a4\u30c9"
+    ],
+    "releaseDate": "2026-09-22"
+  },
+  {
+    "sources": [
       "https://kitsu.app/anime/50882",
       "https://myanimelist.net/anime/64761"
     ],
@@ -1849,6 +1947,20 @@
     },
     "synonyms": [],
     "releaseDate": "2026-08-18"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/51073"
+    ],
+    "title": "Okie Dokie Dance",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-09-16"
   },
   {
     "sources": [
@@ -2013,6 +2125,22 @@
   },
   {
     "sources": [
+      "https://kitsu.app/anime/51083"
+    ],
+    "title": "SAWAGE\u2605GURUGURU TIME!",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u9a12\u3052\u2605\u3050\u308b\u3050\u308bTIME\uff01"
+    ],
+    "releaseDate": "2026-09-25"
+  },
+  {
+    "sources": [
       "https://kitsu.app/anime/51024",
       "https://myanimelist.net/anime/64944"
     ],
@@ -2106,6 +2234,25 @@
       "\u661f\u5c51\u30ab\u30d7\u30bb\u30eb"
     ],
     "releaseDate": "2026-08-26"
+  },
+  {
+    "sources": [
+      "https://en.wikipedia.org/wiki/Yu-Gi-Oh!",
+      "https://kitsu.app/anime/51080",
+      "https://myanimelist.net/anime/64977",
+      "https://shikimori.one/animes/64977"
+    ],
+    "title": "Takahashi Kazuki Gengaten: Yu\u2606Gi\u2606Oh! Art Works",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "\u9ad8\u6a4b\u548c\u5e0c\u539f\u753b\u5c55 YU-GI-OH! ART WORKS"
+    ],
+    "releaseDate": "2026-09-14"
   },
   {
     "sources": [
@@ -2257,6 +2404,72 @@
       "\u5922\u8272\u30ef\u30f3\u30c0"
     ],
     "releaseDate": "2026-07-23"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/217129"
+    ],
+    "title": "Aware! Meisaku-kun (2027)",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "WINTER",
+      "year": 2027
+    },
+    "synonyms": [
+      "Ahare! Meisaku-kun (2027)",
+      "\u3042\u306f\u308c\uff01\u540d\u4f5c\u304f\u3093 (2027)"
+    ]
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/217070",
+      "https://en.wikipedia.org/wiki/Though_I_Am_an_Inept_Villainess#Anime",
+      "https://futsutsuka.net",
+      "https://ja.wikipedia.org/wiki/%E3%81%B5%E3%81%A4%E3%81%A4%E3%81%8B%E3%81%AA%E6%82%AA%E5%A5%B3%E3%81%A7%E3%81%AF%E3%81%94%E3%81%96%E3%81%84%E3%81%BE%E3%81%99%E3%81%8C#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
+      "https://kitsu.app/anime/51076",
+      "https://myanimelist.net/anime/65032",
+      "https://shikimori.one/animes/65032",
+      "https://twitter.com/futsutsuka_PR",
+      "https://www.livechart.me/anime/13811"
+    ],
+    "title": "Futsutsuka na Akujo dewa Gozaimasu ga ~Suuguu Chouso Torikae Den~ Cour 2",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "WINTER",
+      "year": 2027
+    },
+    "synonyms": [
+      "Futsutsuka na Akujo dewa Gozaimasu ga ~Suuguu Chouso Torikae Den~ Hajimete no Gaiyuu",
+      "Though I Am an Inept Villainess Part 2",
+      "Though I Am an Inept Villainess: Tale of the Butterfly-Rat Body Swap in the Maiden Court",
+      "Though I Am an Inept Villainess: Tale of the Butterfly-Rat Swap in the Maiden Court",
+      "Though I Am an Inept Villainess: The First Royal Outing Arc",
+      "futsutsuka",
+      "\u0e19\u0e32\u0e07\u0e23\u0e49\u0e32\u0e22\u0e21\u0e37\u0e2d\u0e43\u0e2b\u0e21\u0e48 \u0e40\u0e1b\u0e47\u0e19\u0e01\u0e33\u0e25\u0e31\u0e07\u0e43\u0e08\u0e43\u0e2b\u0e49\u0e14\u0e49\u0e27\u0e22\u0e19\u0e30\u0e40\u0e08\u0e49\u0e32\u0e04\u0e30",
+      "\u3075\u3064\u3064\u304b\u306a\u60aa\u5973",
+      "\u3075\u3064\u3064\u304b\u306a\u60aa\u5973\u3067\u306f\u3054\u3056\u3044\u307e\u3059\u304c \uff5e\u96db\u5bae\u8776\u9f20\u3068\u308a\u304b\u3048\u4f1d\uff5e \u306f\u3058\u3081\u3066\u306e\u5916\u904a",
+      "\u3075\u3064\u3064\u304b\u306a\u60aa\u5973\u3067\u306f\u3054\u3056\u3044\u307e\u3059\u304c \uff5e\u96db\u5bae\u8776\u9f20\u3068\u308a\u304b\u3048\u4f1d\uff5e \u7b2c\u4e8c\u5e55"
+    ],
+    "releaseDate": "2027-01-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://www.livechart.me/anime/13826"
+    ],
+    "title": "Future GPX Cyber Formula EARLYDAYS RENEWAL MOVIE EDITION",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "WINTER",
+      "year": 2027
+    },
+    "synonyms": [
+      "Cyber Formula: Shinseki-GPX",
+      "Shin Seiki GPX Cyber Formula"
+    ],
+    "releaseDate": "2027-02-18T15:00:00.000000000Z"
   },
   {
     "sources": [
@@ -2445,12 +2658,38 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/217330",
+      "https://en.wikipedia.org/wiki/That_Time_I_Got_Reincarnated_as_a_Slime_(TV_series)",
+      "https://ja.wikipedia.org/wiki/%E8%BB%A2%E7%94%9F%E3%81%97%E3%81%9F%E3%82%89%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%A0%E3%81%A0%E3%81%A3%E3%81%9F%E4%BB%B6_(%E3%82%A2%E3%83%8B%E3%83%A1)#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
+      "https://kitsu.app/anime/51086",
+      "https://myanimelist.net/anime/65070",
+      "https://shikimori.one/animes/65070",
+      "https://twitter.com/ten_sura_anime",
+      "https://www.livechart.me/anime/13823",
+      "https://www.ten-sura.com/anime/clayman-revenge"
+    ],
+    "title": "Tensei shitara Slime Datta Ken Clayman REVENGE",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "SPRING",
+      "year": 2027
+    },
+    "synonyms": [
+      "TenSura: Clayman Revenge",
+      "\u8ee2\u751f\u3057\u305f\u3089\u30b9\u30e9\u30a4\u30e0\u3060\u3063\u305f\u4ef6 \u30af\u30ec\u30a4\u30de\u30f3REVENGE"
+    ],
+    "releaseDate": "2027-04-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
       "https://en.wikipedia.org/wiki/Tougen_Anki#Anime",
       "https://ja.wikipedia.org/wiki/%E6%A1%83%E6%BA%90%E6%9A%97%E9%AC%BC#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
       "https://myanimelist.net/anime/65023",
       "https://shikimori.one/animes/65023",
       "https://tougenanki-anime.com",
-      "https://twitter.com/tougenanki_anm"
+      "https://twitter.com/tougenanki_anm",
+      "https://www.livechart.me/anime/13814"
     ],
     "title": "Tougen Anki: Nikko Kegon no Taki-hen Part 2",
     "type": "TV",
@@ -2459,7 +2698,11 @@
       "season": "SPRING",
       "year": 2027
     },
-    "synonyms": []
+    "synonyms": [
+      "TOUGEN ANKI: Legend of the Cursed Blood",
+      "Tougen Anki: Dark Demon of Paradise"
+    ],
+    "releaseDate": "2027-04-01T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -2514,6 +2757,29 @@
       "One Piece Film 16",
       "One Piece Film: God Valley",
       "One Piece Movie 16"
+    ],
+    "releaseDate": "2027-07-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://www.livechart.me/anime/13822"
+    ],
+    "title": "Tensei Shitara Slime Datta Ken 4th Season Cour 3",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2027
+    },
+    "synonyms": [
+      "L\u00fac \u0111\u00f3 t\u00f4i \u0111\u00e3 chuy\u1ec3n sinh th\u00e0nh Slime 4",
+      "Meine Wiedergeburt als Schleim in einer anderen Welt Staffel 4",
+      "Moi, quand je me r\u00e9incarne en Slime Saison 4",
+      "TenSura 4",
+      "\u041e \u043c\u043e\u0451\u043c \u043f\u0435\u0440\u0435\u0440\u043e\u0436\u0434\u0435\u043d\u0438\u0438 \u0432 \u0441\u043b\u0438\u0437\u044c 4",
+      "\u5173\u4e8e\u6211\u8f6c\u751f\u53d8\u6210\u53f2\u83b1\u59c6\u8fd9\u6863\u4e8b \u7b2c\u4e09\u5b63",
+      "\u8ee2\u30b9\u30e9 \u7b2c4\u671f",
+      "\uc804\uc0dd\ud588\ub354\ub2c8 \uc2ac\ub77c\uc784\uc774\uc5c8\ub358 \uac74\uc5d0 \ub300\ud558\uc5ec 4\uae30"
     ],
     "releaseDate": "2027-07-01T00:00:00.000000000Z"
   },
@@ -3130,6 +3396,29 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20415",
+      "https://anilist.co/anime/217317",
+      "https://en.wikipedia.org/wiki/Elf-sensei_no_Toilet_wa_Doko_desu_ka%3F",
+      "https://myanimelist.net/anime/65069",
+      "https://shikimori.one/animes/65069",
+      "https://twitter.com/elfsensei_anime",
+      "https://www.livechart.me/anime/13821"
+    ],
+    "title": "Elf-sensei no Toilet wa Doko desu ka?",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Where is elf teacher\u2019s toilet?",
+      "\u30a8\u30eb\u30d5\u5148\u751f\u306e\u30c8\u30a4\u30ec\u306f\u3069\u3053\u3067\u3059\u304b\uff1f"
+    ],
+    "releaseDate": "2026-09-25T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
       "https://anidb.net/anime/20350",
       "https://anilist.co/anime/216826",
       "https://en.wikipedia.org/wiki/Funs%C5%8D_deshitara_Hatta_made#Anime",
@@ -3154,6 +3443,22 @@
       "\u7d1b\u4e89\u3067\u3057\u305f\u3089\u516b\u7530\u307e\u3067"
     ],
     "releaseDate": "2026-09-14T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/65054",
+      "https://shikimori.one/animes/65054",
+      "https://twitter.com/GAROU_PR",
+      "https://www.snk-corp.co.jp/official/fatalfury-cotw"
+    ],
+    "title": "Garou Densetsu: CotW - Kim Kaphwan",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
   },
   {
     "sources": [
@@ -3231,6 +3536,30 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/217136",
+      "https://en.wikipedia.org/wiki/Grand_Blue_Dreaming#Anime",
+      "https://ja.wikipedia.org/wiki/%E3%81%90%E3%82%89%E3%82%93%E3%81%B6%E3%82%8B#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
+      "https://myanimelist.net/anime/65037",
+      "https://shikimori.one/animes/65037",
+      "https://twitter.com/gb_anime",
+      "https://www.grandblue-anime.com",
+      "https://www.livechart.me/anime/13815"
+    ],
+    "title": "Grand Blue Season 4",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Grand Blue Dreaming Season 4",
+      "\u3050\u3089\u3093\u3076\u308b Season 4"
+    ],
+    "releaseDate": "2026-09-21T15:44:39.166869000Z"
+  },
+  {
+    "sources": [
       "https://anidb.net/anime/20255",
       "https://baike.baidu.com/item/\u8c37\u96e8\u8857\u540e\u5df7",
       "https://myanimelist.net/anime/64713",
@@ -3269,6 +3598,34 @@
       "Black and White Twin Dragons",
       "\u9ed1\u767d\u53cc\u9f99"
     ]
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20418",
+      "https://anilist.co/anime/217333",
+      "https://en.wikipedia.org/wiki/Hell_Mode#Anime",
+      "https://hellmode-anime.com",
+      "https://ja.wikipedia.org/wiki/%E3%83%98%E3%83%AB%E3%83%A2%E3%83%BC%E3%83%89_%E3%80%9C%E3%82%84%E3%82%8A%E8%BE%BC%E3%81%BF%E5%A5%BD%E3%81%8D%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%9E%E3%83%BC%E3%81%AF%E5%BB%83%E8%A8%AD%E5%AE%9A%E3%81%AE%E7%95%B0%E4%B8%96%E7%95%8C%E3%81%A7%E7%84%A1%E5%8F%8C%E3%81%99%E3%82%8B%E3%80%9C#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
+      "https://myanimelist.net/anime/65073",
+      "https://shikimori.one/animes/65073",
+      "https://twitter.com/hellmode_anime",
+      "https://www.livechart.me/anime/13824"
+    ],
+    "title": "Hell Mode: Yarikomizuki no Gamer wa Hai Settei no Isekai de Musou suru 3rd Season",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Hell Mode: Gamer Who Likes to Speedrun Becomes Peerless in a Parallel World with Obsolete Setting",
+      "\u0410\u0434\u0441\u043a\u0438\u0439 \u0440\u0435\u0436\u0438\u043c: \u0413\u0435\u0439\u043c\u0435\u0440, \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u043b\u044e\u0431\u0438\u0442 \u0441\u043f\u0438\u0434\u0440\u0430\u043d, \u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0441\u044f \u0431\u0435\u0441\u043f\u043e\u0434\u043e\u0431\u043d\u044b\u043c \u0432 \u043f\u0430\u0440\u0430\u043b\u043b\u0435\u043b\u044c\u043d\u043e\u043c \u043c\u0438\u0440\u0435 \u0441 \u0443\u0441\u0442\u0430\u0440\u0435\u0432\u0448\u0438\u043c\u0438 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430\u043c\u0438 3",
+      "\u30d8\u30eb\u30e2\u30fc\u30c9 \uff5e\u3084\u308a\u8fbc\u307f\u597d\u304d\u306e\u30b2\u30fc\u30de\u30fc\u306f\u5ec3\u8a2d\u5b9a\u306e\u7570\u4e16\u754c\u3067\u7121\u53cc\u3059\u308b\uff5e 3rd Season",
+      "\u30d8\u30eb\u30e2\u30fc\u30c9 \uff5e\u3084\u308a\u8fbc\u307f\u597d\u304d\u306e\u30b2\u30fc\u30de\u30fc\u306f\u5ec3\u8a2d\u5b9a\u306e\u7570\u4e16\u754c\u3067\u7121\u53cc\u3059\u308b\uff5e \u306f\u3058\u307e\u308a\u306e\u53ec\u559a\u58eb \u7b2c2\u671f",
+      "\ud5ec \ubaa8\ub4dc ~\ud30c\uace0\ub4e4\uae30 \uc88b\uc544\ud558\ub294 \uac8c\uc774\uba38\ub294 \ud3d0\uae09 \uc124\uc815 \uc774\uc138\uacc4\uc5d0\uc11c \ubb34\uc30d\ud55c\ub2e4~"
+    ],
+    "releaseDate": "2026-09-25T18:43:00.973501000Z"
   },
   {
     "sources": [
@@ -3366,6 +3723,20 @@
   },
   {
     "sources": [
+      "https://myanimelist.net/anime/65067",
+      "https://shikimori.one/animes/65067"
+    ],
+    "title": "Kakujuu Anime: Chou Mukashibanashi",
+    "type": "TV",
+    "status": "ONGOING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/216939",
       "https://en.wikipedia.org/wiki/The_Failure_at_God_School",
       "https://myanimelist.net/anime/65015",
@@ -3387,6 +3758,53 @@
       "\u795e\u3055\u307e\u5b66\u6821\u306e\u843d\u3061\u3053\u307c\u308c"
     ],
     "releaseDate": "2026-09-17T16:18:25.993441000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/217232",
+      "https://en.wikipedia.org/wiki/From_Old_Country_Bumpkin_to_Master_Swordsman#Anime",
+      "https://ja.wikipedia.org/wiki/%E7%89%87%E7%94%B0%E8%88%8E%E3%81%AE%E3%81%8A%E3%81%A3%E3%81%95%E3%82%93%E3%80%81%E5%89%A3%E8%81%96%E3%81%AB%E3%81%AA%E3%82%8B_%E3%80%9C%E3%81%9F%E3%81%A0%E3%81%AE%E7%94%B0%E8%88%8E%E3%81%AE%E5%89%A3%E8%A1%93%E5%B8%AB%E7%AF%84%E3%81%A0%E3%81%A3%E3%81%9F%E3%81%AE%E3%81%AB%E3%80%81%E5%A4%A7%E6%88%90%E3%81%97%E3%81%9F%E5%BC%9F%E5%AD%90%E3%81%9F%E3%81%A1%E3%81%8C%E4%BF%BA%E3%82%92%E6%94%BE%E3%81%A3%E3%81%A6%E3%81%8F%E3%82%8C%E3%81%AA%E3%81%84%E4%BB%B6%E3%80%9C#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
+      "https://myanimelist.net/anime/65047",
+      "https://ossan-kensei.com",
+      "https://shikimori.one/animes/65047",
+      "https://twitter.com/ossan_kensei",
+      "https://www.livechart.me/anime/13818"
+    ],
+    "title": "Katainaka no Ossan, Kensei ni Naru III",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Beryl : de paysan \u00e0 ma\u00eetre d\u2019armes",
+      "Da campagnolo stagionato a gran maestro di spada",
+      "Daripada Orang Kampung Biasa kepada Mahaguru Pedang",
+      "De Caipira a Mestre Espadachim",
+      "De viejo pueblerino a gran maestro espadach\u00edn",
+      "From Old Country Bumpkin to Master Swordsman III",
+      "From Old Country Bumpkin to Master Swordsman Season 3",
+      "From Old Country Bumpkin to Master Swordsman \u2162",
+      "From Old Country Bumpkin to Master Swordsman: My Hotshot Disciples Are All Grown Up Now, and They Won't Leave Me Alone",
+      "Katainaka no Ossan, Kensei ni Naru 3nd Season",
+      "Katainaka no Ossan, Kensei ni Naru: Tada no Inaka no Kenjutsu Shihan Datta noni, Taisei shita Deshi-tachi ga Ore wo Hottekurenai Ken",
+      "Pria Tua Pedesaan Menjadi Pendekar Pedang Elite",
+      "S\u0131radan Bir K\u00f6yl\u00fc H\u00fcnerli Bir K\u0131l\u0131\u00e7 Ustas\u0131 Oluyor",
+      "Vom Landei zum Schwertheiligen",
+      "Wie\u015bniak mistrzem miecza",
+      "\u0645\u0646 \u0631\u064a\u0641\u064a \u0643\u0647\u0644 \u0625\u0644\u0649 \u0645\u0639\u0644\u0651\u0645 \u0645\u0628\u0627\u0631\u0632\u0629",
+      "\u0938\u093e\u092e\u093e\u0928\u094d\u092f \u0917\u094d\u0930\u093e\u092e\u0935\u093e\u0938\u0940 \u0938\u0947 \u0905\u095b\u0940\u092e \u0924\u0932\u0935\u093e\u0930\u092c\u093e\u095b \u0924\u0915",
+      "\u0e1b\u0e23\u0e21\u0e32\u0e08\u0e32\u0e23\u0e22\u0e4c\u0e14\u0e32\u0e1a\u0e0a\u0e31\u0e49\u0e19\u0e40\u0e0b\u0e35\u0e22\u0e19\u0e21\u0e32\u0e15\u0e1a\u0e40\u0e01\u0e23\u0e35\u0e22\u0e19\u0e16\u0e36\u0e07\u0e40\u0e21\u0e37\u0e2d\u0e07\u0e01\u0e23\u0e38\u0e07",
+      "\u304a\u3063\u3055\u3093\u5263\u8056",
+      "\u4e61\u4e0b\u5927\u53d4\u6210\u4e3a\u5251\u5723",
+      "\u7247\u7530\u820e\u306e\u304a\u3063\u3055\u3093\u3001\u5263\u8056\u306b\u306a\u308b \u7b2c3\u671f",
+      "\u7247\u7530\u820e\u306e\u304a\u3063\u3055\u3093\u3001\u5263\u8056\u306b\u306a\u308b \u7b2c\u4e09\u671f",
+      "\u7247\u7530\u820e\u306e\u304a\u3063\u3055\u3093\u3001\u5263\u8056\u306b\u306a\u308b\u3000\uff5e\u305f\u3060\u306e\u7530\u820e\u306e\u5263\u8853\u5e2b\u7bc4\u3060\u3063\u305f\u306e\u306b\u3001\u5927\u6210\u3057\u305f\u5f1f\u5b50\u305f\u3061\u304c\u4ffa\u3092\u653e\u3063\u3066\u304f\u308c\u306a\u3044\u4ef6\uff5e",
+      "\u9109\u4e0b\u5927\u53d4\u6210\u70ba\u528d\u8056",
+      "\ucd0c\uad6c\uc11d \uc544\uc800\uc528, \uac80\uc131\uc774 \ub418\ub2e4"
+    ],
+    "releaseDate": "2026-09-23T16:00:59.720200000Z"
   },
   {
     "sources": [
@@ -3436,6 +3854,31 @@
       "Kingdom Hearts: The Series"
     ],
     "releaseDate": "2026-08-15T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/217329",
+      "https://en.wikipedia.org/wiki/Draw_This,_Then_Die!#Anime",
+      "https://ja.wikipedia.org/wiki/%E3%81%93%E3%82%8C%E6%8F%8F%E3%81%84%E3%81%A6%E6%AD%BB%E3%81%AD#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
+      "https://myanimelist.net/anime/65071",
+      "https://shikimori.one/animes/65071",
+      "https://twitter.com/korekaite_shine",
+      "https://www.livechart.me/anime/13825",
+      "https://www.vap.co.jp/korekaite-shine"
+    ],
+    "title": "Kore Kaite Shine 2nd Season",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Draw This, Then Die! Season 2",
+      "Draw this, then die!",
+      "\u3053\u308c\u63cf\u3044\u3066\u6b7b\u306d \u7b2c2\u671f"
+    ],
+    "releaseDate": "2026-09-25T18:58:36.567763000Z"
   },
   {
     "sources": [
@@ -3500,6 +3943,20 @@
   },
   {
     "sources": [
+      "https://myanimelist.net/anime/65043",
+      "https://shikimori.one/animes/65043"
+    ],
+    "title": "Limbus Company 3rd Anniversary Animation",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/214871"
     ],
     "title": "Ling Long Movie",
@@ -3529,6 +3986,22 @@
     },
     "synonyms": [],
     "releaseDate": "2025-10-12"
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/65072",
+      "https://shikimori.one/animes/65072"
+    ],
+    "title": "Luo Xiaohei Zhanji: Xueqian Pian",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Luo Xiao Hei Zhan Ji"
+    ]
   },
   {
     "sources": [
@@ -3710,6 +4183,21 @@
   },
   {
     "sources": [
+      "https://myanimelist.net/anime/65033",
+      "https://shikimori.one/animes/65033",
+      "https://www.kyotoanimation.co.jp/books/moonfighters"
+    ],
+    "title": "Moon Fighters! CM",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
       "https://myanimelist.net/anime/64772",
       "https://namu.wiki/w/\ub098\ub178\ub9ac\uc2a4\ud2b8/\uc560\ub2c8\uba54\uc774\uc158",
       "https://shikimori.io/animes/64772-nano-list/watch",
@@ -3735,7 +4223,8 @@
       "https://nekoryuu-pr.com",
       "https://shikimori.one/animes/65025",
       "https://twitter.com/NekoRyuu_PR",
-      "https://www.livechart.me/anime/13810"
+      "https://www.livechart.me/anime/13810",
+      "https://www.world-art.ru/animation/animation.php?id=13011"
     ],
     "title": "Neko to Ryuu 2nd Season",
     "type": "TV",
@@ -3852,7 +4341,14 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20410",
       "https://anilist.co/anime/216558",
+      "https://en.wikipedia.org/wiki/Odekake_Hololive",
+      "https://myanimelist.net/anime/65050",
+      "https://odeholo.com",
+      "https://shikimori.one/animes/65050",
+      "https://twitter.com/odeholo",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40527",
       "https://www.livechart.me/anime/13794"
     ],
     "title": "Odeholo",
@@ -3863,6 +4359,8 @@
       "year": null
     },
     "synonyms": [
+      "hololive: Let\u2019s Head Out!",
+      "\u304a\u3067\u304b\u3051\u30db\u30ed\u30e9\u30a4\u30d6",
       "\u304a\u3067\u30db\u30ed"
     ],
     "releaseDate": "2026-09-07T00:00:00.000000000Z"
@@ -3943,6 +4441,29 @@
       "year": null
     },
     "synonyms": []
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20413",
+      "https://anilist.co/anime/217283",
+      "https://myanimelist.net/anime/65052",
+      "https://phanbus-anime.jp",
+      "https://shikimori.one/animes/65052",
+      "https://twitter.com/phanbus_anime",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40573",
+      "https://www.livechart.me/anime/13820"
+    ],
+    "title": "PHANTOM BUSTERS",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "\u30d5\u30a1\u30f3\u30c8\u30e0\u30d0\u30b9\u30bf\u30fc\u30ba"
+    ],
+    "releaseDate": "2027-01-01T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -4236,6 +4757,13 @@
     "sources": [
       "https://anidb.net/anime/20405",
       "https://anilist.co/anime/217008",
+      "https://en.wikipedia.org/wiki/Oishinbo#Anime",
+      "https://ja.wikipedia.org/wiki/%E7%BE%8E%E5%91%B3%E3%81%97%E3%82%93%E3%81%BC#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1_(%E6%96%B0)",
+      "https://myanimelist.net/anime/65053",
+      "https://shikimori.one/animes/65053",
+      "https://shin-oishinbo-anime.com",
+      "https://twitter.com/oishinbo_ch",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40552",
       "https://www.livechart.me/anime/13808"
     ],
     "title": "Shin Oishinbo",
@@ -4247,6 +4775,7 @@
     },
     "synonyms": [
       "New Oishinbo",
+      "The Gourmet",
       "\u65b0 \u7f8e\u5473\u3057\u3093\u307c"
     ],
     "releaseDate": "2026-09-19T00:00:00.000000000Z"
@@ -4312,6 +4841,7 @@
     "sources": [
       "https://anidb.net/anime/20233",
       "https://myanimelist.net/anime/64710",
+      "https://shikimori.io/animes/64710-taigu-shen-zun/watch",
       "https://shikimori.one/animes/64710",
       "https://www.iq.com/album/primeval-overlord-2026-1bo3wrlpnxt",
       "https://www.world-art.ru/cinema/cinema.php?id=131540"
@@ -4326,21 +4856,6 @@
     "synonyms": [
       "Primordial God"
     ]
-  },
-  {
-    "sources": [
-      "https://en.wikipedia.org/wiki/Yu-Gi-Oh!",
-      "https://myanimelist.net/anime/64977",
-      "https://shikimori.one/animes/64977"
-    ],
-    "title": "Takahashi Kazuki Gengaten: Yu\u2606Gi\u2606Oh! Art Works",
-    "type": "TV",
-    "status": "FINISHED",
-    "animeSeason": {
-      "season": "TBA",
-      "year": null
-    },
-    "synonyms": []
   },
   {
     "sources": [
@@ -4570,6 +5085,45 @@
   },
   {
     "sources": [
+      "https://myanimelist.net/anime/65001",
+      "https://shikimori.one/animes/65001",
+      "https://www.mgtv.com/h/858293.html"
+    ],
+    "title": "Yeluoli: Jin Liu Xin",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Jingling Meng Yeluoli x Jin Liu Xin",
+      "\u7cbe\u7075\u68a6\u53f6\u7f57\u4e3dX\u91d1\u938f\u5fc3"
+    ],
+    "releaseDate": "2026-05-05"
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/65000",
+      "https://shikimori.one/animes/65000",
+      "https://w.mgtv.com/h/713339.html"
+    ],
+    "title": "Yeluoli: Yue Ling Shi",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Jingling Meng Yeluoli x Yue Ling Shi",
+      "Ye Luoli: Moon Spirit Stone",
+      "\u7cbe\u7075\u68a6\u53f6\u7f57\u4e3dX\u6708\u7075\u77f3"
+    ],
+    "releaseDate": "2025-06-04"
+  },
+  {
+    "sources": [
       "https://myanimelist.net/anime/65028",
       "https://myanimelist.net/anime/65029",
       "https://nte.perfectworld.com",
@@ -4629,6 +5183,7 @@
       "https://shikimori.one/animes/65024",
       "https://twitter.com/tsugai_official",
       "https://www.livechart.me/anime/13809",
+      "https://www.world-art.ru/animation/animation.php?id=13012",
       "https://yominotsugai.com"
     ],
     "title": "Yomi no Tsugai 2nd Season",
