@@ -232,21 +232,21 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 22 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 05 October 2026 12:08:23 UTC
+Last updated: 06 October 2026 11:49:14 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
 | aniDB              |     14621 |
-| AniList            |     22538 |
+| AniList            |     22539 |
 | Anime News Network |     12388 |
 | Anime-Planet       |     26650 |
-| aniSearch          |     21118 |
+| aniSearch          |     21119 |
 | Annict             |     13020 |
 | Hikka              |     29957 |
-| IMDb               |      6335 |
-| Kaize              |     24656 |
+| IMDb               |      6336 |
+| Kaize              |     24687 |
 | Kitsu              |     22194 |
 | Letterboxd         |      1263 |
 | LiveChart          |     12375 |
@@ -258,9 +258,9 @@ Last updated: 05 October 2026 12:08:23 UTC
 | Shoboi/Syobocal    |      6279 |
 | Silver Yasha       |      5313 |
 | SIMKL              |     14497 |
-| The Movie Database |      8418 |
-| The TVDB           |      5305 |
-| Trakt              |      7296 |
+| The Movie Database |      8419 |
+| The TVDB           |      5307 |
+| Trakt              |      7299 |
 |                    |           |
 | **Total**          | **40744** |
 <!-- /counters -->
@@ -355,8 +355,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1791202103,
-    "iso": "2026-10-05T12:08:23.801703+00:00"
+    "timestamp": 1791287354,
+    "iso": "2026-10-06T11:49:14.019306+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -382,14 +382,14 @@ GET /status
   "website": "https://animeapi.my.id",
   "counts": {
     "anidb": 14621,
-    "anilist": 22538,
+    "anilist": 22539,
     "animenewsnetwork": 12388,
     "animeplanet": 26650,
-    "anisearch": 21118,
+    "anisearch": 21119,
     "annict": 13020,
     "hikka": 29957,
-    "imdb": 6335,
-    "kaize": 24656,
+    "imdb": 6336,
+    "kaize": 24687,
     "kitsu": 22194,
     "letterboxd": 1263,
     "livechart": 12375,
@@ -401,9 +401,9 @@ GET /status
     "shoboi": 6279,
     "silveryasha": 5313,
     "simkl": 14497,
-    "themoviedb": 8418,
-    "thetvdb": 5305,
-    "trakt": 7296,
+    "themoviedb": 8419,
+    "thetvdb": 5307,
+    "trakt": 7299,
     "total": 40744
   },
   "endpoints": {
@@ -484,7 +484,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 10/05/2026 12:08:23 UTC
+Updated on 10/06/2026 11:49:14 UTC
 ```
 <!-- /updated-txt -->
 
