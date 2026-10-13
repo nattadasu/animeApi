@@ -232,7 +232,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 22 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 12 October 2026 12:47:18 UTC
+Last updated: 13 October 2026 12:35:19 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -246,7 +246,7 @@ Last updated: 12 October 2026 12:47:18 UTC
 | Annict             |     13032 |
 | Hikka              |     29958 |
 | IMDb               |      6339 |
-| Kaize              |     24717 |
+| Kaize              |     24761 |
 | Kitsu              |     22200 |
 | Letterboxd         |      1263 |
 | LiveChart          |     12386 |
@@ -262,7 +262,7 @@ Last updated: 12 October 2026 12:47:18 UTC
 | The TVDB           |      5312 |
 | Trakt              |      7304 |
 |                    |           |
-| **Total**          | **40758** |
+| **Total**          | **40759** |
 <!-- /counters -->
 
 ## Usage
@@ -355,8 +355,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1791809238,
-    "iso": "2026-10-12T12:47:18.716876+00:00"
+    "timestamp": 1791894919,
+    "iso": "2026-10-13T12:35:19.027188+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -389,7 +389,7 @@ GET /status
     "annict": 13032,
     "hikka": 29958,
     "imdb": 6339,
-    "kaize": 24717,
+    "kaize": 24761,
     "kitsu": 22200,
     "letterboxd": 1263,
     "livechart": 12386,
@@ -404,7 +404,7 @@ GET /status
     "themoviedb": 8428,
     "thetvdb": 5312,
     "trakt": 7304,
-    "total": 40758
+    "total": 40759
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format. Platform aliases supported for direct lookup for platform specific endpoints (see ?P<alias> in regex).",
@@ -484,7 +484,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 10/12/2026 12:47:18 UTC
+Updated on 10/13/2026 12:35:19 UTC
 ```
 <!-- /updated-txt -->
 
