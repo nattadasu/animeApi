@@ -232,7 +232,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 22 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 14 October 2026 10:01:05 UTC
+Last updated: 15 October 2026 10:06:30 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -253,13 +253,13 @@ Last updated: 14 October 2026 10:01:05 UTC
 | MyAnimeList        |     30754 |
 | Nautiljon          |      9270 |
 | Notify.moe         |     16774 |
-| Otak Otaku         |      3123 |
+| Otak Otaku         |      3124 |
 | Shikimori          |     30754 |
 | Shoboi/Syobocal    |      6286 |
 | Silver Yasha       |      5313 |
 | SIMKL              |     14499 |
 | The Movie Database |      8435 |
-| The TVDB           |      5312 |
+| The TVDB           |      5313 |
 | Trakt              |      7304 |
 |                    |           |
 | **Total**          | **40759** |
@@ -355,8 +355,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1791972065,
-    "iso": "2026-10-14T10:01:05.420356+00:00"
+    "timestamp": 1792058790,
+    "iso": "2026-10-15T10:06:30.518790+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -396,13 +396,13 @@ GET /status
     "myanimelist": 30754,
     "nautiljon": 9270,
     "notify": 16774,
-    "otakotaku": 3123,
+    "otakotaku": 3124,
     "shikimori": 30754,
     "shoboi": 6286,
     "silveryasha": 5313,
     "simkl": 14499,
     "themoviedb": 8435,
-    "thetvdb": 5312,
+    "thetvdb": 5313,
     "trakt": 7304,
     "total": 40759
   },
@@ -484,7 +484,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 10/14/2026 10:01:05 UTC
+Updated on 10/15/2026 10:06:30 UTC
 ```
 <!-- /updated-txt -->
 
