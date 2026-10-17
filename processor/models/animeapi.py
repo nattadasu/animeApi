@@ -291,6 +291,7 @@ class AnimeApiV4Data(BaseModel):
         m = self.mappings
         return AnimeApiV3Data(
             title=self.title.display,
+            animeapi_ulid=self.ulid,
             anidb=m.anidb,
             anilist=m.anilist,
             animecom_slug=m.animecom.slug if m.animecom else None,
@@ -368,6 +369,8 @@ class AnimeApiV3Data(BaseModel):
     model_config = ConfigDict(use_attribute_docstrings=True)
     title: str
     """Main title of the anime"""
+    animeapi_ulid: ULID
+    """Unique ULID of the record"""
     anidb: PositiveInt | None = None
     """AniDB ID (https://anidb.net)"""
     anilist: PositiveInt | None = None
