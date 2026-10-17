@@ -326,6 +326,7 @@ class AnimeApiV4Data(BaseModel):
             silveryasha=m.silveryasha,
             simkl=m.simkl,
             themoviedb=m.themoviedb.id if m.themoviedb else None,
+            themoviedb_may_invalid=m.themoviedb.may_invalid if m.themoviedb else None,
             themoviedb_season=m.themoviedb.season.pos
             if m.themoviedb and m.themoviedb.season
             else None,
@@ -334,6 +335,7 @@ class AnimeApiV4Data(BaseModel):
             else None,
             themoviedb_type=m.themoviedb.type if m.themoviedb else None,
             thetvdb=m.thetvdb.id if m.thetvdb else None,
+            thetvdb_may_invalid=m.thetvdb.may_invalid if m.thetvdb else None,
             thetvdb_season=m.thetvdb.season.pos
             if m.thetvdb and m.thetvdb.season
             else None,
@@ -343,6 +345,7 @@ class AnimeApiV4Data(BaseModel):
             thetvdb_slug=m.thetvdb.slug if m.thetvdb else None,
             thetvdb_type=m.thetvdb.type if m.thetvdb else None,
             trakt=m.trakt.id if m.trakt else None,
+            trakt_may_invalid=m.trakt.may_invalid if m.trakt else None,
             trakt_season=m.trakt.season.pos if m.trakt and m.trakt.season else None,
             trakt_season_id=m.trakt.season.id if m.trakt and m.trakt.season else None,
             trakt_slug=m.trakt.slug if m.trakt else None,
@@ -456,6 +459,13 @@ class AnimeApiV3Data(BaseModel):
         PositiveInt | None, Field(validation_alias=AliasChoices("themoviedb", "tmdb"))
     ] = None
     """TheMovieDB (TMDB) ID (https://www.themoviedb.org)"""
+    themoviedb_may_invalid: Annotated[
+        bool | None,
+        Field(
+            validation_alias=AliasChoices("themoviedb_may_invalid", "tmdb_may_invalid")
+        ),
+    ] = None
+    """Flag indicating TheMovieDB mapping status (https://www.themoviedb.org)"""
     themoviedb_season: Annotated[
         NonNegativeInt | None,
         Field(validation_alias=AliasChoices("themoviedb_season", "tmdb_season")),
@@ -475,6 +485,11 @@ class AnimeApiV3Data(BaseModel):
         PositiveInt | None, Field(validation_alias=AliasChoices("thetvdb", "tvdb"))
     ] = None
     """TheTVDB ID (https://thetvdb.com)"""
+    thetvdb_may_invalid: Annotated[
+        bool | None,
+        Field(validation_alias=AliasChoices("thetvdb_may_invalid", "tvdb_may_invalid")),
+    ] = None
+    """Flag indicating TheTVDB mapping status (https://trakt.tv)"""
     thetvdb_season: Annotated[
         NonNegativeInt | None,
         Field(validation_alias=AliasChoices("thetvdb_season", "tvdb_season")),
