@@ -14,7 +14,8 @@ from pydantic import (
     PositiveInt,
 )
 from pydantic_extra_types.country import CountryAlpha2
-from pydantic_extra_types.ulid import ULID
+
+from processor.snowflake import SnowflakeId
 
 
 def convert_date_to_str(v: Any) -> Any:
@@ -279,8 +280,8 @@ class MappingsModel(BaseModel):
 
 class AnimeApiV4Data(BaseModel):
     model_config = ConfigDict(use_attribute_docstrings=True)
-    ulid: ULID
-    """Unique ULID of the record"""
+    snowflake: SnowflakeId
+    """Unique series snowflake of the record using Ryuuganime Snowflake Spec (https://github.com/ryuuganime/snowflake)"""
     title: TitleModel
     """Title details of the release"""
     meta: MetaModel
@@ -292,7 +293,7 @@ class AnimeApiV4Data(BaseModel):
         m = self.mappings
         return AnimeApiV3Data(
             title=self.title.display,
-            animeapi_ulid=self.ulid,
+            animeapi_snowflake=self.snowflake,
             anidb=m.anidb,
             anilist=m.anilist,
             animecom_slug=m.animecom.slug if m.animecom else None,
@@ -370,8 +371,8 @@ class AnimeApiV3Data(BaseModel):
     model_config = ConfigDict(use_attribute_docstrings=True)
     title: str
     """Main title of the anime"""
-    animeapi_ulid: ULID
-    """Unique ULID of the record"""
+    animeapi_snowflake: SnowflakeId
+    """Unique series snowflake of the record using Ryuuganime Snowflake Spec (https://github.com/ryuuganime/snowflake)"""
     anidb: PositiveInt | None = None
     """AniDB ID (https://anidb.net)"""
     anilist: PositiveInt | None = None

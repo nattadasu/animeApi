@@ -21,7 +21,6 @@ dependencies = [
     { name = "python-dotenv" },
     { name = "python-levenshtein" },
     { name = "python-slugify" },
-    { name = "python-ulid" },
     { name = "requests" },
     { name = "thefuzz" },
     { name = "typer" },
@@ -39,7 +38,6 @@ requires-dist = [
     { name = "python-dotenv", specifier = ">=1.2.2" },
     { name = "python-levenshtein", specifier = ">=0.27.3" },
     { name = "python-slugify", specifier = ">=8.0.4" },
-    { name = "python-ulid", specifier = ">=3.1.0" },
     { name = "requests", specifier = ">=2.34.2" },
     { name = "thefuzz", specifier = ">=0.22.1" },
     { name = "typer", specifier = ">=0.26.8" },
@@ -665,15 +663,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/bd/e8/26b1af09d728d604dc16427a39f53985b22a170dbd61addac3f48db73f03/python_slugify-9.1.3.tar.gz", hash = "sha256:90e997f2e0987239ce95e12f700086eb18e1d1d3ee22624fbbdbd095afca42b6", size = 66093, upload-time = "2026-10-07T01:06:20.101Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/47/67/5598c98725332a6a4084c7b622d5a1ebe7d6745c1d2f434c9e4e89e04cba/python_slugify-9.1.3-py3-none-any.whl", hash = "sha256:9aced0670e54c5603e2335c0fa9a4011ad4bc41ecb3c46e8097294c46fd60ed4", size = 16032, upload-time = "2026-10-07T01:06:18.891Z" },
-]
-
-[[package]]
-name = "python-ulid"
-version = "4.0.1"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/d6/41/65079023c81491a21799c0120bce5925366b6913596bf797806f19973290/python_ulid-4.0.1.tar.gz", hash = "sha256:bbeec02556190bb9dc3401faa7268696acbfbe7b6db9908c155dc3548629f20c", size = 101683, upload-time = "2026-07-20T15:21:41.256Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/b4/15/8b39b36f55b6618ec4ca9b55134dcfd9c04cecbc72709f5d8e6bdebed9cd/python_ulid-4.0.1-py3-none-any.whl", hash = "sha256:6f1d69ceb97e99fe542df8476ebcd7a668284bf53ee14b3106bcc6a341a95ed9", size = 14609, upload-time = "2026-07-20T15:21:40.214Z" },
 ]
 
 [[package]]
