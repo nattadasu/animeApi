@@ -155,7 +155,7 @@ class TheTvdbModel(BaseModel):
     """TheTVDB season information"""
 
 
-class TraktType(str, Enum):
+class ShowsMoviesType(str, Enum):
     SHOWS = "shows"
     MOVIES = "movies"
 
@@ -164,7 +164,7 @@ class TraktModel(BaseModel):
     model_config = ConfigDict(use_attribute_docstrings=True)
     id: PositiveInt
     """Trakt ID"""
-    type: TraktType
+    type: ShowsMoviesType
     """Trakt media type (shows or movies)"""
     slug: SlugStr | None = None
     """Trakt slug identifier"""
@@ -172,6 +172,18 @@ class TraktModel(BaseModel):
     """Define if the season/cour is not split and compatible with anime-oriented database. If `true`, season mapping will be nulled"""
     season: SeasonIdentifier | None = None
     """Trakt season information"""
+
+
+class WeTrakrModel(BaseModel):
+    model_config = ConfigDict(use_attribute_docstrings=True)
+    id: PositiveInt
+    """WeTrakr ID"""
+    type: ShowsMoviesType
+    """WeTrakr media type (shows or movies)"""
+    may_invalid: bool = False
+    """Define if the season/cour is not split and compatible with anime-oriented database. If `true`, season mapping will be nulled"""
+    season: SeasonIdentifier | None = None
+    """WeTrakr season information"""
 
 
 class MappingsModel(BaseModel):
@@ -258,6 +270,8 @@ class MappingsModel(BaseModel):
     """TheTVDB model mappings (https://thetvdb.com)"""
     trakt: TraktModel | None = None
     """Trakt model mappings (https://trakt.tv)"""
+    wetrakr: WeTrakrModel | None = None
+    """WeTrakr model mappings (https://wetrakr.com)"""
     worldarts: PositiveInt | None = None
     """World Art ID (http://www.world-art.ru)"""
 
@@ -333,6 +347,15 @@ class AnimeApiV4Data(BaseModel):
             trakt_season_id=m.trakt.season.id if m.trakt and m.trakt.season else None,
             trakt_slug=m.trakt.slug if m.trakt else None,
             trakt_type=m.trakt.type if m.trakt else None,
+            wetrakr=m.wetrakr.id if m.wetrakr else None,
+            wetrakr_may_invalid=m.wetrakr.may_invalid if m.wetrakr else None,
+            wetrakr_season=m.wetrakr.season.pos
+            if m.wetrakr and m.wetrakr.season
+            else None,
+            wetrakr_season_id=m.wetrakr.season.id
+            if m.wetrakr and m.wetrakr.season
+            else None,
+            wetrakr_type=m.wetrakr.type if m.wetrakr else None,
             worldarts=m.worldarts,
         )
 
@@ -484,5 +507,15 @@ class AnimeApiV3Data(BaseModel):
     """Trakt slug (https://trakt.tv)"""
     trakt_type: TraktType | None = None
     """Trakt media type (https://trakt.tv)"""
+    wetrakr: PositiveInt | None = None
+    """WeTrakr ID (https://wetrakt.com)"""
+    wetrakr_may_invalid: bool | None = None
+    """Flag indicating WeTrakr mapping status (https://wetrakt.com)"""
+    wetrakr_season: NonNegativeInt | None = None
+    """WeTrakr season number (https://wetrakt.com)"""
+    wetrakr_season_id: NonNegativeInt | None = None
+    """WeTrakr season ID (https://wetrakt.com)"""
+    wetrakr_type: ShowsMoviesType | None = None
+    """WeTrakr media type (https://wetrakt.com)"""
     worldarts: PositiveInt | None = None
     """World Art ID (http://www.world-art.ru)"""
