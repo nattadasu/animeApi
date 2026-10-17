@@ -505,7 +505,7 @@ class AnimeApiV3Data(BaseModel):
     """Trakt season ID (https://trakt.tv)"""
     trakt_slug: SlugStr | None = None
     """Trakt slug (https://trakt.tv)"""
-    trakt_type: TraktType | None = None
+    trakt_type: ShowsMoviesType | None = None
     """Trakt media type (https://trakt.tv)"""
     wetrakr: PositiveInt | None = None
     """WeTrakr ID (https://wetrakt.com)"""
