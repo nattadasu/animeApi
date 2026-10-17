@@ -114,7 +114,7 @@ class LetterboxdModel(BaseModel):
 class SeasonIdentifier(BaseModel):
     model_config = ConfigDict(use_attribute_docstrings=True)
     pos: NonNegativeInt
-    """Official season number, human readable, eg shows/one-piece/seasons/1"""
+    """Official season number, human readable, eg shows/one-piece/seasons/**1**"""
     id: PositiveInt | None = None
     """Season ID used for API calls"""
 
@@ -287,7 +287,7 @@ class AnimeApiV4Data(BaseModel):
     mappings: MappingsModel
     """Platform database ID/slug mapping relationships"""
 
-    def to_v3(self) -> "AnimeApiV3Data":
+    def to_v3(self) -> AnimeApiV3Data:
         m = self.mappings
         return AnimeApiV3Data(
             title=self.title.display,
