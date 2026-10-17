@@ -39,7 +39,7 @@ class MediaTypeEnum(str, Enum):
     MOVIE = "MOVIE"
     SPECIAL = "SPECIAL"
     PV = "PV"
-    MUSIV = "MUSIC"
+    MUSIC = "MUSIC"
     OTHER = "OTHER"
 
 
