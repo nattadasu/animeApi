@@ -644,6 +644,28 @@
   },
   {
     "sources": [
+      "https://kitsu.app/anime/51040",
+      "https://myanimelist.net/anime/64902",
+      "https://shikimori.one/animes/64902",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40322",
+      "https://www.livechart.me/anime/13866",
+      "https://www.nippon-animation.co.jp/work/20126"
+    ],
+    "title": "20001-nen Chikyuu no Tabi",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2026
+    },
+    "synonyms": [
+      "20001 An Earth Odyssey",
+      "20001\u5e74 \u5730\u7403\u306e\u65c5"
+    ],
+    "releaseDate": "2026-07-18"
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/202896"
     ],
     "title": "Cheat Item Kanrikyoku no Oshigoto EX Sanzan Yarareta Ato Dashi Douse Zenbu Wasureru kara Higaisha Tsumamigui Shitemo Ii yo ne",
@@ -1081,6 +1103,9 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/218217",
+      "https://myanimelist.net/anime/65169",
+      "https://www.anisearch.com/anime/22025",
       "https://www.livechart.me/anime/13789"
     ],
     "title": "Dark Summoner to Dekiteiru Mini Anime",
@@ -1090,7 +1115,11 @@
       "season": "FALL",
       "year": 2026
     },
-    "synonyms": [],
+    "synonyms": [
+      "Dark Summoner to Dekiteiru Mini Anime Gekijou",
+      "JK\u30c0\u30fc\u30af\u30b5\u30e2\u30ca\u30fc\u3068\u30c7\u30ad\u3002\u3002\u3002\u3002\u3002\u3002\u3067\u3044\u306a\u3044!?",
+      "\u30c0\u30fc\u30af\u30b5\u30e2\u30ca\u30fc\u3068\u3067\u304d\u3066\u3044\u308b\u30df\u30cb\u30a2\u30cb\u30e1\u5287\u5834"
+    ],
     "releaseDate": "2026-10-04T16:20:00.000000000Z"
   },
   {
@@ -1225,6 +1254,25 @@
   },
   {
     "sources": [
+      "https://myanimelist.net/anime/65184",
+      "https://shikimori.one/animes/65184",
+      "https://www.livechart.me/anime/13863"
+    ],
+    "title": "Hotaru no Yomeiri Choitashi",
+    "type": "TV",
+    "status": "ONGOING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2026
+    },
+    "synonyms": [
+      "Les Noces des Lucioles",
+      "\u30db\u30bf\u30eb\u306e\u5ac1\u5165\u308a \u30df\u30cb\u30a2\u30cb\u30e1"
+    ],
+    "releaseDate": "2026-10-12T09:00:00.000000000Z"
+  },
+  {
+    "sources": [
       "https://www.livechart.me/anime/13791"
     ],
     "title": "Jie Men Zhi Xia",
@@ -1259,6 +1307,7 @@
   {
     "sources": [
       "https://anilist.co/anime/217782",
+      "https://myanimelist.net/anime/65167",
       "https://www.livechart.me/anime/13790"
     ],
     "title": "Kanojo no Tomodachi Mini Anime",
@@ -1271,7 +1320,8 @@
     "synonyms": [
       "My Girlfriend's Friend Mini Anime",
       "\u30ab\u30ce\u30c8\u30e2",
-      "\u5f7c\u5973\u306e\u53cb\u9054 \u30df\u30cb\u30a2\u30cb\u30e1"
+      "\u5f7c\u5973\u306e\u53cb\u9054 \u30df\u30cb\u30a2\u30cb\u30e1",
+      "\u5f7c\u5973\u306e\u53cb\u9054 \u30df\u30cb\u30a2\u30cb\u30e1\u5287\u5834"
     ],
     "releaseDate": "2026-10-04T16:05:00.000000000Z"
   },
@@ -1294,6 +1344,26 @@
       "Delivery Kitten Unyan"
     ],
     "releaseDate": "2026-09-26T23:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/65196",
+      "https://shikimori.one/animes/65196",
+      "https://www.livechart.me/anime/13871"
+    ],
+    "title": "Kyouran Reijou Nia Liston: Byoujaku Reijou ni Tensei shita Kamigoroshi no Bujin no Karei naru Musouroku Mini Anime",
+    "type": "TV",
+    "status": "ONGOING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2026
+    },
+    "synonyms": [
+      "Nia Liston, la spietata nobildonna",
+      "\u51f6\u4e71\u4ee4\u5b22",
+      "\ud749\ub780\uc601\uc560 \ub2c8\uc544 \ub9ac\uc2a4\ud1a4 -\ubcd1\uc57d\ud55c \uc601\uc560\ub85c \uc804\uc0dd\ud55c \uc0b4\uc2e0 \ubb34\uc778\uc758 \ud654\ub824\ud55c \ubb34\uc30d\ub2f4"
+    ],
+    "releaseDate": "2026-10-15T09:00:00.000000000Z"
   },
   {
     "sources": [
@@ -1347,6 +1417,7 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20465",
       "https://anilist.co/anime/217577",
       "https://myanimelist.net/anime/65007",
       "https://shikimori.one/animes/65007",
@@ -1585,7 +1656,31 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/218493",
+      "https://myanimelist.net/anime/65209",
+      "https://shikimori.one/animes/65209",
+      "https://twitter.com/feirenzai_OS",
+      "https://www.livechart.me/anime/13872"
+    ],
+    "title": "Wan Sheng Jie: Gubao de Mimi",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "FALL",
+      "year": 2026
+    },
+    "synonyms": [
+      "All Saints Street Special: The Secret of the Old Castle",
+      "\u4e07\u5723\u8857 \u53e4\u5821\u7684\u79d8\u5bc6",
+      "\u4e07\u5723\u8857\u7279\u522b\u7bc7"
+    ],
+    "releaseDate": "2026-10-31T02:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20463",
       "https://anilist.co/anime/214593",
+      "https://ja.wikipedia.org/wiki/%E9%81%8A%E3%83%8F%E3%81%A1#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
       "https://kitsu.app/anime/51019",
       "https://myanimelist.net/anime/64717",
       "https://shikimori.one/animes/64717",
@@ -1609,27 +1704,6 @@
       "\u5e97\u756a\u306e\u30b9\u30d4\u30b9"
     ],
     "releaseDate": "2026-10-01T00:00:00.000000000Z"
-  },
-  {
-    "sources": [
-      "https://kitsu.app/anime/51040",
-      "https://myanimelist.net/anime/64902",
-      "https://shikimori.one/animes/64902",
-      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40322",
-      "https://www.nippon-animation.co.jp/work/20126"
-    ],
-    "title": "20001-nen Chikyuu no Tabi",
-    "type": "TV",
-    "status": "FINISHED",
-    "animeSeason": {
-      "season": "TBA",
-      "year": 2026
-    },
-    "synonyms": [
-      "20001 An Earth Odyssey",
-      "20001\u5e74 \u5730\u7403\u306e\u65c5"
-    ],
-    "releaseDate": "2026-07-18"
   },
   {
     "sources": [
@@ -1774,6 +1848,7 @@
   },
   {
     "sources": [
+      "https://anilist.co/anime/217244",
       "https://kitsu.app/anime/51044",
       "https://laftel.net/item/45040",
       "https://myanimelist.net/anime/64866",
@@ -1791,6 +1866,20 @@
       "\uce5c\ud558\uac8c \uc9c0\ub0b4\uc790"
     ],
     "releaseDate": "2026-05-01"
+  },
+  {
+    "sources": [
+      "https://kitsu.app/anime/51133"
+    ],
+    "title": "Dreamland",
+    "type": "ONA",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [],
+    "releaseDate": "2026-10-18"
   },
   {
     "sources": [
@@ -1984,6 +2073,25 @@
       "I-BULL (\u3044\u3076\u308b)"
     ],
     "releaseDate": "2026-07-25"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/217725",
+      "https://kitsu.app/anime/51132",
+      "https://myanimelist.net/anime/64564"
+    ],
+    "title": "Ichijiku Kemuri",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": 2026
+    },
+    "synonyms": [
+      "Fig Smoke",
+      "\u30a4\u30c1\u30b8\u30af\u7159"
+    ],
+    "releaseDate": "2026-07-06"
   },
   {
     "sources": [
@@ -2820,6 +2928,7 @@
       "https://en.wikipedia.org/wiki/Kizuguchi_to_H%C5%8Dtai#Anime",
       "https://en.wikipedia.org/wiki/Wound_&_Bandage#Anime",
       "https://houtaidoumei.com",
+      "https://ja.wikipedia.org/wiki/%E5%82%B7%E5%8F%A3%E3%81%A8%E5%8C%85%E5%B8%AF#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
       "https://myanimelist.net/anime/64600",
       "https://shikimori.one/animes/64600",
       "https://twitter.com/houtaidoumei",
@@ -2948,6 +3057,7 @@
     "sources": [
       "https://anidb.net/anime/20345",
       "https://anilist.co/anime/216624",
+      "https://en.wikipedia.org/wiki/SSS-Class_Revival_Hunter",
       "https://kitsu.app/anime/51025",
       "https://myanimelist.net/anime/64950",
       "https://shikimori.one/animes/64950",
@@ -3045,6 +3155,34 @@
       "Everyone\u2019s Darling Has a Secret",
       "The After School Idol Has a Secret",
       "\u653e\u8ab2\u5f8c\u306e\u30a2\u30a4\u30c9\u30eb\u306b\u306f\u79d8\u5bc6\u304c\u3042\u308b"
+    ],
+    "releaseDate": "2027-04-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20480",
+      "https://anilist.co/anime/218439",
+      "https://en.wikipedia.org/wiki/Happy_Kanako%27s_Killer_Life",
+      "https://happy-kanako-anime.jp",
+      "https://ja.wikipedia.org/wiki/%E5%B9%B8%E3%81%9B%E3%82%AB%E3%83%8A%E3%82%B3%E3%81%AE%E6%AE%BA%E3%81%97%E5%B1%8B%E7%94%9F%E6%B4%BB",
+      "https://myanimelist.net/anime/65205",
+      "https://shikimori.one/animes/65205",
+      "https://twitter.com/kanako__anime",
+      "https://www.anisearch.com/anime/22058",
+      "https://www.livechart.me/anime/13869"
+    ],
+    "title": "Shiawase Kanako no Koroshiya Seikatsu",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "SPRING",
+      "year": 2027
+    },
+    "synonyms": [
+      "Happy Kanako's Killer Life",
+      "kanakoro",
+      "\u30ab\u30ca\u30b3\u30ed",
+      "\u5e78\u305b\u30ab\u30ca\u30b3\u306e\u6bba\u3057\u5c4b\u751f\u6d3b"
     ],
     "releaseDate": "2027-04-01T00:00:00.000000000Z"
   },
@@ -3148,6 +3286,34 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20466",
+      "https://anilist.co/anime/218216",
+      "https://en.wikipedia.org/wiki/Nue%27s_Exorcist",
+      "https://ja.wikipedia.org/wiki/%E9%B5%BA%E3%81%AE%E9%99%B0%E9%99%BD%E5%B8%AB#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
+      "https://kitsu.app/anime/51128",
+      "https://myanimelist.net/anime/65180",
+      "https://shikimori.one/animes/65180",
+      "https://twitter.com/NuesExorcist_PR",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40655",
+      "https://www.anisearch.com/anime/22045",
+      "https://www.livechart.me/anime/13862",
+      "https://www.nues-exorcist.com"
+    ],
+    "title": "Nue no Onmyouji",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2027
+    },
+    "synonyms": [
+      "Nue's Exorcist",
+      "\u9d7a\u306e\u9670\u967d\u5e2b"
+    ],
+    "releaseDate": "2027-07-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
       "https://anidb.net/anime/20290",
       "https://anilist.co/anime/215855",
       "https://kitsu.app/anime/50922",
@@ -3173,6 +3339,30 @@
       "One Piece Movie 16"
     ],
     "releaseDate": "2027-07-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://www.livechart.me/anime/13864"
+    ],
+    "title": "One-Punch Man Season 3 Specials",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "SUMMER",
+      "year": 2027
+    },
+    "synonyms": [
+      "OPM 3 OVA",
+      "OPM 3 Specials",
+      "One Punch Man 3 OVA",
+      "One Punch Man Season 3 Specials",
+      "\u30b2\u30fc\u30e0\u3068\u30e9\u30a4\u30d0\u30eb\u9054",
+      "\u30ef\u30f3\u30d1\u30f3\u30de\u30f3",
+      "\u30ef\u30f3\u30d1\u30f3\u30de\u30f3 OVA 3 #01\u300c\u30b5\u30a4\u30bf\u30de\u3068\u30b5\u30a4\u30bf\u30de\u304c\u58ca\u3057\u305f\u304a\u3082\u3061\u3083\u300d",
+      "\u30ef\u30f3\u30d1\u30f3\u30de\u30f3 OVA 3 #02\u300c\u30d5\u30d6\u30ad\u3068\u3082\u3066\u306a\u3044\u7537\u305f\u3061\u300d",
+      "\u30ef\u30f3\u30d1\u30f3\u30de\u30f3 OVA 3 #03\u300c\u30be\u30f3\u30d3\u30de\u30f3\u3068\u30be\u30f3\u30d3\u30d1\u30cb\u30c3\u30af\u300d"
+    ],
+    "releaseDate": "2027-01-26T15:00:00.000000000Z"
   },
   {
     "sources": [
@@ -3278,6 +3468,7 @@
     "sources": [
       "https://7-sleepingbeauties.com",
       "https://anidb.net/anime/20179",
+      "https://anilist.co/anime/213929",
       "https://en.wikipedia.org/wiki/7-nin_no_Nemuri_Hime#Anime",
       "https://ja.wikipedia.org/wiki/7%E4%BA%BA%E3%81%AE%E7%9C%A0%E3%82%8A%E5%A7%AB#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
       "https://ja.wikipedia.org/wiki/7\u4eba\u306e\u7720\u308a\u59eb#\u30c6\u30ec\u30d3\u30a2\u30cb\u30e1",
@@ -3298,6 +3489,8 @@
       "year": null
     },
     "synonyms": [
+      "7\u4eba\u306e\u7720\u308a\u59eb",
+      "Seven Sleeping Beauties",
       "Shichinin no Nemurihime"
     ],
     "releaseDate": "2027-01-01T00:00:00.000000000Z"
@@ -3413,6 +3606,20 @@
   },
   {
     "sources": [
+      "https://myanimelist.net/anime/65195",
+      "https://shikimori.one/animes/65195"
+    ],
+    "title": "Arknights Special PV: Harukanaru Kiro",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
       "https://anilist.co/anime/216175",
       "https://myanimelist.net/anime/64653",
       "https://shikimori.one/animes/64653"
@@ -3456,6 +3663,40 @@
       "\u30d0\u30ad\u5916\u4f1d \u70c8\u6d77\u738b\u306f\u7570\u4e16\u754c\u8ee2\u751f\u3057\u3066\u3082\u4e00\u5411\u306b\u304b\u307e\u308f\u3093\u30c3\u30c3"
     ],
     "releaseDate": "2026-08-30T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/65178",
+      "https://shikimori.one/animes/65178"
+    ],
+    "title": "Bao Ke Meng Donghua Tujian: Buqi Eryu",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Pokemon Animated Pokedex: Unexpected Encounter"
+    ],
+    "releaseDate": "2026-09-07"
+  },
+  {
+    "sources": [
+      "https://myanimelist.net/anime/65179",
+      "https://shikimori.one/animes/65179"
+    ],
+    "title": "Bao Ke Meng Donghua Tujian: Yun Xiu Xun Zong",
+    "type": "TV",
+    "status": "ONGOING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Pokemon Animated Pokedex: Cloudy Trails"
+    ],
+    "releaseDate": "2026-11-02"
   },
   {
     "sources": [
@@ -3541,6 +3782,31 @@
       "year": null
     },
     "synonyms": []
+  },
+  {
+    "sources": [
+      "https://chiramune.com",
+      "https://en.wikipedia.org/wiki/Chitose_Is_in_the_Ramune_Bottle#Anime",
+      "https://ja.wikipedia.org/wiki/%E5%8D%83%E6%AD%B3%E3%81%8F%E3%82%93%E3%81%AF%E3%83%A9%E3%83%A0%E3%83%8D%E7%93%B6%E3%81%AE%E3%81%AA%E3%81%8B",
+      "https://myanimelist.net/anime/65111",
+      "https://shikimori.one/animes/65111",
+      "https://twitter.com/anime_chiramune",
+      "https://www.amediateka.ru/watch/movies_63838_titose-v-butylke-ramune-epizod-135-rekap"
+    ],
+    "title": "Chitose-kun wa Ramune Bin no Naka Recap",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Chiramune",
+      "Chitose Is in the Ramune Bottle Episode 13.5",
+      "Chitose Is in the Ramune Bottle Special Compilation",
+      "Chitose-kun is Inside a Ramune Bottle",
+      "Ramune no Bin ni Shizunda Biidama no Tsuki"
+    ]
   },
   {
     "sources": [
@@ -3797,6 +4063,7 @@
   },
   {
     "sources": [
+      "https://anidb.net/anime/20462",
       "https://anilist.co/anime/218099",
       "https://myanimelist.net/anime/65161",
       "https://www.livechart.me/anime/13860"
@@ -3861,6 +4128,21 @@
       "Eatman"
     ],
     "releaseDate": "2026-09-10T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://anilist.co/anime/218257"
+    ],
+    "title": "Eiga Precure Saishinsaku (Provisional Title)",
+    "type": "MOVIE",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "\u6620\u753b\u30d7\u30ea\u30ad\u30e5\u30a2\u6700\u65b0\u4f5c\uff08\u4eee\uff09"
+    ]
   },
   {
     "sources": [
@@ -4163,6 +4445,7 @@
       "https://myanimelist.net/anime/65103",
       "https://shikimori.one/animes/65103",
       "https://twitter.com/anime_booklove",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40608",
       "https://www.livechart.me/anime/13842"
     ],
     "title": "Honzuki no Gekokujou ~Dai Yon-bu Kizoku-in no Jishou Tosho Iin Ichi~",
@@ -4211,7 +4494,7 @@
     ],
     "title": "Jeonjaolagsuhodae",
     "type": "TV",
-    "status": "UPCOMING",
+    "status": "FINISHED",
     "animeSeason": {
       "season": "TBA",
       "year": null
@@ -5066,11 +5349,13 @@
       "https://anilist.co/anime/214044",
       "https://en.wikipedia.org/wiki/Noa-senpai_wa_Tomodachi",
       "https://ja.wikipedia.org/wiki/%E3%81%AE%E3%81%82%E5%85%88%E8%BC%A9%E3%81%AF%E3%81%A8%E3%82%82%E3%81%A0%E3%81%A1%E3%80%82",
+      "https://kitsu.app/anime/50844",
       "https://myanimelist.net/anime/64599",
       "https://noasenpai-anime.com",
       "https://shikimori.one/animes/64599",
       "https://twitter.com/noasenpai_anime",
       "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40338",
+      "https://www.anisearch.com/anime/21846",
       "https://www.livechart.me/anime/13732",
       "https://www.world-art.ru/animation/animation.php?id=12963"
     ],
@@ -5251,6 +5536,21 @@
   },
   {
     "sources": [
+      "https://myanimelist.net/anime/65200",
+      "https://shikimori.one/animes/65200",
+      "https://www.konicaminolta.jp/planetarium/program/characters/doraemontime/index.html"
+    ],
+    "title": "Planetarium Doraemon: Jikan no Himitsu",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
+  },
+  {
+    "sources": [
       "https://myanimelist.net/anime/64650",
       "https://shikimori.one/animes/64650"
     ],
@@ -5413,6 +5713,7 @@
       "https://shikimori.one/animes/65145",
       "https://twitter.com/Saikon_Anime",
       "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40636",
+      "https://www.anisearch.com/anime/22039",
       "https://www.livechart.me/anime/13858",
       "https://www.world-art.ru/animation/animation.php?id=13041"
     ],
@@ -5574,6 +5875,21 @@
       "\u5343\u604b\uff0a\u4e07\u82b1"
     ],
     "releaseDate": "2027-01-01T00:00:00.000000000Z"
+  },
+  {
+    "sources": [
+      "https://d-dpictures.co.jp/planetarium/3032",
+      "https://myanimelist.net/anime/65202",
+      "https://shikimori.one/animes/65202"
+    ],
+    "title": "Shimajirou to Uchuu Ongakukai",
+    "type": "TV",
+    "status": "FINISHED",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": []
   },
   {
     "sources": [
@@ -5900,7 +6216,9 @@
       "https://myanimelist.net/anime/65124",
       "https://shikimori.one/animes/65124",
       "https://twitter.com/yamato_r2199",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40628",
       "https://www.livechart.me/anime/13852",
+      "https://www.world-art.ru/animation/animation.php?id=13037",
       "https://yamato-r2199.jp"
     ],
     "title": "Uchuu Senkan Yamato\u221a2199",
@@ -5917,6 +6235,20 @@
       "\u5b87\u5b99\u6226\u8266\u30e4\u30de\u30c8\u221a2199\uff08\u30eb\u30fc\u30c82199\uff09"
     ],
     "releaseDate": "2026-10-05T23:57:25.449968000Z"
+  },
+  {
+    "sources": [
+      "https://www.livechart.me/anime/13870"
+    ],
+    "title": "Untitled ANIPLEX Project",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [],
+    "releaseDate": "2026-10-15T00:00:00.000000000Z"
   },
   {
     "sources": [
@@ -6173,6 +6505,34 @@
       "\u9ec4\u6cc9\u306e\u30c4\u30ac\u30a4 \u7b2c2\u671f"
     ],
     "releaseDate": "2026-09-19T17:29:56.026001000Z"
+  },
+  {
+    "sources": [
+      "https://anidb.net/anime/20468",
+      "https://anilist.co/anime/218315",
+      "https://en.wikipedia.org/wiki/Yumene_Connect",
+      "https://ja.wikipedia.org/wiki/%E3%82%86%E3%82%81%E3%81%AD%E3%81%93%E3%81%AD%E3%81%8F%E3%81%A8#%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1",
+      "https://myanimelist.net/anime/65188",
+      "https://sh-anime.shochiku.co.jp/yumeconne-anime",
+      "https://shikimori.one/animes/65188",
+      "https://twitter.com/yumeconne_anime",
+      "https://www.animenewsnetwork.com/encyclopedia/anime.php?id=40676",
+      "https://www.livechart.me/anime/13865"
+    ],
+    "title": "Yumene Connect",
+    "type": "TV",
+    "status": "UPCOMING",
+    "animeSeason": {
+      "season": "TBA",
+      "year": null
+    },
+    "synonyms": [
+      "Yumeconne",
+      "yumeconne",
+      "\u3086\u3081\u3053\u306d",
+      "\u3086\u3081\u306d\u3053\u306d\u304f\u3068"
+    ],
+    "releaseDate": "2026-10-14T04:19:08.020130000Z"
   },
   {
     "sources": [
