@@ -1,19 +1,16 @@
 <!-- markdownlint-disable MD028 MD033 -->
 
-> [!WARNING]
-> As [manami-project/anime-offline-database][aod] suddenly decided to stop developing
-> and dumping the data in July 4th, 2026, in which AnimeAPI was heavily relied upon,
-> a major refactor on AnimeAPI is required, and doing it alone might be a little bit
-> too tiring.
+> [!NOTE]
+> We're currently rewrtiting AnimeAPI on future v4 which will different API
+> output format, better integrations with multiple platforms, merge faster,
+> and adding more support with more services!
 >
-> Some elements that AnimeAPI needed have been written specifically for collecting
-> missing entries from AOD, and it *might* be useful for the rewrite (at the time of
-> writing, it scrapes data from Shikimori for MAL, AniList, Kitsu and LiveChart),
-> however it is undoubtedly very limited compared what AOD does.
+> At the moment, there's no date window of when v3 will be in maintenance mode
+> or discontinue. We will announce the changes whenever we deem v4 is ready
+> for production reelase.
 >
-> If you want to volunteer in helping us to refactor the project, please contact us on
-> our [Discord channel](https://nttds.my.id/discord), create an issue on this repo,
-> or through e-mail listed on [nattadasu](https://github.com/nattadasu)'s profile.
+> Head to [v4](https://github.com/nattadasu/animeApi/tree/v4) branch to learn
+> more.
 
 > [!NOTE]
 > For project/service with more than 100 daily users, please read
@@ -27,7 +24,8 @@ AnimeAPI (also known as aniApi) is a RESTful API that provides anime relation
 mapping across multiple anime databases. It mainly focuses on providing
 relations between anime titles from different databases.
 
-This project is mainly derived on [anime-offline-database][aod] by [manami-project][mp]
+This project is mainly derived on [anime-offline-database][aod] by [cedya77][mp]
+(derived from `manami-project` as it was silently discontinued without any notices)
 and [arm] by [kawaiioverflow][ko], while adding support for more databases.
 
 > [!IMPORTANT]
@@ -95,7 +93,7 @@ Below is the comparison between AnimeAPI and other relation mapping API.
 | Project | License | Access & Rate Limits | Formats | Title | Supported Platforms |
 | :--- | :--- | :--- | :--- | :---: | :---: |
 | **AnimeAPI** | MIT, ODbL, DbCL, CC0 | Public / No limits | REST, JSON, TSV | ✔ | ![f:adb] ![f:al] ![f:an] ![f:ap] ![f:as] ![f:ac] ![f:hka] ![f:imdb] ![f:kz] ![f:kts] ![f:lbx] ![f:lc] ![f:mal] ![f:ntj] ![f:ntf] ![f:oo] ![f:shk] ![f:shb] ![f:sy] ![f:smk] ![f:tmdb] ![f:trk] ![f:tvdb] ![f:tvtm] <br> *(All 22+ platforms)* |
-| **[manami-project/anime-offline-database][aod]** | ODbL, DbCL | Public Dump | JSON | ✔ | ![f:mal] ![f:al] ![f:adb] ![f:kts] ![f:lc] ![f:as] ![f:ap] ![f:smk] ![f:an] |
+| **[cedya77/anime-offline-database][aod]** | ODbL, DbCL | Public Dump | JSON | ✔ | ![f:mal] ![f:al] ![f:adb] ![f:kts] ![f:lc] ![f:as] ![f:ap] ![f:smk] ![f:an] |
 | **[kawaiioverflow/arm][arm]** | MIT | Public / No limits | Node Package, REST, JSON | ❌ | ![f:mal] ![f:al] ![f:ac] ![f:shb] |
 | **[Fribb/anime-lists][fal]** | Unknown | Public Dump | JSON | ❌ | ![f:mal] ![f:al] ![f:adb] ![f:kts] ![f:lc] ![f:as] ![f:ap] ![f:smk] ![f:an] ![f:ntf] ![f:shk] ![f:tmdb] ![f:tvdb] ![f:imdb] |
 | **[beeequeue/arm-server][bq]** | AGPL-3.0 | Public / No limits | REST | ❌ | ![f:adb] ![f:al] ![f:ap] ![f:as] ![f:imdb] ![f:kts] ![f:lc] ![f:mal] ![f:ntf] ![f:shk] ![f:tmdb] [^1] ![f:tvdb] |
@@ -1168,7 +1166,7 @@ want to create your own wrapper.
 This project uses multiple sources to compile the data, including:
 
 * [gh:kawaiioverflow/arm][arm]
-* [gh:manami-project/anime-offline-database][aod]
+* [gh:cedya77/anime-offline-database][aod]
 * [gh:rensetsu/db.trakt.extended-anitrakt][atip], which an automatic parser of
   [AniTrakt][atrk] index page.
 * [gh:Fribb/anime-lists][fal]
@@ -1191,7 +1189,7 @@ This project uses multiple sources to compile the data, including:
 [alal]: https://github.com/Anime-Lists/anime-lists
 [ac]: https://annict.com
 [an]: https://animenewsnetwork.com
-[aod]: https://github.com/manami-project/anime-offline-database
+[aod]: https://github.com/cedya77/anime-offline-database
 [ap]: https://anime-planet.com
 [arm]: https://github.com/kawaiioverflow/arm
 [as]: https://anisearch.com
@@ -1209,7 +1207,7 @@ This project uses multiple sources to compile the data, including:
 [lbx]: https://letterboxd.com
 [lc]: https://livechart.me
 [mal]: https://myanimelist.net
-[mp]: https://github.com/manami-project
+[mp]: https://github.com/cedya77
 [ntf]: https://notify.moe
 [ntj]: https://nautiljon.com
 [oo]: https://otakotaku.com

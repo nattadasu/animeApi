@@ -52,6 +52,7 @@ attribution: dict[str, Any] = {
     "sources": [
         "gh:kawaiioverflow/arm",
         "gh:manami-project/anime-offline-database",
+        "gh:cedya77/anime-offline-database",
         "gh:rensetsu/db.rensetsu.public-dump",
         "gh:rensetsu/db.trakt.extended-anitrakt",
         "gh:Fribb/anime-lists",
