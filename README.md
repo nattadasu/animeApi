@@ -230,37 +230,37 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 22 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 19 October 2026 07:22:54 UTC
+Last updated: 19 October 2026 08:36:29 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
-| aniDB              |     14636 |
-| AniList            |     22562 |
-| Anime News Network |     12402 |
-| Anime-Planet       |     26652 |
-| aniSearch          |     21126 |
-| Annict             |     13048 |
-| Hikka              |     29959 |
-| IMDb               |      6339 |
-| Kaize              |     24763 |
-| Kitsu              |     22203 |
+| aniDB              |     14723 |
+| AniList            |     22576 |
+| Anime News Network |     12677 |
+| Anime-Planet       |     26874 |
+| aniSearch          |     21325 |
+| Annict             |     13059 |
+| Hikka              |     30139 |
+| IMDb               |      6338 |
+| Kaize              |     24723 |
+| Kitsu              |     22383 |
 | Letterboxd         |      1264 |
-| LiveChart          |     12395 |
-| MyAnimeList        |     30768 |
-| Nautiljon          |      9270 |
-| Notify.moe         |     16774 |
-| Otak Otaku         |      3130 |
-| Shikimori          |     30768 |
-| Shoboi/Syobocal    |      6286 |
-| Silver Yasha       |      5313 |
-| SIMKL              |     14499 |
-| The Movie Database |      8436 |
-| The TVDB           |      5313 |
-| Trakt              |      7304 |
+| LiveChart          |     12428 |
+| MyAnimeList        |     30882 |
+| Nautiljon          |      9136 |
+| Notify.moe         |     16762 |
+| Otak Otaku         |      3124 |
+| Shikimori          |     30882 |
+| Shoboi/Syobocal    |      6285 |
+| Silver Yasha       |      5299 |
+| SIMKL              |     14676 |
+| The Movie Database |      8430 |
+| The TVDB           |      5312 |
+| Trakt              |      7302 |
 |                    |           |
-| **Total**          | **40774** |
+| **Total**          | **38089** |
 <!-- /counters -->
 
 ## Usage
@@ -353,8 +353,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1792394574,
-    "iso": "2026-10-19T07:22:54.026144+00:00"
+    "timestamp": 1792398989,
+    "iso": "2026-10-19T08:36:29.526284+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -364,6 +364,7 @@ GET /status
   "sources": [
     "gh:kawaiioverflow/arm",
     "gh:manami-project/anime-offline-database",
+    "gh:cedya77/anime-offline-database",
     "gh:rensetsu/db.rensetsu.public-dump",
     "gh:rensetsu/db.trakt.extended-anitrakt",
     "gh:Fribb/anime-lists",
@@ -379,30 +380,30 @@ GET /status
   "license": "MIT AND ODbL-1.0 AND DbCL-1.0 AND CC0-1.0",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 14636,
-    "anilist": 22562,
-    "animenewsnetwork": 12402,
-    "animeplanet": 26652,
-    "anisearch": 21126,
-    "annict": 13048,
-    "hikka": 29959,
-    "imdb": 6339,
-    "kaize": 24763,
-    "kitsu": 22203,
+    "anidb": 14723,
+    "anilist": 22576,
+    "animenewsnetwork": 12677,
+    "animeplanet": 26874,
+    "anisearch": 21325,
+    "annict": 13059,
+    "hikka": 30139,
+    "imdb": 6338,
+    "kaize": 24723,
+    "kitsu": 22383,
     "letterboxd": 1264,
-    "livechart": 12395,
-    "myanimelist": 30768,
-    "nautiljon": 9270,
-    "notify": 16774,
-    "otakotaku": 3130,
-    "shikimori": 30768,
-    "shoboi": 6286,
-    "silveryasha": 5313,
-    "simkl": 14499,
-    "themoviedb": 8436,
-    "thetvdb": 5313,
-    "trakt": 7304,
-    "total": 40774
+    "livechart": 12428,
+    "myanimelist": 30882,
+    "nautiljon": 9136,
+    "notify": 16762,
+    "otakotaku": 3124,
+    "shikimori": 30882,
+    "shoboi": 6285,
+    "silveryasha": 5299,
+    "simkl": 14676,
+    "themoviedb": 8430,
+    "thetvdb": 5312,
+    "trakt": 7302,
+    "total": 38089
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format. Platform aliases supported for direct lookup for platform specific endpoints (see ?P<alias> in regex).",
@@ -482,7 +483,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 10/19/2026 07:22:54 UTC
+Updated on 10/19/2026 08:36:29 UTC
 ```
 <!-- /updated-txt -->
 
@@ -738,7 +739,7 @@ GET https://animeapi.my.id/trakt/shows/152334/seasons/3
   "title": "Mairimashita! Iruma-kun 3rd Season",
   "anidb": 16627,
   "anilist": 139092,
-  "animenewsnetwork": null,
+  "animenewsnetwork": 24714,
   "animeplanet": "welcome-to-demon-school-iruma-kun-3",
   "anisearch": 16582,
   "annict": 8883,
