@@ -9,5 +9,6 @@ pandas
 python-dotenv
 python-Levenshtein
 python-slugify
-requests
+requests>=2.34.2
 zstandard
+certifi>=2026.10.19
