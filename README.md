@@ -230,7 +230,7 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 22 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 25 October 2026 09:41:43 UTC
+Last updated: 27 October 2026 10:19:43 UTC
 <!-- /updated -->
 
 <!-- counters -->
@@ -244,14 +244,14 @@ Last updated: 25 October 2026 09:41:43 UTC
 | Annict             |     13068 |
 | Hikka              |     30144 |
 | IMDb               |      6340 |
-| Kaize              |     24715 |
+| Kaize              |     24716 |
 | Kitsu              |     22398 |
 | Letterboxd         |      1264 |
 | LiveChart          |     12424 |
 | MyAnimeList        |     30909 |
 | Nautiljon          |      9138 |
 | Notify.moe         |     16762 |
-| Otak Otaku         |      3132 |
+| Otak Otaku         |      3133 |
 | Shikimori          |     30909 |
 | Shoboi/Syobocal    |      6289 |
 | Silver Yasha       |      5453 |
@@ -260,7 +260,7 @@ Last updated: 25 October 2026 09:41:43 UTC
 | The TVDB           |      5316 |
 | Trakt              |      7305 |
 |                    |           |
-| **Total**          | **38086** |
+| **Total**          | **38085** |
 <!-- /counters -->
 
 ## Usage
@@ -353,8 +353,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1792921303,
-    "iso": "2026-10-25T09:41:43.621851+00:00"
+    "timestamp": 1793096383,
+    "iso": "2026-10-27T10:19:43.634107+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -388,14 +388,14 @@ GET /status
     "annict": 13068,
     "hikka": 30144,
     "imdb": 6340,
-    "kaize": 24715,
+    "kaize": 24716,
     "kitsu": 22398,
     "letterboxd": 1264,
     "livechart": 12424,
     "myanimelist": 30909,
     "nautiljon": 9138,
     "notify": 16762,
-    "otakotaku": 3132,
+    "otakotaku": 3133,
     "shikimori": 30909,
     "shoboi": 6289,
     "silveryasha": 5453,
@@ -403,7 +403,7 @@ GET /status
     "themoviedb": 8434,
     "thetvdb": 5316,
     "trakt": 7305,
-    "total": 38086
+    "total": 38085
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format. Platform aliases supported for direct lookup for platform specific endpoints (see ?P<alias> in regex).",
@@ -483,7 +483,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 10/25/2026 09:41:43 UTC
+Updated on 10/27/2026 10:19:43 UTC
 ```
 <!-- /updated-txt -->
 
