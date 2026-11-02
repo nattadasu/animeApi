@@ -230,24 +230,24 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 22 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 01 November 2026 12:09:20 UTC
+Last updated: 02 November 2026 13:08:11 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
-| aniDB              |     14743 |
+| aniDB              |     14745 |
 | AniList            |     22606 |
 | Anime News Network |     12692 |
 | Anime-Planet       |     26878 |
-| aniSearch          |     21321 |
+| aniSearch          |     21385 |
 | Annict             |     13068 |
 | Hikka              |     30137 |
 | IMDb               |      6340 |
 | Kaize              |     24713 |
 | Kitsu              |     22402 |
 | Letterboxd         |      1264 |
-| LiveChart          |     12422 |
+| LiveChart          |     12433 |
 | MyAnimeList        |     30919 |
 | Nautiljon          |      9138 |
 | Notify.moe         |     16762 |
@@ -260,7 +260,7 @@ Last updated: 01 November 2026 12:09:20 UTC
 | The TVDB           |      5317 |
 | Trakt              |      7306 |
 |                    |           |
-| **Total**          | **38123** |
+| **Total**          | **38136** |
 <!-- /counters -->
 
 ## Usage
@@ -353,8 +353,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1793534960,
-    "iso": "2026-11-01T12:09:20.451159+00:00"
+    "timestamp": 1793624891,
+    "iso": "2026-11-02T13:08:11.753731+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -380,18 +380,18 @@ GET /status
   "license": "MIT AND ODbL-1.0 AND DbCL-1.0 AND CC0-1.0",
   "website": "https://animeapi.my.id",
   "counts": {
-    "anidb": 14743,
+    "anidb": 14745,
     "anilist": 22606,
     "animenewsnetwork": 12692,
     "animeplanet": 26878,
-    "anisearch": 21321,
+    "anisearch": 21385,
     "annict": 13068,
     "hikka": 30137,
     "imdb": 6340,
     "kaize": 24713,
     "kitsu": 22402,
     "letterboxd": 1264,
-    "livechart": 12422,
+    "livechart": 12433,
     "myanimelist": 30919,
     "nautiljon": 9138,
     "notify": 16762,
@@ -403,7 +403,7 @@ GET /status
     "themoviedb": 8435,
     "thetvdb": 5317,
     "trakt": 7306,
-    "total": 38123
+    "total": 38136
   },
   "endpoints": {
     "$comment": "The endpoints are stated in Python regex format. Platform aliases supported for direct lookup for platform specific endpoints (see ?P<alias> in regex).",
@@ -483,7 +483,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 11/01/2026 12:09:20 UTC
+Updated on 11/02/2026 13:08:11 UTC
 ```
 <!-- /updated-txt -->
 
