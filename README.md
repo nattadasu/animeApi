@@ -230,18 +230,18 @@ alias cheatsheet as well.
 So far, AnimeAPI has indexed data from 22 databases, with details as follows:
 
 <!-- updated -->
-Last updated: 17 November 2026 14:12:53 UTC
+Last updated: 18 November 2026 13:46:58 UTC
 <!-- /updated -->
 
 <!-- counters -->
 | Platform           |     Count |
 | :----------------- | --------: |
 | aniDB              |     14781 |
-| AniList            |     22629 |
+| AniList            |     22630 |
 | Anime News Network |     12718 |
 | Anime-Planet       |     26897 |
 | aniSearch          |     21402 |
-| Annict             |     13094 |
+| Annict             |     13101 |
 | Hikka              |     30191 |
 | IMDb               |      6341 |
 | Kaize              |     24713 |
@@ -256,7 +256,7 @@ Last updated: 17 November 2026 14:12:53 UTC
 | Shoboi/Syobocal    |      6298 |
 | Silver Yasha       |      5449 |
 | SIMKL              |     14719 |
-| The Movie Database |      8437 |
+| The Movie Database |      8440 |
 | The TVDB           |      5316 |
 | Trakt              |      7305 |
 |                    |           |
@@ -353,8 +353,8 @@ GET /status
 {
   "mainrepo": "https://github.com/nattadasu/animeApi/tree/v3",
   "updated": {
-    "timestamp": 1794924773,
-    "iso": "2026-11-17T14:12:53.070192+00:00"
+    "timestamp": 1795009618,
+    "iso": "2026-11-18T13:46:58.166587+00:00"
   },
   "contributors": [
     "nattadasu",
@@ -381,11 +381,11 @@ GET /status
   "website": "https://animeapi.my.id",
   "counts": {
     "anidb": 14781,
-    "anilist": 22629,
+    "anilist": 22630,
     "animenewsnetwork": 12718,
     "animeplanet": 26897,
     "anisearch": 21402,
-    "annict": 13094,
+    "annict": 13101,
     "hikka": 30191,
     "imdb": 6341,
     "kaize": 24713,
@@ -400,7 +400,7 @@ GET /status
     "shoboi": 6298,
     "silveryasha": 5449,
     "simkl": 14719,
-    "themoviedb": 8437,
+    "themoviedb": 8440,
     "thetvdb": 5316,
     "trakt": 7305,
     "total": 38245
@@ -483,7 +483,7 @@ GET /updated
 
 <!-- updated-txt -->
 ```txt
-Updated on 11/17/2026 14:12:53 UTC
+Updated on 11/18/2026 13:46:58 UTC
 ```
 <!-- /updated-txt -->
 
